@@ -8,6 +8,7 @@ namespace Project1
 {
     class Class1
     {
+		int x;
 
     }
 }
