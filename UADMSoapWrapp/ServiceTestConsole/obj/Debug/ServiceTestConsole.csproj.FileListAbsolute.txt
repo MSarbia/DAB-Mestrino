@@ -1,0 +1,5 @@
+c:\users\michele.sarbia\documents\visual studio 2017\Projects\UADMSoapWrapp\ServiceTestConsole\bin\Debug\ServiceTestConsole.exe.config
+c:\users\michele.sarbia\documents\visual studio 2017\Projects\UADMSoapWrapp\ServiceTestConsole\bin\Debug\ServiceTestConsole.exe
+c:\users\michele.sarbia\documents\visual studio 2017\Projects\UADMSoapWrapp\ServiceTestConsole\bin\Debug\ServiceTestConsole.pdb
+c:\users\michele.sarbia\documents\visual studio 2017\Projects\UADMSoapWrapp\ServiceTestConsole\obj\Debug\ServiceTestConsole.exe
+c:\users\michele.sarbia\documents\visual studio 2017\Projects\UADMSoapWrapp\ServiceTestConsole\obj\Debug\ServiceTestConsole.pdb
