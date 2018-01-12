@@ -32,3 +32,38 @@ c:\users\michele.sarbia\documents\visual studio 2017\Projects\WindchillTestConso
 c:\users\michele.sarbia\documents\visual studio 2017\Projects\WindchillTestConsole\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.dll
 c:\users\michele.sarbia\documents\visual studio 2017\Projects\WindchillTestConsole\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.pdb
 c:\users\michele.sarbia\documents\visual studio 2017\Projects\WindchillTestConsole\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.csprojResolveAssemblyReference.cache
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\csc.exe
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\csc.exe.config
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\csc.rsp
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\csi.exe
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\csi.rsp
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\System.AppContext.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\System.Collections.Immutable.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\System.IO.FileSystem.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\System.Reflection.Metadata.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\vbc.exe
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\vbc.exe.config
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\vbc.rsp
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\VBCSCompiler.exe
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\VBCSCompiler.exe.config
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\WindchillServiceDocMock.dll.config
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\WindchillServiceDocMock.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\WindchillServiceDocMock.pdb
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.csprojResolveAssemblyReference.cache
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.csproj.CoreCompileInputs.cache
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.pdb

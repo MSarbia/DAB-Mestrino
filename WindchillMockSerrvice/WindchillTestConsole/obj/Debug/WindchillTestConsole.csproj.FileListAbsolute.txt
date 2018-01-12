@@ -4,3 +4,10 @@ c:\users\michele.sarbia\documents\visual studio 2017\Projects\WindchillTestConso
 c:\users\michele.sarbia\documents\visual studio 2017\Projects\WindchillTestConsole\WindchillTestConsole\obj\Debug\WindchillTestConsole.exe
 c:\users\michele.sarbia\documents\visual studio 2017\Projects\WindchillTestConsole\WindchillTestConsole\obj\Debug\WindchillTestConsole.pdb
 c:\users\michele.sarbia\documents\visual studio 2017\Projects\WindchillTestConsole\WindchillTestConsole\obj\Debug\WindchillTestConsole.csprojResolveAssemblyReference.cache
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConsole.exe.config
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConsole.exe
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConsole.pdb
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\obj\Debug\WindchillTestConsole.csprojResolveAssemblyReference.cache
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\obj\Debug\WindchillTestConsole.csproj.CoreCompileInputs.cache
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\obj\Debug\WindchillTestConsole.exe
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\obj\Debug\WindchillTestConsole.pdb
