@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WebServiceContract" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://www.w3.org/2001/XMLSchema" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="WebSrviTrg_ExecuteTrigger_InputMessage">
+    <wsdl:part name="text" type="xsd:string" />
+    <wsdl:part name="wait" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="WebSrviTrg_ExecuteTrigger_OutputMessage">
+    <wsdl:part name="ExecuteTriggerResult" type="xsd:int" />
+    <wsdl:part name="errorText" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebSrviTrg_ExecuteTriggerWithResponse_InputMessage">
+    <wsdl:part name="text" type="xsd:string" />
+    <wsdl:part name="wait" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="WebSrviTrg_ExecuteTriggerWithResponse_OutputMessage">
+    <wsdl:part name="ExecuteTriggerWithResponseResult" type="xsd:int" />
+    <wsdl:part name="responseData" type="xsd:base64Binary" />
+    <wsdl:part name="errorText" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebSrviTrg_ExecuteTriggerAndSetVariables_InputMessage">
+    <wsdl:part name="text" type="xsd:string" />
+    <wsdl:part name="variableData" type="xsd:string" />
+    <wsdl:part name="wait" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="WebSrviTrg_ExecuteTriggerAndSetVariables_OutputMessage">
+    <wsdl:part name="ExecuteTriggerAndSetVariablesResult" type="xsd:int" />
+    <wsdl:part name="errorText" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebSrviTrg_ExecuteTriggerAndSetVariablesWithResponse_InputMessage">
+    <wsdl:part name="text" type="xsd:string" />
+    <wsdl:part name="variableData" type="xsd:string" />
+    <wsdl:part name="wait" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="WebSrviTrg_ExecuteTriggerAndSetVariablesWithResponse_OutputMessage">
+    <wsdl:part name="ExecuteTriggerAndSetVariablesWithResponseResult" type="xsd:int" />
+    <wsdl:part name="responseData" type="xsd:base64Binary" />
+    <wsdl:part name="errorText" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="WebSrviTrg">
+    <wsdl:operation name="ExecuteTrigger" parameterOrder="text wait errorText">
+      <wsdl:input wsaw:Action="http://tempuri.org/WebSrviTrg/ExecuteTrigger" message="tns:WebSrviTrg_ExecuteTrigger_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/WebSrviTrg/ExecuteTriggerResponse" message="tns:WebSrviTrg_ExecuteTrigger_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteTriggerWithResponse" parameterOrder="text wait responseData errorText">
+      <wsdl:input wsaw:Action="http://tempuri.org/WebSrviTrg/ExecuteTriggerWithResponse" message="tns:WebSrviTrg_ExecuteTriggerWithResponse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/WebSrviTrg/ExecuteTriggerWithResponseResponse" message="tns:WebSrviTrg_ExecuteTriggerWithResponse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteTriggerAndSetVariables" parameterOrder="text variableData wait errorText">
+      <wsdl:input wsaw:Action="http://tempuri.org/WebSrviTrg/ExecuteTriggerAndSetVariables" message="tns:WebSrviTrg_ExecuteTriggerAndSetVariables_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/WebSrviTrg/ExecuteTriggerAndSetVariablesResponse" message="tns:WebSrviTrg_ExecuteTriggerAndSetVariables_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteTriggerAndSetVariablesWithResponse" parameterOrder="text variableData wait responseData errorText">
+      <wsdl:input wsaw:Action="http://tempuri.org/WebSrviTrg/ExecuteTriggerAndSetVariablesWithResponse" message="tns:WebSrviTrg_ExecuteTriggerAndSetVariablesWithResponse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/WebSrviTrg/ExecuteTriggerAndSetVariablesWithResponseResponse" message="tns:WebSrviTrg_ExecuteTriggerAndSetVariablesWithResponse_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_WebSrviTrg" type="tns:WebSrviTrg">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="ExecuteTrigger">
+      <soap:operation soapAction="http://tempuri.org/WebSrviTrg/ExecuteTrigger" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteTriggerWithResponse">
+      <soap:operation soapAction="http://tempuri.org/WebSrviTrg/ExecuteTriggerWithResponse" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteTriggerAndSetVariables">
+      <soap:operation soapAction="http://tempuri.org/WebSrviTrg/ExecuteTriggerAndSetVariables" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteTriggerAndSetVariablesWithResponse">
+      <soap:operation soapAction="http://tempuri.org/WebSrviTrg/ExecuteTriggerAndSetVariablesWithResponse" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceContract">
+    <wsdl:port name="BasicHttpBinding_WebSrviTrg" binding="tns:BasicHttpBinding_WebSrviTrg">
+      <soap:address location="http://nb-andreabonfa:56424/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
