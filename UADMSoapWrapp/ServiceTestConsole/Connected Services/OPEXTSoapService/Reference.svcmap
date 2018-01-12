@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="de81eaac-dc0d-45d1-8c77-974c38c2a603" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:56420/OPEXTWrapper.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="OPEXTWrapper.disco" MetadataType="Disco" ID="94d692ce-9b36-4e02-8dfc-66e0c6161d23" SourceId="1" SourceUrl="http://localhost:56420/OPEXTWrapper.svc?disco" />
+    <MetadataFile FileName="OPEXTWrapper2.xsd" MetadataType="Schema" ID="0a2145db-94a4-4c27-b297-6b2fe4831145" SourceId="1" SourceUrl="http://localhost:56420/OPEXTWrapper.svc?xsd=xsd2" />
+    <MetadataFile FileName="OPEXTWrapper.xsd" MetadataType="Schema" ID="118ffe40-fbb0-4303-a8c8-540a878884f3" SourceId="1" SourceUrl="http://localhost:56420/OPEXTWrapper.svc?xsd=xsd1" />
+    <MetadataFile FileName="OPEXTWrapper1.xsd" MetadataType="Schema" ID="6f2b2fb8-c093-4754-afc9-4ce38f975064" SourceId="1" SourceUrl="http://localhost:56420/OPEXTWrapper.svc?xsd=xsd0" />
+    <MetadataFile FileName="OPEXTWrapper.wsdl" MetadataType="Wsdl" ID="aee94cef-a6c8-4e43-9009-c4a4921c0124" SourceId="1" SourceUrl="http://localhost:56420/OPEXTWrapper.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
