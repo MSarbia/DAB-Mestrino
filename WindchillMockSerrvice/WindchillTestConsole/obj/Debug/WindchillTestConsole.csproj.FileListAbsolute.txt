@@ -1,0 +1,6 @@
+c:\users\michele.sarbia\documents\visual studio 2017\Projects\WindchillTestConsole\WindchillTestConsole\bin\Debug\WindchillTestConsole.exe.config
+c:\users\michele.sarbia\documents\visual studio 2017\Projects\WindchillTestConsole\WindchillTestConsole\bin\Debug\WindchillTestConsole.exe
+c:\users\michele.sarbia\documents\visual studio 2017\Projects\WindchillTestConsole\WindchillTestConsole\bin\Debug\WindchillTestConsole.pdb
+c:\users\michele.sarbia\documents\visual studio 2017\Projects\WindchillTestConsole\WindchillTestConsole\obj\Debug\WindchillTestConsole.exe
+c:\users\michele.sarbia\documents\visual studio 2017\Projects\WindchillTestConsole\WindchillTestConsole\obj\Debug\WindchillTestConsole.pdb
+c:\users\michele.sarbia\documents\visual studio 2017\Projects\WindchillTestConsole\WindchillTestConsole\obj\Debug\WindchillTestConsole.csprojResolveAssemblyReference.cache
