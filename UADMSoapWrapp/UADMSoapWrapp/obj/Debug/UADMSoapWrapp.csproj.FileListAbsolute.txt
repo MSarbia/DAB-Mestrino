@@ -32,3 +32,37 @@ c:\users\michele.sarbia\documents\visual studio 2017\Projects\UADMSoapWrapp\UADM
 c:\users\michele.sarbia\documents\visual studio 2017\Projects\UADMSoapWrapp\UADMSoapWrapp\obj\Debug\UADMSoapWrapp.dll
 c:\users\michele.sarbia\documents\visual studio 2017\Projects\UADMSoapWrapp\UADMSoapWrapp\obj\Debug\UADMSoapWrapp.pdb
 C:\Users\michele.sarbia\Documents\Visual Studio 2017\Projects\UADMSoapWrapp\UADMSoapWrapp\obj\Debug\UADMSoapWrapp.csprojResolveAssemblyReference.cache
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\csc.exe
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\csc.exe.config
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\csc.rsp
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\csi.exe
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\csi.rsp
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\System.AppContext.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\System.Collections.Immutable.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\System.IO.FileSystem.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\System.Reflection.Metadata.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\vbc.exe
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\vbc.exe.config
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\vbc.rsp
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\VBCSCompiler.exe
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\roslyn\VBCSCompiler.exe.config
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\UADMSoapWrapp.dll.config
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\UADMSoapWrapp.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\UADMSoapWrapp.pdb
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\obj\Debug\UADMSoapWrapp.csproj.CoreCompileInputs.cache
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\obj\Debug\UADMSoapWrapp.dll
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\obj\Debug\UADMSoapWrapp.pdb
