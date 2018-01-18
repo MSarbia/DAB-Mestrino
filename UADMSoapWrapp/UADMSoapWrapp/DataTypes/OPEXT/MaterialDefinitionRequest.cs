@@ -17,5 +17,7 @@ namespace UADMSoapWrapp.DataTypes.OPEXT
         public string UoM { get; set; }
         [DataMember]
         public bool Serialized { get; set; }
+        [DataMember]
+        public bool Customized { get; set; } // se false aggiungo 9 spazi bianchi al material code
     }
 }

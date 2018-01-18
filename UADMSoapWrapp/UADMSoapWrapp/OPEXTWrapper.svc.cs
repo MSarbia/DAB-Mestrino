@@ -24,6 +24,7 @@ namespace UADMSoapWrapp
             {
                 throw new Exception("Ehhhh pippo pippo..");
             }
+            var materialCode = materialDefinition.Customized ? materialDefinition.MaterialCode : $"         {materialDefinition.MaterialCode}";
             return new MaterialDefinitionResponse { MaterialCode = materialDefinition.MaterialCode, MaterialRevision = materialDefinition.MaterialRevision ?? "A" };
         }
     }
