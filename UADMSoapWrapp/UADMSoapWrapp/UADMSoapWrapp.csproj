@@ -24,6 +24,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -82,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="DataTypes\OPEXT\Operation.cs" />
     <Compile Include="DataTypes\OPEXT\WorkOrderResponse.cs" />
     <Compile Include="DataTypes\OPEXT\MaterialDefinitionResponse.cs" />
     <Compile Include="DataTypes\OPEXT\MaterialDefinitionRequest.cs" />

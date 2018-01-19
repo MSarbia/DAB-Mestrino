@@ -13,9 +13,9 @@ namespace UADMSoapWrapp
     public interface IOPEXTWrapper
     {
         [OperationContract]
-        WorkOrderResponse ImportWorkOrder(WorkOrderRequest workOrderInfo);
+        WorkOrderResponse ImportWorkOrder(WorkOrderRequest WorkOrderInfo);
 
         [OperationContract]
-        MaterialDefinitionResponse ImportMaterialDefinition(MaterialDefinitionRequest materialDefinition);
+        MaterialDefinitionResponse ImportMaterialDefinition(MaterialDefinitionRequest MaterialDefinition);
     }
 }

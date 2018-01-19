@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 namespace UADMSoapWrapp.DataTypes.OPEXT
 {
     [XmlRoot("WorkOrderRequest", Namespace = Constants.Namespace, IsNullable = false)]
-    [DataContract]
+    [DataContract(Namespace = Constants.Namespace)]
     public class WorkOrderRequest
     {
         [DataMember(IsRequired =true)]
@@ -24,6 +24,6 @@ namespace UADMSoapWrapp.DataTypes.OPEXT
         [DataMember(IsRequired = true)]
         public int Priority { get; set; }
         [DataMember(IsRequired = true)]
-        public List<ToBeConsumedMaterial> ToBeConsumedMaterials { get; set; }
+        public List<Operation> Operations { get; set; }
     }
 }

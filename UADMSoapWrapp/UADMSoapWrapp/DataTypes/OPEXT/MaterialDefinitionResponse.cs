@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 namespace UADMSoapWrapp.DataTypes.OPEXT
 {
     [XmlRoot("MaterialDefinitionResponse", Namespace = Constants.Namespace, IsNullable = false)]
-    [DataContract]
+    [DataContract(Namespace = Constants.Namespace)]
     public class MaterialDefinitionResponse
     {
         [DataMember(IsRequired = true)]

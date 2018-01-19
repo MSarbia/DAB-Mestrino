@@ -214,6 +214,12 @@ public partial class wsDocument : wsRevisionControlled
 [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.6.1590.0")]
 [System.SerializableAttribute()]
 
+getRelatedDocuments(
+    string number, //codice prodotto finito
+    string revision, //revision prodotto
+    string viewType) //eng o 'manufactoring' <- default
+
+
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://ws.cdm.ext/")]
 public partial class wsRevisionControlled
@@ -221,7 +227,7 @@ public partial class wsRevisionControlled
 
     private string nameField;
 
-    private string softTypeField;
+    private string softTypeField; //classificazione documento istruzioni di montaggio
 
     private string stateField;
 
@@ -661,6 +667,16 @@ public partial class getRevisionControlled
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.6.1590.0")]
 [System.SerializableAttribute()]
+
+
+wsFile download(
+    string fullClassName, //softTypeField
+    string number, //numberField
+    string revision, //revisionField
+    string ContentRoleType //primary
+    );
+
+
 
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://ws.cdm.ext/")]

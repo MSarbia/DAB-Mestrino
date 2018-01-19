@@ -66,3 +66,4 @@ C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\bin\Microsoft.CodeDo
 C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\obj\Debug\UADMSoapWrapp.csproj.CoreCompileInputs.cache
 C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\obj\Debug\UADMSoapWrapp.dll
 C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\obj\Debug\UADMSoapWrapp.pdb
+C:\GitRepositories\DAB-Mestrino\UADMSoapWrapp\UADMSoapWrapp\obj\Debug\UADMSoapWrapp.csprojResolveAssemblyReference.cache
