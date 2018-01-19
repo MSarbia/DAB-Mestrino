@@ -9,10 +9,12 @@ namespace OTWeb.DataContracts
         [DataMember]
         public string Order { get; set; }
         [DataMember]
+        public string Operation { get; set; }
+        [DataMember]
         public string Description { get; set; }
         [DataMember]
         public string ProductCode { get; set; }
         [DataMember]
-        public List<string> Serials { get; set; }
+        public List<SerialItem> Serials { get; set; }
     }
 }

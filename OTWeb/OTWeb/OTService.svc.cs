@@ -77,9 +77,9 @@ namespace OTWeb
             serials.Order = "Order1";
             serials.Description = "I'm Order1";
             serials.ProductCode = "JET50";
-            serials.Serials = new List<string>
+            serials.Serials = new List<SerialItem>
             {
-                "Serial1","Serial2","Serial3"
+                new SerialItem{SerialNumber="Serial1",Status="Ready" },new SerialItem{SerialNumber="Serial1",Status="Ready" },new SerialItem{SerialNumber="Serial1",Status="Ready" }
             };
             return serials;
         }
@@ -100,6 +100,11 @@ namespace OTWeb
         }
 
         public AcceptTeamLeaderCallResponse AcceptTeamLeaderCall(AcceptTeamLeaderCallRequest acceptTeamLeaderCall)
+        {
+            throw new NotImplementedException();
+        }
+
+        public StartSerialResponse StartSerial(StartSerialRequest acceptTeamLeaderCall)
         {
             throw new NotImplementedException();
         }

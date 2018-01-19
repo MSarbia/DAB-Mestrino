@@ -8,10 +8,16 @@ namespace OTWeb.CallManagement
 {
     public class CallHub : Hub
     {
-        public void Send(string name, string message)
+        public void SendMaterialCall(string name, string message)
         {
             // Call the broadcastMessage method to update clients.
-            Clients.All.broadcastMessage(name, message);
+            Clients.All.broadcastMessage(name, $"MaterialCall: {message}");
+        }
+
+        public void SendTeamLeaderCall(string name, string message)
+        {
+            // Call the broadcastMessage method to update clients.
+            Clients.All.broadcastMessage(name, $"TeamLeaderCall: {message}");
         }
     }
 }
