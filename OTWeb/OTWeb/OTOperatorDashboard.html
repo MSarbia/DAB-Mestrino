@@ -24,7 +24,12 @@
     <script type="text/javascript">
         $(document).ready(function () {
             GetSerials(getSerialSuccess);
+            var chat = $.connection.callHub;
+            $.connection.hub.start().done(function () {
+                chat.server.joinWorkArea(GetSession('userData').WorkArea);
+            });
         });
+
 
         function getSerialSuccess(result)
         {
