@@ -67,7 +67,7 @@ namespace OTWeb
             {
                 TeamLeaderCalls.Add(new Call { CallDate = DateTime.UtcNow, CallId = Guid.NewGuid(), Equipment = teamLeaderCall.Equipment, WorkArea = loginResponse.WorkArea, Status = "Pending" });
             }
-            CallHub.Static_SendMaterialCall(loginResponse.WorkArea, teamLeaderCall.Equipment);
+            CallHub.Static_SendTeamLeaderCall(loginResponse.WorkArea, teamLeaderCall.Equipment);
             return response;
         }
 
