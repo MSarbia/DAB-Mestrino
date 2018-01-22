@@ -58,15 +58,17 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#userName').text(GetSession('userData').User);
+            GetSerials();
         });
     </script>
     Operator <span id="userName"></span>
 
-    <div class="container">
-        <input type="text" id="message" />
-        <input type="button" id="sendmessage" value="Send" />
-        <input type="hidden" id="displayname" />
-        <ul id="discussion"></ul>
-    </div>
+             <div class="container">
+                 <input type="text" id="message" />
+                 <input type="button" id="sendmessage" value="Send" />
+                 <input type="hidden" id="displayname" />
+                 <ul id="discussion"></ul>
+                 <input type="button" id="callTeamLeader" value="Chiam Team Leader" onclick="CallTeamLeader()" />
+             </div>
 </body>
 </html>

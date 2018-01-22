@@ -8,6 +8,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Diagnostics;
 
 namespace OTWeb
 {
@@ -19,6 +20,9 @@ namespace OTWeb
         public static List<MaterialCall> MaterialCalls { get; set; } = new List<MaterialCall>();
         public static List<Call> TeamLeaderCalls { get; set; } = new List<Call>();
         public static List<SerialItem> Serials { get; set; } = new List<SerialItem> { new SerialItem { SerialNumber = "SN1", Status="Ready" }, new SerialItem { SerialNumber = "SN2", Status = "Ready" }, new SerialItem { SerialNumber = "SN3", Status = "Ready" }, new SerialItem { SerialNumber = "SN4", Status = "Ready" }, new SerialItem { SerialNumber = "SN5", Status = "Ready" }, new SerialItem { SerialNumber = "SN6", Status = "Ready" }, new SerialItem { SerialNumber = "SN7", Status = "Ready" }, new SerialItem { SerialNumber = "SN8", Status = "Ready" }, new SerialItem { SerialNumber = "SN9", Status = "Ready" }, new SerialItem { SerialNumber = "SN10", Status = "Ready" } };
+
+
+
         public LoginResponse Login(LoginRequest loginRequest)
         {
             var response = new LoginResponse
@@ -54,8 +58,10 @@ namespace OTWeb
             {
                 TeamLeaderCalls.Add(new Call { CallDate = DateTime.UtcNow, CallId = Guid.NewGuid(), Equipment = teamLeaderCall.Equipment, WorkArea = loginResponse.WorkArea, Status = "Pending" });
             }
-            IHubContext<CallHub> hubContext = (IHubContext<CallHub>)GlobalHost.ConnectionManager.GetHubContext<CallHub>();
-            hubContext.Clients.Group(loginResponse.WorkArea).SendTeamLeaderCall(teamLeaderCall.Equipment);
+            var p = Process.GetCurrentProcess();
+            IHubContext hubContext = GlobalHost.ConnectionManager.GetHubContext<CallHub>();
+            //hubContext.Clients.Group(loginResponse.WorkArea).SendTeamLeaderCall(teamLeaderCall.Equipment);
+            hubContext.Clients.All.SendTeamLeaderCall(teamLeaderCall.Equipment);
             return new SendTeamLeaderCallResponse
             {
                 Succeeded = loginResponse.Succeeded,
@@ -67,17 +73,22 @@ namespace OTWeb
         {
             var login = new LoginRequest { User = materialCall.User, Password = materialCall.Password };
             var loginResponse = Login(login);
-            lock (tempLock)
-            {
-                MaterialCalls.Add(new MaterialCall { CallDate = DateTime.UtcNow, CallId = Guid.NewGuid(), Equipment = materialCall.Equipment, WorkArea = loginResponse.WorkArea, Status = "Pending", Order = "MyOrder", Description = "MyOrderDescription", ProductCode = "MyProductCode", SerialNumber = materialCall.SerialNumber });
-            }
-            IHubContext<CallHub> hubContext = (IHubContext<CallHub>)GlobalHost.ConnectionManager.GetHubContext<CallHub>();
-            hubContext.Clients.Group(loginResponse.WorkArea).SendMaterialCall(materialCall.Equipment);
-            return new SendMaterialCallResponse
+            var response = new SendMaterialCallResponse
             {
                 Succeeded = loginResponse.Succeeded,
                 Error = loginResponse.Error
             };
+            if (!response.Succeeded)
+            {
+                return response;
+            }
+            lock (tempLock)
+            {
+                MaterialCalls.Add(new MaterialCall { CallDate = DateTime.UtcNow, CallId = Guid.NewGuid(), Equipment = materialCall.Equipment, WorkArea = loginResponse.WorkArea, Status = "Pending", Order = "MyOrder", Description = "MyOrderDescription", ProductCode = "MyProductCode", SerialNumber = materialCall.SerialNumber });
+            }
+            IHubContext hubContext = GlobalHost.ConnectionManager.GetHubContext<CallHub>();
+            hubContext.Clients.Group(loginResponse.WorkArea).SendMaterialCall(materialCall.Equipment);
+            return response;
         }
 
         public GetSerialsResponse GetSerials(GetSerialsRequest getSerials)

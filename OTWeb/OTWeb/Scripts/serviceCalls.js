@@ -27,7 +27,10 @@
                 else if (result.Role === 'Operator') {   
                     window.location.href = 'OTTeamLeaderDashboard.html';
                 }
-            }              
+            }
+            else {
+                alert(result.Error);
+            }
         },
 
         error: function (jqXHR, textStatus, errorThrown) {
@@ -46,6 +49,93 @@
         }
     });      
 }
+
+function CallTeamLeader() {
+    var userData = GetSession('userData');
+    
+    var teamLeaderCallRequest = {
+        User: userData.User,
+        Password: userData.Password,
+        Equipment: userData.Equipment
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "../OTService.svc/SendTeamLeaderCall",
+        data: JSON.stringify(teamLeaderCallRequest),
+        contentType: "application/json; charset=utf-8",
+        dataType: "JSON",
+        success: function (result) {
+            if (result.Succeeded) {
+                
+            }
+            else {
+                alert(result.Error);
+            }
+        },
+
+        error: function (jqXHR, textStatus, errorThrown) {
+            if (textStatus === "error" && errorThrown !== "") {
+                var n = noty({
+                    text: errorThrown,
+                    type: 'warning',
+                    dismissQueue: false,
+                    modal: true,
+                    layout: 'center',
+                    theme: 'defaults',
+                    callback: {
+                    }
+                });
+            }
+        }
+    }); 
+
+}
+
+
+function GetSerials() {
+    var userData = GetSession('userData');
+
+    var teamLeaderCallRequest = {
+        User: userData.User,
+        Password: userData.Password,
+        Equipment: userData.Equipment
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "../OTService.svc/GetSerials",
+        data: JSON.stringify(teamLeaderCallRequest),
+        contentType: "application/json; charset=utf-8",
+        dataType: "JSON",
+        success: function (result) {
+            if (result.Succeeded) {
+                var serials = result.Serials;
+                //popolare la lista dei seriali
+            }
+            else {
+                alert(result.Error);
+            }
+        },
+
+        error: function (jqXHR, textStatus, errorThrown) {
+            if (textStatus === "error" && errorThrown !== "") {
+                var n = noty({
+                    text: errorThrown,
+                    type: 'warning',
+                    dismissQueue: false,
+                    modal: true,
+                    layout: 'center',
+                    theme: 'defaults',
+                    callback: {
+                    }
+                });
+            }
+        }
+    });
+
+}
+
 
 function SaveSession(name, value) {
     sessionStorage[name] =JSON.stringify(value);
