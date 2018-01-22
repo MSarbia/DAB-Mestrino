@@ -45,8 +45,8 @@
             $.connection.hub.start().done(function () {
                 $('#sendmessage').click(function () {
                     // Call the Send method on the hub.
-                    chat.server.sendMaterialCall($('#displayname').val(), $('#message').val());
-                    chat.server.sendTeamLeaderCall($('#displayname').val(), $('#message').val());
+                    chat.server.sendMaterialCall($('#message').val());
+                    chat.server.sendTeamLeaderCall($('#message').val());
                     // Clear text box and reset focus for next comment.
                     $('#message').val('').focus();
                 });

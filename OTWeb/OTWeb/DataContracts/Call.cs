@@ -12,8 +12,12 @@ namespace OTWeb.DataContracts
         [DataMember]
         public Guid CallId { get; set; }
         [DataMember]
+        public string WorkArea { get; set; }
+        [DataMember]
         public string Equipment { get; set; }
         [DataMember]
         public DateTime CallDate { get; set; }
+        [DataMember]
+        public string Status { get; set; }
     }
 }
