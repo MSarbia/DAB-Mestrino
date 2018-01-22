@@ -16,9 +16,9 @@
     <script src="Scripts/serviceCalls.js"></script>
     <!--Add script to update the page and send messages.-->
     <script>
-  $( function() {
-    $( "#selectable" ).selectable();
-  } );
+        $(function () {
+            $("#selectable").selectable();
+        });
     </script>
 </head>
 <body>
@@ -27,17 +27,17 @@
             GetSerials();
         });
     </script>
-          
+
 
 
     <div class="Table">
-     
+
         <div class="Heading">
-          
+
             <div class="CellSx">
                 <div class="container">
                     <input type="button" id="callTeamLeader" value="Chiama Team Leader" onclick="CallTeamLeader()" />
-                    <input type="button" id="callTeamLeader2" value="Chiamata Materiali" onclick="CallTeamLeader()" />
+                    <input type="button" id="callTeamLeader2" value="Chiamata Materiali" onclick="CallMaterials()" />
                 </div>
 
             </div>
