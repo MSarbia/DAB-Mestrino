@@ -9,11 +9,11 @@
     font-size: 3vw
 }
       
-#feedback { font-size: 1.4em; }
-#selectable .ui-selecting { background: #FECA40; }
-#selectable .ui-selected { background: #F39814; color: white; }
-#selectable { list-style-type: none; margin: 0; padding: 0; width: 450px; }
-#selectable li { margin: 3px; padding: 1px; float: left; width: 100px; height: 80px; text-align: center; }
+.feedback { font-size: 1.4em; }
+.serialsList .ui-selecting { background: #FECA40; }
+.serialsList .ui-selected { background: #F39814; color: white; }
+.serialsList { list-style-type: none; margin: 0; padding: 0; width: 450px; }
+.serialsList li { margin: 3px; padding: 1px; float: left; width: 100px; height: 80px; text-align: center; }
 
   
    .Table
