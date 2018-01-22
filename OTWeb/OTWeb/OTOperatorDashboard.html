@@ -16,7 +16,21 @@
     <!--Add script to update the page and send messages.-->
     <script>
         $(function () {
-            $("#serialsList").selectable();
+            $("#serialsList").bind("mousedown", function (e) {
+                e.metaKey = true;
+            }).selectable({
+                selected: function (event, ui) {
+                    if ($(ui.selected)) {
+                        $('.btn').removeClass('btn').addClass('btn-selected');
+                    }
+                    else {
+                        $('.btn-selected').removeClass('btn-selected').addClass('btn');
+                    }
+                },
+                unselected: function (event, ui) {
+                    $('.btn-selected').removeClass('btn-selected').addClass('btn');
+                }
+            });
         });
     </script>
 </head>

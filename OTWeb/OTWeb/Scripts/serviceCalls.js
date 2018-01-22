@@ -18,8 +18,6 @@
             locationHref = 'OTOperatorDashboard.html';
         }
         else if (result.Role === 'TeamLeader') {   
-            var chat = $.connection.callHub;
-            
             locationHref= 'OTTeamLeaderDashboard.html';
         }        
         window.location.href = locationHref;      
