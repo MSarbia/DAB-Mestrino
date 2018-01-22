@@ -149,10 +149,15 @@ function GetSerials() {
         data: JSON.stringify(teamLeaderCallRequest),
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
-        success: function (result) {
+        success: function (result) {           
             if (result.Succeeded) {
                 var serials = result.Serials;
-                //popolare la lista dei seriali
+
+                serials.forEach(function (serial) {
+                    var selectable = document.getElementById("selectable");
+                    selectable.innerHTML = selectable.innerHTML + "<li class='ui-state-default'>" + serial.SerialNumber + " </li>";
+                });
+               
             }
             else {
                 alert(result.Error);
