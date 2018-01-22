@@ -26,6 +26,11 @@
             $("teamLeaderCalls").selectable();
         });
     </script>
+    <style>
+        .icon {
+            font-size: 3vw
+        }
+    </style>
 
 </head>
 <body>
@@ -34,9 +39,24 @@
         //    GetSerials();
         //});
         $(document).ready(function () {
+            var chat = $.connection.callHub;
+            $.connection.hub.start().done(function () {
+                chat.server.joinWorkArea(GetSession('userData').WorkArea);
+            });
             $('#userName').text(GetSession('userData').User);
-            GetMaterialCalls();
-            GetTeamLeaderCalls();
+            SubscribeToCalls(materialCallsSuccess, teamLeaderCallsSuccess);
+            GetMaterialCalls(materialCallsSuccess);
+            GetTeamLeaderCalls(teamLeaderCallsSuccess);
+
+            function materialCallsSuccess(result)
+            {
+                var x1 = result;
+            }
+
+            function teamLeaderCallsSuccess(result)
+            {
+                var x2 = result;
+            }
         });
     </script>
 

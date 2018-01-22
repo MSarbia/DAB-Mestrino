@@ -7,7 +7,6 @@
     <link href="css/style.css" rel="stylesheet" />
     <link href="Scripts/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <script src="Scripts/jquery-3.2.1.min.js"></script>
     <script src="Scripts/jquery.signalR-2.2.2.min.js"></script>
     <script src="Scripts/jquery-ui-1.12.1/jquery-ui.js"></script>
@@ -16,33 +15,50 @@
     <script src="Scripts/serviceCalls.js"></script>
     <!--Add script to update the page and send messages.-->
     <script>
-  $( function() {
-    $( "#selectable" ).selectable();
-  } );
+        $(function () {
+            $("#serialsList").selectable();
+        });
     </script>
 </head>
 <body>
     <script type="text/javascript">
         $(document).ready(function () {
-            GetSerials();
+            GetSerials(getSerialSuccess);
+            var chat = $.connection.callHub;
+            $.connection.hub.start().done(function () {
+                chat.server.joinWorkArea(GetSession('userData').WorkArea);
+            });
         });
+
+
+        function getSerialSuccess(result)
+        {
+            var serials = result.Serials;
+            serials.forEach(function (serial) {
+
+                var selectable = document.getElementById("serialsList");
+
+                selectable.innerHTML = selectable.innerHTML + "<li class='ui-state-default'>" + serial.SerialNumber + " </li>";
+
+            })
+        }
     </script>
-          
+
 
 
     <div class="Table">
-     
+
         <div class="Heading">
-          
+
             <div class="CellSx">
                 <div class="container">
                     <input type="button" id="callTeamLeader" value="Chiama Team Leader" onclick="CallTeamLeader()" />
-                    <input type="button" id="callTeamLeader2" value="Chiamata Materiali" onclick="CallTeamLeader()" />
+                    <input type="button" id="callMaterials" value="Chiamata Materiali" onclick="CallMaterials()" />
                 </div>
 
             </div>
             <div class="CellRx">
-                <ol id="selectable"></ol>
+                <ol id="serialsList" class="serialsList"></ol>
             </div>
         </div>
     </div>
