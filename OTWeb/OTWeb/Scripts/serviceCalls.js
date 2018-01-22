@@ -12,15 +12,14 @@
         userData.User = login.User;
         userData.Password = login.Password;
         SaveSession('userData', userData);
-        var chat = $.connection.callHub;
+        
         var locationHref = '';
         if (result.Role === 'Operator') {
             locationHref = 'OTOperatorDashboard.html';
         }
         else if (result.Role === 'TeamLeader') {   
-            $.connection.hub.start().done(function () {
-                chat.server.joinWorkArea(GetSession('userData').WorkArea);
-            });
+            var chat = $.connection.callHub;
+            
             locationHref= 'OTTeamLeaderDashboard.html';
         }        
         window.location.href = locationHref;      
