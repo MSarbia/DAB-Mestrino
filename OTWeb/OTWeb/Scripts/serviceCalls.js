@@ -1,5 +1,4 @@
-﻿function Login(username, password)
-{
+﻿function Login(username, password) {
     if (username === '' || password === '')
         return;
 
@@ -8,87 +7,90 @@
         Password: password
     };
 
-                                 
-    $.ajax({
-        type: "POST",
-        url: "../OTService.svc/Login",
-        data: JSON.stringify(login),
-        contentType: "application/json; charset=utf-8",
-        dataType: "JSON",
-        success: function (result) {
-            if (result.Succeeded) {
-                var userData = result;
-                userData.User = login.User;
-                userData.Password = login.Password;
-                SaveSession('userData', userData);   
-                if (result.Role === 'Operator') {
-                    window.location.href = 'OTOperatorDashboard.html';
-                }
-                else if (result.Role === 'Operator') {   
-                    window.location.href = 'OTTeamLeaderDashboard.html';
-                }
-            }
-            else {
-                alert(result.Error);
-            }
-        },
-
-        error: function (jqXHR, textStatus, errorThrown) {
-            if (textStatus === "error" && errorThrown !== "") {
-                var n = noty({
-                    text: errorThrown,
-                    type: 'warning',
-                    dismissQueue: false,
-                    modal: true,
-                    layout: 'center',
-                    theme: 'defaults',
-                    callback: {
-                    }
-                });
-            }
+    callService("Login", login, function (result) {
+        var userData = result;
+        userData.User = login.User;
+        userData.Password = login.Password;
+        SaveSession('userData', userData);
+        var chat = $.connection.callHub;
+        var locationHref = '';
+        if (result.Role === 'Operator') {
+            locationHref = 'OTOperatorDashboard.html';
         }
-    });      
+        else if (result.Role === 'TeamLeader') {   
+            $.connection.hub.start().done(function () {
+                chat.server.joinWorkArea(GetSession('userData').WorkArea);
+            });
+            locationHref= 'OTTeamLeaderDashboard.html';
+        }        
+        window.location.href = locationHref;      
+    });       
 }
+
+
+function Logout() {
+    var userData = sessionStorage['userData'];
+    if (userData != undefined) {
+        chat.server.leaveWorkArea(userData.WorkArea);
+    }
+    $.connection.hub.stop();
+    ClearSession('userData');
+    window.location.href = 'OTLogin.html';
+}
+
+function SubscribeToCalls(materialCallsSuccess, teamLeaderCallsSuccess) {
+    var chat = $.connection.callHub;
+
+    chat.client.getMaterialCall = function (message) {
+        GetMaterialCalls(materialCallsSuccess);
+    };
+
+    chat.client.getTeamLeaderCall = function (message) {
+        GetTeamLeaderCalls(teamLeaderCallsSuccess);
+    };
+}
+
+function GetMaterialCalls(materialCallsSuccess) {
+    var userData = GetSession('userData');
+
+    var materialCallRequest = {
+        User: userData.User,
+        Password: userData.Password,
+        WorkArea: userData.WorkArea
+    };
+
+    callService("GetMaterialCalls", materialCallRequest,  function (result) {
+        materialCallsSuccess(result);
+    });
+}
+
+function GetTeamLeaderCalls(teamLeaderCallsSuccess) {
+    var userData = GetSession('userData');
+
+    var teamLeaderCallRequest = {
+        User: userData.User,
+        Password: userData.Password,
+        WorkArea: userData.WorkArea
+    };
+
+    callService("GetTeamLeaderCalls", teamLeaderCallRequest, function (result) {
+        teamLeaderCallsSuccess(result);
+    });
+}
+
 
 function CallTeamLeader() {
     var userData = GetSession('userData');
-    
+
     var teamLeaderCallRequest = {
         User: userData.User,
         Password: userData.Password,
         Equipment: userData.Equipment
     };
 
-    $.ajax({
-        type: "POST",
-        url: "../OTService.svc/SendTeamLeaderCall",
-        data: JSON.stringify(teamLeaderCallRequest),
-        contentType: "application/json; charset=utf-8",
-        dataType: "JSON",
-        success: function (result) {
-            if (result.Succeeded) {
-                
-            }
-            else {
-                alert(result.Error);
-            }
-        },
-
-        error: function (jqXHR, textStatus, errorThrown) {
-            if (textStatus === "error" && errorThrown !== "") {
-                var n = noty({
-                    text: errorThrown,
-                    type: 'warning',
-                    dismissQueue: false,
-                    modal: true,
-                    layout: 'center',
-                    theme: 'defaults',
-                    callback: {
-                    }
-                });
-            }
-        }
-    });     
+    callService("SendTeamLeaderCall", teamLeaderCallRequest, function (result) {
+        //codice per chiamata andata a buon fine
+    });
 }
 
 function CallMaterials() {
@@ -100,41 +102,13 @@ function CallMaterials() {
         Equipment: userData.Equipment
     };
 
-    $.ajax({
-        type: "POST",
-        url: "../OTService.svc/SendMaterialCall",
-        data: JSON.stringify(materialCallRequest),
-        contentType: "application/json; charset=utf-8",
-        dataType: "JSON",
-        success: function (result) {
-            if (result.Succeeded) {
-
-            }
-            else {
-                alert(result.Error);
-            }
-        },
-
-        error: function (jqXHR, textStatus, errorThrown) {
-            if (textStatus === "error" && errorThrown !== "") {
-                var n = noty({
-                    text: errorThrown,
-                    type: 'warning',
-                    dismissQueue: false,
-                    modal: true,
-                    layout: 'center',
-                    theme: 'defaults',
-                    callback: {
-                    }
-                });
-            }
-        }
+    callService("SendMaterialCall", materialCallRequest, function (result) {
+        //codice per chiamata andata a buon fine
     });
-
 }
 
 
-function GetSerials() {
+function GetSerials(getSerialsSuccess) {
     var userData = GetSession('userData');
 
     var teamLeaderCallRequest = {
@@ -143,52 +117,60 @@ function GetSerials() {
         Equipment: userData.Equipment
     };
 
+    callService("GetSerials", teamLeaderCallRequest, function (result) {
+        getSerialsSuccess(result);
+    });
+}
+
+function callService(methodName, input, successCallback) {
     $.ajax({
         type: "POST",
-        url: "../OTService.svc/GetSerials",
-        data: JSON.stringify(teamLeaderCallRequest),
+        url: "../OTService.svc/" + methodName,
+        data: JSON.stringify(input),
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
-        success: function (result) {           
+        success: function (result) {
             if (result.Succeeded) {
-                var serials = result.Serials;
-
-                serials.forEach(function (serial) {
-                    var selectable = document.getElementById("selectable");
-                    selectable.innerHTML = selectable.innerHTML + "<li class='ui-state-default'>" + serial.SerialNumber + " </li>";
-                });
-               
+                successCallback(result);
             }
             else {
-                alert(result.Error);
+                showError(result.Error);
             }
         },
 
         error: function (jqXHR, textStatus, errorThrown) {
             if (textStatus === "error" && errorThrown !== "") {
-                var n = noty({
-                    text: errorThrown,
-                    type: 'warning',
-                    dismissQueue: false,
-                    modal: true,
-                    layout: 'center',
-                    theme: 'defaults',
-                    callback: {
-                    }
-                });
+                showError(errorThrown);
             }
         }
     });
-
 }
 
+function showError(errorThrown) {
+    var n = noty({
+        text: errorThrown,
+        type: 'warning',
+        dismissQueue: false,
+        modal: true,
+        layout: 'center',
+        theme: 'defaults',
+        callback: {
+        }
+    });
+}
 
 function SaveSession(name, value) {
-    sessionStorage[name] =JSON.stringify(value);
+    sessionStorage[name] = JSON.stringify(value);
 }
 
 function GetSession(name) {
+    var sessionValue = sessionStorage[name];
+    if (sessionValue == undefined) {
+        Logout();
+        return;
+    }
     return JSON.parse(sessionStorage[name]);
+
 }
 
 function ClearSession(name) {

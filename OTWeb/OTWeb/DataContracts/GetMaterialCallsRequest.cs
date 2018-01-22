@@ -6,6 +6,6 @@ namespace OTWeb.DataContracts
     public class GetMaterialCallsRequest : Request
     {
         [DataMember]
-        public string ProductionLine { get; set; }
+        public string WorkArea { get; set; }
     }
 }

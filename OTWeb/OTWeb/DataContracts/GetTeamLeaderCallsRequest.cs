@@ -6,6 +6,6 @@ namespace OTWeb.DataContracts
     public class GetTeamLeaderCallsRequest : Request
     {
         [DataMember]
-        public string ProductionLine { get; set; }
+        public string WorkArea { get; set; }
     }
 }
