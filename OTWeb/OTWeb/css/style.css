@@ -1,102 +1,150 @@
-﻿html  {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
- }
+﻿html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
- body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
- }
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 .icon {
-    font-size: 3vw
+    font-size: 3vw;
 }
-      
-.feedback { font-size: 1.4em; }
-.serialsList .ui-selecting { background: #CAD4D4; }
-.serialsList .ui-selected { border:solid; border-color:#136b91; border-width:3px; }
-.serialsList { list-style-type: none; margin: 0; padding: 0; width: 100%; }
-.serialsList li {  background: #CAD4D4;  margin: 3px; padding: 1px; float: left; width: 15vw; height: 7vw; text-align: center; box-sizing:border-box; }
 
-  
-   .Table
-    {
-        display: table;
-        height: 100%;
-    }
-    .Title
-    {
-        display: table-caption;
+.feedback {
+    font-size: 1.4em;
+}
+
+.serialsList .ui-selecting {
+    background: #CAD4D4;
+}
+
+.serialsList .ui-selected {
+    border: solid;
+    border-color: #136b91;
+    border-width: 3px;
+}
+
+.serialsList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+    .serialsList li {
+        background: #CAD4D4;
+        margin: 3px;
+        padding: 1px;
+        float: left;
+        width: 15vw;
+        height: 7vw;
         text-align: center;
-        font-weight: bold;
-        font-size: larger;
+        box-sizing: border-box;
     }
-    .Heading
-    {
-        display: table-row;
-        font-weight: bold;
-        text-align: center;
-    }
-    .Row
-    {
-        display: table-row;
-    }
-    .CellSx
-    {
-        display: table-cell;
-        border: solid;
-        border-width: thin;
-        padding-left: 5px;
-        padding-right: 5px;
-        width: 20%;
-        vertical-align:top;
-    }
-        .CellRx
-    {
-        display: table-cell;
-        border: solid;
-        border-width: thin;
-        padding-left: 5px;
-        padding-right: 5px;
-        width: 80%;
-        vertical-align:top;
-    }
-           .TableFooter
-    {
-        display: table;
-        height: 10%;
-        width:100%;
-    }
-      .CellFooter
-    {
-        display: table-cell;
-        border: solid;
-        border-width: thin;
-        padding-left: 5px;
-        padding-right: 5px;
-        width: 1000%;
-        vertical-align:bottom;
-    }
-                 .TableTop
-    {
-        display: table;
-        height: 90%;
-          width:100%;
-    }
-                       .CellTop
-    {
-        display: table-cell;
-        border: solid;
-        border-width: thin;
-        padding-left: 5px;
-        padding-right: 5px;
-        width: 100%;
-        align-items:center;
-        vertical-align:top;
-        text-align:center;
-        
-    }
+
+
+.Table {
+    display: table;
+    height: 100%;
+}
+
+.Title {
+    display: table-caption;
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.Heading {
+    display: table-row;
+    font-weight: bold;
+    text-align: center;
+}
+
+.Row {
+    display: table-row;
+}
+
+.CellSx {
+    display: table-cell;
+    border: solid;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 20%;
+    vertical-align: top;
+}
+
+.CellRx {
+    display: table-cell;
+    border: solid;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 80%;
+    vertical-align: top;
+}
+
+.TableFooter {
+    display: table;
+    height: 10%;
+    width: 100%;
+    text-align: center;
+}
+
+.CellFooter {
+    display: table-cell;
+    border: solid;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+.TableTop {
+    display: table;
+    height: 90%;
+    width: 100%;
+}
+
+.CellTop {
+    display: table-cell;
+    border: solid;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    align-items: center;
+    vertical-align: top;
+    text-align: center;
+}
+
+.btn {
+    font-family: Arial;
+    color: #ffffff;
+    background: #778089;
+    padding: 20px 20px 20px 20px;
+    text-decoration: none;
+    width: 18%;
+    left: 41%;
+    position: relative;
+}
+
+.btn-selected {
+    font-family: Arial;
+    color: #ffffff;
+    background: #007500;
+    padding: 20px 20px 20px 20px;
+    text-decoration: none;
+    width: 18%;
+    left: 41%;
+    position: relative;
+}

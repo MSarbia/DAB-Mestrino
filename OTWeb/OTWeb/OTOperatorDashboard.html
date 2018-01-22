@@ -42,7 +42,16 @@
             })
         }
     </script>
-
+    <script type="text/javascript">
+    function focusMe(button) {
+      var elem = document.getElementsByClassName("btn-selected")[0];
+      // if element having class `"button-selected"` defined, do stuff
+      if (elem) {
+        elem.className = "";
+      }
+      button.className = "btn-selected";
+    }
+    </script>
 
     <div class="Table">
 
@@ -71,11 +80,11 @@
                 </div>
                 <div class="TableFooter">
 
-                    <div class="Heading">
+                   
 
                         <div class="CellFooter">
-                            pulsante!
-                        </div>
+                          <div class="btn"  onClick="focusMe(this);">Cliccamelo</div>
+                       
                     </div>
                 </div>
 
