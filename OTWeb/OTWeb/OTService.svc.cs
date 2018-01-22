@@ -30,13 +30,13 @@ namespace OTWeb
                 Succeeded = true,
                 Error = string.Empty
             };
-            if (loginRequest.User.StartsWith("OP"))
+            if (loginRequest.User.ToLowerInvariant().StartsWith("op"))
             {
                 response.Role = "Operator";
                 response.Equipment = "Equip1";
                 response.WorkArea = "Line1";
             }
-            else if (loginRequest.User.StartsWith("TL"))
+            else if (loginRequest.User.ToLowerInvariant().StartsWith("tl"))
             {
                 response.Role = "TeamLeader";
                 response.WorkArea = "Line1";
@@ -54,19 +54,21 @@ namespace OTWeb
         {
             var login = new LoginRequest { User = teamLeaderCall.User, Password = teamLeaderCall.Password };
             var loginResponse = Login(login);
-            lock (tempLock)
-            {
-                TeamLeaderCalls.Add(new Call { CallDate = DateTime.UtcNow, CallId = Guid.NewGuid(), Equipment = teamLeaderCall.Equipment, WorkArea = loginResponse.WorkArea, Status = "Pending" });
-            }
-            var p = Process.GetCurrentProcess();
-            IHubContext hubContext = GlobalHost.ConnectionManager.GetHubContext<CallHub>();
-            //hubContext.Clients.Group(loginResponse.WorkArea).SendTeamLeaderCall(teamLeaderCall.Equipment);
-            hubContext.Clients.All.SendTeamLeaderCall(teamLeaderCall.Equipment);
-            return new SendTeamLeaderCallResponse
+            var response = new SendTeamLeaderCallResponse
             {
                 Succeeded = loginResponse.Succeeded,
                 Error = loginResponse.Error
             };
+            if (!response.Succeeded)
+            {
+                return response;
+            }
+            lock (tempLock)
+            {
+                TeamLeaderCalls.Add(new Call { CallDate = DateTime.UtcNow, CallId = Guid.NewGuid(), Equipment = teamLeaderCall.Equipment, WorkArea = loginResponse.WorkArea, Status = "Pending" });
+            }
+            CallHub.Static_SendMaterialCall(loginResponse.WorkArea, teamLeaderCall.Equipment);
+            return response;
         }
 
         public SendMaterialCallResponse SendMaterialCall(SendMaterialCallRequest materialCall)
@@ -86,8 +88,7 @@ namespace OTWeb
             {
                 MaterialCalls.Add(new MaterialCall { CallDate = DateTime.UtcNow, CallId = Guid.NewGuid(), Equipment = materialCall.Equipment, WorkArea = loginResponse.WorkArea, Status = "Pending", Order = "MyOrder", Description = "MyOrderDescription", ProductCode = "MyProductCode", SerialNumber = materialCall.SerialNumber });
             }
-            IHubContext hubContext = GlobalHost.ConnectionManager.GetHubContext<CallHub>();
-            hubContext.Clients.Group(loginResponse.WorkArea).SendMaterialCall(materialCall.Equipment);
+            CallHub.Static_SendMaterialCall(loginResponse.WorkArea, materialCall.Equipment);
             return response;
         }
 

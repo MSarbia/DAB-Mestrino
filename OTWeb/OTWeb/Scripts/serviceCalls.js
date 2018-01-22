@@ -88,7 +88,48 @@ function CallTeamLeader() {
                 });
             }
         }
-    }); 
+    });     
+}
+
+function CallMaterials() {
+    var userData = GetSession('userData');
+
+    var materialCallRequest = {
+        User: userData.User,
+        Password: userData.Password,
+        Equipment: userData.Equipment
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "../OTService.svc/SendMaterialCall",
+        data: JSON.stringify(materialCallRequest),
+        contentType: "application/json; charset=utf-8",
+        dataType: "JSON",
+        success: function (result) {
+            if (result.Succeeded) {
+
+            }
+            else {
+                alert(result.Error);
+            }
+        },
+
+        error: function (jqXHR, textStatus, errorThrown) {
+            if (textStatus === "error" && errorThrown !== "") {
+                var n = noty({
+                    text: errorThrown,
+                    type: 'warning',
+                    dismissQueue: false,
+                    modal: true,
+                    layout: 'center',
+                    theme: 'defaults',
+                    callback: {
+                    }
+                });
+            }
+        }
+    });
 
 }
 
