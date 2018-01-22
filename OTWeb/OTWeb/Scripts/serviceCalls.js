@@ -111,13 +111,13 @@ function CallMaterials() {
 function GetSerials(getSerialsSuccess) {
     var userData = GetSession('userData');
 
-    var teamLeaderCallRequest = {
+    var getSerialsRequest = {
         User: userData.User,
         Password: userData.Password,
         Equipment: userData.Equipment
     };
 
-    callService("GetSerials", teamLeaderCallRequest, function (result) {
+    callService("GetSerials", getSerialsRequest, function (result) {
         getSerialsSuccess(result);
     });
 }
