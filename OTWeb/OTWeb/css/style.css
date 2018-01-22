@@ -16,3 +16,44 @@
 #selectable li { margin: 3px; padding: 1px; float: left; width: 100px; height: 80px; text-align: center; }
 
   
+   .Table
+    {
+        display: table;
+    }
+    .Title
+    {
+        display: table-caption;
+        text-align: center;
+        font-weight: bold;
+        font-size: larger;
+    }
+    .Heading
+    {
+        display: table-row;
+        font-weight: bold;
+        text-align: center;
+    }
+    .Row
+    {
+        display: table-row;
+    }
+    .CellSx
+    {
+        display: table-cell;
+        border: solid;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
+        width: 20%;
+        vertical-align:top;
+    }
+        .CellRx
+    {
+        display: table-cell;
+        border: solid;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
+        width: 80%;
+        vertical-align:top;
+    }
