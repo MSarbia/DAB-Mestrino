@@ -16,14 +16,11 @@
     <script src="Scripts/serviceCalls.js"></script>
     <!--Add script to update the page and send messages.-->
     <script>
-        $(function () {
-            $("#selectable").selectable();
-        });
         $(function() {
             $("#materialCalls").selectable();
         });
         $(function () {
-            $("teamLeaderCalls").selectable();
+            $("#teamLeaderCalls").selectable();
         });
     </script>
     <style>
@@ -35,46 +32,60 @@
 </head>
 <body>
     <script type="text/javascript">
-        //$(document).ready(function () {
-        //    GetSerials();
-        //});
+        function materialCallsSuccess(result) {
+            $('#materialCalls').empty();
+            result.MaterialCalls.forEach(function (call) {
+                var listItem = "<li><span style='font-weight:bold'>Equipment:" + call.Equipment + "</span></br></br><span style='font-weight:normal'>Date:" + call.CallDate + "</span></li>";
+                $('#materialCalls').append(listItem);
+            });;
+        }
+
+        function teamLeaderCallsSuccess(result) {
+            $('#teamLeaderCalls').empty();
+            result.TeamLeaderCalls.forEach(function (call) {
+                var listItem = '<li>' + call.CallId + '</li>';
+                $('#teamLeaderCalls').append(listItem);
+            });
+        }
+
         $(document).ready(function () {
             var chat = $.connection.callHub;
+            SubscribeToCalls(chat, materialCallsSuccess, teamLeaderCallsSuccess);
             $.connection.hub.start().done(function () {
                 chat.server.joinWorkArea(GetSession('userData').WorkArea);
+                
             });
+
             $('#userName').text(GetSession('userData').User);
-            SubscribeToCalls(materialCallsSuccess, teamLeaderCallsSuccess);
-            GetMaterialCalls(materialCallsSuccess);
+                                
             GetTeamLeaderCalls(teamLeaderCallsSuccess);
-
-            function materialCallsSuccess(result)
-            {
-                var x1 = result;
-            }
-
-            function teamLeaderCallsSuccess(result)
-            {
-                var x2 = result;
-            }
+            GetMaterialCalls(materialCallsSuccess);
+                        
         });
     </script>
 
-    TeamLeader <span id="userName"></span>
+    <!--TeamLeader <span id="userName"></span>-->
 
     <div class="Table">
-        <div class="Heading">
-            <div class="CellCalls">
-                <div class="container">
-                    <ol id="materialCalls" class="callClass"></ol>
+        <div class="TableTop">
+            <div class="Heading">
+                <div class="CellCalls">
+                    <div class="container">
+                        <ol id="teamLeaderCalls" class="callClass"></ol>
+                    </div>
                 </div>
-            </div>
-            <div class="CellCalls">
-                <div class="container">
-                    <ol id="teamLeaderCalls" class="callClass"></ol>
+                <div class="CellCalls">
+                    <div class="container">
+                        <ol id="materialCalls" class="callClass"></ol>
+                    </div>
                 </div>
             </div>
         </div>
+            <div class="TableFooter">
+                <div class="CellFooter">
+                    <div class="btn" onClick="focusMe(this);">Cliccamelo</div>
+                </div>
+            </div>
     </div>
 </body>
 </html>

@@ -37,21 +37,49 @@ body {
     width: 100%;
 }
 
-    .serialsList li {
-        background: #CAD4D4;
-        margin: 3px;
-        padding: 1px;
-        float: left;
-        width: 15vw;
-        height: 7vw;
-        text-align: center;
-        box-sizing: border-box;
-    }
+.serialsList li {
+    background: #CAD4D4;
+    margin: 3px;
+    padding: 1px;
+    float: left;
+    width: 15vw;
+    height: 7vw;
+    text-align: center;
+    box-sizing: border-box;
+}
 
+.callClass .ui-selecting {
+background: #CAD4D4;
+}
+
+.callClass .ui-selected {
+    border: solid;
+    border-color: #136b91;
+    border-width: 3px;
+}
+
+.callClass {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.callClass li {
+    background: #CAD4D4;
+    margin: 3px;
+    padding: 1px;
+    float: left;
+    width: 15vw;
+    height: 7vw;
+    text-align: left;
+    box-sizing: border-box;
+}
 
 .Table {
     display: table;
     height: 100%;
+    width:100%;
 }
 
 .Title {
@@ -147,4 +175,15 @@ body {
     width: 18%;
     left: 41%;
     position: relative;
+}
+
+.CellCalls {
+    display: table-cell;
+    border: solid;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 100%;    
+    width: 50%;
+    vertical-align: top;
 }
