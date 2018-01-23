@@ -35,8 +35,7 @@ function Logout() {
     window.location.href = 'OTLogin.html';
 }
 
-function SubscribeToCalls(materialCallsSuccess, teamLeaderCallsSuccess) {
-    var chat = $.connection.callHub;
+function SubscribeToCalls(chat, materialCallsSuccess, teamLeaderCallsSuccess) {
 
     chat.client.getMaterialCall = function (message) {
         GetMaterialCalls(materialCallsSuccess);
@@ -116,6 +115,20 @@ function GetSerials(getSerialsSuccess) {
 
     callService("GetSerials", getSerialsRequest, function (result) {
         getSerialsSuccess(result);
+    });
+}
+
+function AnswerMaterialCall(callId, materialCallsSuccess) {
+    var userData = GetSession('userData');
+
+    var materialCallRequest = {
+        User: userData.User,
+        Password: userData.Password,
+        CallId: callId
+    };
+
+    callService("AnswerMaterialCall", materialCallRequest, function (result) {
+        GetMaterialCalls(materialCallsSuccess)
     });
 }
 
