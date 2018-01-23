@@ -1,4 +1,4 @@
-﻿function Login(username, password, errorCall ) {
+﻿function Login(username, password, errorCall) {
     if (username === '' || password === '')
         return;
 
@@ -7,7 +7,7 @@
         Password: password
     };
 
-    callService("Login", login, function (result) {    
+    callService("Login", login, function (result) {
         var userData = result;
         userData.User = login.User;
         userData.Password = login.Password;
@@ -171,20 +171,15 @@ function callService(methodName, input, successCallback, errorCallBack) {
                 if (errorCallBack) {
                     errorCallBack(result.Error);
                 }
-                else {   
+                else {
                     showError(result.Error);
                 }
             }
         },
 
         error: function (jqXHR, textStatus, errorThrown) {
-            if (textStatus === "error" && errorThrown !== "") {  
-                if (errorCallBack) {
-                    errorCallBack(errorThrown);
-                }
-                else {
-                    showError(errorThrown);
-                }
+            if (textStatus === "error" && errorThrown !== "") {
+                showError(errorThrown);
             }
         }
     });
