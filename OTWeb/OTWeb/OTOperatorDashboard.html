@@ -20,8 +20,9 @@
                 e.metaKey = true;
             }).selectable({
                 selected: function (event, ui) {
-                    if ($(ui.selected)) {
+                    if ($(ui.selected)) {                        
                         $('.btn').removeClass('btn').addClass('btn-selected');
+                        $(ui.selected).siblings().removeClass('ui-selected');
                     }
                     else {
                         $('.btn-selected').removeClass('btn-selected').addClass('btn');
