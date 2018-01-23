@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <link href="../css/fontawesome-free-5.0.4/web-fonts-with-css/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="css/fontawesome-free-5.0.4/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="Scripts/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,21 +15,31 @@
     <script src="Scripts/serviceCalls.js"></script>
     <!--Add script to update the page and send messages.-->
     <script>
+
+        function startSerial()
+        {
+            alert('partito!');
+        }
+
+
         $(function () {
             $("#serialsList").bind("mousedown", function (e) {
                 e.metaKey = true;
             }).selectable({
                 selected: function (event, ui) {
-                    if ($(ui.selected)) {                        
-                        $('.btn').removeClass('btn').addClass('btn-selected');
+                    if ($(ui.selected)) {
+                        $('#startButton').removeClass('btn').addClass('btn-selected');
                         $(ui.selected).siblings().removeClass('ui-selected');
+                        $('#startButton').click(startSerial);
                     }
                     else {
-                        $('.btn-selected').removeClass('btn-selected').addClass('btn');
+                        $('#startButton').removeClass('btn-selected').addClass('btn');
+                        $('#startButton').off('click');
                     }
                 },
                 unselected: function (event, ui) {
-                    $('.btn-selected').removeClass('btn-selected').addClass('btn');
+                    $('#startButton').removeClass('btn-selected').addClass('btn');
+                    $('#startButton').off('click');
                 }
             });
         });
@@ -45,61 +55,47 @@
             });
         });
 
-
         function getSerialSuccess(result) {
             var serials = result.Serials;
             serials.forEach(function (serial) {
-
                 var selectable = document.getElementById("serialsList");
-
                 selectable.innerHTML = selectable.innerHTML + "<li class='ui-state-default'>" + serial.SerialNumber + " </li>";
-
             })
         }
     </script>
     <script type="text/javascript">
-    function focusMe(button) {
-      var elem = document.getElementsByClassName("btn-selected")[0];
-      // if element having class `"button-selected"` defined, do stuff
-      if (elem) {
-        elem.className = "";
-      }
-      button.className = "btn-selected";
-    }
+        function focusMe(button) {
+            var elem = document.getElementsByClassName("btn-selected")[0];
+            // if element having class `"button-selected"` defined, do stuff
+            if (elem) {
+                elem.className = "";
+            }
+            button.className = "btn-selected";
+        }
     </script>
 
     <div class="Table">
-
         <div class="Heading">
-
-
-
             <div class="CellSx">
                 <div class="container">
-                    <input type="button" id="callTeamLeader" value="Chiama Team Leader" onclick="CallTeamLeader()" />
-                    <input type="button" id="callMaterials" value="Chiamata Materiali" onclick="CallMaterials()" />
+                    <br />
+                    <div class="btn" onclick="CallTeamLeader()"><span class="fa fa-user fa-2x buttonIcon"></span></div>
+                    <br />
+                    <div class="btn" onclick="CallMaterials()"><span class="fa fa-wrench fa-2x buttonIcon"></span></div>
                 </div>
-
             </div>
             <div class="CellRx">
-
                 <div class="TableTop">
-
                     <div class="Heading">
-
                         <div class="CellTop">
-
                             <ol id="serialsList" class="serialsList"></ol>
                         </div>
                     </div>
                 </div>
                 <div class="TableFooter">
+                    <div class="CellFooter">
+                        <div id="startButton" class="btn" onClick=""><span class="fa fa-play fa-2x buttonIcon"></span></div>
 
-                   
-
-                        <div class="CellFooter">
-                          <div class="btn"  onClick="focusMe(this);">Cliccamelo</div>
-                       
                     </div>
                 </div>
 
