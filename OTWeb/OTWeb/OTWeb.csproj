@@ -100,6 +100,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="css\style.css" />
+    <Content Include="Images\logo-mobile.svg" />
     <Content Include="OTOperatorDashboard.html" />
     <Content Include="OTTeamLeaderDashboard.html" />
     <Content Include="Scripts\jquery-ui-1.12.1\package.json" />
@@ -133,6 +134,7 @@
     <Content Include="Scripts\jquery-ui-1.12.1\jquery-ui.theme.css" />
     <Content Include="Scripts\jquery-ui-1.12.1\jquery-ui.theme.min.css" />
     <Content Include="Scripts\jquery-ui-1.12.1\LICENSE.txt" />
+    <Content Include="Scripts\notify.js" />
     <Content Include="Scripts\serviceCalls.js" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />

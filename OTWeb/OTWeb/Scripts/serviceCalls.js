@@ -1,4 +1,4 @@
-﻿function Login(username, password) {
+﻿function Login(username, password, errorCall ) {
     if (username === '' || password === '')
         return;
 
@@ -7,21 +7,21 @@
         Password: password
     };
 
-    callService("Login", login, function (result) {
+    callService("Login", login, function (result) {    
         var userData = result;
         userData.User = login.User;
         userData.Password = login.Password;
         SaveSession('userData', userData);
-        
+
         var locationHref = '';
         if (result.Role === 'Operator') {
             locationHref = 'OTOperatorDashboard.html';
         }
-        else if (result.Role === 'TeamLeader') {   
-            locationHref= 'OTTeamLeaderDashboard.html';
-        }        
-        window.location.href = locationHref;      
-    });       
+        else if (result.Role === 'TeamLeader') {
+            locationHref = 'OTTeamLeaderDashboard.html';
+        }
+        window.location.href = locationHref;
+    }, errorCall);
 }
 
 
@@ -55,7 +55,7 @@ function GetMaterialCalls(materialCallsSuccess) {
         WorkArea: userData.WorkArea
     };
 
-    callService("GetMaterialCalls", materialCallRequest,  function (result) {
+    callService("GetMaterialCalls", materialCallRequest, function (result) {
         materialCallsSuccess(result);
     });
 }
@@ -85,7 +85,7 @@ function CallTeamLeader() {
     };
 
     callService("SendTeamLeaderCall", teamLeaderCallRequest, function (result) {
-        //codice per chiamata andata a buon fine
+        showInfo('Chiamata a TeamLeader eseguita con successo');
     });
 }
 
@@ -99,7 +99,7 @@ function CallMaterials() {
     };
 
     callService("SendMaterialCall", materialCallRequest, function (result) {
-        //codice per chiamata andata a buon fine
+        showInfo('Chiamata Materiali eseguita con successo');
     });
 }
 
@@ -137,6 +137,7 @@ function StartSerial(serialNumber, operation, getSerialsSuccess) {
         };
         callService("GetSerials", getSerialsRequest, function (result) {
             getSerialsSuccess(result);
+            showInfo('Seriale avviato con successo');
         });
     });
 }
@@ -155,7 +156,7 @@ function AnswerMaterialCall(callId, materialCallsSuccess) {
     });
 }
 
-function callService(methodName, input, successCallback) {
+function callService(methodName, input, successCallback, errorCallBack) {
     $.ajax({
         type: "POST",
         url: "../OTService.svc/" + methodName,
@@ -167,30 +168,29 @@ function callService(methodName, input, successCallback) {
                 successCallback(result);
             }
             else {
-                showError(result.Error);
+                if (errorCallBack) {
+                    errorCallBack(result.Error);
+                }
+                else {   
+                    showError(result.Error);
+                }
             }
         },
 
         error: function (jqXHR, textStatus, errorThrown) {
-            if (textStatus === "error" && errorThrown !== "") {
-                showError(errorThrown);
+            if (textStatus === "error" && errorThrown !== "") {  
+                if (errorCallBack) {
+                    errorCallBack(errorThrown);
+                }
+                else {
+                    showError(errorThrown);
+                }
             }
         }
     });
 }
 
-function showError(errorThrown) {
-    var n = noty({
-        text: errorThrown,
-        type: 'warning',
-        dismissQueue: false,
-        modal: true,
-        layout: 'center',
-        theme: 'defaults',
-        callback: {
-        }
-    });
-}
+
 
 function SaveSession(name, value) {
     sessionStorage[name] = JSON.stringify(value);
