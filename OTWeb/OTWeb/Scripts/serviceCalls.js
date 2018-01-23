@@ -118,6 +118,29 @@ function GetSerials(getSerialsSuccess) {
     });
 }
 
+function StartSerial(serialNumber, operation, getSerialsSuccess) {
+    var userData = GetSession('userData');
+
+    var startSerialRequest = {
+        User: userData.User,
+        Password: userData.Password,
+        Equipment: userData.Equipment,
+        SerialNumber: serialNumber,
+        Operation: operation
+    };
+
+    callService("StartSerial", startSerialRequest, function (result) {
+        var getSerialsRequest = {
+            User: userData.User,
+            Password: userData.Password,
+            Equipment: userData.Equipment
+        };
+        callService("GetSerials", getSerialsRequest, function (result) {
+            getSerialsSuccess(result);
+        });
+    });
+}
+
 function AnswerMaterialCall(callId, materialCallsSuccess) {
     var userData = GetSession('userData');
 
