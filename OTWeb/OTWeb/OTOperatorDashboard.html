@@ -16,9 +16,13 @@
     <!--Add script to update the page and send messages.-->
     <script>
 
-        function startSerial()
-        {
-            alert('partito!');
+        function startSelectedSerial()
+        {            
+            var serial = GetSession('selectedSerialToStart');
+            var operation = GetSession('OrderData').Operation;            
+            StartSerial(serial, operation, getSerialSuccess);
+
+            alert('ciao!');
         }
 
 
@@ -27,19 +31,24 @@
                 e.metaKey = true;
             }).selectable({
                 selected: function (event, ui) {
-                    if ($(ui.selected)) {
+                    if ($(ui.selected)) {                      
+                        SaveSession('selectedSerialToStart', ui.selected.id);
                         $('#startButton').removeClass('btn').addClass('btn-selected');
                         $(ui.selected).siblings().removeClass('ui-selected');
-                        $('#startButton').click(startSerial);
+                        $('#startButton')[0].setAttribute('onclick', 'startSelectedSerial()');                      
                     }
                     else {
                         $('#startButton').removeClass('btn-selected').addClass('btn');
-                        $('#startButton').off('click');
+                        $('#startButton')[0].setAttribute('onclick', '');
+                      //  $('#startButton').off('click');
+                        $('#startButton').click();
                     }
                 },
                 unselected: function (event, ui) {
                     $('#startButton').removeClass('btn-selected').addClass('btn');
-                    $('#startButton').off('click');
+                    $('#startButton')[0].setAttribute('onclick', '');
+                    // $('#startButton').off('click');
+                    ClearSession('selectedSerialToStart');
                 }
             });
         });
@@ -57,9 +66,11 @@
 
         function getSerialSuccess(result) {
             var serials = result.Serials;
-            serials.forEach(function (serial) {
-                var selectable = document.getElementById("serialsList");
-                selectable.innerHTML = selectable.innerHTML + "<li class='ui-state-default'>" + serial.SerialNumber + " </li>";
+            SaveSession('OrderData', result);
+            var selectable = document.getElementById("serialsList");
+            selectable.innerHTML = '';
+            serials.forEach(function (serial) {            
+                selectable.innerHTML = selectable.innerHTML + "<li class='ui-state-default' id='"+serial.SerialNumber+"'>" + serial.SerialNumber + " </li>";
             })
         }
     </script>
