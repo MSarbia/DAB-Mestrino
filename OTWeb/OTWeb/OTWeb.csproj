@@ -103,6 +103,7 @@
     <Content Include="Images\logo-mobile.svg" />
     <Content Include="OTOperatorDashboard.html" />
     <Content Include="OTTeamLeaderDashboard.html" />
+    <Content Include="Scripts\barcodeReader.js" />
     <Content Include="Scripts\jquery-ui-1.12.1\package.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -187,6 +187,10 @@ function callService(methodName, input, successCallback, errorCallBack) {
 
 
 
+function EmptySession() {
+    sessionStorage.clear();
+}
+
 function SaveSession(name, value) {
     sessionStorage[name] = JSON.stringify(value);
 }
@@ -198,6 +202,18 @@ function GetSession(name) {
         return;
     }
     return JSON.parse(sessionStorage[name]);
+
+}
+
+function GetOrAddSession(name, value) {
+    var sessionValue = sessionStorage[name];
+    if (sessionValue == undefined) {
+        SaveSession(name, value);
+        return value;
+    }
+    else {        
+        return JSON.parse(sessionStorage[name]);
+    }
 
 }
 
