@@ -31,7 +31,7 @@ function Logout() {
         chat.server.leaveWorkArea(userData.WorkArea);
     }
     $.connection.hub.stop();
-    ClearSession('userData');
+    EmptySession();
     window.location.href = 'OTLogin.html';
 }
 

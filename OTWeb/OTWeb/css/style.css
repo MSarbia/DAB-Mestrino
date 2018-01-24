@@ -3,6 +3,8 @@
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 body {
@@ -10,6 +12,8 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .icon {
@@ -37,19 +41,19 @@ body {
     width: 100%;
 }
 
-.serialsList li {
-    background: #CAD4D4;
-    margin: 3px;
-    padding: 1px;
-    float: left;
-    width: 170px;
-    height:80px;
-    text-align: center;
-    box-sizing: border-box;
-}
+    .serialsList li {
+        background: #CAD4D4;
+        margin: 3px;
+        padding: 1px;
+        float: left;
+        width: 170px;
+        height: 80px;
+        text-align: center;
+        box-sizing: border-box;
+    }
 
 .callClass .ui-selecting {
-background: #CAD4D4;
+    background: #CAD4D4;
 }
 
 .callClass .ui-selected {
@@ -65,59 +69,89 @@ background: #CAD4D4;
     width: 100%;
 }
 
-.callClass li {
-    background: #CAD4D4;
-    margin: 3px;
-    padding: 1px;
-    float: left;
-    width: 15vw;
-    height: 7vw;
-    text-align: left;
-    box-sizing: border-box;
-}
+    .callClass li {
+        background: #CAD4D4;
+        margin: 3px;
+        padding: 1px;
+        float: left;
+        width: 15vw;
+        height: 7vw;
+        text-align: left;
+        box-sizing: border-box;
+    }
 
 .Table {
     display: table;
     height: 100%;
-    width:100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
-.Title {
-    display: table-caption;
-    text-align: center;
-    font-weight: bold;
-    font-size: larger;
-}
-
-.Heading {
+.TableHeader {
     display: table-row;
-    font-weight: bold;
-    text-align: center;
+    height: 40px;
+    width: 100%;
 }
 
-.Row {
+.MainTableRow {
     display: table-row;
+    height: 100%;
+    width: 100%;
+}
+
+.MainTableCell {
+    display: table-cell;
+    height: 100%;
+}
+
+.HeaderCell {
+    display: table-cell;
+    background-color: #004F79;
+    color: white;
+    column-span: all;
 }
 
 .CellSx {
     display: table-cell;
-    border: solid;
-    border-width: thin;
-    padding-left: 5px;
-    padding-right: 5px;
-    width: 20%;
-    vertical-align: top;
+    height: 100%;
+    width: 200px;
+    border-right: solid 2px #004F79;
+    padding-top: 50px;
 }
 
 .CellRx {
     display: table-cell;
-    border: solid;
-    border-width: thin;
-    padding-left: 5px;
-    padding-right: 5px;
-    width: 80%;
     vertical-align: top;
+    height: 100%;
 }
+
+.SerialsScroller {
+    display: table-cell;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.SerialsContainerCell {
+    width: 100%;
+    position: absolute;
+    margin: auto;
+    text-align: center;
+}
+
+.ButtonRow {
+    display: table-row;
+    height: 100px;
+}
+
+.ButtonCell {
+    display: table-cell;
+    height: 100px;
+}
+<!-- -->
+
 
 .TableFooter {
     display: table;
@@ -140,7 +174,7 @@ background: #CAD4D4;
 
 .TableTop {
     display: table;
-    height: 90% ;
+    height: 90%;
     width: 100%;
 }
 
@@ -159,37 +193,36 @@ background: #CAD4D4;
 
 .btn:before {
     color: #ffffff;
-    vertical-align:middle;
+    vertical-align: middle;
 }
 
-.buttonIcon
-{
-    vertical-align:middle; 
+.buttonIcon {
+    vertical-align: middle;
+    text-align: center;
     color: #fff;
-    line-height:60px;
+    line-height: 100px;
+    margin: auto;
 }
 
-.btn {        
+.btn {
     background: #778089;
-    min-height:60px;
-    min-width:60px;
-    width: 5%;
-    height:5%;
-    margin:auto;
-   
-
-   
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    text-align: center;
 }
 
-.btn-selected {    
+.btn-selected:active {
+    background-color: #009900;
+}
+
+.btn-selected {
     color: #ffffff;
-    background: #007500;  
-    min-height:60px;
-    min-width:60px;
-    width: 5%;
-    height:5%;
-  margin:auto;
- 
+    background: #007500;
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    text-align: center;
 }
 
 .CellCalls {
@@ -198,7 +231,7 @@ background: #CAD4D4;
     border-width: thin;
     padding-left: 5px;
     padding-right: 5px;
-    height: 100%;    
+    height: 100%;
     width: 50%;
     vertical-align: top;
 }
