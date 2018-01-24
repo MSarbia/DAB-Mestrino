@@ -23,7 +23,7 @@
         function selectSerial(serialNumber) {
             var uiSelected = $('#serialsList #' + serialNumber);
             if (uiSelected.length == 0) {
-                showError("Il seriale '" + serialNumber + "' non è sato trovato");
+                showError("Il seriale '" + serialNumber + "' non è stato trovato");
                 return;
             }
             uiSelected.addClass('ui-selected');
