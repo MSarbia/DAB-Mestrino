@@ -135,6 +135,7 @@ function StartSerial(serialNumber, operation, getSerialsSuccess) {
             Password: userData.Password,
             Equipment: userData.Equipment
         };
+
         callService("GetSerials", getSerialsRequest, function (result) {
             getSerialsSuccess(result);
             showInfo('Seriale avviato con successo');
@@ -142,7 +143,22 @@ function StartSerial(serialNumber, operation, getSerialsSuccess) {
     });
 }
 
-function AnswerMaterialCall(callId, materialCallsSuccess) {
+function AcceptTeamLeaderCall(callId, teamLeaderCallsSuccess) {
+    var userData = GetSession('userData');
+
+    var teamLeaderCallRequest = {
+            User : userData.User,
+            Password: userData.Password,
+            CallId: callId
+            };
+
+    callService("AcceptTeamLeaderCall", teamLeaderCallRequest, function (result) {
+        GetTeamLeaderCalls(teamLeaderCallsSuccess);
+        showInfo('Chiamata a Team Leader accettata con successo');
+    });
+}
+
+function AcceptMaterialCall(callId, materialCallsSuccess) {
     var userData = GetSession('userData');
 
     var materialCallRequest = {
@@ -151,9 +167,10 @@ function AnswerMaterialCall(callId, materialCallsSuccess) {
         CallId: callId
     };
 
-    callService("AnswerMaterialCall", materialCallRequest, function (result) {
+    callService("AcceptMaterialCall", materialCallRequest, function (result) {
         GetMaterialCalls(materialCallsSuccess)
-    });
+        showInfo('Chiamata Materiale accettata con successo');
+});
 }
 
 function callService(methodName, input, successCallback, errorCallBack) {
@@ -185,8 +202,6 @@ function callService(methodName, input, successCallback, errorCallBack) {
     });
 }
 
-
-
 function SaveSession(name, value) {
     sessionStorage[name] = JSON.stringify(value);
 }
@@ -198,7 +213,6 @@ function GetSession(name) {
         return;
     }
     return JSON.parse(sessionStorage[name]);
-
 }
 
 function ClearSession(name) {
