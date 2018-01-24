@@ -14,7 +14,6 @@ body {
     padding: 0;
     overflow-x: hidden;
     overflow-y: hidden;
-
 }
 
 .icon {
@@ -43,16 +42,16 @@ body {
     width: 100%;
 }
 
-    .serialsList li {
-        background: #CAD4D4;
-        margin: 3px;
-        padding: 4px;
-        float: left;
-        width: 170px;
-        height: 80px;
-        text-align: left;
-        box-sizing: border-box;
-    }
+.serialsList li {
+    background: #CAD4D4;
+    margin: 3px;
+    padding: 4px;
+    float: left;
+    width: 170px;
+    height: 80px;
+    text-align: left;
+    box-sizing: border-box;
+}
 
 .callClass .ui-selecting {
     background: #CAD4D4;
@@ -71,16 +70,16 @@ body {
     width: 100%;
 }
 
-    .callClass li {
-        background-color: #CAD4D4;
-        margin: 3px;
-        padding: 1px;
-        float: left;
-        width: 15vw;
-        height: 7vw;
-        text-align: left;
-        box-sizing: border-box;
-    }
+.callClass li {
+    background: #CAD4D4;
+    margin: 3px;
+    padding: 1px;
+    float: left;
+    width: 15vw;
+    height: 7vw;
+    text-align: left;
+    box-sizing: border-box;
+}
 
 .Table {
     display: table;
@@ -168,6 +167,13 @@ body {
     padding-top: 50px;
 }
 
+.CellSxCalls {
+    display: table-cell;
+    vertical-align: top;
+    height: 100%;
+    border-right: solid 2px #004F79;
+}
+
 .CellRx {
     display: table-cell;
     vertical-align: top;
@@ -197,46 +203,6 @@ body {
 .ButtonCell {
     display: table-cell;
     height: 100px;
-}
-<!-- -->
-
-
-.TableFooter {
-    display: table;
-    height: 60px;
-    width: 100%;
-    text-align: center;
-}
-
-.CellFooter {
-    display: table-cell;
-    border: solid;
-    border-width: thin;
-    padding-left: 5px;
-    padding-right: 5px;
-    height: 60px;
-    width: 100%;
-    vertical-align: bottom;
-    text-align: center;
-}
-
-.TableTop {
-    display: table;
-    height: 90%;
-    width: 100%;
-}
-
-.CellTop {
-    display: table-cell;
-    border: solid;
-    border-width: thin;
-    padding-left: 5px;
-    padding-right: 5px;
-    width: 100%;
-    height: 80%;
-    align-items: center;
-    vertical-align: top;
-    text-align: center;
 }
 
 .btn:before {
@@ -277,18 +243,6 @@ body {
     text-align: center;
 }
 
-.CellCalls {
-    display: table-cell;
-    border: solid;
-    border-width: thin;
-    padding-left: 5px;
-    padding-right: 5px;
-    height: 100%;
-    width: 50%;
-    vertical-align: top;
-}
-
-
 .ui-notification-container {
     width: 300px;
     position: absolute;
@@ -310,7 +264,6 @@ body {
     color: black;
 }
 
-
 .ui-notification-bar {
     position: relative;
     top: 0px;
@@ -319,18 +272,15 @@ body {
     overflow: hidden;
 }
 
-    .ui-notification-bar .ui-notification {
-        border-top: 0;
-        border-left: 0;
-        border-right: 0;
-        border-radius: 0;
-        -o-box-radius: 0;
-        -moz-border-radius: 0;
-        -webkit-border-radius: 0;
-    }
-
-
-
+.ui-notification-bar .ui-notification {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    -o-box-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
 
 .ui-notification {
     padding: 5px 10px;
@@ -340,33 +290,33 @@ body {
     box-shadow: 2px 2px 2px #ccc;
 }
 
-    .ui-notification .ui-notification-content {
-        font-size: 0.9em;
-    }
+.ui-notification .ui-notification-content {
+    font-size: 0.9em;
+}
 
-        .ui-notification .ui-notification-content h4 {
-            font-size: 1.1em;
-        }
+.ui-notification .ui-notification-content h4 {
+    font-size: 1.1em;
+}
 
-        .ui-notification .ui-notification-content p {
-            font-size: 0.9em;
-        }
+.ui-notification .ui-notification-content p {
+    font-size: 0.9em;
+}
 
-    .ui-notification .ui-notification-close {
-        display: inline-block;
-        float: right;
-        width: 19px;
-        padding: 1px;
-        height: 18px;
-        margin: -2px -2px 0 2px;
-    }
+.ui-notification .ui-notification-close {
+    display: inline-block;
+    float: right;
+    width: 19px;
+    padding: 1px;
+    height: 18px;
+    margin: -2px -2px 0 2px;
+}
 
-        .ui-notification .ui-notification-close:hover,
-        .ui-notification .ui-notification-close:focus {
-            padding: 0;
-        }
+.ui-notification .ui-notification-close:hover,
+.ui-notification .ui-notification-close:focus {
+    padding: 0;
+}
 
-        .ui-notification .ui-notification-close span {
-            display: block;
-            margin: 1px;
-        }
+.ui-notification .ui-notification-close span {
+    display: block;
+    margin: 1px;
+}

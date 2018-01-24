@@ -130,34 +130,55 @@
     <!--TeamLeader <span id="userName"></span>-->
 
     <div class="Table">
-        <div class="Heading">
-            <div class="CellCalls">
-                <div class="TableTop">
-                    <div class="Heading">
-                        <div class="CellTop">
-                            CHIAMATE TEAM LEADER
-                            <ol id="teamLeaderCalls" class="callClass"></ol>
-                        </div>
-                    </div>
-                </div>
-                <div class="TableFooter">
-                    <div class="CellFooter">
-                        <div id="acceptTeamLeaderCall" class="btn"><span class="fa fa-play fa-2x buttonIcon"></span></div>
+        <div class="TableHeaderRow">
+            <div style="display:table-cell;">
+                <div class="TableHeader">
+                    <div class="TableHeaderRow">
+                        <div class="HeaderCellSx"><img src="Images/logo-mobile.svg" style="height:40px;" /></div>
+                        <div class="HeaderCellCen"><span id="centralTitle"></div>
+                        <div class="HeaderCellDx"><span class="fa fa-sign-out-alt" onclick="Logout()"> Logout</span></div>
                     </div>
                 </div>
             </div>
-            <div class="CellCalls">
-                <div class="TableTop">
-                    <div class="Heading">
-                        <div class="CellTop">
-                            CHIAMATE MATERIALE
-                            <ol id="materialCalls" class="callClass"></ol>
+        </div>
+        <div class="MainTableRow">
+            <div class="MainTableCell">
+                <div style="display:table; height:100%; width:100%;">
+                    <div style="display:table-row; height:100%;">
+                        <div class="CellSxCalls">
+                            <div style="display:table; height:100%; width:100%; overflow-x:hidden; overflow-y:hidden;">
+                                <div style="display:table-row;">
+                                    <div id="serialScrollContainer" class="SerialsScroller">
+                                        <div class="SerialsContainerCell" style="font-family:Calibri">
+                                            <b>CHIAMATE TEAM LEADER</b>
+                                            <ol id="teamLeaderCalls" class="callClass" style="margin:auto;"></ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ButtonRow">
+                                    <div class="ButtonCell">
+                                        <div id="acceptTeamLeaderCall" class="btn" onClick=""><span class="fa fa-user fa-2x buttonIcon"></span></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="TableFooter">
-                    <div class="CellFooter">
-                        <div id="acceptMaterialCall" class="btn"><span class="fa fa-play fa-2x buttonIcon"></span></div>
+                        <div class="CellRx">
+                            <div style="display:table; height:100%; width:100%; overflow-x:hidden; overflow-y:hidden;">
+                                <div style="display:table-row;">
+                                    <div id="serialScrollContainer" class="SerialsScroller">
+                                        <div class="SerialsContainerCell" style="font-family:Calibri">
+                                            <b>CHIAMATE MATERIALE</b>
+                                            <ol id="materialCalls" class="callClass" style="margin:auto;"></ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ButtonRow">
+                                    <div class="ButtonCell">
+                                        <div id="acceptMaterialCall" class="btn" onClick=""><span class="fa fa-wrench fa-2x buttonIcon"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
