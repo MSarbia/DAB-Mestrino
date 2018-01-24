@@ -89,7 +89,7 @@ body {
 }
 
 .TableHeader {
-    display: table-row;
+  display: table;
     height: 40px;
     width: 100%;
 }
@@ -110,6 +110,31 @@ body {
     background-color: #004F79;
     color: white;
     column-span: all;
+    
+}
+.HeaderCellSx { 
+    display: table-cell;
+    background-color: #004F79;
+    color: white;
+    column-span: all;
+    width:200px;
+    min-width:200px;
+}
+.HeaderCellCen {
+    display: table-cell;
+    background-color: #004F79;
+    color: white;
+    column-span: all;
+    width:90%;
+     min-width:90%;
+}
+.HeaderCellDx {
+    display: table-cell;
+    background-color: #004F79;
+    color: white;
+    column-span: all;
+    width:10%;
+     min-width:10%;
 }
 
 .CellSx {

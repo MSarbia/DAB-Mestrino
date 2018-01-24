@@ -26,8 +26,9 @@
 
 
 function Logout() {
-    var userData = sessionStorage['userData'];
+    var userData = GetOrAddSession('userData', undefined);
     if (userData != undefined) {
+        var chat = $.connection.callHub;
         chat.server.leaveWorkArea(userData.WorkArea);
     }
     $.connection.hub.stop();

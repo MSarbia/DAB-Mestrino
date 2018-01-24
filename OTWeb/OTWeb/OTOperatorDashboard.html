@@ -29,7 +29,7 @@
             uiSelected.addClass('ui-selected');
             uiSelected.siblings().removeClass('ui-selected');
             var scrollContainer = $('#serialScrollContainer');
-            scrollContainer.scrollTop(uiSelected.position().top); 
+            scrollContainer.scrollTop(uiSelected.position().top);
             SaveSession('selectedSerialToStart', uiSelected[0].id);
             enableStart();
         }
@@ -84,7 +84,7 @@
             $.connection.hub.start().done(function () {
                 chat.server.joinWorkArea(GetSession('userData').WorkArea);
             });
-            
+
 
         });
 
@@ -102,10 +102,20 @@
 
     </script>
 
-    <div class="Table">
-        <div class="TableHeader">
-            <div class="HeaderCell">DAB</div>
+    <div class="TableHeader">
+        <div class="MainTableRow">
+
+            <div class="HeaderCellSx">DAB</div>
+            <div class="HeaderCellCen">DAB</div>
+            <div class="HeaderCellDx"><span onclick="Logout()">Logout</span></div>
+
+
         </div>
+
+    </div>
+
+    <div class="Table">
+
         <div class="MainTableRow">
             <div class="MainTableCell">
                 <div style="display:table; height:100%; width:100%;">
@@ -124,7 +134,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ButtonRow" >
+                                <div class="ButtonRow">
                                     <div class="ButtonCell">
                                         <div id="startButton" class="btn" onClick=""><span class="fa fa-play fa-2x buttonIcon"></span></div>
                                     </div>
