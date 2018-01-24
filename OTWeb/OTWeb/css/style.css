@@ -100,6 +100,17 @@ body {
     width: 100%;
 }
 
+.TableOrderRow {
+    display: table-row;
+    height: 100px;
+    width: 100%;
+}
+
+.TableOrderCell {
+    display: table-cell;
+    border-bottom: solid 2px #004F79;
+}
+
 .MainTableRow {
     display: table-row;
     height: 100%;
@@ -131,8 +142,11 @@ body {
     background-color: #004F79;
     color: white;
     column-span: all;
+     vertical-align: middle;
     width:90%;
-    min-width:90%;
+     min-width:90%;
+     text-align:center;
+     font-weight:bold;
 }
 .HeaderCellDx {
     display: table-cell;
@@ -142,7 +156,7 @@ body {
     width: 10%;
     min-width: 10%;
     vertical-align: middle;
-    white-space: nowrap;
+    white-space: nowrap;    
 }
 
 .CellSx {

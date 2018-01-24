@@ -236,3 +236,12 @@ function GetOrAddSession(name, value) {
 function ClearSession(name) {
     delete sessionStorage[name];
 }
+
+function centralTitle() {
+    var userD = GetSession('userData');
+    var texttitle = '';
+    var idtitle = document.getElementById("centralTitle");
+    if (userD.Equipment != '') texttitle = userD.Equipment;
+    else texttitle = userD.WorkArea;
+    idtitle.innerHTML = userD.User + ' - ' + texttitle;
+}
