@@ -112,7 +112,7 @@ namespace OTWeb
 
             lock (tempLock)
             {
-                foreach (var serial in Serials.Where(s=>s.Status == "Ready"))
+                foreach (var serial in Serials.Where(s=>s.Status != "Complete"))
                 {
                     serials.Serials.Add(new SerialItem { SerialNumber = serial.SerialNumber, Status = serial.Status });
                 }
@@ -238,7 +238,14 @@ namespace OTWeb
                     response.Error = $"SerialNumber {startSerialRequest.SerialNumber} not found";
                     return response;
                 }
-                serial.Status = "Active";
+                if(serial.Status=="Ready")
+                {
+                    serial.Status = "Active";
+                }
+                else if(serial.Status == "Active")
+                {
+                    serial.Status = "Complete";
+                }
             }
             return response;
         }

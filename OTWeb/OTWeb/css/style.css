@@ -72,7 +72,7 @@ body {
 }
 
     .callClass li {
-        background: #CAD4D4;
+        background-color: #CAD4D4;
         margin: 3px;
         padding: 1px;
         float: left;
@@ -99,6 +99,17 @@ body {
     display: table-row;
     height: 40px;
     width: 100%;
+}
+
+.TableOrderRow {
+    display: table-row;
+    height: 100px;
+    width: 100%;
+}
+
+.TableOrderCell {
+    display: table-cell;
+    border-bottom: solid 2px #004F79;
 }
 
 .MainTableRow {
