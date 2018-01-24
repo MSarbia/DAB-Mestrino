@@ -33,7 +33,7 @@ function Logout() {
     }
     $.connection.hub.stop();
     EmptySession();
-    window.location.href = 'OTLogin.html';
+    window.location.href = 'OTLogin.html', true;
 }
 
 function SubscribeToCalls(chat, materialCallsSuccess, teamLeaderCallsSuccess) {
