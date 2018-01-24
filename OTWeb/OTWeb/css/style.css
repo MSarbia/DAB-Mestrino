@@ -32,6 +32,7 @@ body {
     border: solid;
     border-color: #136b91;
     border-width: 3px;
+    padding:2px;
 }
 
 .serialsList {
@@ -44,11 +45,11 @@ body {
     .serialsList li {
         background: #CAD4D4;
         margin: 3px;
-        padding: 1px;
+        padding: 4px;
         float: left;
         width: 170px;
         height: 80px;
-        text-align: center;
+        text-align: left;
         box-sizing: border-box;
     }
 
@@ -235,6 +236,10 @@ body {
     width: 100px;
     margin: auto;
     text-align: center;
+}
+
+.btn:active {
+    background-color: #555867;
 }
 
 .btn-selected:active {
