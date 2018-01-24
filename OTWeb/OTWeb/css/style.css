@@ -73,10 +73,10 @@ body {
 .callClass li {
     background: #CAD4D4;
     margin: 3px;
-    padding: 1px;
+    padding: 4px;
     float: left;
-    width: 15vw;
-    height: 7vw;
+    width: 170px;
+    height: 80px;
     text-align: left;
     box-sizing: border-box;
 }
@@ -142,11 +142,11 @@ body {
     background-color: #004F79;
     color: white;
     column-span: all;
-     vertical-align: middle;
+    vertical-align: middle;
     width:90%;
-     min-width:90%;
-     text-align:center;
-     font-weight:bold;
+    min-width:90%;
+    text-align:center;
+    font-weight:bold;
 }
 .HeaderCellDx {
     display: table-cell;

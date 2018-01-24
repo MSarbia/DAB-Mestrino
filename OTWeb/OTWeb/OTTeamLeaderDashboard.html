@@ -102,15 +102,25 @@
             });
 
             $('#userName').text(GetSession('userData').User);
+            $('#workArea').text(GetSession('userData').WorkArea);
 
             GetTeamLeaderCalls(teamLeaderCallsSuccess);
             GetMaterialCalls(materialCallsSuccess);
         });
 
+        function addZero(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
         function teamLeaderCallsSuccess(result) {
             $('#teamLeaderCalls').empty();
             result.TeamLeaderCalls.forEach(function (call) {
-                var listItem = "<li class='ui-state-default' id='" + call.CallId + "'><span style='font-weight:bold'>Equipment: " + call.Equipment + "</span></br></br><span style='font-weight:normal'>Date: " + call.CallDate + "</span></li>";
+                var date = new Date(call.CallDate);
+                var dateString = addZero(date.getHours()) + ':' + addZero(date.getMinutes()) + ':' + addZero(date.getSeconds());
+                var listItem = "<li class='ui-state-default' id='" + call.CallId + "'><span style='font-weight:bold'>Equipment: " + call.Equipment + "</span></br></br><span style='font-weight:normal'>Date: " + dateString + "</span></li>";
                 $('#teamLeaderCalls').append(listItem);
             });
             disableAcceptTeamLeaderCall();
@@ -119,7 +129,9 @@
         function materialCallsSuccess(result) {
             $('#materialCalls').empty();
             result.MaterialCalls.forEach(function (call) {
-                var listItem = "<li class='ui-state-default' id='" + call.CallId + "'><span style='font-weight:bold'>Equipment: " + call.Equipment + "</span></br></br><span style='font-weight:normal'>Date: " + call.CallDate + "</span></li>";
+                var date = new Date(call.CallDate);
+                var dateString = addZero(date.getHours()) + ':' + addZero(date.getMinutes()) + ':' + addZero(date.getSeconds());
+                var listItem = "<li class='ui-state-default' id='" + call.CallId + "'><span style='font-weight:bold'>Equipment: " + call.Equipment + "</span></br></br><span style='font-weight:normal'>Date: " + dateString + "</span></li>";
                 $('#materialCalls').append(listItem);
             });;
             disableAcceptMaterialCall();
@@ -135,7 +147,7 @@
                 <div class="TableHeader">
                     <div class="TableHeaderRow">
                         <div class="HeaderCellSx"><img src="Images/logo-mobile.svg" style="height:40px;" /></div>
-                        <div class="HeaderCellCen"><span id="centralTitle"></div>
+                        <div class="HeaderCellCen"><span id="centralTitle"></span>UTENTE: <span id="userName"></span> - WORK AREA: <span id="workArea"></span></div>
                         <div class="HeaderCellDx"><span class="fa fa-sign-out-alt" onclick="Logout()"> Logout</span></div>
                     </div>
                 </div>
