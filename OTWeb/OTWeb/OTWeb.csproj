@@ -98,7 +98,32 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-brands-400.eot" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-brands-400.ttf" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-brands-400.woff" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-brands-400.woff2" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-regular-400.eot" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-regular-400.ttf" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-regular-400.woff" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-regular-400.woff2" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-solid-900.eot" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-solid-900.ttf" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-solid-900.woff" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-solid-900.woff2" />
     <None Include="packages.config" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\css\fa-brands.css" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\css\fa-brands.min.css" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\css\fa-regular.css" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\css\fa-regular.min.css" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\css\fa-solid.css" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\css\fa-solid.min.css" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\css\fontawesome-all.css" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\css\fontawesome-all.min.css" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\css\fontawesome.css" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\css\fontawesome.min.css" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-brands-400.svg" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-regular-400.svg" />
+    <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-solid-900.svg" />
     <Content Include="css\style.css" />
     <Content Include="Images\logo-mobile.svg" />
     <Content Include="OTOperatorDashboard.html" />

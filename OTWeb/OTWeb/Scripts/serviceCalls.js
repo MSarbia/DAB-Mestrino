@@ -183,7 +183,7 @@ function AcceptMaterialCall(callId, materialCallsSuccess) {
 function callService(methodName, input, successCallback, errorCallBack) {
     $.ajax({
         type: "POST",
-        url: "../OTService.svc/" + methodName,
+        url: "../OTWeb/OTService.svc/" + methodName,
         data: JSON.stringify(input),
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
