@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTWeb", "OTWeb\OTWeb.csproj", "{8AD93301-AE6A-4B8E-95E2-2202A2892C50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{D5E36635-9C16-469F-8C5C-8A2BCFA3DA53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole", "TestConsole\TestConsole.csproj", "{D5E36635-9C16-469F-8C5C-8A2BCFA3DA53}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "OTWebInstaller", "OTWebInstaller\OTWebInstaller.vdproj", "{682F42CE-A7E7-45B5-B664-E80ACB91F897}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,8 @@ Global
 		{D5E36635-9C16-469F-8C5C-8A2BCFA3DA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5E36635-9C16-469F-8C5C-8A2BCFA3DA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5E36635-9C16-469F-8C5C-8A2BCFA3DA53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{682F42CE-A7E7-45B5-B664-E80ACB91F897}.Debug|Any CPU.ActiveCfg = Debug
+		{682F42CE-A7E7-45B5-B664-E80ACB91F897}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

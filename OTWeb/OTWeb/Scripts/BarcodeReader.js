@@ -10,7 +10,8 @@ function readBarcodeKey(event, caller, selectSerialCallback) {
         if (snIndex > -1) {                                              
             var barcode = barcodeBuffer.substring(snIndex + BARCODE_PREFIX.length, bufferLength);
             ClearSession('barcodeBuffer');
-            selectSerial(barcode);
+            if (barcode.length > BARCODE_PREFIX.length)
+                selectSerial(barcode);
         }
 
         ClearSession('barcodeBuffer');    
