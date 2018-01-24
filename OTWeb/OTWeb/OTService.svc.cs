@@ -231,7 +231,7 @@ namespace OTWeb
             }
             lock (tempLock)
             {
-                var serial = Serials.FirstOrDefault(s => s.SerialNumber == startSerialRequest.SerialNumber && s.Status == "Ready");
+                var serial = Serials.FirstOrDefault(s => s.SerialNumber == startSerialRequest.SerialNumber && s.Status != "Complete");
                 if (serial == null)
                 {
                     response.Succeeded = false;
