@@ -26,13 +26,14 @@
 
 
 function Logout() {
-    var userData = sessionStorage['userData'];
+    var userData = GetOrAddSession('userData', undefined);
     if (userData != undefined) {
+        var chat = $.connection.callHub;
         chat.server.leaveWorkArea(userData.WorkArea);
     }
     $.connection.hub.stop();
-    ClearSession('userData');
-    window.location.href = 'OTLogin.html';
+    EmptySession();
+    window.location.href = 'OTLogin.html', true;
 }
 
 function SubscribeToCalls(chat, materialCallsSuccess, teamLeaderCallsSuccess) {
@@ -202,6 +203,12 @@ function callService(methodName, input, successCallback, errorCallBack) {
     });
 }
 
+
+
+function EmptySession() {
+    sessionStorage.clear();
+}
+
 function SaveSession(name, value) {
     sessionStorage[name] = JSON.stringify(value);
 }
@@ -213,6 +220,17 @@ function GetSession(name) {
         return;
     }
     return JSON.parse(sessionStorage[name]);
+}
+
+function GetOrAddSession(name, value) {
+    var sessionValue = sessionStorage[name];
+    if (sessionValue == undefined) {
+        SaveSession(name, value);
+        return value;
+    }
+    else {        
+        return JSON.parse(sessionStorage[name]);
+    }
 }
 
 function ClearSession(name) {
