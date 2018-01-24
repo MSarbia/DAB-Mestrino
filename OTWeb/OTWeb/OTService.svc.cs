@@ -204,7 +204,7 @@ namespace OTWeb
             }
             lock (tempLock)
             {
-                var call = MaterialCalls.FirstOrDefault(mc => mc.CallId == acceptTeamLeaderCall.CallId && mc.Status == "Pending");
+                var call = TeamLeaderCalls.FirstOrDefault(tc => tc.CallId == acceptTeamLeaderCall.CallId && tc.Status == "Pending");
                 if (call == null)
                 {
                     response.Succeeded = false;
