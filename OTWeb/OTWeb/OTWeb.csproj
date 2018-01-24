@@ -169,6 +169,11 @@
     <Compile Include="DataContracts\SendTeamLeaderCallRequest.cs" />
     <Compile Include="DataContracts\SerialItem.cs" />
     <Compile Include="IOTService.cs" />
+    <Compile Include="JsonFormatter\NewtonsoftJsonBehavior.cs" />
+    <Compile Include="JsonFormatter\NewtonsoftJsonBehaviorExtension.cs" />
+    <Compile Include="JsonFormatter\NewtonsoftJsonContentTypeMapper.cs" />
+    <Compile Include="JsonFormatter\NewtonsoftJsonDispatchFormatter.cs" />
+    <Compile Include="JsonFormatter\RawBodyWriter.cs" />
     <Compile Include="OTService.svc.cs">
       <DependentUpon>OTService.svc</DependentUpon>
     </Compile>
