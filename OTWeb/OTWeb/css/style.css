@@ -14,6 +14,7 @@ body {
     padding: 0;
     overflow-x: hidden;
     overflow-y: hidden;
+
 }
 
 .icon {
@@ -32,6 +33,7 @@ body {
     border: solid;
     border-color: #136b91;
     border-width: 3px;
+    padding:2px;
 }
 
 .serialsList {
@@ -44,11 +46,11 @@ body {
     .serialsList li {
         background: #CAD4D4;
         margin: 3px;
-        padding: 1px;
+        padding: 4px;
         float: left;
         width: 170px;
         height: 80px;
-        text-align: center;
+        text-align: left;
         box-sizing: border-box;
     }
 
@@ -93,6 +95,11 @@ body {
     height: 40px;
     width: 100%;
 }
+.TableHeaderRow {
+    display: table-row;
+    height: 40px;
+    width: 100%;
+}
 
 .MainTableRow {
     display: table-row;
@@ -133,9 +140,10 @@ body {
     background-color: #004F79;
     color: white;
     column-span: all;
-    width:10%;
-     min-width:10%;
-     vertical-align:middle;
+    width: 10%;
+    min-width: 10%;
+    vertical-align: middle;
+    white-space: nowrap;
 }
 
 .CellSx {
@@ -236,6 +244,10 @@ body {
     width: 100px;
     margin: auto;
     text-align: center;
+}
+
+.btn:active {
+    background-color: #555867;
 }
 
 .btn-selected:active {

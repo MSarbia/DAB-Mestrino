@@ -75,7 +75,9 @@
         });
     </script>
 </head>
-<body onkeypress="readBarcodeKeyPress(event, this)">
+<body onkeypress="readBarcodeKeyPress(event, this)" unselectable="on"
+      onselectstart="return false;"
+      onmousedown="return false;">
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -101,17 +103,18 @@
 
 
     </script>
-
-    <div class="TableHeader">
-        <div class="MainTableRow">
-            <div class="HeaderCellSx"><img src="Images/logo-mobile.svg" height="40px" /></div>
-            <div class="HeaderCellCen"><span id="centralTitle"></span></div>
-            <div class="HeaderCellDx"><span class="fa fa-sign-out-alt" onclick="Logout()"> Logout</span></div>
-        </div>
-    </div>
-    
     <div class="Table">
-
+        <div class="TableHeaderRow">
+            <div style="display:table-cell;">
+                <div class="TableHeader">
+                    <div class="TableHeaderRow">
+                        <div class="HeaderCellSx"><img src="Images/logo-mobile.svg" style="height:40px;" /></div>
+                        <div class="HeaderCellCen"><span id="centralTitle"></span></div>
+                        <div class="HeaderCellDx"><span class="fa fa-sign-out-alt" onclick="Logout()"> Logout</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="MainTableRow">
             <div class="MainTableCell">
                 <div style="display:table; height:100%; width:100%;">
