@@ -107,6 +107,7 @@ body {
 }
 
 .TableOrderCell {
+    width: 50%;
     display: table-cell;
     border-bottom: solid 2px #004F79;
 }
@@ -120,6 +121,19 @@ body {
 .MainTableCell {
     display: table-cell;
     height: 100%;
+    
+  
+}
+
+.TableCell {
+    display: table-cell;
+    vertical-align:top;
+   
+    padding-right:10px;
+    padding-left:10px;
+    padding-bottom:10px;
+    width:50%;
+   
 }
 
 .HeaderCell {
@@ -319,4 +333,9 @@ body {
 .ui-notification .ui-notification-close span {
     display: block;
     margin: 1px;
+}
+.serialsList li.readySerial
+{
+    background:#028b72;
+  
 }

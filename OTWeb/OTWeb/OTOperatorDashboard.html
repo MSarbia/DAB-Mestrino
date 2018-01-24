@@ -86,18 +86,28 @@
             $.connection.hub.start().done(function () {
                 chat.server.joinWorkArea(GetSession('userData').WorkArea);
             });
-         
             centralTitle();
-
+                        
         });
 
         function getSerialSuccess(result) {
             var serials = result.Serials;
             SaveSession('OrderData', result);
-            var selectable = document.getElementById("serialsList");
+            var selectable = document.getElementById("serialsList");           
+            var prod = document.getElementById("spanProduct");
+            var ordr = document.getElementById("spanOrder");
+            var oper = document.getElementById("spanOperation");
+            var desc = document.getElementById("spanDescription");
+            prod.innerHTML = result.ProductCode;
+            ordr.innerHTML = result.Order;
+            oper.innerHTML = result.Operation;
+            desc.innerHTML = result.Description;
             selectable.innerHTML = '';
             serials.forEach(function (serial) {
+                if (serial.Status!='Active')
                 selectable.innerHTML = selectable.innerHTML + "<li class='ui-state-default' id='" + serial.SerialNumber + "'>" + serial.SerialNumber + " </li>";
+                else 
+                    selectable.innerHTML = selectable.innerHTML + "<li class='ui-state-default readySerial' id='" + serial.SerialNumber + "'>" + serial.SerialNumber + " </li>";
             })
             disableStart();
         }
@@ -126,15 +136,28 @@
                             <div class="btn" onclick="CallMaterials()"><span class="fa fa-wrench fa-2x buttonIcon"></span></div>
                         </div>
                         <div class="CellRx">
+
                             <div style="display:table; height:100%; width:100%; overflow-x:hidden; overflow-y:hidden;">
+
                                 <div class="TableOrderRow">
                                     <div class="TableOrderCell">
-                                        <h2>Codice Prodotto : asdasd </h2><br />
-                                        <span style="margin-right:100px;">Ordine : ordine1  </span>  Operazione:Op10<br /><br />
-                                        Descrizione: asdasdasd
+                                        <div class="Table">
+                                            <div class="MainTableRow">
+                                                <div class="TableCell" style="overflow:visible; white-space:nowrap"><h2>Codice Prodotto: <span id="spanProduct"></span></h2></div>
+                                                <div class="TableCell"></div>
+                                            </div>
+                                            <div class="MainTableRow">
+                                                <div class="TableCell">Ordine: <span id="spanOrder"></span> <br/>Operazione: <span id="spanOperation"></span></div>
+                                                <div class="TableCell">Descrizione: <span id="spanDescription"></span></div>
+                                            </div>
+
+                                        </div>
+
                                     </div>
                                 </div>
-                                <div style="display:table-row;">
+
+
+                                <div style="display:table-row;width:100%">
                                     <div id="serialScrollContainer" class="SerialsScroller">
                                         <div class="SerialsContainerCell">
                                             <ol id="serialsList" class="serialsList" style="margin:auto;"></ol>

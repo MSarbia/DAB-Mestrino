@@ -107,6 +107,7 @@ namespace OTWeb
                 return serials;
             }
             serials.Order = "Order1";
+            serials.Order = "Op10";
             serials.Description = "I'm Order1";
             serials.ProductCode = "JET50";
 
@@ -117,6 +118,7 @@ namespace OTWeb
                     serials.Serials.Add(new SerialItem { SerialNumber = serial.SerialNumber, Status = serial.Status });
                 }
             }
+            serials.Serials.OrderBy(s => s.SerialNumber);
             return serials;
         }
 
@@ -138,6 +140,7 @@ namespace OTWeb
             {
                 response.MaterialCalls.AddRange(MaterialCalls.Where(mc => mc.WorkArea == loginResponse.WorkArea && mc.Status == "Pending"));
             }
+            response.MaterialCalls.OrderBy(mc => mc.CallDate);
             return response;
         }
 
@@ -159,6 +162,7 @@ namespace OTWeb
             {
                 response.TeamLeaderCalls.AddRange(TeamLeaderCalls.Where(mc => mc.WorkArea == loginResponse.WorkArea && mc.Status == "Pending"));
             }
+            response.TeamLeaderCalls.OrderBy(tc => tc.CallDate);
             return response;
         }
 
@@ -231,7 +235,7 @@ namespace OTWeb
             }
             lock (tempLock)
             {
-                var serial = Serials.FirstOrDefault(s => s.SerialNumber == startSerialRequest.SerialNumber && s.Status == "Ready");
+                var serial = Serials.FirstOrDefault(s => s.SerialNumber == startSerialRequest.SerialNumber && s.Status != "Complete");
                 if (serial == null)
                 {
                     response.Succeeded = false;

@@ -139,7 +139,13 @@ function StartSerial(serialNumber, operation, getSerialsSuccess) {
 
         callService("GetSerials", getSerialsRequest, function (result) {
             getSerialsSuccess(result);
-            showInfo('Seriale avviato con successo');
+            var serialNumbers = result.Serials.map(function (s) { return s.SerialNumber;});
+            if (serialNumbers.indexOf(serialNumber) > -1) {
+                showInfo('Seriale avviato con successo');
+            }
+            else {
+                showInfo('Seriale completato con successo');
+            }                                         
         });
     });
 }
