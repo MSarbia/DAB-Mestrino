@@ -136,6 +136,7 @@ body {
     column-span: all;
     width:10%;
      min-width:10%;
+     vertical-align:middle;
 }
 
 .CellSx {
