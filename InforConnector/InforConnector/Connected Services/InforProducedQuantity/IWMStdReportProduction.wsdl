@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:bo="http://www.infor.com/businessinterface/IWMStdReportProduction" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="IWMStdReportProduction" targetNamespace="http://www.infor.com/businessinterface/IWMStdReportProduction" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.infor.com/businessinterface/IWMStdReportProduction">
+      <xsd:complexType name="ReportProductionRequestType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ControlArea">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" default="request" name="processingScope" type="bo:processingScope" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DataArea">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="unbounded" name="IWMStdReportProduction">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element minOccurs="1" name="ProductionOrder" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="QtyDeliver" type="xsd:double" />
+                      <xsd:element minOccurs="0" name="QtyReject" type="xsd:double" />
+                      <xsd:element minOccurs="0" name="Warehouse" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="LotCode" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="PostHours" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="ReportMore" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="ReportPrevious" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="BackFlush" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="DirectReceipt" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="Complete" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="SerialNumber" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="GenerateInbound" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="ReleaseInbound" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="RunNumber" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="Location" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="InsertNewSerial" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="Shift" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="ReceiptLocation" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="CompletionDate" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="KanbanID" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="RejectReason" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="TransID" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="GenerateHU" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="HandlingUnit" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="FromRepOperation" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="CrossdockEnabled" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="LoginCode" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="PackageDef" type="xsd:string" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReportProductionResponseType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="DataArea">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="unbounded" name="IWMStdReportProduction">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element minOccurs="0" name="OutData" type="xsd:string" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="InformationArea" type="bo:InformationArea" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ActivationType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="username" type="xsd:string" />
+          <xsd:element minOccurs="0" name="password" type="xsd:string" />
+          <xsd:element minOccurs="0" name="company" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Activation" type="bo:ActivationType" />
+      <xsd:element name="Result" type="bo:Message" />
+      <xsd:complexType name="InformationArea">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Message" type="bo:InformationMessage" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Message">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="messageIndex" type="xsd:integer" />
+          <xsd:element name="messageCode" type="xsd:string" />
+          <xsd:element name="messageType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Error" />
+                <xsd:enumeration value="Warning" />
+                <xsd:enumeration value="Information" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="messageText" type="xsd:string" />
+          <xsd:element name="messageSource" type="xsd:string" />
+          <xsd:element minOccurs="0" name="MessageDetails">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" name="Message" type="bo:DetailMessage" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="messageCorrectiveAction" type="xsd:string" />
+          <xsd:choice>
+            <xsd:element minOccurs="0" name="messageAdditionalHelpText" type="xsd:string" />
+            <xsd:element minOccurs="0" name="messageAdditionalHelpURI" type="xsd:anyURI" />
+          </xsd:choice>
+          <xsd:element minOccurs="0" name="MessageReference">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="messageReferenceType" type="xsd:string" />
+                <xsd:element name="messageReferenceInfo" type="xsd:anyType" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DetailMessage">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="bo:Message">
+            <xsd:attribute name="ID" type="xsd:ID" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="InformationMessage">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="bo:Message">
+            <xsd:attribute name="ID" type="xsd:ID" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="FilterType">
+        <xsd:choice>
+          <xsd:element name="LogicalExpression" type="bo:LogicalExpressionType" />
+          <xsd:element name="ComparisonExpression" type="bo:ComparisonExpressionType" />
+        </xsd:choice>
+      </xsd:complexType>
+      <xsd:complexType name="LogicalExpressionType">
+        <xsd:sequence>
+          <xsd:element name="logicalOperator">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="or" />
+                <xsd:enumeration value="and" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:choice minOccurs="2" maxOccurs="unbounded">
+            <xsd:element maxOccurs="unbounded" name="LogicalExpression" type="bo:LogicalExpressionType" />
+            <xsd:element maxOccurs="unbounded" name="ComparisonExpression" type="bo:ComparisonExpressionType" />
+          </xsd:choice>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ComparisonExpressionType">
+        <xsd:sequence>
+          <xsd:element name="comparisonOperator">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="le" />
+                <xsd:enumeration value="lt" />
+                <xsd:enumeration value="ge" />
+                <xsd:enumeration value="gt" />
+                <xsd:enumeration value="ne" />
+                <xsd:enumeration value="eq" />
+                <xsd:enumeration value="like" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:choice>
+            <xsd:element name="attributeName" type="bo:filterAttributeListDT" />
+            <xsd:element name="emptyValue" type="bo:EmptyValueType" />
+            <xsd:element name="instanceValue" type="xsd:string" />
+          </xsd:choice>
+          <xsd:choice>
+            <xsd:element name="attributeName" type="bo:filterAttributeListDT" />
+            <xsd:element name="emptyValue" type="bo:EmptyValueType" />
+            <xsd:element name="instanceValue" type="xsd:string" />
+          </xsd:choice>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="EmptyValueType" />
+      <xsd:simpleType name="filterAttributeListDT">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="IWMStdReportProduction.ProductionOrder" />
+          <xsd:enumeration value="IWMStdReportProduction.QtyDeliver" />
+          <xsd:enumeration value="IWMStdReportProduction.QtyReject" />
+          <xsd:enumeration value="IWMStdReportProduction.Warehouse" />
+          <xsd:enumeration value="IWMStdReportProduction.LotCode" />
+          <xsd:enumeration value="IWMStdReportProduction.PostHours" />
+          <xsd:enumeration value="IWMStdReportProduction.ReportMore" />
+          <xsd:enumeration value="IWMStdReportProduction.ReportPrevious" />
+          <xsd:enumeration value="IWMStdReportProduction.BackFlush" />
+          <xsd:enumeration value="IWMStdReportProduction.DirectReceipt" />
+          <xsd:enumeration value="IWMStdReportProduction.Complete" />
+          <xsd:enumeration value="IWMStdReportProduction.SerialNumber" />
+          <xsd:enumeration value="IWMStdReportProduction.GenerateInbound" />
+          <xsd:enumeration value="IWMStdReportProduction.ReleaseInbound" />
+          <xsd:enumeration value="IWMStdReportProduction.RunNumber" />
+          <xsd:enumeration value="IWMStdReportProduction.Location" />
+          <xsd:enumeration value="IWMStdReportProduction.InsertNewSerial" />
+          <xsd:enumeration value="IWMStdReportProduction.Shift" />
+          <xsd:enumeration value="IWMStdReportProduction.ReceiptLocation" />
+          <xsd:enumeration value="IWMStdReportProduction.CompletionDate" />
+          <xsd:enumeration value="IWMStdReportProduction.KanbanID" />
+          <xsd:enumeration value="IWMStdReportProduction.RejectReason" />
+          <xsd:enumeration value="IWMStdReportProduction.TransID" />
+          <xsd:enumeration value="IWMStdReportProduction.GenerateHU" />
+          <xsd:enumeration value="IWMStdReportProduction.HandlingUnit" />
+          <xsd:enumeration value="IWMStdReportProduction.FromRepOperation" />
+          <xsd:enumeration value="IWMStdReportProduction.CrossdockEnabled" />
+          <xsd:enumeration value="IWMStdReportProduction.LoginCode" />
+          <xsd:enumeration value="IWMStdReportProduction.OutData" />
+          <xsd:enumeration value="IWMStdReportProduction.PackageDef" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="SelectionType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="selectionAttribute">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="*" />
+                <xsd:enumeration value="IWMStdReportProduction.*" />
+                <xsd:enumeration value="IWMStdReportProduction.ProductionOrder" />
+                <xsd:enumeration value="IWMStdReportProduction.QtyDeliver" />
+                <xsd:enumeration value="IWMStdReportProduction.QtyReject" />
+                <xsd:enumeration value="IWMStdReportProduction.Warehouse" />
+                <xsd:enumeration value="IWMStdReportProduction.LotCode" />
+                <xsd:enumeration value="IWMStdReportProduction.PostHours" />
+                <xsd:enumeration value="IWMStdReportProduction.ReportMore" />
+                <xsd:enumeration value="IWMStdReportProduction.ReportPrevious" />
+                <xsd:enumeration value="IWMStdReportProduction.BackFlush" />
+                <xsd:enumeration value="IWMStdReportProduction.DirectReceipt" />
+                <xsd:enumeration value="IWMStdReportProduction.Complete" />
+                <xsd:enumeration value="IWMStdReportProduction.SerialNumber" />
+                <xsd:enumeration value="IWMStdReportProduction.GenerateInbound" />
+                <xsd:enumeration value="IWMStdReportProduction.ReleaseInbound" />
+                <xsd:enumeration value="IWMStdReportProduction.RunNumber" />
+                <xsd:enumeration value="IWMStdReportProduction.Location" />
+                <xsd:enumeration value="IWMStdReportProduction.InsertNewSerial" />
+                <xsd:enumeration value="IWMStdReportProduction.Shift" />
+                <xsd:enumeration value="IWMStdReportProduction.ReceiptLocation" />
+                <xsd:enumeration value="IWMStdReportProduction.CompletionDate" />
+                <xsd:enumeration value="IWMStdReportProduction.KanbanID" />
+                <xsd:enumeration value="IWMStdReportProduction.RejectReason" />
+                <xsd:enumeration value="IWMStdReportProduction.TransID" />
+                <xsd:enumeration value="IWMStdReportProduction.GenerateHU" />
+                <xsd:enumeration value="IWMStdReportProduction.HandlingUnit" />
+                <xsd:enumeration value="IWMStdReportProduction.FromRepOperation" />
+                <xsd:enumeration value="IWMStdReportProduction.CrossdockEnabled" />
+                <xsd:enumeration value="IWMStdReportProduction.LoginCode" />
+                <xsd:enumeration value="IWMStdReportProduction.OutData" />
+                <xsd:enumeration value="IWMStdReportProduction.PackageDef" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="processingScope">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="not_applicable" />
+          <xsd:enumeration value="request" />
+          <xsd:enumeration value="business_entity" />
+          <xsd:enumeration value="business_entity_component" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="actionType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="create" />
+          <xsd:enumeration value="createOrChange" />
+          <xsd:enumeration value="change" />
+          <xsd:enumeration value="delete" />
+          <xsd:enumeration value="unchanged" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ReportProductionRequest">
+    <wsdl:part name="ReportProductionRequest" type="bo:ReportProductionRequestType" />
+  </wsdl:message>
+  <wsdl:message name="ReportProductionResponse">
+    <wsdl:part name="ReportProductionResponse" type="bo:ReportProductionResponseType" />
+  </wsdl:message>
+  <wsdl:message name="Result">
+    <wsdl:part name="Result" element="bo:Result" />
+  </wsdl:message>
+  <wsdl:message name="Header">
+    <wsdl:part name="Activation" element="bo:Activation" />
+  </wsdl:message>
+  <wsdl:portType name="IWMStdReportProduction">
+    <wsdl:operation name="ReportProduction">
+      <wsdl:input message="bo:ReportProductionRequest" />
+      <wsdl:output message="bo:ReportProductionResponse" />
+      <wsdl:fault name="FaultName" message="bo:Result" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IWMStdReportProductionSoapBinding" type="bo:IWMStdReportProduction">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="ReportProduction">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.infor.com/businessinterface/IWMStdReportProduction" />
+        <soap:header message="bo:Header" part="Activation" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.infor.com/businessinterface/IWMStdReportProduction" />
+      </wsdl:output>
+      <wsdl:fault name="FaultName">
+        <soap:fault use="literal" name="FaultName" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IWMStdReportProductionService">
+    <wsdl:port name="IWMStdReportProductionSoapPort" binding="bo:IWMStdReportProductionSoapBinding">
+      <soap:address location="http://192.168.1.31:8312/c4ws/services/IWMStdReportProduction/lntestclone" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
