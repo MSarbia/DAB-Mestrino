@@ -28,11 +28,6 @@ namespace NiceLabelConnector
             return footer;
         }
 
-        //          SNLabel
-        //        DataLabel
-        //       PackageLabel
-        //        PalletLabel
-
         private static bool PrintLabel(List<string> serialNumbers,string productCode,string workArea, string labelType,int quantity)
         {
             XmlDocument doc = new XmlDocument();
