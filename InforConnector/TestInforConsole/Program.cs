@@ -14,7 +14,8 @@ namespace TestInforConsole
             while (true)
             {
                 int qty = Int32.Parse(Console.ReadLine());
-                Console.WriteLine( InforConnector.InforConnector.ReportQuantity(qty));
+                InforConnector.InforConnector.CallWebService();
+                Console.WriteLine("\nChiamata eseguita");
             }
         }
     }
