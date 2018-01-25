@@ -83,17 +83,19 @@
         $(document).ready(function () {
             GetSerials(getSerialSuccess);
             var chat = $.connection.callHub;
+            SubscribeToOperatorCalls(chat, getSerialSuccess);
             $.connection.hub.start().done(function () {
                 chat.server.joinWorkArea(GetSession('userData').WorkArea);
+                chat.server.joinWorkArea(GetSession('userData').Equipment);
             });
             centralTitle();
-                        
+
         });
 
         function getSerialSuccess(result) {
             var serials = result.Serials;
             SaveSession('OrderData', result);
-            var selectable = document.getElementById("serialsList");           
+            var selectable = document.getElementById("serialsList");
             var prod = document.getElementById("spanProduct");
             var ordr = document.getElementById("spanOrder");
             var oper = document.getElementById("spanOperation");
@@ -104,10 +106,13 @@
             desc.innerHTML = result.Description;
             selectable.innerHTML = '';
             serials.forEach(function (serial) {
-                if (serial.Status!='Active')
-                selectable.innerHTML = selectable.innerHTML + "<li class='ui-state-default' id='" + serial.SerialNumber + "'>" + serial.SerialNumber + " </li>";
-                else 
-                    selectable.innerHTML = selectable.innerHTML + "<li class='ui-state-default readySerial' id='" + serial.SerialNumber + "'>" + serial.SerialNumber + " </li>";
+                var itemClass = "ui-state-default";
+                var stato = 'Disponibile';
+                if (serial.Status == 'Active') {
+                    stato = 'In Lavorazione'
+                    itemClass += " activeSerial";
+                }
+                selectable.innerHTML = selectable.innerHTML + "<li class='" + itemClass + "' id='" + serial.SerialNumber + "'><span style='font-weight:bold'>" + serial.SerialNumber + "</span ></br></br><span>Stato: </span ><span>" + stato + "</span ></li>";
             })
             disableStart();
         }
@@ -116,12 +121,12 @@
     </script>
     <div class="Table">
         <div class="TableHeaderRow">
-            <div style="display:table-cell;">
+            <div style="display:table-cell; font-family:Calibri">
                 <div class="TableHeader">
                     <div class="TableHeaderRow">
                         <div class="HeaderCellSx"><img src="Images/logo-mobile.svg" style="height:40px;" /></div>
-                        <div class="HeaderCellCen"><span id="centralTitle"></span></div>
-                        <div class="HeaderCellDx"><span class="fa fa-sign-out-alt" onclick="Logout()"> Logout</span></div>
+                        <div class="HeaderCellCen"><span id="centralTitle" style="white-space:nowrap;"></span></div>
+                        <div class="HeaderCellDx"><span class="fa fa-sign-out-alt" onclick="LogoutClick()"><span style="font-family:Calibri; padding-right:20px;"> Logout</span></span></div>
                     </div>
                 </div>
             </div>
@@ -141,14 +146,19 @@
 
                                 <div class="TableOrderRow">
                                     <div class="TableOrderCell">
-                                        <div class="Table">
+                                        <div class="Table" style="font-family:Calibri">
                                             <div class="MainTableRow">
-                                                <div class="TableCell" style="overflow:visible; white-space:nowrap"><h2>Codice Prodotto: <span id="spanProduct"></span></h2></div>
+                                                <div class="TableCell" style="overflow:visible; white-space:nowrap; color:#004F79;"><h2>Codice Prodotto: <span id="spanProduct"></span></h2></div>
                                                 <div class="TableCell"></div>
                                             </div>
                                             <div class="MainTableRow">
-                                                <div class="TableCell">Ordine: <span id="spanOrder"></span> <br/>Operazione: <span id="spanOperation"></span></div>
-                                                <div class="TableCell">Descrizione: <span id="spanDescription"></span></div>
+                                                <div class="TableCell">
+                                                    <label style="display: inline-block; width:100px;">Ordine:</label><span id="spanOrder"></span> <br />
+                                                    <label style="display: inline-block; width:100px;">Operazione:</label><span id="spanOperation"></span>
+                                                </div>
+                                                <div class="TableCell">
+                                                    <label style="display: inline-block; width:100px;">Descrizione:</label><span id="spanDescription"></span>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -159,7 +169,7 @@
 
                                 <div style="display:table-row;width:100%">
                                     <div id="serialScrollContainer" class="SerialsScroller">
-                                        <div class="SerialsContainerCell">
+                                        <div class="SerialsContainerCell" style="font-family:Calibri;">
                                             <ol id="serialsList" class="serialsList" style="margin:auto;"></ol>
                                         </div>
                                     </div>

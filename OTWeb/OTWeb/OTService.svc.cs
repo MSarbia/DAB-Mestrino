@@ -19,7 +19,8 @@ namespace OTWeb
         private static object tempLock = new object();
         public static List<MaterialCall> MaterialCalls { get; set; } = new List<MaterialCall>();
         public static List<Call> TeamLeaderCalls { get; set; } = new List<Call>();
-        public static List<SerialItem> Serials { get; set; } = new List<SerialItem> { new SerialItem { SerialNumber = "SN1", Status="Ready" }, new SerialItem { SerialNumber = "SN2", Status = "Ready" }, new SerialItem { SerialNumber = "SN3", Status = "Ready" }, new SerialItem { SerialNumber = "SN4", Status = "Ready" }, new SerialItem { SerialNumber = "SN5", Status = "Ready" }, new SerialItem { SerialNumber = "SN6", Status = "Ready" }, new SerialItem { SerialNumber = "SN7", Status = "Ready" }, new SerialItem { SerialNumber = "SN8", Status = "Ready" }, new SerialItem { SerialNumber = "SN9", Status = "Ready" }, new SerialItem { SerialNumber = "SN10", Status = "Ready" } };
+        public static List<SerialItem> Serials10 { get; set; } = new List<SerialItem> { new SerialItem { SerialNumber = "Seriale1", Status = "Ready" }, new SerialItem { SerialNumber = "Seriale2", Status = "Ready" }, new SerialItem { SerialNumber = "Seriale3", Status = "Ready" }, new SerialItem { SerialNumber = "Seriale4", Status = "Ready" }, new SerialItem { SerialNumber = "Seriale5", Status = "Ready" }, new SerialItem { SerialNumber = "Seriale6", Status = "Ready" }, new SerialItem { SerialNumber = "Seriale7", Status = "Ready" }, new SerialItem { SerialNumber = "Seriale8", Status = "Ready" }, new SerialItem { SerialNumber = "Seriale9", Status = "Ready" }, new SerialItem { SerialNumber = "Seriale10", Status = "Ready" } };
+        public static List<SerialItem> Serials20 { get; set; } = new List<SerialItem> { };
 
 
 
@@ -30,16 +31,22 @@ namespace OTWeb
                 Succeeded = true,
                 Error = string.Empty
             };
-            if (loginRequest.User.ToLowerInvariant().StartsWith("op"))
+            if (loginRequest.User.ToLowerInvariant().Equals("op10"))
             {
                 response.Role = "Operator";
-                response.Equipment = "Equip1";
-                response.WorkArea = "Line1";
+                response.Equipment = "Postazione10";
+                response.WorkArea = "Linea1";
+            }
+            else if (loginRequest.User.ToLowerInvariant().Equals("op20"))
+            {
+                response.Role = "Operator";
+                response.Equipment = "Postazione20";
+                response.WorkArea = "Linea1";
             }
             else if (loginRequest.User.ToLowerInvariant().StartsWith("tl"))
             {
                 response.Role = "TeamLeader";
-                response.WorkArea = "Line1";
+                response.WorkArea = "Linea1";
             }
             else
             {
@@ -106,17 +113,31 @@ namespace OTWeb
             {
                 return serials;
             }
-            serials.Order = "Order1";
-            serials.Order = "Op10";
-            serials.Description = "I'm Order1";
-            serials.ProductCode = "JET50";
+            serials.Order = "OrdineERPxyz";
+            if (getSerials.User.ToLowerInvariant() == "op10")
+                serials.Operation = "Operazione10";
+            else
+                serials.Operation = "Operazione20";
+            serials.Description = "Descrizione dell'ordine corrente";
+            serials.ProductCode = "JET50xyz";
 
             lock (tempLock)
             {
-                foreach (var serial in Serials.Where(s=>s.Status != "Complete"))
+                if (getSerials.User.ToLowerInvariant() == "op10")
                 {
-                    serials.Serials.Add(new SerialItem { SerialNumber = serial.SerialNumber, Status = serial.Status });
+                    foreach (var serial in Serials10.Where(s => s.Status == "Ready"))
+                    {
+                        serials.Serials.Add(new SerialItem { SerialNumber = serial.SerialNumber, Status = serial.Status });
+                    }
                 }
+                else
+                {
+                    foreach (var serial in Serials20.Where(s => s.Status != "Complete"))
+                    {
+                        serials.Serials.Add(new SerialItem { SerialNumber = serial.SerialNumber, Status = serial.Status });
+                    }
+                }
+
             }
             serials.Serials.OrderBy(s => s.SerialNumber);
             return serials;
@@ -235,20 +256,31 @@ namespace OTWeb
             }
             lock (tempLock)
             {
-                var serial = Serials.FirstOrDefault(s => s.SerialNumber == startSerialRequest.SerialNumber && s.Status != "Complete");
+                SerialItem serial = null;
+                if (startSerialRequest.User.ToLowerInvariant() == "op10")
+                    serial = Serials10.FirstOrDefault(s => s.SerialNumber == startSerialRequest.SerialNumber && s.Status == "Ready");
+                else
+                    serial = Serials20.FirstOrDefault(s => s.SerialNumber == startSerialRequest.SerialNumber && s.Status != "Complete");
                 if (serial == null)
                 {
                     response.Succeeded = false;
-                    response.Error = $"SerialNumber {startSerialRequest.SerialNumber} not found";
+                    response.Error = $"Seriale {startSerialRequest.SerialNumber} non trovato";
                     return response;
                 }
-                if(serial.Status=="Ready")
+                if (serial.Status == "Ready")
                 {
                     serial.Status = "Active";
+                    if (startSerialRequest.User.ToLowerInvariant() == "op10")
+                    {
+                        Serials20.Add(new SerialItem { SerialNumber = serial.SerialNumber, Status = "Ready" });
+                        CallHub.Static_SendOperatorCall("Postazione20", serial.SerialNumber);
+                    }
                 }
-                else if(serial.Status == "Active")
+                else if (serial.Status == "Active")
                 {
                     serial.Status = "Complete";
+                    
+
                 }
             }
             return response;

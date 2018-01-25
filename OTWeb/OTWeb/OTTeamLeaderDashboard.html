@@ -96,16 +96,16 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var chat = $.connection.callHub;
-            SubscribeToCalls(chat, materialCallsSuccess, teamLeaderCallsSuccess);
+            SubscribeToLeaderCalls(chat, materialCallsSuccess, teamLeaderCallsSuccess);
             $.connection.hub.start().done(function () {
                 chat.server.joinWorkArea(GetSession('userData').WorkArea);
             });
 
-            $('#userName').text(GetSession('userData').User);
-            $('#workArea').text(GetSession('userData').WorkArea);
-
             GetTeamLeaderCalls(teamLeaderCallsSuccess);
             GetMaterialCalls(materialCallsSuccess);
+
+
+            centralTitle();
         });
 
         function addZero(i) {
@@ -120,7 +120,7 @@
             result.TeamLeaderCalls.forEach(function (call) {
                 var date = new Date(call.CallDate);
                 var dateString = addZero(date.getHours()) + ':' + addZero(date.getMinutes()) + ':' + addZero(date.getSeconds());
-                var listItem = "<li class='ui-state-default' id='" + call.CallId + "'><span style='font-weight:bold'>Equipment: " + call.Equipment + "</span></br></br><span style='font-weight:normal'>Date: " + dateString + "</span></li>";
+                var listItem = "<li class='ui-state-default' id='" + call.CallId + "'><span style='font-weight:bold'>" + call.Equipment + "</span></br></br><span>" + dateString + "</span></li>";
                 $('#teamLeaderCalls').append(listItem);
             });
             disableAcceptTeamLeaderCall();
@@ -131,7 +131,7 @@
             result.MaterialCalls.forEach(function (call) {
                 var date = new Date(call.CallDate);
                 var dateString = addZero(date.getHours()) + ':' + addZero(date.getMinutes()) + ':' + addZero(date.getSeconds());
-                var listItem = "<li class='ui-state-default' id='" + call.CallId + "'><span style='font-weight:bold'>Equipment: " + call.Equipment + "</span></br></br><span style='font-weight:normal'>Date: " + dateString + "</span></li>";
+                var listItem = "<li class='ui-state-default' id='" + call.CallId + "'><span style='font-weight:bold'>" + call.Equipment + "</span></br></br><span>" + dateString + "</span></li>";
                 $('#materialCalls').append(listItem);
             });;
             disableAcceptMaterialCall();
@@ -143,12 +143,12 @@
 
     <div class="Table">
         <div class="TableHeaderRow">
-            <div style="display:table-cell;">
+            <div style="display:table-cell; font-family:Calibri">
                 <div class="TableHeader">
                     <div class="TableHeaderRow">
                         <div class="HeaderCellSx"><img src="Images/logo-mobile.svg" style="height:40px;" /></div>
-                        <div class="HeaderCellCen"><span id="centralTitle"></span>UTENTE: <span id="userName"></span> - WORK AREA: <span id="workArea"></span></div>
-                        <div class="HeaderCellDx"><span class="fa fa-sign-out-alt" onclick="Logout()"> Logout</span></div>
+                        <div class="HeaderCellCen"><span id="centralTitle" style="white-space:nowrap;"></span></div>
+                        <div class="HeaderCellDx"><span class="fa fa-sign-out-alt" onclick="LogoutClick()"><span style="font-family:Calibri; padding-right:20px;"> Logout</span></span></div>
                     </div>
                 </div>
             </div>
@@ -161,9 +161,9 @@
                             <div style="display:table; height:100%; width:100%; overflow-x:hidden; overflow-y:hidden;">
                                 <div style="display:table-row;">
                                     <div id="serialScrollContainer" class="SerialsScroller">
-                                        <div class="SerialsContainerCell" style="font-family:Calibri">
-                                            <b>CHIAMATE TEAM LEADER</b>
-                                            <ol id="teamLeaderCalls" class="callClass" style="margin:auto;"></ol>
+                                        <div class="SerialsContainerCell" style="font-family:Calibri; color:#004F79;">
+                                            <h2>Chiamate Team Leader</h2>
+                                            <ol id="teamLeaderCalls" class="serialsList" style="margin:auto;"></ol>
                                         </div>
                                     </div>
                                 </div>
@@ -178,9 +178,9 @@
                             <div style="display:table; height:100%; width:100%; overflow-x:hidden; overflow-y:hidden;">
                                 <div style="display:table-row;">
                                     <div id="serialScrollContainer" class="SerialsScroller">
-                                        <div class="SerialsContainerCell" style="font-family:Calibri">
-                                            <b>CHIAMATE MATERIALE</b>
-                                            <ol id="materialCalls" class="callClass" style="margin:auto;"></ol>
+                                        <div class="SerialsContainerCell" style="font-family:Calibri; color:#004F79;">
+                                            <h2>Chiamate Materiale</h2>
+                                            <ol id="materialCalls" class="serialsList" style="margin:auto;"></ol>
                                         </div>
                                     </div>
                                 </div>

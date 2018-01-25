@@ -44,5 +44,10 @@ namespace OTWeb.CallManagement
         {
             hubContext.Clients.Group(workArea).getTeamLeaderCall(message);
         }
+
+        public static void Static_SendOperatorCall(string equipment, string message)
+        {
+            hubContext.Clients.Group(equipment).getNewSerial(message);
+        }
     }
 }

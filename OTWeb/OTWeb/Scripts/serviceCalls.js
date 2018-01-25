@@ -25,6 +25,11 @@
 }
 
 
+function LogoutClick() {
+    if (confirm("Sei sicuro di voler effetuare il Logout?"))
+        Logout();
+}
+
 function Logout() {
     var userData = GetOrAddSession('userData', undefined);
     if (userData != undefined) {
@@ -36,7 +41,7 @@ function Logout() {
     window.location.href = 'OTLogin.html', true;
 }
 
-function SubscribeToCalls(chat, materialCallsSuccess, teamLeaderCallsSuccess) {
+function SubscribeToLeaderCalls(chat, materialCallsSuccess, teamLeaderCallsSuccess) {
 
     chat.client.getMaterialCall = function (message) {
         GetMaterialCalls(materialCallsSuccess);
@@ -45,6 +50,13 @@ function SubscribeToCalls(chat, materialCallsSuccess, teamLeaderCallsSuccess) {
     chat.client.getTeamLeaderCall = function (message) {
         GetTeamLeaderCalls(teamLeaderCallsSuccess);
     };
+}
+
+function SubscribeToOperatorCalls(chat, getSerialsSuccess) {
+
+    chat.client.getNewSerial = function (message) {
+        GetSerials(getSerialsSuccess);
+    };     
 }
 
 function GetMaterialCalls(materialCallsSuccess) {
@@ -139,13 +151,13 @@ function StartSerial(serialNumber, operation, getSerialsSuccess) {
 
         callService("GetSerials", getSerialsRequest, function (result) {
             getSerialsSuccess(result);
-            var serialNumbers = result.Serials.map(function (s) { return s.SerialNumber;});
+            var serialNumbers = result.Serials.map(function (s) { return s.SerialNumber; });
             if (serialNumbers.indexOf(serialNumber) > -1) {
                 showInfo('Seriale avviato con successo');
             }
             else {
                 showInfo('Seriale completato con successo');
-            }                                         
+            }
         });
     });
 }
@@ -154,10 +166,10 @@ function AcceptTeamLeaderCall(callId, teamLeaderCallsSuccess) {
     var userData = GetSession('userData');
 
     var teamLeaderCallRequest = {
-            User : userData.User,
-            Password: userData.Password,
-            CallId: callId
-            };
+        User: userData.User,
+        Password: userData.Password,
+        CallId: callId
+    };
 
     callService("AcceptTeamLeaderCall", teamLeaderCallRequest, function (result) {
         GetTeamLeaderCalls(teamLeaderCallsSuccess);
@@ -177,13 +189,13 @@ function AcceptMaterialCall(callId, materialCallsSuccess) {
     callService("AcceptMaterialCall", materialCallRequest, function (result) {
         GetMaterialCalls(materialCallsSuccess)
         showInfo('Chiamata Materiale accettata con successo');
-});
+    });
 }
 
 function callService(methodName, input, successCallback, errorCallBack) {
     $.ajax({
         type: "POST",
-        url: "../OTWeb/OTService.svc/" + methodName,
+        url: "/OTService.svc/" + methodName,
         data: JSON.stringify(input),
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
@@ -234,7 +246,7 @@ function GetOrAddSession(name, value) {
         SaveSession(name, value);
         return value;
     }
-    else {        
+    else {
         return JSON.parse(sessionStorage[name]);
     }
 }
@@ -245,9 +257,11 @@ function ClearSession(name) {
 
 function centralTitle() {
     var userD = GetSession('userData');
-    var texttitle = '';
+    var texttitle = "<span style='color:#CAD4D4'>Utente: </span><span style='display:inline-block; padding-right:30px;'>" + userD.User + "</span>"
+    texttitle += "<span style='color:#CAD4D4'>Linea: </span><span style='display:inline-block; padding-right:30px;'>" + userD.WorkArea + "</span>";
+    if (userD.Equipment!= null && userD.Equipment != '')
+        texttitle += "<span style='color:#CAD4D4'>Postazione: </span><span>" + userD.Equipment + "</span>";
+
     var idtitle = document.getElementById("centralTitle");
-    if (userD.Equipment != '') texttitle = userD.Equipment;
-    else texttitle = userD.WorkArea;
-    idtitle.innerHTML = userD.User + ' - ' + texttitle;
+    idtitle.innerHTML = texttitle;
 }

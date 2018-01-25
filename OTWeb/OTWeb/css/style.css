@@ -16,9 +16,7 @@ body {
     overflow-y: hidden;
 }
 
-.icon {
-    font-size: 3vw;
-}
+
 
 .feedback {
     font-size: 1.4em;
@@ -148,8 +146,8 @@ body {
     background-color: #004F79;
     color: white;
     column-span: all;
-    width:200px;
-    min-width:200px;
+    width:20%;
+    min-width:150px;
 }
 .HeaderCellCen {
     display: table-cell;
@@ -267,14 +265,14 @@ body {
 .successNotify {
     border: 1px solid;
     border-color: rgba(120,255,120,0.8);
-    background-color: rgba(180,255,180,0.5);
+    background-color: rgba(180,255,180,0.8);
     color: black;
 }
 
 .errorNotify {
     border: 1px solid;
     border-color: rgba(255,120,120,0.8);
-    background-color: rgba(255,180,180,0.5);
+    background-color: rgba(255,180,180,0.8);
     color: black;
 }
 
@@ -334,8 +332,8 @@ body {
     display: block;
     margin: 1px;
 }
-.serialsList li.readySerial
+.serialsList li.activeSerial
 {
-    background:#028b72;
+    background-color:darkseagreen;
   
 }
