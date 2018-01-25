@@ -59,7 +59,7 @@
                 selected: function (event, ui) {
                     if ($(ui.selected)) {
                         SaveSession('selectedSerialToStart', ui.selected.id);
-                        $(ui.selected).siblings().removeClass('ui-selected');
+                        $(ui.selected).siblings().removeClass('ui-selected').children().removeClass('ui-selected');
                         enableStart();
                     }
                     else {

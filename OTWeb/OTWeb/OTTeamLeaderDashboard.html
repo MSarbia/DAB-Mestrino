@@ -54,7 +54,7 @@
                 selected: function (event, ui) {
                     if ($(ui.selected)) {
                         SaveSession('selectedTeamLeaderCallToAccept', ui.selected.id);
-                        $(ui.selected).siblings().removeClass('ui-selected');
+                        $(ui.selected).siblings().removeClass('ui-selected').children().removeClass('ui-selected');
                         enableAcceptTeamLeaderCall();
                     }
                     else {
@@ -74,7 +74,7 @@
                 selected: function (event, ui) {
                     if ($(ui.selected)) {
                         SaveSession('selectedMaterialCallToAccept', ui.selected.id);
-                        $(ui.selected).siblings().removeClass('ui-selected');
+                        $(ui.selected).siblings().removeClass('ui-selected').children().removeClass('ui-selected');
                         enableAcceptMaterialCall();
                     }
                     else {
@@ -116,6 +116,7 @@
         }
 
         function teamLeaderCallsSuccess(result) {
+            var oldCalls = document.getElementById("teamLeaderCalls").getElementsByTagName("li").length;
             $('#teamLeaderCalls').empty();
             result.TeamLeaderCalls.forEach(function (call) {
                 var date = new Date(call.CallDate);
@@ -124,22 +125,29 @@
                 $('#teamLeaderCalls').append(listItem);
             });
             disableAcceptTeamLeaderCall();
+            if (result.TeamLeaderCalls.length > 0 && result.TeamLeaderCalls.length >= oldCalls)
+                $('#call1Sound')[0].play();
         }
 
         function materialCallsSuccess(result) {
+            var oldCalls = document.getElementById("materialCalls").getElementsByTagName("li").length;
             $('#materialCalls').empty();
             result.MaterialCalls.forEach(function (call) {
                 var date = new Date(call.CallDate);
                 var dateString = addZero(date.getHours()) + ':' + addZero(date.getMinutes()) + ':' + addZero(date.getSeconds());
                 var listItem = "<li class='ui-state-default' id='" + call.CallId + "'><span style='font-weight:bold'>" + call.Equipment + "</span></br></br><span>" + dateString + "</span></li>";
                 $('#materialCalls').append(listItem);
-            });;
+            });
             disableAcceptMaterialCall();
+            if (result.MaterialCalls.length > 0 && result.MaterialCalls.length >= oldCalls)
+                $('#call2Sound')[0].play();
         }
 
     </script>
 
     <!--TeamLeader <span id="userName"></span>-->
+    <audio id="call1Sound" src="Sounds/call1.mp3"></audio>
+    <audio id="call2Sound" src="Sounds/call2.mp3"></audio>
 
     <div class="Table">
         <div class="TableHeaderRow">

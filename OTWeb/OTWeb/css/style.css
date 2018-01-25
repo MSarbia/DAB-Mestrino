@@ -22,11 +22,11 @@ body {
     font-size: 1.4em;
 }
 
-.serialsList .ui-selecting {
-    background: #CAD4D4;
+.serialsList li.ui-selecting {
+    background: #BAC4C4;
 }
 
-.serialsList .ui-selected {
+.serialsList li.ui-selected {
     border: solid;
     border-color: #136b91;
     border-width: 3px;
@@ -255,10 +255,11 @@ body {
     text-align: center;
 }
 
+
 .ui-notification-container {
     width: 300px;
     position: absolute;
-    top: 10px;
+    top: 50px;
     right: 10px;
 }
 
