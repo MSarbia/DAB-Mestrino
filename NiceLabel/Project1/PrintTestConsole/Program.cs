@@ -14,7 +14,7 @@ namespace PrintTestConsole
             while(true)
             {
                 Console.ReadLine();
-                var result = LabelPrinter.PrintSNLabel(new List<string>());
+                var result = LabelPrinter.PrintSNLabel(new List<string>(),"BAU","Linea1");
                 Console.WriteLine(result);
             }
         }

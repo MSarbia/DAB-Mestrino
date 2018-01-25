@@ -14,31 +14,78 @@ namespace NiceLabelConnector
     public static class LabelPrinter
     {
         private const string NiceLabelWebSrviTrgConfig = "NiceLabelService_WebSrviTrg";
-        public static bool PrintSNLabel(List<string> serialNumbers)
+
+        static string startXml()
         {
-            //EndpointAddress address = new EndpointAddress("http://localhost:57676/PrintServiceMock.asmx");
-            //var config = ConfigurationManager.GetSection("system.serviceModel/bindings") as
-            //            System.ServiceModel.Configuration.BindingsSection;
-            //BasicHttpBinding binding = new BasicHttpBinding("BasicHttpBinding_WebSrviTrg")/* { UseDefaultWebProxy = false, ProxyAddress = new Uri("http://ipv4.fiddler:8888") }*/;
+            string header= "<NICELABEL_JOB>" + Environment.NewLine + "<MES_LABEL_DATA>" + Environment.NewLine;
+
+            return header;
+        }
+        static string endXml()
+        {
+            string footer = Environment.NewLine + "</MES_LABEL_DATA>" + Environment.NewLine + "</NICELABEL_JOB>";
+
+            return footer;
+        }
+
+        //          SNLabel
+        //        DataLabel
+        //       PackageLabel
+        //        PalletLabel
+
+        private static bool PrintLabel(List<string> serialNumbers,string productCode,string workArea, string labelType,int quantity)
+        {
             XmlDocument doc = new XmlDocument();
             XmlCDataSection CData;
-            
-            string text = @"<nice_commands quit=""false""><label name=""SNLabel"" close=""true""><session_print_job skip=""0"" job_name=""JOBNAME1""><session quantity=""n""><variable name=""ProductionLineId"">Linea1</variable><variable name=""FinalProductCode"">JET50xyz</variable><variable name=""ERPOrderId"">Order123456</variable><variable name=""SerialNumbers"">SN1,SN2,SN3,..,SNn</variable></session></session_print_job></label></nice_commands>";
+
+            string text = "";
+            text = text + startXml();   
+
+            if (serialNumbers.Count < 1) { serialNumbers.Add(""); }
+
+            foreach (string serialNumber in serialNumbers)
+            {
+                text = text + "<item>" + Environment.NewLine;
+                text = text + string.Format("<Codice_prodotto>{0}</Codice_prodotto>", productCode) + Environment.NewLine;
+                text = text + string.Format("<Numero_seriale>{0}</Numero_seriale>", serialNumber) + Environment.NewLine;
+                text = text + string.Format("<Tipologia_etichetta>{0}</Tipologia_etichetta>", labelType) + Environment.NewLine;
+                text = text + string.Format("<Linea>{0}</Linea>", workArea) + Environment.NewLine;
+                text = text + string.Format("<Quantita_copie>{0}</Quantita_copie>", quantity) + Environment.NewLine;
+                text = text + "</item>" + Environment.NewLine;
+            }
+
+            text = text + endXml();
+
             CData = doc.CreateCDataSection(text);
             string error;
             using (var client = new WebSrviTrgClient(NiceLabelWebSrviTrgConfig))
             {
-                //NiceLabelConnector.NiceLabelService.ExecuteTriggerRequest inValue = new NiceLabelConnector.NiceLabelService.ExecuteTriggerRequest();
-                //inValue.text = text;
-                //inValue.wait = false;
-                //var response = client.ExecuteTrigger(inValue);
-
-                //error = response.errorText;
                 client.ExecuteTrigger(text, false, out error);
             }
 
             return string.IsNullOrEmpty(error);
         }
+
+
+        public static bool PrintSNLabel(List<string> serialNumbers, string productCode, string workArea, int quantity = 1)
+        {
+            return PrintLabel(serialNumbers, productCode, workArea, "SNLabel",quantity);
+        }
+        public static bool PrintDataLabel(List<string> serialNumbers, string productCode, string workArea, int quantity = 1)
+        {
+            return PrintLabel(serialNumbers, productCode, workArea, "DataLabel", quantity);
+        }
+        public static bool PrintPackageLabel(List<string> serialNumbers, string productCode, string workArea, int quantity = 1)
+        {
+            return PrintLabel(serialNumbers, productCode, workArea, "PackageLabel", quantity);
+        }
+        public static bool PrintPalletLabel(List<string> serialNumbers, string productCode, string workArea, int quantity = 1)
+        {
+            return PrintLabel(serialNumbers, productCode, workArea, "PalletLabel", quantity);
+        }
+
+
+
 
     }
 }
