@@ -13,6 +13,23 @@ namespace NiceLabelConnector
 {
     public static class LabelPrinter
     {
+        public class Error
+        {
+            string error;
+            bool connectionsucceeded;
+            public Error(){
+                error = "";
+                connectionsucceeded = true;
+            }
+            public void setError(bool succeeded,string er)
+            {
+                error = er;
+                connectionsucceeded = succeeded;
+            }
+
+        }
+
+
         private const string NiceLabelWebSrviTrgConfig = "NiceLabelService_WebSrviTrg";
 
         static string startXml()
@@ -28,8 +45,9 @@ namespace NiceLabelConnector
             return footer;
         }
 
-        private static bool PrintLabel(List<string> serialNumbers,string productCode,string workArea, string labelType,int quantity)
+        private static Error PrintLabel(List<string> serialNumbers,string productCode,string workArea, string labelType,int quantity)
         {
+            try { 
             XmlDocument doc = new XmlDocument();
             XmlCDataSection CData;
 
@@ -39,7 +57,7 @@ namespace NiceLabelConnector
             if (serialNumbers.Count < 1) { serialNumbers.Add(""); }
 
             foreach (string serialNumber in serialNumbers)
-            {
+            {              
                 text = text + "<item>" + Environment.NewLine;
                 text = text + string.Format("<Codice_prodotto>{0}</Codice_prodotto>", productCode) + Environment.NewLine;
                 text = text + string.Format("<Numero_seriale>{0}</Numero_seriale>", serialNumber) + Environment.NewLine;
@@ -57,24 +75,33 @@ namespace NiceLabelConnector
             {
                 client.ExecuteTrigger(text, false, out error);
             }
+                Error er = new Error();
 
-            return string.IsNullOrEmpty(error);
+                if (!string.IsNullOrEmpty(error)) er.setError(false, error);
+                return er;
+            }
+            catch(Exception e)
+            {
+                Error er = new Error();
+                er.setError(true,e.Message );
+                return er;
+            }
         }
 
 
-        public static bool PrintSNLabel(List<string> serialNumbers, string productCode, string workArea, int quantity = 1)
+        public static Error PrintSNLabel(List<string> serialNumbers, string productCode, string workArea, int quantity = 1)
         {
             return PrintLabel(serialNumbers, productCode, workArea, "SNLabel",quantity);
         }
-        public static bool PrintDataLabel(List<string> serialNumbers, string productCode, string workArea, int quantity = 1)
+        public static Error PrintDataLabel(List<string> serialNumbers, string productCode, string workArea, int quantity = 1)
         {
             return PrintLabel(serialNumbers, productCode, workArea, "DataLabel", quantity);
         }
-        public static bool PrintPackageLabel(List<string> serialNumbers, string productCode, string workArea, int quantity = 1)
+        public static Error PrintPackageLabel(List<string> serialNumbers, string productCode, string workArea, int quantity = 1)
         {
             return PrintLabel(serialNumbers, productCode, workArea, "PackageLabel", quantity);
         }
-        public static bool PrintPalletLabel(List<string> serialNumbers, string productCode, string workArea, int quantity = 1)
+        public static Error PrintPalletLabel(List<string> serialNumbers, string productCode, string workArea, int quantity = 1)
         {
             return PrintLabel(serialNumbers, productCode, workArea, "PalletLabel", quantity);
         }
