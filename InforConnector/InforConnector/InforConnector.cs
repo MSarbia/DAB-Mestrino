@@ -17,7 +17,7 @@ namespace InforConnectorLibrary
 {
     public static class InforConnector
     {        
-        public static void CallWebService()
+        public static void CallWebService(int choice)
         {
             //var _url = "http://192.168.1.31:8312/c4ws/services/IWMStdReportProduction/lntestclone";
             var _url = "http://192.168.1.31:8312/c4ws/services/IWMStdUnplannedMatlIssue/lntestclone?wsdl";
@@ -76,8 +76,7 @@ namespace InforConnectorLibrary
                 soapEnvelopeXml.Save(stream);
             }
         }
-
-
+        
         public static string ReportQuantity(int qty)
         {
             using (WMStdReportProductionClient client = new WMStdReportProductionClient("IWMStdReportProductionSoapPort"))

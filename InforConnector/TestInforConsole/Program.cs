@@ -11,12 +11,20 @@ namespace TestInforConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Digitare qualcosa per inviare richiesta");
+            Console.WriteLine("Selezionare richiesta:\n\n 1) ReportProduction\n 2) Unplanned Material\n");
+
             while (true)
             {
-                int qty = Int32.Parse(Console.ReadLine());
-                InforConnector.CallWebService();
-                Console.WriteLine("\nChiamata eseguita");
+                int choice = Int32.Parse(Console.ReadLine());
+
+                if ((choice > 0) && (choice < 5))
+                {
+                    InforConnector.CallWebService(choice);
+                    Console.WriteLine("\nChiamata eseguita");
+                }
+                else {
+                    Console.WriteLine("\nScelta errata");
+                }
             }
         }
     }
