@@ -23,7 +23,7 @@ namespace NiceLabelConnector
             }
             public void setError(bool succeeded,string er)
             {
-                error = er
+                error = er;
                 connectionsucceeded = succeeded;
             }
 
