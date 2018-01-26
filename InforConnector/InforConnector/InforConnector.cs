@@ -1,4 +1,4 @@
-﻿using InforConnector.InforProducedQuantity;
+﻿using InforConnectorLibrary.InforProducedQuantity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +10,22 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Net;
 using System.IO;
+using System.Configuration;
+using System.ServiceModel.Configuration;
 
-namespace InforConnector
+namespace InforConnectorLibrary
 {
     public static class InforConnector
-    {
-
-
+    {        
         public static void CallWebService()
         {
             //var _url = "http://192.168.1.31:8312/c4ws/services/IWMStdReportProduction/lntestclone";
             var _url = "http://192.168.1.31:8312/c4ws/services/IWMStdUnplannedMatlIssue/lntestclone?wsdl";
             var _action = "http://xxxxxxxx/Service1.asmx?op=HelloWorld";
+
+            Dictionary<string, string> addressList = new Dictionary<string, string>();
+
+            var result = readConfigFile(out addressList);
 
             XmlDocument soapEnvelopeXml = CreateSoapEnvelope();
             HttpWebRequest webRequest = CreateWebRequest(_url, _action);
@@ -80,7 +84,6 @@ namespace InforConnector
             {
                 using (new OperationContextScope(client.InnerChannel))
                 {
-
                     ActivationType activation = new ActivationType { company = 100 };
 
                     //string headers = "<Header><h:Activation xmlns:h=\"http://www.infor.com/businessinterface/IWMStdReportProduction\" xmlns=\"http://www.infor.com/businessinterface/IWMStdReportProduction\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><company>100</company></h:Activation></Header>";
@@ -134,11 +137,43 @@ namespace InforConnector
                         return msgFault.ToString();
                         //XmlElement elm = msgFault.GetDetail<XmlElement>();
                     }
-
-
-
                 }
                 return string.Empty;
+            }
+        }
+
+        public static string readConfigFile(out Dictionary<string, string> addressList)
+        {
+            try
+            {
+                Dictionary<string, string> configURL = new Dictionary<string, string>();
+
+                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                var settings = configFile.AppSettings.Settings;
+
+                ClientSection clientSettings = ConfigurationManager.GetSection("system.serviceModel/client") as ClientSection;
+
+                string address = null;
+                string name = null;
+
+                foreach (ChannelEndpointElement endpoint in clientSettings.Endpoints)
+                {
+                    address = endpoint.Address.ToString();
+                    name = endpoint.Name.ToString();
+                    configURL.Add(name, address);
+                }
+
+                addressList = configURL;
+
+                string resultString = "Success!";
+
+                return resultString;
+            }
+            catch (ConfigurationErrorsException err)
+            {
+                addressList = null;
+
+                return err.ToString();
             }
         }
     }

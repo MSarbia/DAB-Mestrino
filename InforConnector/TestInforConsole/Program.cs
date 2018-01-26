@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InforConnectorLibrary;
 
 namespace TestInforConsole
 {
@@ -10,11 +11,11 @@ namespace TestInforConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Digitare qualcosa per inviare richiesta");
             while (true)
             {
                 int qty = Int32.Parse(Console.ReadLine());
-                InforConnector.InforConnector.CallWebService();
+                InforConnector.CallWebService();
                 Console.WriteLine("\nChiamata eseguita");
             }
         }

@@ -7,8 +7,8 @@
     <ProjectGuid>{6F474390-5786-49AD-A700-53B58115D859}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InforConnector</RootNamespace>
-    <AssemblyName>InforConnector</AssemblyName>
+    <RootNamespace>InforConnectorLibrary</RootNamespace>
+    <AssemblyName>InforConnectorLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -42,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\InforUnplannedMaterial\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="InforConnector.cs" />
     <Compile Include="Connected Services\InforProducedQuantity\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -56,16 +62,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\InforProducedQuantity\InforConnector.InforProducedQuantity.ReportProductionResponse.datasource">
+    <None Include="Connected Services\InforProducedQuantity\InforConnectorLibrary.InforProducedQuantity.ReportProductionResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\InforProducedQuantity\InforConnector.InforProducedQuantity.ReportProductionResponseType.datasource">
+    <None Include="Connected Services\InforProducedQuantity\InforConnectorLibrary.InforProducedQuantity.ReportProductionResponseType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\InforProducedQuantity\IWMStdReportProduction.wsdl" />
+    <None Include="Connected Services\InforUnplannedMaterial\InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\InforUnplannedMaterial\InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\InforUnplannedMaterial\IWMStdUnplannedMatlIssue.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\InforProducedQuantity\" />
+    <WCFMetadataStorage Include="Connected Services\InforUnplannedMaterial\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\InforProducedQuantity\configuration91.svcinfo" />
@@ -75,6 +89,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\InforProducedQuantity\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\InforUnplannedMaterial\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\InforUnplannedMaterial\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\InforUnplannedMaterial\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

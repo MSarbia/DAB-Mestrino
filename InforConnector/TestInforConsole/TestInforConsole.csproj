@@ -49,9 +49,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InforConnector\InforConnector.csproj">
+    <ProjectReference Include="..\InforConnector\InforConnectorLibrary.csproj">
       <Project>{6f474390-5786-49ad-a700-53b58115d859}</Project>
-      <Name>InforConnector</Name>
+      <Name>InforConnectorLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
