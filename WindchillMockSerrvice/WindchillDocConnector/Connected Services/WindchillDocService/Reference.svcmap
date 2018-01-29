@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="15c40ca4-b9fb-44a7-bf85-b94d9d349040" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="C:\Users\michele.sarbia\Documents\Lavoro\DAB\WebServiceWindChill\Windchill.wsdl" Protocol="file" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="xsd1.xsd" MetadataType="Schema" ID="06c7fa63-147d-4c5e-ab01-561dd8b43ce2" SourceId="1" SourceUrl="file:///C:/Users/michele.sarbia/Documents/Lavoro/DAB/WebServiceWindChill/xsd1.xsd" />
+    <MetadataFile FileName="swaref.xsd" MetadataType="Schema" ID="13de25e6-b6d4-4711-afee-fd7a8f61dd66" SourceId="1" SourceUrl="http://ws-i.org/profiles/basic/1.1/swaref.xsd" />
+    <MetadataFile FileName="ExtService.wsdl" MetadataType="Wsdl" ID="7a1e425b-886f-4eee-8c37-2ffd4d2c5813" SourceId="1" SourceUrl="file:///C:/Users/michele.sarbia/Documents/Lavoro/DAB/WebServiceWindChill/Windchill.wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

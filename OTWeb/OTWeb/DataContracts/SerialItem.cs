@@ -9,5 +9,7 @@ namespace OTWeb.DataContracts
         public string SerialNumber { get; set; }
         [DataMember]
         public string Status { get; set; }
+
+        internal string Order { get; set; }
     }
 }

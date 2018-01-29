@@ -53,6 +53,9 @@
             }).selectable({
                 selected: function (event, ui) {
                     if ($(ui.selected)) {
+                        if (ui.selected.tagName != 'LI') {
+                            ui.selected = $(ui.selected).parent()[0];
+                        }
                         SaveSession('selectedTeamLeaderCallToAccept', ui.selected.id);
                         $(ui.selected).siblings().removeClass('ui-selected').children().removeClass('ui-selected');
                         enableAcceptTeamLeaderCall();
@@ -73,6 +76,9 @@
             }).selectable({
                 selected: function (event, ui) {
                     if ($(ui.selected)) {
+                        if (ui.selected.tagName != 'LI') {
+                            ui.selected = $(ui.selected).parent()[0];
+                        }
                         SaveSession('selectedMaterialCallToAccept', ui.selected.id);
                         $(ui.selected).siblings().removeClass('ui-selected').children().removeClass('ui-selected');
                         enableAcceptMaterialCall();
