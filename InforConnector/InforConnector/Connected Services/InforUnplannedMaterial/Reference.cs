@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace InforConnectorLibrary.InforProducedQuantity {
+namespace InforConnectorLibrary.InforUnplannedMaterial {
     
     
     /// <remarks/>
@@ -18,7 +18,7 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
     public partial class Message : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string messageIndexField;
@@ -178,7 +178,7 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
     public enum MessageMessageType {
         
         /// <remarks/>
@@ -196,7 +196,7 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
     public partial class DetailMessage : Message {
         
         private string idField;
@@ -217,7 +217,7 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction", IncludeInSchema=false)]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue", IncludeInSchema=false)]
     public enum ItemChoiceType {
         
         /// <remarks/>
@@ -234,7 +234,7 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
     public partial class MessageMessageReference : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string messageReferenceTypeField;
@@ -280,7 +280,7 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
     public partial class EmptyValueType : object, System.ComponentModel.INotifyPropertyChanged {
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -298,7 +298,7 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
     public partial class ComparisonExpressionType : object, System.ComponentModel.INotifyPropertyChanged {
         
         private ComparisonExpressionTypeComparisonOperator comparisonOperatorField;
@@ -360,7 +360,7 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
     public enum ComparisonExpressionTypeComparisonOperator {
         
         /// <remarks/>
@@ -388,128 +388,108 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
     public enum filterAttributeListDT {
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.ProductionOrder")]
-        IWMStdReportProductionProductionOrder,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.ProdOrder")]
+        IWMStdUnplannedMatlIssueProdOrder,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.QtyDeliver")]
-        IWMStdReportProductionQtyDeliver,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.Operation")]
+        IWMStdUnplannedMatlIssueOperation,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.QtyReject")]
-        IWMStdReportProductionQtyReject,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.Item")]
+        IWMStdUnplannedMatlIssueItem,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.Warehouse")]
-        IWMStdReportProductionWarehouse,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.Warehouse")]
+        IWMStdUnplannedMatlIssueWarehouse,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.LotCode")]
-        IWMStdReportProductionLotCode,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.Location")]
+        IWMStdUnplannedMatlIssueLocation,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.PostHours")]
-        IWMStdReportProductionPostHours,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.LotCode")]
+        IWMStdUnplannedMatlIssueLotCode,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.ReportMore")]
-        IWMStdReportProductionReportMore,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.InvDate")]
+        IWMStdUnplannedMatlIssueInvDate,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.ReportPrevious")]
-        IWMStdReportProductionReportPrevious,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.SerialNumber")]
+        IWMStdUnplannedMatlIssueSerialNumber,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.BackFlush")]
-        IWMStdReportProductionBackFlush,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.Quantity")]
+        IWMStdUnplannedMatlIssueQuantity,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.DirectReceipt")]
-        IWMStdReportProductionDirectReceipt,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.Unit")]
+        IWMStdUnplannedMatlIssueUnit,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.Complete")]
-        IWMStdReportProductionComplete,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.Position")]
+        IWMStdUnplannedMatlIssuePosition,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.SerialNumber")]
-        IWMStdReportProductionSerialNumber,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.HandlingUnit")]
+        IWMStdUnplannedMatlIssueHandlingUnit,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.GenerateInbound")]
-        IWMStdReportProductionGenerateInbound,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.CreateTargetHU")]
+        IWMStdUnplannedMatlIssueCreateTargetHU,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.ReleaseInbound")]
-        IWMStdReportProductionReleaseInbound,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.TargetHU")]
+        IWMStdUnplannedMatlIssueTargetHU,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.RunNumber")]
-        IWMStdReportProductionRunNumber,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.GenerateOutbound")]
+        IWMStdUnplannedMatlIssueGenerateOutbound,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.Location")]
-        IWMStdReportProductionLocation,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.ReleaseOutbound")]
+        IWMStdUnplannedMatlIssueReleaseOutbound,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.InsertNewSerial")]
-        IWMStdReportProductionInsertNewSerial,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.TransID")]
+        IWMStdUnplannedMatlIssueTransID,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.Shift")]
-        IWMStdReportProductionShift,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.LoginCode")]
+        IWMStdUnplannedMatlIssueLoginCode,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.ReceiptLocation")]
-        IWMStdReportProductionReceiptLocation,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.PrintLabel")]
+        IWMStdUnplannedMatlIssuePrintLabel,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.CompletionDate")]
-        IWMStdReportProductionCompletionDate,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.OutData")]
+        IWMStdUnplannedMatlIssueOutData,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.KanbanID")]
-        IWMStdReportProductionKanbanID,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.RunNumber")]
+        IWMStdUnplannedMatlIssueRunNumber,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.RejectReason")]
-        IWMStdReportProductionRejectReason,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.AllSerials")]
+        IWMStdUnplannedMatlIssueAllSerials,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.TransID")]
-        IWMStdReportProductionTransID,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.GenerateSerials")]
+        IWMStdUnplannedMatlIssueGenerateSerials,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.GenerateHU")]
-        IWMStdReportProductionGenerateHU,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.AllNinvLots")]
+        IWMStdUnplannedMatlIssueAllNinvLots,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.HandlingUnit")]
-        IWMStdReportProductionHandlingUnit,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.FromRepOperation")]
-        IWMStdReportProductionFromRepOperation,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.CrossdockEnabled")]
-        IWMStdReportProductionCrossdockEnabled,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.LoginCode")]
-        IWMStdReportProductionLoginCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.OutData")]
-        IWMStdReportProductionOutData,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("IWMStdReportProduction.PackageDef")]
-        IWMStdReportProductionPackageDef,
+        [System.Xml.Serialization.XmlEnumAttribute("IWMStdUnplannedMatlIssue.GenerateNinvLots")]
+        IWMStdUnplannedMatlIssueGenerateNinvLots,
     }
     
     /// <remarks/>
@@ -517,7 +497,7 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
     public partial class LogicalExpressionType : object, System.ComponentModel.INotifyPropertyChanged {
         
         private LogicalExpressionTypeLogicalOperator logicalOperatorField;
@@ -562,7 +542,7 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
     public enum LogicalExpressionTypeLogicalOperator {
         
         /// <remarks/>
@@ -577,7 +557,7 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
     public partial class FilterType : object, System.ComponentModel.INotifyPropertyChanged {
         
         private object itemField;
@@ -610,7 +590,7 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
     public partial class ActivationType : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string usernameField;
@@ -684,17 +664,17 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
-    public partial class ReportProductionResponseType : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
+    public partial class IssueMaterialResponseType : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private ReportProductionResponseTypeIWMStdReportProduction[] dataAreaField;
+        private IssueMaterialResponseTypeIWMStdUnplannedMatlIssue[] dataAreaField;
         
         private InformationMessage[] informationAreaField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("IWMStdReportProduction", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
-        public ReportProductionResponseTypeIWMStdReportProduction[] DataArea {
+        [System.Xml.Serialization.XmlArrayItemAttribute("IWMStdUnplannedMatlIssue", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        public IssueMaterialResponseTypeIWMStdUnplannedMatlIssue[] DataArea {
             get {
                 return this.dataAreaField;
             }
@@ -732,8 +712,8 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
-    public partial class ReportProductionResponseTypeIWMStdReportProduction : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
+    public partial class IssueMaterialResponseTypeIWMStdUnplannedMatlIssue : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string outDataField;
         
@@ -764,7 +744,7 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
     public partial class InformationMessage : Message {
         
         private string idField;
@@ -787,16 +767,16 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
-    public partial class ReportProductionRequestType : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
+    public partial class IssueMaterialRequestType : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private ReportProductionRequestTypeControlArea controlAreaField;
+        private IssueMaterialRequestTypeControlArea controlAreaField;
         
-        private ReportProductionRequestTypeIWMStdReportProduction[] dataAreaField;
+        private IssueMaterialRequestTypeIWMStdUnplannedMatlIssue[] dataAreaField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public ReportProductionRequestTypeControlArea ControlArea {
+        public IssueMaterialRequestTypeControlArea ControlArea {
             get {
                 return this.controlAreaField;
             }
@@ -808,8 +788,8 @@ namespace InforConnectorLibrary.InforProducedQuantity {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("IWMStdReportProduction", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
-        public ReportProductionRequestTypeIWMStdReportProduction[] DataArea {
+        [System.Xml.Serialization.XmlArrayItemAttribute("IWMStdUnplannedMatlIssue", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        public IssueMaterialRequestTypeIWMStdUnplannedMatlIssue[] DataArea {
             get {
                 return this.dataAreaField;
             }
@@ -834,12 +814,12 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
-    public partial class ReportProductionRequestTypeControlArea : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
+    public partial class IssueMaterialRequestTypeControlArea : object, System.ComponentModel.INotifyPropertyChanged {
         
         private processingScope processingScopeField;
         
-        public ReportProductionRequestTypeControlArea() {
+        public IssueMaterialRequestTypeControlArea() {
             this.processingScopeField = processingScope.request;
         }
         
@@ -869,7 +849,7 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
     public enum processingScope {
         
         /// <remarks/>
@@ -890,128 +870,108 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
-    public partial class ReportProductionRequestTypeIWMStdReportProduction : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
+    public partial class IssueMaterialRequestTypeIWMStdUnplannedMatlIssue : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string productionOrderField;
+        private string prodOrderField;
         
-        private double qtyDeliverField;
+        private long operationField;
         
-        private bool qtyDeliverFieldSpecified;
+        private bool operationFieldSpecified;
         
-        private double qtyRejectField;
-        
-        private bool qtyRejectFieldSpecified;
+        private string itemField;
         
         private string warehouseField;
         
+        private string locationField;
+        
         private string lotCodeField;
         
-        private string postHoursField;
-        
-        private string reportMoreField;
-        
-        private string reportPreviousField;
-        
-        private string backFlushField;
-        
-        private string directReceiptField;
-        
-        private string completeField;
+        private string invDateField;
         
         private string serialNumberField;
         
-        private string generateInboundField;
+        private double quantityField;
         
-        private string releaseInboundField;
+        private bool quantityFieldSpecified;
         
-        private string runNumberField;
+        private string unitField;
         
-        private string locationField;
+        private long positionField;
         
-        private string insertNewSerialField;
-        
-        private string shiftField;
-        
-        private string receiptLocationField;
-        
-        private string completionDateField;
-        
-        private string kanbanIDField;
-        
-        private string rejectReasonField;
-        
-        private string transIDField;
-        
-        private string generateHUField;
+        private bool positionFieldSpecified;
         
         private string handlingUnitField;
         
-        private string fromRepOperationField;
+        private string createTargetHUField;
         
-        private string crossdockEnabledField;
+        private string targetHUField;
+        
+        private string generateOutboundField;
+        
+        private string releaseOutboundField;
+        
+        private string transIDField;
         
         private string loginCodeField;
         
-        private string packageDefField;
+        private string printLabelField;
+        
+        private string runNumberField;
+        
+        private string allSerialsField;
+        
+        private string generateSerialsField;
+        
+        private string allNinvLotsField;
+        
+        private string generateNinvLotsField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string ProductionOrder {
+        public string ProdOrder {
             get {
-                return this.productionOrderField;
+                return this.prodOrderField;
             }
             set {
-                this.productionOrderField = value;
-                this.RaisePropertyChanged("ProductionOrder");
+                this.prodOrderField = value;
+                this.RaisePropertyChanged("ProdOrder");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public double QtyDeliver {
+        public long Operation {
             get {
-                return this.qtyDeliverField;
+                return this.operationField;
             }
             set {
-                this.qtyDeliverField = value;
-                this.RaisePropertyChanged("QtyDeliver");
+                this.operationField = value;
+                this.RaisePropertyChanged("Operation");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool QtyDeliverSpecified {
+        public bool OperationSpecified {
             get {
-                return this.qtyDeliverFieldSpecified;
+                return this.operationFieldSpecified;
             }
             set {
-                this.qtyDeliverFieldSpecified = value;
-                this.RaisePropertyChanged("QtyDeliverSpecified");
+                this.operationFieldSpecified = value;
+                this.RaisePropertyChanged("OperationSpecified");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public double QtyReject {
+        public string Item {
             get {
-                return this.qtyRejectField;
+                return this.itemField;
             }
             set {
-                this.qtyRejectField = value;
-                this.RaisePropertyChanged("QtyReject");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool QtyRejectSpecified {
-            get {
-                return this.qtyRejectFieldSpecified;
-            }
-            set {
-                this.qtyRejectFieldSpecified = value;
-                this.RaisePropertyChanged("QtyRejectSpecified");
+                this.itemField = value;
+                this.RaisePropertyChanged("Item");
             }
         }
         
@@ -1029,138 +989,6 @@ namespace InforConnectorLibrary.InforProducedQuantity {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public string LotCode {
-            get {
-                return this.lotCodeField;
-            }
-            set {
-                this.lotCodeField = value;
-                this.RaisePropertyChanged("LotCode");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public string PostHours {
-            get {
-                return this.postHoursField;
-            }
-            set {
-                this.postHoursField = value;
-                this.RaisePropertyChanged("PostHours");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
-        public string ReportMore {
-            get {
-                return this.reportMoreField;
-            }
-            set {
-                this.reportMoreField = value;
-                this.RaisePropertyChanged("ReportMore");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
-        public string ReportPrevious {
-            get {
-                return this.reportPreviousField;
-            }
-            set {
-                this.reportPreviousField = value;
-                this.RaisePropertyChanged("ReportPrevious");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
-        public string BackFlush {
-            get {
-                return this.backFlushField;
-            }
-            set {
-                this.backFlushField = value;
-                this.RaisePropertyChanged("BackFlush");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
-        public string DirectReceipt {
-            get {
-                return this.directReceiptField;
-            }
-            set {
-                this.directReceiptField = value;
-                this.RaisePropertyChanged("DirectReceipt");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
-        public string Complete {
-            get {
-                return this.completeField;
-            }
-            set {
-                this.completeField = value;
-                this.RaisePropertyChanged("Complete");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=11)]
-        public string SerialNumber {
-            get {
-                return this.serialNumberField;
-            }
-            set {
-                this.serialNumberField = value;
-                this.RaisePropertyChanged("SerialNumber");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
-        public string GenerateInbound {
-            get {
-                return this.generateInboundField;
-            }
-            set {
-                this.generateInboundField = value;
-                this.RaisePropertyChanged("GenerateInbound");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=13)]
-        public string ReleaseInbound {
-            get {
-                return this.releaseInboundField;
-            }
-            set {
-                this.releaseInboundField = value;
-                this.RaisePropertyChanged("ReleaseInbound");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=14)]
-        public string RunNumber {
-            get {
-                return this.runNumberField;
-            }
-            set {
-                this.runNumberField = value;
-                this.RaisePropertyChanged("RunNumber");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=15)]
         public string Location {
             get {
                 return this.locationField;
@@ -1172,103 +1000,103 @@ namespace InforConnectorLibrary.InforProducedQuantity {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=16)]
-        public string InsertNewSerial {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public string LotCode {
             get {
-                return this.insertNewSerialField;
+                return this.lotCodeField;
             }
             set {
-                this.insertNewSerialField = value;
-                this.RaisePropertyChanged("InsertNewSerial");
+                this.lotCodeField = value;
+                this.RaisePropertyChanged("LotCode");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=17)]
-        public string Shift {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        public string InvDate {
             get {
-                return this.shiftField;
+                return this.invDateField;
             }
             set {
-                this.shiftField = value;
-                this.RaisePropertyChanged("Shift");
+                this.invDateField = value;
+                this.RaisePropertyChanged("InvDate");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=18)]
-        public string ReceiptLocation {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
+        public string SerialNumber {
             get {
-                return this.receiptLocationField;
+                return this.serialNumberField;
             }
             set {
-                this.receiptLocationField = value;
-                this.RaisePropertyChanged("ReceiptLocation");
+                this.serialNumberField = value;
+                this.RaisePropertyChanged("SerialNumber");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=19)]
-        public string CompletionDate {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
+        public double Quantity {
             get {
-                return this.completionDateField;
+                return this.quantityField;
             }
             set {
-                this.completionDateField = value;
-                this.RaisePropertyChanged("CompletionDate");
+                this.quantityField = value;
+                this.RaisePropertyChanged("Quantity");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=20)]
-        public string KanbanID {
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool QuantitySpecified {
             get {
-                return this.kanbanIDField;
+                return this.quantityFieldSpecified;
             }
             set {
-                this.kanbanIDField = value;
-                this.RaisePropertyChanged("KanbanID");
+                this.quantityFieldSpecified = value;
+                this.RaisePropertyChanged("QuantitySpecified");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=21)]
-        public string RejectReason {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
+        public string Unit {
             get {
-                return this.rejectReasonField;
+                return this.unitField;
             }
             set {
-                this.rejectReasonField = value;
-                this.RaisePropertyChanged("RejectReason");
+                this.unitField = value;
+                this.RaisePropertyChanged("Unit");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=22)]
-        public string TransID {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
+        public long Position {
             get {
-                return this.transIDField;
+                return this.positionField;
             }
             set {
-                this.transIDField = value;
-                this.RaisePropertyChanged("TransID");
+                this.positionField = value;
+                this.RaisePropertyChanged("Position");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=23)]
-        public string GenerateHU {
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PositionSpecified {
             get {
-                return this.generateHUField;
+                return this.positionFieldSpecified;
             }
             set {
-                this.generateHUField = value;
-                this.RaisePropertyChanged("GenerateHU");
+                this.positionFieldSpecified = value;
+                this.RaisePropertyChanged("PositionSpecified");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=24)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=11)]
         public string HandlingUnit {
             get {
                 return this.handlingUnitField;
@@ -1280,31 +1108,67 @@ namespace InforConnectorLibrary.InforProducedQuantity {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=25)]
-        public string FromRepOperation {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
+        public string CreateTargetHU {
             get {
-                return this.fromRepOperationField;
+                return this.createTargetHUField;
             }
             set {
-                this.fromRepOperationField = value;
-                this.RaisePropertyChanged("FromRepOperation");
+                this.createTargetHUField = value;
+                this.RaisePropertyChanged("CreateTargetHU");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=26)]
-        public string CrossdockEnabled {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=13)]
+        public string TargetHU {
             get {
-                return this.crossdockEnabledField;
+                return this.targetHUField;
             }
             set {
-                this.crossdockEnabledField = value;
-                this.RaisePropertyChanged("CrossdockEnabled");
+                this.targetHUField = value;
+                this.RaisePropertyChanged("TargetHU");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=27)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=14)]
+        public string GenerateOutbound {
+            get {
+                return this.generateOutboundField;
+            }
+            set {
+                this.generateOutboundField = value;
+                this.RaisePropertyChanged("GenerateOutbound");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=15)]
+        public string ReleaseOutbound {
+            get {
+                return this.releaseOutboundField;
+            }
+            set {
+                this.releaseOutboundField = value;
+                this.RaisePropertyChanged("ReleaseOutbound");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=16)]
+        public string TransID {
+            get {
+                return this.transIDField;
+            }
+            set {
+                this.transIDField = value;
+                this.RaisePropertyChanged("TransID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=17)]
         public string LoginCode {
             get {
                 return this.loginCodeField;
@@ -1316,14 +1180,74 @@ namespace InforConnectorLibrary.InforProducedQuantity {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=28)]
-        public string PackageDef {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=18)]
+        public string PrintLabel {
             get {
-                return this.packageDefField;
+                return this.printLabelField;
             }
             set {
-                this.packageDefField = value;
-                this.RaisePropertyChanged("PackageDef");
+                this.printLabelField = value;
+                this.RaisePropertyChanged("PrintLabel");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=19)]
+        public string RunNumber {
+            get {
+                return this.runNumberField;
+            }
+            set {
+                this.runNumberField = value;
+                this.RaisePropertyChanged("RunNumber");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=20)]
+        public string AllSerials {
+            get {
+                return this.allSerialsField;
+            }
+            set {
+                this.allSerialsField = value;
+                this.RaisePropertyChanged("AllSerials");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=21)]
+        public string GenerateSerials {
+            get {
+                return this.generateSerialsField;
+            }
+            set {
+                this.generateSerialsField = value;
+                this.RaisePropertyChanged("GenerateSerials");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=22)]
+        public string AllNinvLots {
+            get {
+                return this.allNinvLotsField;
+            }
+            set {
+                this.allNinvLotsField = value;
+                this.RaisePropertyChanged("AllNinvLots");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=23)]
+        public string GenerateNinvLots {
+            get {
+                return this.generateNinvLotsField;
+            }
+            set {
+                this.generateNinvLotsField = value;
+                this.RaisePropertyChanged("GenerateNinvLots");
             }
         }
         
@@ -1338,109 +1262,109 @@ namespace InforConnectorLibrary.InforProducedQuantity {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction", ConfigurationName="InforProducedQuantity.IWMStdReportProduction")]
-    public interface IWMStdReportProduction {
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue", ConfigurationName="InforUnplannedMaterial.IWMStdUnplannedMatlIssue")]
+    public interface IWMStdUnplannedMatlIssue {
         
-        // CODEGEN: Generating message contract since message ReportProductionRequest has headers
+        // CODEGEN: Generating message contract since message IssueMaterialRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.FaultContractAttribute(typeof(InforConnectorLibrary.InforProducedQuantity.Message), Action="", Name="Result")]
+        [System.ServiceModel.FaultContractAttribute(typeof(InforConnectorLibrary.InforUnplannedMaterial.Message), Action="", Name="Result")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FilterType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ActivationType))]
-        InforConnectorLibrary.InforProducedQuantity.ReportProductionResponse ReportProduction(InforConnectorLibrary.InforProducedQuantity.ReportProductionRequest request);
+        InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialResponse IssueMaterial(InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<InforConnectorLibrary.InforProducedQuantity.ReportProductionResponse> ReportProductionAsync(InforConnectorLibrary.InforProducedQuantity.ReportProductionRequest request);
+        System.Threading.Tasks.Task<InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialResponse> IssueMaterialAsync(InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ReportProduction", WrapperNamespace="http://www.infor.com/businessinterface/IWMStdReportProduction", IsWrapped=true)]
-    public partial class ReportProductionRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="IssueMaterial", WrapperNamespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue", IsWrapped=true)]
+    public partial class IssueMaterialRequest {
         
-        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdReportProduction")]
-        public InforConnectorLibrary.InforProducedQuantity.ActivationType Activation;
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue")]
+        public InforConnectorLibrary.InforUnplannedMaterial.ActivationType Activation;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="ReportProductionRequest", Namespace="", Order=0)]
-        public InforConnectorLibrary.InforProducedQuantity.ReportProductionRequestType ReportProductionRequest1;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="IssueMaterialRequest", Namespace="", Order=0)]
+        public InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialRequestType IssueMaterialRequest1;
         
-        public ReportProductionRequest() {
+        public IssueMaterialRequest() {
         }
         
-        public ReportProductionRequest(InforConnectorLibrary.InforProducedQuantity.ActivationType Activation, InforConnectorLibrary.InforProducedQuantity.ReportProductionRequestType ReportProductionRequest1) {
+        public IssueMaterialRequest(InforConnectorLibrary.InforUnplannedMaterial.ActivationType Activation, InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialRequestType IssueMaterialRequest1) {
             this.Activation = Activation;
-            this.ReportProductionRequest1 = ReportProductionRequest1;
+            this.IssueMaterialRequest1 = IssueMaterialRequest1;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ReportProductionResponse", WrapperNamespace="http://www.infor.com/businessinterface/IWMStdReportProduction", IsWrapped=true)]
-    public partial class ReportProductionResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="IssueMaterialResponse", WrapperNamespace="http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue", IsWrapped=true)]
+    public partial class IssueMaterialResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="ReportProductionResponse", Namespace="", Order=0)]
-        public InforConnectorLibrary.InforProducedQuantity.ReportProductionResponseType ReportProductionResponse1;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="IssueMaterialResponse", Namespace="", Order=0)]
+        public InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialResponseType IssueMaterialResponse1;
         
-        public ReportProductionResponse() {
+        public IssueMaterialResponse() {
         }
         
-        public ReportProductionResponse(InforConnectorLibrary.InforProducedQuantity.ReportProductionResponseType ReportProductionResponse1) {
-            this.ReportProductionResponse1 = ReportProductionResponse1;
+        public IssueMaterialResponse(InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialResponseType IssueMaterialResponse1) {
+            this.IssueMaterialResponse1 = IssueMaterialResponse1;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IWMStdReportProductionChannel : InforConnectorLibrary.InforProducedQuantity.IWMStdReportProduction, System.ServiceModel.IClientChannel {
+    public interface IWMStdUnplannedMatlIssueChannel : InforConnectorLibrary.InforUnplannedMaterial.IWMStdUnplannedMatlIssue, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class WMStdReportProductionClient : System.ServiceModel.ClientBase<InforConnectorLibrary.InforProducedQuantity.IWMStdReportProduction>, InforConnectorLibrary.InforProducedQuantity.IWMStdReportProduction {
+    public partial class WMStdUnplannedMatlIssueClient : System.ServiceModel.ClientBase<InforConnectorLibrary.InforUnplannedMaterial.IWMStdUnplannedMatlIssue>, InforConnectorLibrary.InforUnplannedMaterial.IWMStdUnplannedMatlIssue {
         
-        public WMStdReportProductionClient() {
+        public WMStdUnplannedMatlIssueClient() {
         }
         
-        public WMStdReportProductionClient(string endpointConfigurationName) : 
+        public WMStdUnplannedMatlIssueClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public WMStdReportProductionClient(string endpointConfigurationName, string remoteAddress) : 
+        public WMStdUnplannedMatlIssueClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public WMStdReportProductionClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public WMStdUnplannedMatlIssueClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public WMStdReportProductionClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public WMStdUnplannedMatlIssueClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        InforConnectorLibrary.InforProducedQuantity.ReportProductionResponse InforConnectorLibrary.InforProducedQuantity.IWMStdReportProduction.ReportProduction(InforConnectorLibrary.InforProducedQuantity.ReportProductionRequest request) {
-            return base.Channel.ReportProduction(request);
+        InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialResponse InforConnectorLibrary.InforUnplannedMaterial.IWMStdUnplannedMatlIssue.IssueMaterial(InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialRequest request) {
+            return base.Channel.IssueMaterial(request);
         }
         
-        public InforConnectorLibrary.InforProducedQuantity.ReportProductionResponseType ReportProduction(InforConnectorLibrary.InforProducedQuantity.ActivationType Activation, InforConnectorLibrary.InforProducedQuantity.ReportProductionRequestType ReportProductionRequest1) {
-            InforConnectorLibrary.InforProducedQuantity.ReportProductionRequest inValue = new InforConnectorLibrary.InforProducedQuantity.ReportProductionRequest();
+        public InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialResponseType IssueMaterial(InforConnectorLibrary.InforUnplannedMaterial.ActivationType Activation, InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialRequestType IssueMaterialRequest1) {
+            InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialRequest inValue = new InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialRequest();
             inValue.Activation = Activation;
-            inValue.ReportProductionRequest1 = ReportProductionRequest1;
-            InforConnectorLibrary.InforProducedQuantity.ReportProductionResponse retVal = ((InforConnectorLibrary.InforProducedQuantity.IWMStdReportProduction)(this)).ReportProduction(inValue);
-            return retVal.ReportProductionResponse1;
+            inValue.IssueMaterialRequest1 = IssueMaterialRequest1;
+            InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialResponse retVal = ((InforConnectorLibrary.InforUnplannedMaterial.IWMStdUnplannedMatlIssue)(this)).IssueMaterial(inValue);
+            return retVal.IssueMaterialResponse1;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<InforConnectorLibrary.InforProducedQuantity.ReportProductionResponse> InforConnectorLibrary.InforProducedQuantity.IWMStdReportProduction.ReportProductionAsync(InforConnectorLibrary.InforProducedQuantity.ReportProductionRequest request) {
-            return base.Channel.ReportProductionAsync(request);
+        System.Threading.Tasks.Task<InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialResponse> InforConnectorLibrary.InforUnplannedMaterial.IWMStdUnplannedMatlIssue.IssueMaterialAsync(InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialRequest request) {
+            return base.Channel.IssueMaterialAsync(request);
         }
         
-        public System.Threading.Tasks.Task<InforConnectorLibrary.InforProducedQuantity.ReportProductionResponse> ReportProductionAsync(InforConnectorLibrary.InforProducedQuantity.ActivationType Activation, InforConnectorLibrary.InforProducedQuantity.ReportProductionRequestType ReportProductionRequest1) {
-            InforConnectorLibrary.InforProducedQuantity.ReportProductionRequest inValue = new InforConnectorLibrary.InforProducedQuantity.ReportProductionRequest();
+        public System.Threading.Tasks.Task<InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialResponse> IssueMaterialAsync(InforConnectorLibrary.InforUnplannedMaterial.ActivationType Activation, InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialRequestType IssueMaterialRequest1) {
+            InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialRequest inValue = new InforConnectorLibrary.InforUnplannedMaterial.IssueMaterialRequest();
             inValue.Activation = Activation;
-            inValue.ReportProductionRequest1 = ReportProductionRequest1;
-            return ((InforConnectorLibrary.InforProducedQuantity.IWMStdReportProduction)(this)).ReportProductionAsync(inValue);
+            inValue.IssueMaterialRequest1 = IssueMaterialRequest1;
+            return ((InforConnectorLibrary.InforUnplannedMaterial.IWMStdUnplannedMatlIssue)(this)).IssueMaterialAsync(inValue);
         }
     }
 }

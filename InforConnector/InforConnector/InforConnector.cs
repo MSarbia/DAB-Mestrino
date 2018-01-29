@@ -1,4 +1,4 @@
-﻿using InforConnector.InforProducedQuantity;
+﻿using InforConnectorLibrary.InforProducedQuantity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +10,22 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Net;
 using System.IO;
+using System.Configuration;
+using System.ServiceModel.Configuration;
 
-namespace InforConnector
+namespace InforConnectorLibrary
 {
     public static class InforConnector
-    {
-
-
-        public static void CallWebService()
+    {        
+        public static void CallWebService(int choice)
         {
-            var _url = "http://192.168.1.31:8312/c4ws/services/IWMStdReportProduction/lntestclone";
+            //var _url = "http://192.168.1.31:8312/c4ws/services/IWMStdReportProduction/lntestclone";
+            var _url = "http://192.168.1.31:8312/c4ws/services/IWMStdUnplannedMatlIssue/lntestclone?wsdl";
             var _action = "http://xxxxxxxx/Service1.asmx?op=HelloWorld";
+
+            Dictionary<string, string> addressList = new Dictionary<string, string>();
+
+            var result = readConfigFile(out addressList);
 
             XmlDocument soapEnvelopeXml = CreateSoapEnvelope();
             HttpWebRequest webRequest = CreateWebRequest(_url, _action);
@@ -48,7 +53,7 @@ namespace InforConnector
         private static HttpWebRequest CreateWebRequest(string url, string action)
         {
             HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
-            webRequest.Headers.Add("SOAPAction", action);
+            webRequest.Headers.Add("SOAPAction", "");
             webRequest.ContentType = "text/xml;charset=\"utf-8\"";
             webRequest.Accept = "text/xml";
             webRequest.Method = "POST";
@@ -58,7 +63,9 @@ namespace InforConnector
         private static XmlDocument CreateSoapEnvelope()
         {
             XmlDocument soapEnvelopeDocument = new XmlDocument();
-            soapEnvelopeDocument.LoadXml(@"<SOAP-ENV:Envelope xmlns:SOAP-ENV=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:xsi=""http://www.w3.org/1999/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/1999/XMLSchema""><SOAP-ENV:Body><HelloWorld xmlns=""http://tempuri.org/"" SOAP-ENV:encodingStyle=""http://schemas.xmlsoap.org/soap/encoding/""><int1 xsi:type=""xsd:integer"">12</int1><int2 xsi:type=""xsd:integer"">32</int2></HelloWorld></SOAP-ENV:Body></SOAP-ENV:Envelope>");
+            //soapEnvelopeDocument.LoadXml(@"<SOAP-ENV:Envelope xmlns:SOAP-ENV=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:xsi=""http://www.w3.org/1999/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/1999/XMLSchema""><SOAP-ENV:Body><HelloWorld xmlns=""http://tempuri.org/"" SOAP-ENV:encodingStyle=""http://schemas.xmlsoap.org/soap/encoding/""><int1 xsi:type=""xsd:integer"">12</int1><int2 xsi:type=""xsd:integer"">32</int2></HelloWorld></SOAP-ENV:Body></SOAP-ENV:Envelope>");
+            //soapEnvelopeDocument.LoadXml(@"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:iwm=""http://www.infor.com/businessinterface/IWMStdReportProduction""><soapenv:Header><iwm:Activation><company>100</company></iwm:Activation></soapenv:Header><soapenv:Body><iwm:ReportProduction><ReportProductionRequest><!--Optional:--><ControlArea><!--Optional:--><processingScope>request</processingScope></ControlArea><!--Optional:--><DataArea><!--Zero or more repetitions:--><IWMStdReportProduction><ProductionOrder>D02220137</ProductionOrder><!--Optional:--><QtyDeliver>1</QtyDeliver><!--Optional:--><ReportPrevious>yes</ReportPrevious><!--Optional:--><BackFlush>yes</BackFlush><!--Optional:--><DirectReceipt>yes</DirectReceipt><!--Optional:--><Complete>no</Complete><ReportMore>no</ReportMore></IWMStdReportProduction></DataArea></ReportProductionRequest></iwm:ReportProduction></soapenv:Body></soapenv:Envelope>");
+            soapEnvelopeDocument.LoadXml(@"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:iwm=""http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue""><soapenv:Header><iwm:Activation><company>100</company></iwm:Activation></soapenv:Header><soapenv:Body><iwm:IssueMaterial><IssueMaterialRequest><!--Optional:--><ControlArea><!--Optional:--><processingScope>request</processingScope></ControlArea><!--Optional:--><DataArea><!--Zero or more repetitions:--><IWMStdUnplannedMatlIssue><ProdOrder>D02220137</ProdOrder><!--Optional:--><Operation>10</Operation><!--Optional:--><Item>         002612155</Item><!--Optional:--><Warehouse>D100</Warehouse><!--<Location>PREL100</Location><LotCode>?</LotCode><SerialNumber>?</SerialNumber>--><Quantity>1</Quantity><!--Optional:--><Unit>NR</Unit><!--Optional:--><GenerateOutbound>no</GenerateOutbound><!--Optional:--><ReleaseOutbound>no</ReleaseOutbound><!--Optional:--><LoginCode>extcdm</LoginCode></IWMStdUnplannedMatlIssue></DataArea></IssueMaterialRequest></iwm:IssueMaterial></soapenv:Body></soapenv:Envelope>");
             return soapEnvelopeDocument;
         }
 
@@ -69,15 +76,13 @@ namespace InforConnector
                 soapEnvelopeXml.Save(stream);
             }
         }
-
-
+        
         public static string ReportQuantity(int qty)
         {
             using (WMStdReportProductionClient client = new WMStdReportProductionClient("IWMStdReportProductionSoapPort"))
             {
                 using (new OperationContextScope(client.InnerChannel))
                 {
-
                     ActivationType activation = new ActivationType { company = 100 };
 
                     //string headers = "<Header><h:Activation xmlns:h=\"http://www.infor.com/businessinterface/IWMStdReportProduction\" xmlns=\"http://www.infor.com/businessinterface/IWMStdReportProduction\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><company>100</company></h:Activation></Header>";
@@ -131,11 +136,43 @@ namespace InforConnector
                         return msgFault.ToString();
                         //XmlElement elm = msgFault.GetDetail<XmlElement>();
                     }
-
-
-
                 }
                 return string.Empty;
+            }
+        }
+
+        public static string readConfigFile(out Dictionary<string, string> addressList)
+        {
+            try
+            {
+                Dictionary<string, string> configURL = new Dictionary<string, string>();
+
+                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                var settings = configFile.AppSettings.Settings;
+
+                ClientSection clientSettings = ConfigurationManager.GetSection("system.serviceModel/client") as ClientSection;
+
+                string address = null;
+                string name = null;
+
+                foreach (ChannelEndpointElement endpoint in clientSettings.Endpoints)
+                {
+                    address = endpoint.Address.ToString();
+                    name = endpoint.Name.ToString();
+                    configURL.Add(name, address);
+                }
+
+                addressList = configURL;
+
+                string resultString = "Success!";
+
+                return resultString;
+            }
+            catch (ConfigurationErrorsException err)
+            {
+                addressList = null;
+
+                return err.ToString();
             }
         }
     }

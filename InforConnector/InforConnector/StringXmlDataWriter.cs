@@ -1,7 +1,7 @@
 ﻿using System.ServiceModel.Channels;
 using System.Xml;
 
-namespace InforConnector
+namespace InforConnectorLibrary
 {
     public class StringXmlDataWriter : BodyWriter
     {
