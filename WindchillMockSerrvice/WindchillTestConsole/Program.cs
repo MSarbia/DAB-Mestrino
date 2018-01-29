@@ -11,7 +11,10 @@ namespace WindchillTestConsole
             {
                 using (var docConnector = new WindchillDocConnector())
                 {
+
                     docConnector.DownloadDocList("productCode", "productRevision");
+
+
                 }
                 Console.ReadLine();
             }
