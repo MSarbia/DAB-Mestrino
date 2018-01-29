@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InforConnectorLibrary
 {
-    class UnplannedMaterial
+    public class UnplannedMat
     {
         public int Company { get; set; }
 
@@ -30,7 +30,7 @@ namespace InforConnectorLibrary
 
         public string LoginCode { get; set; }
 
-        public UnplannedMaterial(string erpOrder, int operationSequence, string consumedMaterialDefinition,
+        public UnplannedMat(string erpOrder, int operationSequence, string consumedMaterialDefinition,
                                  int consumedMaterialSequence, decimal consumedQuantity, int company = 100,
                                  string processingScope = "request", string warehouse = "D100", string unit = "NR",
                                  string generateOutbound = "no", string releaseOutbound = "no",
