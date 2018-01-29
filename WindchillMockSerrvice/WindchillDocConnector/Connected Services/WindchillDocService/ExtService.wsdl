@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://ws.cdm.ext/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="ExtService" targetNamespace="http://ws.cdm.ext/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="C:\Users\michele.sarbia\Documents\Lavoro\DAB\WebServiceWindChill\xsd1.xsd" namespace="http://ws.cdm.ext/" />
+    </xsd:schema>
+  </types>
+  <message name="test">
+    <part name="parameters" element="tns:test" />
+  </message>
+  <message name="testResponse">
+    <part name="parameters" element="tns:testResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="createLink">
+    <part name="parameters" element="tns:createLink" />
+  </message>
+  <message name="createLinkResponse">
+    <part name="parameters" element="tns:createLinkResponse" />
+  </message>
+  <message name="getChildren">
+    <part name="parameters" element="tns:getChildren" />
+  </message>
+  <message name="getChildrenResponse">
+    <part name="parameters" element="tns:getChildrenResponse" />
+  </message>
+  <message name="getParents">
+    <part name="parameters" element="tns:getParents" />
+  </message>
+  <message name="getParentsResponse">
+    <part name="parameters" element="tns:getParentsResponse" />
+  </message>
+  <message name="download">
+    <part name="parameters" element="tns:download" />
+  </message>
+  <message name="downloadResponse">
+    <part name="parameters" element="tns:downloadResponse" />
+  </message>
+  <message name="revise">
+    <part name="parameters" element="tns:revise" />
+  </message>
+  <message name="reviseResponse">
+    <part name="parameters" element="tns:reviseResponse" />
+  </message>
+  <message name="getLinks">
+    <part name="parameters" element="tns:getLinks" />
+  </message>
+  <message name="getLinksResponse">
+    <part name="parameters" element="tns:getLinksResponse" />
+  </message>
+  <message name="transactionStart">
+    <part name="parameters" element="tns:transactionStart" />
+  </message>
+  <message name="transactionStartResponse">
+    <part name="parameters" element="tns:transactionStartResponse" />
+  </message>
+  <message name="uploadDocument">
+    <part name="parameters" element="tns:uploadDocument" />
+  </message>
+  <message name="uploadDocumentResponse">
+    <part name="parameters" element="tns:uploadDocumentResponse" />
+  </message>
+  <message name="query">
+    <part name="parameters" element="tns:query" />
+  </message>
+  <message name="queryResponse">
+    <part name="parameters" element="tns:queryResponse" />
+  </message>
+  <message name="queryParts">
+    <part name="parameters" element="tns:queryParts" />
+  </message>
+  <message name="queryPartsResponse">
+    <part name="parameters" element="tns:queryPartsResponse" />
+  </message>
+  <message name="getRelatedDocuments">
+    <part name="parameters" element="tns:getRelatedDocuments" />
+  </message>
+  <message name="getRelatedDocumentsResponse">
+    <part name="parameters" element="tns:getRelatedDocumentsResponse" />
+  </message>
+  <message name="transactionCommit">
+    <part name="parameters" element="tns:transactionCommit" />
+  </message>
+  <message name="transactionCommitResponse">
+    <part name="parameters" element="tns:transactionCommitResponse" />
+  </message>
+  <message name="transactionRollback">
+    <part name="parameters" element="tns:transactionRollback" />
+  </message>
+  <message name="transactionRollbackResponse">
+    <part name="parameters" element="tns:transactionRollbackResponse" />
+  </message>
+  <message name="setStateSuccessor">
+    <part name="parameters" element="tns:setStateSuccessor" />
+  </message>
+  <message name="setStateSuccessorResponse">
+    <part name="parameters" element="tns:setStateSuccessorResponse" />
+  </message>
+  <message name="setStatePredecessor">
+    <part name="parameters" element="tns:setStatePredecessor" />
+  </message>
+  <message name="setStatePredecessorResponse">
+    <part name="parameters" element="tns:setStatePredecessorResponse" />
+  </message>
+  <message name="getRevisionControlled">
+    <part name="parameters" element="tns:getRevisionControlled" />
+  </message>
+  <message name="getRevisionControlledResponse">
+    <part name="parameters" element="tns:getRevisionControlledResponse" />
+  </message>
+  <portType name="Ext">
+    <operation name="test">
+      <input wsam:Action="http://ws.cdm.ext/Ext/testRequest" message="tns:test" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/testResponse" message="tns:testResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/test/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="createLink">
+      <input wsam:Action="http://ws.cdm.ext/Ext/createLinkRequest" message="tns:createLink" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/createLinkResponse" message="tns:createLinkResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/createLink/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getChildren">
+      <input wsam:Action="http://ws.cdm.ext/Ext/getChildrenRequest" message="tns:getChildren" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/getChildrenResponse" message="tns:getChildrenResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/getChildren/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getParents">
+      <input wsam:Action="http://ws.cdm.ext/Ext/getParentsRequest" message="tns:getParents" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/getParentsResponse" message="tns:getParentsResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/getParents/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="download">
+      <input wsam:Action="http://ws.cdm.ext/Ext/downloadRequest" message="tns:download" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/downloadResponse" message="tns:downloadResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/download/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="revise">
+      <input wsam:Action="http://ws.cdm.ext/Ext/reviseRequest" message="tns:revise" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/reviseResponse" message="tns:reviseResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/revise/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getLinks">
+      <input wsam:Action="http://ws.cdm.ext/Ext/getLinksRequest" message="tns:getLinks" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/getLinksResponse" message="tns:getLinksResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/getLinks/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="transactionStart">
+      <input wsam:Action="http://ws.cdm.ext/Ext/transactionStartRequest" message="tns:transactionStart" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/transactionStartResponse" message="tns:transactionStartResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/transactionStart/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="uploadDocument">
+      <input wsam:Action="http://ws.cdm.ext/Ext/uploadDocumentRequest" message="tns:uploadDocument" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/uploadDocumentResponse" message="tns:uploadDocumentResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/uploadDocument/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="query">
+      <input wsam:Action="http://ws.cdm.ext/Ext/queryRequest" message="tns:query" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/queryResponse" message="tns:queryResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/query/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="queryParts">
+      <input wsam:Action="http://ws.cdm.ext/Ext/queryPartsRequest" message="tns:queryParts" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/queryPartsResponse" message="tns:queryPartsResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/queryParts/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getRelatedDocuments">
+      <input wsam:Action="http://ws.cdm.ext/Ext/getRelatedDocumentsRequest" message="tns:getRelatedDocuments" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/getRelatedDocumentsResponse" message="tns:getRelatedDocumentsResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/getRelatedDocuments/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="transactionCommit">
+      <input wsam:Action="http://ws.cdm.ext/Ext/transactionCommitRequest" message="tns:transactionCommit" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/transactionCommitResponse" message="tns:transactionCommitResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/transactionCommit/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="transactionRollback">
+      <input wsam:Action="http://ws.cdm.ext/Ext/transactionRollbackRequest" message="tns:transactionRollback" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/transactionRollbackResponse" message="tns:transactionRollbackResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/transactionRollback/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="setStateSuccessor">
+      <input wsam:Action="http://ws.cdm.ext/Ext/setStateSuccessorRequest" message="tns:setStateSuccessor" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/setStateSuccessorResponse" message="tns:setStateSuccessorResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/setStateSuccessor/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="setStatePredecessor">
+      <input wsam:Action="http://ws.cdm.ext/Ext/setStatePredecessorRequest" message="tns:setStatePredecessor" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/setStatePredecessorResponse" message="tns:setStatePredecessorResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/setStatePredecessor/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getRevisionControlled">
+      <input wsam:Action="http://ws.cdm.ext/Ext/getRevisionControlledRequest" message="tns:getRevisionControlled" />
+      <output wsam:Action="http://ws.cdm.ext/Ext/getRevisionControlledResponse" message="tns:getRevisionControlledResponse" />
+      <fault wsam:Action="http://ws.cdm.ext/Ext/getRevisionControlled/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="ExtPortBinding" type="tns:Ext">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="test">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="createLink">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getChildren">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getParents">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="download">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="revise">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getLinks">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="transactionStart">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="uploadDocument">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="query">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="queryParts">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getRelatedDocuments">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="transactionCommit">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="transactionRollback">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="setStateSuccessor">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="setStatePredecessor">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getRevisionControlled">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="ExtService">
+    <port name="ExtPort" binding="tns:ExtPortBinding">
+      <soap:address location="http://srvitgwce01.adw.intra:80/Windchill/servlet/extcdm" />
+    </port>
+  </service>
+</definitions>

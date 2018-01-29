@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.Drawing.Imaging;
+using WindchillDocConnectorLibrary;
 
 namespace WindchillTestConsole
 {
@@ -15,18 +9,12 @@ namespace WindchillTestConsole
         {
             while (true)
             {
-                using (var client = new WindchillDocumentService.ExtClient("ExtPort"))
+                using (var docConnector = new WindchillDocConnector())
                 {
-                    var files = client.getRelatedDocuments("prova", "a", "");
-                    foreach(var file in files)
-                    {
-                        var fileData = client.download(file.name, file.number, file.revision, "");
-                        using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(fileData.content)))
-                        {
-                            var image = Image.FromStream(ms);
-                            image.Save($"C:\\temp\\{fileData.fileName}", ImageFormat.Jpeg);
-                        }
-                    }
+
+                    docConnector.DownloadDocList("productCode", "productRevision");
+
+
                 }
                 Console.ReadLine();
             }

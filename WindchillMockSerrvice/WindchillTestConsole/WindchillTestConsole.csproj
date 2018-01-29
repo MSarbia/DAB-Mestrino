@@ -45,104 +45,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\WindchillDocumentService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Connected Services\WindchillDocumentService\ExtService.wsdl" />
-    <None Include="Connected Services\WindchillDocumentService\swaref.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.createLinkResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.downloadResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.getChildrenResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.getLinksResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.getParentsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.getRelatedDocumentsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.getRevisionControlledResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.queryPartsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.queryResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.reviseResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.setStatePredecessorResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.setStateSuccessorResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.testResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.transactionCommitResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.transactionRollbackResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.transactionStartResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.uploadDocumentResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.wsDocument.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.wsFile.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.wsLink.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\WindchillTestConsole.WindchillDocumentService.wsRevisionControlled.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WindchillDocumentService\xsd1.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\WindchillDocumentService\" />
+    <ProjectReference Include="..\WindchillDocConnector\WindchillDocConnectorLibrary.csproj">
+      <Project>{c10b22a4-e55a-4968-9315-d1fa0c9cd629}</Project>
+      <Name>WindchillDocConnectorLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\WindchillDocumentService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WindchillDocumentService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WindchillDocumentService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <Content Include="WindchillDocService_Config.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

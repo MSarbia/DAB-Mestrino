@@ -210,14 +210,14 @@ public partial class wsDocument : wsRevisionControlled
 }
 
 /// <remarks/>
-[System.Xml.Serialization.XmlIncludeAttribute(typeof(wsDocument))]
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.6.1590.0")]
-[System.SerializableAttribute()]
+//[System.Xml.Serialization.XmlIncludeAttribute(typeof(wsDocument))]
+//[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.6.1590.0")]
+//[System.SerializableAttribute()]
 
-getRelatedDocuments(
-    string number, //codice prodotto finito
-    string revision, //revision prodotto
-    string viewType) //eng o 'manufactoring' <- default
+//getRelatedDocuments(
+//    string number, //codice prodotto finito
+//    string revision, //revision prodotto
+//    string viewType) //eng o 'manufactoring' <- default
 
 
 [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -664,17 +664,17 @@ public partial class getRevisionControlled
     }
 }
 
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.6.1590.0")]
-[System.SerializableAttribute()]
+///// <remarks/>
+//[System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.6.1590.0")]
+//[System.SerializableAttribute()]
 
 
-wsFile download(
-    string fullClassName, //softTypeField
-    string number, //numberField
-    string revision, //revisionField
-    string ContentRoleType //primary
-    );
+//wsFile download(
+//    string fullClassName, //softTypeField
+//    string number, //numberField
+//    string revision, //revisionField
+//    string ContentRoleType //primary
+//    );
 
 
 

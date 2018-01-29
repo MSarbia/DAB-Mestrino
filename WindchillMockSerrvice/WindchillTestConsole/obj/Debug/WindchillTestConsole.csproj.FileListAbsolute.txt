@@ -11,3 +11,15 @@ C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\obj\D
 C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\obj\Debug\WindchillTestConsole.csproj.CoreCompileInputs.cache
 C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\obj\Debug\WindchillTestConsole.exe
 C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\obj\Debug\WindchillTestConsole.pdb
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillDocConnectorLibrary.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillDocConnectorLibrary.pdb
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillDocConnectorLibrary.dll.config
+C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConsole.exe.config
+C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\obj\Debug\WindchillTestConsole.exe
+C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\obj\Debug\WindchillTestConsole.pdb
+C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillDocService_Config.xml
+C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConsole.exe
+C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConsole.pdb
+C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillDocConnectorLibrary.dll
+C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillDocConnectorLibrary.pdb
+C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\obj\Debug\WindchillTestConsole.csprojResolveAssemblyReference.cache
