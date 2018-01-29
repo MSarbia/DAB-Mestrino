@@ -30,14 +30,16 @@ namespace WindchillDocConnectorLibrary
         private List<wsRevisionControlled> GetDocsToDownload(List<wsRevisionControlled> docList)
         {
             //leggi dati da xml qui;
+            //softTypeField == category
+
             return docList;
         }
 
         private List<wsRevisionControlled> GetDocumentList(string productCode, string productRevision)
         {
             List<wsRevisionControlled> docList = new List<wsRevisionControlled>();
-
-            var files = _docClient.getRelatedDocuments(productCode, productRevision, "");
+            string viewType = string.Empty;//"manufactoring";
+            var files = _docClient.getRelatedDocuments(productCode, productRevision, viewType);
             foreach (var file in files)
             {
                 //Aggiungi info ai doc  qui;
