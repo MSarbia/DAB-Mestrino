@@ -18,8 +18,8 @@ namespace TestInforConsole
             while (true)
             {
                 int choice = Int32.Parse(Console.ReadLine());
-                ReportProduction reportProd = new ReportProduction("TEST_ORDER1", 1, false);
-                UnplannedMat unplannedMat = new UnplannedMat("TEST_ORDER2", 2, "TEST_ITEM2", 2, Convert.ToDecimal(1.0));
+                ReportProduction reportProd = new ReportProduction("D02220137", 1, false);
+                UnplannedMat unplannedMat = new UnplannedMat("D02220137", 1, "002612155", 1, Convert.ToDecimal(1.0));
 
                 if ((choice > 0) && (choice < 5))
                 {
@@ -32,7 +32,7 @@ namespace TestInforConsole
                         result = InforConnector.ReportConsumedMaterial(unplannedMat);
                     }
 
-                    Console.WriteLine("\nChiamata eseguita\n" + result.ToString());
+                    Console.WriteLine("Test passed : " + result.InforCallSucceeded.ToString() + " with message: " + result.Error);
                 }
                 else {
                     Console.WriteLine("\nScelta errata");
