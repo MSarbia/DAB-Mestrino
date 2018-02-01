@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <SoftTypes>
   <SoftType value="SchedaMontaggio">
-    <ContentRoleType>primary</ContentRoleType>
+    <ContentRoleType>primajry</ContentRoleType>
     <ContentRoleType>pdf</ContentRoleType>
   </SoftType>
   <SoftType value="SchedaMontaggio2">

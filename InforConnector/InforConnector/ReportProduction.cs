@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InforConnectorLibrary
 {
-    class ReportProduction
+    public class ReportProduction
     {
         public int Company { get; set; }
 

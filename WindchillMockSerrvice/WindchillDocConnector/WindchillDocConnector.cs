@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 using WindchillDocConnectorLibrary.WindchillDocService;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace WindchillDocConnectorLibrary
 {
@@ -28,11 +30,20 @@ namespace WindchillDocConnectorLibrary
         }
 
         private List<wsRevisionControlled> GetDocsToDownload(List<wsRevisionControlled> docList)
-        {
+        {//   in base al softtype
             //leggi dati da xml qui;
             //softTypeField == category
+            List<wsRevisionControlled> docListFiltered = new List<wsRevisionControlled>();
 
-            return docList;
+            List<string> softtypes = XMLConfigParse.getSoftTypes();
+
+            foreach (wsRevisionControlled doc in docList)
+            {
+                if (softtypes.Contains(doc.softType)) docListFiltered.Add(doc);
+
+            }
+
+            return docListFiltered;
         }
 
         private List<wsRevisionControlled> GetDocumentList(string productCode, string productRevision)
@@ -51,12 +62,19 @@ namespace WindchillDocConnectorLibrary
 
         private void DownloadDoc(wsRevisionControlled docInfo)
         {
-            var fileData = _docClient.download(docInfo.name, docInfo.number, docInfo.revision, "");
-            //using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(fileData.content)))
-            //{
-            //    var image = Image.FromStream(ms);
-            //    image.Save($"C:\\temp\\{fileData.fileName}", ImageFormat.Jpeg);
-            //}
+            List<string> contentRoleTypes = XMLConfigParse.getContentRoleTypes(docInfo.softType);
+            foreach (string contentRoleType in contentRoleTypes)
+            {
+                var fileData = _docClient.download(docInfo.softType, docInfo.number, docInfo.revision, contentRoleType);
+                if (fileData == null)
+                    continue;
+                using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(fileData.content)))
+                {
+                    var image = Image.FromStream(ms);
+                    image.Save($"C:\\temp\\{contentRoleType + docInfo.softType+ fileData.fileName}", ImageFormat.Jpeg);
+                }
+            }
+
         }
 
         #region IDisposable Support
