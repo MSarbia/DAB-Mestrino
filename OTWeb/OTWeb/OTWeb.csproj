@@ -174,28 +174,6 @@
   <ItemGroup>
     <Compile Include="CallHubStartup.cs" />
     <Compile Include="CallManagement\CallHub.cs" />
-    <Compile Include="DataContracts\AcceptMaterialCallRequest.cs" />
-    <Compile Include="DataContracts\AcceptMaterialCallResponse.cs" />
-    <Compile Include="DataContracts\Call.cs" />
-    <Compile Include="DataContracts\AcceptTeamLeaderCallRequest.cs" />
-    <Compile Include="DataContracts\GetTeamLeaderCallsRequest.cs" />
-    <Compile Include="DataContracts\AcceptTeamLeaderCallResponse.cs" />
-    <Compile Include="DataContracts\GetTeamLeaderCallsResponse.cs" />
-    <Compile Include="DataContracts\LoginResponse.cs" />
-    <Compile Include="DataContracts\LoginRequest.cs" />
-    <Compile Include="DataContracts\GetMaterialCallsRequest.cs" />
-    <Compile Include="DataContracts\GetMaterialCallsResponse.cs" />
-    <Compile Include="DataContracts\MaterialCall.cs" />
-    <Compile Include="DataContracts\Request.cs" />
-    <Compile Include="DataContracts\Response.cs" />
-    <Compile Include="DataContracts\SendMaterialCallRequest.cs" />
-    <Compile Include="DataContracts\SendMaterialCallResponse.cs" />
-    <Compile Include="DataContracts\GetSerialsRequest.cs" />
-    <Compile Include="DataContracts\GetSerialsResponse.cs" />
-    <Compile Include="DataContracts\SendTeamLeaderCallResponse.cs" />
-    <Compile Include="DataContracts\SendTeamLeaderCallRequest.cs" />
-    <Compile Include="DataContracts\SerialItem.cs" />
-    <Compile Include="IOTService.cs" />
     <Compile Include="JsonFormatter\NewtonsoftJsonBehavior.cs" />
     <Compile Include="JsonFormatter\NewtonsoftJsonBehaviorExtension.cs" />
     <Compile Include="JsonFormatter\NewtonsoftJsonContentTypeMapper.cs" />
@@ -205,14 +183,22 @@
       <DependentUpon>OTService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataContracts\StartSerialRequest.cs" />
-    <Compile Include="DataContracts\StartSerialResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="css\scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OTWeb.Base\OTWeb.Base.csproj">
+      <Project>{20480f99-e17f-4374-a6b7-187589759667}</Project>
+      <Name>OTWeb.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartWatchConnectorLibrary\SmartWatchConnectorLibrary.csproj">
+      <Project>{7E7AC2F9-C588-4533-BF90-2BFF6051B110}</Project>
+      <Name>SmartWatchConnectorLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

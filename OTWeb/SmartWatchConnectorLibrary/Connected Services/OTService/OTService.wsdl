@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="OTService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:50732/OTService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:50732/OTService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:50732/OTService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OTWeb.DataContracts" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IOTService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_SendTeamLeaderCall_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendTeamLeaderCall" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_SendTeamLeaderCall_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendTeamLeaderCallResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_SendMaterialCall_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMaterialCall" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_SendMaterialCall_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendMaterialCallResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_GetSerials_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSerials" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_GetSerials_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSerialsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_GetMaterialCalls_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaterialCalls" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_GetMaterialCalls_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaterialCallsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_GetTeamLeaderCalls_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeamLeaderCalls" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_GetTeamLeaderCalls_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeamLeaderCallsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_AcceptMaterialCall_InputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptMaterialCall" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_AcceptMaterialCall_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptMaterialCallResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_AcceptTeamLeaderCall_InputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptTeamLeaderCall" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_AcceptTeamLeaderCall_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptTeamLeaderCallResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_StartSerial_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartSerial" />
+  </wsdl:message>
+  <wsdl:message name="IOTService_StartSerial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartSerialResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IOTService">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOTService/Login" message="tns:IOTService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOTService/LoginResponse" message="tns:IOTService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendTeamLeaderCall">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOTService/SendTeamLeaderCall" message="tns:IOTService_SendTeamLeaderCall_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOTService/SendTeamLeaderCallResponse" message="tns:IOTService_SendTeamLeaderCall_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMaterialCall">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOTService/SendMaterialCall" message="tns:IOTService_SendMaterialCall_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOTService/SendMaterialCallResponse" message="tns:IOTService_SendMaterialCall_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSerials">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOTService/GetSerials" message="tns:IOTService_GetSerials_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOTService/GetSerialsResponse" message="tns:IOTService_GetSerials_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterialCalls">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOTService/GetMaterialCalls" message="tns:IOTService_GetMaterialCalls_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOTService/GetMaterialCallsResponse" message="tns:IOTService_GetMaterialCalls_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamLeaderCalls">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOTService/GetTeamLeaderCalls" message="tns:IOTService_GetTeamLeaderCalls_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOTService/GetTeamLeaderCallsResponse" message="tns:IOTService_GetTeamLeaderCalls_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptMaterialCall">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOTService/AcceptMaterialCall" message="tns:IOTService_AcceptMaterialCall_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOTService/AcceptMaterialCallResponse" message="tns:IOTService_AcceptMaterialCall_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptTeamLeaderCall">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOTService/AcceptTeamLeaderCall" message="tns:IOTService_AcceptTeamLeaderCall_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOTService/AcceptTeamLeaderCallResponse" message="tns:IOTService_AcceptTeamLeaderCall_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartSerial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOTService/StartSerial" message="tns:IOTService_StartSerial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOTService/StartSerialResponse" message="tns:IOTService_StartSerial_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="OTService" />
+</wsdl:definitions>

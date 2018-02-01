@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole", "TestConsole\
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "OTWebInstaller", "OTWebInstaller\OTWebInstaller.vdproj", "{682F42CE-A7E7-45B5-B664-E80ACB91F897}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTWeb.Base", "OTWeb.Base\OTWeb.Base.csproj", "{20480F99-E17F-4374-A6B7-187589759667}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartWatchConnectorLibrary", "SmartWatchConnectorLibrary\SmartWatchConnectorLibrary.csproj", "{7E7AC2F9-C588-4533-BF90-2BFF6051B110}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,14 @@ Global
 		{D5E36635-9C16-469F-8C5C-8A2BCFA3DA53}.Release|Any CPU.Build.0 = Release|Any CPU
 		{682F42CE-A7E7-45B5-B664-E80ACB91F897}.Debug|Any CPU.ActiveCfg = Debug
 		{682F42CE-A7E7-45B5-B664-E80ACB91F897}.Release|Any CPU.ActiveCfg = Release
+		{20480F99-E17F-4374-A6B7-187589759667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20480F99-E17F-4374-A6B7-187589759667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20480F99-E17F-4374-A6B7-187589759667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20480F99-E17F-4374-A6B7-187589759667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E7AC2F9-C588-4533-BF90-2BFF6051B110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E7AC2F9-C588-4533-BF90-2BFF6051B110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E7AC2F9-C588-4533-BF90-2BFF6051B110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E7AC2F9-C588-4533-BF90-2BFF6051B110}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

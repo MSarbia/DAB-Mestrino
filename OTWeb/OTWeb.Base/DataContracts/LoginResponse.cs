@@ -16,6 +16,6 @@ namespace OTWeb.DataContracts
         [DataMember]
         public string WorkArea { get; set; }
         [DataMember]
-        public string Role { get; set; }
+        public OTRole Role { get; set; }
     }
 }
