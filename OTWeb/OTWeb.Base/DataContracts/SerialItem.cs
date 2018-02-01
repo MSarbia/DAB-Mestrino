@@ -10,6 +10,6 @@ namespace OTWeb.DataContracts
         [DataMember]
         public string Status { get; set; }
 
-        internal string Order { get; set; }
+        public string Order { get; set; }
     }
 }

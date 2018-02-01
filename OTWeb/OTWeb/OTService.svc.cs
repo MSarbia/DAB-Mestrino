@@ -1,14 +1,9 @@
-﻿using Microsoft.AspNet.SignalR;
-using OTWeb.DataContracts;
+﻿using OTWeb.DataContracts;
 using System;
 using System.Collections.Generic;
 using OTWeb.CallManagement;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
-using System.Diagnostics;
+using SmartWatchConnectorLibrary;
 
 namespace OTWeb
 {
@@ -24,6 +19,7 @@ namespace OTWeb
         static OTService()
         {
             InitSerials();
+            SmartWatchConnector.Init<OTService>();            
         }
 
         public static void InitSerials()
@@ -56,19 +52,19 @@ namespace OTWeb
             };
             if (loginRequest.User.ToLowerInvariant().Equals("op10"))
             {
-                response.Role = "Operator";
+                response.Role = OTRole.Operator;
                 response.Equipment = "Postazione10";
                 response.WorkArea = "Linea1";
             }
             else if (loginRequest.User.ToLowerInvariant().Equals("op20"))
             {
-                response.Role = "Operator";
+                response.Role = OTRole.Operator;
                 response.Equipment = "Postazione20";
                 response.WorkArea = "Linea1";
             }
             else if (loginRequest.User.ToLowerInvariant().StartsWith("tl"))
             {
-                response.Role = "TeamLeader";
+                response.Role = OTRole.TeamLeader;
                 response.WorkArea = "Linea1";
             }
             else
@@ -97,6 +93,7 @@ namespace OTWeb
             {
                 TeamLeaderCalls.Add(new Call { CallDate = DateTime.UtcNow, CallId = Guid.NewGuid(), Equipment = teamLeaderCall.Equipment, WorkArea = loginResponse.WorkArea, Status = "Pending" });
             }
+            SmartWatchConnector.SendTeamLeaderlCall(loginResponse.WorkArea, teamLeaderCall.Equipment);
             CallHub.Static_SendTeamLeaderCall(loginResponse.WorkArea, teamLeaderCall.Equipment);
             return response;
         }
@@ -118,6 +115,7 @@ namespace OTWeb
             {
                 MaterialCalls.Add(new MaterialCall { CallDate = DateTime.UtcNow, CallId = Guid.NewGuid(), Equipment = materialCall.Equipment, WorkArea = loginResponse.WorkArea, Status = "Pending", Order = "MyOrder", Description = "MyOrderDescription", ProductCode = "MyProductCode", SerialNumber = materialCall.SerialNumber });
             }
+            SmartWatchConnector.SendMaterialCall(loginResponse.WorkArea, materialCall.Equipment, materialCall.SerialNumber);
             CallHub.Static_SendMaterialCall(loginResponse.WorkArea, materialCall.Equipment);
             return response;
         }
@@ -300,7 +298,7 @@ namespace OTWeb
                         serial.Status = "Complete";
                         Serials20.Add(new SerialItem { SerialNumber = serial.SerialNumber, Status = "Ready", Order = "Ordine" + CurrentOrder10 });
                         CallHub.Static_SendOperatorCall("Postazione20", serial.SerialNumber);
-                        
+                        SmartWatchConnector.RefreshSerials("Postazione20");
                         if (Serials10.All(s => s.Status == "Complete"))
                         {
                             CurrentOrder10++;

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/OTWeb.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OTWeb.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:50732/OTService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="LoginRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Request">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LoginRequest" nillable="true" type="tns:LoginRequest" />
+  <xs:complexType name="Request">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Request" nillable="true" type="tns:Request" />
+  <xs:complexType name="LoginResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Equipment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Role" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WorkArea" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LoginResponse" nillable="true" type="tns:LoginResponse" />
+  <xs:complexType name="Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Succeeded" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Response" nillable="true" type="tns:Response" />
+  <xs:complexType name="SendTeamLeaderCallRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Request">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Equipment" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SendTeamLeaderCallRequest" nillable="true" type="tns:SendTeamLeaderCallRequest" />
+  <xs:complexType name="SendTeamLeaderCallResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SendTeamLeaderCallResponse" nillable="true" type="tns:SendTeamLeaderCallResponse" />
+  <xs:complexType name="SendMaterialCallRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SendTeamLeaderCallRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SerialNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SendMaterialCallRequest" nillable="true" type="tns:SendMaterialCallRequest" />
+  <xs:complexType name="SendMaterialCallResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SendMaterialCallResponse" nillable="true" type="tns:SendMaterialCallResponse" />
+  <xs:complexType name="GetSerialsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Request">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Equipment" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSerialsRequest" nillable="true" type="tns:GetSerialsRequest" />
+  <xs:complexType name="GetSerialsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Operation" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Order" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProductCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Serials" nillable="true" type="tns:ArrayOfSerialItem" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSerialsResponse" nillable="true" type="tns:GetSerialsResponse" />
+  <xs:complexType name="ArrayOfSerialItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SerialItem" nillable="true" type="tns:SerialItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSerialItem" nillable="true" type="tns:ArrayOfSerialItem" />
+  <xs:complexType name="SerialItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SerialNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SerialItem" nillable="true" type="tns:SerialItem" />
+  <xs:complexType name="GetMaterialCallsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Request">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="WorkArea" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetMaterialCallsRequest" nillable="true" type="tns:GetMaterialCallsRequest" />
+  <xs:complexType name="GetMaterialCallsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MaterialCalls" nillable="true" type="tns:ArrayOfMaterialCall" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetMaterialCallsResponse" nillable="true" type="tns:GetMaterialCallsResponse" />
+  <xs:complexType name="ArrayOfMaterialCall">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MaterialCall" nillable="true" type="tns:MaterialCall" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMaterialCall" nillable="true" type="tns:ArrayOfMaterialCall" />
+  <xs:complexType name="MaterialCall">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Call">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Order" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProductCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SerialNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MaterialCall" nillable="true" type="tns:MaterialCall" />
+  <xs:complexType name="Call">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CallDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CallId" type="ser:guid" />
+      <xs:element minOccurs="0" name="Equipment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WorkArea" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Call" nillable="true" type="tns:Call" />
+  <xs:complexType name="GetTeamLeaderCallsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Request">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="WorkArea" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetTeamLeaderCallsRequest" nillable="true" type="tns:GetTeamLeaderCallsRequest" />
+  <xs:complexType name="GetTeamLeaderCallsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TeamLeaderCalls" nillable="true" type="tns:ArrayOfCall" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetTeamLeaderCallsResponse" nillable="true" type="tns:GetTeamLeaderCallsResponse" />
+  <xs:complexType name="ArrayOfCall">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Call" nillable="true" type="tns:Call" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCall" nillable="true" type="tns:ArrayOfCall" />
+  <xs:complexType name="AcceptMaterialCallRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Request">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CallId" type="ser:guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AcceptMaterialCallRequest" nillable="true" type="tns:AcceptMaterialCallRequest" />
+  <xs:complexType name="AcceptMaterialCallResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AcceptMaterialCallResponse" nillable="true" type="tns:AcceptMaterialCallResponse" />
+  <xs:complexType name="AcceptTeamLeaderCallRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Request">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CallId" type="ser:guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AcceptTeamLeaderCallRequest" nillable="true" type="tns:AcceptTeamLeaderCallRequest" />
+  <xs:complexType name="AcceptTeamLeaderCallResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AcceptTeamLeaderCallResponse" nillable="true" type="tns:AcceptTeamLeaderCallResponse" />
+  <xs:complexType name="StartSerialRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Request">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Equipment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Operation" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SerialNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StartSerialRequest" nillable="true" type="tns:StartSerialRequest" />
+  <xs:complexType name="StartSerialResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StartSerialResponse" nillable="true" type="tns:StartSerialResponse" />
+</xs:schema>

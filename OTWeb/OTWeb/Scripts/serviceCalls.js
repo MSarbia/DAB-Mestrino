@@ -14,10 +14,10 @@
         SaveSession('userData', userData);
 
         var locationHref = '';
-        if (result.Role === 'Operator') {
+        if (result.Role === 0) {
             locationHref = 'OTOperatorDashboard.html';
         }
-        else if (result.Role === 'TeamLeader') {
+        else if (result.Role === 1) {
             locationHref = 'OTTeamLeaderDashboard.html';
         }
         window.location.href = locationHref;
