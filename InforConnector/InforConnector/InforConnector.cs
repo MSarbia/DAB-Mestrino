@@ -30,7 +30,6 @@ namespace InforConnectorLibrary
 
             string _url = string.Empty;
 
-
             if (resultAddress.InforCallSucceeded == false)
             {
                 return resultAddress;
@@ -52,7 +51,7 @@ namespace InforConnectorLibrary
 
             var resultCreateEnvelope = new InforResult();
 
-            string erpOrder= string.Empty;
+            string erpOrder = string.Empty;
 
             XmlDocument soapEnvelopeXml = CreateSoapEnvelope(reportRequest, out erpOrder, out resultCreateEnvelope);
             if (resultCreateEnvelope.InforCallSucceeded == false)
@@ -104,7 +103,6 @@ namespace InforConnectorLibrary
                 return new InforResult(false, "Errore nella BeginGetResponse");
             }
 
-
             // suspend this thread until call is complete. You might want to
             // do something usefull here like update your UI.
             try
@@ -116,7 +114,6 @@ namespace InforConnectorLibrary
 
                 return new InforResult(false, "AsyncWaitHandle: " + ex.Message);
             }
-
 
             // get the response from the completed web request.
             try
@@ -131,17 +128,12 @@ namespace InforConnectorLibrary
                         {
                             return webResponseResult;
                         }
-
                     }
                     catch (Exception ex)
                     {
-
                         return new InforResult(false, "ParseWebResponse: " + ex.Message);
                     }
-
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -152,7 +144,6 @@ namespace InforConnectorLibrary
 
                 return new InforResult(false, "EndGetResponse: " + ex.Message);
             }
-
 
             return new InforResult(true, "Chiamata eseguita con successo!");
         }
@@ -196,7 +187,7 @@ namespace InforConnectorLibrary
                 else if (reportRequestEnvelope is UnplannedMat)
                 {
                     productionOrder = (reportRequestEnvelope as UnplannedMat).ProdOrder;
-                    soapEnvelopeDocument.LoadXml(@"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:iwm=""http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue""><soapenv:Header><iwm:Activation><company>" + (reportRequestEnvelope as UnplannedMat).Company + "</company></iwm:Activation></soapenv:Header><soapenv:Body><iwm:IssueMaterial><IssueMaterialRequest><!--Optional:--><ControlArea><!--Optional:--><processingScope>" + (reportRequestEnvelope as UnplannedMat).ProcessingScope + "</processingScope></ControlArea><!--Optional:--><DataArea><!--Zero or more repetitions:--><IWMStdUnplannedMatlIssue><ProdOrder>" + (reportRequestEnvelope as UnplannedMat).ProdOrder + "</ProdOrder><!--Optional:--><Operation>" + (reportRequestEnvelope as UnplannedMat).Operation + "</Operation><!--Optional:--><Item>" + (reportRequestEnvelope as UnplannedMat).Item + "</Item><!--Optional:--><Warehouse>" + (reportRequestEnvelope as UnplannedMat).Warehouse + "</Warehouse><!--<Location>PREL100</Location><LotCode>?</LotCode><SerialNumber>?</SerialNumber>--><Quantity>" + (reportRequestEnvelope as UnplannedMat).Quantity + "</Quantity><!--Optional:--><Unit>" + (reportRequestEnvelope as UnplannedMat).Unit + "</Unit><!--Optional:--><GenerateOutbound>" + (reportRequestEnvelope as UnplannedMat).GenerateOutbound + "</GenerateOutbound><!--Optional:--><ReleaseOutbound>" + (reportRequestEnvelope as UnplannedMat).ReleaseOutbound + "</ReleaseOutbound><!--Optional:--><LoginCode>" + (reportRequestEnvelope as UnplannedMat).LoginCode + "</LoginCode></IWMStdUnplannedMatlIssue></DataArea></IssueMaterialRequest></iwm:IssueMaterial></soapenv:Body></soapenv:Envelope>");
+                    soapEnvelopeDocument.LoadXml(@"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:iwm=""http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue""><soapenv:Header><iwm:Activation><company>" + (reportRequestEnvelope as UnplannedMat).Company + "</company></iwm:Activation></soapenv:Header><soapenv:Body><iwm:IssueMaterial><IssueMaterialRequest><!--Optional:--><ControlArea><!--Optional:--><processingScope>" + (reportRequestEnvelope as UnplannedMat).ProcessingScope + "</processingScope></ControlArea><!--Optional:--><DataArea><!--Zero or more repetitions:--><IWMStdUnplannedMatlIssue><ProdOrder>" + (reportRequestEnvelope as UnplannedMat).ProdOrder + "</ProdOrder><!--Optional:--><Operation>" + (reportRequestEnvelope as UnplannedMat).Operation + "</Operation><!--Optional:--><Item>" + (reportRequestEnvelope as UnplannedMat).Item + "</Item><!--Optional:--><Warehouse>" + (reportRequestEnvelope as UnplannedMat).Warehouse + "</Warehouse><!--<Location>PREL100</Location><LotCode>?</LotCode><SerialNumber>?</SerialNumber>--><Quantity>" + (reportRequestEnvelope as UnplannedMat).Quantity + "</Quantity><Position>" + (reportRequestEnvelope as UnplannedMat).Position + "</Position><!--Optional:--><!--Optional:--><GenerateOutbound>" + (reportRequestEnvelope as UnplannedMat).GenerateOutbound + "</GenerateOutbound><!--Optional:--><ReleaseOutbound>" + (reportRequestEnvelope as UnplannedMat).ReleaseOutbound + "</ReleaseOutbound><!--Optional:--></IWMStdUnplannedMatlIssue></DataArea></IssueMaterialRequest></iwm:IssueMaterial></soapenv:Body></soapenv:Envelope>");
                 }
                 else if (reportRequestEnvelope is MaterialNonConformance)
                 {
@@ -327,7 +318,7 @@ namespace InforConnectorLibrary
         //    }
         //}
 
-        public static InforResult ReadConfigFile(out Dictionary<string, string> addressList)
+        private static InforResult ReadConfigFile(out Dictionary<string, string> addressList)
         {
             try
             {
@@ -372,9 +363,9 @@ namespace InforConnectorLibrary
             }
         }
 
-        public static InforResult ParseWebResponse(WebResponse webResponse, string productionOrder)
+        private static InforResult ParseWebResponse(WebResponse webResponse, string productionOrder)
         {
-           
+
             XDocument document = null;
             try
             {
@@ -392,13 +383,14 @@ namespace InforConnectorLibrary
                 return new InforResult(false, "XDocument.Parse error: " + ex.Message);
             }
 
-       
+
             if (document.ToString().Contains("IWMStdReportProduction"))
             {
                 if (string.IsNullOrEmpty(document.Descendants().Single(p => p.Name.LocalName == "ReceiptNumber").Value.ToString()))
                 {
-                    return new InforResult(false, "ParseWebResponse : Non e' stato possibile eseguire la chiamata per l'ordine " + productionOrder);
+                    return new InforResult(true, "ParseWebResponse : Non e' stato possibile eseguire la chiamata per l'ordine " + productionOrder);
                 }
+                // per ora InforCallSucceded = false da verificare PRXXX
                 else if (document.Descendants().Single(p => p.Name.LocalName == "OutData").Value.ToString().StartsWith("1,99") == false)
                 {
                     return new InforResult(false, "ParseWebResponse : Risposta errata per l'ordine " + productionOrder);
@@ -408,9 +400,9 @@ namespace InforConnectorLibrary
             {
                 if (string.IsNullOrEmpty(document.Descendants().Single(p => p.Name.LocalName == "ReceiptNumber").Value.ToString()))
                 {
-                    return new InforResult(false, "ParseWebResponse : Non e' stato possibile eseguire la chiamata per l'ordine " + productionOrder);
+                    return new InforResult(true, "ParseWebResponse : Non e' stato possibile eseguire la chiamata per l'ordine " + productionOrder);
                 }
-
+                // per ora InforCallSucceded = false da verificare PRXXX
                 else if (document.Descendants().Single(p => p.Name.LocalName == "OutData").Value.ToString().StartsWith("1,99") == false)
                 {
                     return new InforResult(false, "ParseWebResponse : Risposta errata per l'ordine " + productionOrder);
