@@ -17,6 +17,7 @@ namespace InforConnectorLibrary
 {
     public static class InforConnector
     {
+        //Metodo per gestire la chiamata al Webservice, prende in input una istanza di classe(fra quelle del modello) e restituisce un oggetto di tipo InforResult
         public static InforResult CallWebService<T>(T reportRequest)
         {
             //var _url = "http://192.168.1.31:8312/c4ws/services/IWMStdReportProduction/lntestclone";
@@ -148,6 +149,8 @@ namespace InforConnectorLibrary
             return new InforResult(true, "Chiamata eseguita con successo!");
         }
 
+
+        // Metodo per creare WebRequest, la action non viene utilizzata
         private static HttpWebRequest CreateWebRequest(string url, string action, out InforResult createWebRequestResult)
         {
             createWebRequestResult = new InforResult();
@@ -173,6 +176,7 @@ namespace InforConnectorLibrary
             }
         }
 
+        //Metodo per comporre Envelop xlm con i dati passati in input 
         private static XmlDocument CreateSoapEnvelope<T>(T reportRequestEnvelope, out string productionOrder, out InforResult result)
         {
             XmlDocument soapEnvelopeDocument = new XmlDocument();
@@ -225,6 +229,7 @@ namespace InforConnectorLibrary
             return soapEnvelopeDocument;
         }
 
+        //Metodo per inserire la Envelop creata nella WebRequest
         private static InforResult InsertSoapEnvelopeIntoWebRequest(XmlDocument soapEnvelopeXml, HttpWebRequest webRequest)
         {
             var result = new InforResult();
@@ -254,70 +259,7 @@ namespace InforConnectorLibrary
             return result;
         }
 
-        //public static string ReportQuantity(int qty)
-        //{
-        //    using (WMStdReportProductionClient client = new WMStdReportProductionClient("IWMStdReportProductionSoapPort"))
-        //    {
-        //        using (new OperationContextScope(client.InnerChannel))
-        //        {
-        //            ActivationType activation = new ActivationType { company = 100 };
-
-        //            //string headers = "<Header><h:Activation xmlns:h=\"http://www.infor.com/businessinterface/IWMStdReportProduction\" xmlns=\"http://www.infor.com/businessinterface/IWMStdReportProduction\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><company>100</company></h:Activation></Header>";
-
-        //            //var headerXML = XElement.Parse(headers);
-        //            //// ("Activation", "http://www.infor.com/businessinterface/IWMStdReportProduction");
-        //            //foreach (var header in headerXML.Elements())
-        //            //{
-        //            //    MessageVersion mv = MessageVersion.Soap11;
-        //            //    var message = System.ServiceModel.Channels.Message.CreateMessage(/*OperationContext.Current.IncomingMessageVersion*/ mv, header.Name.LocalName, new StringXmlDataWriter(header.ToString()));
-
-        //            //}
-        //            //OperationContext.Current.OutgoingMessageHeaders.RemoveAt(0);
-
-        //            //MessageHeader header = MessageHeader.CreateHeader("Activation", "http://www.infor.com/businessinterface/IWMStdReportProduction","<company>100</company>");
-        //            //OperationContext.Current.OutgoingMessageHeaders.Add(header);
-
-        //            ReportProductionRequestType reportProductionRequest = new ReportProductionRequestType
-        //            {
-        //                ControlArea = new ReportProductionRequestTypeControlArea { processingScope = processingScope.request },
-        //                DataArea = new ReportProductionRequestTypeIWMStdReportProduction[]
-        //                {
-        //                    new ReportProductionRequestTypeIWMStdReportProduction
-        //                    {
-        //                        ProductionOrder = "D01264561",
-        //                        QtyDeliver = qty,
-        //                        ReportPrevious = "yes",
-        //                        BackFlush = "yes",
-        //                        DirectReceipt = "yes",
-        //                        Complete = "no",
-        //                        ReportMore = "no"
-        //                        //GenerateInbound = "no",
-        //                        //ReleaseInbound = "no",
-        //                        //RunNumber = "D02137031"
-        //                    }
-        //                }
-        //            };
-        //            try
-        //            {
-        //                var response = client.ReportProduction(activation, reportProductionRequest);
-        //                if (response.DataArea.First().OutData == null)
-        //                {
-        //                    //MessageFault msgFault = response;
-        //                    return response.DataArea.First().ToString();
-        //                }
-        //            }
-        //            catch (FaultException fe)
-        //            {
-        //                FaultException faultException = (FaultException)fe;
-        //                MessageFault msgFault = faultException.CreateMessageFault();
-        //                return msgFault.ToString();
-        //                //XmlElement elm = msgFault.GetDetail<XmlElement>();
-        //            }
-        //        }
-        //        return string.Empty;
-        //    }
-        //}
-
+        //Metodo che legge file di configurazione corrente ed inserisce in un Dictionary la coppia( Nome Metodo, Url del metodo)
         private static InforResult ReadConfigFile(out Dictionary<string, string> addressList)
         {
             try
@@ -363,6 +305,7 @@ namespace InforConnectorLibrary
             }
         }
 
+        //Metodo per parsare WebResponse, viene fatto un controllo sui valori di alcuni tag
         private static InforResult ParseWebResponse(WebResponse webResponse, string productionOrder)
         {
 
@@ -442,6 +385,42 @@ namespace InforConnectorLibrary
             try
             {
                 result = InforConnector.CallWebService(unplannedMat);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result = new InforResult(false, ex.Message);
+
+                return result;
+            }
+        }
+
+        public static InforResult ReportOperationProgress(OperationProgress opProgress)
+        {
+            var result = new InforResult();
+
+            try
+            {
+                result = InforConnector.CallWebService(opProgress);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result = new InforResult(false, ex.Message);
+
+                return result;
+            }
+        }
+
+        public static InforResult ReportMaterialNonConformance(MaterialNonConformance matNonConformance)
+        {
+            var result = new InforResult();
+
+            try
+            {
+                result = InforConnector.CallWebService(matNonConformance);
 
                 return result;
             }
