@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace InforConnectorLibrary
 {
+    //Attenzione, il nome della classe è utilizzato nella ricerca del metodo da chiamare nel dictionary 
     public class UnplannedMat
     {
         public int Company { get; set; }
