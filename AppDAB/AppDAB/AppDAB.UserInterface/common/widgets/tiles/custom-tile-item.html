@@ -1,0 +1,9 @@
+﻿<div ng-attr-data-internal-type="{{itemTileCtrl.template == 'large'? 'largeItemTile' : itemTileCtrl.template == 'wide'? 'wideItemTile' : 'mediumItemTile'}}" class="tile" ng-click="itemTileCtrl.tileClicked()">
+    <div data-internal-type='custom-template-container' ng-class="{'large large-item' : itemTileCtrl.template == 'large','wide wide-item' : itemTileCtrl.template == 'wide','medium medium-item' : itemTileCtrl.template == 'medium' }" class='{{itemTileCtrl.selectClass}}' ng-style="{'color': itemTileCtrl.color, 'background-color': itemTileCtrl.bgColor}">
+
+        <div ng-class="{'large-select' : itemTileCtrl.template == 'large','wide-select' : itemTileCtrl.template == 'wide','medium-select' : itemTileCtrl.template == 'medium' }" ng-show="itemTileCtrl.showSelectCheck()"></div>
+        <div ng-show="itemTileCtrl.showSelectCheck()" class="top-right-corner-triangle" data-internal-type="selection-triangle"></div>
+        <span ng-show="itemTileCtrl.showSelectCheck()" class="top-right-select-img fa fa-check fa-lg fa-inverse" data-internal-type="selection-check"></span>
+    </div>
+</div>
+

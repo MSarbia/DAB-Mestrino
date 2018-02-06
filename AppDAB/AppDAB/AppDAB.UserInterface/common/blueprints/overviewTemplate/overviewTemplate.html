@@ -1,0 +1,23 @@
+<div>
+
+  <button ng-click="vm.cancel()" class="btn side-panel-button">Close</button>
+
+
+  <div style="clear:both"></div>
+
+  <sit-property-grid
+    sit-id="itemPropertyGrid"
+    sit-layout="Vertical"
+    sit-type="Fluid"
+    sit-columns="1"
+    sit-mode="view">
+    <sit-property
+      ng-repeat="prop in vm.displayData track by prop.id"
+      sit-widget="{{prop.widget}}"
+      sit-widget-attributes="prop.widgetAttributes"
+      ng-disabled="true"
+      sit-value="vm.currentItem[prop.name]">{{prop.label}}:
+    </sit-property>
+
+  </sit-property-grid>
+</div>

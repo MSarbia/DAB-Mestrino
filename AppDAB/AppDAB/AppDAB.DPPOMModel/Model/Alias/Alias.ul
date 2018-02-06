@@ -1,0 +1,3 @@
+VERSION '01.12'
+
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.GetTestCard AS GetTestCard

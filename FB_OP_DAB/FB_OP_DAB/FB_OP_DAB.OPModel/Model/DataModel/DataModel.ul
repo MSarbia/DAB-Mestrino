@@ -1,0 +1,23 @@
+VERSION '01.12'
+
+[@Guid(84a4479b-4496-4afa-83f8-fcec25e4b0d3)]
+[@GuidId(596a0c13-0b16-4551-ac1c-a9ba12abf319)]
+ENTITY TestCard
+WITH
+    [Mandatory]
+    [@Guid(3ced6661-4b2b-47b3-8087-cce5ba2ba1e0)]
+    WorkOrderId AS int
+
+[@Guid(bc5131bb-1398-4cfb-8f39-370bdd9143d3)]
+[@GuidId(b5200563-9498-4b81-ad9b-9de2e24c0bcd)]
+ENTITY Absorption
+WITH
+    [Mandatory]
+    [Length = 255]
+    [@Guid(53e54b20-ba20-41ea-80d6-65b8d12b1d05)]
+    Name AS string
+    [OneToMany BackNavigation = TestCard.Absorptions OnDeleteCascade Simple]
+    [@Guid(d3f13ee9-6cf1-45e1-8fe3-504e045f2ac6)]
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 84a4479b-4496-4afa-83f8-fcec25e4b0d3)]
+    TestCard AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestCard
+

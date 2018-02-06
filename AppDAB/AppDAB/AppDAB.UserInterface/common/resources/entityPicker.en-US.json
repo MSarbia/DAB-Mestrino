@@ -1,0 +1,8 @@
+﻿{
+    "entityPicker": {
+        "defaultPlaceHolder": "Find an Entity",
+        "cancel": "Cancel",
+        "select": "Select",
+        "selectItem": "Select Item"
+    }
+}

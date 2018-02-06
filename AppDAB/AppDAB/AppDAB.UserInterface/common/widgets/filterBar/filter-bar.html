@@ -1,0 +1,46 @@
+﻿<div id="filterBarContainer" data-internal-type="filterbarcontainer"  class="filter-bar-holder">
+    <div id="filterBarSortDiv" data-internal-type="filterBarSortDiv" style="display:inline-block" ng-show="filterBarCtrl.showSortControls">
+        <span ng-hide="filterBarCtrl.compactMode">{{'filterBar.sortby' | translate}}</span>
+        <select ng-options="field.displayName for field in filterBarCtrl.options.sortByFields" ng-change="filterBarCtrl.onSortChanged();" ng-style="filterBarCtrl.sortStyle"
+                ng-model="filterBarCtrl.selectedSort" class="sort-dropdown"></select>
+        <!--<div class="dropdown" is-open="sortStatus.isOpen" style="display:inline-block">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                {{options.currentSortField}}
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="field in options.sortByFields">
+                    <a ng-click="sortSelectChange(field)" style="cursor:pointer">{{field}}</a>
+                </li>
+            </ul>
+        </div>-->
+        <sit-switch-button sit-buttons="filterBarCtrl.sortButtons"></sit-switch-button>
+    </div>
+    <div id="quickSearchContainer" data-internal-type="quickSearchContainer" class="quick-search-container" ng-show="filterBarCtrl.showQuickSearchControl" ng-style="filterBarCtrl.searchContainerStyle">
+        <input id="quickSearchTextBox" data-internal-type="quickSearchTextBox" type="text" ng-change="filterBarCtrl.quickSearchTextChanged()"
+               placeholder="{{'filterBar.quick-search' | translate}}" class="form-control filter-quick-search" ng-model="filterBarCtrl.quickSearchText" ng-style="filterBarCtrl.searchStyle" />
+        <i id="quickSearchIcon" data-internal-type="quickSearchIcon" class="fa fa-search filter-search-icon" ng-click="filterBarCtrl.doQuickSearch()"></i>
+    </div>
+    <div id="filterBarFilterDiv" data-internal-type="filterBarFilterDiv" style="display:inline-block" ng-show="!filterBarCtrl.compactMode && filterBarCtrl.showFilterButton">
+        <sit-switch-button sit-buttons="filterBarCtrl.filterButton"></sit-switch-button>
+    </div>
+    <div data-internal-type="filterBarButtonContainer" class="btn-group group-dropdown" dropdown is-open="filterBarCtrl.groupStatus.isOpen" ng-show="filterBarCtrl.showGroupButton">
+        <i class="fa fa-tasks dropdown-toggle switch-button switch-button-dropdown {{filterBarCtrl.optionSelectedClass}}" data-toggle="dropdown" style="margin-left:0; margin-right:0"><span class="caret"></span></i>
+        <ul class="dropdown-menu sit-dropdown-menu" ng-class="{'dropdown-menu-right':filterBarCtrl.openLeft}" role="menu">
+            <li ng-repeat="groupBy in filterBarCtrl.options.groupByFields">
+                <a ng-click="filterBarCtrl.groupSelectChange(groupBy.field)">
+                    <span title="{{groupBy.displayName}}">{{groupBy.displayName}}</span>
+                    <i class="fa fa-check" ng-show="filterBarCtrl.itemSelected(groupBy.field)"></i>
+                    <br style="clear:both"/>
+                </a>
+            </li>
+            <li>
+                <a ng-click="filterBarCtrl.groupSelectChange()">
+                    <span title="{{'filterBar.none' | translate}}">{{'filterBar.none' | translate}}</span>
+                    <i class="fa fa-check" ng-show="filterBarCtrl.itemSelected()"></i>
+                    <br style="clear:both"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

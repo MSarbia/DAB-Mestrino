@@ -1,0 +1,10 @@
+<referenceManager version="2.2">
+  <integrity projectVersion="01.00.00" />
+  <functionalblocks projectVersion="01.00.00">
+    <functionalblock>
+      <name>Engineering.DAB.FB_OP_DAB</name>
+      <version>01.00.00</version>
+      <type>Library</type>
+    </functionalblock>
+  </functionalblocks>
+</referenceManager>

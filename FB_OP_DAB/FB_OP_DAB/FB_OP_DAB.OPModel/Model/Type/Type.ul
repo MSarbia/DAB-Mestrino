@@ -1,0 +1,16 @@
+VERSION '01.12'
+
+[@Guid(0d3eaac7-6753-4b1c-8769-e1b7663659e5)]
+PARAMETERTYPE TestCardParameter
+WITH
+    [Optional]
+    [Optional]
+    [@Guid(8fd3f31c-f86b-4bae-8c5d-cdcc29bb4b8f)]
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, f4d77975-5d51-428c-9c73-108cead22450)]
+    Absorptions AS list of Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.AbsorptionParameter
+    [@Guid(72644368-91c8-4dc7-8e0a-e932ca9bd08d)]
+    WorkOrderId AS int
+
+[@Guid(f4d77975-5d51-428c-9c73-108cead22450)]
+PARAMETERTYPE AbsorptionParameter
+

@@ -1,0 +1,24 @@
+﻿<div ng-transclude></div>
+<div ng-switch="cmdCtrl.showas" ng-show="cmdCtrl.command.visibility && !cmdCtrl.command.deniedFromAuthorization">
+    <div ng-switch-when="Button" id="Button{{cmdCtrl.command.type}}{{cmdCtrl.command.name}}">
+        <button data-internal-type="command-button-command-bar"
+                ng-class="[{Action:'{{cmdCtrl.command.type}}ActionButton',Tool:'{{cmdCtrl.command.type}}ToolButton'}[cmdCtrl.bartype],{'toggle': cmdCtrl.command.type === 'toggle' && cmdCtrl.command.selected}]"
+                ng-click="cmdCtrl.commandClicked(cmdCtrl.command)" title="{{cmdCtrl.command.tooltip || cmdCtrl.command.label}}" ng-disabled="cmdCtrl.command.disabled">
+            <span data-internal-type="image-container" ng-if="cmdCtrl.command.image && !cmdCtrl.command.imageTemplate" class="fa-lg">
+                <i class="fa {{cmdCtrl.command.image}}"></i>
+            </span>
+            <span data-internal-type="image-container" ng-if="cmdCtrl.command.imageTemplate" class="fa-lg" ng-bind-html="cmdCtrl.command.imageTemplate"></span>
+            <span data-internal-type="text-container" ng-if="cmdCtrl.bartype=='Tool' || cmdCtrl.command.type=='MainCommand'" class="{{cmdCtrl.command.type}}{{cmdCtrl.bartype}}Label">{{cmdCtrl.command.label}}</span>
+        </button>
+    </div>
+    <div ng-switch-when="Menu">
+        <div data-internal-type="command-menu-command-bar" type="button" class="btnMenu" style="text-align:left" ng-click="cmdCtrl.commandClicked(cmdCtrl.command, $event)" title="{{cmdCtrl.command.tooltip || cmdCtrl.command.label}}" ng-disabled="cmdCtrl.command.disabled">
+            <span data-internal-type="image-container" ng-if="cmdCtrl.command.image && !cmdCtrl.command.imageTemplate" class="fa {{cmdCtrl.command.image}}"></span>
+            <span data-internal-type="image-container" ng-if="cmdCtrl.command.imageTemplate" ng-bind-html="cmdCtrl.command.imageTemplate"></span>
+            <label data-internal-type="text-container" class="menuLabel" onclick="event.preventDefault();" ng-class="!cmdCtrl.command.image && cmdCtrl.labelAlign === 'right' ? 'menu-label-icon-margin' : 'menu-label-margin'">
+                {{cmdCtrl.command.label}}
+                <input type="checkbox" style="float:right" ng-show="cmdCtrl.command.type === 'toggle'" ng-checked="cmdCtrl.command.selected"/>
+            </label>
+        </div>
+    </div>
+</div>

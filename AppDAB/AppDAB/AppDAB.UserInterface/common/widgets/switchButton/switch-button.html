@@ -1,0 +1,5 @@
+﻿<div ng-repeat="button in switchButtonCtrl.buttons"
+     ng-class="'switch-button' + (button.selected ? ' switch-button-select' : '') + switchButtonCtrl.getMarginClass($index)"
+     ng-click="switchButtonCtrl.buttonClicked($index)">
+    <i ng-class="'fa ' + button.faIcon"></i>
+</div>

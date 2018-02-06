@@ -1,0 +1,27 @@
+﻿<div data-internal-type="largeItemTile" class="tile" ng-click="itemTileCtrl.tileClicked()" title="{{itemTileCtrl.displayTooltip}}">
+    <div class='large large-item {{itemTileCtrl.selectClass}}' ng-style="{'color': itemTileCtrl.color, 'background-color': itemTileCtrl.bgColor}">
+        <div class="large-select" ng-show="itemTileCtrl.showSelectCheck()"></div>
+        <div ng-show="itemTileCtrl.showSelectCheck()" class="top-right-corner-triangle" data-internal-type="selection-triangle"></div>
+        <span ng-show="itemTileCtrl.showSelectCheck()" class="top-right-select-img fa fa-check fa-lg fa-inverse" data-internal-type="selection-check"></span>
+        <div class="large-item-image-container-86x86" data-internal-type="image-container">
+            <div class="large-item-image-vcenter-62x62" data-internal-type="image-vcenter">
+                <div ng-if="itemTileCtrl.tileContent.image && !itemTileCtrl.tileContent.imageTemplate" class="fa fa-4x {{itemTileCtrl.tileContent.image}}"></div>
+                <div ng-if="itemTileCtrl.tileContent.imageTemplate" class="fa fa-4x" ng-bind-html="itemTileCtrl.tileContent.imageTemplate"></div>
+            </div>
+            <span ng-if="itemTileCtrl.tileContent.contentStatus ==='editing'" class="bottom-left-status-img fa fa-certificate fa-lg" />
+            <span ng-if="itemTileCtrl.tileContent.contentStatus ==='warning'" class="bottom-left-status-img fa fa-warning fa-lg" />
+        </div>
+        <div class="large-item-title-container">
+            <div class="item-title-vcenter" data-internal-type="title">{{itemTileCtrl.displayTitle}}</div>
+        </div>
+        <div class="large-item-text-container" data-internal-type="text-container">
+            <div class="large-item-description" data-internal-type="description">{{itemTileCtrl.displayDescription}}</div>
+            <div class="large-item-properties" data-internal-type="properties">
+                <div ng-if="itemTileCtrl.displayProp1" class="large-item-property"><span>{{itemTileCtrl.displayProp1.name}}</span><span>{{itemTileCtrl.displayProp1.sanitizedVal}}</span></div>
+                <div ng-if="itemTileCtrl.displayProp2" class="large-item-property"><span>{{itemTileCtrl.displayProp2.name}}</span><span>{{itemTileCtrl.displayProp2.sanitizedVal}}</span></div>
+                <div ng-if="itemTileCtrl.displayProp3" class="large-item-property"><span>{{itemTileCtrl.displayProp3.name}}</span><span>{{itemTileCtrl.displayProp3.sanitizedVal}}</span></div>
+                <div ng-if="itemTileCtrl.displayProp4" class="large-item-property"><span>{{itemTileCtrl.displayProp4.name}}</span><span>{{itemTileCtrl.displayProp4.sanitizedVal}}</span></div>
+            </div>
+        </div>
+    </div>
+</div>

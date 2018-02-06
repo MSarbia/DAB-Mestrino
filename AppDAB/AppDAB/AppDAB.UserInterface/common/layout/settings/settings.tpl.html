@@ -1,0 +1,88 @@
+﻿<div ng-controller="settingsCtrl as sc" class="user-preference-settings">
+    <h2>{{ 'settings.title' | translate }}</h2>
+    <div>
+        <button type="button" data-internal-type="settingsSaveResetToDefaultButton" class="btn side-panel-button" ng-click="sc.restoreSettings()">{{ 'settings.btnReset' | translate }}</button>
+        <button type="button" data-internal-type="settingsSaveChangesButton" class="btn side-panel-button" ng-click="sc.saveSettings()">{{ 'settings.btnSave' | translate }}</button>
+    </div>
+    <div class="container-fluid">
+        <!-- left column: language  & log -->
+        <!--<div class="col-lg-20 col-md-20 col-sm-40 col-xs-40" style="padding: 10px ">
+            <div>
+                <h4>{{ 'settings.subtitle' | translate }}</h4>
+                <hr>
+                <div class="container-fluid">
+                    <div class="col-lg-15 col-md-15"> {{ 'settings.select' | translate }}</div>
+                    <div class="dropdown col-lg-25 col-md-25 disabled" data-internal-type="ddLanguage">
+                            <div class="btn-group" role="group">
+                            <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle btn-dropdown-languages" ng-disabled="sc.disableDropdown" dropdown ng-model="sc.currentLanguage">
+                                    <div>{{sc.currentLanguage}} </div>
+                                </button>
+
+                                <button type="button" id="settingsDdLanguage" data-toggle="dropdown" ng-disabled="sc.disableDropdown" class="btn btn-default dropdown-toggle btn-dropdown-languages-caret" dropdown>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-languages" role="menu" aria-labelledby="ddLanguage" dropdown-toggle>
+                                    <li ng-repeat="item in sc.languages" ng-cloak>
+                                        <a  ng-click="sc.languageSelected(item.langKey)" id="language{{item.langKey}}">
+                                            {{item.langKey}}
+                                        </a>
+                                    </li>
+                                </ul>
+                          </div>
+                    </div>
+                </div>
+            </div>-->
+        <div class="settings-log-info">
+            <h3>{{ 'settings.log' | translate }}</h3>
+            <div data-internal-type="settingsLogLevels">
+                <sit-item-tile ng-model="sc.loglevel" ng-repeat="item in sc.loglevel" sit-tile-content="item"></sit-item-tile>
+            </div>
+        </div>        
+    </div>
+    <!-- right column: themes -->
+    <div class="col-lg-20 col-md-20 col-sm-40 col-xs-40">
+        <div class="settings-theme-div">
+            <h3>{{ 'settings.theme' | translate }}</h3>
+            <table>
+                <tr>
+                    <td>
+                        <div data-internal-type="tileThemeLight" class="tile tile-theme-light" ng-click="sc.themeSelected(0)">
+                            <div class="select-border" ng-show="sc.isCurrentTheme(0)"></div>
+                            <div ng-show="sc.isCurrentTheme(0)" class="top-right-corner-triangle"></div>
+                            <span ng-show="sc.isCurrentTheme(0)" class="top-right-select-img fa fa-check fa-inverse fa-lg"></span>
+                        </div>
+
+                    </td>
+                    <td class="theme-eye-selector">
+                        <span class="fa fa-eye fa-lg" ng-click="sc.openModal(0)"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div data-internal-type="tileThemeDark" class="tile tile-theme-dark" ng-click="sc.themeSelected(1)">
+                            <div class="select-border" ng-show="sc.isCurrentTheme(1)" ></div>
+                            <div ng-show="sc.isCurrentTheme(1)" class="top-right-corner-triangle"></div>
+                            <span ng-show="sc.isCurrentTheme(1)" class="top-right-select-img fa fa-check fa-inverse fa-lg"></span>
+                        </div>
+                    </td>
+                    <td class="theme-eye-selector">
+                        <span class="fa fa-eye fa-lg" ng-click="sc.openModal(1)"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>       
+    </div>
+<div sit-notification-tile
+     sit-tile-title="sc.notificationTile.title"
+     sit-tile-content="sc.notificationTile.content"
+     sit-tile-type="sc.notificationTile.type"
+     sit-tile-counter=sc.notificationTile.counter
+     sit-tile-callback="sc.notificationTile.clickCallback"
+     sit-tile-popup="sc.notificationTile.popup"
+     id="{{sc.notificationTile.id}}"></div>
+</div>
+
+
+
+

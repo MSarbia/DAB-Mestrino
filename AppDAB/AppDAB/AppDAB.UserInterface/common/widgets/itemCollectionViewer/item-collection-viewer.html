@@ -1,0 +1,26 @@
+﻿<div id="itemCollectionViewerContainer" data-internal-type="itemCollectionViewerContainer" ng-style="ICVController.compactStyle">
+    <div ng-if="ICVController.resetView">
+        <div id="topCommandBars" data-internal-type="topCommandBars" class="top-command-bars">
+            <div id="viewBar" data-internal-type="viewBar">
+                <sit-view-bar sit-view-options="ICVController.viewBarOptions"></sit-view-bar>
+            </div>
+            <!-- Needed to remove space between multiple inline-block elements.  Do not remove this.
+            -->
+            <div id="filterBar" data-internal-type="filterBar" class="filterBar-container">
+                <sit-filter-bar sit-filter-options="ICVController.filterOptions"></sit-filter-bar>
+            </div>
+            <div id="filter" class="filter-container" ng-class="ICVController.showFilter ? 'open' : 'closed'" data-internal-type="filter">
+                <sit-filter sit-filter-fields="ICVController.sitOptions.filterFields" sit-filter-server-side="ICVController.sitOptions.serverDataOptions" sit-filter-options="ICVController.filterSearchOptions" sit-apply-callback="ICVController.applyFilter(clauses)" sit-reset-callback="ICVController.resetFilter()"></sit-filter>
+            </div>
+        </div>
+        <div id="itemCollectionCanvas" data-internal-type="itemCollectionCanvas" ng-style="ICVController.collectionStyle">
+            <div id="noDataDiv" data-internal-type="noDataDiv" ng-style="ICVController.collectionStyle" ng-if="ICVController.noData && !ICVController.pageManager.isServerData()" style="font-size: large; padding-left: 10px;">{{ICVController.noDataMessage}}</div>
+            <div id="gridViewDiv" data-internal-type="gridViewDiv" ng-style="ICVController.setCollectionStyle()" ng-if="(!ICVController.noData || ICVController.pageManager.isServerData()) && ICVController.viewMode == 'grid'">
+                <sit-grid data-sit-grid-data="ICVController.sitData" data-sit-grid-options="ICVController.gridOptions"></sit-grid>
+            </div>
+            <div id="tileViewDiv" data-internal-type="tileViewDiv" ng-style="ICVController.collectionStyle" ng-if="(!ICVController.noData || ICVController.pageManager.isServerData()) && ICVController.viewMode != 'grid'">
+                <sit-tile-view data-sit-tiles="ICVController.sitData" data-sit-options="ICVController.tileViewOptions"></sit-tile-view>
+            </div>
+        </div>
+    </div>
+</div>

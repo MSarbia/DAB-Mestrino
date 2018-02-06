@@ -1,0 +1,51 @@
+﻿<!--Old Configuration-->
+<div class="property-grid-container" ng-if="!propertyGridCtrl.transclusionIsSet">
+    <sit-property-grid-layout ng-if="propertyGridCtrl.layout === 'Vertical'"
+                                sit-id="{{propertyGridCtrl.id}}"
+                                sit-mode="{{propertyGridCtrl.mode}}"
+                                sit-data="propertyGridCtrl.data"
+                                class="property-grid-vertical-layout">
+    </sit-property-grid-layout>
+    <sit-property-grid-layout ng-if="propertyGridCtrl.layout === 'Horizontal' && propertyGridCtrl.type === 'Fixed'"
+                                sit-id="{{propertyGridCtrl.id}}"
+                                sit-mode="{{propertyGridCtrl.mode}}"
+                                sit-data="propertyGridCtrl.data"
+                                ng-attr-class="{{propertyGridCtrl.columns !== 0 ? 'property-grid-horizontal-fixed-layout x' + propertyGridCtrl.columns : 'property-grid-horizontal-fixed-layout'}}">
+    </sit-property-grid-layout>
+    <sit-property-grid-layout ng-if="propertyGridCtrl.layout === 'Horizontal' && propertyGridCtrl.type === 'Fluid'"
+                                sit-id="{{propertyGridCtrl.id}}"
+                                sit-mode="{{propertyGridCtrl.mode}}"
+                                sit-data="propertyGridCtrl.data"
+                                class="property-grid-horizontal-fluid-layout">
+    </sit-property-grid-layout>
+
+    <div ng-if="propertyGridCtrl.layout === 'Horizontal' && (propertyGridCtrl.type !== 'Fixed' && propertyGridCtrl.type !== 'Fluid')">
+        {{'propertyGrid.invalidLayout'|translate}}
+    </div>
+</div>
+
+
+<!--New Configuration-->
+
+<div class="property-grid-container" ng-if="propertyGridCtrl.transclusionIsSet">
+    <form name="{{'Form'+propertyGridCtrl.id}}">
+        <sit-property-grid-layout ng-if="propertyGridCtrl.layout === 'Vertical'" 
+                                  sit-id="{{propertyGridCtrl.id}}"
+                                  sit-mode="{{propertyGridCtrl.mode}}" 
+                                  class="property-grid-vertical-layout" ng-transclude>
+        </sit-property-grid-layout>
+        <sit-property-grid-layout ng-if="propertyGridCtrl.layout === 'Horizontal' && propertyGridCtrl.type === 'Fixed'"
+                                  sit-id="{{propertyGridCtrl.id}}"
+                                  sit-mode="{{propertyGridCtrl.mode}}"
+                                  ng-attr-class="{{propertyGridCtrl.columns !== 0 ? 'property-grid-horizontal-fixed-layout x' + propertyGridCtrl.columns : 'property-grid-horizontal-fixed-layout'}}" ng-transclude>
+        </sit-property-grid-layout>
+        <sit-property-grid-layout ng-if="propertyGridCtrl.layout === 'Horizontal' && propertyGridCtrl.type === 'Fluid'"
+                                  sit-id="{{propertyGridCtrl.id}}"
+                                  sit-mode="{{propertyGridCtrl.mode}}"
+                                  class="property-grid-horizontal-fluid-layout" ng-transclude>
+        </sit-property-grid-layout>
+        <div ng-if="propertyGridCtrl.layout === 'Horizontal' && (propertyGridCtrl.type !== 'Fixed' && propertyGridCtrl.type !== 'Fluid')">
+            {{'propertyGrid.invalidLayout'|translate}}
+        </div>
+    </form>    
+</div>

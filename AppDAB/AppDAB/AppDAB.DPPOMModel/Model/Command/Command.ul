@@ -1,0 +1,15 @@
+VERSION '01.12'
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(3f505ec3-4ec8-440c-be8c-3260023042db)]
+COMMAND DABGetTestCard
+WITH
+    [Length = 255]
+    SerialNumber AS string
+RESPONSE
+    [Optional]
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 0d3eaac7-6753-4b1c-8769-e1b7663659e5)]
+    TestCard AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.TestCardParameter
+

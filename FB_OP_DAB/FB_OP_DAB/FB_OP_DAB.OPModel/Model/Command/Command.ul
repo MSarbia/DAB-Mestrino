@@ -1,0 +1,13 @@
+VERSION '01.12'
+
+[Protected]
+[NotSecurable]
+[@Guid(cc6ade5c-84ae-478e-b892-640b66fe1ca4)]
+COMMAND GetTestCard
+WITH
+    WorkOrderId AS int
+RESPONSE
+    [Optional]
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 0d3eaac7-6753-4b1c-8769-e1b7663659e5)]
+    TestCard AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.TestCardParameter
+

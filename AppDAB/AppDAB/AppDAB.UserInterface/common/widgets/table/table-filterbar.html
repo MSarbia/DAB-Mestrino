@@ -1,0 +1,8 @@
+﻿<div class="sit-table-filterbar">
+    <div id="filterBar" data-internal-type="filterBar" class="filterBar-container">
+        <sit-filter-bar sit-filter-options="sitTableFilterbarCtrl.filterOptions"></sit-filter-bar>
+    </div>
+    <div id="filter" class="filter-container" ng-class="sitTableFilterbarCtrl.showFilter ? 'open' : 'closed'" data-internal-type="filter">
+        <sit-filter ng-if="sitTableFilterbarCtrl.filterOptions.filterFields.length > 0" sit-clauses="sitTableFilterbarCtrl.filterClauses" sit-filter-server-side="sitTableFilterbarCtrl.serverData" sit-filter-fields="sitTableFilterbarCtrl.filterOptions.filterFields" sit-filter-options="sitTableFilterbarCtrl.filterSearchOptions" sit-apply-callback="sitTableFilterbarCtrl.applyFilter(clauses)" sit-reset-callback="sitTableFilterbarCtrl.resetFilter()"></sit-filter>
+    </div>
+</div>

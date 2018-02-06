@@ -1,0 +1,29 @@
+﻿<div ng-if="checkboxCtrl.readOnly || checkboxCtrl.ngReadonly" class="label-property-grid-control-readonly">
+    <div class='property-grid-span-group-block property-grid-no-border-items' ng-repeat="item in checkboxCtrl.value">
+        <div class="checkbox-control-readonly">
+            <input type='checkbox' disabled ng-model='item.checked' style="min-height:25px;"/>
+            <span style='padding-left:7px' class="label-property-grid-control-readonly property-label-ellipsis"> {{item.label}} </span>
+        </div>
+    </div>
+</div>
+<ng-form ng-if="!(checkboxCtrl.readOnly || checkboxCtrl.ngReadonly)"
+         name="checkboxForm" ng-class="{'isrequired' : (checkboxCtrl.validation.required) && (checkboxForm.$error.required.length===checkboxCtrl.value.length) }">
+    <div class="property-grid-span-group-block validator-control" ng-model="checkboxCtrl.value">
+        <ng-form name="checkboxItemForm" class="group-control" ng-repeat="item in checkboxCtrl.value" style="display:block;">
+            <div class="group-control-data">
+                <input type='checkbox'
+                       name='{{item.label}}'
+                       ng-model='item.checked'
+                       ng-blur="checkboxCtrl.ngBlur()"
+                       ng-checked="item.checked"
+                       sit-change="checkboxCtrl.sitChange"
+                       ng-disabled="checkboxCtrl.ngDisabled"
+                       ng-focus="checkboxCtrl.ngFocus()"
+                       ng-required="checkboxCtrl.validation.required"
+                       sit-form-input-validator />
+                <span class="property-label-ellipsis">{{item.label}}</span>
+            </div>
+        </ng-form>
+    </div>
+</ng-form>
+

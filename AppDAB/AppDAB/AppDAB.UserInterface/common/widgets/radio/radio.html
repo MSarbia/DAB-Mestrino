@@ -1,0 +1,27 @@
+﻿<div class="label label-property-grid-control-readonly property-value-ellipsis" ng-if="radioCtrl.readOnly || radioCtrl.ngReadonly">
+    {{radioCtrl.value}}
+</div>
+
+<ng-form ng-if="!(radioCtrl.readOnly || radioCtrl.ngReadonly)" name="radioForm" ng-class="{'isrequired' :(radioCtrl.validation.required) && radioCtrl.value===undefined}">
+    <div class="property-grid-span-group-block validator-control" ng-model="radioCtrl.value">
+        <div class="radiogroup group-control" ng-repeat="val in radioCtrl.options" ng-checked="radioCtrl.value === val.value">
+            <div class="group-control-data">
+                <input type='radio'
+                       name='{{radioCtrl.name}}'
+                       ng-model='radioCtrl.value'
+                       ng-required="radioCtrl.validation.required"
+                       ng-value='val.value'
+                       ng-blur="radioCtrl.ngBlur()"
+                       sit-change="radioCtrl.sitChange"
+                       ng-disabled="radioCtrl.ngDisabled"
+                       ng-focus="radioCtrl.ngFocus()"
+                       ng-readonly="radioCtrl.ngReadOnly"
+                       shared-model="true"
+                       sit-form-input-validator />
+                <span>{{val.label}}</span>
+            </div>
+        </div>
+    </div>
+</ng-form>
+
+

@@ -1,0 +1,10 @@
+VERSION '01.12'
+
+[@Guid(40f16735-4b27-47b9-be98-b09b9675321a)]
+[@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, bc5131bb-1398-4cfb-8f39-370bdd9143d3)]
+ENTITYLINK Absorption TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.Absorption
+
+[@Guid(a8110c04-c214-4475-a56b-4b561cb8ad01)]
+[@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 84a4479b-4496-4afa-83f8-fcec25e4b0d3)]
+ENTITYLINK TestCard TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestCard
+

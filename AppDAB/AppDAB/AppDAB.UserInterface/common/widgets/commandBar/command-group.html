@@ -1,0 +1,89 @@
+﻿<div>
+    <div ng-switch="cmdBarGrpBtnCtrl.showas" ng-show="cmdBarGrpBtnCtrl.groupVisibility">
+        <div ng-switch-when="Button" class="btn-group ">
+            <button data-internal-type="group-button-command-bar" ng-class="{Action:'dropdown-toggle CommandActionDropdown',Tool:'dropdown-toggle CommandToolDropdown'}[cmdBarGrpBtnCtrl.bartype]" data-toggle="dropdown" title="{{cmdBarGrpBtnCtrl.group.tooltip || cmdBarGrpBtnCtrl.group.name}}">
+                <div style="display:inline;">
+                    <span ng-if="cmdBarGrpBtnCtrl.group.image" class="fa-stack fa-lg">
+                        <i class="fa {{cmdBarGrpBtnCtrl.group.image}} fa-stack"></i>
+                    </span>
+                    <div class="caret"></div>
+                </div>
+                <div ng-if="cmdBarGrpBtnCtrl.bartype=='Tool'" class="CommandToolDropdownLabel">{{cmdBarGrpBtnCtrl.group.label}}</div>
+            </button>
+
+            <ul data-internal-type="menu-command-bar" class="dropdown-menu commandBarDropdownMenu " ng-class="{'commandBarDropdownMenuAlignRight':cmdBarGrpBtnCtrl.openLeft}" role="menu" data-toggle="dropdown">
+                <li ng-repeat="subcommand in cmdBarGrpBtnCtrl.group.group" class="commandBarDropdownItem">
+
+                    <div ng-switch="subcommand.type">
+
+
+                        <div data-internal-type="menu-item-command-bar" ng-switch-when="Command">
+                            <!-- Action button -->
+                            <sit-command sit-command="subcommand" sit-showas="Menu" sit-bartype="{{cmdBarGrpBtnCtrl.bartype}}"></sit-command>
+                        </div>
+
+                        <div ng-switch-when="Sep">
+                            <!-- Separator button -->
+                            <div data-internal-type="menu-separator-command-bar" class=" divider menuDivider" />
+                        </div>
+
+                        <div data-internal-type="menu-item-command-bar" ng-switch-when="toggle">
+                            <!-- Action button -->
+                            <sit-command sit-command="subcommand" sit-showas="Menu" sit-bartype="{{cmdBarGrpBtnCtrl.bartype}}"></sit-command>
+                        </div>
+
+                        <div ng-switch-default>
+                            Unknown sub command type: Allowed values are "Command" or "Sep"
+                        </div>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+        <div ng-switch-when="Menu" class="dropdown-submenu " ng-class="{'pull-left':cmdBarGrpBtnCtrl.openLeft}">
+
+            <div data-internal-type="group-submenu-command-bar" class='btnMenu' style="text-align:left" title="{{cmdBarGrpBtnCtrl.group.tooltip || cmdBarGrpBtnCtrl.group.name}}">
+                <span ng-if="cmdBarGrpBtnCtrl.group.image && !cmdBarGrpBtnCtrl.group.imageTemplate" class="fa {{cmdBarGrpBtnCtrl.group.image}}  ">
+                </span>
+                <span data-internal-type="image-container" ng-if="cmdBarGrpBtnCtrl.group.imageTemplate" class="fa-lg" ng-bind-html="cmdBarGrpBtnCtrl.group.imageTemplate"></span>
+                <label class="menuLabel">{{cmdBarGrpBtnCtrl.group.label}} </label>
+
+                <span class="fa fa-caret-right"></span>
+
+            </div>
+
+            <ul data-internal-type="submenu-command-bar" class="dropdown-menu commandBarDropdownMenu " role="menu">
+                <li class="commandBarDropdownItem" ng-repeat="subcommand in cmdBarGrpBtnCtrl.group.group">
+
+                    <div ng-switch="subcommand.type">
+
+
+                        <div data-internal-type="submenu-item-command-bar" ng-switch-when="Command">
+                            <!-- Action button -->
+                            <sit-command sit-command="subcommand" sit-showas="Menu" sit-bartype="{{cmdBarGrpBtnCtrl.bartype}}"></sit-command>
+                        </div>
+
+                        <div data-internal-type="submenu-separator-command-bar" ng-switch-when="Sep">
+                            <!-- Separator button -->
+                            <div class="divider menuDivider"></div>
+                        </div>
+
+                        <div data-internal-type="submenu-item-command-bar" ng-switch-when="toggle">
+                            <!-- Action button -->
+                            <sit-command sit-command="subcommand" sit-showas="Menu" sit-bartype="{{cmdBarGrpBtnCtrl.bartype}}"></sit-command>
+                        </div>
+
+                        <div ng-switch-default>
+                            Unknown sub command type: Allowed values are "Command" or "Sep"
+                        </div>
+
+                    </div>
+
+                </li>
+            </ul>
+
+        </div>
+        <ng-transclude ng-show=false></ng-transclude>
+    </div>
+</div>

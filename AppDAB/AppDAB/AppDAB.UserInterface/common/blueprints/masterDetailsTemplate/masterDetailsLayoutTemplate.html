@@ -1,0 +1,30 @@
+
+<div class="content-area content-area-relative" style="height: calc(100% - 100px) !important" id="itemlist">
+    <sit-command-bar sit-commands="vm.newObj.actions"></sit-command-bar>
+    <div>
+        <div style="display:inline-block;vertical-align:top">
+            <sit-item-collection-viewer sit-data="vm.newObj.master.runtimeData" sit-options="vm.newObj.master.runtimeConf"></sit-item-collection-viewer>
+
+        </div>
+        <div style="display:inline-block;vertical-align:top;width:calc(100% - 300px)">
+            <tabset>
+                <tab ng-repeat="detail in vm.newObj.details" index="{{$index}}" heading="{{detail.name}}" select="vm.setActiveTabIndex(detail.name)">
+                    <div ng-if="detail.mode === 'table'">
+                        <sit-item-collection-viewer sit-data="detail.runtimeData" sit-options="detail.runtimeConf"></sit-item-collection-viewer>
+                    </div>
+                    <div ng-if="detail.mode === 'form'">
+                        <br />
+                        <br />
+                        <sit-property-grid sit-id="itemPropertyGrid1"
+                                           sit-layout="{{detail.runtimeConf.layout}}"
+                                           sit-type="detail.runtimeConf.type"
+                                           sit-columns="1"
+                                           sit-mode="detail.runtimeConf.mode"
+                                           sit-data="detail.runtimeConf.data">
+                        </sit-property-grid>
+                    </div>
+                </tab>
+            </tabset>
+        </div>
+    </div>
+</div>

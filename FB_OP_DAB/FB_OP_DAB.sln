@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FB_OP_DAB.CommandHandler", "FB_OP_DAB\FB_OP_DAB.CommandHandler\FB_OP_DAB.CommandHandler.csproj", "{1600AA8E-FB75-45D0-B3F3-5672C477412B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3EED0A14-69CF-4B66-B87A-2B23582FC663} = {3EED0A14-69CF-4B66-B87A-2B23582FC663}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FB_OP_DAB.EventHandler", "FB_OP_DAB\FB_OP_DAB.EventHandler\FB_OP_DAB.EventHandler.csproj", "{7FB0AB1F-2079-4081-98FC-512627B485D9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3EED0A14-69CF-4B66-B87A-2B23582FC663} = {3EED0A14-69CF-4B66-B87A-2B23582FC663}
+	EndProjectSection
+EndProject
+Project("{DA7C07C8-D9F3-4A79-840F-611D1C5950A5}") = "FB_OP_DAB.Installer", "FB_OP_DAB\FB_OP_DAB.Installer\FB_OP_DAB.Installer.iproj", "{46F42D96-43A8-4DDB-90D1-D4C49C0EDF59}"
+EndProject
+Project("{A412FA11-93F1-45AA-BF1D-D6DE2D0318E4}") = "FB_OP_DAB.OPModel", "FB_OP_DAB\FB_OP_DAB.OPModel\FB_OP_DAB.OPModel.umproj", "{3EED0A14-69CF-4B66-B87A-2B23582FC663}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7B25D4F2-CC15-4D13-B6CA-3ADE9876C47B}"
+	ProjectSection(SolutionItems) = preProject
+		packages.reference = packages.reference
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1600AA8E-FB75-45D0-B3F3-5672C477412B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1600AA8E-FB75-45D0-B3F3-5672C477412B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1600AA8E-FB75-45D0-B3F3-5672C477412B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1600AA8E-FB75-45D0-B3F3-5672C477412B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FB0AB1F-2079-4081-98FC-512627B485D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB0AB1F-2079-4081-98FC-512627B485D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FB0AB1F-2079-4081-98FC-512627B485D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FB0AB1F-2079-4081-98FC-512627B485D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46F42D96-43A8-4DDB-90D1-D4C49C0EDF59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F42D96-43A8-4DDB-90D1-D4C49C0EDF59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F42D96-43A8-4DDB-90D1-D4C49C0EDF59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F42D96-43A8-4DDB-90D1-D4C49C0EDF59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EED0A14-69CF-4B66-B87A-2B23582FC663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EED0A14-69CF-4B66-B87A-2B23582FC663}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EED0A14-69CF-4B66-B87A-2B23582FC663}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EED0A14-69CF-4B66-B87A-2B23582FC663}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
