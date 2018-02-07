@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace InforConnectorLibrary
 {
     //Attenzione, il nome della classe è utilizzato nella ricerca del metodo da chiamare nel dictionary 
-    public class OperatorOperation
+    public class OperatorOperation  // Classe per gestire Operation Progress
     {
         public int Company { get; set; }
 

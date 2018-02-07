@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace InforConnectorLibrary
 {
     //Attenzione, il nome della classe è utilizzato nella ricerca del metodo da chiamare nel dictionary 
-    public class MaterialNonConformance
+    public class InvTransfer     // Classe per gestire MaterialNonConformance
     {
         public int Company { get; set; }
 
@@ -27,7 +27,7 @@ namespace InforConnectorLibrary
 
         public decimal StorageQuantity { get; set; }
 
-        public MaterialNonConformance(string consumedMaterialDefinition,
+        public InvTransfer(string consumedMaterialDefinition,
                                       decimal nonConformantQuantity,
                                       string nonConformantQuantityUnit,
                                       int company = 100, string processingScope = "request",

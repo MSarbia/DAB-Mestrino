@@ -15,7 +15,7 @@ using System.ServiceModel.Configuration;
 
 namespace InforConnectorLibrary
 {
-    
+
     public static class InforConnector
     {
         //Metodo per gestire la chiamata al Webservice, prende in input una istanza di classe(fra quelle del modello) e restituisce un oggetto di tipo InforResult
@@ -39,14 +39,14 @@ namespace InforConnectorLibrary
 
             try
             {
-                if (string.IsNullOrEmpty(addressList.FirstOrDefault(x => x.Key.Contains(reportRequest.GetType().Name)).ToString()) == false)
+                var methodToCall = addressList.FirstOrDefault(x => x.Key.Contains(reportRequest.GetType().Name));
+                if ((methodToCall.Key != null) && (methodToCall.Value != null))
                 {
-                    var methodToCall = addressList.FirstOrDefault(x => x.Key.Contains(reportRequest.GetType().Name.ToString()));
                     _url = methodToCall.Value;
                 }
                 else
                 {
-                    return new InforResult(false,"CallWebService: Metodo non trovato");
+                    return new InforResult(false, "CallWebService: Metodo non trovato");
                 }
             }
             catch (InvalidOperationException ex)
@@ -195,13 +195,13 @@ namespace InforConnectorLibrary
                 {
                     soapEnvelopeDocument.LoadXml(@"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:iwm=""http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue""><soapenv:Header><iwm:Activation><company>" + (reportRequestEnvelope as UnplannedMat).Company + "</company></iwm:Activation></soapenv:Header><soapenv:Body><iwm:IssueMaterial><IssueMaterialRequest><!--Optional:--><ControlArea><!--Optional:--><processingScope>" + (reportRequestEnvelope as UnplannedMat).ProcessingScope + "</processingScope></ControlArea><!--Optional:--><DataArea><!--Zero or more repetitions:--><IWMStdUnplannedMatlIssue><ProdOrder>" + (reportRequestEnvelope as UnplannedMat).ProdOrder + "</ProdOrder><!--Optional:--><Operation>" + (reportRequestEnvelope as UnplannedMat).Operation + "</Operation><!--Optional:--><Item>" + (reportRequestEnvelope as UnplannedMat).Item + "</Item><!--Optional:--><Warehouse>" + (reportRequestEnvelope as UnplannedMat).Warehouse + "</Warehouse><!--<Location>PREL100</Location><LotCode>?</LotCode><SerialNumber>?</SerialNumber>--><Quantity>" + (reportRequestEnvelope as UnplannedMat).Quantity + "</Quantity><Position>" + (reportRequestEnvelope as UnplannedMat).Position + "</Position><!--Optional:--><!--Optional:--><GenerateOutbound>" + (reportRequestEnvelope as UnplannedMat).GenerateOutbound + "</GenerateOutbound><!--Optional:--><ReleaseOutbound>" + (reportRequestEnvelope as UnplannedMat).ReleaseOutbound + "</ReleaseOutbound><!--Optional:--></IWMStdUnplannedMatlIssue></DataArea></IssueMaterialRequest></iwm:IssueMaterial></soapenv:Body></soapenv:Envelope>");
                 }
-                else if (reportRequestEnvelope is MaterialNonConformance)
+                else if (reportRequestEnvelope is InvTransfer)
                 {
-                    soapEnvelopeDocument.LoadXml(@"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:iwm=""http://www.infor.com/businessinterface/IWMStdInvTransfer""><soapenv:Header><iwm:Activation><!--Optional:--><company>"+ (reportRequestEnvelope as MaterialNonConformance).Company+"</company></iwm:Activation></soapenv:Header><soapenv:Body><iwm:InvTransfer><InvTransferRequest><!--Optional:--><ControlArea><!--Optional:--><processingScope>"+(reportRequestEnvelope as MaterialNonConformance).ProcessingScope+"</processingScope></ControlArea><!--Optional:--><DataArea><!--Zero or more repetitions:--><IWMStdInvTransfer><!--Optional:--><Item>"+(reportRequestEnvelope as MaterialNonConformance).Item+"</Item><!--Optional:--><FromWarehouse>"+(reportRequestEnvelope as MaterialNonConformance).FromWarehouse+"</FromWarehouse><!--Optional:--><ToWarehouse>"+(reportRequestEnvelope as MaterialNonConformance).ToWarehouse+"</ToWarehouse><!--Optional:--><FromLocation>"+(reportRequestEnvelope as MaterialNonConformance).FromLocation+"</FromLocation><!--Optional:--><ToLocation>"+(reportRequestEnvelope as MaterialNonConformance).ToLocation+"</ToLocation><!--Optional:--><LotCode/><StorageUnit>"+(reportRequestEnvelope as MaterialNonConformance).StorageUnit+"</StorageUnit><StorageQuantity>"+(reportRequestEnvelope as MaterialNonConformance).StorageQuantity+"</StorageQuantity><!--Optional:--></IWMStdInvTransfer></DataArea></InvTransferRequest></iwm:InvTransfer></soapenv:Body></soapenv:Envelope>");
+                    soapEnvelopeDocument.LoadXml(@"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:iwm=""http://www.infor.com/businessinterface/IWMStdInvTransfer""><soapenv:Header><iwm:Activation><!--Optional:--><company>" + (reportRequestEnvelope as InvTransfer).Company + "</company></iwm:Activation></soapenv:Header><soapenv:Body><iwm:InvTransfer><InvTransferRequest><!--Optional:--><ControlArea><!--Optional:--><processingScope>" + (reportRequestEnvelope as InvTransfer).ProcessingScope + "</processingScope></ControlArea><!--Optional:--><DataArea><!--Zero or more repetitions:--><IWMStdInvTransfer><!--Optional:--><Item>" + (reportRequestEnvelope as InvTransfer).Item + "</Item><!--Optional:--><FromWarehouse>" + (reportRequestEnvelope as InvTransfer).FromWarehouse + "</FromWarehouse><!--Optional:--><ToWarehouse>" + (reportRequestEnvelope as InvTransfer).ToWarehouse + "</ToWarehouse><!--Optional:--><FromLocation>" + (reportRequestEnvelope as InvTransfer).FromLocation + "</FromLocation><!--Optional:--><ToLocation>" + (reportRequestEnvelope as InvTransfer).ToLocation + "</ToLocation><!--Optional:--><LotCode/><StorageUnit>" + (reportRequestEnvelope as InvTransfer).StorageUnit + "</StorageUnit><StorageQuantity>" + (reportRequestEnvelope as InvTransfer).StorageQuantity + "</StorageQuantity><!--Optional:--></IWMStdInvTransfer></DataArea></InvTransferRequest></iwm:InvTransfer></soapenv:Body></soapenv:Envelope>");
                 }
                 else if (reportRequestEnvelope is OperatorOperation)
-                {     
-                    soapEnvelopeDocument.LoadXml(@"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:sfc=""http://www.infor.com/businessinterface/SFCOperatorOperation""><soapenv:Header><sfc:Activation><!--Optional:--><username>?</username><!--Optional : --><password>?</password><!--Optional : --><company>"+ (reportRequestEnvelope as OperatorOperation).Company + "</company></sfc:Activation></soapenv:Header><soapenv:Body><sfc:Change><ChangeRequest><!--Optional:--><ControlArea><!--Optional:--><processingScope>"+ (reportRequestEnvelope as OperatorOperation).ProcessingScope + "</processingScope></ControlArea><!--Optional:--><DataArea><!--Zero or more repetitions: --><SFCOperatorOperation><ProductionOrderID>"+(reportRequestEnvelope as OperatorOperation).ProdOrder + "</ProductionOrderID><OperationID>"+ (reportRequestEnvelope as OperatorOperation).Operation + "</OperationID><!--Optional:--><OperationStatus>"+(reportRequestEnvelope as OperatorOperation).OperationStatus+"</OperationStatus><!--Optional:--><ActualProductionStartDate>?</ActualProductionStartDate><!--Optional:--><QuantityCompleted><!--Optional:--><Value>"+(reportRequestEnvelope as OperatorOperation).Quantity+"</Value><!--Optional:--><UOM>?</UOM><!--Optional:--><DisplayFormat>?</DisplayFormat></QuantityCompleted><!--Optional:--><QuantityRejected><!--Optional:--><Value>?</Value><!--Optional:--><UOM>?</UOM><!--Optional:--><DisplayFormat>?</DisplayFormat></QuantityRejected><!--Optional:--><QuantityScrapped><!--Optional:--><Value>?</Value><!--Optional:--><UOM>?</UOM><!--Optional:--><DisplayFormat>?</DisplayFormat></QuantityScrapped><!--Optional:--><QuantityQuarantined><!--Optional:--><Value>?</Value><!--Optional:--><UOM>?</UOM><!--Optional:--><DisplayFormat>?</DisplayFormat></QuantityQuarantined><!--Optional:--><RejectReasonID>?</RejectReasonID><!--Optional:--><RejectReasonDescription>?</RejectReasonDescription><!--Optional:--><RemainingProductionTime><!--Optional:--><Value>?</Value><!--Optional:--><UOM>?</UOM><!--Optional:--><DisplayFormat>?</DisplayFormat></RemainingProductionTime><!--Optional:--><PostToInventoryIndicator>?</PostToInventoryIndicator><!--Optional:--><DirectReceiveIndicator>?</DirectReceiveIndicator><!--Zero or more repetitions: --><SerializedItem actionType = \"change\"><SerialNumber>?</SerialNumber><!--Optional:--><RejectedIndicator>?</RejectedIndicator></SerializedItem></SFCOperatorOperation></DataArea></ChangeRequest></sfc:Change></soapenv:Body></soapenv:Envelope>");
+                {
+                    soapEnvelopeDocument.LoadXml(@"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:sfc=""http://www.infor.com/businessinterface/SFCOperatorOperation""><soapenv:Header><sfc:Activation><!--Optional:--><username>?</username><!--Optional : --><password>?</password><!--Optional : --><company>" + (reportRequestEnvelope as OperatorOperation).Company + "</company></sfc:Activation></soapenv:Header><soapenv:Body><sfc:Change><ChangeRequest><!--Optional:--><ControlArea><!--Optional:--><processingScope>" + (reportRequestEnvelope as OperatorOperation).ProcessingScope + "</processingScope></ControlArea><!--Optional:--><DataArea><!--Zero or more repetitions: --><SFCOperatorOperation><ProductionOrderID>" + (reportRequestEnvelope as OperatorOperation).ProdOrder + "</ProductionOrderID><OperationID>" + (reportRequestEnvelope as OperatorOperation).Operation + "</OperationID><!--Optional:--><OperationStatus>" + (reportRequestEnvelope as OperatorOperation).OperationStatus + "</OperationStatus><!--Optional:--><ActualProductionStartDate>?</ActualProductionStartDate><!--Optional:--><QuantityCompleted><!--Optional:--><Value>" + (reportRequestEnvelope as OperatorOperation).Quantity + "</Value><!--Optional:--><UOM>?</UOM><!--Optional:--><DisplayFormat>?</DisplayFormat></QuantityCompleted><!--Optional:--><QuantityRejected><!--Optional:--><Value>?</Value><!--Optional:--><UOM>?</UOM><!--Optional:--><DisplayFormat>?</DisplayFormat></QuantityRejected><!--Optional:--><QuantityScrapped><!--Optional:--><Value>?</Value><!--Optional:--><UOM>?</UOM><!--Optional:--><DisplayFormat>?</DisplayFormat></QuantityScrapped><!--Optional:--><QuantityQuarantined><!--Optional:--><Value>?</Value><!--Optional:--><UOM>?</UOM><!--Optional:--><DisplayFormat>?</DisplayFormat></QuantityQuarantined><!--Optional:--><RejectReasonID>?</RejectReasonID><!--Optional:--><RejectReasonDescription>?</RejectReasonDescription><!--Optional:--><RemainingProductionTime><!--Optional:--><Value>?</Value><!--Optional:--><UOM>?</UOM><!--Optional:--><DisplayFormat>?</DisplayFormat></RemainingProductionTime><!--Optional:--><PostToInventoryIndicator>?</PostToInventoryIndicator><!--Optional:--><DirectReceiveIndicator>?</DirectReceiveIndicator><!--Zero or more repetitions: --><SerializedItem actionType = \"change\"><SerialNumber>?</SerialNumber><!--Optional:--><RejectedIndicator>?</RejectedIndicator></SerializedItem></SFCOperatorOperation></DataArea></ChangeRequest></sfc:Change></soapenv:Body></soapenv:Envelope>");
                 }
 
                 result = new InforResult(true, "CreateSoapEnvelope: Envelope creato con successo!");
@@ -327,12 +327,12 @@ namespace InforConnectorLibrary
             if (document.ToString().Contains("IWMStdReportProduction"))
             {
                 productionOrder = (reportRequest as ReportProduction).ProductionOrder;
-                if (string.IsNullOrEmpty(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "ReceiptNumber").Value.ToString()))
+                if (string.IsNullOrEmpty(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "ReceiptNumber").Value))
                 {
                     return new InforResult(true, "ParseWebResponse : ReceiptNumber non presente per l'ordine: " + (reportRequest as ReportProduction).ProductionOrder.Trim());
                 }
                 // per ora InforCallSucceded = false da verificare PRXXX
-                else if (document.Descendants().FirstOrDefault(p => p.Name.LocalName == "OutData").Value.ToString().StartsWith("1,99") == false)
+                else if (document.Descendants().FirstOrDefault(p => p.Name.LocalName == "OutData").Value.StartsWith("1,99") == false)
                 {
                     return new InforResult(false, "ParseWebResponse : Campo OutData non ha stringa iniziale 1,99 per l'ordine: " + (reportRequest as ReportProduction).ProductionOrder.Trim());
                 }
@@ -342,12 +342,12 @@ namespace InforConnectorLibrary
             else if (document.ToString().Contains("IWMStdUnplannedMatlIssue"))
             {
                 productionOrder = (reportRequest as UnplannedMat).ProdOrder;
-                if (string.IsNullOrEmpty(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "ReceiptNumber").Value.ToString()))
+                if (string.IsNullOrEmpty(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "ReceiptNumber").Value))
                 {
                     return new InforResult(true, "ParseWebResponse : ReceiptNumber non presente per l'ordine " + (reportRequest as UnplannedMat).ProdOrder.Trim());
                 }
                 // per ora InforCallSucceded = false da verificare PRXXX
-                else if (document.Descendants().FirstOrDefault(p => p.Name.LocalName == "OutData").Value.ToString().StartsWith("1,99") == false)
+                else if (document.Descendants().FirstOrDefault(p => p.Name.LocalName == "OutData").Value.StartsWith("1,99") == false)
                 {
                     return new InforResult(false, "ParseWebResponse :  Campo OutData non ha stringa iniziale 1,99 per l'ordine:  " + (reportRequest as UnplannedMat).ProdOrder.Trim());
                 }
@@ -356,7 +356,7 @@ namespace InforConnectorLibrary
             }
             else if (document.ToString().Contains("IWMStdInvTransfer"))
             {
-                //if (string.IsNullOrEmpty(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "Item").Value.ToString()))
+                //if (string.IsNullOrEmpty(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "Item").Value))
                 //{
 
                 //}
@@ -365,13 +365,13 @@ namespace InforConnectorLibrary
             else if (document.ToString().Contains("SFCOperatorOperation"))
             {
                 productionOrder = (reportRequest as OperatorOperation).ProdOrder;
-                if (string.IsNullOrEmpty(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "QuantityCompleted").Value.ToString()))
+                if (string.IsNullOrEmpty(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "QuantityCompleted").Value))
                 {
                     return new InforResult(true, "ParseWebResponse : QuantityCompleted non presente per l'ordine " + (reportRequest as OperatorOperation).ProdOrder.Trim());
                 }
-                else if ( Convert.ToInt32(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "QuantityCompleted").Value) < (reportRequest as OperatorOperation).Quantity)
+                else if (Convert.ToInt32(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "QuantityCompleted").Value) < (reportRequest as OperatorOperation).Quantity)
                 {
-                    return new InforResult(false, "ParseWebResponse : Risposta errata per l'ordine " + (reportRequest as OperatorOperation).ProdOrder.Trim()+"  la quantità completata è minore della quantità inviata");
+                    return new InforResult(false, "ParseWebResponse : Risposta errata per l'ordine " + (reportRequest as OperatorOperation).ProdOrder.Trim() + "  la quantità completata è minore della quantità inviata");
                 }
 
                 resultMessage = " chiamata SFCOperatorOperation per l'ordine: " + productionOrder;
@@ -381,7 +381,7 @@ namespace InforConnectorLibrary
                 return new InforResult(false, "ParseWebResponse : Risposta non contiene stringa metodo chiamante");
             }
 
-            return new InforResult(true, "ParseWebResponse : Risposta corretta per la"+resultMessage);
+            return new InforResult(true, "ParseWebResponse : Risposta corretta per la" + resultMessage);
         }
 
         public static InforResult ReportProducedQuantity(ReportProduction reportProd)
@@ -438,7 +438,7 @@ namespace InforConnectorLibrary
             }
         }
 
-        public static InforResult ReportMaterialNonConformance(MaterialNonConformance matNonConformance)
+        public static InforResult ReportMaterialNonConformance(InvTransfer matNonConformance)
         {
             var result = new InforResult();
 
