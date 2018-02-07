@@ -11,23 +11,50 @@ namespace InforConnectorLibrary
     {
         public int Company { get; set; }
 
-        public string ProductionOrder { get; set; }
+        public string ProcessingScope { get; set; }
 
-        public MaterialNonConformance(string erpOrder, int operationSequence, string consumedMaterialDefinition,
-                                      int consumedMaterialSequence, decimal nonConformantQuantity,  int company = 100)
+        public string Item { get; set; }
+
+        public string FromWarehouse { get; set; }
+
+        public string ToWarehouse { get; set; }
+
+        public string FromLocation { get; set; }
+
+        public string ToLocation { get; set; }
+
+        public string StorageUnit { get; set; }
+
+        public decimal StorageQuantity { get; set; }
+
+
+
+        public MaterialNonConformance(string consumedMaterialDefinition,
+                                      decimal nonConformantQuantity,
+                                      string nonConformantQuantityUnit,
+                                      int company = 100, string processingScope = "request",
+                                      string fromWarehouse = "AD0001", string toWarehouse = "AD0001",
+                                      string fromLocation = "A-01-01-01", string toLocation = "A-01-01-02")
         {
 
-            ProductionOrder = erpOrder;
 
-            // ??? = operationSequence;
+            Item = consumedMaterialDefinition;
 
-            // ??? = consumedMaterialDefinition;
+            StorageUnit = nonConformantQuantityUnit;
 
-            // ??? = consumedMaterialSequence;
-
-            // ??? = nonConformantQuantity;
+            StorageQuantity = nonConformantQuantity;
 
             Company = company;
+
+            ProcessingScope = processingScope;
+
+            FromWarehouse = fromWarehouse;
+
+            ToWarehouse = toWarehouse;
+
+            FromLocation = FromLocation;
+
+            ToLocation = ToLocation;
         }
     }
 }
