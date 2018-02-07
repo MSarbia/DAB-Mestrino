@@ -27,8 +27,6 @@ namespace InforConnectorLibrary
 
         public decimal StorageQuantity { get; set; }
 
-
-
         public MaterialNonConformance(string consumedMaterialDefinition,
                                       decimal nonConformantQuantity,
                                       string nonConformantQuantityUnit,
@@ -36,8 +34,6 @@ namespace InforConnectorLibrary
                                       string fromWarehouse = "AD0001", string toWarehouse = "AD0001",
                                       string fromLocation = "A-01-01-01", string toLocation = "A-01-01-02")
         {
-
-
             Item = consumedMaterialDefinition;
 
             StorageUnit = nonConformantQuantityUnit;

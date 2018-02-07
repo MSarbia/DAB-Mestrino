@@ -21,7 +21,9 @@ namespace InforConnectorLibrary
 
         public string OperationStatus { get; set; }
 
-        public OperatorOperation(string erpOrder, int operationSequence, int producedQuantity, int company = 100,string processingScope="request", bool operationStaus= false)
+        public OperatorOperation(string erpOrder, int operationSequence, int producedQuantity,
+                                  int company = 100,string processingScope="request",
+                                  bool operationStaus= false)
         {
             ProdOrder = erpOrder;
 
