@@ -33,7 +33,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
                 //foreach(valore ritornato dal soap service)
                 //{ 
                 var absorption = Platform.Create<IAbsorption>();
-                absorption.Name = "Ass1";
+                absorption.Nome = "Ass1";
                 testCard.Absorptions.Add(absorption);
                 //}
                 Platform.Submit(testCard);

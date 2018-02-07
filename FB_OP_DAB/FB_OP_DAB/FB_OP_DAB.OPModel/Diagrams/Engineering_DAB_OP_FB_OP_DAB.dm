@@ -5,41 +5,33 @@
     <FileName>FB_OP_DAB.OPModel</FileName>
     <Artifacts>
       <ArtifactSuo>
-        <X>113.80000000000001</X>
-        <Y>35.399999999999977</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestCard</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
+        <X>292</X>
+        <Y>17.000000000000028</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.AbsorptionParameter</FullName>
+        <IsExpandedA>false</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>333</X>
-        <Y>57.799999999999983</Y>
+        <X>5</X>
+        <Y>5</Y>
         <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.Absorption</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>true</IsExpandedB>
-        <IsExpandedC>true</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>123.39999999999998</X>
-        <Y>245.80000000000007</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.GetTestCard</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>321.00000000000006</X>
-        <Y>280.20000000000005</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.TestCardParameter</FullName>
+        <X>320.00000000000011</X>
+        <Y>180.00000000000003</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.TestResultParameter</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>491.4000000000002</X>
-        <Y>280.20000000000005</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.AbsorptionParameter</FullName>
+        <X>88</X>
+        <Y>410</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.AbsorptionResultParameter</FullName>
         <IsExpandedA>false</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>

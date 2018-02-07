@@ -10,7 +10,121 @@ WITH
     Absorptions AS list of Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.AbsorptionParameter
     [@Guid(72644368-91c8-4dc7-8e0a-e932ca9bd08d)]
     WorkOrderId AS int
+    [Optional]
+    [Length = 255]
+    [@Guid(8d2ddbb6-91d9-4eb4-87da-e341c83aa2dd)]
+    CodiceProdotto AS string
+    [@Guid(a2517437-569e-45e2-a6ee-7fdcb57fb3e5)]
+    PotenzaASecco AS decimal
+    [@Guid(593d2b7c-7902-46bc-bc4b-014dfe12620c)]
+    PotenzaASeccoPercent AS decimal
+    [@Guid(79390218-d4f1-47fd-a30c-11ca8f65e07d)]
+    CorrenteASecco AS decimal
+    [@Guid(62198177-3045-4d25-b5ef-6380c7a18d54)]
+    CorrenteASeccoPercent AS decimal
+    [@Guid(b7d252a3-95c0-43b9-8d98-5759b8ea50f7)]
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 6e676dfb-acd7-40f3-bb6b-55afdccf549c)]
+    Results AS list of Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestResult.SerialNumber
 
 [@Guid(f4d77975-5d51-428c-9c73-108cead22450)]
 PARAMETERTYPE AbsorptionParameter
+WITH
+    [Length = 255]
+    [@Guid(185b282a-1961-434d-aaf8-597136cd3ad8)]
+    Nome AS string
+    [Optional]
+    [@Guid(ff9c0133-1905-4181-b77e-7068b4cfa65b)]
+    Watt AS decimal
+    [Optional]
+    [@Guid(64a49e25-256d-4bd0-aac5-8d6cb01c039d)]
+    Ampere AS decimal
+    [Optional]
+    [@Guid(55db52d2-45bb-4380-93c1-6ba36b66d53e)]
+    AmperePercent AS decimal
+    [Optional]
+    [@Guid(95be3094-bbc5-490c-8701-a3dabd78d7ac)]
+    Pressione AS decimal
+    [Optional]
+    [@Guid(58a1f375-622a-4323-815e-c3ed14792a4e)]
+    PressionePercent AS decimal
+    [Optional]
+    [@Guid(b8f2f6c8-b87d-416d-975a-988962b2fd54)]
+    PortataPercent AS decimal
+    [Optional]
+    [@Guid(d99fa318-dc97-4019-8be2-03df03fffc39)]
+    Portata AS decimal
+    [Optional]
+    [@Guid(2840670e-43c6-4d5e-9b47-2ed7b32d5cc9)]
+    WatPercent AS decimal
+    [Optional]
+    [@Guid(be7562cd-dd57-497a-82c2-0e39fa2f11c5)]
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 3ced6661-4b2b-47b3-8087-cce5ba2ba1e0)]
+    TestCard AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestCard.WorkOrderId
+
+[@Guid(dc325dc2-22c8-4c4b-8297-0269c6d7107e)]
+PARAMETERTYPE TestResultParameter
+WITH
+    [@Guid(635ef9d6-8cf4-4c52-8628-cf80ee4ed3c1)]
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 3ced6661-4b2b-47b3-8087-cce5ba2ba1e0)]
+    TestCard AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestCard.WorkOrderId
+    [Length = 255]
+    [@Guid(efced1c2-e9b6-4984-8949-f572b31009d8)]
+    SerialNumber AS string
+    [Optional]
+    [Length = 255]
+    [@Guid(eb86217b-0240-44ca-9d39-f973b603379d)]
+    DescrizioneEsito AS string
+    [Optional]
+    [@Guid(3b6f1435-31cf-4d4a-a110-f5ff6cf47a94)]
+    PotenzaASecco AS decimal
+    [Optional]
+    [@Guid(08b4626a-eddc-4224-b426-7bc1fdadf552)]
+    CorrenteASecco AS decimal
+    [Optional]
+    [@Guid(b9eb95c7-9539-46ef-a95e-6f93344cf837)]
+    ResistenzaDiTerra AS decimal
+    [Optional]
+    [@Guid(b67929ff-6b05-4cde-9bc4-b01ac9bf9aad)]
+    RigiditaDielettrica AS decimal
+    [Optional]
+    [@Guid(3cbc2ea4-539b-4021-8dca-0cc383cb28e8)]
+    ResistenzaIsolamento AS decimal
+    [Optional]
+    [@Guid(3e7efbc5-d446-4790-bc3a-dc066ed60cf3)]
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 73f9dea5-7a29-4a23-817f-3106953c418e)]
+    AbsorptionResults AS list of Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.AbsorptionResult.Nome
+    [@Guid(dd9ac928-8a45-4ef1-8046-1209db060c43)]
+    Data AS DateTime
+    [Length = 255]
+    [@Guid(e243c676-7b36-4cae-af1c-51e8eecfdc10)]
+    Esito AS string
+
+[@Guid(d6e48595-af13-417e-80c1-9dc9348ad3e8)]
+PARAMETERTYPE AbsorptionResultParameter
+WITH
+    [Length = 255]
+    [@Guid(fc1d3828-e1aa-45b4-b574-08efb0614e3f)]
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 6e676dfb-acd7-40f3-bb6b-55afdccf549c)]
+    TestResult AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestResult.SerialNumber
+    [Length = 255]
+    [@Guid(1f177500-3b9c-4556-9c11-cb6f76477f16)]
+    Nome AS string
+    [Optional]
+    [@Guid(bc45a8ec-f927-4fc2-8502-cca96cc86b19)]
+    AmpereFase2 AS decimal
+    [Optional]
+    [@Guid(f54c5078-677d-475b-9383-73dc86fe53be)]
+    AmpereFase1 AS decimal
+    [Optional]
+    [@Guid(96559445-7650-4de6-9a94-749c293309ce)]
+    AmpereFase3 AS decimal
+    [Optional]
+    [@Guid(afca2aac-64d5-4bd4-9dad-88b3c37fab71)]
+    TensioneProva AS decimal
+    [Optional]
+    [@Guid(f61ed0a0-4a70-4efe-bf59-01b873699941)]
+    Pressione AS decimal
+    [Optional]
+    [@Guid(80bbe843-1b8f-40db-8475-8ff04865a490)]
+    Portata AS decimal
 
