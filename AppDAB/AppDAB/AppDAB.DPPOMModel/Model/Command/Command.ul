@@ -33,3 +33,44 @@ WITH
     [Length = 255]
     TeamLeader AS string
 
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(51b53d3d-d08b-4dee-92a7-cdc2be572fae)]
+COMMAND DABCreateMaterialCall
+WITH
+    [Length = 255]
+    Operatore AS string
+    [Optional]
+    [Length = 255]
+    MaterialDefinition AS string
+    [Optional]
+    Quantity AS decimal
+    [Length = 255]
+    WorkOrder AS string
+    [Length = 255]
+    Operation AS string
+    [Length = 255]
+    Equipment AS string
+    [Length = 255]
+    WorkArea AS string
+RESPONSE
+    [Optional]
+    Id AS Guid
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(e133e25b-b53b-4ff8-8a80-8a8ff037ff06)]
+COMMAND DABCreateTeamLeaderCall
+WITH
+    [Length = 255]
+    Operatore AS string
+    [Length = 255]
+    Equipment AS string
+    [Length = 255]
+    WorkArea AS string
+RESPONSE
+    [Optional]
+    Id AS Guid
+
