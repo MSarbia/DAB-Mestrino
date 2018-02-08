@@ -23,3 +23,13 @@ WITH
     [Length = 255]
     TeamLeader AS string
 
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(804e0c52-4a05-49f2-b113-99cc29d04faf)]
+COMMAND DABAcceptTeamLeaderCall
+WITH
+    Id AS Guid
+    [Length = 255]
+    TeamLeader AS string
+

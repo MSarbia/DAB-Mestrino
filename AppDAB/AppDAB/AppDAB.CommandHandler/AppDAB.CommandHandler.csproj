@@ -99,6 +99,8 @@
   <ItemGroup>
     <Compile Include="AppDAB.DPPOMModel\Commands\DABAcceptMaterialCallHandler.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\DABAcceptMaterialCallHandlerExecution.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\DABAcceptTeamLeaderCallHandler.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\DABAcceptTeamLeaderCallHandlerExecution.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\DABGetTestCardHandler.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\DABGetTestCardHandlerExecution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
