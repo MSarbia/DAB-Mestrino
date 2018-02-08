@@ -146,6 +146,10 @@ WITH
     [Length = 255]
     [@Guid(0d56976e-0e7e-42fc-a349-e0e156f11151)]
     WorkArea AS string
+    [Mandatory]
+    [Length = 255]
+    [@Guid(4b5bb445-eff2-4487-b6ea-aaf5e896c7ee)]
+    Operatore AS string
 
 [@Guid(80e74714-8a96-4408-8bc2-b80b60e1a37d)]
 [@GuidId(bf759ccb-9699-4a9c-9cdc-e206f82731e2)]

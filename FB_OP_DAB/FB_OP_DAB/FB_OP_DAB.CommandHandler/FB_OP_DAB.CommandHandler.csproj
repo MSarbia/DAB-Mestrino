@@ -96,6 +96,14 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="FB_OP_DAB.OPModel\Commands\AcceptMaterialCallHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\AcceptMaterialCallHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\AcceptTeamLeaderCallHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\AcceptTeamLeaderCallHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\CreateMaterialCallHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\CreateMaterialCallHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\CreateTeamLeaderCallHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\CreateTeamLeaderCallHandlerExecution.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\GetTestCardHandler.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\GetTestCardHandlerExecution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

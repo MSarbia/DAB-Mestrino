@@ -8,8 +8,8 @@
         <X>5</X>
         <Y>5</Y>
         <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABGetTestCard</FullName>
-        <IsExpandedA>false</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>true</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
     </Artifacts>
