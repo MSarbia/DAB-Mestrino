@@ -29,8 +29,8 @@ namespace InforConnectorLibrary
 
         public ReportProduction(string erpOrder, int producedQuantity, bool closeOrder, int company = 100, 
                                 string processingScope = "request", string reportPrevious = "yes",
-                                string backFlush = "yes", string directReceipt = "yes", string reportMore = "no") {
-
+                                string backFlush = "yes", string directReceipt = "yes", string reportMore = "no")
+        {
             ProductionOrder = erpOrder;
 
             QtyDeliver = producedQuantity;

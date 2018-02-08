@@ -11,7 +11,7 @@ namespace TestInforConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Selezionare richiesta:\n\n 1) ReportProduction\n 2) Unplanned Material\n 4) Operation Progress\n");
+            Console.WriteLine("Selezionare richiesta:\n\n 1) Report Production\n 2) Unplanned Material\n 3) Material Non Conformance \n 4) Operation Progress\n");
 
             InforResult result = new InforResult();
 
@@ -21,7 +21,7 @@ namespace TestInforConsole
                 ReportProduction reportProd = new ReportProduction("D02220137", 1, false);
                 UnplannedMat unplannedMat = new UnplannedMat("D02220137", 1, "002612155", 1, Convert.ToDecimal(1.0));
                 OperatorOperation operationProg = new OperatorOperation("D02220137", 1, 1);
-                MaterialNonConformance materialNonConf = new MaterialNonConformance("00302017", Convert.ToDecimal(1.0), "NR");
+                InvTransfer materialNonConf = new InvTransfer("00302017", Convert.ToDecimal(1.0), "NR");
 
                 if ((choice > 0) && (choice < 5))
                 {
