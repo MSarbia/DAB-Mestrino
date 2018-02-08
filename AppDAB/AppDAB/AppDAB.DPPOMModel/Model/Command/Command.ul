@@ -13,3 +13,13 @@ RESPONSE
     [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 0d3eaac7-6753-4b1c-8769-e1b7663659e5)]
     TestCard AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.TestCardParameter
 
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(1038118a-6df6-4dad-bfcb-9b6fc0002af5)]
+COMMAND DABAcceptMaterialCall
+WITH
+    Id AS Guid
+    [Length = 255]
+    TeamLeader AS string
+

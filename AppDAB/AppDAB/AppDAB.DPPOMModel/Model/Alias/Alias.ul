@@ -1,3 +1,7 @@
 VERSION '01.12'
 
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.GetTestCard AS GetTestCard
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.AcceptMaterialCall AS AcceptMaterialCall
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.AcceptTeamLeaderCall AS AcceptTeamLeaderCall
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateMaterialCall AS CreateMaterialCall
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateTeamLeaderCall AS CreateTeamLeaderCall

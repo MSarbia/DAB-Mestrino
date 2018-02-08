@@ -13,7 +13,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
     /// Partial class init
     /// </summary>
     [Handler(HandlerCategory.BasicMethod)]
-    public partial class DABGetTestCardHandlerShell 
+    public partial class DABAcceptMaterialCallHandlerShell 
     {
         /// <summary>
         /// This is the handler the MES engineer should write
@@ -23,32 +23,25 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         /// <returns></returns>
         /// <remarks>This is a Composite Command Handler</remarks>
         [HandlerEntryPoint]
-        private DABGetTestCard.Response DABGetTestCardHandler(DABGetTestCard command)
+        private DABAcceptMaterialCall.Response DABAcceptMaterialCallHandler(DABAcceptMaterialCall command)
         {
-            DABGetTestCard.Response response = new DABGetTestCard.Response();
-            int? workOrderId = null;
-            //workOrderId = Platform.ProjectionQuery<IWordOrder>().Where().Select(w => w.Id).FirstOrDefault();
-            if(workOrderId == null)
+            DABAcceptMaterialCall.Response response = new DABAcceptMaterialCall.Response();
+
+            var getInput = new AcceptMaterialCall
             {
-                response.SetError(-1000, $"Nessun WorkOrder trovato per il seriale {command.SerialNumber}");
-                return response;
-            }
-            var getInput = new GetTestCard
-            {
-                WorkOrderId = workOrderId.Value
+                Id = command.Id,
+                TeamLeader = command.TeamLeader
+
             };
-            var getResponse = Platform.CallCommand<GetTestCard, GetTestCard.Response>(getInput);
-            
-            if (getResponse.Succeeded)
-            {
-                response.TestCard = getResponse.TestCard;
-            }
-            else
+
+            var getResponse = Platform.CallCommand<AcceptMaterialCall, AcceptMaterialCall.Response>(getInput);
+
+            if (!getResponse.Succeeded)
             {
                 response.SetError(getResponse.Error.ErrorCode, getResponse.Error.ErrorMessage);
             }
+
             return response;
-                                
         }
     }
 }
