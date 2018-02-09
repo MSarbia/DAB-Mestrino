@@ -193,9 +193,11 @@ function AcceptMaterialCall(callId, materialCallsSuccess) {
 }
 
 function callService(methodName, input, successCallback, errorCallBack) {
+
+    $('.overlay').show();
     $.ajax({
         type: "POST",
-        url: "OTService.svc/" + methodName,
+        url: "/OTService.svc/" + methodName,
         data: JSON.stringify(input),
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",
@@ -211,12 +213,14 @@ function callService(methodName, input, successCallback, errorCallBack) {
                     showError(result.Error);
                 }
             }
+            $('.overlay').hide();
         },
 
         error: function (jqXHR, textStatus, errorThrown) {
             if (textStatus === "error" && errorThrown !== "") {
                 showError(errorThrown);
             }
+            $('.overlay').hide();
         }
     });
 }
