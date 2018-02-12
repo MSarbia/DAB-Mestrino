@@ -32,7 +32,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             if (error1.connectionsucceeded && error2.connectionsucceeded)
             {
                 string error = " |DataLabel:" + error1.error + " |PackageLabel:" + error2.error;
-                if ((string.IsNullOrEmpty(error1.error) && string.IsNullOrEmpty(error2.error))) response.SetError(-1000, error);
+                if (!(string.IsNullOrEmpty(error1.error) && string.IsNullOrEmpty(error2.error))) response.SetError(-1000, error);
 
             }
             else
