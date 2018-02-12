@@ -1,9 +1,12 @@
 ﻿using HMIHubConnector;
 using HMIHubModel.Repository;
+using Newtonsoft.Json;
 using OTWeb;
 using OTWeb.DataContracts;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using static HMIHubConnector.DeviceConnector;
 
@@ -24,15 +27,28 @@ namespace SmartWatchConnectorLibrary
             List<Device> devices = new List<Device>();
             lock (_deviceConnectorLock)
             {
-                _deviceConnector = new DeviceConnector("OTWeb", "http://161.27.206.191/HMIHub/");
-                _deviceConnector.OnClientConnectedMethod += OnSmartWatchConnected;
-                _deviceConnector.OnMessageReceivedMethod += OnSmartWatchAcknowledge;
-                _deviceConnector.RestoreActions = RestoreType.OnReconnect_BeforeDelegate;
-                _deviceConnector.Connect();
-                devices.AddRange(_deviceConnector.GetAllDevices().Where(kvp => kvp.Value.Connected).Select(kvp => kvp.Value));
+                try
+                {
+                //http://161.27.206.191/HMIHub/api/SubscriptionHub/ServerConnect
+                    _deviceConnector = new DeviceConnector("OTWeb", "161.27.206.191/HMIHub/api/");
+                    _deviceConnector.OnClientConnectedMethod += OnSmartWatchConnected;
+                    _deviceConnector.OnMessageReceivedMethod += OnSmartWatchAcknowledge;
+                    _deviceConnector.RestoreActions = RestoreType.OnReconnect_BeforeDelegate;
+                    _deviceConnector.Connect();
+                    devices.AddRange(_deviceConnector.GetAllDevices().Where(kvp => kvp.Value.Connected).Select(kvp => kvp.Value));
+                    StaticRepository.CheckRepository(ConfigurationManager.AppSettings["DataPath"], ConfigurationManager.AppSettings["DataFileName"]);
+
+                }
+                catch (Exception e)
+                {
+                    var x = e.Message;
+                }
+
             }
             foreach (var device in devices)
             {
+                device.Username = "Op20";
+                device.Password = "asdasdasdeee";
                 OnSmartWatchConnected(device);
             }
         }
@@ -97,9 +113,9 @@ namespace SmartWatchConnectorLibrary
                     var client = clients[message.ClientUniqueID];
                     user = client.UserName;
                     password = client.Password;
-                    if (client.Messages.ContainsKey(message.MessageId))
+                    if (client.Messages.ContainsKey(message.ServerMessageId))
                     {
-                        serialInfo = GetMessageData<SerialInfo>(client.Messages[message.MessageId]);
+                        serialInfo = GetMessageData<SerialInfo>(client.Messages[message.ServerMessageId]);
                     }
                 }
             }
@@ -258,32 +274,39 @@ namespace SmartWatchConnectorLibrary
         private static void OnSmartWatchConnected(Device device)
         {
             IOTService service = GetOTService();
-            var loginResponse = service.Login(new LoginRequest
+            try
             {
-                User = device.Username,
-                Password = device.Password
-            });
-            if (loginResponse.Succeeded)
-            {
-                lock (_clientMessagesLock)
+                var loginResponse = service.Login(new LoginRequest
                 {
-                    if (!clients.ContainsKey(device.ClientUniqueID))
+                    User = device.Username,
+                    Password = device.Password
+                });
+                if (loginResponse.Succeeded)
+                {
+                    lock (_clientMessagesLock)
                     {
-                        clients.Add(device.ClientUniqueID, new ClientRepository
+                        if (!clients.ContainsKey(device.ClientUniqueID))
                         {
-                            UserName = device.Username,
-                            Password = device.Password,
-                            Equipment = loginResponse.Equipment,
-                            WorkArea = loginResponse.WorkArea,
-                            Role = loginResponse.Role
-                        });
+                            clients.Add(device.ClientUniqueID, new ClientRepository
+                            {
+                                UserName = device.Username,
+                                Password = device.Password,
+                                Equipment = loginResponse.Equipment,
+                                WorkArea = loginResponse.WorkArea,
+                                Role = loginResponse.Role
+                            });
+                        }
                     }
+                    SendDPICheck(device);
                 }
-                SendDPICheck(device);
+                else
+                {
+                    SendMessage(device.ClientUniqueID, OTMessageType.Warning, "Username o Password errati", string.Empty);
+                }
             }
-            else
+            catch (Exception e)
             {
-                SendMessage(device.ClientUniqueID, OTMessageType.Warning, "Username o Password errati", string.Empty);
+                var x = e.Message;
             }
 
         }
@@ -324,15 +347,16 @@ namespace SmartWatchConnectorLibrary
             {
                 Vibration = isCall || messageType.Equals(OTMessageType.Warning)
             };
-            if (!string.IsNullOrEmpty(image64))
-            {
-                mo.Image64 = image64;
-            }
+            //if (!string.IsNullOrEmpty(image64))
+            //{
+            //    mo.Image64 = image64;
+            //}
             PushMessage pm = new PushMessage()
             {
                 ClientUniqueID = clientId,
-                MessagePriority = GetPriority(messageType),
+                MessagePriority = MessagePriority.Normal, //GetPriority(messageType),
                 ACKType = ACKType.Single,
+                UsingACK = true,
                 MessageOptions = mo,
                 Type = MessageType.SingleMessageServerToClient,
                 ServerMessageId = $"{messageType}_{Guid.NewGuid()}",
@@ -342,6 +366,8 @@ namespace SmartWatchConnectorLibrary
             bool succeeded = false;
             lock (_deviceConnectorLock)
             {
+                var x = JsonConvert.DeserializeObject<List<PushMessage>>(File.ReadAllText(StaticRepository.CheckRepository(ConfigurationManager.AppSettings["DataPath"], ConfigurationManager.AppSettings["DataFileName"])));
+
                 succeeded = _deviceConnector.SendMessage(pm, out messageId);
             }
             if (succeeded)
@@ -357,7 +383,7 @@ namespace SmartWatchConnectorLibrary
             {
                 if (clients.ContainsKey(pm.ClientUniqueID))
                 {
-                    clients[pm.ClientUniqueID].Messages.Add(pm.MessageId, GetMessageInfo(pm, messageData));
+                    clients[pm.ClientUniqueID].Messages.Add(pm.ServerMessageId, GetMessageInfo(pm, messageData));
                 }
             }
         }
@@ -368,7 +394,7 @@ namespace SmartWatchConnectorLibrary
             {
                 if (clients.ContainsKey(pm.ClientUniqueID))
                 {
-                    clients[pm.ClientUniqueID].Messages.Remove(pm.MessageId);
+                    clients[pm.ClientUniqueID].Messages.Remove(pm.ServerMessageId);
                 }
             }
         }
@@ -398,10 +424,10 @@ namespace SmartWatchConnectorLibrary
 
         private static void SendDPICheck(Device device)
         {
-            if (SendMessage(device.ClientUniqueID, OTMessageType.DPIBoots, "Scarpe", "immagineScarpe64")
-                && SendMessage(device.ClientUniqueID, OTMessageType.DPIGloves, "Guanti", "immagineGuanti64")
-                    && SendMessage(device.ClientUniqueID, OTMessageType.DPIHelmet, "Caschetto", "immagineCasco64")
-                        && SendMessage(device.ClientUniqueID, OTMessageType.DPITools, "Strumenti di lavoro", "immagineStrumenti64"))
+            if (SendMessage(device.ClientUniqueID, OTMessageType.DPIBoots, "Scarpe", null)
+                && SendMessage(device.ClientUniqueID, OTMessageType.DPIGloves, "Guanti", null)
+                    && SendMessage(device.ClientUniqueID, OTMessageType.DPIHelmet, "Caschetto", null)
+                        && SendMessage(device.ClientUniqueID, OTMessageType.DPITools, "Strumenti di lavoro", null))
             {
                 return;
             }
