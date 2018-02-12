@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>79917911-d071-44ca-8502-17ab85617b05</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Engineering.DAB.AppDAB.AppDAB.DPPOMModel</RootNamespace>
+    <AssemblyName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel</AssemblyName>
+    <Name>AppDAB.DPPOMModel</Name>
+    <FunctionalBlockType>Project</FunctionalBlockType>
+    <FunctionalBlockVersion>01.00.00</FunctionalBlockVersion>
+    <FunctionalBlockName>AppDAB</FunctionalBlockName>
+    <FunctionalBlockDomain>AppDAB</FunctionalBlockDomain>
+    <FunctionalBlockPrefix>Engineering.DAB</FunctionalBlockPrefix>
+    <SitPlatformVersion>1.5</SitPlatformVersion>
+    <DocumentationFolder>
+    </DocumentationFolder>
+    <DocumentationCompilerOption>True</DocumentationCompilerOption>
+    <ParallelCompilerOption>False</ParallelCompilerOption>
+    <FunctionalBlockDomainPrefix>DP</FunctionalBlockDomainPrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU'  ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Diagrams\" />
+    <Folder Include="Properties" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\Project.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\DataSource.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\Command" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\Command\Command.ul" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\DataModel" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\DataModel\DataModel.ul" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\Event" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\Event\Event.ul" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\ReadingFunction" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\ReadingFunction\ReadingFunction.ul" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\Security" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\Security\Security.ul" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\Alias" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\Alias\Alias.ul" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\Type" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\Type\Type.ul" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Diagrams\Engineering_DAB_DP_AppDAB.dm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Engineering_DAB_DP_AppDAB.um">
+      <SubType>Compile</SubType>
+    </Compile>
+    <Content Include="Engineering_DAB_DP_AppDAB.umd">
+      <DependentUpon>Engineering_DAB_DP_AppDAB.um</DependentUpon>
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Engineering_DAB_OP_FB_OP_DAB.um">
+      <Name>Engineering_DAB_OP_FB_OP_DAB.um</Name>
+      <FileModelName>Engineering_DAB_OP_FB_OP_DAB.um</FileModelName>
+      <HintPath>..\..\SimaticITPackages\Engineering.DAB.FB_OP_DAB_01.00.00\model\manufacturingModel\Engineering_DAB_OP_FB_OP_DAB.um</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Siemens_SimaticIT_U4DM_ME_FB_MS_EXT.um">
+      <Name>Siemens_SimaticIT_U4DM_ME_FB_MS_EXT.um</Name>
+      <FileModelName>Siemens_SimaticIT_U4DM_ME_FB_MS_EXT.um</FileModelName>
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_MS_EXT_03.00.00\model\manufacturingModel\Siemens_SimaticIT_U4DM_ME_FB_MS_EXT.um</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Siemens_SimaticIT_U4DM_MS_FB_MS_AMMS.um">
+      <Name>Siemens_SimaticIT_U4DM_MS_FB_MS_AMMS.um</Name>
+      <FileModelName>Siemens_SimaticIT_U4DM_MS_FB_MS_AMMS.um</FileModelName>
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_MS_AMMS_03.00.00\model\manufacturingModel\Siemens_SimaticIT_U4DM_MS_FB_MS_AMMS.um</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Siemens_SimaticIT_U4DM_MS_FB_MS_BOP.um">
+      <Name>Siemens_SimaticIT_U4DM_MS_FB_MS_BOP.um</Name>
+      <FileModelName>Siemens_SimaticIT_U4DM_MS_FB_MS_BOP.um</FileModelName>
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_MS_BOP_03.00.00\model\manufacturingModel\Siemens_SimaticIT_U4DM_MS_FB_MS_BOP.um</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Siemens_SimaticIT_U4DM_MS_FB_MS_CERT.um">
+      <Name>Siemens_SimaticIT_U4DM_MS_FB_MS_CERT.um</Name>
+      <FileModelName>Siemens_SimaticIT_U4DM_MS_FB_MS_CERT.um</FileModelName>
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_MS_CERT_03.00.00\model\manufacturingModel\Siemens_SimaticIT_U4DM_MS_FB_MS_CERT.um</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Siemens_SimaticIT_U4DM_OE_FB_OP_EXT.um">
+      <Name>Siemens_SimaticIT_U4DM_OE_FB_OP_EXT.um</Name>
+      <FileModelName>Siemens_SimaticIT_U4DM_OE_FB_OP_EXT.um</FileModelName>
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_OP_EXT_03.00.00\model\manufacturingModel\Siemens_SimaticIT_U4DM_OE_FB_OP_EXT.um</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Siemens_SimaticIT_U4DM_OE_QMSInt.um">
+      <Name>Siemens_SimaticIT_U4DM_OE_QMSInt.um</Name>
+      <FileModelName>Siemens_SimaticIT_U4DM_OE_QMSInt.um</FileModelName>
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.QMSInt_01.00.00\model\manufacturingModel\Siemens_SimaticIT_U4DM_OE_QMSInt.um</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Siemens_SimaticIT_U4DM_RD_FB_RF_ConfigKey.um">
+      <Name>Siemens_SimaticIT_U4DM_RD_FB_RF_ConfigKey.um</Name>
+      <FileModelName>Siemens_SimaticIT_U4DM_RD_FB_RF_ConfigKey.um</FileModelName>
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.RD.FB.ConfigKey_03.00.00\model\manufacturingModel\Siemens_SimaticIT_U4DM_RD_FB_RF_ConfigKey.um</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Siemens_SimaticIT_U4DM_RF_FB_RD_SERV.um">
+      <Name>Siemens_SimaticIT_U4DM_RF_FB_RD_SERV.um</Name>
+      <FileModelName>Siemens_SimaticIT_U4DM_RF_FB_RD_SERV.um</FileModelName>
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_RD_SERV_03.00.00\model\manufacturingModel\Siemens_SimaticIT_U4DM_RF_FB_RD_SERV.um</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(SITUnifiedVSToolingPlatformBin)\Siemens.SimaticIt.DSL.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

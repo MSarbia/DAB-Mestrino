@@ -1,0 +1,41 @@
+﻿<!-- item.templateUrl (e.g. group-template.html) is the intended template url to be loaded inside accordion -->
+<!-- homeTemplate.html is the html that defines the structure of the accordion content. Acts like the skeleton of the content and holds userTemplate.html inside it. -->
+<!-- userTemplate.html is the html that holds the item.templateUrl as the content and rendered inside homeTemplate.html.
+    It acts like a wrapper for item.templateUrl -->
+
+<script type="text/ng-template" id="homeTemplate.html">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a href="" tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                    <span uib-accordion-header style="display:block" ng-class="{'text-muted': isDisabled}">
+                        {{heading}}
+                    </span>
+                </a>
+            </h4>
+        </div>
+        <div class="panel-collapse collapse" uib-collapse="!isOpen">
+            <div class="panel-body" style="text-align:center" ng-transclude></div>
+        </div>
+    </div>
+</script>
+
+<uib-accordion class="sortHead" close-others="sortAccCtrl.closeOthers">
+    <ul class="nestingAccordionCustom" ui-sortable="sortAccCtrl.sortableOptions" ng-model="sortAccCtrl.items">
+        <li ng-repeat="item in sortAccCtrl.items" style="padding-top: 5px;">
+            <script type="text/ng-template" id="userTemplate.html" ng-bind="item.templateUrl">
+                <div ng-include="item.templateUrl" /> <!-- Passing the html template corresponding to heading -->
+            </script>
+            <div uib-accordion-group class="accordion_content" heading="{{item.headerName}}" style="margin-left: -20px;" is-disabled="sortAccCtrl.status.isFirstDisabled" template-url="homeTemplate.html">
+                <div ng-include="'userTemplate.html'"></div>
+            </div>
+        </li>
+    </ul>
+</uib-accordion>
+<style>
+    .nestingAccordionCustom {
+        list-style: none;
+        margin-left: -20px;
+        margin-bottom: -15px;
+    }
+</style>

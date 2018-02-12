@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDAB.CommandHandler", "AppDAB\AppDAB.CommandHandler\AppDAB.CommandHandler.csproj", "{DD467A79-03B8-4005-8268-14794E09BF1D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{79917911-D071-44CA-8502-17AB85617B05} = {79917911-D071-44CA-8502-17AB85617B05}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDAB.EventHandler", "AppDAB\AppDAB.EventHandler\AppDAB.EventHandler.csproj", "{862B9FA8-2AD2-4586-9DCB-1694DCE13C26}"
+	ProjectSection(ProjectDependencies) = postProject
+		{79917911-D071-44CA-8502-17AB85617B05} = {79917911-D071-44CA-8502-17AB85617B05}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDAB.ReadingFunctionHandler", "AppDAB\AppDAB.ReadingFunctionHandler\AppDAB.ReadingFunctionHandler.csproj", "{82F645CD-5F4F-40B8-BA96-D2140AC1644E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDAB.UserInterface", "AppDAB\AppDAB.UserInterface\AppDAB.UserInterface.csproj", "{A78794BD-D34E-4E96-B61D-B516DB725BFF}"
+EndProject
+Project("{DA7C07C8-D9F3-4A79-840F-611D1C5950A5}") = "AppDAB.Installer", "AppDAB\AppDAB.Installer\AppDAB.Installer.iproj", "{D811637F-E1D9-4C5C-AEF3-64FA8A1EF456}"
+EndProject
+Project("{CA2279AF-CA6F-4B4B-98B3-8D49B8D38547}") = "AppDAB.DPPOMModel", "AppDAB\AppDAB.DPPOMModel\AppDAB.DPPOMModel.pmproj", "{79917911-D071-44CA-8502-17AB85617B05}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{207B9AD5-E171-4820-9EF8-220105C15154}"
+	ProjectSection(SolutionItems) = preProject
+		packages.reference = packages.reference
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD467A79-03B8-4005-8268-14794E09BF1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD467A79-03B8-4005-8268-14794E09BF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD467A79-03B8-4005-8268-14794E09BF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD467A79-03B8-4005-8268-14794E09BF1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{862B9FA8-2AD2-4586-9DCB-1694DCE13C26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{862B9FA8-2AD2-4586-9DCB-1694DCE13C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{862B9FA8-2AD2-4586-9DCB-1694DCE13C26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{862B9FA8-2AD2-4586-9DCB-1694DCE13C26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82F645CD-5F4F-40B8-BA96-D2140AC1644E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82F645CD-5F4F-40B8-BA96-D2140AC1644E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82F645CD-5F4F-40B8-BA96-D2140AC1644E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82F645CD-5F4F-40B8-BA96-D2140AC1644E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A78794BD-D34E-4E96-B61D-B516DB725BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A78794BD-D34E-4E96-B61D-B516DB725BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A78794BD-D34E-4E96-B61D-B516DB725BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A78794BD-D34E-4E96-B61D-B516DB725BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D811637F-E1D9-4C5C-AEF3-64FA8A1EF456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D811637F-E1D9-4C5C-AEF3-64FA8A1EF456}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D811637F-E1D9-4C5C-AEF3-64FA8A1EF456}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D811637F-E1D9-4C5C-AEF3-64FA8A1EF456}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79917911-D071-44CA-8502-17AB85617B05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79917911-D071-44CA-8502-17AB85617B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79917911-D071-44CA-8502-17AB85617B05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79917911-D071-44CA-8502-17AB85617B05}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

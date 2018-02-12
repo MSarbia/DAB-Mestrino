@@ -1,0 +1,9 @@
+<div class="popover {{placement}} header-color header-popover" ng-class="{ in: isOpen(), fade: animation() }">
+ <div class="popover-inner">
+     <div class="popover-content" ng-repeat="idx in content" data-internal-type="flyMenu{{idx.id}}" ng-class="idx.popoverItemClass" ng-click="getfn()(idx.fnCallback, idx.id)">
+         <span ng-class="idx.popooverItemImageClass"></span>
+         <span>{{idx.text}}</span>
+     </div>
+ </div>
+</div>
+

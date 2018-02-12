@@ -30,7 +30,7 @@ body {
     border: solid;
     border-color: #136b91;
     border-width: 3px;
-    padding:2px;
+    padding: 2px;
 }
 
 .serialsList {
@@ -40,16 +40,16 @@ body {
     width: 100%;
 }
 
-.serialsList li {
-    background: #CAD4D4;
-    margin: 3px;
-    padding: 4px;
-    float: left;
-    width: 170px;
-    height: 80px;
-    text-align: left;
-    box-sizing: border-box;
-}
+    .serialsList li {
+        background: #CAD4D4;
+        margin: 3px;
+        padding: 4px;
+        float: left;
+        width: 170px;
+        height: 80px;
+        text-align: left;
+        box-sizing: border-box;
+    }
 
 .callClass .ui-selecting {
     background: #CAD4D4;
@@ -68,16 +68,16 @@ body {
     width: 100%;
 }
 
-.callClass li {
-    background: #CAD4D4;
-    margin: 3px;
-    padding: 4px;
-    float: left;
-    width: 170px;
-    height: 80px;
-    text-align: left;
-    box-sizing: border-box;
-}
+    .callClass li {
+        background: #CAD4D4;
+        margin: 3px;
+        padding: 4px;
+        float: left;
+        width: 170px;
+        height: 80px;
+        text-align: left;
+        box-sizing: border-box;
+    }
 
 .Table {
     display: table;
@@ -88,10 +88,11 @@ body {
 }
 
 .TableHeader {
-  display: table;
+    display: table;
     height: 40px;
     width: 100%;
 }
+
 .TableHeaderRow {
     display: table-row;
     height: 40px;
@@ -119,19 +120,15 @@ body {
 .MainTableCell {
     display: table-cell;
     height: 100%;
-    
-  
 }
 
 .TableCell {
     display: table-cell;
-    vertical-align:top;
-   
-    padding-right:10px;
-    padding-left:10px;
-    padding-bottom:10px;
-    width:50%;
-   
+    vertical-align: top;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    width: 50%;
 }
 
 .HeaderCell {
@@ -139,27 +136,29 @@ body {
     background-color: #004F79;
     color: white;
     column-span: all;
-    
 }
-.HeaderCellSx { 
+
+.HeaderCellSx {
     display: table-cell;
     background-color: #004F79;
     color: white;
     column-span: all;
-    width:20%;
-    min-width:150px;
+    width: 20%;
+    min-width: 150px;
 }
+
 .HeaderCellCen {
     display: table-cell;
     background-color: #004F79;
     color: white;
     column-span: all;
     vertical-align: middle;
-    width:90%;
-    min-width:90%;
-    text-align:center;
-    font-weight:bold;
+    width: 90%;
+    min-width: 90%;
+    text-align: center;
+    font-weight: bold;
 }
+
 .HeaderCellDx {
     display: table-cell;
     background-color: #004F79;
@@ -168,7 +167,7 @@ body {
     width: 10%;
     min-width: 10%;
     vertical-align: middle;
-    white-space: nowrap;    
+    white-space: nowrap;
 }
 
 .CellSx {
@@ -182,7 +181,7 @@ body {
 .CellSxCalls {
     display: table-cell;
     vertical-align: top;
-    height: 100%;
+    height: 90%;
     border-right: solid 2px #004F79;
 }
 
@@ -238,9 +237,9 @@ body {
     text-align: center;
 }
 
-.btn:active {
-    background-color: #555867;
-}
+    .btn:active {
+        background-color: #555867;
+    }
 
 .btn-selected:active {
     background-color: #009900;
@@ -285,15 +284,15 @@ body {
     overflow: hidden;
 }
 
-.ui-notification-bar .ui-notification {
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-radius: 0;
-    -o-box-radius: 0;
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-}
+    .ui-notification-bar .ui-notification {
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+        -o-box-radius: 0;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+    }
 
 .ui-notification {
     padding: 5px 10px;
@@ -303,38 +302,57 @@ body {
     box-shadow: 2px 2px 2px #ccc;
 }
 
-.ui-notification .ui-notification-content {
-    font-size: 0.9em;
+    .ui-notification .ui-notification-content {
+        font-size: 0.9em;
+    }
+
+        .ui-notification .ui-notification-content h4 {
+            font-size: 1.1em;
+        }
+
+        .ui-notification .ui-notification-content p {
+            font-size: 0.9em;
+        }
+
+    .ui-notification .ui-notification-close {
+        display: inline-block;
+        float: right;
+        width: 19px;
+        padding: 1px;
+        height: 18px;
+        margin: -2px -2px 0 2px;
+    }
+
+        .ui-notification .ui-notification-close:hover,
+        .ui-notification .ui-notification-close:focus {
+            padding: 0;
+        }
+
+        .ui-notification .ui-notification-close span {
+            display: block;
+            margin: 1px;
+        }
+
+.serialsList li.activeSerial {
+    background-color: darkseagreen;
 }
 
-.ui-notification .ui-notification-content h4 {
-    font-size: 1.1em;
-}
+    .overlay {
+        background-color:rgba(128,128,128,0.7);
+        color: #666666;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        z-index: 5000;
+        top: 0;
+        left: 0;
+        float: left;
+        text-align: center;
+        padding-top: 31%;
+        display:none;            
 
-.ui-notification .ui-notification-content p {
-    font-size: 0.9em;
-}
+    }
+        .overlay span {
 
-.ui-notification .ui-notification-close {
-    display: inline-block;
-    float: right;
-    width: 19px;
-    padding: 1px;
-    height: 18px;
-    margin: -2px -2px 0 2px;
-}
-
-.ui-notification .ui-notification-close:hover,
-.ui-notification .ui-notification-close:focus {
-    padding: 0;
-}
-
-.ui-notification .ui-notification-close span {
-    display: block;
-    margin: 1px;
-}
-.serialsList li.activeSerial
-{
-    background-color:darkseagreen;
-  
-}
+            color:whitesmoke;
+        }

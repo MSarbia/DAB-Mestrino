@@ -1,0 +1,27 @@
+﻿<div ng-if="entityPickerCtrl.readOnly || entityPickerCtrl.ngReadonly" class="label-property-grid-control-readonly property-value-ellipsis"> {{entityPickerCtrl.value.name}} </div>
+<ng-form name="entityPickerForm" ng-if="!(entityPickerCtrl.readOnly || entityPickerCtrl.ngReadonly)" ng-class="{'isrequired' : (entityPickerCtrl.validation.required) && entityPickerCtrl.value===undefined}">
+    <div data-internal-type="entity-picker-container" id="entity-picker-container" class="property-grid-input-group entity-picker-container">
+         <div style="display:inline-block;width:100%;">            
+             <input ng-required="entityPickerCtrl.required"
+                    ng-attr-id="{{entityPickerCtrl.id ? entityPickerCtrl.id + '.typeahead' : undefined}}"
+                    type="text" ng-model="entityPickerCtrl.value"
+                    placeholder={{entityPickerCtrl.placeholder}}
+                    class="entityPicker-control"
+                    uib-typeahead="entity as entity[entityPickerCtrl.selectedAttributeToDisplay] for entity in entityPickerCtrl.datasource  | filter:$viewValue | limitTo:entityPickerCtrl.limit"
+                    typeahead-template-url={{entityPickerCtrl.templateUrl}}
+                    typeahead-editable=entityPickerCtrl.editable
+                    sit-form-input-validator="{{entityPickerCtrl.label}}"
+                    typeahead-on-select='entityPickerCtrl.onSelect($item, $model, $label)'
+                    ng-class='((entityPickerForm.$invalid && entityPickerForm.$dirty) || (entityPickerForm.$invalid && entityPickerForm.$visited)) ? "validator-control-invalid" : "validator-control"'
+                    ng-blur="entityPickerCtrl.ngBlur()"
+                    sit-change="entityPickerCtrl.sitChange"
+                    ng-disabled="entityPickerCtrl.ngDisabled"
+                    ng-focus="entityPickerCtrl.ngFocus()"
+                    autocomplete="off"
+                    ng-change="entityPickerCtrl.setDropDownHeight()" />                        
+            </div>
+        <div class="btn property-grid-addon-icon" ng-click="entityPickerCtrl.ngDisabled || entityPickerCtrl.showPopup()" ng-hide="!entityPickerCtrl.sitoption" ng-disabled="entityPickerCtrl.ngDisabled">
+            <i class="fa fa-ellipsis-h fa-1x" ng-hide="!entityPickerCtrl.sitoption" ng-disabled="entityPickerCtrl.ngDisabled"></i>
+        </div>
+    </div>    
+</ng-form>

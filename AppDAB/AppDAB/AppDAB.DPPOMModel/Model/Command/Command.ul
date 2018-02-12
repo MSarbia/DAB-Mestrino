@@ -1,0 +1,114 @@
+VERSION '01.12'
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(3f505ec3-4ec8-440c-be8c-3260023042db)]
+COMMAND DABGetTestCard
+WITH
+    [Length = 255]
+    SerialNumber AS string
+RESPONSE
+    [Optional]
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 0d3eaac7-6753-4b1c-8769-e1b7663659e5)]
+    TestCard AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.TestCardParameter
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(1038118a-6df6-4dad-bfcb-9b6fc0002af5)]
+COMMAND DABAcceptMaterialCall
+WITH
+    Id AS Guid
+    [Length = 255]
+    TeamLeader AS string
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(804e0c52-4a05-49f2-b113-99cc29d04faf)]
+COMMAND DABAcceptTeamLeaderCall
+WITH
+    Id AS Guid
+    [Length = 255]
+    TeamLeader AS string
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(51b53d3d-d08b-4dee-92a7-cdc2be572fae)]
+COMMAND DABCreateMaterialCall
+WITH
+    [Length = 255]
+    Operatore AS string
+    [Optional]
+    [Length = 255]
+    MaterialDefinition AS string
+    [Optional]
+    Quantity AS decimal
+    [Length = 255]
+    WorkOrder AS string
+    [Length = 255]
+    Operation AS string
+    [Length = 255]
+    Equipment AS string
+    [Length = 255]
+    WorkArea AS string
+RESPONSE
+    [Optional]
+    Id AS Guid
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(e133e25b-b53b-4ff8-8a80-8a8ff037ff06)]
+COMMAND DABCreateTeamLeaderCall
+WITH
+    [Length = 255]
+    Operatore AS string
+    [Length = 255]
+    Equipment AS string
+    [Length = 255]
+    WorkArea AS string
+RESPONSE
+    [Optional]
+    Id AS Guid
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(20c9027b-eaa7-48fa-aedc-31a14e6f82c5)]
+COMMAND ImportERPOrder
+WITH
+    [@GuidRef(79917911-d071-44ca-8502-17ab85617b05, 4d8e4bb4-52c4-4a8b-9ff5-f3171c8a16af)]
+    ERPOrderInfo AS Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ERPOrderRequest
+RESPONSE
+    [Optional]
+    WorkOrderIds AS list of int
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(ecba880b-9f96-4cea-ae57-9f8a8878713f)]
+COMMAND ImportMaterialDefinition
+WITH
+    [Length = 255]
+    MaterialCode AS string
+    [Length = 255]
+    MaterialRevision AS string
+    [Length = 255]
+    MaterialFamily AS string
+    [Length = 255]
+    Description AS string
+    [Length = 255]
+    UoM AS string
+    Serialized AS bool
+    Customized AS bool
+RESPONSE
+    [Optional]
+    [Length = 255]
+    MaterialCode AS string
+    [Optional]
+    [Length = 255]
+    MaterialRevision AS string
+

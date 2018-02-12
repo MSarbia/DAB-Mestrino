@@ -1,0 +1,713 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimaticIT.Integration.Diagnostics</name>
+    </assembly>
+    <members>
+        <member name="T:Siemens.SimaticIT.Diagnostics.GlobalTracerForNativeFactory">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Siemens.SimaticIT.Diagnostics.IGlobalTracerForNativeFactory" />
+        </member>
+        <member name="F:Siemens.SimaticIT.Diagnostics.GlobalTracerForNativeFactory._resolver">
+            <summary>
+            The resolver
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.GlobalTracerForNativeFactory.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Siemens.SimaticIT.Diagnostics.GlobalTracerForNativeFactory"/> class.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Diagnostics.GlobalTracerForNativeFactory.ContextLessTracerForNativeTracer">
+            <summary>
+            Gets the context-less tracer for native tracer.
+            </summary>
+            <value>
+            The context-less tracer for native tracer.
+            </value>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.GlobalTracerForNativeFactory.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.IGlobalTracerForNativeFactory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Diagnostics.IGlobalTracerForNativeFactory.ContextLessTracerForNativeTracer">
+            <summary>
+            Gets the contex less tracer for native tracer.
+            </summary>
+            <value>
+            The contex less tracer for native tracer.
+            </value>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.IBaseLog">
+            <summary>
+            Interface base of log implementation.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Diagnostics.IBaseLog.ResouceMapperInstance">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILoggerLauncher">
+            <summary>
+            Log for laucnher.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.LauncherStarted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.LauncherStopped">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.LauncherRestarted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.LauncherProcessStarting(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.LauncherProcessStarted(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.LauncherProcessRecovered(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.LauncherProcessRestart(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.LauncherProcessFailed(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.LauncherProcessStopped(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.LauncherPreshutdown">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.LauncherFault(System.Exception,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="exception"></param>
+            <param name="optionalParameter"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.WaitingForRabbit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.LauncherWebStartFault(System.String,System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.LauncherWebStopFault(System.String,System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLauncher.LauncherCreateFileFault(System.String,System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILoggerWorker">
+            <summary>
+            Log for worker.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerWorker.WorkerFault(System.Exception)">
+            <summary>
+            Used to log a fatal Exit of a Worker Process, described by the exception.
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILoggerStateMachine">
+            <summary>
+            Logger for node state machine.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerStateMachine.ProcessingCommand(System.String,System.String,System.String)">
+            <summary>
+            An administrative command has been 
+            received on a particular node on behalf of a user, 
+            this activity is trigger by the user performing 
+            administrative actions by sending remote commands.
+            </summary>
+            <param name="computerName"></param>
+            <param name="commandSymbolicName"></param>
+            <param name="username"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerStateMachine.RuntimeSystemStarted(System.String)">
+            <summary>
+            The runtime system on the specified node has started successfully.
+            </summary>
+            <param name="computerName"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerStateMachine.NodeChangeStatus(System.String,System.String)">
+            <summary>
+            The specified Node has changed its status.
+            </summary>
+            <param name="computerName"></param>
+            <param name="statusSymbolicName"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerStateMachine.NodeStatusChangeError(System.String,System.String,System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="computerName"></param>
+            <param name="statusSymbolicName"></param>
+            <param name="reasonsId"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerStateMachine.RuntimeSystemStopped(System.String)">
+            <summary>
+            The runtime system on the specified node is stopped successfully.
+            </summary>
+            <param name="computerName"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerStateMachine.NodeWarningStatus(System.String,System.String,System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Signal a warning on the specified node with because of reasons indicated.
+            </summary>
+            <param name="computerName"></param>
+            <param name="statusSymbolicName"></param>
+            <param name="reasonsId"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerStateMachine.NodeErrorStatus(System.String,System.String,System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Write the error status with a reason.
+            </summary>
+            <param name="computerName"></param>
+            <param name="statusSymbolicName"></param>
+            <param name="reasonsId"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerStateMachine.NodeStatusOk(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="computerName"></param>
+            <param name="statusSymbolicName"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerStateMachine.CommandSucceeded(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="computerName"></param>
+            <param name="commandSymbolicName"></param>
+            <param name="username"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerStateMachine.CommandRejected(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="computerName"></param>
+            <param name="commandSymbolicName"></param>
+            <param name="username"></param>
+            <param name="reasonsId"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerStateMachine.CommandFailed(System.String,System.String,System.String,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="computerName"></param>
+            <param name="commandSymbolicName"></param>
+            <param name="username"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILoggerLicense">
+            <summary>
+            Logger for licensing.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLicense.LicenseServerConnected">
+            <summary>
+            the license server is connected with Admin Worker
+            </summary>        
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLicense.LicenseServerConnectionFailed">
+            <summary>
+            the license server has failed to connect with Admin Worker
+            </summary>        
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLicense.LicenseServerDisconnected">
+            <summary>
+            the license server is disconnected by Admin Worker
+            </summary>        
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLicense.LicenseServerDisconnectionFailed">
+            <summary>
+            the license server has failed to disconnect by Admin Worker
+            </summary>        
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLicense.ModuleAcquired(System.String)">
+            <summary>
+            a license module has been acquired by Admin Worker
+            </summary>
+            <param name="moduleDescription">the license module description</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLicense.ModuleAcquireFailed(System.String)">
+            <summary>
+            a license module has not been acquired by Admin Worker
+            </summary>
+            <param name="moduleDescription">the license module description</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLicense.ModuleReleased(System.String)">
+            <summary>
+            a license module has been released by Admin Worker
+            </summary>
+            <param name="moduleDescription">the license module description</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLicense.ModuleReleaseFailed(System.String)">
+            <summary>
+            a license module has not been released by Admin Worker
+            </summary>
+            <param name="moduleDescription">the license module description</param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILoggerSolution">
+            <summary>
+            Log for solution.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerSolution.DeploymentStarted(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="appName"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerSolution.DeploymentSuccess(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="appName"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerSolution.DeploymentFailure(System.String,System.Exception,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="appName"></param>
+            <param name="exception"></param>
+            <param name="optionalParameter"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILoggerLocalDeployment">
+            <summary>
+            Log for deployment.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLocalDeployment.LocalDeploymentStarted(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="appName"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLocalDeployment.LocalDeploymentSuccess(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerLocalDeployment.LocalDeploymentFailure(System.String,System.Exception,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="appName"></param>
+            <param name="exception"></param>
+            <param name="optionalParameter"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILoadApp">
+            <summary>
+            Log for load app.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoadApp.LoadAppStarted(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoadApp.LoadAppSuccess(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoadApp.LoadAppFailure(System.String,System.Exception,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="appName"></param>
+            <param name="exception"></param>
+            <param name="optionalParameter"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILoggerInformationLayer">
+            <summary>
+            Log for information layer.
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILoggerIntegrationLayer">
+            <summary>
+            Log for integration layaer.
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILoggerGovernanceLayer">
+            <summary>
+            Log for Governance layer.
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILogRouterLogEvents">
+            <summary>
+            Log for LogRouterService
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILogRouterLogEvents.LogRouterStarted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILogRouterLogEvents.LogRouterStopped">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILogRouterLogEvents.LogRouterStartFailure(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILogRouterLogEvents.LogRouterStartFailure(System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILogRouterLogEvents.LogRouterHasError(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILogRouterLogEvents.LogRouterHasError(System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILogRouterLogEvents.LogRouterSinkWorkerError(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILogRouterLogEvents.LogRouterSinkWorkerError(System.String,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="ex"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILogRouterLogEvents.LogRouterWriteError(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="msgId">Id of message failed to write</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILogRouterLogEvents.LogRouterStopWithError(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILogRouterLogEvents.LogRouterStopWithError(System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILogRouterLogEvents.IsEnabled">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILogRouterLogEvents.GetSourceEventInfo(System.String,System.String@,System.Reflection.ParameterInfo[]@)">
+            <summary>
+            
+            </summary>
+            <param name="mthName"></param>
+            <param name="formattedMessage"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILogRouterLog">
+            <summary>
+            Log for LogRouterService
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILoggerSignalling">
+            <summary>
+            Log for Signalling.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerSignalling.RuleStarted(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerSignalling.RuleStopped(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerSignalling.RuleFatalError(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerSignalling.RuleWarning(System.String,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILogger">
+            <summary>
+            This is the main interface that must not be registered in the resolver, instead of all its interfaces.
+            Enhanced persistent system diagnostic
+            The following system events must be generated and persisted:
+            - Launcher start, stop, restart
+            - Worker start and stop
+            - Solution deployment (start, success, failure) (event generated by deployment engineering handler)
+            - Local deployment (event generated by local deployment agent)
+            - Load App
+            - Information Layer critical events
+            - Integration layer critical events
+            - Governance layer critical events
+            - LogRouterService critical events
+            - License manager critical events
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILogger.Init(Siemens.SimaticIT.Platform.Common.Communication.IInitializationDomain)">
+            <summary>
+            initialization of class resources
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ILoggerGateway">
+            <summary>
+            The interface tho write persistent log data.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ILoggerGateway.RetrieveLogger``1">
+            <summary>
+            Get a logger.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.INativeTracer">
+            <summary>
+            Iterface to configure Use of tracer on Thread Local Storage
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.INativeTracer.InitializeGlobalContext(System.String,System.String)">
+            <summary>
+            Initializes the global context parapeter to use not contextualized trace on Thread Local Storage.
+            </summary>
+            <param name="componentId">The component identifier. The name of the component that host this module (worker name)</param>
+            <param name="appName">Name of the application. The name of the application that is using this tracer</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.INativeTracer.InitializeLocalContext(Siemens.SimaticIT.SDK.Diagnostics.Tracing.ITracer)">
+            <summary>
+            Initializes the Thraed Local Storage with a fully contextualized istance of Tracer.
+            </summary>
+            <param name="istance">The istance of tracer that is the current tracer.</param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.INativeTracerFactory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Diagnostics.INativeTracerFactory.NativeTraceConfigurator">
+            <summary>
+            Gets the native trace configurator.
+            </summary>
+            <value>
+            The native trace configurator.
+            </value>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.INativeTracerFactory.Init(Siemens.SimaticIT.Platform.Common.Communication.IResolver)">
+            <summary>
+            Initializes the specified resolver.
+            </summary>
+            <param name="resolver">The resolver.</param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.IntegrationDiagnosticsInitializer">
+            <summary>
+            Module initialize for integration diagnostics
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.IntegrationDiagnosticsInitializer.Init(Siemens.SimaticIT.Platform.Common.Communication.IHostContext)">
+            <summary>
+            The init of the module
+            </summary>
+            <param name="hostCtx"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.IntegrationDiagnosticsLeanInitializer">
+            <summary>
+            Module initialize for integration diagnostics
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.IntegrationDiagnosticsLeanInitializer.PublicGateways">
+            <summary>
+            the fully qualified names list of the public Gateways exposed by the module initializer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.IntegrationDiagnosticsLeanInitializer.Init(Siemens.SimaticIT.Platform.Common.Communication.IHostContext)">
+            <summary>
+            The init of the module
+            </summary>
+            <param name="hostCtx"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.ITracerGateway">
+            <summary>
+            The interface for writing tracing information with Context.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Diagnostics.ITracerGateway.ExternalContext">
+            <summary>
+            Gets the Command or Lean Client context.
+            </summary>
+            <value>
+            The Command or lean Client context.
+            </value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Diagnostics.ITracerGateway.ComponentId">
+            <summary>
+            Gets the Application Id.
+            </summary>
+            <value>
+            The Application Id.
+            </value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Diagnostics.ITracerGateway.Hostname">
+            <summary>
+            Gets the host name.
+            </summary>
+            <value>
+            The Host name.
+            </value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Diagnostics.ITracerGateway.AppName">
+            <summary>
+            gets or set the AppName
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ITracerGateway.Initialize(System.String)">
+            <summary>
+            Initialize context with application ID
+            </summary>
+            <param name="componentId"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ITracerGateway.Initialize(System.String,Siemens.SimaticIT.Platform.Common.Communication.IBaseTraceContext)">
+            <summary>
+            Initialize context with application ID and Command context
+            </summary>
+            <param name="componentId"></param>
+            <param name="commandContext"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.ITracerGateway.Initialize(Siemens.SimaticIT.Platform.Common.Communication.IBaseTraceContext)">
+            <summary>
+            Initialize context with Command or Lena Client context
+            </summary>
+            <param name="externalContext"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.NativeTracerFactory">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Siemens.SimaticIT.Diagnostics.INativeTracerFactory" />
+        </member>
+        <member name="F:Siemens.SimaticIT.Diagnostics.NativeTracerFactory.Thefactory">
+            <summary>
+            The thefactory
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Diagnostics.NativeTracerFactory._resolver">
+            <summary>
+            The resolver
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.NativeTracerFactory.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Siemens.SimaticIT.Diagnostics.NativeTracerFactory"/> class.
+            </summary>
+            
+        </member>
+        <member name="P:Siemens.SimaticIT.Diagnostics.NativeTracerFactory.NativeTraceConfigurator">
+            <summary>
+            Gets the native trace configurator.
+            </summary>
+            <value>
+            The native trace configurator.
+            </value>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.NativeTracerFactory.Initialize(Siemens.SimaticIT.Platform.Common.Communication.IResolver)">
+            <summary>
+            Initializes the specified resolver.
+            </summary>
+            <param name="resolver">The resolver.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.NativeTracerFactory.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.NativeTracerFactory.Init(Siemens.SimaticIT.Platform.Common.Communication.IResolver)">
+            <summary>
+            Initializes the specified resolver.
+            </summary>
+            <param name="resolver">The resolver.</param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Diagnostics.SystemLogInitializer">
+            <summary>
+            Module initializer.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.SystemLogInitializer.PublicGateways">
+            <summary>
+            the fully qualified names list of the public Gateways exposed by the module initializer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Diagnostics.SystemLogInitializer.Init(Siemens.SimaticIT.Platform.Common.Communication.IHostContext)">
+            <summary>
+            Initialization of modules.
+            </summary>
+            <param name="hostCtx"></param>
+        </member>
+    </members>
+</doc>

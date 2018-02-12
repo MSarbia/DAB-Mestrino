@@ -11,7 +11,7 @@ namespace TestInforConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Selezionare richiesta:\n\n 1) ReportProduction\n 2) Unplanned Material\n");
+            Console.WriteLine("Selezionare richiesta:\n\n 1) Report Production\n 2) Unplanned Material\n 3) Material Non Conformance \n 4) Operation Progress\n");
 
             InforResult result = new InforResult();
 
@@ -20,6 +20,8 @@ namespace TestInforConsole
                 int choice = Int32.Parse(Console.ReadLine());
                 ReportProduction reportProd = new ReportProduction("D02220137", 1, false);
                 UnplannedMat unplannedMat = new UnplannedMat("D02220137", 1, "002612155", 1, Convert.ToDecimal(1.0));
+                OperatorOperation operationProg = new OperatorOperation("D02220137", 1, 1);
+                InvTransfer materialNonConf = new InvTransfer("TestOrderNumber", "TransIdTest;ToWarehouseTest", "StorageUnitTest", Convert.ToDecimal(1.2));
 
                 if ((choice > 0) && (choice < 5))
                 {
@@ -30,6 +32,14 @@ namespace TestInforConsole
                     else if (choice == 2)
                     {
                         result = InforConnector.ReportConsumedMaterial(unplannedMat);
+                    }
+                    else if (choice == 3)
+                    {
+                        result = InforConnector.ReportMaterialNonConformance(materialNonConf);
+                    }
+                    else if (choice == 4)
+                    {
+                        result = InforConnector.ReportOperationProgress(operationProg);
                     }
 
                     Console.WriteLine("Test passed : " + result.InforCallSucceeded.ToString() + " with message: " + result.Error);

@@ -1,0 +1,27 @@
+﻿
+<div data-internal-type="icon-picker-container" id="icon-picker-container" class="icon-picker-container"> 
+    <div class="icon-selector" ng-if="iconPickerCtrl.showpicker">
+    <sit-entity-picker sit-id="iconPickerCtrl.id"                       
+                       sit-change="iconPickerCtrl.valueChanged"                      
+                       sit-datasource="iconPickerCtrl.datasource" 
+                       sit-limit="iconPickerCtrl.limit" 
+                       sit-placeholder="iconPickerCtrl.placeholder"
+                       sit-selected-attribute-to-display="iconPickerCtrl.selectedAttributeToDisplay" 
+                       sit-editable="iconPickerCtrl.editable" 
+                       sit-required="iconPickerCtrl.required"
+                       sit-template-url="iconPickerCtrl.templateUrl"
+                       sit-read-only="iconPickerCtrl.readOnly" 
+                       sit-validation="iconPickerCtrl.validation" 
+                       sit-selected-object="iconPickerCtrl.selectedObject"
+                       ng-blur="iconPickerCtrl.ngBlur"
+                       ng-disabled="iconPickerCtrl.ngDisabled"
+                       ng-focus="iconPickerCtrl.ngFocus"
+                       ng-readonly="iconPickerCtrl.ngReadonly"
+                       class="property-grid-input-group"/>
+    </div>  
+    <div class="icon-view">     
+        <span>
+            <i class="fa {{iconPickerCtrl.value}} fa-lg"></i>
+        </span>
+    </div>
+</div>

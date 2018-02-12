@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>d811637f-e1d9-4c5c-aef3-64fa8a1ef456</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Engineering.DAB.AppDAB.Installer</RootNamespace>
+    <AssemblyName>Engineering.DAB.AppDAB.Installer</AssemblyName>
+    <Name>AppDAB.Installer</Name>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FunctionalBlockType>Project</FunctionalBlockType>
+    <FunctionalBlockVersion>01.00.00</FunctionalBlockVersion>
+    <FunctionalBlockName>AppDAB</FunctionalBlockName>
+    <FunctionalBlockPrefix>Engineering.DAB</FunctionalBlockPrefix>
+    <FunctionalBlockModels>Engineering.DAB.AppDAB.AppDAB.DPPOMModel</FunctionalBlockModels>
+    <FunctionalBlockDescription>
+    </FunctionalBlockDescription>
+    <SitPlatformVersion>1.5</SitPlatformVersion>
+    <AutoDeployPackage>False</AutoDeployPackage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU'  ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Config" />
+    <Folder Include="ExternalDependencies" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\Engineering.DAB.AppDAB.Dbinit.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\Engineering.DAB.AppDAB.References.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppDAB.CommandHandler\AppDAB.CommandHandler.csproj">
+      <Name>AppDAB.CommandHandler</Name>
+      <Project>{dd467a79-03b8-4005-8268-14794e09bf1d}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\AppDAB.DPPOMModel\AppDAB.DPPOMModel.pmproj">
+      <Name>AppDAB.DPPOMModel</Name>
+      <Project>{79917911-d071-44ca-8502-17ab85617b05}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\AppDAB.EventHandler\AppDAB.EventHandler.csproj">
+      <Name>AppDAB.EventHandler</Name>
+      <Project>{862b9fa8-2ad2-4586-9dcb-1694dce13c26}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\AppDAB.ReadingFunctionHandler\AppDAB.ReadingFunctionHandler.csproj">
+      <Name>AppDAB.ReadingFunctionHandler</Name>
+      <Project>{82f645cd-5f4f-40b8-ba96-d2140ac1644e}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\AppDAB.UserInterface\AppDAB.UserInterface.csproj">
+      <Name>AppDAB.UserInterface</Name>
+      <Project>{a78794bd-d34e-4e96-b61d-b516db725bff}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(SITUnifiedVSToolingPlatformBin)\Siemens.SimaticIt.Build.Installer.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

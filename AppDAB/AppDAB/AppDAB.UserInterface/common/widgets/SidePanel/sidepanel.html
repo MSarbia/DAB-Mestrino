@@ -1,0 +1,28 @@
+﻿<div class="side-panel-container">
+    <div class="side-panel-top">
+        <div class="side-panel-header">
+            <span class="side-panel-header-text">{{sidepanelCtrl.title}}</span>
+            <button type="button" class="side-panel-close-btn" ng-show="sidepanelCtrl.isCloseButtonShown" ng-click="sidepanelCtrl.closeSidepanel()" title="{{sidepanelCtrl.closeButtonTooltip}}">
+                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="side-panel-buttons" ng-if="(sidepanelCtrl.sidepanelCommandButtons.bar.length !== 0 || sidepanelCtrl.sidepanelActionButtons.bar.length !== 0)">
+            <div class="side-panel-commands">
+                <sit-command-bar sit-commands="sidepanelCtrl.sidepanelCommandButtons"></sit-command-bar>
+            </div>
+            <div class="side-panel-actions">
+                <sit-command-bar sit-commands="sidepanelCtrl.sidepanelActionButtons" sit-label-align="right"></sit-command-bar>
+            </div>
+        </div>
+    </div>
+    <div class="side-panel-content" ng-class="sidepanelCtrl.sidepanelCommandButtons.bar.length === 0 && sidepanelCtrl.sidepanelActionButtons.bar.length === 0 ? 'content-height' : 'content-button-height'">
+        <div class="side-panel-custom" ng-transclude></div>
+        <div ng-hide="!sidepanelCtrl.messages.length">
+            <p class="side-panel-message" ng-repeat="message in sidepanelCtrl.messages" ng-class="{
+             'admonition admonition-warning':message.type=='warning',
+             'admonition admonition-info':message.type=='info'}">
+                <span>{{message.text}}</span>
+            </p>
+        </div>
+    </div>
+</div>

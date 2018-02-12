@@ -1,0 +1,181 @@
+VERSION '01.12'
+
+[@Guid(84a4479b-4496-4afa-83f8-fcec25e4b0d3)]
+[@GuidId(596a0c13-0b16-4551-ac1c-a9ba12abf319)]
+ENTITY TestCard
+WITH
+    [Mandatory]
+    [@Guid(3ced6661-4b2b-47b3-8087-cce5ba2ba1e0)]
+    WorkOrderId AS int
+    [Mandatory]
+    [Length = 255]
+    [@Guid(01f0eb39-c60f-44b8-8b2a-5b427eba0580)]
+    CodiceProdotto AS string
+    [@Guid(6eb53b45-2e9f-46dd-8ba8-39162e5ede3a)]
+    PotenzaASecco AS decimal
+    [@Guid(60844689-325a-45ab-9521-169a677f9747)]
+    PotenzaASeccoPercent AS decimal
+    [@Guid(8bfa0ef6-1331-430b-bc07-b94d4d1dfa1f)]
+    CorrenteASecco AS decimal
+    [@Guid(37cb538c-12de-4213-8146-081b80ebc409)]
+    CorrenteASeccoPercent AS decimal
+
+[@Guid(bc5131bb-1398-4cfb-8f39-370bdd9143d3)]
+[@GuidId(b5200563-9498-4b81-ad9b-9de2e24c0bcd)]
+ENTITY Absorption
+WITH
+    [Mandatory]
+    [Length = 255]
+    [@Guid(53e54b20-ba20-41ea-80d6-65b8d12b1d05)]
+    Nome AS string
+    [OneToMany BackNavigation = TestCard.Absorptions OnDeleteCascade Simple]
+    [@Guid(d3f13ee9-6cf1-45e1-8fe3-504e045f2ac6)]
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 84a4479b-4496-4afa-83f8-fcec25e4b0d3)]
+    TestCard AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestCard
+    [@Guid(b5987b6f-4079-4f58-947a-d1fd56b2f22f)]
+    PressionePercent AS decimal
+    [@Guid(c2eea688-05ab-44ab-ae88-aa6fa318a672)]
+    Pressione AS decimal
+    [@Guid(3eba99b3-b82d-4da7-8c76-b76adc3e650c)]
+    AmperePercent AS decimal
+    [@Guid(c8a819f9-9e85-44f4-9aea-d8a593c717ba)]
+    Ampere AS decimal
+    [@Guid(b226db73-9367-4f32-b1d9-910daa5962a7)]
+    WatPercent AS decimal
+    [@Guid(15cc28e9-058f-40ed-a2c8-2c4ac27ba490)]
+    Watt AS decimal
+    [@Guid(d3ffa58d-34d0-4dbc-8815-026b49998a76)]
+    Portata AS decimal
+    [@Guid(6c401608-ff02-4d3c-b3e3-682097ea7919)]
+    PortataPercent AS decimal
+
+[@Guid(c2229aeb-65b6-4117-ab52-ab93d90272bf)]
+[@GuidId(fa56866d-3c4a-47da-80ae-0e2792b6aea8)]
+ENTITY TestResult
+WITH
+    [OneToMany BackNavigation = TestCard.TestResult OnDeleteCascade Simple]
+    [Mandatory]
+    [@Guid(59ef6df9-912c-496e-848b-91b768329f3e)]
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 84a4479b-4496-4afa-83f8-fcec25e4b0d3)]
+    TestCard AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestCard
+    [Mandatory]
+    [Length = 255]
+    [@Guid(6e676dfb-acd7-40f3-bb6b-55afdccf549c)]
+    SerialNumber AS string
+    [Mandatory]
+    [@Guid(7245ad46-4bcd-4d70-abd2-62dedcb69465)]
+    Data AS DateTime
+    [Length = 255]
+    [@Guid(a40b9441-c76d-45fb-863f-135bdd2092b8)]
+    DescrizioneEsito AS string
+    [Mandatory]
+    [Length = 255]
+    [@Guid(430858ae-16b5-4a83-8b5b-1dfebed8ed72)]
+    Esito AS string
+    [@Guid(a3ded13b-8f2e-4bad-a012-56b7dc2e0ef9)]
+    PotenzaASecco AS decimal
+    [@Guid(0ab7ea74-b02c-410f-97de-89de2b75d7b0)]
+    CorrenteASecco AS decimal
+    [@Guid(f02e8078-3888-44c2-98a1-b6121574ce19)]
+    ResistenzaDiTerra AS decimal
+    [@Guid(4c2860e6-c4e1-41ed-9a2f-c20211a54d5c)]
+    RigiditaDielettrica AS decimal
+    [@Guid(ce59e8be-4402-4292-9193-77a1285896fb)]
+    ResistenzaIsolamento AS decimal
+
+[@Guid(95cdaa5c-bc18-4110-b82d-4c31ad8b3b8e)]
+[@GuidId(b40f90d2-7ed6-4a35-8662-a696041bb833)]
+ENTITY AbsorptionResult
+WITH
+    [Mandatory]
+    [Length = 255]
+    [@Guid(73f9dea5-7a29-4a23-817f-3106953c418e)]
+    Nome AS string
+    [OneToMany BackNavigation = TestResult.AbsorptionResults OnDeleteCascade Simple]
+    [Mandatory]
+    [@Guid(d63f509e-020b-4735-8571-84c1698c84c3)]
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, c2229aeb-65b6-4117-ab52-ab93d90272bf)]
+    TestResult AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestResult
+    [@Guid(5657454f-f174-4c70-9ac7-2e07a23e42a4)]
+    AmpereFase1 AS decimal
+    [@Guid(f97a7b63-8a58-4a39-9e93-f1a83ec5abf6)]
+    TensioneProva AS decimal
+    [@Guid(344028b1-1dda-4249-bd46-43fcc7767c09)]
+    Portata AS decimal
+    [@Guid(2eeeedca-1ccb-4d20-8c27-a2cbf5ce4ff2)]
+    Pressione AS decimal
+    [@Guid(25a93c6f-6e00-4bf0-a395-05ad769495ec)]
+    AmpereFase3 AS decimal
+    [@Guid(f5f1d690-f4e7-4c81-bab6-2632c66ca837)]
+    AmpereFase2 AS decimal
+
+[@Guid(17b6fd20-dfb2-42dd-a7d7-de6d0769686a)]
+[@GuidId(0f660e8c-af1e-4b90-9d23-84f46b4cedab)]
+ENTITY MaterialCall
+WITH
+    [Length = 255]
+    [@Guid(e978cd05-cdd3-4702-be5c-eaf0e13aa5b0)]
+    TeamLeader AS string
+    [Mandatory]
+    [@Guid(3ff010f6-4a11-4331-82af-7c26823c8010)]
+    Date AS DateTime
+    [Default = false]
+    [Mandatory]
+    [@Guid(33db5f2f-c1ca-410a-9f42-e9dea467d927)]
+    Accepted AS bool
+    [@Guid(949e22df-8af5-4d33-b5b4-214ad237a8f6)]
+    AcceptDate AS DateTime
+    [Length = 255]
+    [@Guid(c356749f-0447-4c97-b21f-26cbf5668549)]
+    MaterialDefinition AS string
+    [Mandatory]
+    [Length = 255]
+    [@Guid(d52beba1-a096-4686-89a6-d7e5e42dd319)]
+    WorkOrder AS string
+    [@Guid(81d6bdbc-e3dc-4a19-b0d4-b129dedfc4b6)]
+    Quantity AS decimal
+    [Mandatory]
+    [Length = 255]
+    [@Guid(9f1c6d19-6a13-48e7-b625-7c91cdaaf08f)]
+    Operation AS string
+    [Mandatory]
+    [Length = 255]
+    [@Guid(dec95b53-acde-40c4-865b-2d9c0cd8e254)]
+    Equipment AS string
+    [Mandatory]
+    [Length = 255]
+    [@Guid(0d56976e-0e7e-42fc-a349-e0e156f11151)]
+    WorkArea AS string
+    [Mandatory]
+    [Length = 255]
+    [@Guid(4b5bb445-eff2-4487-b6ea-aaf5e896c7ee)]
+    Operatore AS string
+
+[@Guid(80e74714-8a96-4408-8bc2-b80b60e1a37d)]
+[@GuidId(bf759ccb-9699-4a9c-9cdc-e206f82731e2)]
+ENTITY TeamLeaderCall
+WITH
+    [Mandatory]
+    [@Guid(f09bbe84-e4a7-46f2-8734-16dcaadd9cd0)]
+    Accepted AS bool
+    [Mandatory]
+    [@Guid(c6112e8a-77bc-4ffd-9da9-e3d6d6b0e9c9)]
+    Date AS DateTime
+    [Length = 255]
+    [@Guid(427f2b3c-5a3d-400b-b2bb-17c151d8dbbd)]
+    TeamLeader AS string
+    [Mandatory]
+    [Length = 255]
+    [@Guid(ef6ab87d-646f-4dd1-b494-7cde9cabff23)]
+    Operatore AS string
+    [@Guid(4339ac99-9786-4f26-ba79-10079cf794a9)]
+    AcceptDate AS DateTime
+    [Mandatory]
+    [Length = 255]
+    [@Guid(78e9f7d5-76fc-4add-90ad-4fb1e3c9dccb)]
+    Equipment AS string
+    [Mandatory]
+    [Length = 255]
+    [@Guid(9917014b-fe30-4ed0-b010-379741e9f119)]
+    WorkArea AS string
+

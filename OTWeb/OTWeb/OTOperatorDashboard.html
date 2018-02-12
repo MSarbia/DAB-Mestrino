@@ -81,6 +81,9 @@
 <body onkeypress="readBarcodeKeyPress(event, this)" unselectable="on"
       onselectstart="return false;"
       onmousedown="return false;">
+    <div class="overlay">
+        <span class="fa fa-circle-notch fa-spin fa-2x"></span>
+    </div>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -128,8 +131,10 @@
                 <div class="TableHeader">
                     <div class="TableHeaderRow">
                         <div class="HeaderCellSx"><img src="Images/logo-mobile.svg" style="height:40px;" /></div>
-                        <div class="HeaderCellCen"><span id="centralTitle" style="white-space:nowrap;"></span></div>
-                        <div class="HeaderCellDx"><span class="fa fa-sign-out-alt" onclick="LogoutClick()"><span style="font-family:Calibri; padding-right:20px;"> Logout</span></span></div>
+                        <div class="HeaderCellCen"><span id="centralTitle" style="white-space:nowrap;"></span></div>                       
+                          <div class="HeaderCellDx">
+                              <span class="fa fa-desktop" onclick="toggleFullscreen()"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="fa fa-sign-out-alt" onclick="LogoutClick()"><span style="font-family:Calibri; padding-right:20px;"> Logout</span></span></div>
                     </div>
                 </div>
             </div>
@@ -142,7 +147,17 @@
                             <div class="btn" onclick="CallTeamLeader()"><span class="fa fa-user fa-2x buttonIcon"></span></div>
                             <br />
                             <div class="btn" onclick="CallMaterials()"><span class="fa fa-wrench fa-2x buttonIcon"></span></div>
-                        </div>
+                       
+                            <br /><br /><br />
+                            <div class="btn">
+                                <div class="ButtonRow">
+                                    <div class="ButtonCell">
+                                        <div id="startButton" class="btn" onClick=""><span class="fa fa-play fa-2x buttonIcon"></span></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                         </div>
                         <div class="CellRx">
 
                             <div style="display:table; height:100%; width:100%; overflow-x:hidden; overflow-y:hidden;">
@@ -177,11 +192,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ButtonRow">
-                                    <div class="ButtonCell">
-                                        <div id="startButton" class="btn" onClick=""><span class="fa fa-play fa-2x buttonIcon"></span></div>
-                                    </div>
-                                </div>
+             
                             </div>
                         </div>
                     </div>
@@ -193,3 +204,11 @@
     <div class="ui-notification-container"></div>
 </body>
 </html>
+
+
+
+<div class="ButtonRow">
+    <div class="ButtonCell">
+        <div id="startButton" class="btn" onClick=""><span class="fa fa-play fa-2x buttonIcon"></span></div>
+    </div>
+</div>

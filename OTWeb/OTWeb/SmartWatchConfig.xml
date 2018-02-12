@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SmartWatches>
+  <SmartWatch MacAddress="E4-B3-18-6D-5D-DA">
+    <User>op10</User>
+    <Password>op10Pass</Password>
+  </SmartWatch>
+  <SmartWatch MacAddress="E4-B3-18-6D-5D-DE">
+    <User>TLeader10</User>
+    <Password>TLeaderPassword</Password>
+  </SmartWatch>
+</SmartWatches>

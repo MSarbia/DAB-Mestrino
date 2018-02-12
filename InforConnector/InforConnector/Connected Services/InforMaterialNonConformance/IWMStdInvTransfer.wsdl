@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:bo="http://www.infor.com/businessinterface/IWMStdInvTransfer" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="IWMStdInvTransfer" targetNamespace="http://www.infor.com/businessinterface/IWMStdInvTransfer" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.infor.com/businessinterface/IWMStdInvTransfer">
+      <xsd:complexType name="InvTransferRequestType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ControlArea">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" default="request" name="processingScope" type="bo:processingScope" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DataArea">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="unbounded" name="IWMStdInvTransfer">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element minOccurs="0" name="Item" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="Project" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="Element" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="Activity" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="FromWarehouse" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="ToWarehouse" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="FromLocation" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="ToLocation" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="LotCode" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="InvDate" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="StorageUnit" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="StorageQuantity" type="xsd:double" />
+                      <xsd:element minOccurs="0" name="OrderType" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="NumberGroup" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="NumberSeries" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="OrderNumber" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="SerialNumber" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="HandlingUnit" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="Route" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="HeaderReference" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="LineReference" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="ExtraInfo" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="TransId" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="LoginCode" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="AllowNegInventory" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="AllSerials" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="GenerateSerials" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="GenerateNinvLots" type="xsd:string" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="InvTransferResponseType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="DataArea">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="unbounded" name="IWMStdInvTransfer">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element minOccurs="0" name="OutData" type="xsd:string" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="InformationArea" type="bo:InformationArea" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HandlingUnitTransferRequestType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ControlArea">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" default="request" name="processingScope" type="bo:processingScope" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DataArea">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="unbounded" name="IWMStdInvTransfer">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element minOccurs="0" name="ToWarehouse" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="ToLocation" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="StorageUnit" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="StorageQuantity" type="xsd:double" />
+                      <xsd:element minOccurs="0" name="OrderType" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="NumberGroup" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="NumberSeries" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="OrderNumber" type="xsd:string" />
+                      <xsd:element minOccurs="1" name="HandlingUnit" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="TransId" type="xsd:string" />
+                      <xsd:element minOccurs="0" name="LoginCode" type="xsd:string" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HandlingUnitTransferResponseType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="DataArea">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="unbounded" name="IWMStdInvTransfer">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element minOccurs="0" name="OutData" type="xsd:string" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="InformationArea" type="bo:InformationArea" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ActivationType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="username" type="xsd:string" />
+          <xsd:element minOccurs="0" name="password" type="xsd:string" />
+          <xsd:element minOccurs="0" name="company" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Activation" type="bo:ActivationType" />
+      <xsd:element name="Result" type="bo:Message" />
+      <xsd:complexType name="InformationArea">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Message" type="bo:InformationMessage" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Message">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="messageIndex" type="xsd:integer" />
+          <xsd:element name="messageCode" type="xsd:string" />
+          <xsd:element name="messageType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Error" />
+                <xsd:enumeration value="Warning" />
+                <xsd:enumeration value="Information" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="messageText" type="xsd:string" />
+          <xsd:element name="messageSource" type="xsd:string" />
+          <xsd:element minOccurs="0" name="MessageDetails">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" name="Message" type="bo:DetailMessage" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="messageCorrectiveAction" type="xsd:string" />
+          <xsd:choice>
+            <xsd:element minOccurs="0" name="messageAdditionalHelpText" type="xsd:string" />
+            <xsd:element minOccurs="0" name="messageAdditionalHelpURI" type="xsd:anyURI" />
+          </xsd:choice>
+          <xsd:element minOccurs="0" name="MessageReference">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="messageReferenceType" type="xsd:string" />
+                <xsd:element name="messageReferenceInfo" type="xsd:anyType" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DetailMessage">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="bo:Message">
+            <xsd:attribute name="ID" type="xsd:ID" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="InformationMessage">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="bo:Message">
+            <xsd:attribute name="ID" type="xsd:ID" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="FilterType">
+        <xsd:choice>
+          <xsd:element name="LogicalExpression" type="bo:LogicalExpressionType" />
+          <xsd:element name="ComparisonExpression" type="bo:ComparisonExpressionType" />
+        </xsd:choice>
+      </xsd:complexType>
+      <xsd:complexType name="LogicalExpressionType">
+        <xsd:sequence>
+          <xsd:element name="logicalOperator">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="or" />
+                <xsd:enumeration value="and" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:choice minOccurs="2" maxOccurs="unbounded">
+            <xsd:element maxOccurs="unbounded" name="LogicalExpression" type="bo:LogicalExpressionType" />
+            <xsd:element maxOccurs="unbounded" name="ComparisonExpression" type="bo:ComparisonExpressionType" />
+          </xsd:choice>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ComparisonExpressionType">
+        <xsd:sequence>
+          <xsd:element name="comparisonOperator">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="le" />
+                <xsd:enumeration value="lt" />
+                <xsd:enumeration value="ge" />
+                <xsd:enumeration value="gt" />
+                <xsd:enumeration value="ne" />
+                <xsd:enumeration value="eq" />
+                <xsd:enumeration value="like" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:choice>
+            <xsd:element name="attributeName" type="bo:filterAttributeListDT" />
+            <xsd:element name="emptyValue" type="bo:EmptyValueType" />
+            <xsd:element name="instanceValue" type="xsd:string" />
+          </xsd:choice>
+          <xsd:choice>
+            <xsd:element name="attributeName" type="bo:filterAttributeListDT" />
+            <xsd:element name="emptyValue" type="bo:EmptyValueType" />
+            <xsd:element name="instanceValue" type="xsd:string" />
+          </xsd:choice>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="EmptyValueType" />
+      <xsd:simpleType name="filterAttributeListDT">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="IWMStdInvTransfer.Item" />
+          <xsd:enumeration value="IWMStdInvTransfer.Project" />
+          <xsd:enumeration value="IWMStdInvTransfer.Element" />
+          <xsd:enumeration value="IWMStdInvTransfer.Activity" />
+          <xsd:enumeration value="IWMStdInvTransfer.FromWarehouse" />
+          <xsd:enumeration value="IWMStdInvTransfer.ToWarehouse" />
+          <xsd:enumeration value="IWMStdInvTransfer.FromLocation" />
+          <xsd:enumeration value="IWMStdInvTransfer.ToLocation" />
+          <xsd:enumeration value="IWMStdInvTransfer.LotCode" />
+          <xsd:enumeration value="IWMStdInvTransfer.InvDate" />
+          <xsd:enumeration value="IWMStdInvTransfer.StorageUnit" />
+          <xsd:enumeration value="IWMStdInvTransfer.StorageQuantity" />
+          <xsd:enumeration value="IWMStdInvTransfer.OrderType" />
+          <xsd:enumeration value="IWMStdInvTransfer.NumberGroup" />
+          <xsd:enumeration value="IWMStdInvTransfer.NumberSeries" />
+          <xsd:enumeration value="IWMStdInvTransfer.OrderNumber" />
+          <xsd:enumeration value="IWMStdInvTransfer.SerialNumber" />
+          <xsd:enumeration value="IWMStdInvTransfer.HandlingUnit" />
+          <xsd:enumeration value="IWMStdInvTransfer.Route" />
+          <xsd:enumeration value="IWMStdInvTransfer.HeaderReference" />
+          <xsd:enumeration value="IWMStdInvTransfer.LineReference" />
+          <xsd:enumeration value="IWMStdInvTransfer.ExtraInfo" />
+          <xsd:enumeration value="IWMStdInvTransfer.TransId" />
+          <xsd:enumeration value="IWMStdInvTransfer.LoginCode" />
+          <xsd:enumeration value="IWMStdInvTransfer.OutData" />
+          <xsd:enumeration value="IWMStdInvTransfer.AllowNegInventory" />
+          <xsd:enumeration value="IWMStdInvTransfer.AllSerials" />
+          <xsd:enumeration value="IWMStdInvTransfer.GenerateSerials" />
+          <xsd:enumeration value="IWMStdInvTransfer.GenerateNinvLots" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="SelectionType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="selectionAttribute">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="*" />
+                <xsd:enumeration value="IWMStdInvTransfer.*" />
+                <xsd:enumeration value="IWMStdInvTransfer.Item" />
+                <xsd:enumeration value="IWMStdInvTransfer.Project" />
+                <xsd:enumeration value="IWMStdInvTransfer.Element" />
+                <xsd:enumeration value="IWMStdInvTransfer.Activity" />
+                <xsd:enumeration value="IWMStdInvTransfer.FromWarehouse" />
+                <xsd:enumeration value="IWMStdInvTransfer.ToWarehouse" />
+                <xsd:enumeration value="IWMStdInvTransfer.FromLocation" />
+                <xsd:enumeration value="IWMStdInvTransfer.ToLocation" />
+                <xsd:enumeration value="IWMStdInvTransfer.LotCode" />
+                <xsd:enumeration value="IWMStdInvTransfer.InvDate" />
+                <xsd:enumeration value="IWMStdInvTransfer.StorageUnit" />
+                <xsd:enumeration value="IWMStdInvTransfer.StorageQuantity" />
+                <xsd:enumeration value="IWMStdInvTransfer.OrderType" />
+                <xsd:enumeration value="IWMStdInvTransfer.NumberGroup" />
+                <xsd:enumeration value="IWMStdInvTransfer.NumberSeries" />
+                <xsd:enumeration value="IWMStdInvTransfer.OrderNumber" />
+                <xsd:enumeration value="IWMStdInvTransfer.SerialNumber" />
+                <xsd:enumeration value="IWMStdInvTransfer.HandlingUnit" />
+                <xsd:enumeration value="IWMStdInvTransfer.Route" />
+                <xsd:enumeration value="IWMStdInvTransfer.HeaderReference" />
+                <xsd:enumeration value="IWMStdInvTransfer.LineReference" />
+                <xsd:enumeration value="IWMStdInvTransfer.ExtraInfo" />
+                <xsd:enumeration value="IWMStdInvTransfer.TransId" />
+                <xsd:enumeration value="IWMStdInvTransfer.LoginCode" />
+                <xsd:enumeration value="IWMStdInvTransfer.OutData" />
+                <xsd:enumeration value="IWMStdInvTransfer.AllowNegInventory" />
+                <xsd:enumeration value="IWMStdInvTransfer.AllSerials" />
+                <xsd:enumeration value="IWMStdInvTransfer.GenerateSerials" />
+                <xsd:enumeration value="IWMStdInvTransfer.GenerateNinvLots" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="processingScope">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="not_applicable" />
+          <xsd:enumeration value="request" />
+          <xsd:enumeration value="business_entity" />
+          <xsd:enumeration value="business_entity_component" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="actionType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="create" />
+          <xsd:enumeration value="createOrChange" />
+          <xsd:enumeration value="change" />
+          <xsd:enumeration value="delete" />
+          <xsd:enumeration value="unchanged" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="InvTransferRequest">
+    <wsdl:part name="InvTransferRequest" type="bo:InvTransferRequestType" />
+  </wsdl:message>
+  <wsdl:message name="InvTransferResponse">
+    <wsdl:part name="InvTransferResponse" type="bo:InvTransferResponseType" />
+  </wsdl:message>
+  <wsdl:message name="HandlingUnitTransferRequest">
+    <wsdl:part name="HandlingUnitTransferRequest" type="bo:HandlingUnitTransferRequestType" />
+  </wsdl:message>
+  <wsdl:message name="HandlingUnitTransferResponse">
+    <wsdl:part name="HandlingUnitTransferResponse" type="bo:HandlingUnitTransferResponseType" />
+  </wsdl:message>
+  <wsdl:message name="Result">
+    <wsdl:part name="Result" element="bo:Result" />
+  </wsdl:message>
+  <wsdl:message name="Header">
+    <wsdl:part name="Activation" element="bo:Activation" />
+  </wsdl:message>
+  <wsdl:portType name="IWMStdInvTransfer">
+    <wsdl:operation name="InvTransfer">
+      <wsdl:input message="bo:InvTransferRequest" />
+      <wsdl:output message="bo:InvTransferResponse" />
+      <wsdl:fault name="FaultName" message="bo:Result" />
+    </wsdl:operation>
+    <wsdl:operation name="HandlingUnitTransfer">
+      <wsdl:input message="bo:HandlingUnitTransferRequest" />
+      <wsdl:output message="bo:HandlingUnitTransferResponse" />
+      <wsdl:fault name="FaultName" message="bo:Result" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IWMStdInvTransferSoapBinding" type="bo:IWMStdInvTransfer">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="InvTransfer">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.infor.com/businessinterface/IWMStdInvTransfer" />
+        <soap:header message="bo:Header" part="Activation" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.infor.com/businessinterface/IWMStdInvTransfer" />
+      </wsdl:output>
+      <wsdl:fault name="FaultName">
+        <soap:fault use="literal" name="FaultName" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HandlingUnitTransfer">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.infor.com/businessinterface/IWMStdInvTransfer" />
+        <soap:header message="bo:Header" part="Activation" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.infor.com/businessinterface/IWMStdInvTransfer" />
+      </wsdl:output>
+      <wsdl:fault name="FaultName">
+        <soap:fault use="literal" name="FaultName" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IWMStdInvTransferService">
+    <wsdl:port name="IWMStdInvTransferSoapPort" binding="bo:IWMStdInvTransferSoapBinding">
+      <soap:address location="http://192.168.1.31:8312/c4ws/services/IWMStdInvTransfer/lntestclone" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>46f42d96-43a8-4ddb-90d1-d4c49c0edf59</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Engineering.DAB.FB_OP_DAB.Installer</RootNamespace>
+    <AssemblyName>Engineering.DAB.FB_OP_DAB.Installer</AssemblyName>
+    <Name>FB_OP_DAB.Installer</Name>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FunctionalBlockType>Library</FunctionalBlockType>
+    <FunctionalBlockVersion>01.00.00</FunctionalBlockVersion>
+    <FunctionalBlockName>FB_OP_DAB</FunctionalBlockName>
+    <FunctionalBlockPrefix>Engineering.DAB</FunctionalBlockPrefix>
+    <FunctionalBlockModels>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel</FunctionalBlockModels>
+    <FunctionalBlockDescription>
+    </FunctionalBlockDescription>
+    <SitPlatformVersion>1.5</SitPlatformVersion>
+    <AutoDeployPackage>False</AutoDeployPackage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU'  ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Config" />
+    <Folder Include="ExternalDependencies" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\Engineering.DAB.FB_OP_DAB.Dbinit.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExternalDependencies\InforConnectorLibrary.dll">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ExternalDependencies\InforConnectorLibrary.dll.config">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ExternalDependencies\NiceLabelConnector.dll">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ExternalDependencies\NiceLabelConnector.dll.config">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\Engineering.DAB.FB_OP_DAB.References.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FB_OP_DAB.CommandHandler\FB_OP_DAB.CommandHandler.csproj">
+      <Name>FB_OP_DAB.CommandHandler</Name>
+      <Project>{1600aa8e-fb75-45d0-b3f3-5672c477412b}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FB_OP_DAB.EventHandler\FB_OP_DAB.EventHandler.csproj">
+      <Name>FB_OP_DAB.EventHandler</Name>
+      <Project>{7fb0ab1f-2079-4081-98fc-512627b485d9}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FB_OP_DAB.OPModel\FB_OP_DAB.OPModel.umproj">
+      <Name>FB_OP_DAB.OPModel</Name>
+      <Project>{3eed0a14-69cf-4b66-b87a-2b23582fc663}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(SITUnifiedVSToolingPlatformBin)\Siemens.SimaticIt.Build.Installer.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

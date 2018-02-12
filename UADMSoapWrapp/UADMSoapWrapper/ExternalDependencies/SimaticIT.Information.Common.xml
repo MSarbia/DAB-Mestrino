@@ -1,0 +1,550 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimaticIT.Information.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.StorageAuthenticationMode">
+            <summary>
+            Authentication Mode
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Information.Common.Configuration.StorageAuthenticationMode.Undefined">
+            <summary>
+            Undefined Authentication (to be determined later...)
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Information.Common.Configuration.StorageAuthenticationMode.Windows">
+            <summary>
+            Windows Authentication
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Information.Common.Configuration.StorageAuthenticationMode.Database">
+            <summary>
+            Databse Authentication
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.StorageAuthentication">
+            <summary>
+            Describes storage authentication options
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageAuthentication.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageAuthentication.Mode">
+            <summary>
+            Authentication Mode
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageAuthentication.UserName">
+            <summary>
+            Authentication User
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageAuthentication.Password">
+            <summary>
+            Authentication Password
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.UnderlyingModel">
+            <summary>
+            Enumerates the kind of storage models
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Information.Common.Configuration.UnderlyingModel.Runtime">
+            <summary>
+            The MOM Runtime Model.
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Information.Common.Configuration.UnderlyingModel.Engineering">
+            <summary>
+            The Governance Engineering Model.
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.StorageConfiguration">
+            <summary>
+            Describes a Set of Storage Domains
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageConfiguration.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageConfiguration.#ctor(Siemens.SimaticIT.Information.Common.Configuration.UnderlyingModel,Siemens.SimaticIT.Information.Common.Configuration.StorageData,Siemens.SimaticIT.Information.Common.Configuration.StorageData,System.Collections.Generic.IEnumerable{Siemens.SimaticIT.Information.Common.Configuration.StorageWrmDomain},System.Collections.Generic.IEnumerable{Siemens.SimaticIT.Information.Common.Configuration.StorageRdmDomain},System.Collections.Generic.IEnumerable{Siemens.SimaticIT.Information.Common.Configuration.StoragePomApplication})">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageConfiguration.UnderlyingModel">
+            <summary>
+            The Target Model
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageConfiguration.SystemFileStore">
+            <summary>
+            System File Store Configuration
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageConfiguration.ApplicationFileStore">
+            <summary>
+            Application File Store Configuration
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageConfiguration.WritingModelDomains">
+            <summary>
+            Writing Model Domains
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageConfiguration.ReadingModelDomains">
+            <summary>
+            Reading Model Domains
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageConfiguration.ProjectionModelDomains">
+            <summary>
+            Projection Model Domains
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageConfiguration.PublicObjectModelApplications">
+            <summary>
+            Public Object Model Applications
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageConfiguration.ToString">
+            <summary>Returns a string that represents the current object.</summary>
+            <returns>A string that represents the current object.</returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.StorageDataProvider">
+            <summary>
+            Data Provider Types
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Information.Common.Configuration.StorageDataProvider.SqlServer">
+            <summary>
+            SqlServer
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Information.Common.Configuration.StorageDataProvider.Oracle">
+            <summary>
+            Oracle
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.StorageData">
+            <summary>
+            Describes storage data
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageData.#ctor(System.String,Siemens.SimaticIT.Information.Common.Configuration.StorageDataProvider,System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="domainName">Storage domain name</param>
+            <param name="dataProvider">Data provider</param>
+            <param name="dataSource">Data source</param>
+            <param name="initialCatalog">Initial catalog</param>
+            <param name="defaultSchema">Default schema</param>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageData.DomainName">
+            <summary>
+            Storage name
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageData.DataProvider">
+            <summary>
+            Data provider
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageData.DataSource">
+            <summary>
+            Data source
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageData.InitialCatalog">
+            <summary>
+            Initial catalog
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageData.DefaultSchema">
+            <summary>
+            Default Schema
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageData.Options">
+            <summary>
+            Options
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageData.GetHashCode">
+            <summary>Serves as the default hash function. </summary>
+            <returns>A hash code for the current object.</returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageData.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>
+            A string that represents the current object.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.StorageDataComparer">
+            <summary>
+            Defines methods to support the comparison of StorageData objects.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageDataComparer.Equals(Siemens.SimaticIT.Information.Common.Configuration.StorageData,Siemens.SimaticIT.Information.Common.Configuration.StorageData)">
+            <summary>Determines whether the specified objects are equal.</summary>
+            <returns>true if the specified objects are equal; otherwise, false.</returns>
+            <param name="x">The first object of type <see cref="T:StorageData" /> to compare.</param>
+            <param name="y">The second object of type <see cref="T:StorageData" /> to compare.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageDataComparer.GetHashCode(Siemens.SimaticIT.Information.Common.Configuration.StorageData)">
+            <summary>Returns a hash code for the specified object.</summary>
+            <returns>A hash code for the specified object.</returns>
+            <param name="storageData">The <see cref="T:System.Object" /> for which a hash code is to be returned.</param>
+            <exception cref="T:System.ArgumentNullException">The type of <paramref name="storageData" /> is a reference type and <paramref name="storageData" /> is null.</exception>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.StorageOptions">
+            <summary>
+            Describes storage options
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageOptions.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageOptions.Authentication">
+            <summary>
+            Authentication
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageOptions.CommandTimeout">
+            <summary>
+            Command timeout
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageOptions.ConnectionTimeout">
+            <summary>
+            Connection timeout
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageOptions.NumberOfRetries">
+            <summary>
+            Number of retries
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageOptions.RetriesDelay">
+            <summary>
+            Retries delay
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.StoragePomApplication">
+            <summary>
+            Describes a Public Object Model Application
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StoragePomApplication.#ctor(System.String,System.Collections.Generic.IEnumerable{Siemens.SimaticIT.Information.Common.Configuration.StoragePomDomain},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="applicationName">Name of the application</param>
+            <param name="modelDomains">Model domanins</param>
+            <param name="modelAssemblies">Model assemblies</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StoragePomApplication.#ctor(System.String,System.Collections.Generic.IEnumerable{Siemens.SimaticIT.Information.Common.Configuration.StoragePomDomain},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="applicationName">Name of the application</param>
+            <param name="modelDomains">Model domanins</param>
+            <param name="modelAssemblies">Model assemblies</param>
+            <param name="initializationFiles">Model initialization files</param>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StoragePomApplication.ApplicationName">
+            <summary>
+            Name of the application
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StoragePomApplication.ModelDomains">
+            <summary>
+            Model domains
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StoragePomApplication.ModelAssemblies">
+            <summary>
+            Model assemblies
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StoragePomApplication.ModelInitializationFiles">
+            <summary>
+            Initialization files
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StoragePomApplication.ToString">
+            <summary>Returns a string that represents the current object.</summary>
+            <returns>A string that represents the current object.</returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.StoragePomDomain">
+            <summary>
+            Describes a Public Object Model Domain
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StoragePomDomain.#ctor(System.String,Siemens.SimaticIT.Information.Common.Configuration.StorageDomainType,Siemens.SimaticIT.Information.Common.Configuration.StorageData)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="domainName">Name of the domain</param>
+            /// <param name="domainType">Type of the domain</param>
+            <param name="targetStorage">Target storage informations</param>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StoragePomDomain.DomainName">
+            <summary>
+            Name of the domain
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StoragePomDomain.DomainType">
+            <summary>
+            Type of the domain
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StoragePomDomain.TargetStorage">
+            <summary>
+            Target storage informations
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StoragePomDomain.ToString">
+            <summary>Returns a string that represents the current object.</summary>
+            <returns>A string that represents the current object.</returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.StorageDomainType">
+            <summary>
+            Enumerates the Domain Types
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Information.Common.Configuration.StorageDomainType.System">
+            <summary>
+            System Domain
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Information.Common.Configuration.StorageDomainType.ThirdParty">
+            <summary>
+            Third Part Domain
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.StorageRdmDomain">
+            <summary>
+            Describes a Reading Model Domain
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageRdmDomain.#ctor(System.String,Siemens.SimaticIT.Information.Common.Configuration.StorageDomainType,Siemens.SimaticIT.Information.Common.Configuration.StorageData,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="domainName">Name of the domain</param>
+            <param name="domainType">Type of the domain</param>
+            <param name="targetStorage">Target storage informations</param>
+            <param name="modelAssemblies">Model assemblies</param>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageRdmDomain.DomainName">
+            <summary>
+            Name of the domain
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageRdmDomain.DomainType">
+            <summary>
+            Type of the domain
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageRdmDomain.TargetStorage">
+            <summary>
+            Target storage informations
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageRdmDomain.ModelAssemblies">
+            <summary>
+            Model assemblies
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageRdmDomain.ToString">
+            <summary>Returns a string that represents the current object.</summary>
+            <returns>A string that represents the current object.</returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.ExecutionMode">
+            <summary>
+            Enumerates the available script execution methods
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Information.Common.Configuration.ExecutionMode.Managed">
+            <summary>
+            Managed Script Execution Mode
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Information.Common.Configuration.ExecutionMode.Raw">
+            <summary>
+            Raw Script Execution Mode
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.StorageScript">
+            <summary>
+            Describes a Storage Script
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageScript.#ctor(Siemens.SimaticIT.Information.Common.Configuration.ExecutionMode,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="executionMode">Execution mode</param>
+            <param name="codeBlocks">Code blocks to be executed</param>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageScript.IsEmpty">
+            <summary>
+            Empty flag
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageScript.ExecutionMode">
+            <summary>
+            Execution mode
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageScript.CodeBlocks">
+            <summary>
+            Code blocks to be executed
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageScript.ToString">
+            <summary>Returns a string that represents the current object.</summary>
+            <returns>A string that represents the current object.</returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Configuration.StorageWrmDomain">
+            <summary>
+            Describes a Writing Model Domain
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageWrmDomain.#ctor(System.String,Siemens.SimaticIT.Information.Common.Configuration.StorageData,System.Collections.Generic.IEnumerable{System.String},Siemens.SimaticIT.Information.Common.Configuration.StorageScript,Siemens.SimaticIT.Information.Common.Configuration.StorageScript,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="domainName">Name of the domain</param>
+            <param name="targetStorage">Storage informations</param>
+            <param name="modelAssemblies">Model assemblies</param>
+            <param name="preUpdateScript">Pre-Update script</param>
+            <param name="postUpdateScript">Post-Update script</param>
+            <param name="initializationAssemblies">Initialization assemblies</param>
+            <param name="initializationDataFiles">Initialization data files</param>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageWrmDomain.DomainName">
+            <summary>
+            Name of the domain
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageWrmDomain.TargetStorage">
+            <summary>
+            Target storage informations
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageWrmDomain.ModelAssemblies">
+            <summary>
+            Model assemblies
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageWrmDomain.PreUpdateScript">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageWrmDomain.PostUpdateScript">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageWrmDomain.InitializationAssemblies">
+            <summary>
+            Initialization assemblies
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Configuration.StorageWrmDomain.InitializationDataFiles">
+            <summary>
+            Initialization data files
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Configuration.StorageWrmDomain.ToString">
+            <summary>Returns a string that represents the current object.</summary>
+            <returns>A string that represents the current object.</returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.DatabaseTimeoutAdapter">
+            <summary>
+            Adapts database timeout values between different modules.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.DatabaseTimeoutAdapter.AdaptFromGovernance(System.Int32)">
+            <summary>
+            Adapts timeout between governance and database providers.
+            0 is correctly treated as infinite.
+            </summary>
+            <param name="timeoutInMilliseconds"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Settings.DataModelLoaderSettings">
+            <summary>
+            Configures the data model loader settings
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Settings.DataModelLoaderSettings.AssemblySearchStrategy">
+            <summary>
+            Configures the library loader search strategy
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Settings.DataModelLoaderSettings.CustomAssemblySearchPath">
+            <summary>
+            Configures the custom search path (Valid for Custom SearchStrategy)
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Settings.AssemblySearchStrategy">
+            <summary>
+            Enumerates the available assembly search strategies
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Information.Common.Settings.AssemblySearchStrategy.Automatic">
+            <summary>
+            Automatic search
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Information.Common.Settings.AssemblySearchStrategy.Custom">
+            <summary>
+            Custom search
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Information.Common.Settings.StorageUpdaterSettings">
+            <summary>
+            Configures the storage updater settings
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Information.Common.Settings.StorageUpdaterSettings.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Settings.StorageUpdaterSettings.AssemblySearchStrategy">
+            <summary>
+            Configures the library loader search strategy
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Information.Common.Settings.StorageUpdaterSettings.CustomAssemblySearchPath">
+            <summary>
+            Configures the custom search path (Valid for Custom SearchStrategy)
+            </summary>
+        </member>
+    </members>
+</doc>

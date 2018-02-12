@@ -1,0 +1,321 @@
+﻿{
+  "common": {
+    "and": "And",
+    "and-or": "And/Or",
+    "apply": "Apply",
+    "busy-message": {
+      "loading": "Loading...",
+      "please-wait": "Please wait...",
+      "working": "Working..."
+    },
+    "redirectInProgress": "You are now being redirected to the login page...",
+    "cancel": "Cancel",
+    "selectAll":  "Select All",
+    "configure": "Configure",
+    "contains": "Contains",
+    "delete": "Delete",
+    "description": "Description",
+    "done": "Done",
+    "edit": "Edit",
+    "ends-with": "Ends With",
+    "error": "Error",
+    "error-code-message": "Error Code({{code}}): {{message}}",
+    "error-text-code-message": "{{text}}\nError Code({{code}}): {{message}}",
+    "field": "Field",
+    "in": "in",
+    "invalid-parameter-value": "Invalid value for parameter({{name}}): {{message}}",
+    "isNull": "IS Null",
+    "isNotNull": "Is Not Null",
+    "load": "Load",
+    "match-case": "Match case",
+    "group": "Group selected clauses",
+    "ungroup": "Ungroup clauses",
+    "name": "Name",
+    "no": "No",
+    "no-data": "No Data",
+    "none": "None",
+    "ok": "OK",
+    "operator": "Operator",
+    "or": "Or",
+    "param-msg-exceed-max-string-length": "Value exceeds maximum length of {{length}} characters.",
+    "param-msg-invalid-format": "Value is not in format {{format}}.",
+    "remove": "Remove",
+    "reset": "Reset",
+    "save": "Save",
+    "selected": "selected",
+    "starts-with": "Starts With",
+    "success": "Success",
+    "update": "Update",
+    "value": "Value",
+    "version": "Version",
+    "yes": "Yes",
+    "confirmation": "Confirmation",
+    "authentication": {
+      "overlayLogoutErrorTitle": "Error",
+      "overlayLogoutErrorMsg": "Logout Error",
+      "overlaySessionExpireWarning": "User session is expiring...",
+      "overlaySessionExpireMessage": "Your session will expire in ",
+      "overlaySesionExpiredMessage": "Your session may have expired unless you have performed activities in other tabs.",
+      "renewSession": "Renew Session"
+    },
+    "helpWindow": {
+      "title": "Help",
+      "search": "Search...",
+      "no-items-found": "No results were found. Please broaden your search criteria.",
+      "search-info": "You searched for",
+      "document": "Document",
+      "unknown-page": "The page does not exist."
+    },
+    "viewbar": {
+      "grid": "Grid",
+      "small": "Small",
+      "medium": "Medium",
+      "large": "Large"
+    },
+    "header": {
+      "home": "Home",
+      "settings": "Settings",
+      "about": "About",
+      "logout": "Logout"
+    },
+    "gridster": {
+      "dragresize": "Drag and Resize",
+      "dragresizeTitle": "Drag and resize components"
+    },
+    "unauthorize": {
+      "title": "Authorization error",
+      "message": "You do not have permission to access this page."
+    },
+    "undefinedHome": {
+      "title": "Home state undefined",
+      "text": "Home state is not configured"
+    },
+    "serviceLayerError": {
+      "title": "Service Unavailable"
+    }
+  },
+  "dateTimePicker": {
+    "clear": "Clear",
+    "close": "Close",
+    "now": "Now",
+    "today": "Today"
+  },
+  "dialog": {
+    "validator": {
+      "warningTitle": "Warning: ",
+      "warningMessage": "At least one field does not meet its validation rule."
+    }
+  },
+  "entityPicker": {
+    "defaultPlaceHolder": "Find an Entity",
+    "cancel": "Cancel",
+    "select": "Select",
+    "selectItem": "Select Item"
+  },
+  "fileUploader": {
+    "noFile": "No file specified.",
+    "error": {
+      "fileType": "Invalid file type.",
+      "fileSize": "Invalid file size.",
+      "readError": "An error occurred while reading the file."
+    }
+  },
+  "iconPicker": {
+    "defaultPlaceHolder": "Start typing fa or sit to find an icon"
+  },
+  "commandBar": {
+    "moreCommandsAvailable": "More"
+  },
+  "filter": {
+    "add-new-clause": "Add New Clause"
+  },
+  "filterBar": {
+    "none": "None",
+    "quick-search": "Quick Search",
+    "sortby": "Sort By:"
+  },
+  "Graph": {
+    "error": {
+      "graphUndefined": "Nodes and edges have not been defined for the graph.",
+      "uniqueNodeId": "Node ID must be unique.",
+      "uniqueEdgeId": "Edge ID must be unique.",
+      "emptyGraph": "The graph is empty"
+    },
+    "name": "Name",
+    "description": "Description"
+  },
+  "Notification": {
+    "tileNull": "[Controller.notificationTileShow] tileContent is null \n'",
+    "tileContentGt120": "[Controller.notificationTileShow] tileContent is bigger than 120 characters \n",
+    "tileTitleGt120": "[Controller.notificationTileShow] tileTitle is bigger than 22 characters \n"
+  },
+  "pager": {
+    "page-size": "Page Size",
+    "total-items": "Total Items",
+    "filtered-items": "Filtered Items",
+    "selected-items": "Selected Items",
+    "page": "Page",
+    "page-first": "First Page",
+    "page-prev": "Previous Page",
+    "page-next": "Next Page",
+    "page-last": "Last Page"
+
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Language and Culture",
+    "select": "Select the language and culture.",
+    "theme": "Theme",
+    "log": "UI Logging",
+    "message": "Activating Debug or Verbose logging may affect overall UI performance.",
+    "btnReset": "Reset to Default",
+    "btnSave": "Save Changes",
+    "notificationTile": {
+      "title": "Success",
+      "saveText": "The settings have been saved correctly.",
+      "restoreText": "The settings have been restored correctly."
+    }
+  },
+  "sidebar": {
+    "title": "Sidebar",
+    "open": "Open",
+    "back": "Back",
+    "error": {
+      "configMissing": "There is no data available.",
+      "homeMissing": "Home Page has not been configured.",
+      "invalidNavigationButtons": "Navigation button has not been configured correctly.",
+      "iconMissing": "Icon has not been not configured."
+    }
+  },
+  "sidePanel": {
+    "close": "Close"
+  },
+  "timePicker": {
+    "clear": "Clear",
+    "set": "Set"
+  },
+  "validator": {
+    "errors": {
+      "noLabel": "The field",
+      "required": "{{field}} is mandatory.",
+      "pattern": "{{field}} {{ value }}",
+      "min": "{{field}} is below the minimum value ({{value}}).",
+      "max": "{{field}} maximum value has been exceeded ({{value}}).",
+      "minlength": "{{field}} is below the minimum value ({{value}}).",
+      "maxlength": "{{field}} maximum length has been exceeded ({{value}}).",
+      "number": "{{field}} must be a number.",
+      "editable": "{{field}} value must be selected from the values available.",
+      "custom": "{{field}} {{value}}"
+    }
+  },
+  "propertyGrid": {
+    "property": {
+      "addNew": "Add New",
+      "remove": "Remove",
+      "canNotAdd": "Cannot add",
+      "canNotRemove": "Cannot remove",
+      "addItem": "Add Item"
+    },
+    "invalidLayout": "Unknown property grid type: Allowed values are 'Fixed' or 'Fluid'"
+  },
+  "ERRORS": {
+    "404": "Requested resource is not found.",
+    "503": "Service Layer Engineering is under maintenance.",
+    "400": "The syntax of the request is not well formed or could not be satisfied.",
+    "403": "The request is forbidden. Authorization will not help.",
+    "500": "The server encountered an unexpected condition which prevented it from fulfilling the request.",
+    "4XX": "The server failed to fulfill an invalid request by client.",
+    "5XX": "The server failed to fulfill an apparently valid request."
+  },
+  "svcErrors": {
+    "documentation": {
+      "noID": "Command Error : cannot execute command with no Id",
+      "noQuery": "Command Error : cannot execute command with no Query",
+      "noNames": "Command Error : cannot execute command with no Names",
+      "noEntityName": "Command Error : cannot execute command with no Entity Name"
+
+    },
+    "engineering": {
+      "noConfig": "Command Error : cannot execute command with no Config",
+      "noEntityName": "Command Error : cannot execute command with no Entity Name",
+      "generic": "Unable to connect to engineering data service",
+      "wrongEntityName": "Wrong Entity name"
+    },
+    "databaseInfo": {
+      "createNoMsg": "Command Error : cannot create Database Info with no (' {{msg}} ')",
+      "createWrongInput": "Command Error : cannot create a databaseInfo with wrong input type",
+      "updateNoMsg": "Command Error : cannot update a databaseInfo with no ",
+      "updateWrongInput": "Command Error : cannot update a databaseInfo with wrong input type",
+      "deleteNoMsg": "Command Error : cannot delete a databaseInfo with no ",
+      "deleteWrongInput": "Command Error : cannot delete a databaseInfo with wrong input type",
+      "associateNoMsg": "Command Error : cannot associate a databaseInfo with no ",
+      "associateWrongInput": "Command Error : cannot associate a databaseInfo with wrong input type"
+    },
+    "eventSubscription": {
+      "addNoWRName": "Command Error : cannot add subscription with no Worker Role Name",
+      "addNoSubscriptionName": "Command Error : cannot add subscription with no Subscription Name",
+      "remNoWRName": "Command Error : cannot remove subscription with no Worker Role Name",
+      "remNoSubscriptionName": "Command Error : cannot remove subscription with no Subscription Name",
+      "createNoSubsEventName": "Command Error : cannot create subscription with no Subscribed Event Name",
+      "createNoEventHandlerName": "Command Error : cannot create subscription with no Event Handler Name",
+      "createNoName": "Command Error : cannot create subscription with no Name",
+      "updateNoSubsEventName": "Command Error : cannot update subscription with no Subscribed Event Name",
+      "updateNoEventHandlerName": "Command Error : cannot update subscription with no Event Handler Name",
+      "updateNoName": "Command Error : cannot update subscription with no Name",
+      "deleteNoName": "Command Error : cannot delete subscription with no Event Subscription Name",
+      "renameSameName": "Command Error : cannot rename event subscription with the same name",
+      "renameNoOldName": "Command Error : cannot rename event subscription with no Old Name",
+      "renameNoNewName": "Command Error : cannot rename subscription with no New Name",
+      "addFilterNoName": "Command Error : cannot add filter to event subscription with no Event Subscription Name",
+      "updateFilterNoName": "Command Error : cannot update filter in event subscription with no Event Subscription Name",
+      "removeFilterNoName": "Command Error : cannot remove filter from event subscription with no Event Subscription Name"
+    },
+    "project": {
+      "loadNoVersion": "Command Error : cannot load a project with no Version",
+      "loadNoName": "Command Error : cannot load a project with no Name",
+      "loadWrongInput": "Command Error : cannot load a project with wrong input type",
+      "unloadNoName": "Command Error : cannot unload a project with no Name",
+      "unloadWrongInput": "Command Error : cannot unload a project with wrong input type",
+      "deployNoVersion": "Command Error : cannot load a project with no Version",
+      "deployNoName": "Command Error : cannot load a project with no Name",
+      "deployWrongInput": "Command Error : cannot load a project with wrong input type"
+    },
+    "systemEvents": {
+      "startupNoMsg": "Command Error : cannot startup the runtime service because you have not specified (' {{msg}} ')",
+      "startupWrongInput": "Command Error : cannot startup the runtime service because you specified the wrong input type",
+      "shutdownNoMsg": "Command Error : cannot shutdown the runtime service because you have not specified  (' {{msg}} ')",
+      "shutdownWrongInput": "Command Error : cannot shutdown runtime service because you specified the wrong input type"
+    },
+    "workerRole": {
+      "createNoName": "Command Error : cannot create a worker role with no Name",
+      "updateNoName": "Command Error : cannot update a worker role with no Name",
+      "deleteNoName": "Command Error : cannot delete a worker role with no Name",
+      "addUndefWR": "Command Error : cannot add commands to an undefined Worker Role Name",
+      "addUndefCommands": "Command Error : cannot add an undefined array of commands",
+      "addEmptyCommands": "Command Error : cannot add an empty array of commands",
+      "remUndefWR": "Command Error : cannot remove commands from an undefined Worker Role Name",
+      "remUndefCommands": "Command Error : cannot remove an undefined array of commands",
+      "remEmptyCommands": "Command Error : cannot remove an empty array of commands",
+      "addNoCommandName": "Command Error : cannot add a command with no Command Name",
+      "addNoWRName": "Command Error : cannot add a command with no Worker Role Name",
+      "remNoCommandName": "Command Error : cannot remove a command with no Command Name",
+      "remNoWRName": "Command Error : cannot remove a command with no Worker Role Name",
+      "addWRNoWRName": "Command Error : cannot add Worker Role to host role command with no Worker Role Name",
+      "addWRNoHRName": "Command Error : cannot add Worker Role to host role command with no Host Role Name",
+      "remWRNoWRName": "Command Error : cannot remove a Worker Role from host role command with no Worker Role Name",
+      "remWRNoHRName": "Command Error : cannot remove a Worker Role from host role command with no Host Role Name"
+    },
+    "business": {
+      "noConfig": "Command Error : cannot execute a command with no Config",
+      "noEntityName": "Command Error : cannot execute a command with no Entity Name",
+      "executeNoInput": "Command Error : cannot execute a command with no input",
+      "noFunctionName": "Reading Error : function to invoke not specified"
+    },
+    "businessCommand": {
+      "executeInvalidInput": "Command Error : cannot execute a runtime command with invalid input",
+      "executeInvalidCommand": "Command Error : cannot execute a runtime command- commandname is not valid"
+    }
+
+
+  }
+}

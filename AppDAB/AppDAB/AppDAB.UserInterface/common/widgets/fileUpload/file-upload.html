@@ -1,0 +1,27 @@
+﻿<div ng-show="uploadCtrl.readOnly || uploadCtrl.ngReadonly" class="label-property-grid-control-readonly property-value-ellipsis"> {{uploadCtrl.selectedFile.name}} </div>
+<ng-form name="fileForm" ng-hide="uploadCtrl.readOnly || uploadCtrl.ngReadonly">
+    <div>
+        <span ng-transclude></span>
+        <div class="textboxHolder">
+            <span class="statusIcon" ng-show="(!uploadCtrl.isFileLoaded && !uploadCtrl.isError)"><i class="fa fa-ban fa-1x"></i></span>
+            <span class="statusIcon" ng-show="uploadCtrl.isFileLoaded && !uploadCtrl.isError"><i class="fa fa-file-o fa-1x"></i></span>
+            <span class="errorIcon" ng-show="uploadCtrl.isError"><i class="fa fa-warning"></i></span>
+
+            <span ng-show="uploadCtrl.currentPercentage!=='' && uploadCtrl.currentPercentage!=='100%'"
+                  class="btn btn-primary progressBar" ng-style="{'width': uploadCtrl.currentPercentage}">{{uploadCtrl.currentPercentage}}</span>
+
+            <div class="form-control uploadSection" >
+                <input type="text" data-internal-type="fileStatus" class="showStatus" title={{uploadCtrl.selectedFile.name}} ng-model="uploadCtrl.uploadedFile.name" placeholder="{{uploadCtrl.selectedFile.name}}" ng-required="uploadCtrl.validation.required"
+                       sit-change="uploadCtrl.sitChange"  sit-form-input-validator readonly />
+                <a class="btn deleteButton sharpCornerButton" data-internal-type="deleteButton" ng-show="uploadCtrl.isFileLoaded" ng-click="uploadCtrl.removeFile($event)" role="button" title="Remove">
+                    <i class="fa fa-trash fa-1x" ng-disabled="uploadCtrl.ngDisabled"></i>
+                </a>
+                <input type="file" data-internal-type="fileInput"
+                       class="btn actionButton File" style="display:none" ng-model="uploadCtrl.selectedFile" accept="{{uploadCtrl.accept}}" ng-disabled="uploadCtrl.ngDisabled">
+                <a class="btn actionButton sharpCornerButton" data-internal-type="uploadButton" role="button" title="Browse" ng-class="{disable:uploadCtrl.isFileLoaded}" ng-disabled="uploadCtrl.ngDisabled">
+                    <i class="fa fa-folder-open-o fa-1x" ng-disabled="uploadCtrl.ngDisabled"></i>
+                </a>
+            </div>
+    </div>
+    </div>
+</ng-form>

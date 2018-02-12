@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace InforConnectorLibrary
 {
+    //Attenzione, il nome della classe è utilizzato nella ricerca del metodo da chiamare nel dictionary 
     public class ReportProduction
     {
         public int Company { get; set; }
@@ -28,8 +29,8 @@ namespace InforConnectorLibrary
 
         public ReportProduction(string erpOrder, int producedQuantity, bool closeOrder, int company = 100, 
                                 string processingScope = "request", string reportPrevious = "yes",
-                                string backFlush = "yes", string directReceipt = "yes", string reportMore = "no") {
-
+                                string backFlush = "yes", string directReceipt = "yes", string reportMore = "no")
+        {
             ProductionOrder = erpOrder;
 
             QtyDeliver = producedQuantity;

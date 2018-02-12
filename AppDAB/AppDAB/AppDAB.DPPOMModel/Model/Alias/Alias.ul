@@ -1,0 +1,18 @@
+VERSION '01.12'
+
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.GetTestCard AS GetTestCard
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.AcceptMaterialCall AS AcceptMaterialCall
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.AcceptTeamLeaderCall AS AcceptTeamLeaderCall
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateMaterialCall AS CreateMaterialCall
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateTeamLeaderCall AS CreateTeamLeaderCall
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateUoM AS CreateUoM
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateWorkOrderNotification AS CreateWorkOrderNotification
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.CreateWorkOrderFromProcess AS CreateWorkOrderFromProcess
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.SendTestResult AS SendTestResult
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateMaterialClass AS CreateMaterialClass
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateMaterialDefinition AS CreateMaterialDefinition
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UADMCreateMaterialDefinition AS UADMCreateMaterialDefinition
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.DeleteToBeUsedMachine AS DeleteToBeUsedMachine
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.CreateToBeConsumedMaterials AS CreateToBeConsumedMaterials
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.DeleteWorkOrder AS DeleteWorkOrder
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.EditWorkOrder AS EditWorkOrder

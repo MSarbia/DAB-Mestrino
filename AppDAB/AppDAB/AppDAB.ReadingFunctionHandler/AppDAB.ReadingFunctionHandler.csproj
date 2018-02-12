@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{82F645CD-5F4F-40B8-BA96-D2140AC1644E}</ProjectGuid>
+    <ProjectTypeGuids>{5486C329-76F8-4363-9B23-421DD193F415};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Engineering.DAB.AppDAB.ReadingFunctionHandler</RootNamespace>
+    <AssemblyName>Engineering.DAB.AppDAB.ReadingFunctionHandler</AssemblyName>
+    <Name>AppDAB.ReadingFunctionHandler</Name>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FunctionalBlockPrefix>Engineering.DAB</FunctionalBlockPrefix>
+    <FunctionalBlockType>Project</FunctionalBlockType>
+    <FunctionalBlockVersion>01.00.00</FunctionalBlockVersion>
+    <FunctionalBlockName>AppDAB</FunctionalBlockName>
+    <SitPlatformVersion>1.5</SitPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ProjectionModel">
+      <HintPath>..\..\SimaticITPackages\Engineering.DAB.FB_OP_DAB_01.00.00\model\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ProjectionModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ReadingModel">
+      <HintPath>..\..\SimaticITPackages\Engineering.DAB.FB_OP_DAB_01.00.00\model\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ReadingModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Types.ProjectionModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_MS_AMMS_03.00.00\model\bin\Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Types.ProjectionModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Types.ReadingModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_OP_EXT_03.00.00\model\bin\Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Types.ReadingModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.Types.ProjectionModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_MS_BOP_03.00.00\model\bin\Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.Types.ProjectionModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.Types.ReadingModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_OP_EXT_03.00.00\model\bin\Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.Types.ReadingModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.MasterData.FB_MS_CERT.MSModel.Types.ProjectionModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_MS_CERT_03.00.00\model\bin\Siemens.SimaticIT.U4DM.MasterData.FB_MS_CERT.MSModel.Types.ProjectionModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.MasterData.FB_MS_CERT.MSModel.Types.ReadingModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_OP_EXT_03.00.00\model\bin\Siemens.SimaticIT.U4DM.MasterData.FB_MS_CERT.MSModel.Types.ReadingModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Types.ProjectionModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_MS_EXT_03.00.00\model\bin\Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Types.ProjectionModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Types.ReadingModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_OP_EXT_03.00.00\model\bin\Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Types.ReadingModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types.ProjectionModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_OP_EXT_03.00.00\model\bin\Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types.ProjectionModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types.ReadingModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_OP_EXT_03.00.00\model\bin\Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types.ReadingModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Types.ProjectionModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.QMSInt_01.00.00\model\bin\Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Types.ProjectionModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Types.ReadingModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.QMSInt_01.00.00\model\bin\Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Types.ReadingModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.RD.FB.ReferenceData.ConfigKey.RFModel.Types.ProjectionModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.RD.FB.ConfigKey_03.00.00\model\bin\Siemens.SimaticIT.U4DM.RD.FB.ReferenceData.ConfigKey.RFModel.Types.ProjectionModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.RD.FB.ReferenceData.ConfigKey.RFModel.Types.ReadingModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.RD.FB.ConfigKey_03.00.00\model\bin\Siemens.SimaticIT.U4DM.RD.FB.ReferenceData.ConfigKey.RFModel.Types.ReadingModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Types.ProjectionModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_RD_SERV_03.00.00\model\bin\Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Types.ProjectionModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Types.ReadingModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_OP_EXT_03.00.00\model\bin\Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Types.ReadingModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="SimaticIT.Handler">
+      <HintPath>$(SITUnifiedVSToolingPlatformBin)\SimaticIT.Handler.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimaticIT.Unified">
+      <HintPath>$(SITUnifiedVSToolingPlatformBin)\SimaticIT.Unified.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimaticIT.Unified.Common">
+      <HintPath>$(SITUnifiedVSToolingPlatformBin)\SimaticIT.Unified.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimaticIT.Unified.Lean">
+      <HintPath>$(SITUnifiedVSToolingPlatformBin)\SimaticIT.Unified.Lean.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimaticIT.DataModel">
+      <HintPath>$(SITUnifiedVSToolingPlatformBin)\SimaticIT.DataModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimaticIT.SDK.Diagnostics">
+      <HintPath>$(SITUnifiedVSToolingPlatformBin)\SimaticIT.SDK.Diagnostics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadinigFunctionsHandler.coutput">
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeCompile">
+  </Target>
+  <Target Name="AfterCompile">
+  </Target>
+  -->
+</Project>

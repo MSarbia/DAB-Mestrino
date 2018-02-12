@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1600AA8E-FB75-45D0-B3F3-5672C477412B}</ProjectGuid>
+    <ProjectTypeGuids>{59ED0FD4-15A5-47D7-821B-139455AEDEF4};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Engineering.DAB.FB_OP_DAB.CommandHandler</RootNamespace>
+    <AssemblyName>Engineering.DAB.FB_OP_DAB.CommandHandler</AssemblyName>
+    <Name>FB_OP_DAB.CommandHandler</Name>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FunctionalBlockType>Library</FunctionalBlockType>
+    <FunctionalBlockVersion>01.00.00</FunctionalBlockVersion>
+    <FunctionalBlockName>FB_OP_DAB</FunctionalBlockName>
+    <FunctionalBlockPrefix>Engineering.DAB</FunctionalBlockPrefix>
+    <SitPlatformVersion>1.5</SitPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(SITUnifiedVSToolingPlatformBin)\Worker.exe</StartProgram>
+    <StartArguments>/name:"%COMPUTERNAME%.Default WorkerRoleDefinition (x64).0" /debug:true /debugPath:"$(SolutionDir)$(SolutionName)\$(SolutionName).Installer\bin\Debug" /registryPath:"$(SolutionDir)$(SolutionName)\$(SolutionName).Installer\bin\Debug\Debugger"</StartArguments>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ProjectionModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ProjectionModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ReadingModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ReadingModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ProjectionModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ProjectionModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ReadingModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ReadingModel.dll</HintPath>
+    </Reference>
+    <Reference Include="InforConnectorLibrary">
+      <HintPath>..\FB_OP_DAB.Installer\ExternalDependencies\InforConnectorLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="NiceLabelConnector">
+      <HintPath>..\FB_OP_DAB.Installer\ExternalDependencies\NiceLabelConnector.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Siemens.SimaticIT.SystemData.Foundation.Types">
+      <HintPath>$(SITUnifiedVSToolingPlatformBin)\Siemens.SimaticIT.SystemData.Foundation.Types.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimaticIT.Unified">
+      <HintPath>$(SITUnifiedVSToolingPlatformBin)\SimaticIT.Unified.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimaticIT.Unified.Common">
+      <HintPath>$(SITUnifiedVSToolingPlatformBin)\SimaticIT.Unified.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimaticIT.Handler">
+      <HintPath>$(SITUnifiedVSToolingPlatformBin)\SimaticIT.Handler.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimaticIT.DataModel">
+      <HintPath>$(SITUnifiedVSToolingPlatformBin)\SimaticIT.DataModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimaticIT.SDK.Diagnostics">
+      <HintPath>$(SITUnifiedVSToolingPlatformBin)\SimaticIT.SDK.Diagnostics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="FB_OP_DAB.OPModel\Commands\AcceptMaterialCallHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\AcceptMaterialCallHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\AcceptTeamLeaderCallHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\AcceptTeamLeaderCallHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\CreateMaterialCallHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\CreateMaterialCallHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\CreateTeamLeaderCallHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\CreateTeamLeaderCallHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\GetTestCardHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\GetTestCardHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\PrintPackageDataLabelHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\PrintPackageDataLabelHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\PrintPalletLabelHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\PrintPalletLabelHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\PrintSNLabelHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\PrintSNLabelHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportConsumedMaterialHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportConsumedMaterialHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportMaterialNonConformanceHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportMaterialNonConformanceHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportOperationProgressHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportOperationProgressHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportProducedQuantityHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportProducedQuantityHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\SendTestResultHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\SendTestResultHandlerExecution.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CommandHandler.coutput">
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeCompile">
+  </Target>
+  <Target Name="AfterCompile">
+  </Target>
+  -->
+</Project>

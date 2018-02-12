@@ -1,0 +1,18 @@
+﻿<div data-internal-type="mediumItemTile" class="tile" ng-click="itemTileCtrl.tileClicked()">
+    <div class='medium medium-item {{itemTileCtrl.selectClass}} ' ng-style="{'color': itemTileCtrl.color, 'background-color': itemTileCtrl.bgColor}">
+        <div class="medium-select" ng-show="itemTileCtrl.showSelectCheck()"></div>
+        <div ng-show="itemTileCtrl.showSelectCheck()" class="top-right-corner-triangle-med" data-internal-type="selection-triangle"></div>
+        <span ng-show="itemTileCtrl.showSelectCheck()" class="top-right-select-img-med fa fa-check fa-inverse" data-internal-type="selection-check"></span>
+        <div class="medium-item-image-container" data-internal-type="image-container">
+            <div class="medium-item-image" data-internal-type="medium-image">
+                <div ng-if="itemTileCtrl.tileContent.image && !itemTileCtrl.tileContent.imageTemplate" class="fa fa-2x {{itemTileCtrl.tileContent.image}} "></div>
+                <div ng-if="itemTileCtrl.tileContent.imageTemplate" class="fa fa-2x" ng-bind-html="itemTileCtrl.tileContent.imageTemplate"></div>
+            </div>
+        </div>
+        <div class="medium-item-text-container" data-internal-type="text-container">
+            <div class="medium-item-text" data-internal-type="title">{{itemTileCtrl.displayTitle}}</div>
+            <div class="{{itemTileCtrl.descriptionClass}}" data-internal-type="description">{{itemTileCtrl.displayDescription}}</div>
+            <div class="medium-item-text" ng-if="itemTileCtrl.showFirstProp" data-internal-type="property"><span>{{itemTileCtrl.displayProp1.name}}</span><span>{{itemTileCtrl.displayProp1.sanitizedVal}}</span></div>
+        </div>
+    </div>
+</div>

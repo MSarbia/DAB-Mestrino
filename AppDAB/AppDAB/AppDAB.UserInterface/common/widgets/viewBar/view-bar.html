@@ -1,0 +1,25 @@
+﻿<div id="viewBarContainer" data-internal-type="viewBarContainer">
+    <style>
+        .view-text {
+            margin-left: 5px;
+        }
+    </style>
+    <div class="dropdown btn-group group-dropdown" style="display:inline-block;" ng-if="viewBarCtrl.viewButtons.length > 0">
+        <i class="dropdown-toggle switch-button switch-button-dropdown fa ng-class:viewBarCtrl.selectedButton.faIcon" data-toggle="dropdown"><span class="caret"></span></i>
+        <ul class="dropdown-menu sit-dropdown-menu" role="menu">
+            <li ng-repeat="viewButton in viewBarCtrl.viewButtons" role="presentation" ng-click="viewBarCtrl.selectView($event, viewButton)">
+                <a role="menuitem" tabindex="-1">
+                    <span class="view-text">
+                        <i class="fa ng-class:viewButton.faIcon"></i>
+                        {{viewButton.text}}
+                    </span>
+                    <i class="fa fa-check" ng-show="viewButton.selected"></i>
+                    <br style="clear:both"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <sit-switch-button ng-if="viewBarCtrl.selectButton.length > 0" sit-buttons="viewBarCtrl.selectButton"></sit-switch-button>
+    <sit-switch-button ng-if="viewBarCtrl.detailsButton.length > 0" sit-buttons="viewBarCtrl.detailsButton"></sit-switch-button>
+</div>
+

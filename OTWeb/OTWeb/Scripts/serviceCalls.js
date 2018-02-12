@@ -193,6 +193,8 @@ function AcceptMaterialCall(callId, materialCallsSuccess) {
 }
 
 function callService(methodName, input, successCallback, errorCallBack) {
+
+    $('.overlay').show();
     $.ajax({
         type: "POST",
         url: "OTService.svc/" + methodName,
@@ -211,12 +213,14 @@ function callService(methodName, input, successCallback, errorCallBack) {
                     showError(result.Error);
                 }
             }
+            $('.overlay').hide();
         },
 
         error: function (jqXHR, textStatus, errorThrown) {
             if (textStatus === "error" && errorThrown !== "") {
                 showError(errorThrown);
             }
+            $('.overlay').hide();
         }
     });
 }
@@ -264,4 +268,54 @@ function centralTitle() {
 
     var idtitle = document.getElementById("centralTitle");
     idtitle.innerHTML = texttitle;
+}
+
+function toggleFullscreen(elem) {
+
+    elem = elem || document.documentElement;
+
+    if (!document.fullscreenElement && !document.mozFullScreenElement &&
+
+      !document.webkitFullscreenElement && !document.msFullscreenElement) {
+
+        if (elem.requestFullscreen) {
+
+            elem.requestFullscreen();
+
+        } else if (elem.msRequestFullscreen) {
+
+            elem.msRequestFullscreen();
+
+        } else if (elem.mozRequestFullScreen) {
+
+            elem.mozRequestFullScreen();
+
+        } else if (elem.webkitRequestFullscreen) {
+
+            elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+
+        }
+
+    } else {
+
+        if (document.exitFullscreen) {
+
+            document.exitFullscreen();
+
+        } else if (document.msExitFullscreen) {
+
+            document.msExitFullscreen();
+
+        } else if (document.mozCancelFullScreen) {
+
+            document.mozCancelFullScreen();
+
+        } else if (document.webkitExitFullscreen) {
+
+            document.webkitExitFullscreen();
+
+        }
+
+    }
+
 }

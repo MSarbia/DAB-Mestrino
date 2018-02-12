@@ -1,0 +1,70 @@
+VERSION '01.12'
+
+[@Guid(4d8e4bb4-52c4-4a8b-9ff5-f3171c8a16af)]
+PARAMETERTYPE ERPOrderRequest
+WITH
+    [Length = 255]
+    [@Guid(44ef2597-c081-43bc-a713-6e0ebf9df5a5)]
+    ERPId AS string
+    [Length = 255]
+    [@Guid(4faf2fb8-c2ee-4d58-ba1e-961cc5bf824e)]
+    FinalMaterialCode AS string
+    [Length = 255]
+    [@Guid(1346d8c5-309f-4ada-8284-17c947a76322)]
+    FinalMaterialRevision AS string
+    [@Guid(6c8f0ebe-b929-4d7c-b342-f0691bb52cd0)]
+    Quantity AS int
+    [@Guid(d45e8619-0397-4ba3-9d89-b022ae492f1b)]
+    EstimatedStartTime AS DateTime
+    [@Guid(c2a2eb33-b1c4-4fd8-9733-139da8106994)]
+    EstimatedEndTime AS DateTime
+    [@Guid(79c3c936-e1b4-46e5-9bb7-fd0d1883dec6)]
+    Priority AS int
+    [@Guid(698d6da6-b2c4-46b7-a799-d358fc1b039f)]
+    CycleTimeMs AS bigint
+    [@Guid(e05f4d4e-fafc-4e5e-8e79-4a895c93a1a5)]
+    SetupTimeMs AS bigint
+    [@Guid(a070b5d3-7a21-4178-8f0d-10c37d131be7)]
+    Operators AS int
+    [Optional]
+    [Optional]
+    [@Guid(e87883fb-fce3-419a-9924-c949377ba54a)]
+    [@GuidRef(79917911-d071-44ca-8502-17ab85617b05, 3d863293-f479-4280-a013-1acfeab1d8b1)]
+    Orders AS list of Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ERPOrderPhase
+
+[@Guid(3d863293-f479-4280-a013-1acfeab1d8b1)]
+PARAMETERTYPE ERPOrderPhase
+WITH
+    [Length = 255]
+    [@Guid(17b73f5f-bd67-4333-b056-6352b5249437)]
+    Name AS string
+    [@Guid(94ad16bf-5565-404b-b303-9126f298532a)]
+    Sequence AS int
+    [Length = 255]
+    [@Guid(b8662101-130c-4d24-8f31-97bfee035550)]
+    WorkArea AS string
+    [@Guid(af631033-79cb-4ac2-a913-86a1ea94d2db)]
+    NextOrder AS int
+    [Optional]
+    [Optional]
+    [@Guid(d6168d2a-2b63-4064-b75a-a6c54ae35456)]
+    [@GuidRef(79917911-d071-44ca-8502-17ab85617b05, 83f5a1f3-b1af-46ce-a2dc-9020eaa017f9)]
+    ToBeConsumedMaterials AS list of Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ERPConsumedMaterial
+
+[@Guid(83f5a1f3-b1af-46ce-a2dc-9020eaa017f9)]
+PARAMETERTYPE ERPConsumedMaterial
+WITH
+    [Length = 255]
+    [@Guid(a088adfe-e0e0-40aa-96d1-9f888e4bbe99)]
+    MaterialCode AS string
+    [Length = 255]
+    [@Guid(3e4b4918-a5b9-460f-b7ac-a3b7a844101c)]
+    MaterialRevision AS string
+    [@Guid(507f8063-94ff-4a05-aac6-4c523d8e633a)]
+    Quantity AS decimal
+    [Length = 255]
+    [@Guid(0103df7b-c998-4962-91a9-926409b81223)]
+    UoM AS string
+    [@Guid(f32b8bcd-a0f1-4989-a197-be065ca99f03)]
+    Sequence AS int
+

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InforConnectorLibrary", "In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestInforConsole", "TestInforConsole\TestInforConsole.csproj", "{68CE1920-DB77-43F3-9FB0-2884BC1A1F46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InforConnectorTests", "InforConnectorTests\InforConnectorTests.csproj", "{20C50CA4-E717-47F4-9F22-6AC0C526DEB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,9 @@ Global
 		{68CE1920-DB77-43F3-9FB0-2884BC1A1F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68CE1920-DB77-43F3-9FB0-2884BC1A1F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68CE1920-DB77-43F3-9FB0-2884BC1A1F46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20C50CA4-E717-47F4-9F22-6AC0C526DEB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20C50CA4-E717-47F4-9F22-6AC0C526DEB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20C50CA4-E717-47F4-9F22-6AC0C526DEB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

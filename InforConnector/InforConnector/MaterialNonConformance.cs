@@ -6,27 +6,45 @@ using System.Threading.Tasks;
 
 namespace InforConnectorLibrary
 {
-    public class MaterialNonConformance
+    //Attenzione, il nome della classe è utilizzato nella ricerca del metodo da chiamare nel dictionary 
+    public class InvTransfer     // Classe per gestire MaterialNonConformance
     {
-        public int Company { get; set; }
+        public string ToWarehouse { get; set; }
 
-        public string ProductionOrder { get; set; }
+        public string OrderNumber { get; set; }
 
-        public MaterialNonConformance(string erpOrder, int operationSequence, string consumedMaterialDefinition,
-                                      int consumedMaterialSequence, decimal nonConformantQuantity,  int company = 100)
+        public string StorageUnit { get; set; }
+
+        public decimal StorageQuantity { get; set; }
+
+        public string TransId { get; set; }
+
+        public InvTransfer(string orderNumber,
+                           string refNum,
+                           string storageUnit,
+                           decimal storageQuantity)
         {
+            OrderNumber = orderNumber;
 
-            ProductionOrder = erpOrder;
+            TransId = string.Empty;
+            ToWarehouse = string.Empty;
 
-            // ??? = operationSequence;
+            if (string.IsNullOrEmpty(refNum) == false)
+            {
+                var splitted = refNum.Split(';');
 
-            // ??? = consumedMaterialDefinition;
+                if (splitted.Count() == 2)
+                {
+                    TransId = splitted[0];
 
-            // ??? = consumedMaterialSequence;
+                    ToWarehouse = splitted[1];
+                }
 
-            // ??? = nonConformantQuantity;
+            }
 
-            Company = company;
+            StorageUnit = storageUnit;
+
+            StorageQuantity = storageQuantity;
         }
     }
 }

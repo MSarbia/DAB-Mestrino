@@ -1,0 +1,175 @@
+VERSION '01.12'
+
+[Protected]
+[NotSecurable]
+[@Guid(cc6ade5c-84ae-478e-b892-640b66fe1ca4)]
+COMMAND GetTestCard
+WITH
+    WorkOrderId AS int
+RESPONSE
+    [Optional]
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 0d3eaac7-6753-4b1c-8769-e1b7663659e5)]
+    TestCard AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.TestCardParameter
+
+[Protected]
+[NotSecurable]
+[@Guid(35e98742-1afa-44e8-bc9c-be28609fd14b)]
+COMMAND CreateMaterialCall
+WITH
+    [Length = 255]
+    Operatore AS string
+    [Optional]
+    [Length = 255]
+    MaterialDefinition AS string
+    [Optional]
+    Quantity AS decimal
+    [Length = 255]
+    WorkOrder AS string
+    [Length = 255]
+    Operation AS string
+    [Length = 255]
+    Equipment AS string
+    [Length = 255]
+    WorkArea AS string
+RESPONSE
+    Id AS Guid
+
+[Protected]
+[NotSecurable]
+[@Guid(9356ee21-8a93-4903-b49b-96888aa5a249)]
+COMMAND CreateTeamLeaderCall
+WITH
+    [Length = 255]
+    Operatore AS string
+    [Length = 255]
+    Equipment AS string
+    [Length = 255]
+    WorkArea AS string
+RESPONSE
+    Id AS Guid
+
+[Protected]
+[NotSecurable]
+[@Guid(11d8ac79-bb56-4296-85b3-a097d5031918)]
+COMMAND AcceptMaterialCall
+WITH
+    Id AS Guid
+    [Length = 255]
+    TeamLeader AS string
+
+[Protected]
+[NotSecurable]
+[@Guid(d0aa5adf-de23-4ebc-bb05-b4ce2fd5790b)]
+COMMAND AcceptTeamLeaderCall
+WITH
+    Id AS Guid
+    [Length = 255]
+    TeamLeader AS string
+
+[Protected]
+[NotSecurable]
+[@Guid(f9c87464-a092-4a72-81ba-9f3a227059d9)]
+COMMAND SendTestResult
+WITH
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, dc325dc2-22c8-4c4b-8297-0269c6d7107e)]
+    Result AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.TestResultParameter
+
+[Protected]
+[NotSecurable]
+[@Guid(4e4ca9d4-5996-4eea-a5d9-a769aa8a8e6b)]
+COMMAND PrintSNLabel
+WITH
+    SerialNumbers AS list of string
+    [Length = 255]
+    ProductCode AS string
+    [Length = 255]
+    WorkArea AS string
+
+[Protected]
+[NotSecurable]
+[@Guid(45f0b184-66af-4319-aab9-71deed1ae81c)]
+COMMAND PrintPackageDataLabel
+WITH
+    SerialNumbers AS list of string
+    [Length = 255]
+    ProductCode AS string
+    [Length = 255]
+    WorkArea AS string
+
+[Protected]
+[NotSecurable]
+[@Guid(0fe868c9-eedf-425e-a00a-9444ce43b808)]
+COMMAND PrintPalletLabel
+WITH
+    SerialNumbers AS list of string
+    [Length = 255]
+    ProductCode AS string
+    [Length = 255]
+    WorkArea AS string
+    Quantity AS int
+
+[Protected]
+[NotSecurable]
+[@Guid(1931461a-00db-4fff-b746-0f78ac1fcf9d)]
+COMMAND ReportProducedQuantity
+WITH
+    [Optional]
+    Company AS int
+    [Optional]
+    [Length = 255]
+    ProcessingScope AS string
+    [Length = 255]
+    ErpOrder AS string
+    ProducedQuantity AS int
+    CloseOrder AS bool
+    [Optional]
+    [Length = 255]
+    ReportPrevious AS string
+    [Optional]
+    [Length = 255]
+    BackFlush AS string
+    [Optional]
+    [Length = 255]
+    DirectReceipt AS string
+    [Optional]
+    [Length = 255]
+    ReportMore AS string
+
+[Protected]
+[NotSecurable]
+[@Guid(58363e0e-7895-480c-bb14-de677d1aac1d)]
+COMMAND ReportConsumedMaterial
+WITH
+    [Length = 255]
+    ErpOrder AS string
+    OperationSequence AS int
+    [Length = 255]
+    ConsumedMaterialDefinition AS string
+    ConsumedMaterialSequence AS int
+    ConsumedQuantity AS decimal
+
+[Protected]
+[NotSecurable]
+[@Guid(e0c7d78f-51fe-49ff-9ea6-083391bdc6d8)]
+COMMAND ReportMaterialNonConformance
+WITH
+    [Length = 255]
+    RefNum AS string
+    [Length = 255]
+    OrderNumber AS string
+    [Length = 255]
+    StorageUnit AS string
+    StorageQuantity AS decimal
+    [Length = 255]
+    TransId AS string
+
+[Protected]
+[NotSecurable]
+[@Guid(020223b9-9025-4c75-84b2-88924d9d88b2)]
+COMMAND ReportOperationProgress
+WITH
+    [Length = 255]
+    ErpOrder AS string
+    OperationSequence AS int
+    ProducedQuantity AS int
+
