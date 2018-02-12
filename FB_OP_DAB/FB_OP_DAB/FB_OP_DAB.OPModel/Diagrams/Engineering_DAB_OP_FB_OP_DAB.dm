@@ -7,23 +7,31 @@
       <ArtifactSuo>
         <X>5</X>
         <Y>5</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.PrintSNLabel</FullName>
-        <IsExpandedA>true</IsExpandedA>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportConsumedMaterial</FullName>
+        <IsExpandedA>false</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>193.00000000000017</X>
-        <Y>25</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.PrintPackageDataLabel</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
+        <X>220.20000000000005</X>
+        <Y>19.400000000000006</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportProducedQuantity</FullName>
+        <IsExpandedA>false</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>465</X>
-        <Y>57</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.PrintPalletLabel</FullName>
+        <X>95.400000000000091</X>
+        <Y>81.799999999999983</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportMaterialNonConformance</FullName>
+        <IsExpandedA>false</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportOperationProgress</FullName>
         <IsExpandedA>false</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>

@@ -9,48 +9,42 @@ namespace InforConnectorLibrary
     //Attenzione, il nome della classe è utilizzato nella ricerca del metodo da chiamare nel dictionary 
     public class InvTransfer     // Classe per gestire MaterialNonConformance
     {
-        public int Company { get; set; }
-
-        public string ProcessingScope { get; set; }
-
-        public string Item { get; set; }
-
-        public string FromWarehouse { get; set; }
-
         public string ToWarehouse { get; set; }
 
-        public string FromLocation { get; set; }
-
-        public string ToLocation { get; set; }
+        public string OrderNumber { get; set; }
 
         public string StorageUnit { get; set; }
 
         public decimal StorageQuantity { get; set; }
 
-        public InvTransfer(string consumedMaterialDefinition,
-                                      decimal nonConformantQuantity,
-                                      string nonConformantQuantityUnit,
-                                      int company = 100, string processingScope = "request",
-                                      string fromWarehouse = "AD0001", string toWarehouse = "AD0001",
-                                      string fromLocation = "A-01-01-01", string toLocation = "A-01-01-02")
+        public string TransId { get; set; }
+
+        public InvTransfer(string orderNumber,
+                           string refNum,
+                           string storageUnit,
+                           decimal storageQuantity)
         {
-            Item = consumedMaterialDefinition;
+            OrderNumber = orderNumber;
 
-            StorageUnit = nonConformantQuantityUnit;
+            TransId = string.Empty;
+            ToWarehouse = string.Empty;
 
-            StorageQuantity = nonConformantQuantity;
+            if (string.IsNullOrEmpty(refNum) == false)
+            {
+                var splitted = refNum.Split(';');
 
-            Company = company;
+                if (splitted.Count() == 2)
+                {
+                    TransId = splitted[0];
 
-            ProcessingScope = processingScope;
+                    ToWarehouse = splitted[1];
+                }
 
-            FromWarehouse = fromWarehouse;
+            }
 
-            ToWarehouse = toWarehouse;
+            StorageUnit = storageUnit;
 
-            FromLocation = FromLocation;
-
-            ToLocation = ToLocation;
+            StorageQuantity = storageQuantity;
         }
     }
 }

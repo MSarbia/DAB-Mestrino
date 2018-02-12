@@ -21,7 +21,7 @@ namespace TestInforConsole
                 ReportProduction reportProd = new ReportProduction("D02220137", 1, false);
                 UnplannedMat unplannedMat = new UnplannedMat("D02220137", 1, "002612155", 1, Convert.ToDecimal(1.0));
                 OperatorOperation operationProg = new OperatorOperation("D02220137", 1, 1);
-                InvTransfer materialNonConf = new InvTransfer("00302017", Convert.ToDecimal(1.0), "NR");
+                InvTransfer materialNonConf = new InvTransfer("TestOrderNumber", "TransIdTest;ToWarehouseTest", "StorageUnitTest", Convert.ToDecimal(1.2));
 
                 if ((choice > 0) && (choice < 5))
                 {

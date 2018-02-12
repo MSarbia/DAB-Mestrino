@@ -73,6 +73,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ReadingModel.dll</HintPath>
     </Reference>
+    <Reference Include="InforConnectorLibrary">
+      <HintPath>..\FB_OP_DAB.Installer\ExternalDependencies\InforConnectorLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="NiceLabelConnector">
       <HintPath>..\FB_OP_DAB.Installer\ExternalDependencies\NiceLabelConnector.dll</HintPath>
     </Reference>
@@ -126,6 +129,14 @@
     <Compile Include="FB_OP_DAB.OPModel\Commands\PrintPalletLabelHandlerExecution.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\PrintSNLabelHandler.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\PrintSNLabelHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportConsumedMaterialHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportConsumedMaterialHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportMaterialNonConformanceHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportMaterialNonConformanceHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportOperationProgressHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportOperationProgressHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportProducedQuantityHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportProducedQuantityHandlerExecution.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\SendTestResultHandler.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\SendTestResultHandlerExecution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
