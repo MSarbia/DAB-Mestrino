@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="Engineering.DAB.UADMSoapWrap" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="OPEXTWrapper" targetNamespace="Engineering.DAB.UADMSoapWrap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="Engineering.DAB.UADMSoapWrap/Imports">
+      <xsd:import schemaLocation="http://localhost:56420/OPEXTWrapper.svc?xsd=xsd0" namespace="Engineering.DAB.UADMSoapWrap" />
+      <xsd:import schemaLocation="http://localhost:56420/OPEXTWrapper.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:56420/OPEXTWrapper.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/UADMSoapWrapp.DataTypes.OPEXT" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IOPEXTWrapper_ImportWorkOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportWorkOrder" />
+  </wsdl:message>
+  <wsdl:message name="IOPEXTWrapper_ImportWorkOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportWorkOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOPEXTWrapper_ImportMaterialDefinition_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportMaterialDefinition" />
+  </wsdl:message>
+  <wsdl:message name="IOPEXTWrapper_ImportMaterialDefinition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportMaterialDefinitionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IOPEXTWrapper">
+    <wsdl:operation name="ImportWorkOrder">
+      <wsdl:input wsaw:Action="Engineering.DAB.UADMSoapWrap/IOPEXTWrapper/ImportWorkOrder" message="tns:IOPEXTWrapper_ImportWorkOrder_InputMessage" />
+      <wsdl:output wsaw:Action="Engineering.DAB.UADMSoapWrap/IOPEXTWrapper/ImportWorkOrderResponse" message="tns:IOPEXTWrapper_ImportWorkOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportMaterialDefinition">
+      <wsdl:input wsaw:Action="Engineering.DAB.UADMSoapWrap/IOPEXTWrapper/ImportMaterialDefinition" message="tns:IOPEXTWrapper_ImportMaterialDefinition_InputMessage" />
+      <wsdl:output wsaw:Action="Engineering.DAB.UADMSoapWrap/IOPEXTWrapper/ImportMaterialDefinitionResponse" message="tns:IOPEXTWrapper_ImportMaterialDefinition_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IOPEXTWrapper" type="tns:IOPEXTWrapper">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ImportWorkOrder">
+      <soap:operation soapAction="Engineering.DAB.UADMSoapWrap/IOPEXTWrapper/ImportWorkOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportMaterialDefinition">
+      <soap:operation soapAction="Engineering.DAB.UADMSoapWrap/IOPEXTWrapper/ImportMaterialDefinition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OPEXTWrapper">
+    <wsdl:port name="BasicHttpBinding_IOPEXTWrapper" binding="tns:BasicHttpBinding_IOPEXTWrapper">
+      <soap:address location="http://localhost:56420/OPEXTWrapper.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

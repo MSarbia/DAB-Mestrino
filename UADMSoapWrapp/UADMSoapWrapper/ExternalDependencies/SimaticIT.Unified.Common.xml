@@ -1,0 +1,2354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>SimaticIT.Unified.Common</name>
+  </assembly>
+  <members>
+    <member name="T:Siemens.SimaticIT.Unified.Common.BulkImportOptions">
+      <summary>
+            Represents a set of options for the bulk import operation.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.BulkImportOptions.#ctor">
+      <summary>
+            BulkImportOptions Constructor
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.BulkImportOptions.FacetOption">
+      <summary>
+            Allows to replace or append to the existing facets of an entity.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.BulkOptions">
+      <summary>
+            Represents a set of options for the bulk operation.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.BulkOptions.#ctor">
+      <summary>
+            Create an instance of the class and sets the values to defaults.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.BulkOptions.Lock">
+      <summary>
+            Type of lock. This option is ignored when using an Oracle database.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.ClaimsPrincipalExtensions">
+      <summary>
+            Provides utility methods to the <see cref="T:System.Security.Claims.ClaimsPrincipal" /> type.
+            </summary>
+      <exception cref="T:System.ArgumentNullException"></exception>
+      <exception cref="T:System.InvalidOperationException"></exception>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.ClaimsPrincipalExtensions.GetToken(System.Security.Claims.ClaimsPrincipal)">
+      <summary>
+            Retrieves the authentication token from the <see cref="T:System.Security.Claims.ClaimsPrincipal" /> object.
+            </summary>
+      <param name="claimsPrincipal"></param>
+      <returns>A string that represents the original authentication token.</returns>
+      <exception cref="T:System.ArgumentNullException"></exception>
+      <exception cref="T:System.InvalidOperationException"></exception>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.ClaimsPrincipalExtensions.GetOriginator(System.Security.Claims.ClaimsPrincipal)">
+      <summary>
+            Retrieves the Originator claim from the <see cref="T:System.Security.Claims.ClaimsPrincipal" /> object.
+            </summary>
+      <param name="claimsPrincipal"></param>
+      <returns>A string that represents the original authentication token.</returns>
+      <exception cref="T:System.ArgumentNullException"></exception>
+      <exception cref="T:System.InvalidOperationException"></exception>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.FunctionResponse">
+      <summary>
+            Provides a base response class for Reading Function responses.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.FunctionResponse.#ctor">
+      <summary>
+            Initializes an instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.FunctionResponse" /> class with default values.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.FunctionResponse.#ctor(Siemens.SimaticIT.Unified.Common.ExecutionError)">
+      <summary>
+            Initializes an instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.FunctionResponse" /> class specifying the <see cref="T:Siemens.SimaticIT.Unified.Common.ExecutionError" />.
+            </summary>
+      <param name="error"></param>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.FunctionResponse`1">
+      <summary>
+            Provides a generic response class for Reading Function responses.
+            The generic type represents data provided by the Reading Function.
+            </summary>
+      <typeparam name="T">Represents data provided by the Reading Function</typeparam>
+      <example>
+            The following class shows a Reading Function handler example.
+            <code language="cs" title="C#">
+/// &lt;summary&gt;
+/// Partial class init
+/// &lt;/summary&gt;
+[Handler(HandlerCategory.BasicMethod)]
+public partial class MyReadingFunctionHandlerShell
+{
+    /// &lt;summary&gt;
+    /// This is the handler the MES engineer should write
+    /// This is the ENTRY POINT for the user in VS IDE
+    /// &lt;/summary&gt;
+    /// &lt;param name="readingFunction"&gt;&lt;/param&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    [HandlerEntryPoint]
+    private FunctionResponse&lt;MyReadingFunction.FunctionResponse&gt; MyReadingFunctionHandler(MyReadingFunction readingFunction)
+    {
+        Platform.Tracer.Write("Siemens-SimaticIT-Trace-BusinessLogic", Category.Verbose, "readingFunction: " + readingFunction.Example);
+
+        if (readingFunction.SecondParameter &lt; 0)
+        {
+            return new FunctionResponse&lt;MyReadingFunction.FunctionResponse&gt;(new ExecutionError(11, "SecondParameter cannot be &lt; 0"));
+        }
+
+        var list = new List&lt;MyReadingFunction.FunctionResponse&gt;();
+
+        // here you can use data from a query, this chunk simulates filling data of 500 records
+        for (var i = 0; i &lt; 500; i++)
+        {
+            var item = new MyReadingFunction.FunctionResponse() { RecordId = Guid.NewGuid() };
+            list.Add(item);
+        }
+
+        return new FunctionResponse&lt;MyReadingFunction.FunctionResponse&gt;()
+        {
+            Data = list.AsQueryable()
+        };
+    }
+}
+</code></example>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.FunctionResponse`1.#ctor">
+      <summary>
+            Initializes an instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.FunctionResponse`1" /> class with default values.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.FunctionResponse`1.#ctor(Siemens.SimaticIT.Unified.Common.ExecutionError)">
+      <summary>
+            Initializes an instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.FunctionResponse`1" /> class specifying the <see cref="T:Siemens.SimaticIT.Unified.Common.ExecutionError" />.
+            </summary>
+      <param name="error"></param>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.FunctionResponse`1.Data">
+      <summary>
+            Data returned by the Reading Function.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IReadingFunction">
+      <summary>
+            Provides a public interface to expose a Reading Function.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.IReadingFunction.FullName">
+      <summary>
+            Gets the full name of the Reading Function.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.ICommandAlias">
+      <summary>
+            Provides a public interface to expose a command alias
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.ICommandAlias.AppName">
+      <summary>
+            Gets the name of the App of the command alias
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.ICommandAlias.BaseCommandFullName">
+      <summary>
+            Gets the full name of the original command
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkAutomationRead">
+      <summary>
+            Public interface to read Automation parameters.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkAutomationRead.AutomationRead``1(System.Collections.Generic.IList{``0})">
+      <summary>
+            Reads the values of the Automation Parameters belonging to the instances of IAutomationEntity in the input list. 
+            </summary>
+      <param name="automationEntities">List of AutomationEntity to be read.</param>
+      <typeparam name="T">T must be an implementation of IAutomationEntity.</typeparam>
+      <exception cref="T:System.ArgumentNullException">The automationEntities is null.</exception>
+      <exception cref="T:Siemens.SimaticIT.Unified.Common.UnifiedException"></exception>
+      <example>
+            The following fragment of a Command Handler class shows an example of the AutomationRead method with a list of IAutomationEntity.
+            <code language="cs" title="C#">
+            // Query the IAutomationNode objects in the database by providing the node name of the entity you want to retrieve.
+            var node = Platform.Query&lt;IAutomationNode&gt;().First(n =&gt; n.NodeId.Equals("Mixer01"));
+
+            // The AutomationRead method updates the AutomationNode with automation parameters and related values.
+            Platform.AutomationRead(new[] { node });
+
+            // Retrieve the Parameter you want to use.
+            var parameter = node.AutomationParameters["Speed"];
+
+            // Retrieve the AutomationValue structure.
+            var valueStructure = parameter.AutomationValue;
+
+            // Retrieve the current value.
+            var currentValue = valueStructure.Value;
+
+            </code></example>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkAutomationRead.AutomationRead(System.Collections.Generic.IList{System.String})">
+      <summary>
+            Reads the values of the Automation Parameters belonging to the Automation Nodes specified a list of Ids. 
+            </summary>
+      <param name="nodeIds">List of the names of the Automation Nodes. All the Node Ids must exist, otherwise an exception will be thrown.</param>
+      <returns>Returns a list of IAutomationEntity instances with all Automation Parameters.</returns>
+      <exception cref="T:System.ArgumentNullException">The nodeIds is null.</exception>
+      <exception cref="T:System.ArgumentException">The nodeIds is zero length.</exception>
+      <exception cref="T:Siemens.SimaticIT.Unified.Common.UnifiedException"></exception>
+      <example>
+            The following fragment of a Command Handler class shows an example of the AutomationRead method call with a list of nodes as string.
+            <code language="cs" title="C#">
+            // The AutomationRead method can be used with a list of node names (string) to retrieve a list of IAutomationEntity
+            var automationEntities = Platform.AutomationRead(new[] { "Mixer001" });
+
+            // Retrieve the Parameter you want to use.
+            var parameter = automationEntities[0].AutomationParameters["Speed"];
+
+            // Retrieve the AutomationValue structure.
+            var valueStructure = parameter.AutomationValue;
+
+            // Retrieve the current value.
+            var currentValue = valueStructure.Value;
+
+            </code></example>
+      <remarks>The order of the returned instances could not be the same as the input parameter nodeIds.</remarks>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkAutomationRead.AutomationQuery(System.Collections.Generic.IList{System.String},System.String,System.Collections.Generic.IList{System.String})">
+      <summary>
+            Returns a list of instances of IAutomationEntity matching the given logical expression.
+            </summary>
+      <param name="nodeIds">List of Ids of Automation Nodes. All the Node Ids must belong to the same Node Type and all the Node Ids must exist, otherwise an exception will be thrown.</param>
+      <param name="expression">String containing an expression on one or more Automation Parameter values. The syntax of the expression is SQL like.
+            Example: " Capacity &gt;100 AND Level &lt; AND (State=1 OR State=3) ". For details see <see cref="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkAutomationRead.AutomationQuery(System.String,System.String,System.Collections.Generic.IList{System.String})" />.
+            </param>
+      <param name="selectParameters">List of the names of the Automation Parameters of the IAutomationEntity instance to be read. If this parameter is left to Null, all the Parameters are read.</param>
+      <returns>Returns a list of IAutomationEntity instances with all Automation Parameters.</returns>
+      <exception cref="T:System.ArgumentNullException">The nodeIds is null.</exception>
+      <exception cref="T:Siemens.SimaticIT.Unified.Common.UnifiedException">The nodeIds is zero length.</exception>
+      <exception cref="T:System.ArgumentException"></exception>
+      <example>
+            The following fragment of a Command Handler class shows an example of the AutomationQuery method using a node list.
+            <code language="cs" title="C#">
+            // Use AutomationQuery method to query automation nodes with a list of node names that match a given expression.
+            // The last argument (selectParameters) is optional, if you do not specify it, you will obtain all the parameters.
+            // returns a list of IAutomationEntity.
+            var entities = Platform.AutomationQuery(new[] { "Mixer01", "Mixer02" }, "capacity &gt; 10", new[] { "Speed", "Capacity" });
+
+            </code></example>
+      <remarks>
+            The order of the returned instances could not be the same as the input parameter nodeIds.
+            </remarks>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkAutomationRead.AutomationQuery(System.String,System.String,System.Collections.Generic.IList{System.String})">
+      <summary>
+            Returns a list of instances of IAutomationEntity matching the given logical expression.
+            </summary>
+      <param name="typeName">Name of the Automation Node Type</param>
+      <param name="expression">String containing an expression on one or more Automation Parameter values. The syntax of the expression is SQL like. 
+            Example: "Capacity &gt;100 AND Level &lt;20 AND (State=1 OR State=3) ". For details see notes below.</param>
+      <param name="selectParameters">List of the names of the Parameters of the AutomationEntity to be read. If this parameter is left to Null, all the Parameters are read.</param>
+      <returns>Returns a list of IAutomationEntity instances with all the Automation Parameters.</returns>
+      <exception cref="T:System.ArgumentException">The typeName is empty.</exception>
+      <exception cref="T:Siemens.SimaticIT.Unified.Common.UnifiedException">The typeName refers to a Node Type that does not exist.</exception>
+      <example>
+            The following fragment of a Command Handler class shows an example of the AutomationQuery method using a node type.
+            <code language="cs" title="C#">
+            // Use AutomationQuery method to query automation nodes that match a specified node type and a given expression.
+            // The last argument (selectParameters) is optional, if you do not specify it, you will obtain all the parameters.
+            // returns a list of IAutomationEntity.
+            var autoEntities = Platform.AutomationQuery("TMixer", "capacity &gt; 10", new[] { "Speed", "Capacity" });
+
+            </code></example>
+      <remarks>The supported operators are: 
+            <list type="table"><listheader><term>Operator</term><term>Description</term></listheader><item><term>=</term><term> Equal To.</term></item><item><term> &lt;&gt; </term><term> Not equal to.</term></item><item><term> &lt; </term><term>Less than.</term></item><item><term> &gt;= </term><term>Greater than or equal.</term></item><item><term> &lt;= </term><term> Less than or equal.</term></item><item><term> OR, || </term><term> Logical OR.</term></item><item><term> AND, &amp;&amp; </term><term> Logical AND.</term></item><item><term> BEWTEEN  </term><term> Between an inclusive range.</term></item><item><term> NOT BETWEEN  </term><term> Outside a range.</term></item><item><term> LIKE 'string'</term><term> Match a character pattern.</term></item><item><term> NOT LIKE 'string'</term><term> Negative string comparison.</term></item><item><term> IN (v1, v2…) </term><term> Equal to one of multiple possible values.</term></item><item><term> NOT IN (v1, v2…) </term><term> Not equal to one of multiple values.</term></item><item><term>  (…)</term><term> Parentheses.</term></item><item><term>   -,+, /, *, %, ^</term><term> Mathematical operators.</term></item><item><term>GETUTCDATE()</term><term> The current system timestamp.</term></item><item><term> SUBSTRING()</term><term> Returns part of text.</term></item></list>
+            Wildcards for characters:
+            <list type="table"><listheader><term>Wildcard</term><term>Description</term><term>Example</term></listheader><item><term> * </term><term> Substitutes zero or more characters.</term><term> Name LIKE 'Motor*'.</term></item><item><term> ? </term><term>Substitutes exactly one character.</term><term> Name = 'Recipe?'.</term></item></list></remarks>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkAutomationSubscribing">
+      <summary>
+            Public interface to subscribe to Automation 
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkAutomationSubscribing.AutomationSubscribe(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.Action{Siemens.SimaticIT.DataModel.Automation.IAutomationEntity,System.Guid},System.Action{System.Guid,System.String,System.Int32})">
+      <summary>
+            Subscribes to a Unified Automation Event and specifies an action based on a set of subscription parameters.
+            </summary>
+      <param name="nodeIDs">List of the Automation Node IDs </param>
+      <param name="triggerParameters">list of parameters name whose changing values the client want to be notified on</param>
+      <param name="selectedParameters">list of parameters name whose value is returned with the trigger parameters value. If null, the value of all parameters is returned</param>
+      <param name="expression">string containing an expression on parameters value that has to be satisfied (following CPM syntax). If null, no filter is applied.</param>
+      <param name="onNotifyCallback">This function called whenever one or more trigger parameters value change occurs and expression is satisfied. 
+                                           Arguments of the function are: 1 - the subscription ID (a GUID)
+                                                                          2 - the IAutomationEntity value </param>
+      <param name="onErrorCallback">This function is called whenever a severe error occurs. In such a case, the SDK client should remove the subscription because subsctription itself is no more valid. 
+                                          Arguments of the function are: 1 - Node ID that raised the error (null if not available: e.g.expression is wrong in the Subscribe by type)
+                                                                         2 - Error code </param>
+      <returns>the ID representative of subscription</returns>
+      <exception cref="T:System.ArgumentNullException">The nodeIDs or triggerParameters are null.</exception>
+      <exception cref="T:Siemens.SimaticIT.Unified.Common.UnifiedException"></exception>
+      <exception cref="T:System.ArgumentException">The nodeIDs or triggerParameters are zero length.</exception>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkAutomationSubscribing.AutomationSubscribe(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.Action{Siemens.SimaticIT.DataModel.Automation.IAutomationEntity,System.Guid},System.Action{System.Guid,System.String,System.Int32})">
+      <summary>
+            Subscribes to a Unified Automation Event and specifies an action based on a set of subscription parameters.
+            </summary>
+      <param name="typeName">string representing the type name of the Automation Node</param>
+      <param name="triggerParameters">list of parameters name whose changing values the client want to be notified on</param>
+      <param name="selectedParameters">list of parameters name whose value is returned with the trigger parameters value. If null, the value of all parameters is returned</param>
+      <param name="expression">string containing an expression on parameters value that has to be satisfied (following CPM syntax). If null, no filter is applied.</param>
+      <param name="onNotifyCallback">This function called whenever one or more trigger parameters value change occurs and expression is satisfied. 
+                                            Arguments of the function are: 1 - the subscription ID (a GUID)
+                                                                           2 - the IAutomationEntity value </param>
+      <param name="onErrorCallback">This function is called whenever a severe error occurs. In such a case, the SDK client should remove the subscription because subsctription itself is no more valid. 
+                                            Arguments of the function are: 1 - Node ID that raised the error (null if not available: e.g.expression is wrong in the Subscribe by type)</param>
+      <returns>the ID representative of subscription</returns>
+      <exception cref="T:System.ArgumentNullException">The typeName or triggerParameters are null.</exception>
+      <exception cref="T:Siemens.SimaticIT.Unified.Common.UnifiedException"></exception>
+      <exception cref="T:System.ArgumentException">The typeName or triggerParameters are zero length.</exception>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkAutomationSubscribing.AutomationUnSubscribe(System.Guid)">
+      <summary>
+            Unsubscribes a previously subscribed Unified Automation Event.
+            </summary>
+      <param name="subscriptionID">the ID representative of subscription</param>
+      <exception cref="T:Siemens.SimaticIT.Unified.Common.UnifiedException"></exception>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkAutomationWrite">
+      <summary>
+            Public interface to Write Automation Parameters
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkAutomationWrite.AutomationWrite``1(System.Collections.Generic.IList{``0})">
+      <summary>
+             Writes the values of the Automation Parameters. The method writes the Parameters that have been set.</summary>
+      <param name="automationEntities">List of IAutomationEntity instances to be written</param>
+      <typeparam name="T">T must be an implementation of IAutomationEntity.</typeparam>
+      <exception cref="T:System.ArgumentException">The list of IAutomationEntity is zero length.</exception>
+      <exception cref="T:System.ArgumentNullException">The argument automationEntities is null.</exception>
+      <exception cref="T:Siemens.SimaticIT.Unified.Common.UnifiedException"></exception>
+      <example>
+            The following fragment of a Command Handler class shows an example of the AutomationWrite method.
+            <code language="cs" title="C#">
+            // Read an IAutomationEntity.
+            var automationEntities = Platform.AutomationRead(new[] { "MixerName" });
+            
+            // Set the "Speed" Parameter value.
+            automationEntities[0].AutomationParameters["Speed"].AutomationValue.Value = 25;
+
+            // Send the updated node value to the automation layer.
+            Platform.AutomationWrite(automationEntities);
+
+            </code></example>
+      <remarks> Unlike the relational entities, which are actually saved in the database at the end of the transaction, this method
+            writes immediately the values on the Automation Gateway Server.
+            After calling the Write method, the AutomationValue properties Quality, QualityStatus, QualitySubStatus and Timestamp of the written Automation Parameter will not be updated. To obtain updated written Automation Parameters you need to perform a read operation on the corresponding set of IAutomationEntity.
+            </remarks>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkAutomationWrite.AutomationWrite(Siemens.SimaticIT.DataModel.Automation.IAutomationEntity,System.String)">
+      <summary>
+            Writes the values of the Automation Parameters that have been set only if the given logical expression is satisfied.
+            </summary>
+      <param name="automationEntity">IAutomationEntity instances to be written</param>
+      <param name="expression">String containing an expression on one or more Automation Parameter values. The syntax of the expression is SQL-like. For details see <see cref="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkAutomationRead.AutomationQuery(System.String,System.String,System.Collections.Generic.IList{System.String})" />.</param>
+      <exception cref="T:System.ArgumentNullException">The automationEntity is null.</exception>
+      <exception cref="T:Siemens.SimaticIT.Unified.Common.UnifiedException"></exception>
+      <example>
+            The following fragment of a Command Handler class shows an example of the AutomationWrite method using the expression evaluation.
+            <code language="cs" title="C#">
+            // Retrieve an AutomationNode from the database.
+            var entity = Platform.Query&lt;IAutomationNode&gt;().First(an =&gt; an.NodeId.Equals("Mixer01"));
+
+            // Read the automation parameters of the AutomationNode.
+            Platform.AutomationRead(new[] { entity });
+
+            // Update the parameter value.
+            entity.AutomationParameters["Speed"].AutomationValue.Value = 10;
+
+            // Send the updated node value to the automation layer, providing a conditional expression that will be
+            // evaluated by the automation layer before the write operation is executed.
+            // The automation layer will use the automation values that are effectively present in the Automation Gateway Server to evaluate the given expression.
+            Platform.AutomationWrite(entity, "capacity &gt; 5");
+
+            </code></example>
+      <remarks> Unlike the relational entities, which are actually saved in the database at the end of the transaction, this method
+            writes immediately the values on the Automation Gateway Server.  
+            After calling the Write method, the AutomationValue properties Quality, QualityStatus, QualitySubStatus and Timestamp of the written Automation Parameter will not be updated. To obtain updated written Automation Parameters you need to perform a read operation on the corresponding set of IAutomationEntity.
+            </remarks>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkFunctionInvocation">
+      <summary>
+            Provides an interface for reading function invocation.
+            <note type="noteType">
+            The interface hierarchy and subdivision of methods in interfaces may be subject to change in the future. Only refer to entry point interfaces (IUnifiedSdk, IUnifiedSdkLean and IUnifiedSdkEvent).
+            </note></summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkFunctionInvocation.InvokeFunction``2(``0)">
+      <summary>
+            Invokes a reading function using the Unified Platform.
+            </summary>
+      <typeparam name="TFunction">Specifies the function as an <see cref="T:Siemens.SimaticIT.Unified.Common.IReadingFunction" />.</typeparam>
+      <typeparam name="TResponse">The specific <see cref="T:Siemens.SimaticIT.Unified.Common.FunctionResponse" /> for the function that was sent.</typeparam>
+      <param name="function">The function to be invoked.</param>
+      <returns>Returns the response of the function that is completed.</returns>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkReadingFunction">
+      <summary>
+            Provides centralized access to Unified functionalities within a Function Handler.
+            <note type="noteType">
+            The interface hierarchy and subdivision of methods in interfaces may be subject to change in the future. Only refer to entry point interfaces (IUnifiedSdk, IUnifiedSdkLean, IUnifiedSdkReadingFunction and IUnifiedSdkEvent).
+            </note></summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.FacetOptionType">
+      <summary>
+            Lock types.
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.FacetOptionType.Append">
+      <summary>
+            Row lock.
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.FacetOptionType.Replace">
+      <summary>
+            Table lock.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.LicenseInfo">
+      <summary>
+            License information detail
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.LicenseInfo.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.LicenseInfo" /> class.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.LicenseInfo.#ctor(System.String,System.String,System.String,System.String)">
+      <summary>
+            license info constructor
+            </summary>
+      <param name="prodName">product name</param>
+      <param name="prodVersion">product version</param>
+      <param name="modDesc">module description</param>
+      <param name="expDate">module expiration date</param>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.LicenseInfo.ProductName">
+      <summary>
+            the product name of the license
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.LicenseInfo.ProductVersion">
+      <summary>
+            the product version of the license
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.LicenseInfo.ModuleDescription">
+      <summary>
+            the module description of the license
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.LicenseInfo.ExpirationDate">
+      <summary>
+            expiration date of the module
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.HostInfo">
+      <summary>
+            Represents the information of a host
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.HostInfo.HostName">
+      <summary>
+            Gets or sets the name of the host
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.HostInfo.State">
+      <summary>
+            Gets or sets the state of the host
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.HostInfo.LogicalCore">
+      <summary>
+            Gets or sets the number of logical core of the host.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.HostInfo.DeployedSolution">
+      <summary>
+            Gets or sets information of the solution, if any, currently deployed on the host.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.HostInfo.License">
+      <summary>
+            Gets or sets the information about the SIT UAF license acquired by the host.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.HostInfo.Errors">
+      <summary>
+            Gets or sets the list of fatal error messages of the host
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.HostInfo.Warnings">
+      <summary>
+            Gets or sets the list of recoverable error messages of the host
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.HostInfo.TimeStamp">
+      <summary>
+            Gets or sets the timestamp of the the latest status notification
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStatus">
+      <summary>
+            The status of the Node
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStatus.UnknownState">
+      <summary>
+            The Unknown State
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStatus.#ctor">
+      <summary>
+            ctor.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStatus.Node">
+      <summary></summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStatus.State">
+      <summary></summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStatus.LogicalCore">
+      <summary></summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStatus.DeploymentSolution">
+      <summary></summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStatus.License">
+      <summary></summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStatus.Errors">
+      <summary></summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStatus.Warnings">
+      <summary></summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStatus.TimeStamp">
+      <summary></summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStateOperators">
+      <summary>
+            node state operators
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStateOperators.Equal">
+      <summary>
+            Equal
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStateOperators.NotEqual">
+      <summary>
+            Not Equal
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStateOperators.Less">
+      <summary>
+            Less
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStateOperators.Greater">
+      <summary>
+            Greater
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStateOperators.LessOrEqual">
+      <summary>
+            LessOrEqual
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.NodeStateOperators.GreaterOrEqual">
+      <summary>
+            GreaterOrEqual
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Package">
+      <summary>
+            the package information
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Package.Name">
+      <summary>
+            The package Name
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Package.Build">
+      <summary>
+            The package build
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Package.Type">
+      <summary>
+            The package Type
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Package.TimeStamp">
+      <summary>
+            The package TimeStamp
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Package.Version">
+      <summary>
+            The app version
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.ReasonInfo">
+      <summary>
+            The reason code of the problem
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.ReasonInfo.ReasonId">
+      <summary>
+            Th reason identifier
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Solution">
+      <summary>
+            The solution information
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Solution.Id">
+      <summary>
+            The solution Name
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Solution.Build">
+      <summary>
+            The solution build
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Solution.Version">
+      <summary>
+            The solution version
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Solution.Name">
+      <summary>
+            The solution Name
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Solution.DbSchema">
+      <summary>
+            The solution schema
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Solution.TimeStamp">
+      <summary>
+            The solution TimeStamp
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Solution.Packages">
+      <summary>
+            The solution packages list
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Solution.Equals(System.Object)">
+      <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+      <param name="obj">he object to compare with the current object.</param>
+      <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Solution.GetHashCode">
+      <summary>
+            Returns the hash code for this object.
+            </summary>
+      <returns>the hash code</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.NodeStatusInfo.Solution.ToString">
+      <summary>
+            Return the string rappresentation of the current solution.
+            </summary>
+      <returns></returns>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.SignalRuleVerb">
+      <summary>
+            signal rule verb type
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.SignalRuleVerb.ruleUpdated">
+      <summary>
+            updated rule
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.SignalRuleVerb.ruleDeleted">
+      <summary>
+            deleted rule
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.SignalRuleVerb.ruleNew">
+      <summary>
+            new rule
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedExecutionContext">
+      <summary>
+            This class contains a set of read-only properties about the context of the execution (e.g. command and event handler execution)
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.UnifiedExecutionContext.CurrentId">
+      <summary>
+            Gets the ID of the current command/event.
+            </summary>
+      <value>
+            The ID of the current command/event.
+            </value>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.UnifiedExecutionContext.RootRequestId">
+      <summary>
+            Gets the ID of the root request.
+            </summary>
+      <value>
+             The ID of the root request.
+            </value>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.UnifiedExecutionContext.CorrelationId">
+      <summary>
+            Gets the correlation ID.
+            </summary>
+      <value>
+            The correlation ID.
+            </value>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.UnifiedExecutionContext.ParentId">
+      <summary>
+            Gets the parent ID.
+            </summary>
+      <value>
+            The parent ID.
+            </value>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.GatewayStatus">
+      <summary></summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.GatewayStatus.#ctor">
+      <summary></summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.GatewayStatus.Statuses">
+      <summary></summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.GatewayStatus.Statuses.Unknown">
+      <summary></summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.GatewayStatus.Statuses.Ready">
+      <summary></summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.GatewayStatus.Statuses.Error">
+      <summary></summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.GatewayStatus.Statuses.Warning">
+      <summary></summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.GatewayStatus.Status">
+      <summary></summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.GatewayStatus.Warnings">
+      <summary></summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.GatewayStatus.Errors">
+      <summary></summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.EntityDomain">
+      <summary>
+            Object to represent the current entity domain
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EntityDomain.MasterData">
+      <summary>
+            Instantiate a MasterData domain class
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EntityDomain.OperationalData">
+      <summary>
+            Instantiate an OperationalData domain class
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EntityDomain.ReferenceData">
+      <summary>
+            Instantiate a ReferenceData domain class
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EntityDomain.Value">
+      <summary>
+            The Data Domain currently set (as a string value)
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.Folder">
+      <summary>
+            Describes a File Store folder
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.Folder.Id">
+      <summary>
+            Folder autogenerated identifier.
+            It is an output parameter, so it should not be valued.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.Folder.Name">
+      <summary>
+            Folder name. It represents, along with Parent_Id, the logical key. 
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.Folder.Parent_Id">
+      <summary>
+            Parent Folder identifier.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.Content">
+      <summary>
+            Describes a Content in a File Store
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.Content.Id">
+      <summary>
+            Autogenerated Content identifier.
+            It is an output parameter, so it should not be valued.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.Content.Name">
+      <summary>
+            Content name. It represents, along with Folder_Id, the logical key. 
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.Content.Type">
+      <summary>
+            MIME Type
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.Content.Folder_Id">
+      <summary>
+            Folder Identifier. It represents, along with Name, the logical key.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.Content.PayloadSize">
+      <summary>
+            Payload size.
+            It is an output parameter, so it should not be valued.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.Content.CreatedBy">
+      <summary>
+            The user who created the Content.
+            It is an output parameter, so it should not be valued.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.Content.LastUpdatedBy">
+      <summary>
+            The last user who updated the Content.
+            It is an output parameter, so it should not be valued.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkExecutionContextInfo">
+      <summary>
+            Provides an interface for information on the execution context.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkExecutionContextInfo.RetrieveExecutionContext">
+      <summary>
+            Gets execution information on the current command/event handler.
+            </summary>
+      <returns>
+            Returns an instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.UnifiedExecutionContext" /> class.
+            </returns>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedEngineeringDataReading">
+      <summary>
+            Provides an internal interface for Service layer in order to query governance data and UMC data.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedEngineeringDataReading.QueryEntity``1">
+      <summary>
+            Generic method to retrieve entities from UMC
+            </summary>
+      <typeparam name="T"></typeparam>
+      <returns></returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedEngineeringDataReading.QueryEntity``1(System.Func{``0,System.Boolean})">
+      <summary>
+            Generic method to retrieve entities from UMC
+            </summary>
+      <typeparam name="T"></typeparam>
+      <returns></returns>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedContentNamespace">
+      <summary>
+            File Store namespaces
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.UnifiedContentNamespace.System">
+      <summary>
+            System namespace
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.UnifiedContentNamespace.Application">
+      <summary>
+            Application namespace
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkContentReading">
+      <summary>
+            Provides an interface that gives read access to the content management service.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkContentReading.GetContent(System.Guid,Siemens.SimaticIT.Unified.Common.UnifiedContentNamespace)">
+      <summary>
+            Retrieves the metadata of the content object from the selected content namespace, by specifying the ID of the file.
+            </summary>
+      <param name="id">Content Id</param>
+      <param name="contentNamespace">The file store namespace, i.e. Application (default) or System.</param>
+      <returns>Content structure.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkContentReading.GetContentByName(System.String,System.Nullable{System.Guid},Siemens.SimaticIT.Unified.Common.UnifiedContentNamespace)">
+      <summary>
+            Retrieves the metadata of the content object from the selected content namespace, by specifying the logical key.
+            </summary>
+      <param name="name">Content Name.</param>
+      <param name="folderId">Folder Id in which to search.</param>
+      <param name="contentNamespace">The file store namespace, i.e. Application (default) or System.</param>
+      <returns>Content structure.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkContentReading.GetContentPayload(System.Guid,Siemens.SimaticIT.Unified.Common.UnifiedContentNamespace)">
+      <summary>
+            Retrieves a content payload stream from the selected content namespace, by specifying the ID of the file.
+            </summary>
+      <param name="id">Content Id.</param>
+      <param name="contentNamespace">The file store namespace, i.e. Application (default) or System.</param>
+      <returns>Stream of bytes.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkContentReading.GetContentList(System.Nullable{System.Guid},Siemens.SimaticIT.Unified.Common.UnifiedContentNamespace)">
+      <summary>
+            Retrieves a list of metadata objects of the content file from the selected content namespace, by specifying the ID of the folder.
+            </summary>
+      <param name="folderId">Folder Id.</param>
+      <param name="contentNamespace">The file store namespace, i.e. Application (default) or System.</param>
+      <returns>List of content structures.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkContentReading.GetFolder(System.Guid,Siemens.SimaticIT.Unified.Common.UnifiedContentNamespace)">
+      <summary>
+            Retrieves a folder from the file store, by specifying the ID of the folder. (Its use is discouraged, as compatibility is not guaranteed for future versions.)
+            </summary>
+      <param name="id">Folder Id.</param>
+      <param name="contentNamespace">The file store namespace, i.e. Application (default) or System.</param>
+      <returns>Folder structure.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkContentReading.GetFolderByName(System.String,System.Nullable{System.Guid},Siemens.SimaticIT.Unified.Common.UnifiedContentNamespace)">
+      <summary>
+            Retrieves a folder from the file store, by specifying the logical key. (Its use is discouraged, as compatibility is not guaranteed for future versions.)
+            </summary>
+      <param name="name">Folder Name.</param>
+      <param name="parentId">Parent Folder Id.</param>
+      <param name="contentNamespace">The file store namespace, i.e. Application (default) or System.</param>
+      <returns>Folder structure.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkContentReading.GetFolderList(System.Nullable{System.Guid},Siemens.SimaticIT.Unified.Common.UnifiedContentNamespace)">
+      <summary>
+            Retrieves lists of metadata objects contained in the parent folder, from the specified content namespace, by specifying the ID of the folder.
+            </summary>
+      <param name="parentId">Parent Folder Id.</param>
+      <param name="contentNamespace">The file store namespace, i.e. Application (default) or System.</param>
+      <returns>List of folder structures.</returns>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkContentWriting">
+      <summary>
+            Provides an interface that gives write access to the content management service.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkContentWriting.PutContent(Siemens.SimaticIT.Unified.Common.Content,System.IO.Stream,Siemens.SimaticIT.Unified.Common.UnifiedContentNamespace)">
+      <summary>
+            Puts a content's metadata and payload into the selected content namespace.
+            </summary>
+      <param name="content">The content metadata structure to be valued.</param>
+      <param name="payload">The stream of bytes to be stored.</param>
+      <param name="contentNamespace">The file store namespace, i.e. Application (default) or System.</param>
+      <returns>Content Id</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkContentWriting.DeleteContent(System.Guid,Siemens.SimaticIT.Unified.Common.UnifiedContentNamespace)">
+      <summary>
+            Deletes the content from the selected content namespace, by specifying the Id of the file.
+            </summary>
+      <param name="id">Content Id.</param>
+      <param name="contentNamespace">The file store namespace, i.e. Application (default) or System.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkContentWriting.AddFolder(Siemens.SimaticIT.Unified.Common.Folder,Siemens.SimaticIT.Unified.Common.UnifiedContentNamespace)">
+      <summary>
+            Adds a new folder to the file store (Its use is discouraged, for future versions, as compatibility is not guaranteed).
+            </summary>
+      <param name="folder">The folder metadata structure to be valued.</param>
+      <param name="contentNamespace">The file store namespace, i.e. Application (default) or System.</param>
+      <returns>Folder Id</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkContentWriting.DeleteFolder(System.Guid,Siemens.SimaticIT.Unified.Common.UnifiedContentNamespace)">
+      <summary>
+            Removes an existing empty folder from the file store, by specifying the Id of the folder. (Its use is discouraged, as compatibility is not guaranteed for future versions.)
+            </summary>
+      <param name="id">Folder Id</param>
+      <param name="contentNamespace">The file store namespace, i.e. Application (default) or System.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkDataModel.GetApplications">
+      <summary>
+            Retrieve the POM applications managed by the current service.
+            </summary>
+      <returns>An enumerator over the list of application names.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkDataModel.GetExportedTypes(System.String)">
+      <summary>
+            Gets the list of types exposed by the current service.
+            </summary>
+      <param name="application">The target application name. In case of null value it will be returned the functional block reading model.</param>
+      <returns>An enumerator over the list of types.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkDataModel.GetEdmModel(System.String)">
+      <summary>
+            Get the EDM model representation of the underlying application reading model.
+            </summary>
+      <param name="application">The target application name. In case of null value it will be returned the functional block reading model.</param>
+      <returns>The EDM representation.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.InnerValidationResult.#ctor(System.String)">
+      <summary></summary>
+      <param name="errorMessage"></param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.InnerValidationResult.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String})">
+      <summary></summary>
+      <param name="errorMessage"></param>
+      <param name="memberNames"></param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.InnerValidationResult.#ctor(System.ComponentModel.DataAnnotations.ValidationResult)">
+      <summary></summary>
+      <param name="validationResult"></param>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.Information.IUnifiedSdkDataReading">
+      <summary>
+            Provides an interface for the data projection model.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.Information.IUnifiedSdkDataReading.ProjectionQuery(System.Type)">
+      <summary>
+            Performs a query on the underlying data source (Reading Model).
+            </summary>
+      <param name="entityType">The type of the entity to be queried.</param>
+      <returns>The query results</returns>
+      <example>
+            The following method demonstrates the ProjectionQuery operation. 
+            <code language="cs" title="C#">
+using Siemens.SimaticIT.Unified;
+using Siemens.SimaticIT.Unified.Common;
+
+using MyLibrary.DataModel.ReadingModel;
+
+static class ProjectionQueryExample
+{
+    static void Example()
+    {
+        // Get an IQueryable instance to query entities of type MyEntity.
+        var myEntityQueryable = SdkInstance.ProjectionQuery(typeof(MyEntity));
+
+        // Materialize query with a LINQ operator.
+        var queriedEntity = ((IQueryable&lt;MyEntity&gt;)myEntityQueryable).Single(x =&gt; x.Name == "MyEntityA");
+    }
+}
+
+</code></example>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.Information.UnifiedSdkDataReadingExtension">
+      <summary>
+            Provides extension methods for <see cref="T:Siemens.SimaticIT.Unified.Common.Information.IUnifiedSdkDataReading" /></summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.Information.UnifiedSdkDataReadingExtension.ProjectionQuery``1(Siemens.SimaticIT.Unified.Common.Information.IUnifiedSdkDataReading)">
+      <summary>
+            Generic overload for the ProjectionQuery method on the reading model.
+            </summary>
+      <typeparam name="T">The type of elements to query.</typeparam>
+      <param name="context">The extension class of the method.</param>
+      <returns>Returns the results of the IQueryable Query.</returns>
+      <example>
+            The following method demonstrates the ProjectionQuery operation. 
+            <code language="cs" title="C#">
+using Siemens.SimaticIT.Unified;
+using Siemens.SimaticIT.Unified.Common;
+using Siemens.SimaticIT.Unified.Common.Information;
+
+using MyLibrary.DataModel.ReadingModel;
+
+static class ProjectionQueryGenericExample
+{
+    static void Example()
+    {
+        // Get an IQueryable instance to query entities of type MyEntity.
+        var myEntityQueryable = SdkInstance.ProjectionQuery&lt;MyEntity&gt;();
+
+        // Materialize query with a LINQ operator.
+        var queriedEntity = myEntityQueryable.Single(x =&gt; x.Name == "MyEntityA");
+
+        // Property reading example.
+        var dummy = queriedEntity.Name;
+    }
+}
+
+</code></example>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.Information.UnifiedSdkDataReadingExtension.Include``1(System.Linq.IQueryable{``0},System.String)">
+      <summary>
+            Generic overload for the Include method that allows the user to specify the entity in terms of the instance with or without the path.
+            </summary>
+      <typeparam name="T">The type of the entity.</typeparam>
+      <param name="source">The IQueryable query results that are to be extended by the Include method.</param>
+      <param name="path">The path or name of the instance to be included in the results.</param>
+      <returns>Returns the results of the IQueryable Query.</returns>
+      <example>
+            The following method demonstrates the Include operation.
+            <code language="cs" title="C#">
+using Siemens.SimaticIT.Unified;
+using Siemens.SimaticIT.Unified.Common;
+
+using MyLibrary.DataModel;
+
+static class IncludeWeakExample
+{
+    static void Example()
+    {
+        // Get an IQueryable instance to query entities of type MyEntity and include the MyChildren property.
+        var myEntityQueryable = SdkInstance.Query&lt;IMyEntity&gt;().Include("MyChildren");
+
+        // Get an IQueryable instance to query entities of type MyEntity, include the MyChildren (belonging to MyEntity entities)
+        // and the MyProperty2 (belonging to MyChild entities) properties.
+        var myEntityQueryable = SdkInstance.Query&lt;IMyEntity&gt;().Include("MyChildren.MyProperty2");
+
+        // Materialize query with a LINQ operator.
+        var queriedEntity = myEntityQueryable.Single(x =&gt; x.Name == "MyEntityA");
+    }
+}
+
+</code></example>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.Information.UnifiedSdkDataReadingExtension.Include``2(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+      <summary>
+            Generic overload for the Include method, that allows the user to specify the entity to expand in terms of a Lambda expression.
+            </summary>
+      <typeparam name="T">The type of the entity.</typeparam>
+      <typeparam name="TProperty">The type of the property of the entity that is to be given a value during the include operation.</typeparam>
+      <param name="source">The IQueryable query results that are to be extended by the Include method.</param>
+      <param name="pathSelector">The Lambda expression with which the entity, which will obtain a value during the Include operation, is expressed.</param>
+      <returns>Returns the results of the IQueryable Query.</returns>
+      <example>
+            The following method demonstrates the Include operation.
+            <code language="cs" title="C#">
+using Siemens.SimaticIT.Unified;
+using Siemens.SimaticIT.Unified.Common;
+
+using MyLibrary.DataModel;
+
+static class IncludeStrongExample
+{
+    static void Example()
+    {
+        // Get an IQueryable instance to query entities of type MyEntity and include the MyChildren property.
+        var myEntityQueryable = SdkInstance.Query&lt;IMyEntity&gt;().Include(x =&gt; x.MyChildren);
+
+        // Get an IQueryable instance to query entities of type MyEntity, include the MyChildren (belonging to MyEntity entities)
+        // and the MyProperty2 (belonging to MyChild entities) properties.
+        var myEntityQueryable = SdkInstance.Query&lt;IMyEntity&gt;().Include(x =&gt; x.MyChildren.MyProperty2);
+
+        // Materialize query with a LINQ operator.
+        var queriedEntity = myEntityQueryable.Single(x =&gt; x.Name == "MyEntityA");
+    }
+}
+
+</code></example>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.Information.UnifiedSdkDataReadingExtension.Include(System.Linq.IQueryable,System.String)">
+      <summary>
+            Includes the specified path in the query results.
+            </summary>
+      <param name="source">The IQueryable query results that are to be extended by the Include method.</param>
+      <param name="path">The path to be included in the results.</param>
+      <returns>Returns the results of the IQueryable Query.</returns>
+      <example>
+            The following method demonstrates the Include operation.
+            <code language="cs" title="C#">
+using Siemens.SimaticIT.Unified;
+using Siemens.SimaticIT.Unified.Common;
+
+using MyLibrary.DataModel;
+
+static class IncludeWeakExample
+{
+    static void Example()
+    {
+        // Get an IQueryable instance to query entities of type MyEntity and include the MyChildren property.
+        var myEntityQueryable = SdkInstance.Query&lt;IMyEntity&gt;().Include("MyChildren");
+
+        // Get an IQueryable instance to query entities of type MyEntity, include the MyChildren (belonging to MyEntity entities)
+        // and the MyProperty2 (belonging to MyChild entities) properties.
+        var myEntityQueryable = SdkInstance.Query&lt;IMyEntity&gt;().Include("MyChildren.MyProperty2");
+
+        // Materialize query with a LINQ operator.
+        var queriedEntity = myEntityQueryable.Single(x =&gt; x.Name == "MyEntityA");
+    }
+}
+
+</code></example>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkEventTriggering">
+      <summary>
+            Provides an interface for handling event triggering.
+            <note type="noteType">
+            The interface hierarchy and subdivision of methods in interfaces may be subject to change in the future. Only refer to entry point interfaces (IUnifiedSdk, IUnifiedSdkLean and IUnifiedSdkEvent).
+            </note></summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkEventTriggering.FireEvent(Siemens.SimaticIT.Unified.Common.IEvent,Siemens.SimaticIT.Unified.Common.EventEnvelope)">
+      <summary>
+            Sends a Unified Event using the Unified Platform.
+            </summary>
+      <param name="evt">The Unified event to be sent using the Unified Platform.</param>
+      <param name="envelope">An optional user envelope embedded in the event in order to make specific subscriptions on its properties.
+            This envelope has a standard definition for the type. The user can choose its specific meaning with the field values for each event definition.</param>
+      <remarks>
+            The Committed Event is a system event. You cannot directly invoke it, an ArgumentException will be raised. 
+            You can only subscribe event handlers. If the Unified event to be sent doesn't pass the validation, a ValidationException will be raised
+            </remarks>
+      <returns> Returns a <see cref="T:System.Threading.Tasks.Task" /> that is <c>true</c> if the event has been processed by the ESB(Enterprise Service Bus) or <c>false</c> if it has been refused.</returns>
+      <example>
+            The following method demonstrates the Fire of a simple event.
+            <code language="cs" title="C#">
+// Full Event Name: Siemens.SimaticIT.Materials.Events.MaterialSplit
+using Siemens.SimaticIT.Materials.Events;
+public static class EnvelopeEventExample
+{
+    public static void Example()
+    {
+        var materialSplit = new MaterialSplit { NumberOfSplitMaterials = 8 };
+
+        // Fire a Split Material notification to all subscribers.
+        SdkInstance.FireEvent(materialSplit);
+    }
+}
+</code>
+            The following method demonstrates the Fire of an event with an envelope.
+            <code language="cs" title="C#">
+// Full Event Name: Siemens.SimaticIT.Materials.Events.MaterialSplit
+using Siemens.SimaticIT.Materials.Events;
+
+public static class EnvelopeEventExample
+{
+    public static void Example()
+    {
+            var Equipment = "Equipment_4";
+
+            // Tag the event with the warehouse name to alert all relevant subscribers
+            // Subscribers can select this Tag to filter out events which don't match
+            // the specified criteria
+            var eventEnvelope = new EventEnvelope {Tag = Equipment}; 
+
+            // Initializing the Event payload structure.
+            var materialSplit = new MaterialSplit { NumberOfSplitMaterials = 8 };
+
+            // Fire a Split Material notification to all subscribers.
+            SdkInstance.FireEvent(materialSplit, eventEnvelope);
+    }
+}
+</code></example>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkExecutionManagement">
+      <summary>
+            Common interface for Command and Composite Commands 
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkExecutionManagement.GetRemainingExecutionTime">
+      <summary>
+            Retrieves the remaining time before the command timeout expires in order to decide whether to proceed with a certain operation (for example, a long-running operation).
+            </summary>
+      <returns>the remaining time or <see cref="F:System.TimeSpan.Zero" /> if the command timeout has expired</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkGatewaysStatus.RetrieveCurrentGatewayStatuses">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.QoSErrorCode">
+      <summary>
+            The Set of QoS layer error code
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.QoSErrorCode.None">
+      <summary>
+            The none
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.QoSErrorCode.Forbidden">
+      <summary>
+            The forbidden
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.QoSErrorCode.Unauthorized">
+      <summary>
+            The unauthorized
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.QoSErrorCode.UmcOperation">
+      <summary>
+            The umc operation
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.QoSErrorCode.UmcAdapterLoad">
+      <summary>
+            The umc adapter load
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UserErrorCode">
+      <summary>
+            The Set of user layer error code
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.UserErrorCode.None">
+      <summary>
+            Default Error code 
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.UserErrorCode.GenericError">
+      <summary>
+            Generic error code
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.RuntimeErrorInfoCode">
+      <summary>
+            The Set of runtime layer error code
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.RuntimeErrorInfoCode.None">
+      <summary>
+            Default Error code 
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.RuntimeErrorInfoCode.InternalSystem">
+      <summary>
+             Error detected by runtime layer
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.RuntimeErrorInfoCode.Runtime">
+      <summary>
+            Error detected in Runtime code processing
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.RuntimeErrorInfoCode.VisibilityValidation">
+      <summary>
+            Error in invoke visibility validation
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.RuntimeErrorInfoCode.CancellationToken">
+      <summary>
+            Error for cancellation of command
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.AdministrationErrorInfoCode">
+      <summary>
+            The Set of administration layer error code
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.AdministrationErrorInfoCode.None">
+      <summary>
+            Default Error code
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.AdministrationErrorInfoCode.InternalSystem">
+      <summary>
+            Error detected by administration layer
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.AdministrationErrorInfoCode.Administration">
+      <summary>
+            Error detected in Administration code processing
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.AutomationErrorInfoCode">
+      <summary>
+            The Set of automation layer error code
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.AutomationErrorInfoCode.None">
+      <summary>
+            Default Error code
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.AutomationErrorInfoCode.GatewayService">
+      <summary>
+             Error detected by CpmGateway layer
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.AutomationErrorInfoCode.InteropMemberValueService">
+      <summary>
+            Error detected in Member Value Service in interoperability layer
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.AutomationErrorInfoCode.InteropNodeService">
+      <summary>
+            Error detected in Node Service in interoperability layer
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.AutomationErrorInfoCode.InteropQuerySubscribeService">
+      <summary>
+            Error detected in Query Subscribe Service in interoperability layer
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.AutomationErrorInfoCode.InteropNameService">
+      <summary>
+            Error detected in Name Service in interoperability layer
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.AutomationErrorInfoCode.InteropTypeService">
+      <summary>
+            Error detected in Type Service in interoperability layer
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.AutomationErrorInfoCode.StartupService">
+      <summary>
+            Error detected in Type Service in interoperability layer
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkInformationRetrieving">
+      <summary>
+            Provides an interface that gives read access to the Committed Events.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkInformationRetrieving.GetCommittedEvent(System.Guid,Siemens.SimaticIT.Unified.Common.EntityDomain)">
+      <summary>
+            This method retrieves a specific event associated with a certain event identifier (SessionId) and the related data domain.
+            For bulk insert operations, this method also returns the event payload (i.e. it also returns the Relations and the Entities serialized objects).
+            </summary>
+      <param name="sessionId">The event identifier. It cannot be defined as Guid.Empty</param>
+      <param name="entityDomain">Entity domain. It can assume one of the values defined in the EntityDomain class</param>
+      <returns>The CommittedEvent related to the Session Id</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkInformationRetrieving.GetCommittedEvents(System.Guid,Siemens.SimaticIT.Unified.Common.EntityDomain)">
+      <summary>
+            This method retrieves the list of events that have been fired after a certain event. 
+            For bulk insert operations, the returned events have empty payloads (i.e. they do not contain the Relations or the Entities objects). 
+            </summary>
+      <param name="lastSessionId">Last known event identifier. It cannot be defined as Guid.Empty</param>
+      <param name="entityDomain">Entity domain. It can assume one of the values defined in the EntityDomain class</param>
+      <returns>The list of CommittedEvents fired after the given SessionId.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkInformationRetrieving.GetCommittedEvents(System.Guid,Siemens.SimaticIT.Unified.Common.EntityDomain,System.Int32)">
+      <summary>
+            This method retrieves a specified length list of events that have been fired after a certain event. 
+            For bulk insert operations, the returned events have empty payloads (i.e. they do not contain the Relations or the Entities objects). 
+            </summary>
+      <param name="lastSessionId">Last known event identifier. It cannot be defined as Guid.Empty</param>
+      <param name="entityDomain">Entity domain. It can assume one of the values defined in the EntityDomain class</param>
+      <param name="pageSize">The maximum number of events you want to be returned.</param>
+      <returns>The list of CommittedEvents fired after the given SessionId.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkInformationRetrieving.GetCommittedEventsInRange(System.Guid,System.Guid,Siemens.SimaticIT.Unified.Common.EntityDomain)">
+      <summary>
+            This method retrieves the list of events that have been fired between two known event identifiers. 
+            For bulk insert operations, the returned events have empty payloads (i.e. they do not contain the Relations or the Entities objects).
+            </summary>
+      <param name="sessionIdFrom">Lower bound of the search range. It cannot be defined as Guid.Empty</param>
+      <param name="sessionIdTo">Upper bound of the search range. It cannot be defined as Guid.Empty</param>
+      <param name="entityDomain">Entity domain. It can assume one of the values defined in the EntityDomain class</param>
+      <returns>The list of CommittedEvents fired between the two known event identifiers.</returns>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.Layer">
+      <summary>
+            Second key part of the ErrorKey composition, which indicates the layer where the error occurred
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.Layer.None">
+      <summary>
+            default
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.Layer.Integration">
+      <summary></summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.Layer.Runtime">
+      <summary></summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.Layer.QoS">
+      <summary></summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.Layer.Information">
+      <summary></summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.Layer.User">
+      <summary></summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.Layer.ServiceLayer">
+      <summary></summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.Layer.Administration">
+      <summary></summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.Layer.Automation">
+      <summary></summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedAdministrationException">
+      <summary>
+            The exception that is thrown when an error occurs in administration logic execution
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedAdministrationException.#ctor(System.String,System.Exception)">
+      <summary>
+            Initializes a new instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.UnifiedAdministrationException" /> class with a specified error message and the exception that is the cause of this exception.
+            </summary>
+      <param name="message">The error message that explains the reason for this exception.</param>
+      <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedAdministrationException.#ctor(System.String,System.Int32,System.Exception)">
+      <summary>
+            Initializes a new instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.UnifiedAdministrationException" /> class with a specified error message and the exception that is the cause of this exception.
+            </summary>
+      <param name="message">The error message that explains the reason for this exception.</param>
+      <param name="errorCode">The internal error code</param>
+      <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedAdministrationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Constructor for serialization.
+            </summary>
+      <param name="info">The data required for serialization.</param>
+      <param name="context">Specifies the source and destination of a serialization stream.</param>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.UnifiedAdministrationException.ErrorCode">
+      <summary>
+            Gets or sets the internal error code
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.UnifiedAdministrationException.ResourceId">
+      <summary>
+            Gets or sets the internal resource code of the error message
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedAdministrationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Constructor for serialization.
+            </summary>
+      <param name="info">The data required for serialization.</param>
+      <param name="context">Specifies the source and destination of a serialization stream.</param>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedCancelCommandException">
+      <summary>
+            Standard Unified User Exception, for throwing errors given by cancellation token signaled (command request aborted).
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedCancelCommandException.#ctor(System.String,System.Exception)">
+      <summary>
+            Constructor with specific error message
+            </summary>
+      <param name="message">The custom message of the exception.</param>
+      <param name="innerException">The exception that caused the current exception, or a null reference if no inner exception is specified.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedCancelCommandException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Constructor for serialization.
+            </summary>
+      <param name="info">The data required for serialization.</param>
+      <param name="context">Specifies the source and destination of a serialization stream.</param>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedUmcAdapterLoadException">
+      <summary>
+            The exception that is thrown when the UMC adapter fails to load.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedUmcAdapterLoadException.#ctor(System.String,System.Exception)">
+      <summary>
+            Initializes a new instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.UnifiedUmcAdapterLoadException" /> class with the specified error message and the exception that is the cause of this exception.
+            </summary>
+      <param name="message">The error message that explains the reason for this exception.</param>
+      <param name="innerException">The exception that caused the current exception, or a null reference if no inner exception is specified.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedUmcAdapterLoadException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Constructor for serialization.
+            </summary>
+      <param name="info">The data required for serialization.</param>
+      <param name="context">Specifies the source and destination of a serialization stream.</param>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedUmcOperationException">
+      <summary>
+            The exception that is thrown when an operation with the UMC backend fails.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedUmcOperationException.#ctor(System.String,System.Exception)">
+      <summary>
+            Initializes a new instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.UnifiedUmcOperationException" /> class with the specified error message and the exception that is the cause of this exception.
+            </summary>
+      <param name="message">The error message that explains the reason for this exception.</param>
+      <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedUmcOperationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Constructor for serialization.
+            </summary>
+      <param name="info">The data required for serialization.</param>
+      <param name="context">Specifies the source and destination of a serialization stream.</param>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedAuthenticationException">
+      <summary>
+            The exception that is thrown when Unified authentication checks deny an execution.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedAuthenticationException.#ctor(System.String,System.Exception)">
+      <summary>
+            Initializes a new instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.UnifiedAuthenticationException" /> class with a specified error message and the exception that is the cause of this exception.
+            </summary>
+      <param name="message">The error message that explains the reason for this exception.</param>
+      <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedAuthenticationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Constructor for serialization.
+            </summary>
+      <param name="info">The data required for serialization.</param>
+      <param name="context">Specifies the source and destination of a serialization stream.</param>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedAuthorizationException">
+      <summary>
+            The exception that is thrown when Unified authorization checks deny an execution.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedAuthorizationException.#ctor(System.String,System.Exception)">
+      <summary>
+            Initializes a new instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.UnifiedAuthorizationException" /> class with the specified error message and the exception that is the cause of this exception.
+            </summary>
+      <param name="message">The error message that explains the reason for the exception.</param>
+      <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedAuthorizationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Constructor for serialization.
+            </summary>
+      <param name="info">The data required for serialization.</param>
+      <param name="context">Specifies the source and destination of a serialization stream.</param>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedVisibilityViolationException">
+      <summary>
+            The exception that is thrown when a call to a command fails because of the command visibility 
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedVisibilityViolationException.#ctor(System.String,System.Exception)">
+      <summary>
+            Constructor with specific error message
+            </summary>
+      <param name="message">The custom message of the exception.</param>
+      <param name="innerException">The exception that caused the current exception, or a null reference if no inner exception is specified.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedVisibilityViolationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Constructor for serialization.
+            </summary>
+      <param name="info">The data required for serialization.</param>
+      <param name="context">Specifies the source and destination of a serialization stream.</param>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.LockType">
+      <summary>
+            Lock types.
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.LockType.RowLock">
+      <summary>
+            Row lock.
+            </summary>
+    </member>
+    <member name="F:Siemens.SimaticIT.Unified.Common.LockType.TableLock">
+      <summary>
+            Table lock.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.PrefixAttribute">
+      <summary>
+            Assembly attribute describing project prefix
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.PrefixAttribute.#ctor(System.String)">
+      <summary>
+            Constructor
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.PrefixAttribute.Prefix">
+      <summary>
+            Prefix value
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.PrefixAttribute.GetSdkPrefix(System.Type)">
+      <summary>
+            Given a Type (e.g. a Command), retrieve the Prefix associated to its Assembly
+            </summary>
+      <param name="t"></param>
+      <returns>The Prefix (or empty string if no attribute can be found)</returns>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.ContentTag">
+      <summary>
+            Describes a File Store tag
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.ContentTag.Id">
+      <summary>
+            Identifier
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.ContentTag.Name">
+      <summary>
+            Name
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.ContentTag.Description">
+      <summary>
+            Description
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.PropertyValuesSpecification">
+      <summary>
+            Allows the values of the properties to be defined.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.PropertyValuesSpecification.#ctor">
+      <summary>
+            Constructor.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.PropertyValuesSpecification.Delta">
+      <summary>
+            Gets the definitions.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.PropertyValuesSpecification.Add(System.String,System.Object)">
+      <summary>
+            Adds a property definition.
+            </summary>
+      <param name="propertyName">The name of the property.</param>
+      <param name="value">The value of the property.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.PropertyValuesSpecification.GetEnumerator">
+      <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+      <returns>An enumerator that can be used to iterate through the collection.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.PropertyValuesSpecification.ToString">
+      <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+      <returns>The string representation.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.PropertyValuesSpecification.Equals(System.Object)">
+      <summary>
+            Determines whether the specified object is equal to the current PropertyValuesSpecification.
+            </summary>
+      <param name="input">The object to compare with the current PropertyValuesSpecification.</param>
+      <returns>If true, the specified object is equal to the current object; otherwise, false.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.PropertyValuesSpecification.Equals(Siemens.SimaticIT.Unified.Common.PropertyValuesSpecification)">
+      <summary>
+            Determines whether the specified PropertyValuesSpecification is equal to the current PropertyValuesSpecification.
+            </summary>
+      <param name="input">The PropertyValuesSpecification to compare with the current PropertyValuesSpecification.</param>
+      <returns>If true, the specified object is equal to the current object; otherwise, false.</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.PropertyValuesSpecification.GetHashCode">
+      <summary>
+            Returns the hash code for this instance.
+            </summary>
+      <returns>A hash code for the current instance.</returns>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.PropertyValuesSpecification`1">
+      <summary>
+            Allows the values of the properties to be defined.
+            </summary>
+      <typeparam name="TEntity">The interface entity type for which the properties are specified</typeparam>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.PropertyValuesSpecification`1.Add(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Object)">
+      <summary>
+            Adds a property definition.
+            </summary>
+      <param name="propertyIdentifier">The name of the property.</param>
+      <param name="value">The value of the property.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.PropertyValuesSpecification`1.ToString">
+      <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+      <returns>The string representation.</returns>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.TargetDomainNameAttribute">
+      <summary>
+            Assembly attribute describing domain name  MasterData, ReferenceData or OperationalData.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.TargetDomainNameAttribute.#ctor(System.String)">
+      <summary>
+            Constructor
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.TargetDomainNameAttribute.DomainName">
+      <summary>
+            Name of the target domain
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.TargetDomainNameAttribute.GetSdkDomain(System.Type)">
+      <summary>
+            Given a Type (e.g. a Command), retrieve the Domain Name associated to its Assembly
+            </summary>
+      <param name="type"></param>
+      <returns>Returns the Domain Name (or empty string if no attribute can be found)</returns>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.CompositeValidationResult.#ctor(System.String)">
+      <summary></summary>
+      <param name="errorMessage"></param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.CompositeValidationResult.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String})">
+      <summary></summary>
+      <param name="errorMessage"></param>
+      <param name="memberNames"></param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.CompositeValidationResult.#ctor(System.ComponentModel.DataAnnotations.ValidationResult)">
+      <summary></summary>
+      <param name="validationResult"></param>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.EventEnvelope">
+      <summary>
+            Provides the possibility to associate properties to events so that they can be filtered by worker handlers through subscription filters.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EventEnvelope.Category">
+      <summary>
+            Gets and sets the logical category related to events of the same type.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EventEnvelope.Topic">
+      <summary>
+            Gets and sets the logical topic for this event in a specific category.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EventEnvelope.Module">
+      <summary>
+            Gets and sets the user-defined value for the logical module that fired the event.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EventEnvelope.Tag">
+      <summary>
+            Gets and sets the logical tag to mark the event.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EventEnvelope.UserField1">
+      <summary>
+            Gets and sets the user-defined classification field.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EventEnvelope.UserField2">
+      <summary>
+            Gets and sets the user-defined classification field.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EventEnvelope.UserField3">
+      <summary>
+            Gets and sets the user-defined classification field.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EventEnvelope.UserField4">
+      <summary>
+            Gets and sets the user-defined classification field.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EventEnvelope.UserField5">
+      <summary>
+            Gets and sets the user-defined classification field.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EventEnvelope.UserField6">
+      <summary>
+            Gets and sets the user-defined classification field.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EventEnvelope.UserField7">
+      <summary>
+            Gets and sets the user-defined classification field.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EventEnvelope.UserField8">
+      <summary>
+            Gets and sets the user-defined classification field.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EventEnvelope.UserField9">
+      <summary>
+            Gets and sets the user-defined classification field.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.EventEnvelope.UserField10">
+      <summary>
+            Gets and sets the user-defined classification field.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.ExecutionError">
+      <summary>
+            Exposes the details of the error that caused an issue in the business logic.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.ExecutionError.#ctor(System.Int32,System.String)">
+      <summary>
+            Initializes a new instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.ExecutionError" /> class with custom parameters.
+            </summary>
+      <param name="errorCode">The custom error code related to the business error.</param>
+      <param name="errorMessage">The custom error message related to the business error.</param>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.ExecutionError.ErrorCode">
+      <summary>
+            Gets and sets the custom error code.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.ExecutionError.ErrorMessage">
+      <summary>
+            Gets and sets the custom error message.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.ICommand">
+      <summary>
+            Provides a public interface to expose a command.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.ICommand.CommandFullName">
+      <summary>
+            Gets the full name of the command.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IEvent">
+      <summary>
+            Provides a public interface to expose an event.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.IEvent.EventFullName">
+      <summary>
+            Gets the full name of the event.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IEventHandler">
+      <summary>
+            Provides a public interface for event handlers.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IEventHandler.Execute(Siemens.SimaticIT.Unified.Common.IUnifiedSdkEvent,Siemens.SimaticIT.Unified.Common.IEvent,Siemens.SimaticIT.Unified.Common.EventEnvelope)">
+      <summary>
+            The execution entry point for event handlers.
+            </summary>
+      <param name="unifiedSdk">The instance of the Unified Sdk used in the event handler.</param>
+      <param name="evt">Event that triggered the EventHandler</param>
+      <param name="envelope">The filtering criteria associated to the event subscription.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IEventHandler.GetEventType">
+      <summary>
+            Gets the class type of the event this handler is bound to.
+            </summary>
+      <returns>Returns the type of the event related to the event handler.</returns>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkCommandInvocation">
+      <summary>
+            Provides an interface for command invocation.
+            <note type="noteType">
+            The interface hierarchy and subdivision of methods in interfaces may be subject to change in the future. Only refer to entry point interfaces (IUnifiedSdk, IUnifiedSdkLean and IUnifiedSdkEvent).
+            </note></summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkCommandInvocation.SendCommand``2(``0,Siemens.SimaticIT.Unified.Common.SendOptions)">
+      <summary>
+            Invokes a Unified command asynchronously using the Unified Platform so that multiple commands can be called concurrently.
+            </summary>
+      <param name="command">The command to be invoked.</param>
+      <param name="options">The send parameters (reserved for future use only).</param>
+      <typeparam name="TCommand">Specifies the command as an <see cref="T:Siemens.SimaticIT.Unified.Common.ICommand" />.</typeparam>
+      <typeparam name="TResponse">The specific <see cref="T:Siemens.SimaticIT.Unified.Common.Response" /> for the command that will be sent.</typeparam>
+      <returns>Returns the response of the command, in the form of a <see cref="T:System.Threading.Tasks.Task" /> that represents the ongoing execution, which will be completed once the response is received.</returns>
+      <remarks>
+            When the user calls the method SendCommand from the Command handler or the Event handler code, the Worker creates an additional thread that hosts the specified sub-command in the current process. 
+            <note type="noteType"> 
+            To avoid using the additional thread when calling a command in a handler, use the synchronous method <see cref="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkCommandInvocation.CallCommand``2(``0,Siemens.SimaticIT.Unified.Common.SendOptions)" /> instead.
+            </note>
+            This method returns a <see cref="T:System.Threading.Tasks.Task" /> object as soon as possible; when the command execution is completed the <see cref="T:System.Threading.Tasks.Task" /> object will carry the result.
+            <note type="noteType"> 
+            Using this method inside a Command Handler or an Event Handler to invoke a command, the user must wait for all outstanding commands to be completed before exiting the caller handler.
+            If the user code exits the calling handler before the invoked commands are completed, the invoking command that triggered the handler will complete without waiting for any further execution; the result depends on the value returned by the user exiting the handler. 
+            Keep in mind that if you use the public SDK instance (Platform) in user-defined completion logic, after the command is completed and without waiting for the command result, the system could behave in an undefined way which could trigger an exception that causes the execution host to fail.
+            </note>
+            When the command cannot be invoked, because it could cause an access violation (due to its Functional Block or Domain or if a composite command is invoked from a standard command) or a visibility violation (due to the private/protected value assigned to the command), an exception of type <see cref="T:Siemens.SimaticIT.Unified.Common.UnifiedVisibilityViolationException" /> is thrown.
+            </remarks>
+      <example>
+            The following class handler shows the SendCommand call for invoking a sub-command.
+            <code language="cs" title="C#">
+// Full Command Name: Siemens.SimaticIT.Example.CreatePPR
+using Siemens.SimaticIT.Example;
+
+namespace Siemens.SimaticIT.ProductProductionRuleHandler
+{
+    [Handler(HandlerCategory.BasicMethod)]
+    public partial class SendCommandExample
+    {
+        /// &lt;summary&gt;
+        /// This is the handler the MES engineer should write
+        /// This is the ENTRY POINT for the user in VS IDE
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        [HandlerEntryPoint]
+        private CreatePPR.Response CreatePPRHandler(CreatePPR command)
+        {
+            Platform.Tracer.Write(
+                "Siemens-SimaticIT-CallCommand-Example", 
+                Category.Informational, 
+                "ppr create: {0} - {1}", 
+                command.Name, 
+                command.Version);
+
+            Task&lt;CreatePS.Response&gt; tPS = Platform.SendCommand&lt;CreatePS, CreatePS.Response&gt;(
+                new CreatePS { Name = "Product Segment 1" });
+            if (!tPS.Result.Succeeded)
+            {
+                // return error using SetError method
+                CreatePPR.Response resp = new CreatePPR.Response();
+                resp.SetError(tPS.Result.Error.ErrorCode, "PS 1 Not created");
+                return resp;
+            }
+
+            CreatePPR.Response output = new CreatePPR.Response
+                                            {
+                                                PPRName = "  " + command.Name + " (" 
+                                                + command.Version + "), with ps: { " 
+                                                + result1.PSName + " }"
+                                            };
+
+            return output;
+        }
+    }
+}
+</code></example>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.IUnifiedSdkCommandInvocation.CallCommand``2(``0,Siemens.SimaticIT.Unified.Common.SendOptions)">
+      <summary>
+            Invokes a Unified command synchronously using the Unified Platform.
+            </summary>
+      <param name="command">The command to be invoked.</param>
+      <param name="options">The send parameters (reserved for future use only).</param>
+      <typeparam name="TCommand">Specifies the command as an <see cref="T:Siemens.SimaticIT.Unified.Common.ICommand" />.</typeparam>
+      <typeparam name="TResponse">The specific <see cref="T:Siemens.SimaticIT.Unified.Common.Response" /> for the command that was sent. </typeparam>
+      <returns> Returns the response of the command that is completed.</returns>
+      <remarks>
+            When the command cannot be invoked, because it could cause an access violation (due to its Functional Block or Domain or if a composite command is invoked from a standard command) or a visibility violation (due to the private/protected value assigned to the command), an exception of type <see cref="T:Siemens.SimaticIT.Unified.Common.UnifiedVisibilityViolationException" /> is thrown.
+            </remarks>
+      <example>
+            The following class handler shows the CallCommand call for invoking a sub-command.
+            <code language="cs" title="C#">
+// Full Command Name: Siemens.SimaticIT.Example.CreatePPR
+using Siemens.SimaticIT.Example;
+
+namespace Siemens.SimaticIT.ProductProductionRuleHandler
+{
+    [Handler(HandlerCategory.BasicMethod)]
+    public partial class CallCommandExample
+    {
+        /// &lt;summary&gt;
+        /// This is the handler the MES engineer should write
+        /// This is the ENTRY POINT for the user in VS IDE
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        [HandlerEntryPoint]
+        private CreatePPR.Response CreatePPRHandler(CreatePPR command)
+        {            
+            Platform.Tracer.Write(
+                "Siemens-SimaticIT-CallCommand-Example", 
+                Category.Informational, 
+                "ppr create: {0} - {1}", 
+                command.Name, 
+                command.Version);
+
+            CreatePS.Response tPS = Platform.CallCommand&lt;CreatePS, CreatePS.Response&gt;(
+                new CreatePS { Name = "Product Segment 1" });
+            if (!tPS.Succeeded)
+            {
+                // return error using SetError method
+                CreatePPR.Response resp = new CreatePPR.Response();
+                resp.SetError(tPS.Error.ErrorCode, "PS 1 Not created");
+                return resp;
+            }
+
+            CreatePPR.Response output = new CreatePPR.Response { PPRName = "  " + 
+                command.Name + " (" + command.Version + "), with ps: { " + tPS.PSName + " }" };
+
+            return output;
+        }
+    }
+}
+</code></example>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkEvent">
+      <summary>
+            Provides a public SDK for Unified Event Handlers.
+            <note type="noteType">
+            The interface hierarchy and subdivision of methods in interfaces may be subject to change in the future. Only refer to entry point interfaces (IUnifiedSdk, IUnifiedSdkLean and IUnifiedSdkEvent).
+            </note></summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkDiagnostics">
+      <summary>
+            Provides an interface between Unified Sdk and tracing services.
+            <note type="noteType">
+            The interface hierarchy and subdivision of methods in interfaces may be subject to change in the future. Only refer to entry point interfaces (IUnifiedSdk, IUnifiedSdkLean and IUnifiedSdkEvent).
+            </note></summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.IUnifiedSdkDiagnostics.Tracer">
+      <summary>
+            Exposes Tracing functionality.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.IUnifiedSdkQoS">
+      <summary>
+            Provides an interface between UnifiedSdk and QoS services.
+            <note type="noteType">
+            The interface hierarchy and subdivision of methods in interfaces may be subject to change in the future. Only refer to entry point interfaces (IUnifiedSdk, IUnifiedSdkLean and IUnifiedSdkEvent).
+            </note></summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.IUnifiedSdkQoS.Principal">
+      <summary>
+            Represents the Identity of the currently authenticated user.
+            The Identity of the user is made up of the user name, list of roles, functional rights, and groups assigned to the user.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedUserException">
+      <summary>
+            Provides generic exception error handling for errors produced by user code.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedUserException.#ctor(System.String,System.Exception)">
+      <summary>
+             Initializes a new instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.UnifiedUserException" /> class with the specified error message and the exception that is the cause of this exception.
+            </summary>
+      <param name="message">The custom message of the exception.</param>
+      <param name="innerException">The exception that caused the current exception, or a null reference if no inner exception is specified.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedUserException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Constructor for serialization.
+            </summary>
+      <param name="info">The data required for serialization.</param>
+      <param name="context">Specifies the source and destination of a serialization stream.</param>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.Response">
+      <summary>
+            Provides a base response class for command responses.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.Response.#ctor">
+      <summary>
+            Initializes an instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.Response" /> class with default values.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.Response.#ctor(Siemens.SimaticIT.Unified.Common.ExecutionError)">
+      <summary>
+            Initializes an instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.Response" /> class specifying the <see cref="T:Siemens.SimaticIT.Unified.Common.ExecutionError" />.
+            </summary>
+      <param name="error"></param>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.Response.Error">
+      <summary>
+            Gets and sets the execution error.
+            </summary>
+      <remarks>Null is not an acceptable value, and will be discarded.</remarks>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.Response.Succeeded">
+      <summary>
+            Gets if the required command is completed with success.
+            </summary>
+      <value>
+        <c>true</c> if succeeded, otherwise <c>false</c>.
+            </value>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.Response.SetError(System.Int32,System.String)">
+      <summary>
+            Sets the custom error code and its associated message.
+            </summary>
+      <param name="errorCode">The error code to be passed in the response.</param>
+      <param name="errorMessage">The custom message to be passed in the response.</param>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.Response`1">
+      <summary>
+            Provides a base response class for strongly typed command responses.
+            </summary>
+      <typeparam name="T">The command that will be associated to this response.</typeparam>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.Response`1.#ctor">
+      <summary>
+            Initializes an instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.Response" /> class with default values.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.Response`1.#ctor(Siemens.SimaticIT.Unified.Common.ExecutionError)">
+      <summary>
+            Initializes an instance of the <see cref="T:Siemens.SimaticIT.Unified.Common.Response" /> class with a custom error.
+            </summary>
+      <param name="error">The custom error to be passed in the response.</param>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.SendOptions">
+      <summary>
+            Reserved for future use.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.SendOptions.RequestNewTransaction">
+      <summary>
+            Gets and sets if this is a new transaction or not.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedException">
+      <summary>
+            Provides generic exception error handling.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedException.#ctor">
+      <summary>
+            Provides basic exception handling and the base for all platform exceptions.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedException.#ctor(System.String)">
+      <summary>
+            Provides exception handling with a custom message.
+            </summary>
+      <param name="message">The custom message of the exception.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedException.#ctor(System.String,System.Exception)">
+      <summary>
+            Provides generic exception handling with a custom message and the inner system exception.
+            </summary>
+      <param name="message">The custom message of the exception.</param>
+      <param name="innerException">The exception that caused the current exception, or a null reference if no inner exception is specified.</param>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Constructor for serialization.
+            </summary>
+      <param name="info">The data required for serialization.</param>
+      <param name="context">Specifies the source and destination of a serialization stream.</param>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.UnifiedException.PlatformCode">
+      <summary>
+            Specifies the error code which identifies the type of error. 
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.UnifiedException.CommandCallStack">
+      <summary>
+            Specifies the chain of commands starting from the root command that caused the exception.
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.UnifiedException.Recoverable">
+      <summary>
+            Defines if the command can be restarted or not depending on the cause of the error.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Constructor for serialization.
+            </summary>
+      <param name="info">The data required for serialization.</param>
+      <param name="context">Specifies the source and destination of a serialization stream.</param>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.TargetDomainShortNameAttribute">
+      <summary>
+            Assembly attribute describing domain short name, MS(MasterData), RF (ReferenceData) or OP(OperationalData).
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.TargetDomainShortNameAttribute.#ctor(System.String)">
+      <summary>
+            Constructor
+            </summary>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.TargetDomainShortNameAttribute.DomainShortName">
+      <summary>
+            Short Name of the target domain
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.TargetDomainShortNameAttribute.GetSdkDomainShortName(System.Type)">
+      <summary>
+            Given a Type (e.g. a Command), retrieve the Domain Short Name associated to its Assembly
+            </summary>
+      <param name="t">To be defined</param>
+      <returns>The Domain Short Name (or empty string if no attribute can be found)</returns>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedAccessibilityAttribute">
+      <summary></summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedAccessibilityAttribute.#ctor(System.Boolean)">
+      <summary></summary>
+      <param name="visibility"></param>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.UnifiedAccessibilityAttribute.Visibility">
+      <summary></summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedAccessibilityAttribute.GetVisibility(System.Type)">
+      <summary>
+            Get visibility value from UnifiedBrowsable class attribute
+            </summary>
+      <param name="type"></param>
+      <returns></returns>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedBigContentAttribute">
+      <summary>
+            Indicates that a command can contain a large amount of data.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedCompositeCommandAttribute">
+      <summary></summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedCompositeCommandAttribute.#ctor">
+      <summary></summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedCompositeCommandAttribute.IsComposite(System.Type)">
+      <summary>
+            Gets UnifiedCompositeCommand class attribute
+            </summary>
+      <param name="type"></param>
+      <returns></returns>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedEventAttribute">
+      <summary>
+            Defines the event to which the event handler is associated.
+            </summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedEventAttribute.#ctor(System.String)">
+      <summary>
+            The constructor of the class <see cref="T:Siemens.SimaticIT.Unified.Common.UnifiedEventAttribute" />.
+            </summary>
+      <param name="eventFullName">The full name of the event UnifiedEventAttribute.</param>
+    </member>
+    <member name="P:Siemens.SimaticIT.Unified.Common.UnifiedEventAttribute.EventFullName">
+      <summary>
+            The full name of the event.
+            </summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedOptionalPropertyAttribute">
+      <summary></summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedOptionalPropertyAttribute.#ctor">
+      <summary></summary>
+    </member>
+    <member name="T:Siemens.SimaticIT.Unified.Common.UnifiedValidateObjectAttribute">
+      <summary></summary>
+    </member>
+    <member name="M:Siemens.SimaticIT.Unified.Common.UnifiedValidateObjectAttribute.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)">
+      <summary></summary>
+      <param name="value"></param>
+      <param name="valContext"></param>
+      <returns></returns>
+    </member>
+  </members>
+</doc>

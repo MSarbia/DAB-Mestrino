@@ -18,7 +18,7 @@ using Siemens.SimaticIT.DataModel;
 
 namespace UAFServerConnectorLibrary
 {
-    class UAFConnector : IUAFConnector
+    public class UAFConnector : IUAFConnector
     {
         private readonly IUnifiedSdkLean _leanPlatform;
 

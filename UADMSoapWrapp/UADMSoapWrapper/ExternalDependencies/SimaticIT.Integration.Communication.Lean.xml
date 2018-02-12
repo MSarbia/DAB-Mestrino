@@ -1,0 +1,1265 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimaticIT.Integration.Communication.Lean</name>
+    </assembly>
+    <members>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IBackendConnectionActions">
+            <summary>
+            Interface explicitly made for entrusting the contract of signal the connection state of the backend
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IBackendConnectionActions.OnBackendConnected">
+            <summary>
+            Callback called when the backend signals it is connected again
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IBackendConnectionActions.OnBackendDisconnected">
+            <summary>
+            Callback called when the backend signals no connection is available
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel">
+            <summary>
+            Description of IChannel.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.MessageSent">
+            <summary>
+            Signals if an event has been delivered.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.MessageNotSent">
+            <summary>
+            Signals if an event has not been delivered. 
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.MessageExpired">
+            <summary>
+            Notifies an higher layer in case a message has expired and rejected.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.Name">
+            <summary>
+            Gets the channel name.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.InitializeConfiguration(Siemens.SimaticIT.Platform.Common.Communication.IResolver,Siemens.SimaticIT.Platform.Common.Governance.IGovernanceGateway,Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory,System.Boolean,System.String)">
+            <summary>
+            Initializes the channel.
+            </summary>
+            <param name="resolver"></param>
+            <param name="governance">An instance of the current governance.</param>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+            <param name="name">An optional custom name for the channel.</param>
+            <param name="debugMode">Specifies if the host has been created in the debug mode</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.InitializeListener(Siemens.SimaticIT.Platform.Common.Communication.IResolver,Siemens.SimaticIT.Platform.Common.Governance.IGovernanceGateway,Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory,System.Boolean,System.String,System.Nullable{System.UInt16})">
+            <summary>
+            Initializes the channel.
+            </summary>
+            <param name="resolver"></param>
+            <param name="governance">An instance of the current governance.</param>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+            <param name="name">An optional custom name for the channel.</param>
+            <param name="debugMode">Specifies if the host has been created in the debug mode</param>
+            <param name="parallelListening"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.InitializeSender(Siemens.SimaticIT.Platform.Common.Communication.IResolver,Siemens.SimaticIT.Platform.Common.Governance.IGovernanceGateway,Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory,System.Boolean,System.String)">
+            <summary>
+            Initializes the channel.
+            </summary>
+            <param name="resolver"></param>
+            <param name="governance">An instance of the current governance.</param>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+            <param name="name">An optional custom name for the channel.</param>
+            <param name="debugMode">Specifies if the host has been created in the debug mode</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.Setup(Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint)">
+            <summary>
+            Set the backend ready to be used.
+            </summary>
+            <param name="endpoint"></param>
+            <param name="endpointDelayed"></param>
+            <param name="endpointFailed"></param>
+            <param name="endpointReady"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.StartListening(Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Platform.Common.Communication.ISubscription)">
+            <summary>
+            The main listening operation.
+            </summary>
+            <param name="endpoint">The endpoint to be subscribed.</param>
+            <param name="subscription">The subscription identifier.</param>
+            <returns>The operation result.</returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.AppendCallback(System.Action{Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal},Siemens.SimaticIT.Integration.Communication.Lean.Messages.PayloadTypes)">
+            <summary>
+            
+            </summary>
+            <param name="onMessageReceivedCallback"></param>
+            <param name="payload"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.SendMessage``1(Siemens.SimaticIT.Integration.Communication.Lean.Messages.MessageInternal{``0},Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Integration.Communication.Lean.Channels.SendOperationContext)">
+            <summary>The main sending operation. Sends a MessageInternal using a sender without wait for the response. This method can be used when the channel is in listening mode.
+            </summary>
+            <typeparam name="T">The type of the payload.</typeparam>
+            <param name="messageInternal">The data to be passed.</param>
+            <param name="endpoint">The endpoint to which the message will be sent.</param>
+            <param name="context">The send context.</param>
+            <returns>The operation result.</returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.SuspendListening">
+            <summary>
+            Suspend the current listening operation.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.CompleteMessage(System.UInt64,System.Action,System.String)">
+            <summary>
+            Declares a message has been completed.
+            </summary>
+            <param name="completionToken">The message completionToken to complete.</param>
+            <param name="postCustomAction">Custom action to be execute atomically with the complete.</param>
+            <param name="messageToBeCompleted">The message ID to be completed</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.RejectMessage(System.UInt64,System.Action)">
+            <summary>
+            Declare a message has not been completed and must be rejected.
+            </summary>
+            <param name="completionToken">The message completionToken to complete.</param>
+            <param name="postCustomAction">Custom action to be execute atomically with the complete.</param>    
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel.CleanupConfiguration(System.Collections.Generic.IEnumerable{Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint})">
+            <summary>
+            Clean the current configuration on the backend starting from the worker roles
+            </summary>
+            <param name="endpoints"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IConfiguratorAdapter">
+            <summary>
+            The adapter for create an endpoint on the ESB.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IConfiguratorAdapter.Setup(Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint)">
+            <summary>
+            Set the backend ready to be used.
+            </summary>
+            <param name="endpoint">The endpoint to be mapped on the ESB.</param>
+            <param name="endpointFailed"></param>
+            <param name="endpointDelayed"></param>
+            <param name="endpointReady"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IConfiguratorAdapter.Init(Siemens.SimaticIT.Platform.Common.Communication.IResolver,Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory,System.String)">
+            <summary>
+            Initializes the corrent instance. 
+            </summary>
+            <param name="name">The name of the configurator (logging purpose)</param>
+            <param name="resolver">An instance of in</param>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IConfiguratorAdapter.CleanupConfiguration(System.Collections.Generic.IEnumerable{Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint})">
+            <summary>
+            Clean the current configuration on the backend starting from the worker roles
+            </summary>
+            <param name="endpoints"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IListenerAdapter">
+            <summary>
+            The adapter interface regarding receiving messages.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IListenerAdapter.MessageExpired">
+            <summary>
+            Notifies an higher layer in case a message has expired and rejected.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IListenerAdapter.Init(Siemens.SimaticIT.Platform.Common.Communication.IResolver,Siemens.SimaticIT.Platform.Common.Governance.IGovernanceGateway,Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory,System.Boolean,Siemens.SimaticIT.Integration.Communication.Lean.Channels.IPayloadTypeToTypeMapper,System.String,System.Nullable{System.UInt16})">
+            <summary>
+            Initializes the adapter.
+            </summary>
+            <param name="resolver"></param>
+            <param name="governance">An instance of the current governance.</param>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+            <param name="debugMode">Specifies if the current host is in debug mode. In this case, the timeout policies will be disable.</param>
+            <param name="payloadMapper"></param>
+            <param name="name">The name of the listener (logging purpose).</param>
+            <param name="parallelListening"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IListenerAdapter.ListenTo(System.Action{Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal},Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Platform.Common.Communication.ISubscription)">
+            <summary>
+            Receives a message and invokes a callback.
+            </summary>
+            <param name="callback">The callback to be invoked.</param>
+            <param name="endpoint">The endpoint for which</param>
+            <param name="subscription">The subscription where the data will be retrieved.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IListenerAdapter.Suspend">
+            <summary>
+            Suspend the listening operation.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IListenerAdapter.CompleteMessage(System.UInt64,System.Action,System.String)">
+            <summary>
+            Declares a message has been completed.
+            </summary>
+            <param name="completionToken">The message completitionToken to complete.</param>
+            <param name="postCustomAction">Custom action to be execute atomically with the complete.</param>
+            <param name="messageToBeCompleted">message ID to be completed</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IListenerAdapter.RejectMessage(System.UInt64,System.Action)">
+            <summary>
+            Declare a message has not been completed and must be rejected.
+            </summary>
+            <param name="completionToken">The message completitionToken to complete.</param>
+            <param name="postCustomAction">Custom action to be execute atomically with the complete.</param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Channels.SendOperationContext">
+            <summary>
+            A context for operation related executed to an adapter
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.SendOperationContext.CorrelationId">
+            <summary>
+            The correlation identifier
+            </summary>
+            <remarks>
+            In the request it can be the rootrequestId
+            </remarks>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.SendOperationContext.ContextualizedTracer">
+            <summary>
+            Optional contextualized tracer
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.SendOperationContext.SendState">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IRetryManagerAdapter">
+            <summary>
+            The interface for defining the retry manager worker side.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IRetryManagerAdapter.Init(Siemens.SimaticIT.Platform.Common.Communication.IResolver,Siemens.SimaticIT.Platform.Common.Governance.IGovernanceGateway,Siemens.SimaticIT.Integration.Communication.Lean.Channels.IPayloadTypeToTypeMapper,Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory,System.String)">
+            <summary>
+            Initializes a class instance.
+            </summary>
+            <param name="resolve"></param>
+            <param name="governance">The governance that will be used in the class instance.</param>
+            <param name="payloadMapper"></param>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+            <param name="name">The optional name for the instance.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IRetryManagerAdapter.Begin``1(Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,System.Func{Siemens.SimaticIT.Integration.Communication.Lean.Messages.MessageInternal{``0},Siemens.SimaticIT.Integration.Communication.Lean.Channels.RetryManagerAnalysisOutput{``0}},System.Func{Siemens.SimaticIT.Integration.Communication.Lean.Messages.MessageInternal{``0},Siemens.SimaticIT.Integration.Communication.Lean.Channels.RetryManagerAnalysisOutput{``0}})">
+            <summary>
+            Begin retry policies.
+            </summary>
+            <param name="endpoint">The endpoint of the correct messages.</param>
+            <param name="endpointFailed">The endpoint of the failed messages.</param>
+            <param name="endpointDelayed">The endpoint of the delayed messages.</param>
+            <param name="endpointReady">The endpoint of the ready messages.</param>
+            <param name="onFailedArrived">The callback to be called in case a failed message arrives. Used to elaborate the message.</param>
+            <param name="onReadyArrived">The callback to be called in case a ready message arrives. Used to elaborate the message</param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IRetryPolicy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IRetryPolicy.RetryCount">
+            <summary>
+            Gets and sets the tentative number before exiting the retry policy. 
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IRetryPolicy.RetryInterval">
+            <summary>
+            Interval before retry. 
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Channels.ISenderAdapter">
+            <summary>
+            Generic adapter for sending serialized message with typed payload.
+            </summary>
+        </member>
+        <member name="E:Siemens.SimaticIT.Integration.Communication.Lean.Channels.ISenderAdapter.MessageSent">
+            <summary>
+            Signals if an event has been delivered.
+            </summary>
+        </member>
+        <member name="E:Siemens.SimaticIT.Integration.Communication.Lean.Channels.ISenderAdapter.MessageNotSent">
+            <summary>
+            Signals if an event has not been delivered. 
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.ISenderAdapter.Init(Siemens.SimaticIT.Platform.Common.Communication.IResolver,Siemens.SimaticIT.Platform.Common.Governance.IGovernanceGateway,Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory,System.String,Siemens.SimaticIT.Platform.Common.Communication.ISerDeserializer)">
+            <summary>
+            Initializes the adapter.
+            </summary>
+            <param name="name">An identifier of the caller, useful for debugging.</param>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+            <param name="serializer">The serializer that will used in the sender operation.</param>
+            <param name="resolver"></param>
+            <param name="governance">An instance of the current governance.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Channels.ISenderAdapter.Send``1(Siemens.SimaticIT.Integration.Communication.Lean.Messages.MessageInternal{``0},Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Integration.Communication.Lean.Channels.SendOperationContext)">
+            <summary>
+            Put a serialized message with a typed payload over an end point defined by the implementation. 
+            </summary>
+            <typeparam name="T">The <see cref="T:System.Type"/> of the message to be sent.</typeparam>
+            <param name="message">The message to be send in the ESB.</param>
+            <param name="endpoint">The ESB endpoint in which the message will be sent.</param>
+            <param name="context">The context of the send operation.</param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Channels.MessageExpiredEventArgs">
+            <summary>
+            Notification Worker Side used by subscriber in case of message expiration.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.MessageExpiredEventArgs.Message">
+            <summary>
+            The message identifier.
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Channels.MessageNotSentEventArgs">
+            <summary>
+            The event for signal an event has not been sent.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.MessageNotSentEventArgs.Message">
+            <summary>
+            The message identifier.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.MessageNotSentEventArgs.SendContext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Channels.MessageSentEventArgs">
+            <summary>
+            The event for signal an event has been sent.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.MessageSentEventArgs.Message">
+            <summary>
+            The message identifier.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.MessageSentEventArgs.SendContext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IPayloadTypeToTypeMapper">
+            <summary>
+            Contracts for type mapping
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.IPayloadTypeToTypeMapper.TypesMap">
+            <summary>
+            Returns the mapping between type and payloadtype
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Channels.RetryManagerAnalysisOutput`1">
+            <summary>
+            Poco class containing all the information produced by the retry manager analysis function
+            such info will be used by the retry manager adapter.
+            </summary>
+            <typeparam name="T">The type of the message body</typeparam>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.RetryManagerAnalysisOutput`1.MessageAnalyzed">
+            <summary>
+            The post processed message
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Channels.RetryManagerAnalysisOutput`1.Context">
+            <summary>
+            The collateral context information
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.CustomCommand.NewTaskModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.CustomCommand.NewTaskModel.ScheduleAction(System.Action,System.Nullable{System.Threading.CancellationToken})">
+            <summary>
+            
+            </summary>
+            <param name="a"></param>
+            <param name="token"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.CustomCommand.SingleThreadModel">
+            <summary>
+            Single thread model scheduling.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.CustomCommand.SingleThreadModel.ScheduleAction(System.Action,System.Nullable{System.Threading.CancellationToken})">
+            <summary>
+            Schedule an action. If a is null an ArgumentNullException is thrown.
+            </summary>
+            <param name="a"></param>
+            <param name="token"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.CustomCommand.IProgrammableGovernance">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.CustomCommand.IProgrammableGovernance.SetCustomChannel(System.String)">
+            <summary>
+            Override the governance information with custom one
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean">
+            <summary>
+            The interface for the mediator client side.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.CustomProcessingOnCommandReceived">
+            <summary>
+            Specifies a custom processing function for incoming request. It will substitute the regular request handling.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.FunctionController">
+            <summary>
+            The Function controller 
+            </summary>
+            <remarks>
+            It would be passed after creation because cannot be resolved automatically.
+            </remarks>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.Init(Siemens.SimaticIT.Platform.Common.Communication.IInitializationDomain,Siemens.SimaticIT.Platform.Common.Governance.IGovernanceGateway,Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory,System.String,System.Boolean,System.Nullable{System.UInt16})">
+            <summary>
+            Initializes the controller.
+            </summary>
+            <param name="domain"></param>
+            <param name="governance">The governance configuration.</param>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+            <param name="responseId"></param>
+            <param name="debugMode"></param>
+            <param name="parallelListening"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.PostInit(System.String,System.String,Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestOptions)">
+            <summary>
+            Initialize the request reception side explicitly. To be used for receiving request in a custom way (typically this method should be used only internally).
+            </summary>
+            <param name="requestId"></param>
+            <param name="nodeId"></param>
+            <param name="requestOptions"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.InvokeAsync(Siemens.SimaticIT.Platform.Common.Communication.ICommandRequest)">
+            <summary>
+            Invokes a command. 
+            </summary>
+            <param name="request">The command to be invoked.</param>
+            <returns>The response, in term of a task.</returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.InvokeFunction(Siemens.SimaticIT.Platform.Common.Communication.IFunctionRequest)">
+            <summary>
+            Invokes a function. 
+            </summary>
+            <param name="request">The function to be invoked.</param>
+            <returns>The response, in term of a task.</returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.Invoke(Siemens.SimaticIT.Platform.Common.Communication.ICommandRequest)">
+            <summary>
+            Invokes a command. 
+            </summary>
+            <param name="request">The command to be invoked.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.StopReceivingResponse">
+            <summary>
+            Stop receive response.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.StopProcessing">
+            <summary>
+            Suspend the listening operation from the transport level.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.StartSubscribingResponses">
+            <summary>
+            Starts subscribing a request.
+            </summary>
+            <returns>The operation result.</returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.StartSubscribingRequests(Siemens.SimaticIT.Platform.Common.Communication.IThreadingModel,System.String,System.Action{Siemens.SimaticIT.Platform.Common.Communication.ICommandRequest})">
+            <summary>
+            
+            </summary>
+            <param name="threadingModel"></param>
+            <param name="nodeId"></param>
+            <param name="onCommandReceived"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.UnLockExpiredRequest(Siemens.SimaticIT.Platform.Common.Communication.ICommandRequest)">
+            <summary>
+            Unlock an expired request in order to free memory.
+            </summary>
+            <param name="expiredRequest">the request that has expired.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.OnReceivedResponse(Siemens.SimaticIT.Platform.Common.Communication.ICommandResponse)">
+            <summary>
+            Action to be computed when a command response arrives.
+            </summary>
+            <param name="response">The response that arrives from the transport layer.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.SendRequest(Siemens.SimaticIT.Platform.Common.Communication.ICommandRequest)">
+            <summary>
+            Sends a command  request and wait asynchronously for its response.
+            </summary>
+            <param name="request">The request to be sent.</param>
+            <returns>The response arrived from the transport layer.</returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Mediator.IMediatorLean.CleanupConfiguration(System.Collections.Generic.IEnumerable{System.String},System.Version)">
+            <summary>
+            Clean the current configuration on the backend starting from the worker roles
+            </summary>
+            <param name="workerRoles"></param>
+            <param name="version">Sit UAF version - pass <c>null</c> in case using the latest one</param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal">
+            <summary>
+            Internal class mapped to the Header of the message.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.Version">
+            <summary>
+            Gets the Protocol Version.
+            </summary>
+            <value>
+            The  Version
+            </value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.ProtocolName">
+            <summary>
+            Gets the protocol name.
+            </summary>
+            <value>
+            The protocol name.
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.Origin">
+            <summary>
+            Gets or the first message originator.
+            </summary>
+            <value>
+            The originator.
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.From">
+            <summary>
+            Gets or the application name who generates the message.
+            </summary>
+            <value>
+            The application name.
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.MessageHash">
+            <summary>
+            Gets the MessageInternal Hash.
+            </summary>
+            <value>
+            The MessageInternal Hash.
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.MessageId">
+            <summary>
+            Gets or sets the MessageInternal ID.
+            </summary>
+            <value>
+            The e MessageInternal ID.
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.Priority">
+            <summary>
+            Gets or sets the message priority.
+            </summary>
+            <value>
+            The message priority. The default value is <c>Priorities.Normal</c>
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.ExpirationTime">
+            <summary>
+            Gets or sets the Expiration Time, expressed as a datetime.
+            </summary>
+            <value>
+            The Expiration Time, expressed as a datetime.
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.MessageType">
+            <summary>
+            Gets or sets the message type.
+            </summary>
+            <value>
+            The  message type. The default value is <c>MessageTypes.CommandRequest</c>
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.SerializationType">
+            <summary>
+            Gets or sets the Serialization Type of the payload.
+            </summary>
+            <value>
+            The Serialization Type of the payload.
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.ReplyTo">
+            <summary>
+            Gets or sets the address for the reply.
+            </summary>
+            <value>
+            The  address for the reply.
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.Destination">
+            <summary>
+            Gets or sets the message receiver.
+            </summary>
+            <value>
+            The message receiver.
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.TimeStamp">
+            <summary>
+            Gets or sets the time stamp.
+            </summary>
+            <value>
+            The time stamp.
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.SubscriptionParam">
+            <summary>
+            The subscription parameter to be filtered.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.CompletionToken">
+            <summary>
+            Specifies the token for completing the message.
+            </summary>
+            <value>
+            The token for completing hte message.
+            </value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal.IsPersistent">
+            <summary>
+            Specifies if a message is persited on the backend.
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Messages.Message">
+            <summary>
+            Public version of message.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.Message.MessageId">
+            <summary>
+            Gets the message identifier.
+            </summary>
+            <value>
+            Gets the message identifier.
+            </value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.Message.ReplyTo">
+            <summary>
+            Gets the reply destination address.
+            </summary>
+            <value>
+            The reply destination address.
+            </value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.Message.Destination">
+            <summary>
+            Gets or sets the Message Destination URI.
+            </summary>
+            <value>
+            The Message Destination URI.
+            </value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.Message.TimeStamp">
+            <summary>
+            Gets or sets the TimeStamp.
+            </summary>
+            <value>
+            The TimeStamp.
+            </value> 
+            <remarks>It is in the UTC reference</remarks>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.Message.ExpirationTime">
+            <summary>
+            Gets the message expiration time 
+            </summary>        
+            <value>
+            The expiration time of the given message.
+            </value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.Message.Priority">
+            <summary>
+            Gets the Message Priority.
+            </summary>
+            <value>
+            The Message Priority.
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.Message.Origin">
+            <summary>
+            Gets or the first message originator.
+            </summary>
+            <value>
+            The originator.
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.Message.From">
+            <summary>
+            Gets or the application name who generates the message.
+            </summary>
+            <value>
+            The application name.
+            </value> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.Message.CompletionToken">
+            <summary>
+            Specifies the token for completing the message.
+            </summary>
+            <value>
+            The token for completing hte message.
+            </value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.Message.IsPersistent">
+            <summary>
+            Specifies if the message will be persistent on the bus.
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Messages.MessageFactory">
+            <summary>
+            Factory for the interface IMessage
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Messages.MessageFactory.CreateMessage(System.Uri,System.Uri,Siemens.SimaticIT.Platform.Common.Communication.Priorities,System.String,System.String,System.Nullable{System.DateTimeOffset},System.Boolean)">
+            <summary>
+            Using parameters, generate an implementation of IMessage
+            </summary>
+            <param name="replyTo"></param>
+            <param name="destination"></param>
+            <param name="priority"></param>
+            <param name="originator"></param>
+            <param name="applicationName"></param>
+            <param name="expirationTime"></param>
+            <param name="isPersisten"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Messages.MessageFactory.CreateMessageResponseFromMessage(Siemens.SimaticIT.Platform.Common.IPrivateMessage,System.String,System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Starting from a message, generate the message response.
+            </summary>
+            <param name="message"></param>
+            <param name="applicationName"></param>
+            <param name="expirationTime"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Messages.MessageInternal`1">
+            <summary>
+            Description of IMessage.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.Messages.MessageInternal`1.MessageBody">
+            <summary>
+            Gets or sets the message body, that will be serialized.
+            </summary>
+            <value>
+            The message body, that will be serialized.
+            </value> 
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Messages.MessageMapper">
+            <summary>
+            Mapper between IMessage and MessageInternal
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Messages.MessageMapper.MapToMessage(Siemens.SimaticIT.Integration.Communication.Lean.Messages.HeaderMessageInternal,System.Boolean)">
+            <summary>
+            Map from an internal message to an IMessage
+            </summary>
+            <param name="messageInternal"></param>
+            <param name="preserveTimeStamp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Messages.MessageMapper.MapToInternalMessage``1(Siemens.SimaticIT.Platform.Common.IPrivateMessage,``0)">
+            <summary>
+            Map from a Message to an internal message.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="message"></param>
+            <param name="messageBody"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Messages.PayloadTypes">
+            <summary>
+            Typologies of payload.
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Integration.Communication.Lean.Messages.PayloadTypes.CommandRequest">
+            <summary>
+            Command request payload.
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Integration.Communication.Lean.Messages.PayloadTypes.CommandResponse">
+            <summary>
+            Command response payload.
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Integration.Communication.Lean.Messages.PayloadTypes.Event">
+            <summary>
+            Event type payload.
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Integration.Communication.Lean.Messages.PayloadTypes.Notification">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.Messages.IPayloadManager">
+            <summary>
+            An interfaces between the integration layer and the file store
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Messages.IPayloadManager.PushCommand(Siemens.SimaticIT.Unified.Common.ICommand,Siemens.SimaticIT.SDK.Diagnostics.Tracing.ITracer)">
+            <summary>
+            Inserts a command in the filestore
+            </summary>
+            <param name="command"></param>
+            <param name="tracer">The contextualized tracer.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Messages.IPayloadManager.PushResponse(Siemens.SimaticIT.Unified.Common.Response,Siemens.SimaticIT.SDK.Diagnostics.Tracing.ITracer)">
+            <summary>
+            Inserts a response in the filestore
+            </summary>
+            <param name="response"></param>
+            <param name="tracer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Messages.IPayloadManager.RetrievePayload(System.Guid,Siemens.SimaticIT.SDK.Diagnostics.Tracing.ITracer)">
+            <summary>
+            Retrieves a payload from its ID
+            </summary>
+            <param name="id"></param>
+            <param name="tracer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Messages.IPayloadManager.RemoveItem(System.Guid,Siemens.SimaticIT.SDK.Diagnostics.Tracing.ITracer)">
+            <summary>
+            Remove the specified item in the file store
+            </summary>
+            <param name="id"></param>
+            <param name="tracer">The contextualized tracer</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Messages.IPayloadManager.WillBeTheCommandStored(Siemens.SimaticIT.Unified.Common.ICommand)">
+            <summary>
+            Verifies if the command should be stored
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.Messages.IPayloadManager.WillBeTheResponseStored(Siemens.SimaticIT.Unified.Common.Response)">
+            <summary>
+            Verifies if the response should be stored
+            </summary>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.RetryManagers.IRetryManager">
+            <summary>
+            The retry manger interface for the fat side. NOT TO BE CONFUSED with the lean side. This has been thought to been excute inside the worker and to apply the retry policies worker side (considering the message already posted on the ESB).
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.RetryManagers.IRetryManager.Init(Siemens.SimaticIT.Platform.Common.Communication.IResolver,Siemens.SimaticIT.Platform.Common.Governance.IGovernanceGateway,Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory,Siemens.SimaticIT.Integration.Communication.Lean.Messages.IPayloadManager,System.String)">
+            <summary>
+            Initializes the current instance.
+            </summary>
+            <param name="resolver"></param>
+            <param name="governance"></param>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+            <param name="payloadManager">The common payload manager</param>
+            <param name="name"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.RetryManagers.IRetryManager.Begin(Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint)">
+            <summary>
+            Begins the retry policy operations using the passed endpoint
+            </summary>
+            <param name="endpoint">The standard endpoint.</param>
+            <param name="endpointFailed">The endpoint where the failed messages are posted.</param>
+            <param name="endpointDelayed">The endpoint where the delayed messages are posted.</param>
+            <param name="endpointReady">The endpoint where the messages ready to be re-queued are posted.</param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer">
+            <summary>
+            The transport layer interface.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.RequestSent">
+            <summary>
+            Signals if an request has been delivered.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.ResponseSent">
+            <summary>
+            Signals if an response has been delivered.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.RequestNotSent">
+            <summary>
+            Signals if an request has been not delivered.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.ResponseNotSent">
+            <summary>
+            Signals if an response has been not delivered.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.RequestExpired">
+            <summary>
+            Signals if a request has expired worker side.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.SetupRequest(System.String,System.String,Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestOptions)">
+            <summary>
+            Set the backend ready to be used.
+            </summary>
+            <param name="requestId">The backend id.</param>
+            <param name="nodeRoleId"></param>
+            <param name="requestOptions"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.SetupResponse(System.String)">
+            <summary>
+            Set the backend ready to be used.
+            </summary>
+            <param name="responseId">The backend id.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.Init(Siemens.SimaticIT.Platform.Common.Communication.IResolver,Siemens.SimaticIT.Platform.Common.Governance.IGovernanceGateway,Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory,System.Boolean)">
+            <summary>
+            Init the class instance.
+            </summary>
+            <param name="resolver"></param>
+            <param name="governance">An instance of the current governance.</param>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+            <param name="debugMode">Specifies if the current host is in debugMode</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.InitializeRequestChannelSender(Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory)">
+            <summary>
+            Initializes the adapter.
+            </summary>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.InitializeRequestChannelListener(Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory,System.Nullable{System.UInt16})">
+            <summary>
+            Initializes the adapter.
+            </summary>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+            <param name="parallelListening"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.InitializeResponseChannelSender(Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory)">
+            <summary>
+            Initializes the adapter.
+            </summary>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.InitializeResponseChannelListener(Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory)">
+            <summary>
+            Initializes the adapter.
+            </summary>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.InitializeRetryOperation(Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory)">
+            <summary>
+            Initializes the adapter.
+            </summary>
+            <param name="tracerFactory">The tracer factory for getting a tracer instance.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.SendCommand(Siemens.SimaticIT.Platform.Common.Communication.ICommandRequest)">
+            <summary>
+            Send a command.
+            </summary>
+            <param name="message">the command to be sent.</param>
+            <returns>the send operation result.</returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.SendCommandAsync(Siemens.SimaticIT.Platform.Common.Communication.ICommandRequest)">
+            <summary>
+            Send a command asynchronously.
+            </summary>
+            <param name="message">the command to be sent.</param>
+            <returns>the send operation result.</returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.SendResponse(Siemens.SimaticIT.Platform.Common.Communication.ICommandResponse)">
+            <summary>
+            Send a response.
+            </summary>
+            <param name="response">the response to be sent.</param>
+            <returns>the send operation result.</returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.SendResponseAsync(Siemens.SimaticIT.Platform.Common.Communication.ICommandResponse)">
+            <summary>
+            Send a response asynchronously.
+            </summary>
+            <param name="response">the response to be sent.</param>
+            <returns>the send operation result.</returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.StartListeningRequest(System.Action{Siemens.SimaticIT.Platform.Common.Communication.ICommandRequest},System.String,Siemens.SimaticIT.Platform.Common.Communication.IThreadingModel,System.String,Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestOptions)">
+            <summary>
+            Start listening to the request channel.
+            </summary>
+            <param name="onCommandRequestCallback">the callback to be invoked.</param>
+            <param name="requestId">the role id.</param>
+            <param name="threadingModel"></param>
+            <param name="nodeId">the node id</param>
+            <param name="requestOptions"></param>
+            <returns>the result of the operation.</returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.StartListeningResponse(System.Action{Siemens.SimaticIT.Platform.Common.Communication.ICommandResponse},System.String)">
+            <summary>
+            Start listening to the response channel.
+            </summary>
+            <param name="onMessageReceivedCallback">the callback to be invoked.</param>
+            <param name="responseId">the worker id.</param>
+            <returns>the result of the operation.</returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.SuspendListeningRequest">
+            <summary>
+            Pauses request listening operation.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.SuspendListeningResponse">
+            <summary>
+            Pauses response listening operation.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.CompleteRequest(System.UInt64,System.Action,Siemens.SimaticIT.Platform.Common.Communication.FileStoreDataInfo,Siemens.SimaticIT.SDK.Diagnostics.Tracing.ITracer)">
+            <summary>
+            Complete a request.
+            </summary>
+            <param name="requestToken"></param>
+            <param name="postCustomAction">Custom action to be execute atomically with the complete.</param>
+            <param name="fileStoreDataInfo"></param>
+            <param name="contextualizedTracer"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.CompleteResponse(System.UInt64,System.Action,Siemens.SimaticIT.Platform.Common.Communication.FileStoreDataInfo,Siemens.SimaticIT.SDK.Diagnostics.Tracing.ITracer)">
+            <summary>
+            Complete a response.
+            </summary>
+            <param name="responseToken"></param>
+            <param name="postCustomAction">Custom action to be execute atomically with the complete.</param>
+            <param name="fileStoreDataInfo"></param>
+            <param name="contextualizedTracer"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.RejectRequest(System.UInt64,System.Action)">
+            <summary>
+            Reject a request.
+            </summary>
+            <param name="requestToken"></param>
+            <param name="postCustomAction">Custom action to be execute atomically with the complete.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.RejectResponse(System.UInt64,System.Action)">
+            <summary>
+            Reject a response.
+            </summary>
+            <param name="responseToken"></param>
+            <param name="postCustomAction">Custom action to be execute atomically with the complete.</param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.CreatePublisher(Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,System.String)">
+            <summary>
+            Create a generic Publisher
+            </summary>
+            <param name="endpoint"></param>
+            <param name="publisherName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.CreateSubscriber(Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint,System.String,Siemens.SimaticIT.Platform.Common.Communication.SubscriberOptions)">
+            <summary>
+            Create a subscriber to a specific endpoint
+            </summary>
+            <param name="endpoint"></param>
+            <param name="subscriberName"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.DeleteFileStoreContent(Siemens.SimaticIT.Platform.Common.Communication.FileStoreDataInfo,Siemens.SimaticIT.SDK.Diagnostics.Tracing.ITracer)">
+            <summary>
+            Delete a file store content. To be used only in case the method "CompleteRequest" or "CompleteResponse" cannot be used.
+            </summary>
+            <param name="fileStoreDataInfo"></param>
+            <param name="tracer"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.CreateNotifier(Siemens.SimaticIT.Integration.Communication.Lean.Channels.IChannel)">
+            <summary>
+            Create a notifier which use an already working channel
+            </summary>
+            <param name="supportChannel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ITransportLayer.CleanupConfiguration(System.Collections.Generic.IEnumerable{System.String},System.Version)">
+            <summary>
+            Clean the current configuration on the backend starting from the worker roles
+            </summary>
+            <param name="workerRoles"></param>
+            <param name="version">Sit UAF version - pass <c>null</c> in case using the latest one</param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.Notifier.INotifier">
+            <summary>
+            Notification contract
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.Notifier.INotifier.Init(Siemens.SimaticIT.Integration.Communication.Lean.ITracerFactory,System.String,System.String,Siemens.SimaticIT.Platform.Common.Communication.IThreadingModel)">
+            <summary>
+            Initializes an instance of the object
+            </summary>
+            <param name="tracerFactory"></param>
+            <param name="applicationName"></param>
+            <param name="applicationType"></param>
+            <param name="threadingModel"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.Notifier.INotifier.Notify``1(``0,Siemens.SimaticIT.Platform.Common.Communication.BusEndpoint)">
+            <summary>
+            Notify a destination using a notification
+            </summary>
+            <param name="notification"></param>
+            <param name="destination"></param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.Notifier.INotifier.StartReceiving``1(System.Action{``0})">
+            <summary>
+            Start receiving a Notification of type T
+            </summary>
+            <param name="onNotification"></param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.Notifier.INotifier.StopReceiving``1">
+            <summary>
+            Stop receiving nNotification of type T
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.Notifier.INotifier.GenericStartReceiving(System.Action{Siemens.SimaticIT.Platform.Common.Communication.INotification})">
+            <summary>
+            Specify a generic callback for receiving all notifications
+            </summary>
+            <param name="onNotification"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestExpiredEventArgs">
+            <summary>
+            Signals if a request has expired worker side.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestExpiredEventArgs.RequestId">
+            <summary>
+            The identifier of the expired request.
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestInformation">
+            <summary>
+            Containing all cllateral information regarding a request.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestInformation.NodeId">
+            <summary>
+            The node for which the request was been sent.
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestNotSentEventArgs">
+            <summary>
+            /
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestNotSentEventArgs.RequestToken">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestNotSentEventArgs.OriginalRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestOptions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestOptions.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestOptions.#ctor(Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestOptions@)">
+            <summary>
+            
+            </summary>
+            <param name="req"></param>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestOptions.NeedRetry">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestOptions.IsDurable">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestOptions.HaPolicy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestOptions.ParallelListening">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestSentEventArgs">
+            <summary>
+            /
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.RequestSentEventArgs.RequestToken">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ResponseNotSentEventArgs">
+            <summary>
+            /
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ResponseNotSentEventArgs.ResponseToken">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ResponseSentEventArgs">
+            <summary>
+            /
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ResponseSentEventArgs.ResponseToken">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ResponseSentEventArgs.FileStoreDataInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Integration.Communication.Lean.TransportLayers.ResponseSentEventArgs.ContextualizedTracer">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

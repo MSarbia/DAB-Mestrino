@@ -61,11 +61,25 @@
       <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_OP_EXT_03.00.00\model\bin\CO_SitMesPom_RTTypes.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands">
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.PublicModel">
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.PublicModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.PublicModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ProjectionModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ProjectionModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ReadingModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ReadingModel.dll</HintPath>
     </Reference>
     <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands">
       <HintPath>..\..\SimaticITPackages\Engineering.DAB.FB_OP_DAB_01.00.00\model\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.dll</HintPath>
@@ -267,6 +281,10 @@
     <Compile Include="AppDAB.DPPOMModel\Commands\DABCreateTeamLeaderCallHandlerExecution.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\DABGetTestCardHandler.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\DABGetTestCardHandlerExecution.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\ImportERPOrderHandler.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\ImportERPOrderHandlerExecution.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\ImportMaterialDefinitionHandler.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\ImportMaterialDefinitionHandlerExecution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

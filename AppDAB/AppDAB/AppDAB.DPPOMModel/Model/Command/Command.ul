@@ -74,3 +74,41 @@ RESPONSE
     [Optional]
     Id AS Guid
 
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(20c9027b-eaa7-48fa-aedc-31a14e6f82c5)]
+COMMAND ImportERPOrder
+WITH
+    [@GuidRef(79917911-d071-44ca-8502-17ab85617b05, 4d8e4bb4-52c4-4a8b-9ff5-f3171c8a16af)]
+    ERPOrderInfo AS Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ERPOrderRequest
+RESPONSE
+    [Optional]
+    WorkOrderIds AS list of int
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(ecba880b-9f96-4cea-ae57-9f8a8878713f)]
+COMMAND ImportMaterialDefinition
+WITH
+    [Length = 255]
+    MaterialCode AS string
+    [Length = 255]
+    MaterialRevision AS string
+    [Length = 255]
+    MaterialFamily AS string
+    [Length = 255]
+    Description AS string
+    [Length = 255]
+    UoM AS string
+    Serialized AS bool
+    Customized AS bool
+RESPONSE
+    [Optional]
+    [Length = 255]
+    MaterialCode AS string
+    [Optional]
+    [Length = 255]
+    MaterialRevision AS string
+

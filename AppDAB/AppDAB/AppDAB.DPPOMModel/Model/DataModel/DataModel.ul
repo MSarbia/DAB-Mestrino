@@ -30,3 +30,81 @@ ENTITYLINK ProducedMaterialItem TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEMode
 [@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 89d74dba-4aae-476a-805f-dee2e735b00a)]
 ENTITYLINK MaterialItem TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.MaterialItem
 
+///This entity represents the freeze of a Plant BOP made at a certain point of time and acts as the container of a Processes tree. 
+[@Guid(3662a0c3-30b5-445a-8da7-050659eaecf0)]
+[@GuidRef(43505cfd-dbd3-4fc5-87ae-cda08d8af79c, f637430b-b3be-4033-a0e1-d02b5b2bd386)]
+ENTITYLINK AsPlannedBOP TO Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.AsPlannedBOP
+
+///This entity represents the Bill of Processes, illustrating the process to be followed to produce a semi-finished or finished product. 
+///It is logically made up of Operations (that is, the activities to be performed at the manufacturing level with associated resources).
+[@Guid(b89c46a6-c408-4f96-a4f2-cc56753cc350)]
+[@GuidRef(43505cfd-dbd3-4fc5-87ae-cda08d8af79c, 92e75507-e600-4b09-b53e-6a139a2ef0d4)]
+ENTITYLINK Process TO Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.Process
+
+///This entity represents a Material Definition, which is an abstract representation of a specific material type.
+[@Guid(7ec8a20d-3c0c-41dd-a18e-5cbe7084ec82)]
+[@GuidRef(a9142045-5fad-4dd5-abbc-9e05660d61f2, 4a2b0353-f8ad-4e63-963c-4f32575056eb)]
+ENTITYLINK MaterialDefinition TO Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.DataModel.MaterialDefinition
+
+///This entity represents a  Material Class.
+[@Guid(97e3ab63-55d6-4ab3-95f5-6969bfb5c453)]
+[@GuidRef(a9142045-5fad-4dd5-abbc-9e05660d61f2, 3eb5b6ce-1f20-4c00-b2d5-cbba254ec9b9)]
+ENTITYLINK MaterialClass TO Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.DataModel.MaterialClass
+
+///This entity represents a significant milestone in the Lifecycle of a business entity. A status must be associated to a Lifecycle. States can have the same natural identifier provided that they belong to different Lifecycles.
+[@Guid(0e7c2cf2-8a44-47ba-a39a-4ba4b598d1e1)]
+[@GuidRef(e83748c6-1d12-4fd4-bfd2-1a09e1a7b915, 8f8b1f48-707a-4020-add9-fa3048183218)]
+ENTITYLINK DiscreteStatus TO Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatus
+
+///This entity represents a Unit of Measure (UoM).
+[@Guid(0421f8c5-aa5a-4fac-99ad-77bff6d0a656)]
+[@GuidRef(e83748c6-1d12-4fd4-bfd2-1a09e1a7b915, 6448e88e-1756-4e59-8f6c-7211e1d1c845)]
+ENTITYLINK UoM TO Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM
+
+///This entity represents a functional state (for example, IsApproved) on which business logic checks can be performed. 
+[@Guid(eb9ae3e3-fede-479e-b79a-4425b5689d29)]
+[@GuidRef(e83748c6-1d12-4fd4-bfd2-1a09e1a7b915, f3068210-f6dd-4916-a6d7-424642a85877)]
+ENTITYLINK DiscreteStatusAlias TO Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusAlias
+
+///This entity represents an action that, when assigned to a state of a Lifecycle, determines that specific state's behavior.
+[@Guid(e691c533-9081-4ea5-a1f3-d41e0c27d353)]
+[@GuidRef(e83748c6-1d12-4fd4-bfd2-1a09e1a7b915, 86658d92-cf2c-4860-82e5-bc5edd9d1d85)]
+ENTITYLINK DiscreteStatusAction TO Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusAction
+
+///This entity represents a Discrete Lifecycle. A Lifecycle can have zero or multiple states associated to it. It can be provided by the system, but different lifecycles can be defined at the project level. 
+[@Guid(6cbdf4d5-ea11-47b3-8bea-c412cbf68c21)]
+[@GuidRef(e83748c6-1d12-4fd4-bfd2-1a09e1a7b915, 844b5857-26a9-409f-8592-f41490616d56)]
+ENTITYLINK DiscreteLifeCycle TO Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle
+
+///This entity represents either a Location or a Machine.
+[@Guid(af0d329f-537f-4982-ac9b-d0f4434b9559)]
+[@GuidRef(a9142045-5fad-4dd5-abbc-9e05660d61f2, e3771b0f-edd8-4cd8-909a-79fdf1b3320a)]
+ENTITYLINK Equipment TO Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.DataModel.Equipment
+
+///This entity represents a material to be consumed during the execution of the Work Order Operation. The Material Specification Type indicates how the material must be consumed.
+[@Guid(3275381c-e4ed-4a9c-bcad-4111398425ee)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 2b3568ed-9661-48b9-9c7d-6e1890142fa3)]
+ENTITYLINK ToBeConsumedMaterial TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.ToBeConsumedMaterial
+
+///This entity represents the Machine on which the Work Order Operation is to be executed. Multiple instances of the Machines to be used, indicate alternatives.
+[@Guid(71d8af1e-2f8b-4354-85f5-f3a12f06f962)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, fbaae4d8-0c5c-4aeb-9dd2-d5221abe5386)]
+ENTITYLINK ToBeUsedMachine TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.ToBeUsedMachine
+
+///Represents an activity (usually the execution of a BoP Operation) required to manufacture an intermediate part or a finished product.
+///It has a set of associated resources, such as the Equipment/Materials/Tools to be used, as well as those that were actually used.
+[@Guid(189efa71-6688-425a-a53b-ed8b0001368c)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 1e972051-39f3-48f3-94ec-b131ff7bcb98)]
+ENTITYLINK WorkOrderOperation TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.WorkOrderOperation
+
+///This entity represents a subordinate activity that is contained within a Work Order Operation (usually, the execution of a BoP Step) and is required to manufacture an intermediate part or finished product. 
+///It has a set of associated resources, such as the Equipment/Materials/Tools to be used, as well as those that have been actually used.
+[@Guid(105abf95-83b6-44b3-a16f-7b927328646c)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 4268ad43-a520-4e37-bac3-5358e34c73f1)]
+ENTITYLINK WorkOrderStep TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.WorkOrderStep
+
+///This entity represents a Machine Definition.
+[@Guid(86988ba1-642c-4a74-8136-728daf837683)]
+[@GuidRef(a9142045-5fad-4dd5-abbc-9e05660d61f2, c33bb1c8-c52f-4e72-bce4-ca869248f8c8)]
+ENTITYLINK MachineDefinition TO Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.DataModel.MachineDefinition
+
