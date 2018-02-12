@@ -181,7 +181,7 @@ body {
 .CellSxCalls {
     display: table-cell;
     vertical-align: top;
-    height: 100%;
+    height: 90%;
     border-right: solid 2px #004F79;
 }
 
