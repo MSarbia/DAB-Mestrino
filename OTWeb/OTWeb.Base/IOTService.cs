@@ -23,7 +23,15 @@ namespace OTWeb
 
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        CallTeamLeaderResponse CallTeamLeader(CallTeamLeaderRequest teamLeaderCall);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         SendMaterialCallResponse SendMaterialCall(SendMaterialCallRequest materialCall);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        CallMaterialResponse CallMaterial(CallMaterialRequest teamLeaderCall);
 
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]

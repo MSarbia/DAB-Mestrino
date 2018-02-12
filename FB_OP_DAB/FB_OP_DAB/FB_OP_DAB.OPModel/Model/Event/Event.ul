@@ -1,1 +1,9 @@
 VERSION '01.12'
+
+[NotSecurable]
+[@Guid(60d66fd1-ecba-452b-aa46-5b1b56ddc885)]
+EVENT AndonRefresh
+WITH
+    [Length = 255]
+    WokArea AS string
+

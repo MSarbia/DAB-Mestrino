@@ -25,7 +25,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         private GetTestCard.Response GetTestCardHandler(GetTestCard command)
         {
             var response = new GetTestCard.Response();
-            var testCard = Platform.Query<ITestCard>().Include(t=>t.Absorptions).FirstOrDefault(t => t.WorkOrderId == command.WorkOrderId);
+            var testCard = Platform.Query<ITestCard>().Include(t => t.Absorptions).FirstOrDefault(t => t.WorkOrderId == command.WorkOrderId);
             if (testCard == null)
             {
                 testCard = Platform.Create<ITestCard>();
@@ -38,16 +38,29 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
                 //}
                 Platform.Submit(testCard);
             }
-            
+
             response.TestCard = new Types.TestCardParameter
             {
-                WorkOrderId = testCard.WorkOrderId
+                WorkOrderId = testCard.WorkOrderId,
+                CodiceProdotto = testCard.CodiceProdotto,
+                CorrenteASecco = testCard.CorrenteASecco,
+                CorrenteASeccoPercent = testCard.CorrenteASeccoPercent,
+                PotenzaASecco = testCard.PotenzaASecco,
+                PotenzaASeccoPercent= testCard.PotenzaASeccoPercent
             };
             foreach (var a in testCard.Absorptions)
             {
                 response.TestCard.Absorptions.Add(new Types.AbsorptionParameter
                 {
-                    //Name = a.Name
+                    Nome = a.Nome,
+                    Ampere = a.Ampere,
+                    AmperePercent = a.AmperePercent,
+                    Portata = a.Portata,
+                    PortataPercent = a.PortataPercent,
+                    Pressione = a.Pressione,
+                    PressionePercent = a.PressionePercent,
+                    Watt = a.Watt,
+                    WatPercent = a.WatPercent
                 });
             }
 

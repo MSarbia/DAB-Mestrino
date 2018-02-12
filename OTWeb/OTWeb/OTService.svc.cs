@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using OTWeb.CallManagement;
 using System.Linq;
 using SmartWatchConnectorLibrary;
+using System.Xml.Linq;
 
 namespace OTWeb
 {
@@ -19,7 +20,7 @@ namespace OTWeb
         static OTService()
         {
             InitSerials();
-            SmartWatchConnector.Init<OTService>();            
+           // SmartWatchConnector.Init<OTService>();            
         }
 
         public static void InitSerials()
@@ -70,6 +71,7 @@ namespace OTWeb
             else
             {
                 response.Succeeded = false;
+                response.Error = "Username o Password errati";
                 return response;
             }
             response.Token = "sdasdaoaoaosd[asda[sdkasd";
@@ -93,7 +95,7 @@ namespace OTWeb
             {
                 TeamLeaderCalls.Add(new Call { CallDate = DateTime.UtcNow, CallId = Guid.NewGuid(), Equipment = teamLeaderCall.Equipment, WorkArea = loginResponse.WorkArea, Status = "Pending" });
             }
-            SmartWatchConnector.SendTeamLeaderlCall(loginResponse.WorkArea, teamLeaderCall.Equipment);
+            //SmartWatchConnector.SendTeamLeaderlCall(loginResponse.WorkArea, teamLeaderCall.Equipment);
             CallHub.Static_SendTeamLeaderCall(loginResponse.WorkArea, teamLeaderCall.Equipment);
             return response;
         }
@@ -115,7 +117,7 @@ namespace OTWeb
             {
                 MaterialCalls.Add(new MaterialCall { CallDate = DateTime.UtcNow, CallId = Guid.NewGuid(), Equipment = materialCall.Equipment, WorkArea = loginResponse.WorkArea, Status = "Pending", Order = "MyOrder", Description = "MyOrderDescription", ProductCode = "MyProductCode", SerialNumber = materialCall.SerialNumber });
             }
-            SmartWatchConnector.SendMaterialCall(loginResponse.WorkArea, materialCall.Equipment, materialCall.SerialNumber);
+            //SmartWatchConnector.SendMaterialCall(loginResponse.WorkArea, materialCall.Equipment, materialCall.SerialNumber);
             CallHub.Static_SendMaterialCall(loginResponse.WorkArea, materialCall.Equipment);
             return response;
         }
@@ -320,6 +322,59 @@ namespace OTWeb
                 }
             }
             return response;
+        }
+
+        public CallTeamLeaderResponse CallTeamLeader(CallTeamLeaderRequest teamLeaderCall)
+        {
+            LoginRequest userInfo = GetSmartWatchUser(teamLeaderCall.MacAddress);
+            var loginResponse = Login(userInfo);
+            SendTeamLeaderCallRequest request = new SendTeamLeaderCallRequest
+            {
+                User = userInfo.User,
+                Password = userInfo.Password,
+                Equipment = loginResponse.Equipment
+            };
+            var response = SendTeamLeaderCall(request);
+            return new CallTeamLeaderResponse
+            {
+                Error = response.Error,
+                Succeeded = response.Succeeded
+            };
+        }
+
+        public CallMaterialResponse CallMaterial(CallMaterialRequest teamLeaderCall)
+        {
+            LoginRequest userInfo = GetSmartWatchUser(teamLeaderCall.MacAddress);
+            var loginResponse = Login(userInfo);
+            SendMaterialCallRequest request = new SendMaterialCallRequest
+            {
+                User = userInfo.User,
+                Password = userInfo.Password,
+                Equipment = loginResponse.Equipment
+            };
+            var response = SendMaterialCall(request);
+            return new CallMaterialResponse
+            {
+                Error = response.Error,
+                Succeeded = response.Succeeded
+            };
+        }
+
+        private LoginRequest GetSmartWatchUser(string macAddress)
+        {
+            var loginRequest = new LoginRequest
+            {
+                User = string.Empty,
+                Password = string.Empty
+            };
+            var smartWatchConfig = XDocument.Load(System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath+"\\SmartWatchConfig.xml");
+            XElement user = smartWatchConfig.Root.Elements("SmartWatch").FirstOrDefault(s => s.Attribute("MacAddress").Value.Equals(macAddress));
+            if (user != null)
+            {
+                loginRequest.User = user.Element("User").Value;
+                loginRequest.Password = user.Element("Password").Value;
+            }
+            return loginRequest;
         }
     }
 }

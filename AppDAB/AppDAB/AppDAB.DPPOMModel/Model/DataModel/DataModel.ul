@@ -8,3 +8,25 @@ ENTITYLINK Absorption TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataM
 [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 84a4479b-4496-4afa-83f8-fcec25e4b0d3)]
 ENTITYLINK TestCard TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestCard
 
+///This entity represents the production order (that is, the instantiation of the Process). It describes the process that must be followed in order to produce a semi-finished or finished product with actual resources. 
+///It is made up of Work Order Operations (that is, activities to be performed at the manufacturing level with actual associated resources).
+[@Guid(bc757505-5c26-4516-b373-1ed3e26e3955)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 3ec1b0f5-c697-4149-8570-5c3634399657)]
+ENTITYLINK WorkOrder TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.WorkOrder
+
+///This entity represents the type of production.
+[@Guid(56733caf-2006-4a80-b732-ff187af860ae)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, e1c6b255-2337-4500-9c9f-ca5bb2e58e02)]
+ENTITYLINK ProductionType TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.ProductionType
+
+///This entity represents the many-to-many relationship between Work Orders and produced Material Items. 
+///The same Material Item can be produced by more than one Work Order if the Work Orders share the same ERP Order.
+[@Guid(22cfe35a-296a-4251-9cd8-c1367a20fa31)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 788915d9-83e7-453a-8520-f1ffa17857c5)]
+ENTITYLINK ProducedMaterialItem TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.ProducedMaterialItem
+
+///This entity represents a Material Item.
+[@Guid(7c27156c-105c-41b5-bf7f-78bfc7af26d0)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 89d74dba-4aae-476a-805f-dee2e735b00a)]
+ENTITYLINK MaterialItem TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.MaterialItem
+

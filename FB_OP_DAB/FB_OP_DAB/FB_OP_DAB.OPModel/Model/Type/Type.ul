@@ -14,12 +14,16 @@ WITH
     [Length = 255]
     [@Guid(8d2ddbb6-91d9-4eb4-87da-e341c83aa2dd)]
     CodiceProdotto AS string
+    [Optional]
     [@Guid(a2517437-569e-45e2-a6ee-7fdcb57fb3e5)]
     PotenzaASecco AS decimal
+    [Optional]
     [@Guid(593d2b7c-7902-46bc-bc4b-014dfe12620c)]
     PotenzaASeccoPercent AS decimal
+    [Optional]
     [@Guid(79390218-d4f1-47fd-a30c-11ca8f65e07d)]
     CorrenteASecco AS decimal
+    [Optional]
     [@Guid(62198177-3045-4d25-b5ef-6380c7a18d54)]
     CorrenteASeccoPercent AS decimal
     [@Guid(b7d252a3-95c0-43b9-8d98-5759b8ea50f7)]
@@ -56,10 +60,6 @@ WITH
     [Optional]
     [@Guid(2840670e-43c6-4d5e-9b47-2ed7b32d5cc9)]
     WatPercent AS decimal
-    [Optional]
-    [@Guid(be7562cd-dd57-497a-82c2-0e39fa2f11c5)]
-    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 3ced6661-4b2b-47b3-8087-cce5ba2ba1e0)]
-    TestCard AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestCard.WorkOrderId
 
 [@Guid(dc325dc2-22c8-4c4b-8297-0269c6d7107e)]
 PARAMETERTYPE TestResultParameter
@@ -102,10 +102,6 @@ WITH
 [@Guid(d6e48595-af13-417e-80c1-9dc9348ad3e8)]
 PARAMETERTYPE AbsorptionResultParameter
 WITH
-    [Length = 255]
-    [@Guid(fc1d3828-e1aa-45b4-b574-08efb0614e3f)]
-    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 6e676dfb-acd7-40f3-bb6b-55afdccf549c)]
-    TestResult AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestResult.SerialNumber
     [Length = 255]
     [@Guid(1f177500-3b9c-4556-9c11-cb6f76477f16)]
     Nome AS string

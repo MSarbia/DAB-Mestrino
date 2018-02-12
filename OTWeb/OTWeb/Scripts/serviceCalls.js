@@ -197,7 +197,7 @@ function callService(methodName, input, successCallback, errorCallBack) {
     $('.overlay').show();
     $.ajax({
         type: "POST",
-        url: "/OTService.svc/" + methodName,
+        url: "OTService.svc/" + methodName,
         data: JSON.stringify(input),
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",

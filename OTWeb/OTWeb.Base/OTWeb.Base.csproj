@@ -48,6 +48,8 @@
     <Compile Include="DataContracts\AcceptTeamLeaderCallRequest.cs" />
     <Compile Include="DataContracts\AcceptTeamLeaderCallResponse.cs" />
     <Compile Include="DataContracts\Call.cs" />
+    <Compile Include="DataContracts\CallMaterialRequest.cs" />
+    <Compile Include="DataContracts\CallMaterialResponse.cs" />
     <Compile Include="DataContracts\GetMaterialCallsRequest.cs" />
     <Compile Include="DataContracts\GetMaterialCallsResponse.cs" />
     <Compile Include="DataContracts\GetSerialsRequest.cs" />
@@ -60,9 +62,11 @@
     <Compile Include="DataContracts\OTRole.cs" />
     <Compile Include="DataContracts\Request.cs" />
     <Compile Include="DataContracts\Response.cs" />
+    <Compile Include="DataContracts\CallTeamLeaderRequest.cs" />
     <Compile Include="DataContracts\SendMaterialCallRequest.cs" />
     <Compile Include="DataContracts\SendMaterialCallResponse.cs" />
     <Compile Include="DataContracts\SendTeamLeaderCallRequest.cs" />
+    <Compile Include="DataContracts\CallTeamLeaderResponse.cs" />
     <Compile Include="DataContracts\SendTeamLeaderCallResponse.cs" />
     <Compile Include="DataContracts\SerialItem.cs" />
     <Compile Include="DataContracts\StartSerialRequest.cs" />

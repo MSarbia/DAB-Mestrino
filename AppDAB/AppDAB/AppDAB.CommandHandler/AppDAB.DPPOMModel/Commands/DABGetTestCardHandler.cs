@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using Siemens.SimaticIT.Unified.Common;
 using Siemens.SimaticIT.Unified.Common.Information;
 using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.Published;
 using Siemens.SimaticIT.Handler;
-using Siemens.SimaticIT.Unified;
+using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.ReadingModel;
 
 namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 {
@@ -26,11 +23,11 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         private DABGetTestCard.Response DABGetTestCardHandler(DABGetTestCard command)
         {
             DABGetTestCard.Response response = new DABGetTestCard.Response();
-            int? workOrderId = null;
-            //workOrderId = Platform.ProjectionQuery<IWordOrder>().Where().Select(w => w.Id).FirstOrDefault();
+            int? workOrderId = Platform.ProjectionQuery<ProducedMaterialItem>().Include(pmi => pmi.WorkOrder).Include(pmi => pmi.MaterialItem)
+                .Where(pmi => pmi.MaterialItem.SerialNumberCode == command.SerialNumber).Select(pmi => pmi.WorkOrder_Id).FirstOrDefault();
             if(workOrderId == null)
             {
-                response.SetError(-1000, $"Nessun WorkOrder trovato per il seriale {command.SerialNumber}");
+                response.SetError(-1000, $"Nessun Ordine trovato per il seriale {command.SerialNumber}");
                 return response;
             }
             var getInput = new GetTestCard

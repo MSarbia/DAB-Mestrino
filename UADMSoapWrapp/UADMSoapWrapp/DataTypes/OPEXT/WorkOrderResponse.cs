@@ -3,9 +3,9 @@ using System.Xml.Serialization;
 
 namespace UADMSoapWrapp.DataTypes.OPEXT
 {
-    [XmlRoot("WorkOrderResponse", Namespace = Constants.Namespace, IsNullable = false)]
+    [XmlRoot("ERPOrderResponse", Namespace = Constants.Namespace, IsNullable = false)]
     [DataContract(Namespace = Constants.Namespace)]
-    public class WorkOrderResponse
+    public class ERPOrderResponse
     {
         [DataMember(IsRequired = true)]
         public int WorkOrderId { get; set; }

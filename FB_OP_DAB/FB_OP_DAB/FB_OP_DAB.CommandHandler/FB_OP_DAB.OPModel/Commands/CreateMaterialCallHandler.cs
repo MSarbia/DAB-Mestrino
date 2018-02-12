@@ -34,6 +34,8 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             materialCall.Equipment = command.Equipment;
             materialCall.WorkArea = command.WorkArea;
             materialCall.WorkOrder = command.WorkArea;
+            materialCall.Date = DateTime.UtcNow;
+
 
             Platform.Submit(materialCall);
 

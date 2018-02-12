@@ -13,7 +13,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
     /// Partial class init
     /// </summary>
     [Handler(HandlerCategory.BasicMethod)]
-    public partial class CreateTeamLeaderCallHandlerShell 
+    public partial class SendTestResultHandlerShell 
     {
         /// <summary>
         /// This is the handler the MES engineer should write
@@ -22,23 +22,16 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         /// <param name="command"></param>
         /// <returns></returns>
         [HandlerEntryPoint]
-        private CreateTeamLeaderCall.Response CreateTeamLeaderCallHandler(CreateTeamLeaderCall command)
+        private SendTestResult.Response SendTestResultHandler(SendTestResult command)
         {
-            // Put your code here
-            // return new CreateTeamLeaderCall.Response() { ... };
-            var response = new CreateTeamLeaderCall.Response();
-            var teamLeaderCall = Platform.Create<ITeamLeaderCall>();
-            teamLeaderCall.Date = DateTime.UtcNow;
-            teamLeaderCall.Operatore = command.Operatore;
-            teamLeaderCall.Equipment = command.Equipment;
-            teamLeaderCall.WorkArea = command.WorkArea;
-          
-            Platform.Submit(teamLeaderCall);
+            var response = new SendTestResult.Response();
+            //var testCard = Platform.Query<ITestCard>().FirstOrDefault(t => t.WorkOrderId == command.Result.SerialNumber);
+            //if (testCard == null)
+            //{
 
-            response.Id = teamLeaderCall.Id;
+            //}
 
             return response;
-
         }
     }
 }
