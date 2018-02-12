@@ -13,7 +13,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
     /// Partial class init
     /// </summary>
     [Handler(HandlerCategory.BasicMethod)]
-    public partial class PrintSNLabelHandlerShell 
+    public partial class PrintPackageDataLabelHandlerShell
     {
         /// <summary>
         /// This is the handler the MES engineer should write
@@ -22,13 +22,18 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         /// <param name="command"></param>
         /// <returns></returns>
         [HandlerEntryPoint]
-        private PrintSNLabel.Response PrintSNLabelHandler(PrintSNLabel command)
+        private PrintPackageDataLabel.Response PrintPackageDataLabelHandler(PrintPackageDataLabel command)
         {
-            var response = new PrintSNLabel.Response();
-            var error = LabelPrinter.PrintSNLabel(command.SerialNumbers,command.ProductCode,command.WorkArea);
-            if (error.connectionsucceeded)
+            var response = new PrintPackageDataLabel.Response();
+
+            var error1 = LabelPrinter.PrintDataLabel(command.SerialNumbers, command.ProductCode, command.WorkArea);
+            var error2 = LabelPrinter.PrintPackageLabel(command.SerialNumbers, command.ProductCode, command.WorkArea);
+
+            if (error1.connectionsucceeded && error2.connectionsucceeded)
             {
-                if (!string.IsNullOrEmpty(error.error))response.SetError(-1000,error.error);
+                string error = " |DataLabel:" + error1.error + " |PackageLabel:" + error2.error;
+                if ((string.IsNullOrEmpty(error1.error) && string.IsNullOrEmpty(error2.error))) response.SetError(-1000, error);
+
             }
             else
             {
@@ -36,6 +41,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             }
 
             return response;
+
         }
     }
 }

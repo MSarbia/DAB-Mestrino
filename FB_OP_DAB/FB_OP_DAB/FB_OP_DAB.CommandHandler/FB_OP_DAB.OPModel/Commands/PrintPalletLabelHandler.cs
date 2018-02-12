@@ -13,7 +13,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
     /// Partial class init
     /// </summary>
     [Handler(HandlerCategory.BasicMethod)]
-    public partial class PrintSNLabelHandlerShell 
+    public partial class PrintPalletLabelHandlerShell 
     {
         /// <summary>
         /// This is the handler the MES engineer should write
@@ -22,13 +22,13 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         /// <param name="command"></param>
         /// <returns></returns>
         [HandlerEntryPoint]
-        private PrintSNLabel.Response PrintSNLabelHandler(PrintSNLabel command)
+        private PrintPalletLabel.Response PrintPalletLabelHandler(PrintPalletLabel command)
         {
-            var response = new PrintSNLabel.Response();
-            var error = LabelPrinter.PrintSNLabel(command.SerialNumbers,command.ProductCode,command.WorkArea);
+            var response = new PrintPalletLabel.Response();
+            var error = LabelPrinter.PrintPalletLabel(command.SerialNumbers, command.ProductCode, command.WorkArea,command.Quantity);
             if (error.connectionsucceeded)
             {
-                if (!string.IsNullOrEmpty(error.error))response.SetError(-1000,error.error);
+                if (!string.IsNullOrEmpty(error.error)) response.SetError(-1000, error.error);
             }
             else
             {
@@ -36,6 +36,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             }
 
             return response;
+
         }
     }
 }

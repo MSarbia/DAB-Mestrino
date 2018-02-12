@@ -85,3 +85,26 @@ WITH
     [Length = 255]
     WorkArea AS string
 
+[Protected]
+[NotSecurable]
+[@Guid(45f0b184-66af-4319-aab9-71deed1ae81c)]
+COMMAND PrintPackageDataLabel
+WITH
+    SerialNumbers AS list of string
+    [Length = 255]
+    ProductCode AS string
+    [Length = 255]
+    WorkArea AS string
+
+[Protected]
+[NotSecurable]
+[@Guid(0fe868c9-eedf-425e-a00a-9444ce43b808)]
+COMMAND PrintPalletLabel
+WITH
+    SerialNumbers AS list of string
+    [Length = 255]
+    ProductCode AS string
+    [Length = 255]
+    WorkArea AS string
+    Quantity AS int
+
