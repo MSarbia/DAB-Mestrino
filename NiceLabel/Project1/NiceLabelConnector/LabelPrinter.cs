@@ -15,13 +15,13 @@ namespace NiceLabelConnector
     {
         public class Error
         {
-            string error;
-            bool connectionsucceeded;
+            public string error;
+            public bool connectionsucceeded;
             public Error(){
                 error = "";
                 connectionsucceeded = true;
             }
-            public void setError(bool succeeded,string er)
+            internal void setError(bool succeeded,string er)
             {
                 error = er;
                 connectionsucceeded = succeeded;

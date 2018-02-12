@@ -49,6 +49,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.dll</HintPath>
     </Reference>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events">
+      <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events.dll</HintPath>
+    </Reference>
     <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ProjectionModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ProjectionModel.dll</HintPath>
@@ -113,6 +116,8 @@
     <Compile Include="FB_OP_DAB.OPModel\Commands\CreateTeamLeaderCallHandlerExecution.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\GetTestCardHandler.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\GetTestCardHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\PrintSNLabelHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\PrintSNLabelHandlerExecution.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\SendTestResultHandler.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\SendTestResultHandlerExecution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
