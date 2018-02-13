@@ -37,8 +37,8 @@
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>81.800000000000011</X>
-        <Y>92.999999999999972</Y>
+        <X>385.00000000000006</X>
+        <Y>86.6</Y>
         <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.ImportMaterialDefinition</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>true</IsExpandedB>
