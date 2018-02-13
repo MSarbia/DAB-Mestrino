@@ -26,6 +26,7 @@ using UADMSoapWrapper;
 [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.6.1590.0")]
 [System.Web.Services.WebServiceAttribute(Namespace = Constants.NameSpace)]
 [System.Web.Services.WebServiceBindingAttribute(Name = "IOP_EXTServiceSoapBinding", Namespace = Constants.NameSpace)]
+[SoapDocumentService(RoutingStyle = SoapServiceRoutingStyle.RequestElement)]
 public abstract partial class IOP_EXTService : System.Web.Services.WebService
 {
     [System.Web.Services.WebMethodAttribute()]
@@ -160,10 +161,10 @@ public class ERPOrderRequest
     [System.Xml.Serialization.XmlElementAttribute(typeof(int), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
     public int Priority { get; set; }
 
-    [System.Xml.Serialization.XmlElementAttribute(typeof(double), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    [System.Xml.Serialization.XmlElementAttribute(typeof(long), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
     public long CycleTimeMs { get; set; }
 
-    [System.Xml.Serialization.XmlElementAttribute(typeof(double), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    [System.Xml.Serialization.XmlElementAttribute(typeof(long), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
     public long SetupTimeMs { get; set; }
 
     [System.Xml.Serialization.XmlElementAttribute(typeof(int), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]

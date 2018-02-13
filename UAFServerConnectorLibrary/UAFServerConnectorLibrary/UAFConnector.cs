@@ -27,6 +27,8 @@ namespace UAFServerConnectorLibrary
             LeanFactory.Initialize("USER_APPLICATION");
             //_serviceEvent = new ServiceEventGateway();
             _leanPlatform = LeanFactory.Create();
+            var principal = ClaimsPrincipal.Current;
+            _leanPlatform.SetWindowsAuthentication();
             //Impersonate("Administrator", "SwqaMe$1");
         }
 

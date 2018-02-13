@@ -87,8 +87,8 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 // Manca Sequence, EstimatedDuration, Operators, SetupTime
                 //phase.NextOrder da gestire
                 //phase.Sequence
-                var machineIds = workOrder.WorkOrderOperations.SelectMany(wo => wo.ToBeUsedMachines).Where(m => m.Machine.HasValue).Select(m => m.Machine.Value).Distinct();
-                var workAreaMachines = Platform.ProjectionQuery<Equipment>().Include(e => e.Parent).Where(e => machineIds.Contains(e.Id)).Where(e => e.Parent == phase.WorkArea).Select(e => e.Id);
+                var machineIds = workOrder.WorkOrderOperations.SelectMany(wo => wo.ToBeUsedMachines).Where(m => m.Machine.HasValue).Select(m => m.Machine.Value).Distinct().ToList();
+                var workAreaMachines = Platform.ProjectionQuery<Equipment>().Where(e => machineIds.Contains(e.Id)).Where(e => e.Parent == phase.WorkArea).Select(e => e.Id);
                 if (!workAreaMachines.Any())
                 {
                     response.SetError(-1000,$"No ToBeUsedMachines found in {workOrder.NId} for WorkArea {phase.WorkArea}");
@@ -134,16 +134,18 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     var matDefs = Platform.ProjectionQuery<MaterialDefinition>().Where(md => defNids.Contains(md.NId)).ToList();
                     foreach (var mat in phase.ToBeConsumedMaterials)
                     {
-                        var matDef = matDefs.FirstOrDefault(md => md.NId == mat.MaterialCode && md.Revision == mat.MaterialRevision);
-                        if (matDef == null)
+                        var consMatDefId = matDefs.Where(md => md.NId == mat.MaterialCode && md.Revision == mat.MaterialRevision).Select(m=>m.Id).FirstOrDefault();
+                        if (consMatDefId == 0)
                         {
                             response.SetError(-1000, $"Error Creating {command.ERPOrderInfo.ERPId} - {phase.Name}. No Material Definition has been found with code {mat.MaterialCode} and revision {mat.MaterialRevision}");
                             CleanUp(response);
                             return response;
                         }
+                        createToBeConsumedMaterialsInput.WorkOrderOperationId = firstOperation.Id;
                         createToBeConsumedMaterialsInput.ToBeConsumedMaterials.Add(
                             new ToBeConsumedMaterialParameter
                             {
+                                MaterialDefinitionId = consMatDefId,
                                 Quantity = mat.Quantity,
                                 Sequence = mat.Sequence,
                                 MaterialSpecificationType = "Reference"

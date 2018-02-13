@@ -11,12 +11,15 @@ using System.Web;
 using System.Web.Services;
 using System.Xml.Serialization;
 using UAFServerConnectorLibrary;
+using System.Web.Services.Protocols;
+using System.Security.Claims;
 
 namespace UADMSoapWrapper
 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.6.1590.0")]
     [System.Web.Services.WebServiceAttribute(Namespace = Constants.NameSpace)]
     [System.Web.Services.WebServiceBindingAttribute(Name = "IOP_EXTServiceSoapBinding", Namespace = Constants.NameSpace)]
+    [SoapDocumentService(RoutingStyle = SoapServiceRoutingStyle.RequestElement)]
     public class OP_EXTService : IOP_EXTService
     {
         [System.Web.Services.WebMethodAttribute()]
@@ -33,13 +36,18 @@ namespace UADMSoapWrapper
         [return: System.Xml.Serialization.XmlElementAttribute("ERPOrderResponse")]
         public override ERPOrderResponse ImportERPOrder(ERPOrderRequest ERPOrderInfo)
         {
+
+            var principal = ClaimsPrincipal.Current;
             var uafConnector = new UAFConnector();
+            DateTime estimatedStart = ERPOrderInfo.EstimatedStartTime.Year > 1900 ? ERPOrderInfo.EstimatedStartTime : DateTime.UtcNow;
+            DateTime estimatedEnd = ERPOrderInfo.EstimatedEndTime.Year > 1900 ? ERPOrderInfo.EstimatedEndTime : DateTime.UtcNow.AddHours(8);
+     
             ImportERPOrder input = new ImportERPOrder(new Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ERPOrderRequest()
             {
                 ERPId = ERPOrderInfo.ERPId,
                 CycleTimeMs = ERPOrderInfo.CycleTimeMs,
-                EstimatedEndTime = ERPOrderInfo.EstimatedEndTime,
-                EstimatedStartTime = ERPOrderInfo.EstimatedStartTime,
+                EstimatedEndTime = estimatedEnd,
+                EstimatedStartTime = estimatedStart,
                 FinalMaterialCode = ERPOrderInfo.FinalMaterialCode,
                 FinalMaterialRevision = ERPOrderInfo.FinalMaterialRevision,
                 Operators = ERPOrderInfo.Operators,
