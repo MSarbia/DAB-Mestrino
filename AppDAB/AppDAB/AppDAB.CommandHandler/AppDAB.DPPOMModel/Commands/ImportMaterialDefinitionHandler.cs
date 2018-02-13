@@ -99,9 +99,6 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     response.SetError(createResponse.Error.ErrorCode, createResponse.Error.ErrorMessage);
                     return response;
                 }
-
-                response.MaterialCode = matDef.NId;
-                response.MaterialRevision = matDef.Revision;
             }
             response.MaterialCode = command.MaterialCode;
             response.MaterialRevision = command.MaterialRevision;

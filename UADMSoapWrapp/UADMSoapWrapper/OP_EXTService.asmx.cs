@@ -28,7 +28,31 @@ namespace UADMSoapWrapper
         public override MaterialDefinitionResponse ImportMaterialDefinition(MaterialDefinitionRequest MaterialDefinition)
         {
             var materialCode = MaterialDefinition.Customized ? MaterialDefinition.MaterialCode : $"         {MaterialDefinition.MaterialCode}";
-            return new MaterialDefinitionResponse { MaterialCode = MaterialDefinition.MaterialCode, MaterialRevision = MaterialDefinition.MaterialRevision ?? "A" };
+
+            try
+            {
+                var uafConnector = new UAFConnector();
+                var response = uafConnector.CallCommand<ImportMaterialDefinition, ImportMaterialDefinition.Response>(new ImportMaterialDefinition
+                {
+                    Customized = MaterialDefinition.Customized,
+                    Description = MaterialDefinition.Description,
+                    MaterialCode = materialCode,
+                    MaterialFamily = MaterialDefinition.MaterialFamily,
+                    MaterialRevision = MaterialDefinition.MaterialRevision,
+                    Serialized = MaterialDefinition.Serialized,
+                    UoM = MaterialDefinition.UoM
+                });
+                if (!response.Succeeded)
+                {
+                    throw new Exception($"Error {response.Error.ErrorCode}: {response.Error.ErrorMessage}");
+                }
+                return new MaterialDefinitionResponse { MaterialCode = response.MaterialCode, MaterialRevision = response.MaterialRevision };
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            
         }
 
         [System.Web.Services.WebMethodAttribute()]
