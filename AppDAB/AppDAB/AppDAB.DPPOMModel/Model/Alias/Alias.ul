@@ -17,3 +17,10 @@ PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.CreateTo
 PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.DeleteWorkOrder AS DeleteWorkOrder
 PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.EditWorkOrder AS EditWorkOrder
 PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UADMUpdateMaterialDefinition AS UADMUpdateMaterialDefinition
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.PrintPackageDataLabel AS PrintPackageDataLabel
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.PrintPalletLabel AS PrintPalletLabel
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.PrintSNLabel AS PrintSNLabel
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportConsumedMaterial AS ReportConsumedMaterial
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportMaterialNonConformance AS ReportMaterialNonConformance
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportOperationProgress AS ReportOperationProgress
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportProducedQuantity AS ReportProducedQuantity

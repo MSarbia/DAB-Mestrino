@@ -28,12 +28,12 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             var materialCall = Platform.Create<IMaterialCall>();
 
             materialCall.Operatore = command.Operatore;
-            materialCall.MaterialDefinition = command.Equipment;
+            materialCall.MaterialDefinition = command.MaterialDefinition;
             materialCall.Quantity = command.Quantity;
             materialCall.Operation = command.Operation;
             materialCall.Equipment = command.Equipment;
             materialCall.WorkArea = command.WorkArea;
-            materialCall.WorkOrder = command.WorkArea;
+            materialCall.WorkOrder = command.WorkOrder;
             materialCall.Date = DateTime.UtcNow;
 
 

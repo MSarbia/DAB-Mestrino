@@ -37,7 +37,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             }
             else
             {
-                response.SetError(-1000, "Impossibile connetersi a NiceLabel");
+                response.SetError(-1000, "Impossibile connettersi a NiceLabel");
             }
 
             return response;

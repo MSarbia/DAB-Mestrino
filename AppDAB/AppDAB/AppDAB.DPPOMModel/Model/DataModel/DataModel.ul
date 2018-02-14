@@ -108,3 +108,19 @@ ENTITYLINK WorkOrderStep TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataM
 [@GuidRef(a9142045-5fad-4dd5-abbc-9e05660d61f2, c33bb1c8-c52f-4e72-bce4-ca869248f8c8)]
 ENTITYLINK MachineDefinition TO Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.DataModel.MachineDefinition
 
+[@Guid(bca5eccf-a199-4daa-b73b-0042ab883036)]
+[@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 95cdaa5c-bc18-4110-b82d-4c31ad8b3b8e)]
+ENTITYLINK AbsorptionResult TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.AbsorptionResult
+
+[@Guid(2333e773-f8cb-4677-87d0-c5b2f2dad0fc)]
+[@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 17b6fd20-dfb2-42dd-a7d7-de6d0769686a)]
+ENTITYLINK MaterialCall TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.MaterialCall
+
+[@Guid(98080ce5-7dd8-45a5-a69d-99572a1b1ec6)]
+[@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 80e74714-8a96-4408-8bc2-b80b60e1a37d)]
+ENTITYLINK TeamLeaderCall TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TeamLeaderCall
+
+[@Guid(e7ca8353-15b2-41f9-a384-44b39d2eb525)]
+[@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, c2229aeb-65b6-4117-ab52-ab93d90272bf)]
+ENTITYLINK TestResult TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestResult
+
