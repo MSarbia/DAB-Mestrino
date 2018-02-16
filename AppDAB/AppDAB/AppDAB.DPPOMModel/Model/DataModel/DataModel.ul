@@ -124,3 +124,11 @@ ENTITYLINK TeamLeaderCall TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.D
 [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, c2229aeb-65b6-4117-ab52-ab93d90272bf)]
 ENTITYLINK TestResult TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestResult
 
+[@Guid(caa7e555-e73f-4576-bcec-1a60dc03397c)]
+[@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, dd054901-cac3-434f-81db-c7cff56d31ec)]
+ENTITYLINK ToBeConsumedMaterialExt TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.ToBeConsumedMaterialExt
+
+[@Guid(591cb81a-a937-4114-8c65-4441fe7ce61f)]
+[@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, cfa46fcd-508b-4072-8bfe-f6965922f6e1)]
+ENTITYLINK WorkOrderExt TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.WorkOrderExt
+

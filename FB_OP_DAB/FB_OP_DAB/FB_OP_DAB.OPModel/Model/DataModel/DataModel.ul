@@ -179,3 +179,34 @@ WITH
     [@Guid(9917014b-fe30-4ed0-b010-379741e9f119)]
     WorkArea AS string
 
+[@Guid(cfa46fcd-508b-4072-8bfe-f6965922f6e1)]
+[@GuidId(029905a7-94ac-4f92-8bec-d6dc54b84d27)]
+ENTITY WorkOrderExt
+WITH
+    [Mandatory]
+    [@Guid(74b2f79e-f4fe-4e27-b01f-861b812546c7)]
+    WorkOrderId AS int
+    [@Guid(2eecb3ca-4b1d-49ef-a1ea-c105daf4e361)]
+    CicleTime AS TimeSpan
+    [@Guid(ff9e205a-2276-45da-8280-582ea8d6299d)]
+    SetupTime AS TimeSpan
+    [Mandatory]
+    [@Guid(b0d1bfb7-6d9e-4744-bcbc-3d3baa086dcb)]
+    Operators AS int
+    [@Guid(a9e0186c-81f5-4bff-97d0-3c799eb712dc)]
+    ActualOperators AS int
+
+[@Guid(dd054901-cac3-434f-81db-c7cff56d31ec)]
+[@GuidId(5148c287-1c27-4741-931a-e6a97aa71824)]
+ENTITY ToBeConsumedMaterialExt
+WITH
+    [Mandatory]
+    [@Guid(f7a94454-5854-4571-8892-3840c265c7af)]
+    WorkOrderOperationId AS int
+    [Mandatory]
+    [@Guid(4e7e984f-491c-42e0-81fb-e9a58f86c7d8)]
+    DeclaredQuanity AS decimal
+    [Mandatory]
+    [@Guid(49635be2-00be-4e16-8812-61a83248f0e9)]
+    ToBeConsumedMaterialId AS int
+

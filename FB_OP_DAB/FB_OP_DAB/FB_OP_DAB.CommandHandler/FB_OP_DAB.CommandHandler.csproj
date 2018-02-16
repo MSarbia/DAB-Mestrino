@@ -41,36 +41,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel">
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.dll</HintPath>
     </Reference>
     <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events">
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ProjectionModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ProjectionModel">
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ProjectionModel.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ReadingModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ReadingModel">
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ReadingModel.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types">
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ProjectionModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ProjectionModel">
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ProjectionModel.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ReadingModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ReadingModel">
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ReadingModel.dll</HintPath>
     </Reference>
     <Reference Include="InforConnectorLibrary">
@@ -121,6 +114,12 @@
     <Compile Include="FB_OP_DAB.OPModel\Commands\CreateMaterialCallHandlerExecution.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\CreateTeamLeaderCallHandler.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\CreateTeamLeaderCallHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\CreateToBeConsumedMaterialExtHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\CreateToBeConsumedMaterialExtHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\CreateWorkOrderExtHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\CreateWorkOrderExtHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\DeclareQuantityHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\DeclareQuantityHandlerExecution.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\GetTestCardHandler.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\GetTestCardHandlerExecution.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\PrintPackageDataLabelHandler.cs" />
@@ -139,6 +138,8 @@
     <Compile Include="FB_OP_DAB.OPModel\Commands\ReportProducedQuantityHandlerExecution.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\SendTestResultHandler.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\SendTestResultHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\SetActualOperatorsHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\SetActualOperatorsHandlerExecution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

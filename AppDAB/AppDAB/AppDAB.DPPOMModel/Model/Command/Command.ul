@@ -112,3 +112,54 @@ RESPONSE
     [Length = 255]
     MaterialRevision AS string
 
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(678b1fc7-5f46-47fb-a709-fd0ae4bd5d16)]
+COMMAND DABStartSerial
+WITH
+    [Length = 255]
+    WorkOrderOperationNId AS string
+    [Length = 255]
+    SerialNumber AS string
+    [Length = 255]
+    MaterialDefinitionNId AS string
+    [Length = 255]
+    EquipmentNId AS string
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(471b552d-4381-454e-9927-bd712b7a24bc)]
+COMMAND DABCompleteSerial
+WITH
+    [Length = 255]
+    WorkOrderOperationNId AS string
+    [Length = 255]
+    SerialNumber AS string
+    [Length = 255]
+    MaterialDefinitionNId AS string
+    [Length = 255]
+    EquipmentNId AS string
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(fe48dbda-497d-40cc-bb54-4ebb4171f675)]
+COMMAND DABReplaceMaterial
+WITH
+    ChangePartId AS bigint
+    [Length = 255]
+    SerialNumber AS string
+    MaterialDefinitionId AS int
+    Quantity AS decimal
+    WorkOrderDefinitionId AS int
+    [Length = 255]
+    RefNumber AS string
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(d956d792-ffe6-4c1b-8de4-33858d83027f)]
+COMMAND DABImportDocuments
+

@@ -24,3 +24,10 @@ PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.Repor
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportMaterialNonConformance AS ReportMaterialNonConformance
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportOperationProgress AS ReportOperationProgress
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportProducedQuantity AS ReportProducedQuantity
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.StartWOOperationSerialized AS StartWOOperationSerialized
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.CompleteWOOperationSerialized AS CompleteWOOperationSerialized
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.AcceptChangeAddToBeConsumedMaterial AS AcceptChangeAddToBeConsumedMaterial
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateToBeConsumedMaterialExt AS CreateToBeConsumedMaterialExt
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateWorkOrderExt AS CreateWorkOrderExt
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.DeclareQuantity AS DeclareQuantity
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.SetActualOperators AS SetActualOperators

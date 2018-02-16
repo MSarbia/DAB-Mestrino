@@ -38,6 +38,12 @@
     <Content Include="Config\Engineering.DAB.AppDAB.Dbinit.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ExternalDependencies\WindchillDocConnectorLibrary.dll">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ExternalDependencies\WindchillDocConnectorLibrary.dll.config">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\Engineering.DAB.AppDAB.References.xml">

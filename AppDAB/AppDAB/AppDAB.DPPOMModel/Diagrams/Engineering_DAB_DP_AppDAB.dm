@@ -5,43 +5,11 @@
     <FileName>AppDAB.DPPOMModel</FileName>
     <Artifacts>
       <ArtifactSuo>
-        <X>146.59999999999991</X>
-        <Y>56.200000000000017</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.ImportERPOrder</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>128.19999999999996</X>
-        <Y>33.000000000000028</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ERPOrderRequest</FullName>
+        <X>195.33333333333314</X>
+        <Y>229.99999999999997</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportMaterialNonConformance</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>19.400000000000063</X>
-        <Y>74.600000000000023</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ERPOrderPhase</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ERPConsumedMaterial</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>385.00000000000006</X>
-        <Y>86.6</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.ImportMaterialDefinition</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
     </Artifacts>
