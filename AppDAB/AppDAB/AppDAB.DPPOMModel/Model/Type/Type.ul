@@ -68,3 +68,33 @@ WITH
     [@Guid(f32b8bcd-a0f1-4989-a197-be065ca99f03)]
     Sequence AS int
 
+[@Guid(49b6647c-df62-445b-92b2-6e45bcd841e9)]
+PARAMETERTYPE OrderInfo
+WITH
+    [Length = 255]
+    [@Guid(54fd39cd-6659-4e83-8bee-dd8d7d8e80e8)]
+    Order AS string
+    [Length = 255]
+    [@Guid(5100884a-0d2b-48be-a188-cf1f71ed60b1)]
+    Operation AS string
+    [Length = 255]
+    [@Guid(da38ee2b-b7b8-4a84-a373-05da7dbca1bb)]
+    Description AS string
+    [Length = 255]
+    [@Guid(719aaf87-cde8-4540-ae92-025d6ffc964e)]
+    ProductCode AS string
+    [Optional]
+    [@Guid(f7f823cf-9fe1-4ef1-b335-2c061c0f0598)]
+    [@GuidRef(79917911-d071-44ca-8502-17ab85617b05, 0e9774f4-0bf7-4bdf-813a-c887edaf6e35)]
+    Serials AS Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.SerialInfo
+
+[@Guid(0e9774f4-0bf7-4bdf-813a-c887edaf6e35)]
+PARAMETERTYPE SerialInfo
+WITH
+    [Length = 255]
+    [@Guid(ecebd6ea-a8a1-419b-bb79-726eb4cacc2b)]
+    SerialNumber AS string
+    [Length = 255]
+    [@Guid(5959011e-dd53-49e3-91a4-5be0a2ac5f4c)]
+    Status AS string
+

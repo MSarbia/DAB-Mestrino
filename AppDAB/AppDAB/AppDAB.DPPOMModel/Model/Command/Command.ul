@@ -163,3 +163,35 @@ WITH
 [@Guid(d956d792-ffe6-4c1b-8de4-33858d83027f)]
 COMMAND DABImportDocuments
 
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(5697a26e-5aa5-418f-9c38-123dea3e2e68)]
+COMMAND GetSerials
+WITH
+    [Length = 255]
+    Equipment AS string
+RESPONSE
+    [Optional]
+    [@GuidRef(79917911-d071-44ca-8502-17ab85617b05, 49b6647c-df62-445b-92b2-6e45bcd841e9)]
+    Orders AS list of Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.OrderInfo
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(038ddfa8-f59d-4772-884f-30ebef0941ae)]
+COMMAND LoginUser
+WITH
+    [Length = 255]
+    User AS string
+RESPONSE
+    [Optional]
+    [Length = 255]
+    Equipment AS string
+    [Optional]
+    [Length = 255]
+    WorkArea AS string
+    [Optional]
+    [Length = 255]
+    Role AS string
+

@@ -132,3 +132,8 @@ ENTITYLINK ToBeConsumedMaterialExt TO Engineering.DAB.OperationalData.FB_OP_DAB.
 [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, cfa46fcd-508b-4072-8bfe-f6965922f6e1)]
 ENTITYLINK WorkOrderExt TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.WorkOrderExt
 
+///This entity represents an association between a User and a piece of Equipment.
+[@Guid(d8425351-88ac-4503-9d6a-ffd7633a86a8)]
+[@GuidRef(a9142045-5fad-4dd5-abbc-9e05660d61f2, c100cb2a-aec7-4f9c-ad4a-d19626e86101)]
+ENTITYLINK UserEquipmentAssociation TO Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.DataModel.UserEquipmentAssociation
+
