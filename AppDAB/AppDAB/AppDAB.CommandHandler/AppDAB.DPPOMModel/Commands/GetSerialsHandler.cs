@@ -54,13 +54,14 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 
                 var orderInfo = response.Orders.FirstOrDefault(o => o.Order == orders[wo.WorkOrder_Id.Value].Name);
 
-                var order = new OrderInfo
-                {
-                    Description = woDictionary[],
-                    Order =orders[],
-                    ProductCode = o.FinalMaterial
-                }
+                //var order = new OrderInfo
+                //{
+                //    Description = woDictionary[],
+                //    Order = orders[],
+                //    ProductCode = o.FinalMaterial
+                //};
             }
+            return response;
 
         }
     }

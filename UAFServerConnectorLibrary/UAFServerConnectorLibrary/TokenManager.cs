@@ -16,37 +16,37 @@ namespace UAFServerConnectorLibrary
     {
         public TokenManager()
         {
-            this._hostName = Dns.GetHostEntry(Environment.MachineName).HostName;
-            if (this._hostName.Contains("."))
-                this._hostName = this._hostName.Remove(this._hostName.IndexOf("."));
-            this._domain = Environment.UserDomainName;
-            this._loggedUserName = Environment.UserName;
-            this._loggedUserPassword = "SwqaMe$1";
-            this._startReq = "http://" + this._hostName + "/sit-auth/OAuth/Authorize?client_id=Siemens.SimaticIt.SolutionStudio&redirect_uri=http://" + this._hostName + "/sit-ui/system/Studio/default.html&response_type=token&scope=read&state=14326517343870.9801154530141503";
+            _hostName = Dns.GetHostEntry(Environment.MachineName).HostName;
+            if (_hostName.Contains("."))
+                _hostName = _hostName.Remove(_hostName.IndexOf("."));
+            _domain = Environment.UserDomainName;
+            _loggedUserName = Environment.UserName;
+            _loggedUserPassword = "SwqaMe$1";
+            _startReq = "http://" + _hostName + "/sit-auth/OAuth/Authorize?client_id=Siemens.SimaticIt.SolutionStudio&redirect_uri=http://" + _hostName + "/sit-ui/system/Studio/default.html&response_type=token&scope=read&state=14326517343870.9801154530141503";
         }
 
         public TokenManager(string UserName, string UserPW, string Domain, string HostUnified = null)
         {
             if (HostUnified != null)
             {
-                this._hostName = HostUnified;
+                _hostName = HostUnified;
                 //TestHelper.HostUnified = this._hostName;
             }
             else
-                this._hostName = Dns.GetHostEntry(Environment.MachineName).HostName;
-            this._domain = Domain;
-            this._loggedUserName = UserName;
-            this._loggedUserPassword = UserPW;
-            this._startReq = "http://" + this._hostName + "/sit-auth/OAuth/Authorize?client_id=123&redirect_uri=http://" + this._hostName + "/sit-ui/system/Studio/default.html&response_type=token&scope=read&state=14326517343870.9801154530141503";
+                _hostName = Dns.GetHostEntry(Environment.MachineName).HostName;
+            _domain = Domain;
+            _loggedUserName = UserName;
+            _loggedUserPassword = UserPW;
+            _startReq = "http://" + _hostName + "/sit-auth/OAuth/Authorize?client_id=123&redirect_uri=http://" + _hostName + "/sit-ui/system/Studio/default.html&response_type=token&scope=read&state=14326517343870.9801154530141503";
         }
 
         public TokenManager(string HostName, string UserName, string UserPW, string StartReq, string Domain)
         {
-            this._hostName = HostName;
-            this._domain = Domain;
-            this._loggedUserName = UserName;
-            this._loggedUserPassword = UserPW;
-            this._startReq = StartReq;
+            _hostName = HostName;
+            _domain = Domain;
+            _loggedUserName = UserName;
+            _loggedUserPassword = UserPW;
+            _startReq = StartReq;
         }
 
         public string _tokenRenewal { get; private set; }
@@ -61,21 +61,21 @@ namespace UAFServerConnectorLibrary
 
         public string _startReq { get; set; }
 
-        public string GetTokenFromRequest()
+        public string GetToken()
         {
-            return this.GetTokenFromRequest(false);
+            return GetToken(false);
         }
 
-        public string GetTokenFromRequestSSL()
+        public string GetTokenSSL()
         {
-            return this.GetTokenFromRequest(true);
+            return GetToken(true);
         }
 
-        private string GetTokenFromRequest(bool ssl)
+        private string GetToken(bool ssl)
         {
-            string requestUri = (ssl ? "https" : "http") + "://" + this._hostName + "/sit-auth/OAuth/token";
+            string requestUri = (ssl ? "https" : "http") + "://" + _hostName + "/sit-auth/OAuth/token";
             ServicePointManager.ServerCertificateValidationCallback += (RemoteCertificateValidationCallback)((sender, cert, chain, sslPolicyErrors) => true);
-            string userName = string.IsNullOrEmpty(this._domain) ? this._loggedUserName:this._domain + "\\" + this._loggedUserName;
+            string userName = string.IsNullOrEmpty(_domain) ? _loggedUserName : _domain + "\\" + _loggedUserName;
             using (HttpClient httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", (object)"clientID", (object)"clientPsw"))));
@@ -91,7 +91,7 @@ namespace UAFServerConnectorLibrary
           },
           {
             "password",
-            this._loggedUserPassword
+            _loggedUserPassword
           },
           {
             "scope",
@@ -128,7 +128,7 @@ namespace UAFServerConnectorLibrary
                 Value = strArray[1],
                 Path = "/",
                 HttpOnly = true,
-                Domain = this._hostName
+                Domain = _hostName
             };
         }
 
@@ -198,8 +198,8 @@ namespace UAFServerConnectorLibrary
 
         public string SetValueRetrieved(string Value)
         {
-            this._value = Value;
-            return this._value;
+            _value = Value;
+            return _value;
         }
     }
 }

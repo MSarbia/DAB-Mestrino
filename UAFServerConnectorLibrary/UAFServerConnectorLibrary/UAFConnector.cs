@@ -15,6 +15,7 @@ using System.IO;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Siemens.SimaticIT.DataModel;
+using Siemens.SimaticIT.SDK.Diagnostics.Common;
 
 namespace UAFServerConnectorLibrary
 {
@@ -35,12 +36,17 @@ namespace UAFServerConnectorLibrary
         public UAFConnector(string username, string password)
         {
             var tokenManager = new TokenManager(username, password, "",Environment.MachineName);
-            var token = tokenManager.GetTokenFromRequest();
+            var token = tokenManager.GetToken();
             LeanFactory.Initialize("USER_APPLICATION");
             //_serviceEvent = new ServiceEventGateway();
             _leanPlatform = LeanFactory.Create();
             _leanPlatform.SetAuthenticationToken(token);
             //Impersonate(username, password);
+        }
+
+        public void Trace(string message)
+        {
+            _leanPlatform.Tracer.Write("", Category.Error, message);
         }
 
         #region ITestSdk implementation
