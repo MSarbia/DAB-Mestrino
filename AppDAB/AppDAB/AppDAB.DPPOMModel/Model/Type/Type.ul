@@ -84,9 +84,10 @@ WITH
     [@Guid(719aaf87-cde8-4540-ae92-025d6ffc964e)]
     ProductCode AS string
     [Optional]
+    [Optional]
     [@Guid(f7f823cf-9fe1-4ef1-b335-2c061c0f0598)]
     [@GuidRef(79917911-d071-44ca-8502-17ab85617b05, 0e9774f4-0bf7-4bdf-813a-c887edaf6e35)]
-    Serials AS Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.SerialInfo
+    Serials AS list of Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.SerialInfo
 
 [@Guid(0e9774f4-0bf7-4bdf-813a-c887edaf6e35)]
 PARAMETERTYPE SerialInfo

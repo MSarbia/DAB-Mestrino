@@ -38,6 +38,8 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             var orderIds = wos.Select(w => w.WorkOrder_Id).Distinct().ToList();
             var woDictionary = wos.ToDictionary(wo=>wo.Id,wo=>wo);
             Dictionary<int, WorkOrder> orders = Platform.ProjectionQuery<WorkOrder>().Where(o => orderIds.Contains(o.Id)).ToDictionary(o => o.Id, o => o);
+            List<int> matDefIds = orders.Select(o => o.Value.FinalMaterial.Value).Distinct().ToList();
+            Dictionary<int, MaterialDefinition> matDefs = Platform.ProjectionQuery<MaterialDefinition>().Where(m => matDefIds.Contains(m.Id)).ToDictionary(m => m.Id, m =>m);
             foreach (var id in workOrderOperationIds)
             {
                 var wo = woDictionary[id];
@@ -52,14 +54,19 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 if (!serials.Any())
                     continue;
 
-                var orderInfo = response.Orders.FirstOrDefault(o => o.Order == orders[wo.WorkOrder_Id.Value].Name);
-
-                //var order = new OrderInfo
-                //{
-                //    Description = woDictionary[],
-                //    Order = orders[],
-                //    ProductCode = o.FinalMaterial
-                //};
+                var orderInfo = response.Orders.FirstOrDefault(o => o.Order == orders[wo.WorkOrder_Id.Value].NId);
+                if(orderInfo==null)
+                {
+                    orderInfo = new OrderInfo
+                    {
+                        Description = matDefs[orders[wo.WorkOrder_Id.Value].Id].Description,
+                        Order = orders[wo.WorkOrder_Id.Value].NId,
+                        ProductCode = matDefs[orders[wo.WorkOrder_Id.Value].Id].NId
+                    };
+                    response.Orders.Add(orderInfo);
+                }
+                orderInfo.Operation = wo.NId;
+                orderInfo.Serials.AddRange(serials.Select(s => new SerialInfo { SerialNumber = s.SerialNumberCode, Status = s.Status }));
             }
             return response;
 
