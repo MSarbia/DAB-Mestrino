@@ -175,31 +175,11 @@ WITH
 
 [Protected]
 [NotSecurable]
-[@Guid(b001f922-664f-465f-bf9c-46dcd0fd31d8)]
-COMMAND CreateWorkOrderExt
-WITH
-    WorkOrderId AS int
-    [Optional]
-    CicleTime AS TimeSpan
-    [Optional]
-    SetupTime AS TimeSpan
-    Operators AS int
-
-[Protected]
-[NotSecurable]
 [@Guid(1614d51a-d75c-4724-baac-325906cb45fc)]
 COMMAND SetActualOperators
 WITH
     WorkOrderId AS int
     ActualOperators AS int
-
-[Protected]
-[NotSecurable]
-[@Guid(4aeb9268-85fb-41cb-9d61-365579d91213)]
-COMMAND CreateToBeConsumedMaterialExt
-WITH
-    WorkOrderOperationId AS int
-    ToBeConsumedMaterialIds AS list of int
 
 [Protected]
 [NotSecurable]
@@ -209,4 +189,24 @@ WITH
     WorkOrderOperationId AS int
     DeclaredQuantity AS decimal
     ToBeConsumedMaterialId AS int
+
+[Protected]
+[NotSecurable]
+[@Guid(d27427cc-3632-4119-9fa3-83433bbb49a6)]
+COMMAND CreateToBeConsumedMaterialExt
+WITH
+    WorkOrderOperationId AS int
+    ToBeConsumedMaterialIds AS list of int
+
+[Protected]
+[NotSecurable]
+[@Guid(6b7e8e52-1f14-4660-97f8-f9ce98d8ab74)]
+COMMAND CreateWorkOrderExt
+WITH
+    WorkOrderId AS int
+    [Optional]
+    CycleTime AS TimeSpan
+    [Optional]
+    SetupTime AS TimeSpan
+    Operators AS int
 

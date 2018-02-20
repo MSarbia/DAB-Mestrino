@@ -1,10 +1,5 @@
 VERSION '01.12'
 
-PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.GetTestCard AS GetTestCard
-PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.AcceptMaterialCall AS AcceptMaterialCall
-PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.AcceptTeamLeaderCall AS AcceptTeamLeaderCall
-PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateMaterialCall AS CreateMaterialCall
-PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateTeamLeaderCall AS CreateTeamLeaderCall
 PUBLISH COMMAND Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateUoM AS CreateUoM
 PUBLISH COMMAND Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateWorkOrderNotification AS CreateWorkOrderNotification
 PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.CreateWorkOrderFromProcess AS CreateWorkOrderFromProcess
@@ -31,3 +26,8 @@ PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.Creat
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateWorkOrderExt AS CreateWorkOrderExt
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.DeclareQuantity AS DeclareQuantity
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.SetActualOperators AS SetActualOperators
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.AcceptMaterialCall AS AcceptMaterialCall
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.AcceptTeamLeaderCall AS AcceptTeamLeaderCall
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateMaterialCall AS CreateMaterialCall
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateTeamLeaderCall AS CreateTeamLeaderCall
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.GetTestCard AS GetTestCard

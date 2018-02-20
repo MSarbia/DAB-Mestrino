@@ -21,9 +21,9 @@ WITH
     [@Guid(79c3c936-e1b4-46e5-9bb7-fd0d1883dec6)]
     Priority AS int
     [@Guid(698d6da6-b2c4-46b7-a799-d358fc1b039f)]
-    CycleTimeMs AS bigint
+    CycleTime AS TimeSpan
     [@Guid(e05f4d4e-fafc-4e5e-8e79-4a895c93a1a5)]
-    SetupTimeMs AS bigint
+    SetupTime AS TimeSpan
     [@Guid(a070b5d3-7a21-4178-8f0d-10c37d131be7)]
     Operators AS int
     [Optional]

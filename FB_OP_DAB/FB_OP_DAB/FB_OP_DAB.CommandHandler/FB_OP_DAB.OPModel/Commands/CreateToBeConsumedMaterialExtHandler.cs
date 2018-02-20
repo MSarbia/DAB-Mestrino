@@ -28,15 +28,19 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
 
             var tbcme = Platform.Create<IToBeConsumedMaterialExt>();
 
-            //MSXXX controllo se ordine già esistente???
-
             tbcme.WorkOrderOperationId = command.WorkOrderOperationId;
-            tbcme.ToBeConsumedMaterialId = command.ToBeConsumedMaterialId;
-            tbcme.DeclaredQuanity = (decimal)0;
 
-            Platform.Submit(tbcme);
+            foreach (var tbcmId in command.ToBeConsumedMaterialIds)
+            {
+                tbcme.ToBeConsumedMaterialId = tbcmId;
+
+                tbcme.DeclaredQuanity = (decimal)0;
+
+                Platform.Submit(tbcme);
+            }
 
             return response;
+
         }
     }
 }

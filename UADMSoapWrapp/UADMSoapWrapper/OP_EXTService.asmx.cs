@@ -85,11 +85,11 @@ namespace UADMSoapWrapper
                 DateTime estimatedEnd = order.EstimatedEndTime.Year > 1900 ? order.EstimatedEndTime : DateTime.UtcNow.AddHours(8);
                 if (!string.IsNullOrEmpty(order.CycleTime))
                 {
-                    input.ERPOrderInfo.CycleTimeMs = XmlConvert.ToTimeSpan(order.CycleTime).Milliseconds;
+                    input.ERPOrderInfo.CycleTime = XmlConvert.ToTimeSpan(order.CycleTime);
                 }
                 if (!string.IsNullOrEmpty(order.SetupTime))
                 {
-                    input.ERPOrderInfo.SetupTimeMs = XmlConvert.ToTimeSpan(order.SetupTime).Milliseconds;
+                    input.ERPOrderInfo.SetupTime = XmlConvert.ToTimeSpan(order.SetupTime);
                 }
                 input.ERPOrderInfo.EstimatedEndTime = estimatedEnd;
                 input.ERPOrderInfo.EstimatedStartTime = estimatedStart;

@@ -24,11 +24,9 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         [HandlerEntryPoint]
         private DeclareQuantity.Response DeclareQuantityHandler(DeclareQuantity command)
         {
-
             var response = new DeclareQuantity.Response();
 
             var toBeConsumedMat = Platform.Query<IToBeConsumedMaterialExt>().FirstOrDefault(t => t.WorkOrderOperationId == command.WorkOrderOperationId && t.ToBeConsumedMaterialId == command.ToBeConsumedMaterialId);
-
 
             if (toBeConsumedMat != null)
             {

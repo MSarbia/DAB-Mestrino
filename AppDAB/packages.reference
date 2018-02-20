@@ -2,11 +2,6 @@
   <integrity projectVersion="01.00.00" />
   <functionalblocks projectVersion="01.00.00">
     <functionalblock>
-      <name>Engineering.DAB.FB_OP_DAB</name>
-      <version>01.00.00</version>
-      <type>Library</type>
-    </functionalblock>
-    <functionalblock>
       <name>Siemens.SimaticIT.U4DM.RD.FB.ConfigKey</name>
       <version>03.00.00</version>
       <type>Library</type>
@@ -44,6 +39,11 @@
     <functionalblock>
       <name>Siemens.SimaticIT.U4DM.FB_OP_EXT</name>
       <version>03.00.00</version>
+      <type>Library</type>
+    </functionalblock>
+    <functionalblock>
+      <name>Engineering.DAB.FB_OP_DAB</name>
+      <version>01.00.00</version>
       <type>Library</type>
     </functionalblock>
   </functionalblocks>

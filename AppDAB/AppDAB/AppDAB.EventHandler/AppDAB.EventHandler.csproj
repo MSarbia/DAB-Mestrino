@@ -62,6 +62,10 @@
       <HintPath>..\..\SimaticITPackages\Engineering.DAB.FB_OP_DAB_01.00.00\model\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events">
+      <HintPath>..\..\SimaticITPackages\Engineering.DAB.FB_OP_DAB_01.00.00\model\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types">
       <HintPath>..\..\SimaticITPackages\Engineering.DAB.FB_OP_DAB_01.00.00\model\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.dll</HintPath>
       <Private>False</Private>
@@ -74,18 +78,9 @@
       <HintPath>..\..\SimaticITPackages\Engineering.DAB.FB_OP_DAB_01.00.00\model\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ReadingModel.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="MMTypes">
-      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_MS_BOP_03.00.00\model\bin\MMTypes.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="POMTypes">
-      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_MS_BOP_03.00.00\model\bin\POMTypes.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="PRMTypes">
-      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_OP_EXT_03.00.00\model\bin\PRMTypes.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="MMTypes, Version=5.2.2.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=MSIL" />
+    <Reference Include="POMTypes, Version=5.2.2.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86" />
+    <Reference Include="PRMTypes, Version=2.2.2.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86" />
     <Reference Include="Siemens.SimaticIT.SystemData.Foundation.Types">
       <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_OP_EXT_03.00.00\model\bin\Siemens.SimaticIT.SystemData.Foundation.Types.dll</HintPath>
       <Private>False</Private>

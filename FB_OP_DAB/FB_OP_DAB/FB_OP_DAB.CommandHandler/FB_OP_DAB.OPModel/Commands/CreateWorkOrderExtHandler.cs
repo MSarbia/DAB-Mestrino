@@ -28,11 +28,9 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         
             var woe = Platform.Create<IWorkOrderExt>();
 
-            //MSXXX controllo se ordine già esistente???
-
             woe.Operators = command.Operators;
             woe.SetupTime = command.SetupTime;
-            woe.CicleTime = command.CicleTime;
+            woe.CicleTime = command.CycleTime;
             woe.WorkOrderId = command.WorkOrderId;            
 
             Platform.Submit(woe);

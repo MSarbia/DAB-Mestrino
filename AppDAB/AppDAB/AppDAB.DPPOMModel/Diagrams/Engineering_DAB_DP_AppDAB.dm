@@ -5,22 +5,6 @@
     <FileName>AppDAB.DPPOMModel</FileName>
     <Artifacts>
       <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.ToBeConsumedMaterialExt</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>291.40000000000009</X>
-        <Y>57.800000000000011</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.WorkOrderExt</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
-        <IsExpandedC>true</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
         <X>45</X>
         <Y>276.20000000000005</Y>
         <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABStartSerial</FullName>
@@ -56,6 +40,22 @@
         <X>5</X>
         <Y>5</Y>
         <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.OrderInfo</FullName>
+        <IsExpandedA>false</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.ImportERPOrder</FullName>
+        <IsExpandedA>false</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ERPOrderRequest</FullName>
         <IsExpandedA>false</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>

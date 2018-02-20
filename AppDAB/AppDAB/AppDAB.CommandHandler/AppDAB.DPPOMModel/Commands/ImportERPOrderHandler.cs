@@ -82,22 +82,17 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 response.WorkOrderIds.Add(createResponse.Id);
 
                 var workOrder = Platform.ProjectionQuery<WorkOrder>().Include("WorkOrderOperations.ToBeUsedMachines").First(w => w.Id == createResponse.Id);
-                //[Siemens.SimaticIT.DSL.Common.UnifiedOptionalPropertyAttribute]
-                //public TimeSpan? CicleTime { get; set; }
-                //public string CommandFullName { get; }
-                //[System.ComponentModel.DataAnnotations.RequiredAttribute]
-                //public int Operators { get; set; }
-                //[Siemens.SimaticIT.DSL.Common.UnifiedOptionalPropertyAttribute]
-                //public TimeSpan? SetupTime { get; set; }
-                //[System.ComponentModel.DataAnnotations.RequiredAttribute]
-                //public int WorkOrderId { get; set; }
 
                 var createWOExtResponse = Platform.CallCommand<CreateWorkOrderExt, CreateWorkOrderExt.Response>(new CreateWorkOrderExt()
                 {
                     WorkOrderId = createResponse.Id,
+                    // MSXXX perche' long per secondi?
+                    CycleTime =  command.ERPOrderInfo.CycleTime,
+                    SetupTime = command.ERPOrderInfo.SetupTime,
+                    Operators = command.ERPOrderInfo.Operators
                     ///TODO: add logic
                 });
-               
+
                 // Manca Sequence, EstimatedDuration, Operators, SetupTime
                 //phase.NextOrder da gestire
                 //phase.Sequence

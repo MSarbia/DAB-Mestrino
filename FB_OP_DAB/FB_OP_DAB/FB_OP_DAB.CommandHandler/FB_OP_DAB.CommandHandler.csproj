@@ -44,8 +44,7 @@
     <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel">
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands">
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.dll</HintPath>
     </Reference>
     <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events">
