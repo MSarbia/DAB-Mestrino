@@ -32,6 +32,17 @@ namespace UAFServerConnectorLibrary
             //Impersonate("Administrator", "SwqaMe$1");
         }
 
+        public UAFConnector(string username, string password)
+        {
+            var tokenManager = new TokenManager(username, password, "",Environment.MachineName);
+            var token = tokenManager.GetTokenFromRequest();
+            LeanFactory.Initialize("USER_APPLICATION");
+            //_serviceEvent = new ServiceEventGateway();
+            _leanPlatform = LeanFactory.Create();
+            _leanPlatform.SetAuthenticationToken(token);
+            //Impersonate(username, password);
+        }
+
         #region ITestSdk implementation
         public ITracer Tracer => _leanPlatform.Tracer;
 

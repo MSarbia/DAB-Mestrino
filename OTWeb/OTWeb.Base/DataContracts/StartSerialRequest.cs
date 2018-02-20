@@ -7,6 +7,8 @@ namespace OTWeb.DataContracts
     public class StartSerialRequest:Request
     {
         [DataMember]
+        public string Order { get; set; }
+        [DataMember]
         public string SerialNumber { get; set; }
         [DataMember]
         public string Operation { get; set; }

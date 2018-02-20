@@ -189,8 +189,7 @@ RESPONSE
     [Length = 255]
     Equipment AS string
     [Optional]
-    [Length = 255]
-    WorkArea AS string
+    WorkAreas AS list of string
     [Optional]
     [Length = 255]
     Role AS string

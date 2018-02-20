@@ -124,6 +124,20 @@ public class Order
     [System.Xml.Serialization.XmlElementAttribute(typeof(int), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
     public int NextOrder { get; set; }
 
+    [System.Xml.Serialization.XmlElementAttribute(typeof(DateTime), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public DateTime EstimatedStartTime { get; set; }
+
+    [System.Xml.Serialization.XmlElementAttribute(typeof(DateTime), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public DateTime EstimatedEndTime { get; set; }
+
+    [System.Xml.Serialization.XmlElementAttribute(typeof(string), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public string CycleTime { get; set; }
+
+    [System.Xml.Serialization.XmlElementAttribute(typeof(string), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public string SetupTime { get; set; }
+
+    [System.Xml.Serialization.XmlElementAttribute(typeof(int), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public int Operators { get; set; }
     //[System.Xml.Serialization.XmlElementAttribute(typeof(List<ToBeConsumedMaterial>), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
     //[System.Xml.Serialization.XmlElementAttribute(typeof(List<Operation>), Namespace = "", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
     //[System.Xml.Serialization.XmlArrayAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -152,23 +166,8 @@ public class ERPOrderRequest
     [System.Xml.Serialization.XmlElementAttribute(typeof(int), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
     public int Quantity { get; set; }
 
-    [System.Xml.Serialization.XmlElementAttribute(typeof(DateTime), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public DateTime EstimatedStartTime { get; set; }
-
-    [System.Xml.Serialization.XmlElementAttribute(typeof(DateTime), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public DateTime EstimatedEndTime { get; set; }
-
     [System.Xml.Serialization.XmlElementAttribute(typeof(int), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
     public int Priority { get; set; }
-
-    [System.Xml.Serialization.XmlElementAttribute(typeof(long), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public long CycleTimeMs { get; set; }
-
-    [System.Xml.Serialization.XmlElementAttribute(typeof(long), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public long SetupTimeMs { get; set; }
-
-    [System.Xml.Serialization.XmlElementAttribute(typeof(int), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public int Operators { get; set; }
 
     //[System.Xml.Serialization.XmlElementAttribute(typeof(List<Operation>), Namespace = "", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
     //[System.Xml.Serialization.XmlArrayAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]

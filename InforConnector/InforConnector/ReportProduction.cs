@@ -13,6 +13,8 @@ namespace InforConnectorLibrary
 
         public string ProcessingScope { get; set; }
 
+        public string FromWarehouse { get; set; }
+
         public string ProductionOrder { get; set; }
 
         public int QtyDeliver { get; set; }
@@ -31,6 +33,7 @@ namespace InforConnectorLibrary
                                 string processingScope = "request", string reportPrevious = "yes",
                                 string backFlush = "yes", string directReceipt = "yes", string reportMore = "no")
         {
+            FromWarehouse = "D100";
             ProductionOrder = erpOrder;
 
             QtyDeliver = producedQuantity;

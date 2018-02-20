@@ -137,3 +137,18 @@ ENTITYLINK WorkOrderExt TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Dat
 [@GuidRef(a9142045-5fad-4dd5-abbc-9e05660d61f2, c100cb2a-aec7-4f9c-ad4a-d19626e86101)]
 ENTITYLINK UserEquipmentAssociation TO Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.DataModel.UserEquipmentAssociation
 
+///This entity represents the Material Items that have been produced at the Work Order Operation level. It is managed in TransferBatch and Serialized Work Order Production Types.
+[@Guid(22a26164-5aec-4240-bed9-daf897f175fc)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, cf084606-a1ad-44bf-a5ce-d9fe9675bf14)]
+ENTITYLINK ActualProducedMaterial TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.ActualProducedMaterial
+
+///This entity represents the material to be produced at the Work Order Operation level.
+[@Guid(c3d313a5-250e-4103-ac6c-d11f39ae752f)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 7fb57cc9-8178-4aeb-a34f-92a41836de48)]
+ENTITYLINK ToBeProducedMaterial TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.ToBeProducedMaterial
+
+///This entity models the dependency existing between two Work Order Operations.
+[@Guid(69ad37dc-9ce6-44a6-869a-b739067d922b)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 34591154-8fee-4dad-9e5d-ff6b2b3def7c)]
+ENTITYLINK WorkOOperationDependency TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.WorkOOperationDependency
+

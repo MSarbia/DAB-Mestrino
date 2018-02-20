@@ -9,14 +9,23 @@ namespace WindchillTestConsole
         {
             while (true)
             {
-                using (var docConnector = new WindchillDocConnector())
+                try
                 {
-
-                    docConnector.DownloadDocList("productCode", "productRevision");
-
+                    Console.WriteLine("ProductCode: ");
+                    string productCode = Console.ReadLine();
+                    Console.WriteLine("Revision: ");
+                    string revision = Console.ReadLine();
+                    using (var docConnector = new WindchillDocConnector())
+                    {
+                        docConnector.DownloadDocList(productCode, revision);
+                    }
+                    Console.ReadLine();
 
                 }
-                Console.ReadLine();
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
             }
         }
     }

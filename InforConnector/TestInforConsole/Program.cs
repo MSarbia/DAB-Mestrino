@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InforConnectorLibrary;
+using System.Net;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace TestInforConsole
 {
@@ -11,6 +14,41 @@ namespace TestInforConsole
     {
         static void Main(string[] args)
         {
+            var request = new OperatorOperation("",0,1);
+            InforResult r;
+            XmlDocument soapEnvelopeXml = InforConnector.CreateSoapEnvelope(request, out r);
+
+            InforResult createWebRequestResult = new InforResult();
+            HttpWebRequest webRequest = InforConnector.CreateWebRequest("http://192.168.1.31:8312/c4ws/services/IWMStdReportProduction/lntestclone", "", out createWebRequestResult);
+
+            InforConnector.ParseWebResponse(null, webRequest);
+            string response = $@"<?xml version=""1.0""?>
+                    <S:Envelope xmlns:S=""http://schemas.xmlsoap.org/soap/envelope/"">
+                        <S:Body>
+                            <ChangeResponse xmlns=""http://www.infor.com/businessinterface/SFCOperatorOperation"">
+                                <ChangeResponse xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns="""">
+                                    <DataArea>
+                                        <SFCOperatorOperation>
+                                            <ProductionOrderID>D01265725</ProductionOrderID>
+                                            <OperationID>10</OperationID>
+                                            <OperationStatus>Active</OperationStatus>
+                                            <ActualProductionStartDate>2018-02-16T11:27:01Z</ActualProductionStartDate>
+                                            <QuantityCompleted><Value>1</Value><UOM>NR</UOM></QuantityCompleted>
+                                            <QuantityRejected><Value>0</Value><UOM>NR</UOM></QuantityRejected>
+                                            <QuantityScrapped><Value>0</Value><UOM>NR</UOM></QuantityScrapped>
+                                            <QuantityQuarantined><Value>0</Value><UOM>NR</UOM></QuantityQuarantined>
+                                            <RemainingProductionTime><Value>0.1</Value><UOM>Hours</UOM></RemainingProductionTime>
+                                            <PostToInventoryIndicator>true</PostToInventoryIndicator>
+                                            <DirectReceiveIndicator>true</DirectReceiveIndicator>
+                                        </SFCOperatorOperation>
+                                    </DataArea>
+                                </ChangeResponse>
+                            </ChangeResponse>
+                        </S:Body>
+                    </S:Envelope>";
+
+           
+
             Console.WriteLine("Selezionare richiesta:\n\n 1) Report Production\n 2) Unplanned Material\n 3) Material Non Conformance \n 4) Operation Progress\n");
 
             InforResult result = new InforResult();

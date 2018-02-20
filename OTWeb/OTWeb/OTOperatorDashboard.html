@@ -30,15 +30,39 @@
             uiSelected.siblings().removeClass('ui-selected');
             var scrollContainer = $('#serialScrollContainer');
             scrollContainer.scrollTop(uiSelected.position().top);
+            SaveSession('selectedOrderToStart', uiSelected[0].attributes['data-order'].nodeValue);
             SaveSession('selectedSerialToStart', uiSelected[0].id);
+            var orders = GetSession('OrderData').Orders;
+            var order;
+            
+            var prod = document.getElementById("spanProduct");
+            var ordr = document.getElementById("spanOrder");
+            var oper = document.getElementById("spanOperation");
+            var desc = document.getElementById("spanDescription");
+            orders.forEach(function (o) {
+                if (o.Order == uiSelected[0].data - order) {
+                    prod.innerHTML = o.ProductCode;
+                    ordr.innerHTML = o.Order;
+                    oper.innerHTML = o.Operation;
+                    desc.innerHTML = o.Description;
+                }
+            });
             enableStart();
         }
 
 
         function startSelectedSerial() {
             var serial = GetSession('selectedSerialToStart');
-            var operation = GetSession('OrderData').Operation;
-            StartSerial(serial, operation, getSerialSuccess);
+            var order = GetSession('selectedOrderToStart');
+            var orderData = GetSession('OrderData').Orders;
+            orderData.forEach(function (o) {
+                if (o.Order == order) {
+                    var operation = order.Operation;
+                    StartSerial(order, serial, operation, getSerialSuccess);
+                    return;
+                }
+            });
+            
         }
 
         function enableStart() {
@@ -61,6 +85,7 @@
                         if (ui.selected.tagName != 'LI') {
                             ui.selected = $(ui.selected).parent()[0];
                         }
+                        SaveSession('selectedOrderToStart', ui.selected.attributes['data-order'].nodeValue);
                         SaveSession('selectedSerialToStart', ui.selected.id);
                         $(ui.selected).siblings().removeClass('ui-selected').children().removeClass('ui-selected');
                         enableStart();
@@ -99,27 +124,21 @@
         });
 
         function getSerialSuccess(result) {
-            var serials = result.Serials;
+            var orders = result.Orders;
             SaveSession('OrderData', result);
             var selectable = document.getElementById("serialsList");
-            var prod = document.getElementById("spanProduct");
-            var ordr = document.getElementById("spanOrder");
-            var oper = document.getElementById("spanOperation");
-            var desc = document.getElementById("spanDescription");
-            prod.innerHTML = result.ProductCode;
-            ordr.innerHTML = result.Order;
-            oper.innerHTML = result.Operation;
-            desc.innerHTML = result.Description;
             selectable.innerHTML = '';
-            serials.forEach(function (serial) {
-                var itemClass = "ui-state-default";
-                var stato = 'Disponibile';
-                if (serial.Status == 'Active') {
-                    stato = 'In Lavorazione'
-                    itemClass += " activeSerial";
-                }
-                selectable.innerHTML = selectable.innerHTML + "<li class='" + itemClass + "' id='" + serial.SerialNumber + "'><span style='font-weight:bold'>" + serial.SerialNumber + "</span ></br></br><span>Stato: </span ><span>" + stato + "</span ></li>";
-            })
+            orders.forEach(function (order) {
+                order.Serials.forEach(function (serial) {
+                    var itemClass = "ui-state-default";
+                    var stato = 'Disponibile';
+                    if (serial.Status == 'Active') {
+                        stato = 'In Lavorazione'
+                        itemClass += " activeSerial";
+                    }
+                    selectable.innerHTML = selectable.innerHTML + "<li class='" + itemClass + "'data-order='"+order.Order+"'  id='" + serial.SerialNumber + "'><span style='font-weight:bold'>" + serial.SerialNumber + "</span ></br></br><span>Stato: </span ><span>" + stato + "</span ></li>";
+                })
+            });
             disableStart();
         }
 

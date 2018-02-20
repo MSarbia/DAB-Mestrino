@@ -289,10 +289,14 @@
     <Compile Include="AppDAB.DPPOMModel\Commands\DABReplaceMaterialHandlerExecution.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\DABStartSerialHandler.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\DABStartSerialHandlerExecution.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\GetSerialsHandler.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\GetSerialsHandlerExecution.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\ImportERPOrderHandler.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\ImportERPOrderHandlerExecution.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\ImportMaterialDefinitionHandler.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\ImportMaterialDefinitionHandlerExecution.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\LoginUserHandler.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\LoginUserHandlerExecution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

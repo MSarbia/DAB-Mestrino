@@ -13,6 +13,8 @@ using System.Xml.Serialization;
 using UAFServerConnectorLibrary;
 using System.Web.Services.Protocols;
 using System.Security.Claims;
+using Newtonsoft.Json;
+using System.Xml;
 
 namespace UADMSoapWrapper
 {
@@ -27,8 +29,6 @@ namespace UADMSoapWrapper
         [return: System.Xml.Serialization.XmlElementAttribute("MaterialDefinitionResponse")]
         public override MaterialDefinitionResponse ImportMaterialDefinition(MaterialDefinitionRequest MaterialDefinition)
         {
-            var materialCode = MaterialDefinition.Customized ? MaterialDefinition.MaterialCode : $"         {MaterialDefinition.MaterialCode}";
-
             try
             {
                 var uafConnector = new UAFConnector();
@@ -36,7 +36,7 @@ namespace UADMSoapWrapper
                 {
                     Customized = MaterialDefinition.Customized,
                     Description = MaterialDefinition.Description,
-                    MaterialCode = materialCode,
+                    MaterialCode = MaterialDefinition.MaterialCode,
                     MaterialFamily = MaterialDefinition.MaterialFamily,
                     MaterialRevision = MaterialDefinition.MaterialRevision,
                     Serialized = MaterialDefinition.Serialized,
@@ -63,28 +63,38 @@ namespace UADMSoapWrapper
 
             var principal = ClaimsPrincipal.Current;
             var uafConnector = new UAFConnector();
-            DateTime estimatedStart = ERPOrderInfo.EstimatedStartTime.Year > 1900 ? ERPOrderInfo.EstimatedStartTime : DateTime.UtcNow;
-            DateTime estimatedEnd = ERPOrderInfo.EstimatedEndTime.Year > 1900 ? ERPOrderInfo.EstimatedEndTime : DateTime.UtcNow.AddHours(8);
-     
+
             ImportERPOrder input = new ImportERPOrder(new Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ERPOrderRequest()
             {
                 ERPId = ERPOrderInfo.ERPId,
-                CycleTimeMs = ERPOrderInfo.CycleTimeMs,
-                EstimatedEndTime = estimatedEnd,
-                EstimatedStartTime = estimatedStart,
+                
+                
                 FinalMaterialCode = ERPOrderInfo.FinalMaterialCode,
                 FinalMaterialRevision = ERPOrderInfo.FinalMaterialRevision,
-                Operators = ERPOrderInfo.Operators,
-                Orders = new List<ERPOrderPhase> {},
+                
+                Orders = new List<ERPOrderPhase> { },
                 Priority = ERPOrderInfo.Priority,
                 Quantity = ERPOrderInfo.Quantity,
-                SetupTimeMs = ERPOrderInfo.SetupTimeMs
+                
             });
 
-            foreach(var order in ERPOrderInfo.Orders)
+
+            foreach (var order in ERPOrderInfo.Orders)
             {
-              
-                    var orderPhase = new ERPOrderPhase
+                DateTime estimatedStart = order.EstimatedStartTime.Year > 1900 ? order.EstimatedStartTime : DateTime.UtcNow;
+                DateTime estimatedEnd = order.EstimatedEndTime.Year > 1900 ? order.EstimatedEndTime : DateTime.UtcNow.AddHours(8);
+                if (!string.IsNullOrEmpty(order.CycleTime))
+                {
+                    input.ERPOrderInfo.CycleTimeMs = XmlConvert.ToTimeSpan(order.CycleTime).Milliseconds;
+                }
+                if (!string.IsNullOrEmpty(order.SetupTime))
+                {
+                    input.ERPOrderInfo.SetupTimeMs = XmlConvert.ToTimeSpan(order.SetupTime).Milliseconds;
+                }
+                input.ERPOrderInfo.EstimatedEndTime = estimatedEnd;
+                input.ERPOrderInfo.EstimatedStartTime = estimatedStart;
+                input.ERPOrderInfo.Operators = order.Operators;
+                var orderPhase = new ERPOrderPhase
                     {
                         Name = order.Name,
                         NextOrder = order.NextOrder,

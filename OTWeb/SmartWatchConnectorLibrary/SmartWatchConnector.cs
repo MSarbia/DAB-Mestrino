@@ -174,7 +174,11 @@ namespace SmartWatchConnectorLibrary
                 var serialsResponse = service.GetSerials(new GetSerialsRequest { Equipment = equipment, User = c.Value.Item1, Password = c.Value.Item2 });
                 if (serialsResponse.Succeeded)
                 {
-                    serials.Add(c.Key, serialsResponse.Serials.Select(s => new SerialInfo { Operation = serialsResponse.Operation, Order = serialsResponse.Order, ProductCode = serialsResponse.ProductCode, Status = s.Status, SerialNumber = s.SerialNumber }).ToList());
+                    foreach(var o in serialsResponse.Orders)
+                    {
+                        serials.Add(c.Key, o.Serials.Select(s => new SerialInfo { Operation = o.Operation, Order = o.Order, ProductCode = o.ProductCode, Status = s.Status, SerialNumber = s.SerialNumber }).ToList());
+                    }
+                    
                 }
                 if (!serials[c.Key].Any())
                 {

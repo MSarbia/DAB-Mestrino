@@ -17,6 +17,33 @@ namespace WindchillDocConnectorLibrary
         public WindchillDocConnector()
         {
             _docClient = new ExtClient("ExtPort");
+
+            //_docClient.ClientCredentials.UseIdentityConfiguration = true;
+            //_docClient.ClientCredentials.UserName.UserName = "wcadmin";
+            //_docClient.ClientCredentials.UserName.Password = "DWTadmin";
+
+
+            //var binding = _docClient.Endpoint.Binding as BasicHttpBinding;
+            //if (binding == null)
+            //{
+            //    System.Diagnostics.Debug.WriteLine("Binding of this endpoint is not BasicHttpBinding");
+            //    return;
+            //}
+
+            //binding.Security.Mode = BasicHttpSecurityMode.TransportCredentialOnly;
+            //binding.UseDefaultWebProxy = true;
+            //binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Basic; // !!!
+            //binding.Security.Transport.ProxyCredentialType = HttpProxyCredentialType.Basic; // !!!
+
+
+
+            if (_docClient.ClientCredentials == null)
+            {
+                System.Diagnostics.Debug.WriteLine("Null ClientCredentials");
+                return;
+            }
+            _docClient.ClientCredentials.UserName.UserName = "wcadmin";
+            _docClient.ClientCredentials.UserName.Password = "DWTadmin";
         }
 
         public void DownloadDocList(string productCode, string productRevision)
@@ -26,6 +53,7 @@ namespace WindchillDocConnectorLibrary
             foreach (var docToDownload in docsToDownload)
             {
                 DownloadDoc(docToDownload);
+                Console.WriteLine(docToDownload.number);
             }
         }
 
@@ -39,8 +67,14 @@ namespace WindchillDocConnectorLibrary
 
             foreach (wsRevisionControlled doc in docList)
             {
-                if (softtypes.Contains(doc.softType)) docListFiltered.Add(doc);
+                Console.WriteLine(doc.number);
+                if (softtypes.Contains(doc.softType))
+                {
 
+                    docListFiltered.Add(doc);
+                    Console.WriteLine("Added " + doc.number);
+                }
+                    
             }
 
             return docListFiltered;
@@ -49,13 +83,22 @@ namespace WindchillDocConnectorLibrary
         private List<wsRevisionControlled> GetDocumentList(string productCode, string productRevision)
         {
             List<wsRevisionControlled> docList = new List<wsRevisionControlled>();
-            string viewType = string.Empty;//"manufactoring";
-            var files = _docClient.getRelatedDocuments(productCode, productRevision, viewType);
-            foreach (var file in files)
+            string viewType = "MANUFACTURING";
+
+            try
             {
-                //Aggiungi info ai doc  qui;
-                docList.Add(file);
+                var files = _docClient.getRelatedDocuments(productCode, productRevision, viewType);
+                foreach (var file in files)
+                {
+                    //Aggiungi info ai doc  qui;
+                    docList.Add(file);
+                }
             }
+            catch(System.Exception e)
+            {
+
+            }
+            
 
             return docList;
         }
@@ -66,13 +109,21 @@ namespace WindchillDocConnectorLibrary
             foreach (string contentRoleType in contentRoleTypes)
             {
                 var fileData = _docClient.download(docInfo.softType, docInfo.number, docInfo.revision, contentRoleType);
+                Console.WriteLine("downloaded");
                 if (fileData == null)
                     continue;
                 using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(fileData.content)))
                 {
-                    var image = Image.FromStream(ms);
-                    image.Save($"C:\\temp\\{contentRoleType + docInfo.softType+ fileData.fileName}", ImageFormat.Jpeg);
+                    using (BinaryWriter writer = new BinaryWriter(File.Open($"C:\\temp\\{contentRoleType + docInfo.softType + fileData.fileName}", FileMode.Create)))
+                    {
+                        writer.Write(ms.ToArray());
+                    }
                 }
+                //using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(fileData.content)))
+                //{
+                //    var image = File.FromStream(ms);
+                //    image.Save($"C:\\temp\\{contentRoleType + docInfo.softType+ fileData.fileName}", ImageFormat.Jpeg);
+                //}
             }
 
         }

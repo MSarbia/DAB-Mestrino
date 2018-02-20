@@ -17,6 +17,8 @@ namespace InforConnectorLibrary
 
         public int Quantity { get; set; }
 
+        public string UoM { get; set; }
+
         public string ProcessingScope { get; set; }
 
         public string OperationStatus { get; set; }
@@ -34,6 +36,8 @@ namespace InforConnectorLibrary
             Company = company;
 
             ProcessingScope = processingScope;
+
+            UoM = "NR";
 
             OperationStatus = operationStaus == false ? "" : "Completed";
         }

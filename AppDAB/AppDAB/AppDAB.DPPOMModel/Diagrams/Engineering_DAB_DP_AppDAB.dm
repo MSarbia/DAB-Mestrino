@@ -36,6 +36,22 @@
         <IsExpandedB>true</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.UserEquipmentAssociation</FullName>
+        <IsExpandedA>false</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>425</X>
+        <Y>207.4</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.WorkOrderOperation</FullName>
+        <IsExpandedA>false</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
     </Artifacts>
   </ProjectSuo>
 </ArrayOfProjectSuo>

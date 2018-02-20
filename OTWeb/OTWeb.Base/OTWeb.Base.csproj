@@ -68,6 +68,7 @@
     <Compile Include="DataContracts\SendTeamLeaderCallRequest.cs" />
     <Compile Include="DataContracts\CallTeamLeaderResponse.cs" />
     <Compile Include="DataContracts\SendTeamLeaderCallResponse.cs" />
+    <Compile Include="DataContracts\OrderItem.cs" />
     <Compile Include="DataContracts\SerialItem.cs" />
     <Compile Include="DataContracts\StartSerialRequest.cs" />
     <Compile Include="DataContracts\StartSerialResponse.cs" />

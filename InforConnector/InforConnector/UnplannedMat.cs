@@ -17,6 +17,8 @@ namespace InforConnectorLibrary
 
         public int Operation { get; set; }
 
+        public bool Customized { get; set; }
+
         public string Item { get; set; }
 
         public string Warehouse { get; set; }
@@ -32,17 +34,20 @@ namespace InforConnectorLibrary
         public string ReleaseOutbound { get; set; }
 
         public string LoginCode { get; set; }
+        public string Location { get; set; }
 
         public UnplannedMat(string erpOrder, int operationSequence, string consumedMaterialDefinition,
                                  int consumedMaterialSequence, decimal consumedQuantity, int company = 100,
                                  string processingScope = "request", string warehouse = "D100",
-                                 string generateOutbound = "no", string releaseOutbound = "no")
+                                 string generateOutbound = "yes", string releaseOutbound = "yes")
         {
             ProdOrder = erpOrder;
 
             Operation = operationSequence;
 
             Item = consumedMaterialDefinition;
+
+            Customized = false;
 
             Quantity = consumedQuantity;
 
@@ -53,6 +58,8 @@ namespace InforConnectorLibrary
             ProcessingScope = processingScope;
 
             Warehouse = warehouse;
+
+            Location = "PREL100";
 
             GenerateOutbound = generateOutbound;
 

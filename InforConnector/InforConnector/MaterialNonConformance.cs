@@ -11,13 +11,21 @@ namespace InforConnectorLibrary
     {
         public string ToWarehouse { get; set; }
 
+        public string FromWarehouse { get; set; }
+        public string FromLocation { get; set; }
+
         public string OrderNumber { get; set; }
 
         public string StorageUnit { get; set; }
 
         public decimal StorageQuantity { get; set; }
 
-        public string TransId { get; set; }
+        public string Item { get; set; }
+
+        public string OrderType { get; set; }
+
+        public bool Customized { get; set; }
+        public string Company { get; internal set; }
 
         public InvTransfer(string orderNumber,
                            string refNum,
@@ -26,24 +34,23 @@ namespace InforConnectorLibrary
         {
             OrderNumber = orderNumber;
 
-            TransId = string.Empty;
+            Item = string.Empty;
             ToWarehouse = string.Empty;
-
+            FromWarehouse = "D100";
+            FromWarehouse = "PREL100";
+            Company = "100";
+            Customized = false;
             if (string.IsNullOrEmpty(refNum) == false)
             {
                 var splitted = refNum.Split(';');
 
                 if (splitted.Count() == 2)
                 {
-                    TransId = splitted[0];
-
+                    OrderType = splitted[0];
                     ToWarehouse = splitted[1];
                 }
-
             }
-
             StorageUnit = storageUnit;
-
             StorageQuantity = storageQuantity;
         }
     }
