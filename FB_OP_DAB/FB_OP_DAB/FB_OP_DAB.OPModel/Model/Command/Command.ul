@@ -199,7 +199,7 @@ WITH
 COMMAND CreateToBeConsumedMaterialExt
 WITH
     WorkOrderOperationId AS int
-    ToBeConsumedMaterialId AS int
+    ToBeConsumedMaterialIds AS list of int
 
 [Protected]
 [NotSecurable]

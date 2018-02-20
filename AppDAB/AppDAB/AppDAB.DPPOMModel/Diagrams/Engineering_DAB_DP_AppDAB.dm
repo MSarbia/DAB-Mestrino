@@ -7,48 +7,40 @@
       <ArtifactSuo>
         <X>5</X>
         <Y>5</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.GetSerials</FullName>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.ToBeConsumedMaterialExt</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>292.20000000000005</X>
-        <Y>113.79999999999998</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.OrderInfo</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>495.39999999999986</X>
-        <Y>125.80000000000007</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.SerialInfo</FullName>
-        <IsExpandedA>false</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>59.399999999999977</X>
-        <Y>138.6</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.LoginUser</FullName>
+        <X>291.40000000000009</X>
+        <Y>57.800000000000011</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.WorkOrderExt</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>true</IsExpandedB>
+        <IsExpandedC>true</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABStartSerial</FullName>
+        <IsExpandedA>false</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
         <X>5</X>
         <Y>5</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.UserEquipmentAssociation</FullName>
+        <FullName>Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.StartWOOperationSerialized</FullName>
         <IsExpandedA>false</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>425</X>
-        <Y>207.4</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.WorkOrderOperation</FullName>
-        <IsExpandedA>false</IsExpandedA>
+        <X>145</X>
+        <Y>299.40000000000009</Y>
+        <FullName>Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types.StartSerializedParameterType</FullName>
+        <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>

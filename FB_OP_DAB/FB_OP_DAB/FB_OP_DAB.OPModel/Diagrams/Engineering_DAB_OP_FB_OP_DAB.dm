@@ -37,11 +37,11 @@
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>450.99999999999989</X>
-        <Y>70.333333333333343</Y>
+        <X>164.59999999999991</X>
+        <Y>179.93333333333331</Y>
         <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateToBeConsumedMaterialExt</FullName>
         <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedB>true</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>

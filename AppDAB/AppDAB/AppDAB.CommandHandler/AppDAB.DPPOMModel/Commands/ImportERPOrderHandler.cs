@@ -82,7 +82,21 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 response.WorkOrderIds.Add(createResponse.Id);
 
                 var workOrder = Platform.ProjectionQuery<WorkOrder>().Include("WorkOrderOperations.ToBeUsedMachines").First(w => w.Id == createResponse.Id);
+                //[Siemens.SimaticIT.DSL.Common.UnifiedOptionalPropertyAttribute]
+                //public TimeSpan? CicleTime { get; set; }
+                //public string CommandFullName { get; }
+                //[System.ComponentModel.DataAnnotations.RequiredAttribute]
+                //public int Operators { get; set; }
+                //[Siemens.SimaticIT.DSL.Common.UnifiedOptionalPropertyAttribute]
+                //public TimeSpan? SetupTime { get; set; }
+                //[System.ComponentModel.DataAnnotations.RequiredAttribute]
+                //public int WorkOrderId { get; set; }
 
+                var createWOExtResponse = Platform.CallCommand<CreateWorkOrderExt, CreateWorkOrderExt.Response>(new CreateWorkOrderExt()
+                {
+                    WorkOrderId = createResponse.Id,
+                    ///TODO: add logic
+                });
                
                 // Manca Sequence, EstimatedDuration, Operators, SetupTime
                 //phase.NextOrder da gestire
@@ -150,13 +164,20 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                                 Sequence = mat.Sequence,
                                 MaterialSpecificationType = "Reference"
                             });
-                        //manca UoM
+                        
                     }
                     var createToBeConsumedMaterialsResponse = Platform.CallCommand<CreateToBeConsumedMaterials, CreateToBeConsumedMaterials.Response>(createToBeConsumedMaterialsInput);
                     if (!createToBeConsumedMaterialsResponse.Succeeded)
                     {
                         response.SetError(createToBeConsumedMaterialsResponse.Error.ErrorCode,createToBeConsumedMaterialsResponse.Error.ErrorMessage);
                     }
+                    List<int> toBeConsumedIds = Platform.ProjectionQuery<ToBeConsumedMaterial>().Where(m => m.WorkOrderOperation_Id == firstOperation.Id).Select(m=>m.Id).ToList();
+                   ///TODO:
+                    //var createTBCMExtResponse = Platform.CallCommand<CreateToBeConsumedMaterialExt, CreateToBeConsumedMaterialExt.Response>(new CreateToBeConsumedMaterialExt()
+                    //{
+                    //    ToBeConsumedMaterialIds = toBeConsumedIds
+                    //});
+
                 }
             }
 

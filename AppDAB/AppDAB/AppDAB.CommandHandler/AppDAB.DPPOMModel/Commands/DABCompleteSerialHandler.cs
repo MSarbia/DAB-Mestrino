@@ -6,7 +6,6 @@ using Siemens.SimaticIT.Unified.Common.Information;
 using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.Published;
 using Siemens.SimaticIT.Handler;
 using Siemens.SimaticIT.Unified;
-using Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands;
 using Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types;
 
 namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
@@ -40,9 +39,9 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 
             var reportOperationProg = new ReportOperationProgress();
 
-            var input = new Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.CompleteWOOperationSerialized();
+            var input = new CompleteWOOperationSerialized();
 
-            var result = Platform.CallCommand<Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.CompleteWOOperationSerialized, Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.CompleteWOOperationSerialized.Response>(input);
+            var result = Platform.CallCommand<CompleteWOOperationSerialized, CompleteWOOperationSerialized.Response>(input);
 
 
             if (result.Succeeded == false)

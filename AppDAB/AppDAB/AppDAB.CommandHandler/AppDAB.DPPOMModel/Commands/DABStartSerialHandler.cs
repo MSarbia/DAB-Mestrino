@@ -45,7 +45,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     }
                     else
                     {
-                       // Platform.CallCommand<StartWOOperationSerialized,StartWOOperationSerialized.Response>(); // PRXXX verificare correttezza metodo invece di StartWOOperationSerializedParameterTypeList
+                       //Platform.CallCommand<StartWOOperationSerialized,StartWOOperationSerialized.Response>(); // PRXXX verificare correttezza metodo invece di StartWOOperationSerializedParameterTypeList
                     }
                 }
 
