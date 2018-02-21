@@ -6,6 +6,7 @@ using Siemens.SimaticIT.Unified.Common.Information;
 using Siemens.SimaticIT.Handler;
 using Siemens.SimaticIT.Unified;
 using InforConnectorLibrary;
+using Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel;
 
 namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
 {
@@ -25,8 +26,12 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         private ReportConsumedMaterial.Response ReportConsumedMaterialHandler(ReportConsumedMaterial command)
         {
             var response = new ReportConsumedMaterial.Response();
+            //bool customized = Platform.Query<IToBeConsumedMaterialExt> //command.MaterialDefinitionId
+            
+            bool customized = Platform.Query<IMaterialDefinitionExt>().Where(cust => cust.MaterialDefinitionId == command.MaterialDefinitionId).Select(cust => cust.Customized).FirstOrDefault();
 
-            string consumedMaterialDef = string.Empty;
+            string nineSpaces = "         ";
+            //string consumedMaterialDef = /* 9 spazi +*/command.MaterialDefinitionNId;
             int consumedMaterialSequence = 0;
             UnplannedMat reportConsumedMaterial = new UnplannedMat(command.ERPOrder, command.OrderSequence, consumedMaterialDef, consumedMaterialSequence,command.ConsumedQuantity);
 

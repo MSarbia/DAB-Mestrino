@@ -29,9 +29,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         {
             var response = new DABStartSerial.Response();
 
-            var workOrderOperation = Platform.ProjectionQuery<WorkOrderOperation>().Include(w=>w.ToBeConsumedMaterials).FirstOrDefault(w=>w.NId == command.WorkOrderOperationNId);
-
-
+            var workOrderOperation = Platform.ProjectionQuery<WorkOrderOperation>().Include(w => w.WorkOrder).Include(w=>w.ToBeConsumedMaterials).FirstOrDefault(w=>w.NId == command.WorkOrderOperationNId);
 
             if(IsFirstOperation(workOrderOperation))
             {
@@ -46,7 +44,9 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             {
                 if (toBeConsumedMat != null)
                 {
-                    var reportInput = new ReportConsumedMaterial(workOrderOperation.WorkOrder.ToString(), workOrderOperation.Sequence, toBeConsumedMat.MaterialDefinition.ToString(), toBeConsumedMat.Sequence, workOrderOperation.ProducedQuantity); ///PRXXX Da verificare
+                    //Platform.ProjectionQuery<MaterialDefinition> // Id == toBeConsumedMat.MaterialDefinition => select NId
+                    var reportInput = new ReportConsumedMaterial(workOrderOperation.WorkOrder.ERPOrder, workOrderOperation.WorkOrder.Sequence.GetValueOrDefault(), toBeConsumedMat.MaterialDefinition.ToString(), toBeConsumedMat.Sequence, workOrderOperation.
+                        ); ///PRXXX Da verificare
 
                     var result=Platform.CallCommand<ReportConsumedMaterial, ReportConsumedMaterial.Response>(reportInput);
 
@@ -62,22 +62,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 
             }
 
-            /*
-Se non viene ritornato null per ogni elemento all’interno di workOrderOperation.ToBeConsumedMaterials dovrà
-invocare il commando di Consumo materiali che avete definito dentro FB_OP_DAB.
-In caso il comando ritorni errore dovrete fare un 
-response.SetError(-1000,”Impossibile produrre il seriale {SerialNumber} 
-per mancanza di disponibilità del componente {toBeConsmedMaterial.NId}”) o qualcosa del genere.
-Se tutto va bene invece dovrete invocare il comando 
-StartWOOperationSerializedParameterTypeList definito dentro al functional block FB_OP_EXT.
-Per poterlo chimare dovete importarlo dal Public Object Model Configurator (dominio Ms_Ext).
-Iniziate a buttare giù lo scheletro della logica, domani vediamo di estrarre con delle query
-i parametri di input che mancano per invocare quest’ultimo comando. 
-             */
-
-
             return response;
-
         }
 
         private void CompletePreviousOperations(WorkOrderOperation workOrderOperation, DABStartSerial command)

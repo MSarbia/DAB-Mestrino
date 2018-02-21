@@ -5,59 +5,27 @@
     <FileName>AppDAB.DPPOMModel</FileName>
     <Artifacts>
       <ArtifactSuo>
-        <X>45</X>
-        <Y>276.20000000000005</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABStartSerial</FullName>
+        <X>75.399999999999977</X>
+        <Y>171.40000000000003</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.WorkOrder</FullName>
         <IsExpandedA>false</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>465.79999999999995</X>
-        <Y>129</Y>
-        <FullName>Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.StartWOOperationSerialized</FullName>
+        <X>284.99999999999994</X>
+        <Y>13.799999999999983</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.WorkOrderOperation</FullName>
         <IsExpandedA>false</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>145</X>
-        <Y>299.40000000000009</Y>
-        <FullName>Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types.StartSerializedParameterType</FullName>
-        <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
         <X>5</X>
         <Y>5</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.GetSerials</FullName>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.WorkOOperationDependency</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>true</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.OrderInfo</FullName>
-        <IsExpandedA>false</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.ImportERPOrder</FullName>
-        <IsExpandedA>false</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ERPOrderRequest</FullName>
-        <IsExpandedA>false</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
     </Artifacts>

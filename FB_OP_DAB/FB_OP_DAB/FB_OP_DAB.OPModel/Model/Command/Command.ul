@@ -145,6 +145,9 @@ WITH
     OrderSequence AS int
     ToBeConsumedMaterialId AS int
     ConsumedQuantity AS decimal
+    [Length = 255]
+    MaterialDefinitionNId AS string
+    MaterialDefinitionId AS int
 
 [Protected]
 [NotSecurable]
