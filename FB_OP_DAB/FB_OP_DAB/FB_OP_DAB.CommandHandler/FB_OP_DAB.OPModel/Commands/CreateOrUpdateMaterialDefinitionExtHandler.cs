@@ -5,6 +5,7 @@ using Siemens.SimaticIT.Unified.Common;
 using Siemens.SimaticIT.Unified.Common.Information;
 using Siemens.SimaticIT.Handler;
 using Siemens.SimaticIT.Unified;
+using Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel;
 
 namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
 {
@@ -23,11 +24,26 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         [HandlerEntryPoint]
         private CreateOrUpdateMaterialDefinitionExt.Response CreateOrUpdateMaterialDefinitionExtHandler(CreateOrUpdateMaterialDefinitionExt command)
         {
-                        // Put your code here
-            // return new CreateOrUpdateMaterialDefinitionExt.Response() { ... };
+            var response = new CreateOrUpdateMaterialDefinitionExt.Response();
+            var MaterialDefinitionExt = Platform.Query<IMaterialDefinitionExt>().FirstOrDefault(t => t.MaterialDefinitionId == command.MaterialDefinitionId);
+            if (MaterialDefinitionExt == null)
+            {
+                MaterialDefinitionExt = Platform.Create<IMaterialDefinitionExt>();
+                MaterialDefinitionExt.MaterialDefinitionId = command.MaterialDefinitionId;
+                MaterialDefinitionExt.Customized = command.Customized;
 
-            throw new NotImplementedException(); 
-                                
+                Platform.Submit(MaterialDefinitionExt);
+            }
+            else
+            {
+                if (MaterialDefinitionExt.Customized != command.Customized)
+                {
+                    MaterialDefinitionExt.Customized = command.Customized;
+                    Platform.Submit(MaterialDefinitionExt);
+                }
+            }
+
+            return response;
         }
     }
 }
