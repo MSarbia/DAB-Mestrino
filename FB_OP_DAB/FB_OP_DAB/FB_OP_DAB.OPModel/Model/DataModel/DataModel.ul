@@ -213,3 +213,14 @@ WITH
     [@Guid(5711604f-5b35-4d53-b1dd-524cbe0c6014)]
     Sequence AS int
 
+[@Guid(f9b5d6ed-5a3f-4d16-94fb-aeb2aa37981b)]
+[@GuidId(53f0b579-0946-49f7-b784-33df0080afd3)]
+ENTITY MaterialDefinitionExt
+WITH
+    [Mandatory]
+    [@Guid(52b5668f-03cc-46ec-b1bd-a88506fea8c7)]
+    MaterialDefinitionId AS int
+    [Mandatory]
+    [@Guid(dae91359-03ba-423e-bc3f-37fc7169b687)]
+    Customized AS bool
+

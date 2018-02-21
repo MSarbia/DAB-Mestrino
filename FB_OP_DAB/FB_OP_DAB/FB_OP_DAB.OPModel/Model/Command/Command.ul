@@ -209,3 +209,11 @@ WITH
     SetupTime AS TimeSpan
     Operators AS int
 
+[Protected]
+[NotSecurable]
+[@Guid(70bbc9f4-ade0-42d0-bbc7-210d924ab0ed)]
+COMMAND CreateOrUpdateMaterialDefinitionExt
+WITH
+    MaterialDefinitionId AS int
+    Customized AS bool
+
