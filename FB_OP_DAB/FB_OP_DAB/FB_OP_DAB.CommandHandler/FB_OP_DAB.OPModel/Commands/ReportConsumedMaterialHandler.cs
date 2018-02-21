@@ -26,7 +26,9 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         {
             var response = new ReportConsumedMaterial.Response();
 
-            UnplannedMat reportConsumedMaterial = new UnplannedMat(command.ErpOrder, command.OperationSequence, command.ConsumedMaterialDefinition, command.ConsumedMaterialSequence,command.ConsumedQuantity);
+            string consumedMaterialDef = string.Empty;
+            int consumedMaterialSequence = 0;
+            UnplannedMat reportConsumedMaterial = new UnplannedMat(command.ERPOrder, command.OrderSequence, consumedMaterialDef, consumedMaterialSequence,command.ConsumedQuantity);
 
             var result = InforConnector.ReportConsumedMaterial(reportConsumedMaterial);
 

@@ -37,8 +37,8 @@
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
+        <X>489.66666666666657</X>
+        <Y>169.66666666666669</Y>
         <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateToBeConsumedMaterialExt</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
@@ -48,6 +48,22 @@
         <X>5</X>
         <Y>5</Y>
         <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateWorkOrderExt</FullName>
+        <IsExpandedA>false</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>373</X>
+        <Y>47</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ToBeConsumedMaterialExtParameter</FullName>
+        <IsExpandedA>false</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportConsumedMaterial</FullName>
         <IsExpandedA>false</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>

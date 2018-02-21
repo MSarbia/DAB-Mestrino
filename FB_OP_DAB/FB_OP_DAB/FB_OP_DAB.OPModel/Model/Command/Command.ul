@@ -141,11 +141,9 @@ WITH
 COMMAND ReportConsumedMaterial
 WITH
     [Length = 255]
-    ErpOrder AS string
-    OperationSequence AS int
-    [Length = 255]
-    ConsumedMaterialDefinition AS string
-    ConsumedMaterialSequence AS int
+    ERPOrder AS string
+    OrderSequence AS int
+    ToBeConsumedMaterialId AS int
     ConsumedQuantity AS decimal
 
 [Protected]
@@ -196,7 +194,8 @@ WITH
 COMMAND CreateToBeConsumedMaterialExt
 WITH
     WorkOrderOperationId AS int
-    ToBeConsumedMaterialIds AS list of int
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 46601f0a-6c8a-4a75-b6d5-a38e770f72c0)]
+    ToBeConsumedMaterials AS list of Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ToBeConsumedMaterialExtParameter
 
 [Protected]
 [NotSecurable]

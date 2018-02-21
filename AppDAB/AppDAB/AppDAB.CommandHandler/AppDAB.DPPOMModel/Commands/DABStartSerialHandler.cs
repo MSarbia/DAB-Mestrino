@@ -31,6 +31,17 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 
             var workOrderOperation = Platform.ProjectionQuery<WorkOrderOperation>().Include(w=>w.ToBeConsumedMaterials).FirstOrDefault(w=>w.NId == command.WorkOrderOperationNId);
 
+
+
+            if(IsFirstOperation(workOrderOperation))
+            {
+                //PrintSerial
+            }
+            else
+            {
+                CompletePreviousOperations(workOrderOperation, command);
+            }
+
             foreach (var toBeConsumedMat in workOrderOperation.ToBeConsumedMaterials)
             {
                 if (toBeConsumedMat != null)
@@ -67,6 +78,16 @@ i parametri di input che mancano per invocare quest’ultimo comando.
 
             return response;
 
+        }
+
+        private void CompletePreviousOperations(WorkOrderOperation workOrderOperation, DABStartSerial command)
+        {
+           
+        }
+
+        private bool IsFirstOperation(WorkOrderOperation workOrderOperation)
+        {
+            return true;
         }
     }
 }

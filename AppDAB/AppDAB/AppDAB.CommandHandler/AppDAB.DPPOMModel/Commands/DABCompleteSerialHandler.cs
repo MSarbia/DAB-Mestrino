@@ -37,7 +37,22 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 
              */
 
-            var reportOperationProg = new ReportOperationProgress();
+            if(!SerialIsCompletedOnAllPreviousOperations(command))
+            {
+                response.SetError(-1001, $"Il seriale {command.SerialNumber} è ancora attivo sulle operazioni precedenti. Impossibile completare l'operazione");
+                return response;
+            }
+
+            if (IsLastOperationOfOrder(command))
+            {
+                var reportOperationProg = new ReportOperationProgress();
+                if (IsLastSerialOfLastOperationOfERPOrder(command))
+                {
+                    var reportProduction = new ReportProducedQuantity();
+                }
+            }
+
+            
 
             var input = new CompleteWOOperationSerialized();
 
@@ -50,6 +65,21 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             }
             return response;
 
+        }
+
+        private bool IsLastOperationOfOrder(DABCompleteSerial command)
+        {
+            return false;
+        }
+
+        private bool IsLastSerialOfLastOperationOfERPOrder(DABCompleteSerial command)
+        {
+            return false;
+        }
+
+        private bool SerialIsCompletedOnAllPreviousOperations(DABCompleteSerial command)
+        {
+            return true;
         }
     }
 }

@@ -30,17 +30,14 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
 
             tbcme.WorkOrderOperationId = command.WorkOrderOperationId;
 
-            foreach (var tbcmId in command.ToBeConsumedMaterialIds)
+            foreach (var tbcm in command.ToBeConsumedMaterials)
             {
-                tbcme.ToBeConsumedMaterialId = tbcmId;
-
-                tbcme.DeclaredQuanity = (decimal)0;
-
+                tbcme.ToBeConsumedMaterialId = tbcm.ToBeConsumedMaterialId;
+                tbcme.Sequence = tbcm.Sequence;
+                tbcme.DeclaredQuanity = 0;
                 Platform.Submit(tbcme);
             }
-
             return response;
-
         }
     }
 }

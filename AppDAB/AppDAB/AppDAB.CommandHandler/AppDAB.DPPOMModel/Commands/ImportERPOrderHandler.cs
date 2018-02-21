@@ -8,6 +8,7 @@ using Siemens.SimaticIT.Handler;
 using Siemens.SimaticIT.Unified;
 using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.ReadingModel;
 using Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types;
+using Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types;
 
 namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 {
@@ -157,6 +158,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                                 MaterialDefinitionId = consMatDefId,
                                 Quantity = mat.Quantity,
                                 Sequence = mat.Sequence,
+                                LogicalPosition = mat.Sequence.ToString(),
                                 MaterialSpecificationType = "Reference"
                             });
                         
@@ -166,13 +168,18 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     {
                         response.SetError(createToBeConsumedMaterialsResponse.Error.ErrorCode,createToBeConsumedMaterialsResponse.Error.ErrorMessage);
                     }
-                    List<int> toBeConsumedIds = Platform.ProjectionQuery<ToBeConsumedMaterial>().Where(m => m.WorkOrderOperation_Id == firstOperation.Id).Select(m=>m.Id).ToList();
-                   ///TODO:
-                    //var createTBCMExtResponse = Platform.CallCommand<CreateToBeConsumedMaterialExt, CreateToBeConsumedMaterialExt.Response>(new CreateToBeConsumedMaterialExt()
-                    //{
-                    //    ToBeConsumedMaterialIds = toBeConsumedIds
-                    //});
+                    Dictionary<int,string> toBeConsumedIds = Platform.ProjectionQuery<ToBeConsumedMaterial>().Where(m => m.WorkOrderOperation_Id == firstOperation.Id).ToDictionary(m=>m.Id,m=>m.LogicalPosition);
+                    var toBeConsMatInput = new CreateToBeConsumedMaterialExt
+                    {
+                        WorkOrderOperationId = firstOperation.Id,
+                        ToBeConsumedMaterials = toBeConsumedIds.Select(m=>new ToBeConsumedMaterialExtParameter { ToBeConsumedMaterialId = m.Key, Sequence = Int32.Parse(m.Value)}).ToList()
+                    };
 
+                    var createTBCMExtResponse = Platform.CallCommand<CreateToBeConsumedMaterialExt, CreateToBeConsumedMaterialExt.Response>(toBeConsMatInput);
+                    if (!createTBCMExtResponse.Succeeded)
+                    {
+                        response.SetError(createTBCMExtResponse.Error.ErrorCode, createTBCMExtResponse.Error.ErrorMessage);
+                    }
                 }
             }
 

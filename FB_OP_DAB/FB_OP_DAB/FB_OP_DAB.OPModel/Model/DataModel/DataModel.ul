@@ -209,4 +209,7 @@ WITH
     [Mandatory]
     [@Guid(49635be2-00be-4e16-8812-61a83248f0e9)]
     ToBeConsumedMaterialId AS int
+    [Mandatory]
+    [@Guid(5711604f-5b35-4d53-b1dd-524cbe0c6014)]
+    Sequence AS int
 

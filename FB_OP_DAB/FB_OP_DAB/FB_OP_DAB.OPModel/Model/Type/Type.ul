@@ -124,3 +124,11 @@ WITH
     [@Guid(80bbe843-1b8f-40db-8475-8ff04865a490)]
     Portata AS decimal
 
+[@Guid(46601f0a-6c8a-4a75-b6d5-a38e770f72c0)]
+PARAMETERTYPE ToBeConsumedMaterialExtParameter
+WITH
+    [@Guid(e30feac1-6fd1-49ee-b71e-41335cd1dd70)]
+    ToBeConsumedMaterialId AS int
+    [@Guid(c637e0c9-43fc-4f64-81ca-2ae47354cebb)]
+    Sequence AS int
+
