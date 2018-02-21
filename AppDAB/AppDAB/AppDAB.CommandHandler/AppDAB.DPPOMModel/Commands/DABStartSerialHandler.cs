@@ -43,12 +43,13 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             foreach (var toBeConsumedMat in workOrderOperation.ToBeConsumedMaterials)
             {
                 if (toBeConsumedMat != null)
-                {
-                    //Platform.ProjectionQuery<MaterialDefinition> // Id == toBeConsumedMat.MaterialDefinition => select NId
-                    var reportInput = new ReportConsumedMaterial(workOrderOperation.WorkOrder.ERPOrder, workOrderOperation.WorkOrder.Sequence.GetValueOrDefault(), toBeConsumedMat.MaterialDefinition.ToString(), toBeConsumedMat.Sequence, workOrderOperation.
-                        ); ///PRXXX Da verificare
+                {                    
+                    var MatDefNId = Platform.ProjectionQuery<MaterialDefinition>().Where(mdnid => mdnid.Id == toBeConsumedMat.MaterialDefinition).Select(mdnid => mdnid.NId).FirstOrDefault();
 
-                    var result=Platform.CallCommand<ReportConsumedMaterial, ReportConsumedMaterial.Response>(reportInput);
+                    //MSXXX quantity da calcolare
+                    var reportInput = new ReportConsumedMaterial(workOrderOperation.WorkOrder.ERPOrder, workOrderOperation.WorkOrder.Sequence.GetValueOrDefault(), toBeConsumedMat.Id, toBeConsumedMat.Quantity.Value,  MatDefNId, toBeConsumedMat.MaterialDefinition);
+                    
+                    var result = Platform.CallCommand<ReportConsumedMaterial, ReportConsumedMaterial.Response>(reportInput);
 
                     if (result.Succeeded == false)
                     {
