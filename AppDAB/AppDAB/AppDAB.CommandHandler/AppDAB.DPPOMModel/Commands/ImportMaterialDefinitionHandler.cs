@@ -26,6 +26,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         [HandlerEntryPoint]
         private ImportMaterialDefinition.Response ImportMaterialDefinitionHandler(ImportMaterialDefinition command)
         {
+            int myId=0;
             var response = new ImportMaterialDefinition.Response();
             var matDef = Platform.ProjectionQuery<MaterialDefinition>().FirstOrDefault(m => m.NId == command.MaterialCode && m.Revision == command.MaterialRevision);
             if(matDef!=null)
@@ -47,6 +48,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     response.SetError(matUpdateResponse.Error.ErrorCode, matUpdateResponse.Error.ErrorMessage);
                     return response;
                 }
+                myId = matDef.Id;
                 response.MaterialCode = matDef.NId;
                 response.MaterialRevision = matDef.Revision;
             }
@@ -99,7 +101,12 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     response.SetError(createResponse.Error.ErrorCode, createResponse.Error.ErrorMessage);
                     return response;
                 }
+                myId = createResponse.Id.GetValueOrDefault();
             }
+            
+            CreateOrUpdateMaterialDefinitionExt matDef2 = new CreateOrUpdateMaterialDefinitionExt(myId, command.Customized);
+            Platform.CallCommand<CreateOrUpdateMaterialDefinitionExt, CreateOrUpdateMaterialDefinitionExt.Response>(matDef2);
+
             response.MaterialCode = command.MaterialCode;
             response.MaterialRevision = command.MaterialRevision;
             return response;

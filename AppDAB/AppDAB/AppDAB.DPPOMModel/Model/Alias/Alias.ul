@@ -31,3 +31,4 @@ PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.Accep
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateMaterialCall AS CreateMaterialCall
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateTeamLeaderCall AS CreateTeamLeaderCall
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.GetTestCard AS GetTestCard
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateOrUpdateMaterialDefinitionExt AS CreateOrUpdateMaterialDefinitionExt
