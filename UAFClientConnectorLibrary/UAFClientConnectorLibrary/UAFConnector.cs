@@ -172,7 +172,7 @@ namespace UAFClientConnectorLibrary
         public DABGetTestCard.Response DABGetTestCard(string serialNumber)
         {
             var command = new DABGetTestCard { SerialNumber = serialNumber };
-            return CallCommand<DABGetTestCard, DABGetTestCard.Response>(command.CommandFullName, command);
+            return CallCommand<DABGetTestCard, DABGetTestCard.Response>("DABGetTestCard", command);
         }
 
         public static DABSendTestResult.Response StaticDABSendTestResult(TestResultParameter testResult)
@@ -188,7 +188,7 @@ namespace UAFClientConnectorLibrary
             {
                 Result = testResult
             };
-            return CallCommand<DABSendTestResult, DABSendTestResult.Response>(command.CommandFullName, command);
+            return CallCommand<DABSendTestResult, DABSendTestResult.Response>("DABSendTestResult", command);
         }
 
 

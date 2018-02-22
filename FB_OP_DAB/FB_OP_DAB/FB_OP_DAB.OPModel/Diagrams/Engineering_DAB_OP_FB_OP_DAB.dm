@@ -101,8 +101,8 @@
         <IsExpandedC>true</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
+        <X>624.2</X>
+        <Y>125.00000000000003</Y>
         <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.SendTestResult</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>true</IsExpandedB>

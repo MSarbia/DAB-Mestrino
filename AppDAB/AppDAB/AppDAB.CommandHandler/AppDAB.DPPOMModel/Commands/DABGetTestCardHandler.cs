@@ -23,8 +23,8 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         private DABGetTestCard.Response DABGetTestCardHandler(DABGetTestCard command)
         {
             DABGetTestCard.Response response = new DABGetTestCard.Response();
-            int? workOrderId = Platform.ProjectionQuery<ProducedMaterialItem>().Include(pmi => pmi.WorkOrder).Include(pmi => pmi.MaterialItem)
-                .Where(pmi => pmi.MaterialItem.SerialNumberCode == command.SerialNumber).Select(pmi => pmi.WorkOrder_Id).FirstOrDefault();
+            int? workOrderId = Platform.ProjectionQuery<ToBeProducedMaterial>().Include(tpm => tpm.WorkOrderOperation).Include(tpm => tpm.MaterialItem)
+                .Where(pmi => pmi.MaterialItem.SerialNumberCode == command.SerialNumber).Select(tpm => tpm.WorkOrderOperation.WorkOrder_Id).FirstOrDefault();
             if(workOrderId == null)
             {
                 response.SetError(-1000, $"Nessun Ordine trovato per il seriale {command.SerialNumber}");

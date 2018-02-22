@@ -10,10 +10,8 @@ namespace UAFClientConnectorLibrary.DataTypes
     {
         public DABGetTestCard()
         {
-            CommandFullName = "DABGetTestCard";
         }
-
-        public string CommandFullName { get; }
+        
         public string SerialNumber { get; set; }
 
         public class Response: BaseResponse
