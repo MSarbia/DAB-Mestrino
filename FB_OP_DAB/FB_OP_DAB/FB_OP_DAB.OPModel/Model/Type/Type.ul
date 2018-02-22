@@ -7,9 +7,7 @@ WITH
     [Optional]
     [@Guid(8fd3f31c-f86b-4bae-8c5d-cdcc29bb4b8f)]
     [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, f4d77975-5d51-428c-9c73-108cead22450)]
-    Absorptions AS list of Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.AbsorptionParameter
-    [@Guid(72644368-91c8-4dc7-8e0a-e932ca9bd08d)]
-    WorkOrderId AS int
+    Assorbimenti AS list of Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.AbsorptionParameter
     [Optional]
     [Length = 255]
     [@Guid(8d2ddbb6-91d9-4eb4-87da-e341c83aa2dd)]
@@ -26,9 +24,6 @@ WITH
     [Optional]
     [@Guid(62198177-3045-4d25-b5ef-6380c7a18d54)]
     CorrenteASeccoPercent AS decimal
-    [@Guid(b7d252a3-95c0-43b9-8d98-5759b8ea50f7)]
-    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 6e676dfb-acd7-40f3-bb6b-55afdccf549c)]
-    Results AS list of Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestResult.SerialNumber
 
 [@Guid(f4d77975-5d51-428c-9c73-108cead22450)]
 PARAMETERTYPE AbsorptionParameter
@@ -64,9 +59,6 @@ WITH
 [@Guid(dc325dc2-22c8-4c4b-8297-0269c6d7107e)]
 PARAMETERTYPE TestResultParameter
 WITH
-    [@Guid(635ef9d6-8cf4-4c52-8628-cf80ee4ed3c1)]
-    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 3ced6661-4b2b-47b3-8087-cce5ba2ba1e0)]
-    TestCard AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestCard.WorkOrderId
     [Length = 255]
     [@Guid(efced1c2-e9b6-4984-8949-f572b31009d8)]
     SerialNumber AS string
@@ -76,28 +68,28 @@ WITH
     DescrizioneEsito AS string
     [Optional]
     [@Guid(3b6f1435-31cf-4d4a-a110-f5ff6cf47a94)]
-    PotenzaASecco AS decimal
+    TensioneIsolamento AS decimal
     [Optional]
     [@Guid(08b4626a-eddc-4224-b426-7bc1fdadf552)]
-    CorrenteASecco AS decimal
+    CorrenteDiTerra AS decimal
     [Optional]
     [@Guid(b9eb95c7-9539-46ef-a95e-6f93344cf837)]
     ResistenzaDiTerra AS decimal
     [Optional]
     [@Guid(b67929ff-6b05-4cde-9bc4-b01ac9bf9aad)]
-    RigiditaDielettrica AS decimal
+    CorrenteRigidita AS decimal
     [Optional]
     [@Guid(3cbc2ea4-539b-4021-8dca-0cc383cb28e8)]
     ResistenzaIsolamento AS decimal
     [Optional]
     [@Guid(3e7efbc5-d446-4790-bc3a-dc066ed60cf3)]
-    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 73f9dea5-7a29-4a23-817f-3106953c418e)]
-    AbsorptionResults AS list of Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.AbsorptionResult.Nome
-    [@Guid(dd9ac928-8a45-4ef1-8046-1209db060c43)]
-    Data AS DateTime
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, d6e48595-af13-417e-80c1-9dc9348ad3e8)]
+    Assorbimenti AS list of Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.AbsorptionResultParameter
     [Length = 255]
     [@Guid(e243c676-7b36-4cae-af1c-51e8eecfdc10)]
     Esito AS string
+    [@Guid(cc3ffd03-5697-47ea-b894-513072abd738)]
+    TensioneRigidita AS decimal
 
 [@Guid(d6e48595-af13-417e-80c1-9dc9348ad3e8)]
 PARAMETERTYPE AbsorptionResultParameter
@@ -123,6 +115,12 @@ WITH
     [Optional]
     [@Guid(80bbe843-1b8f-40db-8475-8ff04865a490)]
     Portata AS decimal
+    [@Guid(2cc50274-4198-430c-8111-75131a2f8b44)]
+    FattoreDiPotenza AS decimal
+    [@Guid(0ab5abac-43cf-4ad4-8f3b-0d50cf1c0fd6)]
+    SquilibrioCorrenti AS decimal
+    [@Guid(b7464b74-16bf-4474-b180-f91dc6771063)]
+    PotenzaASecco AS decimal
 
 [@Guid(46601f0a-6c8a-4a75-b6d5-a38e770f72c0)]
 PARAMETERTYPE ToBeConsumedMaterialExtParameter

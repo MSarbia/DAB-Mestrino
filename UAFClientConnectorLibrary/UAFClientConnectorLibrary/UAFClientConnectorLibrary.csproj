@@ -61,6 +61,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CertificationManager.cs" />
+    <Compile Include="DataTypes\AbsorptionParameter.cs" />
+    <Compile Include="DataTypes\AbsorptionResultParameter.cs" />
+    <Compile Include="DataTypes\DABSendTestResult.cs" />
+    <Compile Include="DataTypes\ExecutionError.cs" />
+    <Compile Include="DataTypes\DABGetTestCard.cs" />
+    <Compile Include="DataTypes\Response.cs" />
+    <Compile Include="DataTypes\TestCardParameter.cs" />
+    <Compile Include="DataTypes\TestResultParameter.cs" />
     <Compile Include="JSONSerializer.cs" />
     <Compile Include="TokenManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

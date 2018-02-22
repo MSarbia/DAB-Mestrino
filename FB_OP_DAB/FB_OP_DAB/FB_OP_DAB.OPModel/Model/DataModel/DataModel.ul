@@ -53,7 +53,7 @@ WITH
 [@GuidId(fa56866d-3c4a-47da-80ae-0e2792b6aea8)]
 ENTITY TestResult
 WITH
-    [OneToMany BackNavigation = TestCard.TestResult OnDeleteCascade Simple]
+    [OneToMany BackNavigation = TestCard.TestResults OnDeleteCascade Simple]
     [Mandatory]
     [@Guid(59ef6df9-912c-496e-848b-91b768329f3e)]
     [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 84a4479b-4496-4afa-83f8-fcec25e4b0d3)]
@@ -73,15 +73,17 @@ WITH
     [@Guid(430858ae-16b5-4a83-8b5b-1dfebed8ed72)]
     Esito AS string
     [@Guid(a3ded13b-8f2e-4bad-a012-56b7dc2e0ef9)]
-    PotenzaASecco AS decimal
+    TensioneIsolamento AS decimal
     [@Guid(0ab7ea74-b02c-410f-97de-89de2b75d7b0)]
-    CorrenteASecco AS decimal
+    CorrenteDiTerra AS decimal
     [@Guid(f02e8078-3888-44c2-98a1-b6121574ce19)]
     ResistenzaDiTerra AS decimal
     [@Guid(4c2860e6-c4e1-41ed-9a2f-c20211a54d5c)]
-    RigiditaDielettrica AS decimal
+    CorrenteRigidita AS decimal
     [@Guid(ce59e8be-4402-4292-9193-77a1285896fb)]
     ResistenzaIsolamento AS decimal
+    [@Guid(5502fde3-1686-4ce7-b65e-846e0e618ee1)]
+    TensioneRigidita AS decimal
 
 [@Guid(95cdaa5c-bc18-4110-b82d-4c31ad8b3b8e)]
 [@GuidId(b40f90d2-7ed6-4a35-8662-a696041bb833)]
@@ -108,6 +110,12 @@ WITH
     AmpereFase3 AS decimal
     [@Guid(f5f1d690-f4e7-4c81-bab6-2632c66ca837)]
     AmpereFase2 AS decimal
+    [@Guid(99c9f6c4-88ae-4cd3-8076-4f0b74ac2a33)]
+    FattoreDiPotenza AS decimal
+    [@Guid(164d38cf-8585-4e08-9cc4-e1ed3ff4bb05)]
+    SquilibrioCorrenti AS decimal
+    [@Guid(5a8aec13-6334-42c8-b669-2101fe16c378)]
+    PotenzaASecco AS decimal
 
 [@Guid(17b6fd20-dfb2-42dd-a7d7-de6d0769686a)]
 [@GuidId(0f660e8c-af1e-4b90-9d23-84f46b4cedab)]

@@ -33,18 +33,18 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             string nineSpaces = "         ";
             //string consumedMaterialDef = /* 9 spazi +*/command.MaterialDefinitionNId;
             int consumedMaterialSequence = 0;
-            UnplannedMat reportConsumedMaterial = new UnplannedMat(command.ERPOrder, command.OrderSequence, consumedMaterialDef, consumedMaterialSequence,command.ConsumedQuantity);
+            //UnplannedMat reportConsumedMaterial = new UnplannedMat(command.ERPOrder, command.OrderSequence, consumedMaterialDef, consumedMaterialSequence,command.ConsumedQuantity);
 
-            var result = InforConnector.ReportConsumedMaterial(reportConsumedMaterial);
+            //var result = InforConnector.ReportConsumedMaterial(reportConsumedMaterial);
 
-            if (result.InforCallSucceeded == false)
-            {
-                response.SetError(-1001, result.Error);
-            }
-            else if (result.Error != null)
-            {
-                response.SetError(-1002, result.Error);
-            }
+            //if (result.InforCallSucceeded == false)
+            //{
+            //    response.SetError(-1001, result.Error);
+            //}
+            //else if (result.Error != null)
+            //{
+            //    response.SetError(-1002, result.Error);
+            //}
 
             return response;
         }

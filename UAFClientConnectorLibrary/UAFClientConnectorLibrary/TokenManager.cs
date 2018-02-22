@@ -97,7 +97,7 @@ namespace UAFClientConnectorLibrary
                                 new Claim(ClaimTypes.Name, certificate.Issuer),
                                 new Claim(ClaimTypes.Thumbprint, certificate.Thumbprint),
                                 new Claim("urn:realm", "x.509"),
-                                new Claim("urn:originator", "AppTcM4DM")
+                                new Claim("urn:originator", "AppDAB")
                             }),
                     TokenIssuerName = "urn:unifiedoauth",
                     AppliesToAddress = "urn:unified",

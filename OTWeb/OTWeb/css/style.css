@@ -133,14 +133,14 @@ body {
 
 .HeaderCell {
     display: table-cell;
-    background-color: #004F79;
+    background-color: #00490e;
     color: white;
     column-span: all;
 }
 
 .HeaderCellSx {
     display: table-cell;
-    background-color: #004F79;
+    background-color: #00490e;
     color: white;
     column-span: all;
     width: 20%;
@@ -149,7 +149,7 @@ body {
 
 .HeaderCellCen {
     display: table-cell;
-    background-color: #004F79;
+    background-color: #00490e;
     color: white;
     column-span: all;
     vertical-align: middle;
@@ -161,7 +161,7 @@ body {
 
 .HeaderCellDx {
     display: table-cell;
-    background-color: #004F79;
+    background-color: #00490e;
     color: white;
     column-span: all;
     width: 10%;
@@ -174,7 +174,7 @@ body {
     display: table-cell;
     height: 100%;
     width: 200px;
-    border-right: solid 2px #004F79;
+    border-right: solid 2px #00490e;
     padding-top: 50px;
 }
 
@@ -182,7 +182,7 @@ body {
     display: table-cell;
     vertical-align: top;
     height: 90%;
-    border-right: solid 2px #004F79;
+    border-right: solid 2px #00490e;
 }
 
 .CellRx {

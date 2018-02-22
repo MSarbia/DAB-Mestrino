@@ -11,9 +11,8 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            UAFConnector connector = new UAFConnector();
-            connector.Initialize();
-            connector.HttpCallCommand("pippo", "pluto");
+            UAFConnector.StaticDABGetTestCard("pippo");
+            //UAFConnector.GetTestCard("pippo");
         }
     }
 }

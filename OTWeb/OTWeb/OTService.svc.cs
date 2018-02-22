@@ -5,6 +5,7 @@ using OTWeb.CallManagement;
 using System.Linq;
 using SmartWatchConnectorLibrary;
 using System.Xml.Linq;
+using UAFServerConnectorLibrary;
 
 namespace OTWeb
 {
@@ -47,12 +48,13 @@ namespace OTWeb
                     });
                 }
             }
-
         }
         
 
         public LoginResponse Login(LoginRequest loginRequest)
         {
+            var uafConnector = new UAFConnector(loginRequest.User, loginRequest.Password);
+            //uafConnector.CallCommand<>
             var response = new LoginResponse
             {
                 Succeeded = true,

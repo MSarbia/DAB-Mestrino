@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using UAFClientConnectorLibrary.DataTypes;
 
 namespace UAFClientConnectorLibrary
 {
@@ -161,7 +162,36 @@ namespace UAFClientConnectorLibrary
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
         }
 
-        
+
+        public static DABGetTestCard.Response StaticDABGetTestCard(string serialNumber)
+        {
+            UAFConnector connector = new UAFConnector();
+            connector.Initialize();
+            return connector.DABGetTestCard(serialNumber);
+        }
+
+        public DABGetTestCard.Response DABGetTestCard(string serialNumber)
+        {
+            var command = new DABGetTestCard { SerialNumber = serialNumber };
+            return CallCommand<DABGetTestCard, DABGetTestCard.Response>(command.CommandFullName, command);
+        }
+
+        public static DABSendTestResult.Response StaticDABSendTestResult(TestResultParameter testResult)
+        {
+            UAFConnector connector = new UAFConnector();
+            connector.Initialize();
+            return connector.DABSendTestResult(testResult);
+        }
+
+        public DABSendTestResult.Response DABSendTestResult(TestResultParameter testResult)
+        {
+            var command = new DABSendTestResult
+            {
+                Result = testResult
+            };
+            return CallCommand<DABSendTestResult, DABSendTestResult.Response>(command.CommandFullName, command);
+        }
+
 
         /// <summary>
         /// Invokes the specified command.
@@ -212,33 +242,33 @@ namespace UAFClientConnectorLibrary
     /// <summary>
     /// Interface to implement for a new command
     /// </summary>
-    public interface IDISCommand
-    {
-        /// <summary>
-        /// Gets the full name of the command.
-        /// </summary>
-        string CommandFullName { get; }
+    //public interface IDISCommand
+    //{
+    //    /// <summary>
+    //    /// Gets the full name of the command.
+    //    /// </summary>
+    //    string CommandFullName { get; }
 
-        /// <summary>
-        /// Gets the name of the App where the command is deployed.
-        /// </summary>
-        string CommandAppName { get; }
+    //    /// <summary>
+    //    /// Gets the name of the App where the command is deployed.
+    //    /// </summary>
+    //    string CommandAppName { get; }
 
-        /// <summary>
-        /// Gets the payload to POST
-        /// </summary>
-        /// <returns>A string contaning the payload of the message</returns>
-        string GetPayload();
+    //    /// <summary>
+    //    /// Gets the payload to POST
+    //    /// </summary>
+    //    /// <returns>A string contaning the payload of the message</returns>
+    //    string GetPayload();
 
-        /// <summary>
-        /// Get the response of the message
-        /// </summary>
-        /// <param name="message">Content message</param>
-        /// <param name="statusCode">Http status code</param>
-        /// <returns></returns>
-        Response GetResponse(string message, HttpStatusCode statusCode);
+    //    /// <summary>
+    //    /// Get the response of the message
+    //    /// </summary>
+    //    /// <param name="message">Content message</param>
+    //    /// <param name="statusCode">Http status code</param>
+    //    /// <returns></returns>
+    //    Response GetResponse(string message, HttpStatusCode statusCode);
 
-    }
+    //}
 
     /// <summary>
     /// Represent a command response
@@ -267,44 +297,44 @@ namespace UAFClientConnectorLibrary
     /// <summary>
     /// Provides a base response class for command responses
     /// </summary>
-    public abstract class Response
-    {
+    //public abstract class Response
+    //{
 
-        public ResponseError Error { get; set; }
+    //    public ResponseError Error { get; set; }
 
-        /// <summary>
-        /// Gets if the required command is completed with success.
-        /// </summary>
-        public bool Succeeded { get; set; }
+    //    /// <summary>
+    //    /// Gets if the required command is completed with success.
+    //    /// </summary>
+    //    public bool Succeeded { get; set; }
 
-        /// <summary>
-        /// Initializes an instance of the Siemens.SimaticIT.Unified.Common.Response class
-        //  with default values
-        /// </summary>
-        protected Response()
-        {
-            this.Error = new ResponseError();
-        }
+    //    /// <summary>
+    //    /// Initializes an instance of the Siemens.SimaticIT.Unified.Common.Response class
+    //    //  with default values
+    //    /// </summary>
+    //    protected Response()
+    //    {
+    //        this.Error = new ResponseError();
+    //    }
 
-        /// <summary>
-        /// Sets the custom error code and its associated message
-        /// </summary>
-        /// <param name="errorCode">Error code</param>
-        /// <param name="errorMessage">Error message</param>
-        public void SetError(int errorCode, string errorMessage)
-        {
-            this.Error.ErrorCode = errorCode;
-            this.Error.ErrorDescription = errorMessage;
-            this.Succeeded = false;
-        }
-    }
+    //    /// <summary>
+    //    /// Sets the custom error code and its associated message
+    //    /// </summary>
+    //    /// <param name="errorCode">Error code</param>
+    //    /// <param name="errorMessage">Error message</param>
+    //    public void SetError(int errorCode, string errorMessage)
+    //    {
+    //        this.Error.ErrorCode = errorCode;
+    //        this.Error.ErrorDescription = errorMessage;
+    //        this.Succeeded = false;
+    //    }
+    //}
 
-    public class ResponseError
-    {
-        public int ErrorCode { get; set; }
+    //public class ResponseError
+    //{
+    //    public int ErrorCode { get; set; }
 
-        public string ErrorDescription { get; set; }
+    //    public string ErrorDescription { get; set; }
 
-    }
+    //}
 
 }

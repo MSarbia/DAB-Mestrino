@@ -25,11 +25,38 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         private SendTestResult.Response SendTestResultHandler(SendTestResult command)
         {
             var response = new SendTestResult.Response();
-            //var testCard = Platform.Query<ITestCard>().FirstOrDefault(t => t.WorkOrderId == command.Result.SerialNumber);
-            //if (testCard == null)
-            //{
 
-            //}
+            Guid testCardId = Platform.Query<ITestCard>().Where(t => t.WorkOrderId == command.WorkOrderId).Select(t=>t.Id).FirstOrDefault();
+            var testResult = Platform.Create<ITestResult>();
+            testResult.TestCard_Id = testCardId;
+            testResult.CorrenteDiTerra = command.Result.CorrenteDiTerra;
+            testResult.CorrenteRigidita = command.Result.CorrenteRigidita;
+            testResult.Data = DateTime.UtcNow;
+            testResult.DescrizioneEsito = command.Result.DescrizioneEsito;
+            testResult.Esito = command.Result.Esito;
+            testResult.ResistenzaDiTerra = command.Result.ResistenzaDiTerra;
+            testResult.ResistenzaIsolamento = command.Result.ResistenzaIsolamento;
+            testResult.SerialNumber = command.Result.SerialNumber;
+            testResult.TensioneIsolamento = command.Result.TensioneIsolamento;
+            testResult.TensioneRigidita = command.Result.TensioneRigidita;
+
+            foreach(var ass in command.Result.Assorbimenti)
+            {
+                var newAss = Platform.Create<IAbsorptionResult>();
+                newAss.AmpereFase1 = ass.AmpereFase1;
+                newAss.AmpereFase2 = ass.AmpereFase2;
+                newAss.AmpereFase3 = ass.AmpereFase3;
+                newAss.FattoreDiPotenza = ass.FattoreDiPotenza;
+                newAss.Nome = ass.Nome;
+                newAss.Portata = ass.Portata;
+                newAss.PotenzaASecco = ass.PotenzaASecco;
+                newAss.Pressione = ass.Pressione;
+                newAss.SquilibrioCorrenti = ass.SquilibrioCorrenti;
+                newAss.TensioneProva = ass.TensioneProva;
+                testResult.AbsorptionResults.Add(newAss);
+            }
+
+            Platform.Submit(testResult);
 
             return response;
         }

@@ -41,7 +41,6 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
 
             response.TestCard = new Types.TestCardParameter
             {
-                WorkOrderId = testCard.WorkOrderId,
                 CodiceProdotto = testCard.CodiceProdotto,
                 CorrenteASecco = testCard.CorrenteASecco,
                 CorrenteASeccoPercent = testCard.CorrenteASeccoPercent,
@@ -50,7 +49,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             };
             foreach (var a in testCard.Absorptions)
             {
-                response.TestCard.Absorptions.Add(new Types.AbsorptionParameter
+                response.TestCard.Assorbimenti.Add(new Types.AbsorptionParameter
                 {
                     Nome = a.Nome,
                     Ampere = a.Ampere,
