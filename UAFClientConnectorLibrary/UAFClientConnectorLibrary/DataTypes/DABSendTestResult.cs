@@ -10,10 +10,8 @@ namespace UAFClientConnectorLibrary.DataTypes
     {
         public DABSendTestResult()
         {
-            CommandFullName = "DABSendTestResult";
         }
-
-        public string CommandFullName { get; }
+        
 
         public TestResultParameter Result { get; set; }
 

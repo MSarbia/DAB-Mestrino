@@ -11,7 +11,7 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            UAFConnector.StaticDABGetTestCard("pippo");
+            var response =  UAFConnector.StaticDABGetTestCard("00000000001");
             //UAFConnector.GetTestCard("pippo");
         }
     }
