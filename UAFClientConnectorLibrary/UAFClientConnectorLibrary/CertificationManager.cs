@@ -26,7 +26,7 @@ namespace UAFClientConnectorLibrary
 
             try
             {
-                certificates = store.Certificates.Find(X509FindType.FindByIssuerName, moduleName, false);
+                certificates = store.Certificates.Find(X509FindType.FindByIssuerDistinguishedName, moduleName, false);
             }
             catch (CryptographicException) { }
 
