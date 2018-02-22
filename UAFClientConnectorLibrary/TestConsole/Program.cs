@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UAFClientConnectorLibrary;
+using UAFClientConnectorLibrary.DataTypes;
 
 namespace TestConsole
 {
@@ -11,8 +12,38 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            UAFConnector.StaticDABGetTestCard("pippo");
-            //UAFConnector.GetTestCard("pippo");
+            DABGetTestCard.Response response = UAFConnector.StaticDABGetTestCard("000000000001");
+
+
+
+            TestResultParameter testResult = new TestResultParameter
+            {
+                CorrenteDiTerra = 1,
+                CorrenteRigidita = 1,
+                DescrizioneEsito = "",
+                Esito = "PASS",
+                ResistenzaDiTerra = 1,
+                ResistenzaIsolamento = 1,
+                SerialNumber = "000000000001",
+                TensioneIsolamento = 1,
+                TensioneRigidita = 1,
+            };
+
+            //per ogni assorbimento
+            testResult.Assorbimenti.Add(new AbsorptionResultParameter
+            {
+                Nome = "ASS1",
+                AmpereFase1 = 1,
+                AmpereFase2 = 1,
+                AmpereFase3 = 1,
+                FattoreDiPotenza = 1,
+                Portata = 1,
+                PotenzaASecco = 1,
+                Pressione = 1,
+                SquilibrioCorrenti = 1,
+                TensioneProva = 1,
+            });
+            UAFConnector.StaticDABSendTestResult(testResult);
         }
     }
 }

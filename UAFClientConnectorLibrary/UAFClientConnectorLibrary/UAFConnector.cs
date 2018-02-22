@@ -85,8 +85,7 @@ namespace UAFClientConnectorLibrary
 
             if (this.x509Certificate == null)
             {
-                certificationIsValid =
-                    CertificationManager.GetCertificate(CertificateModuleName, out this.x509Certificate);
+                certificationIsValid = CertificationManager.GetCertificate(CertificateModuleName, out this.x509Certificate);
             }
 
             if (certificationIsValid)
@@ -200,7 +199,7 @@ namespace UAFClientConnectorLibrary
         /// <typeparam name="TResponse">Specify the response of the called command</typeparam>
         /// <param name="command">Specify command parameters.</param>
         /// <returns>Command execution response</returns>
-        public TResponse CallCommand<TCommand, TResponse>(string commandName, TCommand command)
+        public TResponse CallCommand<TCommand, TResponse>(string commandName, TCommand command) where TResponse : BaseResponse,new()
         {
             var resultServiceLayer = string.Empty;
 
@@ -234,7 +233,28 @@ namespace UAFClientConnectorLibrary
             while (httpMessageResponse.StatusCode == HttpStatusCode.Unauthorized &&
             retryAttempt < MaxRetryAttempt);
 
-            return JSONSerializer.Deserialize<TResponse>(resultServiceLayer);
+            if(httpMessageResponse.StatusCode == HttpStatusCode.OK)
+            {
+                return JSONSerializer.Deserialize<TResponse>(resultServiceLayer);
+            }
+            else
+            {
+                try
+                {
+                    return JSONSerializer.Deserialize<TResponse>(resultServiceLayer);
+                }
+                catch(Exception)
+                {
+                    var response = new TResponse();
+                    response.Succeeded = false;
+                    response.Error = new ExecutionError
+                    {
+                        ErrorCode = (int)httpMessageResponse.StatusCode,
+                        ErrorMessage = httpMessageResponse.ReasonPhrase
+                    };
+                    return response;
+                }
+            }
         }
 
     }
