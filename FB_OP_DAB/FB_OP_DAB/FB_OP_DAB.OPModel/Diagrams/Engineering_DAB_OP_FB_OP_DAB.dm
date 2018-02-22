@@ -16,8 +16,8 @@
         <X>212.20000000000005</X>
         <Y>14.599999999999994</Y>
         <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateOrUpdateMaterialDefinitionExt</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
+        <IsExpandedA>false</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>

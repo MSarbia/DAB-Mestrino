@@ -12,7 +12,7 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            DABGetTestCard.Response response = UAFConnector.StaticDABGetTestCard("000000000001");
+            DABGetTestCard.Response response = UAFConnector.StaticDABGetTestCard("00000000001");
 
 
 
@@ -24,7 +24,7 @@ namespace TestConsole
                 Esito = "PASS",
                 ResistenzaDiTerra = 1,
                 ResistenzaIsolamento = 1,
-                SerialNumber = "000000000001",
+                SerialNumber = "00000000001",
                 TensioneIsolamento = 1,
                 TensioneRigidita = 1,
             };
