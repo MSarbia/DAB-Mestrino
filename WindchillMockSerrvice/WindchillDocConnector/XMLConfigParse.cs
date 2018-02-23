@@ -31,9 +31,9 @@ namespace WindchillDocConnectorLibrary
 
         }
 
-        static public List<String> getContentRoleTypes(string SoftTypes)
+        static public Dictionary<string, string> getContentRoleTypes(string SoftTypes)
         {
-            List<String> contentRoleTypes = new List<String>();
+            Dictionary<string, string> contentRoleTypes = new Dictionary<string, string>();
 
             XDocument xdoc = XDocument.Load("WindchillDocService_Config.xml");
 
@@ -48,7 +48,8 @@ namespace WindchillDocConnectorLibrary
             {
                 foreach (var lv in lv1.CRT)
                 {
-                    contentRoleTypes.Add(lv.Value);
+                    string docType = lv.Attribute("docType").Value;
+                    contentRoleTypes.Add(lv.Value, docType);
                 }
             }
             return contentRoleTypes;

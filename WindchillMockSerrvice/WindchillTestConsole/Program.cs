@@ -13,11 +13,17 @@ namespace WindchillTestConsole
                 {
                     Console.WriteLine("ProductCode: ");
                     string productCode = Console.ReadLine();
+                    Console.WriteLine("101110060");
                     Console.WriteLine("Revision: ");
                     string revision = Console.ReadLine();
                     using (var docConnector = new WindchillDocConnector())
                     {
-                        docConnector.DownloadDocList(productCode, revision);
+                        var docs = docConnector.GetDocumentList(productCode, revision);
+                        foreach (var doc in docs)
+                        {
+                            Console.WriteLine(doc.Number + " " + doc.Revision + " " + doc.SoftType);
+                            docConnector.DownloadDoc(doc);
+                        }
                     }
                     Console.ReadLine();
 

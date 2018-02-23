@@ -63,8 +63,6 @@ C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bi
 C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\WindchillServiceDocMock.pdb
 C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.csprojResolveAssemblyReference.cache
-C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.csproj.CoreCompileInputs.cache
 C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.dll
 C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.pdb
 C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\bin\roslyn\csc.exe
