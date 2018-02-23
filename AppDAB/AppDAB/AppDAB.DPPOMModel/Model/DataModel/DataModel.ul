@@ -152,3 +152,31 @@ ENTITYLINK ToBeConsumedMaterialExt TO Engineering.DAB.OperationalData.FB_OP_DAB.
 [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, cfa46fcd-508b-4072-8bfe-f6965922f6e1)]
 ENTITYLINK WorkOrderExt TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.WorkOrderExt
 
+///This entity represents a single document. It can be linked to Materials, Operations, Steps and Tools.
+[@Guid(364fa835-63bf-48f8-ae5d-c3d56ea78ffa)]
+[@GuidRef(43505cfd-dbd3-4fc5-87ae-cda08d8af79c, c0bc2550-860b-45f0-8af8-220d99eb106f)]
+ENTITYLINK Document TO Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.Document
+
+///This entity defines a Step activity that is necessary to manufacture an intermediate part or finished product. It is characterized by a set of resources that must be used to complete the job (that is, Materials, Tools, Documents).  It can be referenced by more than one Operation.
+[@Guid(680f6656-dcd4-49b7-92fb-40b8fd93b98e)]
+[@GuidRef(43505cfd-dbd3-4fc5-87ae-cda08d8af79c, 4d88e28a-7d03-43d5-9548-d147900c8bb0)]
+ENTITYLINK Step TO Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.Step
+
+///This entity defines a Process activity that is necessary to manufacture an intermediate part or finished product. 
+///It is characterized by a set of resources that must be used to complete the job (that is, Materials, Tools, Equipment, Documents). 
+///It can be referenced by more than one Process.
+[@Guid(e0233ac1-a7ad-4dce-a1ca-391255d06d5a)]
+[@GuidRef(43505cfd-dbd3-4fc5-87ae-cda08d8af79c, b84119e0-9595-4129-9c14-b25d8367a051)]
+ENTITYLINK Operation TO Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.Operation
+
+///This entity represents a one-to-one dependency between two Operations belonging to the same Process (that is, a transition in the routing of the Process Operations).
+[@Guid(51614d2e-7654-4ed3-9bcb-529042948d83)]
+[@GuidRef(43505cfd-dbd3-4fc5-87ae-cda08d8af79c, 8ecb1afc-f14a-4135-a067-8bbf1e939150)]
+ENTITYLINK OperationDependency TO Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.OperationDependency
+
+///This entity represents the type of dependency that is to be created between two distinct entities. 
+///The possible values are: **AfterStart** and **AfterEnd**.
+[@Guid(73de3fca-f400-46ff-a643-b1327421d708)]
+[@GuidRef(43505cfd-dbd3-4fc5-87ae-cda08d8af79c, 3b281008-bd6d-4984-95d3-03f27d22e508)]
+ENTITYLINK DependencyType TO Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.DependencyType
+
