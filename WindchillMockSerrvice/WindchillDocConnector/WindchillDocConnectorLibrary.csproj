@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WindchillDocInfo.cs" />
+    <Compile Include="WindchillDoc.cs" />
     <Compile Include="WindchillDocConnector.cs" />
     <Compile Include="Connected Services\WindchillDocService\Reference.cs">
       <AutoGen>True</AutoGen>

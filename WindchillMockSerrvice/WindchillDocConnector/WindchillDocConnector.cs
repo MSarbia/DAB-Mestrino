@@ -107,24 +107,7 @@ namespace WindchillDocConnectorLibrary
             }
             return docList;
         }
-
-        public class WindchillDocInfo
-        {
-            public string SoftType { get; set; }
-            public string Number { get; set; }
-            public string Revision { get; set; }
-            public string ContentRole { get; set; }
-            public string DocType { get; set; }
-        }
-
-        public class WindchillDoc
-        {
-            public string Name { get; set; }
-            public string Revision { get; set; }
-            public byte[] Content { get; set; }
-            public string DocType { get; set; }
-        }
-
+        
         private byte[] GetAttachmentData(byte[] data, byte[] boundary1, byte[] boundary2)
         {
             if (data == null || boundary1 == null || boundary2 == null)
