@@ -69,13 +69,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.PublicModel.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types">
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ProjectionModel">
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ProjectionModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ProjectionModel.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ReadingModel">
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ReadingModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ReadingModel.dll</HintPath>
     </Reference>
     <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands">
@@ -275,6 +278,8 @@
     <Compile Include="AppDAB.DPPOMModel\Commands\DABImportDocumentsHandlerExecution.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\DABReplaceMaterialHandler.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\DABReplaceMaterialHandlerExecution.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\DABSendTestResultHandler.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\DABSendTestResultHandlerExecution.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\DABStartSerialHandler.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\DABStartSerialHandlerExecution.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\GetSerialsHandler.cs" />

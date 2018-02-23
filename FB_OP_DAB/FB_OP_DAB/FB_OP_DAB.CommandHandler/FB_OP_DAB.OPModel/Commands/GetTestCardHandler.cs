@@ -6,6 +6,7 @@ using Siemens.SimaticIT.Unified.Common.Information;
 using Siemens.SimaticIT.Handler;
 using Siemens.SimaticIT.Unified;
 using Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel;
+using Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types;
 
 namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
 {
@@ -30,6 +31,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             {
                 testCard = Platform.Create<ITestCard>();
                 testCard.WorkOrderId = command.WorkOrderId;
+                testCard.CodiceProdotto = "FinalMatDef1";
                 //foreach(valore ritornato dal soap service)
                 //{ 
                 var absorption = Platform.Create<IAbsorption>();
@@ -45,7 +47,8 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
                 CorrenteASecco = testCard.CorrenteASecco,
                 CorrenteASeccoPercent = testCard.CorrenteASeccoPercent,
                 PotenzaASecco = testCard.PotenzaASecco,
-                PotenzaASeccoPercent= testCard.PotenzaASeccoPercent
+                PotenzaASeccoPercent= testCard.PotenzaASeccoPercent,
+                Assorbimenti = new List<AbsorptionParameter>()
             };
             foreach (var a in testCard.Absorptions)
             {
