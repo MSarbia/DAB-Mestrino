@@ -26,7 +26,7 @@ namespace UAFClientConnectorLibrary.DataTypes
        
         public decimal? Portata { get; set; }
        
-        public decimal PotenzaASecco { get; set; }
+        public decimal Watt { get; set; }
        
         public decimal? Pressione { get; set; }
         

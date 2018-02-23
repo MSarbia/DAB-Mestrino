@@ -11,6 +11,7 @@ using System.Drawing.Imaging;
 using System.Web;
 using System.Net;
 using System.Net.Http;
+using System.Configuration;
 
 namespace WindchillDocConnectorLibrary
 {
@@ -24,7 +25,15 @@ namespace WindchillDocConnectorLibrary
         public WindchillDocConnector()
         {
             _docClient = new ExtClient("ExtPort");
+            ExeConfigurationFileMap map = new ExeConfigurationFileMap();
+            map.ExeConfigFilename = "WindchillDocConnectorLibrary.dll.config";
 
+            Configuration libConfig = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
+
+            AppSettingsSection section = (libConfig.GetSection("appSettings") as AppSettingsSection);
+
+            _userName = section.Settings["WindchillUser"].Value;
+            _password = section.Settings["WindchillPassword"].Value;
             //_docClient.ClientCredentials.UseIdentityConfiguration = true;
             //_docClient.ClientCredentials.UserName.UserName = "wcadmin";
             //_docClient.ClientCredentials.UserName.Password = "DWTadmin";
