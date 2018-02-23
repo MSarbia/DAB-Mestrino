@@ -38,7 +38,7 @@ namespace TestConsole
                 AmpereFase3 = 1,
                 FattoreDiPotenza = 1,
                 Portata = 1,
-                PotenzaASecco = 1,
+                Watt = 1,
                 Pressione = 1,
                 SquilibrioCorrenti = 1,
                 TensioneProva = 1,

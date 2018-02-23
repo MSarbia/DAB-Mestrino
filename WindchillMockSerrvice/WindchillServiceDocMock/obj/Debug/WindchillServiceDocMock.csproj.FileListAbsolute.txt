@@ -99,3 +99,4 @@ C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\Windchil
 C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.csprojResolveAssemblyReference.cache
 C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.dll
 C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.pdb
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillServiceDocMock\obj\Debug\WindchillServiceDocMock.csprojResolveAssemblyReference.cache

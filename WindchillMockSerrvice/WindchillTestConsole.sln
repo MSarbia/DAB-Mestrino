@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindchillTestConsole", "WindchillTestConsole\WindchillTestConsole.csproj", "{F479BA77-E2B7-487D-AB4C-C4F39A8B38E0}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "WindchillDocMockServiceWebSetup", "WindchillDocMockServiceWebSetup\WindchillDocMockServiceWebSetup.vdproj", "{834BA0D4-5EB8-4D92-80B0-D283FC3D3A30}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindchillDocConnectorLibrary", "WindchillDocConnector\WindchillDocConnectorLibrary.csproj", "{C10B22A4-E55A-4968-9315-D1FA0C9CD629}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindchillDocImportTask", "WindchillDocImportTask\WindchillDocImportTask.csproj", "{55E81426-16F0-4CDB-BA5A-C94BB1013966}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{C10B22A4-E55A-4968-9315-D1FA0C9CD629}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C10B22A4-E55A-4968-9315-D1FA0C9CD629}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C10B22A4-E55A-4968-9315-D1FA0C9CD629}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55E81426-16F0-4CDB-BA5A-C94BB1013966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55E81426-16F0-4CDB-BA5A-C94BB1013966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55E81426-16F0-4CDB-BA5A-C94BB1013966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55E81426-16F0-4CDB-BA5A-C94BB1013966}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
