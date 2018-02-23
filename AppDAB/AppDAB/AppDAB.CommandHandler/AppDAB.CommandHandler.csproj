@@ -259,6 +259,9 @@
       <HintPath>$(SITUnifiedVSToolingPlatformBin)\SimaticIT.SDK.Diagnostics.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="WindchillDocConnectorLibrary">
+      <HintPath>..\AppDAB.Installer\ExternalDependencies\WindchillDocConnectorLibrary.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -32,3 +32,5 @@ PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.Creat
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateTeamLeaderCall AS CreateTeamLeaderCall
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.GetTestCard AS GetTestCard
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateOrUpdateMaterialDefinitionExt AS CreateOrUpdateMaterialDefinitionExt
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.Commands.CreateDocument AS CreateDocument
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.Commands.LinkDocumentListToOperation AS LinkDocumentListToOperation

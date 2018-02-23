@@ -28,6 +28,30 @@
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
+      <ArtifactSuo>
+        <X>448.99999999999994</X>
+        <Y>25</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.Document</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.Commands.CreateDocument</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>true</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.OperationDependency</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>true</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
     </Artifacts>
   </ProjectSuo>
 </ArrayOfProjectSuo>
