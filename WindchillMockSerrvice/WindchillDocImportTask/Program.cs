@@ -17,8 +17,11 @@ namespace WindchillDocImportTask
                 UAFConnector uafConnector = new UAFConnector();
                 uafConnector.CallCommand<DABImportDocuments, DABImportDocuments.Response>(new DABImportDocuments());
             }
-            catch(Exception)
-            { }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Environment.Exit(0);
         }
     }
 }

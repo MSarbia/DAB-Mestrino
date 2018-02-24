@@ -40,7 +40,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             foreach (var finalMat in finalMaterials)
             {
                 string revision = finalMat.Revision == "n/a" ? string.Empty : finalMat.Revision;
-                var docInfoList = docConnector.GetDocumentList(finalMat.NId, finalMat.Revision);
+                var docInfoList = docConnector.GetDocumentList(finalMat.NId, revision);
                 if (!docInfoList.Any())
                 {
                     continue;
