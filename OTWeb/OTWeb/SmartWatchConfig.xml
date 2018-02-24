@@ -3,9 +3,13 @@
   <SmartWatch MacAddress="E4-B3-18-6D-5D-DA">
     <User>op10</User>
     <Password>op10Pass</Password>
+    <Equipment>100.DM1.D100.Op1</Equipment>
+    <WorkArea>100.DM1.D100</WorkArea>
   </SmartWatch>
   <SmartWatch MacAddress="E4-B3-18-6D-5D-DE">
     <User>TLeader10</User>
     <Password>TLeaderPassword</Password>
+    <Equipment>100.DM1.D100.Op1</Equipment>
+    <WorkArea>100.DM1.D100</WorkArea>
   </SmartWatch>
 </SmartWatches>

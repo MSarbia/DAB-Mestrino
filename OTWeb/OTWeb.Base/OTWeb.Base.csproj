@@ -57,6 +57,7 @@
     <Compile Include="DataContracts\GetTeamLeaderCallsRequest.cs" />
     <Compile Include="DataContracts\GetTeamLeaderCallsResponse.cs" />
     <Compile Include="DataContracts\LoginRequest.cs" />
+    <Compile Include="DataContracts\SmartWatchInfo.cs" />
     <Compile Include="DataContracts\LoginResponse.cs" />
     <Compile Include="DataContracts\MaterialCall.cs" />
     <Compile Include="DataContracts\OTRole.cs" />

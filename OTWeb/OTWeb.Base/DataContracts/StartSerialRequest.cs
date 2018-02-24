@@ -11,6 +11,10 @@ namespace OTWeb.DataContracts
         [DataMember]
         public string SerialNumber { get; set; }
         [DataMember]
+        public string Status { get; set; }
+        [DataMember]
+        public string ProductCode { get; set; }
+        [DataMember]
         public string Operation { get; set; }
         [DataMember]
         public string Equipment { get; set; }

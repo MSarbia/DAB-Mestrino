@@ -6,6 +6,8 @@ using System.Linq;
 using SmartWatchConnectorLibrary;
 using System.Xml.Linq;
 using UAFServerConnectorLibrary;
+using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands;
+using RM = Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.ReadingModel;
 
 namespace OTWeb
 {
@@ -13,343 +15,345 @@ namespace OTWeb
     // NOTE: In order to launch WCF Test Client for testing this service, please select OTService.svc or OTService.svc.cs at the Solution Explorer and start debugging.
     public class OTService : IOTService
     {
-        private static object tempLock = new object();
-        public static List<MaterialCall> MaterialCalls { get; set; } = new List<MaterialCall>();
-        public static List<Call> TeamLeaderCalls { get; set; } = new List<Call>();
-        public static List<OrderItem> Serials10 { get; set; } = new List<OrderItem>();
-        public static List<OrderItem> Serials20 { get; set; } = new List<OrderItem> { };
-        public static int CurrentOrder10 { get; set; } = 1;
-        public static int CurrentOrder20 { get; set; } = 1;
+        //public static List<MaterialCall> MaterialCalls { get; set; } = new List<MaterialCall>();
+        //public static List<Call> TeamLeaderCalls { get; set; } = new List<Call>();
+        //public static List<OrderItem> Serials10 { get; set; } = new List<OrderItem>();
+        //public static List<OrderItem> Serials20 { get; set; } = new List<OrderItem> { };
+        //public static int CurrentOrder10 { get; set; } = 1;
+        //public static int CurrentOrder20 { get; set; } = 1;
         static OTService()
         {
-            InitSerials();
+            //InitSerials();
             // SmartWatchConnector.Init<OTService>();            
         }
 
-        public static void InitSerials()
-        {
-            lock (tempLock)
-            {
-                Serials10.Clear();
-                Serials10.Add(new OrderItem
-                {
-                    Order = "Ordine" + CurrentOrder10,
-                    Description = "Descrizione dell'ordine corrente",
-                    ProductCode = "JET50xyz",
-                    Operation = "Operazione10",
-                    Serials = new List<SerialItem>()
-                });
-                for (int s = 1; s < 11; s++)
-                {
-                    Serials10.First().Serials.Add(new SerialItem
-                    {
-                        SerialNumber = "Seriale" + s,
-                        Status = "Ready"
-                    });
-                }
-            }
-        }
-        
-
         public LoginResponse Login(LoginRequest loginRequest)
         {
-            var uafConnector = new UAFConnector(loginRequest.User, loginRequest.Password);
-            //uafConnector.CallCommand<>
             var response = new LoginResponse
             {
                 Succeeded = true,
                 Error = string.Empty
             };
-            if (loginRequest.User.ToLowerInvariant().Equals("op10"))
+            UAFConnector uafConnector = null;
+            try
             {
-                response.Role = OTRole.Operator;
-                response.Equipment = "Postazione10";
-                response.WorkArea = "Linea1";
+                uafConnector = new UAFConnector(loginRequest.User, loginRequest.Password);
             }
-            else if (loginRequest.User.ToLowerInvariant().Equals("op20"))
-            {
-                response.Role = OTRole.Operator;
-                response.Equipment = "Postazione20";
-                response.WorkArea = "Linea1";
-            }
-            else if (loginRequest.User.ToLowerInvariant().StartsWith("tl"))
-            {
-                response.Role = OTRole.TeamLeader;
-                response.WorkArea = "Linea1";
-            }
-            else
+            catch (Exception e)
             {
                 response.Succeeded = false;
-                response.Error = "Username o Password errati";
+                response.Error = e.Message;
                 return response;
             }
-            response.Token = "sdasdaoaoaosd[asda[sdkasd";
+            var loginResponse = uafConnector.CallCommand<LoginUser, LoginUser.Response>(new LoginUser { User = loginRequest.User });
+
+            if (!loginResponse.Succeeded)
+            {
+                response.Succeeded = false;
+                response.Error = $"Errore {loginResponse.Error.ErrorCode}: {loginResponse.Error.ErrorMessage}";
+                return response;
+            }
+            response.Equipment = loginResponse.Equipment;
+            response.WorkArea = loginResponse.WorkAreas.First();
+            response.Role = (OTRole)Enum.Parse(typeof(OTRole), loginResponse.Role);
             return response;
         }
 
         public SendTeamLeaderCallResponse SendTeamLeaderCall(SendTeamLeaderCallRequest teamLeaderCall)
         {
-            var login = new LoginRequest { User = teamLeaderCall.User, Password = teamLeaderCall.Password };
-            var loginResponse = Login(login);
             var response = new SendTeamLeaderCallResponse
             {
-                Succeeded = loginResponse.Succeeded,
-                Error = loginResponse.Error
+                Succeeded = true,
+                Error = string.Empty
             };
-            if (!response.Succeeded)
+            UAFConnector uafConnector = null;
+            try
             {
+                uafConnector = new UAFConnector(teamLeaderCall.User, teamLeaderCall.Password);
+            }
+            catch (Exception e)
+            {
+                response.Succeeded = false;
+                response.Error = e.Message;
                 return response;
             }
-            lock (tempLock)
+            var uafResponse = uafConnector.CallCommand<DABCreateTeamLeaderCall, DABCreateTeamLeaderCall.Response>(new DABCreateTeamLeaderCall
             {
-                TeamLeaderCalls.Add(new Call { CallDate = DateTime.UtcNow, CallId = Guid.NewGuid(), Equipment = teamLeaderCall.Equipment, WorkArea = loginResponse.WorkArea, Status = "Pending" });
+                Equipment = teamLeaderCall.Equipment,
+                WorkArea = teamLeaderCall.WorkArea,
+                Operatore = teamLeaderCall.User
+            });
+            if (!uafResponse.Succeeded)
+            {
+                response.Succeeded = false;
+                response.Error = $"Errore {uafResponse.Error.ErrorCode}: {uafResponse.Error.ErrorMessage}";
+                return response;
             }
-            //SmartWatchConnector.SendTeamLeaderlCall(loginResponse.WorkArea, teamLeaderCall.Equipment);
-            CallHub.Static_SendTeamLeaderCall(loginResponse.WorkArea, teamLeaderCall.Equipment);
+            //SmartWatchConnector.SendTeamLeaderlCall(teamLeaderCall.WorkArea, teamLeaderCall.Equipment);
+            CallHub.Static_SendTeamLeaderCall(teamLeaderCall.WorkArea, teamLeaderCall.Equipment);
             return response;
         }
 
         public SendMaterialCallResponse SendMaterialCall(SendMaterialCallRequest materialCall)
         {
-            var login = new LoginRequest { User = materialCall.User, Password = materialCall.Password };
-            var loginResponse = Login(login);
             var response = new SendMaterialCallResponse
             {
-                Succeeded = loginResponse.Succeeded,
-                Error = loginResponse.Error
+                Succeeded = true,
+                Error = string.Empty
             };
-            if (!response.Succeeded)
+            UAFConnector uafConnector = null;
+            try
             {
+                uafConnector = new UAFConnector(materialCall.User, materialCall.Password);
+            }
+            catch (Exception e)
+            {
+                response.Succeeded = false;
+                response.Error = e.Message;
                 return response;
             }
-            lock (tempLock)
+            var uafResponse = uafConnector.CallCommand<DABCreateMaterialCall, DABCreateMaterialCall.Response>(new DABCreateMaterialCall
             {
-                MaterialCalls.Add(new MaterialCall { CallDate = DateTime.UtcNow, CallId = Guid.NewGuid(), Equipment = materialCall.Equipment, WorkArea = loginResponse.WorkArea, Status = "Pending", Order = "MyOrder", Description = "MyOrderDescription", ProductCode = "MyProductCode", SerialNumber = materialCall.SerialNumber });
+                Equipment = materialCall.Equipment,
+                WorkArea = materialCall.WorkArea,
+                Operatore = materialCall.User
+            });
+            if (!uafResponse.Succeeded)
+            {
+                response.Succeeded = false;
+                response.Error = $"Errore {uafResponse.Error.ErrorCode}: {uafResponse.Error.ErrorMessage}";
+                return response;
             }
             //SmartWatchConnector.SendMaterialCall(loginResponse.WorkArea, materialCall.Equipment, materialCall.SerialNumber);
-            CallHub.Static_SendMaterialCall(loginResponse.WorkArea, materialCall.Equipment);
+            CallHub.Static_SendMaterialCall(materialCall.WorkArea, materialCall.Equipment);
             return response;
         }
 
         public GetSerialsResponse GetSerials(GetSerialsRequest getSerials)
         {
-            var login = new LoginRequest { User = getSerials.User, Password = getSerials.Password };
-            var loginResponse = Login(login);
-            var orders = new GetSerialsResponse
+            var response = new GetSerialsResponse
             {
-                Succeeded = loginResponse.Succeeded,
-                Error = loginResponse.Error,
+                Succeeded = true,
+                Error = string.Empty,
                 Orders = new List<OrderItem>()
             };
-            if (!orders.Succeeded)
+            UAFConnector uafConnector = null;
+            try
             {
-                return orders;
+                uafConnector = new UAFConnector(getSerials.User, getSerials.Password);
             }
-            string orderName = (getSerials.User.ToLowerInvariant() == "op10") ? "Ordine" + CurrentOrder10 : "Ordine" + CurrentOrder20;
-            
-            lock (tempLock)
+            catch (Exception e)
             {
-                if (getSerials.User.ToLowerInvariant() == "op10")
-                {
-                    foreach(var order in Serials10)
-                    {
-                        if(order.Serials.Any(s => s.Status == "Ready"))
-                        {
-                            orders.Orders.Add(new OrderItem { Order = orderName, Description = "Descrizione dell'ordine corrente", ProductCode = "JET50xyz", Operation = "Operazione10", Serials = new List<SerialItem>() });
-                            foreach (var serial in order.Serials.Where(s => s.Status == "Ready"))
-                            {
-                                orders.Orders.First(o => o.Order == orderName ).Serials.Add(new SerialItem { SerialNumber = serial.SerialNumber, Status = serial.Status });
-                                orders.Orders.First(o => o.Order == orderName).Serials.OrderBy(s => s.SerialNumber);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (var order in Serials20)
-                    {
-                        if (order.Serials.Any(s => s.Status != "Complete"))
-                        {
-                            orders.Orders.Add(new OrderItem { Order = orderName, Description = "Descrizione dell'ordine corrente", ProductCode = "JET50xyz", Operation = "Operazione20", Serials = new List<SerialItem>() });
-                            foreach (var serial in order.Serials.Where(s => s.Status != "Complete"))
-                            {
-                                orders.Orders.First(o => o.Order == orderName).Serials.Add(new SerialItem { SerialNumber = serial.SerialNumber, Status = serial.Status });
-                                orders.Orders.First(o => o.Order == orderName).Serials.OrderBy(s => s.SerialNumber);
-                            }
-                        }
-                    }
-                }
+                response.Succeeded = false;
+                response.Error = e.Message;
+                return response;
+            }
+            var uafResponse = uafConnector.CallCommand<GetSerials, GetSerials.Response>(new GetSerials
+            {
+                Equipment = getSerials.Equipment
+            });
+            if (!uafResponse.Succeeded)
+            {
+                response.Succeeded = false;
+                response.Error = $"Errore {uafResponse.Error.ErrorCode}: {uafResponse.Error.ErrorMessage}";
+                return response;
+            }
 
-            }
-            orders.Orders.OrderBy(o => o.Order);
-            return orders;
+            response.Orders.AddRange(uafResponse.Orders.Select(o => new OrderItem
+            {
+                Description = o.Description,
+                Operation = o.Operation,
+                Order = o.Order,
+                ProductCode = o.ProductCode,
+                Serials = o.Serials.Select(s => new SerialItem { SerialNumber = s.SerialNumber,Status= s.Status}).OrderBy(s=>s.SerialNumber).ToList()
+            }));
+            response.Orders = response.Orders.OrderBy(o => o.Order).ToList();
+            return response;
         }
 
         public GetMaterialCallsResponse GetMaterialCalls(GetMaterialCallsRequest getMaterialCalls)
         {
-            var login = new LoginRequest { User = getMaterialCalls.User, Password = getMaterialCalls.Password };
-            var loginResponse = Login(login);
             var response = new GetMaterialCallsResponse()
             {
-                Succeeded = loginResponse.Succeeded,
-                Error = loginResponse.Error,
-                MaterialCalls = new List<MaterialCall>()
+                Succeeded = true,
+                Error = string.Empty,
+                MaterialCalls = new List<DataContracts.MaterialCall>()
             };
-            if (!response.Succeeded)
+            UAFConnector uafConnector = null;
+            try
             {
+                uafConnector = new UAFConnector(getMaterialCalls.User, getMaterialCalls.Password);
+            }
+            catch (Exception e)
+            {
+                response.Succeeded = false;
+                response.Error = e.Message;
                 return response;
             }
-            lock (tempLock)
+
+            var materialCalls = uafConnector.ProjectionQuery<RM.MaterialCall>().Where(mc => mc.WorkArea == getMaterialCalls.WorkArea && !mc.Accepted).ToList();
+            response.MaterialCalls.AddRange(materialCalls.Select(mc => new MaterialCall
             {
-                response.MaterialCalls.AddRange(MaterialCalls.Where(mc => mc.WorkArea == loginResponse.WorkArea && mc.Status == "Pending"));
-            }
-            response.MaterialCalls.OrderBy(mc => mc.CallDate);
+                WorkArea = mc.WorkArea,
+                CallDate = mc.Date.ToLocalTime().DateTime,
+                CallId = mc.Id,
+                //Description = mc.Description,
+                Equipment = mc.Equipment,
+                Order = mc.WorkOrder,
+                ProductCode = mc.MaterialDefinition,
+                //SerialNumber = mc.SerialNumber,
+                Status = mc.Accepted ? "Accepted":"Pending"
+            }).OrderBy(mc=>mc.CallDate));
             return response;
         }
 
         public GetTeamLeaderCallsResponse GetTeamLeaderCalls(GetTeamLeaderCallsRequest getTeamLeaderCalls)
         {
-            var login = new LoginRequest { User = getTeamLeaderCalls.User, Password = getTeamLeaderCalls.Password };
-            var loginResponse = Login(login);
-            var response = new GetTeamLeaderCallsResponse
+            var response = new GetTeamLeaderCallsResponse()
             {
-                Succeeded = loginResponse.Succeeded,
-                Error = loginResponse.Error,
-                TeamLeaderCalls = new List<Call>()
+                Succeeded = true,
+                Error = string.Empty,
+                TeamLeaderCalls = new List<DataContracts.Call>()
             };
-            if (!response.Succeeded)
+            UAFConnector uafConnector = null;
+            try
             {
+                uafConnector = new UAFConnector(getTeamLeaderCalls.User, getTeamLeaderCalls.Password);
+            }
+            catch (Exception e)
+            {
+                response.Succeeded = false;
+                response.Error = e.Message;
                 return response;
             }
-            lock (tempLock)
+
+            var teamLeaderCalls = uafConnector.ProjectionQuery<RM.TeamLeaderCall>().Where(mc => mc.WorkArea == getTeamLeaderCalls.WorkArea && !mc.Accepted).ToList();
+            response.TeamLeaderCalls.AddRange(teamLeaderCalls.Select(tlc => new Call
             {
-                response.TeamLeaderCalls.AddRange(TeamLeaderCalls.Where(mc => mc.WorkArea == loginResponse.WorkArea && mc.Status == "Pending"));
-            }
-            response.TeamLeaderCalls.OrderBy(tc => tc.CallDate);
+                WorkArea = tlc.WorkArea,
+                CallDate = tlc.Date.ToLocalTime().DateTime,
+                CallId = tlc.Id,
+                //Description = mc.Description,
+                Equipment = tlc.Equipment,
+                //SerialNumber = mc.SerialNumber,
+                Status = tlc.Accepted ? "Accepted" : "Pending"
+            }).OrderBy(tlc => tlc.CallDate));
             return response;
         }
 
         public AcceptMaterialCallResponse AcceptMaterialCall(AcceptMaterialCallRequest acceptMaterialCall)
         {
-            var login = new LoginRequest { User = acceptMaterialCall.User, Password = acceptMaterialCall.Password };
-            var loginResponse = Login(login);
             var response = new AcceptMaterialCallResponse
             {
-                Succeeded = loginResponse.Succeeded,
-                Error = loginResponse.Error
+                Succeeded = true,
+                Error = string.Empty
             };
-            if (!response.Succeeded)
+            UAFConnector uafConnector = null;
+            try
             {
+                uafConnector = new UAFConnector(acceptMaterialCall.User, acceptMaterialCall.Password);
+            }
+            catch (Exception e)
+            {
+                response.Succeeded = false;
+                response.Error = e.Message;
                 return response;
             }
-            lock (tempLock)
+            var uafResponse = uafConnector.CallCommand<DABAcceptMaterialCall, DABAcceptMaterialCall.Response>(new DABAcceptMaterialCall
             {
-                var call = MaterialCalls.FirstOrDefault(mc => mc.CallId == acceptMaterialCall.CallId && mc.Status == "Pending");
-                if (call == null)
-                {
-                    response.Succeeded = false;
-                    response.Error = $"No MaterialCall found with Id: {acceptMaterialCall.CallId}";
-                    return response;
-                }
-                call.Status = "Accepted";
+                Id = acceptMaterialCall.CallId,
+                TeamLeader = acceptMaterialCall.User
+            });
+            if (!uafResponse.Succeeded)
+            {
+                response.Succeeded = false;
+                response.Error = $"Errore {uafResponse.Error.ErrorCode}: {uafResponse.Error.ErrorMessage}";
+                return response;
             }
             return response;
         }
 
         public AcceptTeamLeaderCallResponse AcceptTeamLeaderCall(AcceptTeamLeaderCallRequest acceptTeamLeaderCall)
         {
-            var login = new LoginRequest { User = acceptTeamLeaderCall.User, Password = acceptTeamLeaderCall.Password };
-            var loginResponse = Login(login);
             var response = new AcceptTeamLeaderCallResponse
             {
-                Succeeded = loginResponse.Succeeded,
-                Error = loginResponse.Error
+                Succeeded = true,
+                Error = string.Empty
             };
-            if (!response.Succeeded)
+            UAFConnector uafConnector = null;
+            try
             {
+                uafConnector = new UAFConnector(acceptTeamLeaderCall.User, acceptTeamLeaderCall.Password);
+            }
+            catch (Exception e)
+            {
+                response.Succeeded = false;
+                response.Error = e.Message;
                 return response;
             }
-            lock (tempLock)
+            var uafResponse = uafConnector.CallCommand<DABAcceptTeamLeaderCall, DABAcceptTeamLeaderCall.Response>(new DABAcceptTeamLeaderCall
             {
-                var call = TeamLeaderCalls.FirstOrDefault(tc => tc.CallId == acceptTeamLeaderCall.CallId && tc.Status == "Pending");
-                if (call == null)
-                {
-                    response.Succeeded = false;
-                    response.Error = $"No TeamLeaderCall found with Id: {acceptTeamLeaderCall.CallId}";
-                    return response;
-                }
-                call.Status = "Accepted";
+                Id = acceptTeamLeaderCall.CallId,
+                TeamLeader = acceptTeamLeaderCall.User
+            });
+            if (!uafResponse.Succeeded)
+            {
+                response.Succeeded = false;
+                response.Error = $"Errore {uafResponse.Error.ErrorCode}: {uafResponse.Error.ErrorMessage}";
+                return response;
             }
             return response;
         }
 
         public StartSerialResponse StartSerial(StartSerialRequest startSerialRequest)
         {
-            var login = new LoginRequest { User = startSerialRequest.User, Password = startSerialRequest.Password };
-            var loginResponse = Login(login);
             var response = new StartSerialResponse
             {
-                Succeeded = loginResponse.Succeeded,
-                Error = loginResponse.Error
+                Succeeded = true,
+                Error = string.Empty
             };
-            if (!response.Succeeded)
+            UAFConnector uafConnector = null;
+            try
             {
+                uafConnector = new UAFConnector(startSerialRequest.User, startSerialRequest.Password);
+            }
+            catch (Exception e)
+            {
+                response.Succeeded = false;
+                response.Error = e.Message;
                 return response;
             }
-            lock (tempLock)
+
+            if (startSerialRequest.Status == "Active")
             {
-                SerialItem serial = null;
-                if (startSerialRequest.User.ToLowerInvariant() == "op10")
+                var uafResponse = uafConnector.CallCommand<DABCompleteSerial, DABCompleteSerial.Response>(new DABCompleteSerial
                 {
-                    serial = Serials10.FirstOrDefault(o=>o.Order == startSerialRequest.Order).Serials.FirstOrDefault(s => s.SerialNumber == startSerialRequest.SerialNumber && s.Status == "Ready");
-                }
-                    
-                else
-                    serial = Serials20.FirstOrDefault(o => o.Order == startSerialRequest.Order).Serials.FirstOrDefault(s => s.SerialNumber == startSerialRequest.SerialNumber && s.Status != "Complete");
-                if (serial == null)
+                    EquipmentNId = startSerialRequest.Equipment,
+                    MaterialDefinitionNId = startSerialRequest.ProductCode,
+                    SerialNumber = startSerialRequest.SerialNumber,
+                    WorkOrderOperationNId = startSerialRequest.Operation
+                });
+                if (!uafResponse.Succeeded)
                 {
                     response.Succeeded = false;
-                    response.Error = $"Seriale {startSerialRequest.SerialNumber} non trovato";
+                    response.Error = $"Errore {uafResponse.Error.ErrorCode}: {uafResponse.Error.ErrorMessage}";
                     return response;
                 }
-                if (serial.Status == "Ready")
+            }
+            else
+            {
+                var uafResponse = uafConnector.CallCommand<DABStartSerial, DABStartSerial.Response>(new DABStartSerial
                 {
-
-                    if (startSerialRequest.User.ToLowerInvariant() == "op10")
-                    {
-                        serial.Status = "Complete";
-                        if(!Serials20.Any(o=>o.Order == "Ordine" + CurrentOrder10))
-                        {
-                            Serials20.Add(new OrderItem
-                            {
-                                Order = "Ordine" + CurrentOrder10,
-                                Description = "Descrizione dell'ordine corrente",
-                                ProductCode = "JET50xyz",
-                                Operation = "Operazione20",
-                                Serials = new List<SerialItem>()
-                            });
-                        }
-                        Serials20.FirstOrDefault(o=>o.Order == "Ordine" + CurrentOrder10).Serials.Add(new SerialItem { SerialNumber = serial.SerialNumber, Status = "Ready"});
-                        CallHub.Static_SendOperatorCall("Postazione20", serial.SerialNumber);
-                        SmartWatchConnector.RefreshSerials("Postazione20");
-                        if (Serials10.First(o => o.Order == "Ordine" + CurrentOrder10).Serials.All(s => s.Status == "Complete"))
-                        {
-                            CurrentOrder10++;
-                            InitSerials();
-                        }
-                    }
-                    else
-                    {
-                        serial.Status = "Active";
-                    }
-                }
-                else if (serial.Status == "Active")
+                    EquipmentNId = startSerialRequest.Equipment,
+                    MaterialDefinitionNId = startSerialRequest.ProductCode,
+                    SerialNumber = startSerialRequest.SerialNumber,
+                    WorkOrderOperationNId = startSerialRequest.Operation
+                });
+                if (!uafResponse.Succeeded)
                 {
-                    serial.Status = "Complete";
-                    if (Serials20.First(o => o.Order == "Ordine" + CurrentOrder20).Serials.All(s => s.Status == "Complete") && CurrentOrder10 != CurrentOrder20)
-                    {
-                        CurrentOrder20++;
-                    }
+                    response.Succeeded = false;
+                    response.Error = $"Errore {uafResponse.Error.ErrorCode}: {uafResponse.Error.ErrorMessage}";
+                    return response;
                 }
             }
             return response;
@@ -357,13 +361,12 @@ namespace OTWeb
 
         public CallTeamLeaderResponse CallTeamLeader(CallTeamLeaderRequest teamLeaderCall)
         {
-            LoginRequest userInfo = GetSmartWatchUser(teamLeaderCall.MacAddress);
-            var loginResponse = Login(userInfo);
+            SmartwatchInfo userInfo = GetSmartWatchUser(teamLeaderCall.MacAddress);
             SendTeamLeaderCallRequest request = new SendTeamLeaderCallRequest
             {
                 User = userInfo.User,
                 Password = userInfo.Password,
-                Equipment = loginResponse.Equipment
+                Equipment = userInfo.Equipment
             };
             var response = SendTeamLeaderCall(request);
             return new CallTeamLeaderResponse
@@ -373,15 +376,14 @@ namespace OTWeb
             };
         }
 
-        public CallMaterialResponse CallMaterial(CallMaterialRequest teamLeaderCall)
+        public CallMaterialResponse CallMaterial(CallMaterialRequest materialCall)
         {
-            LoginRequest userInfo = GetSmartWatchUser(teamLeaderCall.MacAddress);
-            var loginResponse = Login(userInfo);
+            SmartwatchInfo userInfo = GetSmartWatchUser(materialCall.MacAddress);
             SendMaterialCallRequest request = new SendMaterialCallRequest
             {
                 User = userInfo.User,
                 Password = userInfo.Password,
-                Equipment = loginResponse.Equipment
+                Equipment = userInfo.Equipment
             };
             var response = SendMaterialCall(request);
             return new CallMaterialResponse
@@ -391,9 +393,9 @@ namespace OTWeb
             };
         }
 
-        private LoginRequest GetSmartWatchUser(string macAddress)
+        private SmartwatchInfo GetSmartWatchUser(string macAddress)
         {
-            var loginRequest = new LoginRequest
+            var smartwatchInfo = new SmartwatchInfo
             {
                 User = string.Empty,
                 Password = string.Empty
@@ -402,10 +404,12 @@ namespace OTWeb
             XElement user = smartWatchConfig.Root.Elements("SmartWatch").FirstOrDefault(s => s.Attribute("MacAddress").Value.Equals(macAddress));
             if (user != null)
             {
-                loginRequest.User = user.Element("User").Value;
-                loginRequest.Password = user.Element("Password").Value;
+                smartwatchInfo.User = user.Element("User").Value;
+                smartwatchInfo.Password = user.Element("Password").Value;
+                smartwatchInfo.Equipment = user.Element("Equipment").Value;
+                smartwatchInfo.WorkArea = user.Element("WorkArea").Value;
             }
-            return loginRequest;
+            return smartwatchInfo;
         }
     }
 }

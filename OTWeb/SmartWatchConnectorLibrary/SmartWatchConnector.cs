@@ -176,9 +176,15 @@ namespace SmartWatchConnectorLibrary
                 {
                     foreach(var o in serialsResponse.Orders)
                     {
-                        serials.Add(c.Key, o.Serials.Select(s => new SerialInfo { Operation = o.Operation, Order = o.Order, ProductCode = o.ProductCode, Status = s.Status, SerialNumber = s.SerialNumber }).ToList());
+                        serials.Add(c.Key, o.Serials.Select(s => new SerialInfo
+                        {
+                            Operation = o.Operation,
+                            Order = o.Order,
+                            ProductCode = o.ProductCode,
+                            Status = s.Status,
+                            SerialNumber = s.SerialNumber
+                        }).ToList());
                     }
-                    
                 }
                 if (!serials[c.Key].Any())
                 {
@@ -200,7 +206,7 @@ namespace SmartWatchConnectorLibrary
                                 Operation = s.Operation,
                                 Order = s.Order,
                                 ProductCode = s.ProductCode,
-                                SerialNumber = s.ProductCode,
+                                SerialNumber = s.SerialNumber,
                                 Status = s.Status
                             });
                         }
