@@ -1,0 +1,17 @@
+{
+  "name": "Engineering.DAB.AppDAB.NewModule",
+  "type": "standard",
+  "title": "NewModule",
+  "icon": "fa-folder",
+  "functionalBlock": "Engineering.DAB.AppDAB",
+  "dependencies": [],
+  "states": [
+    {
+      "id": "home.Engineering_DAB_AppDAB_NewModule_UIModuleScreen1",
+      "title": "UIModuleScreen1",
+      "securable": true,
+      "roles": []
+    }
+  ],
+  "manifestVersion": "01.00.00"
+}
