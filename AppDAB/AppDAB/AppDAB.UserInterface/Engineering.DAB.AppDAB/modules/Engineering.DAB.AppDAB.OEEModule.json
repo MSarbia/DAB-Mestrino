@@ -1,0 +1,17 @@
+{
+  "name": "Engineering.DAB.AppDAB.OEEModule",
+  "type": "standard",
+  "title": "OEEModule",
+  "icon": "fa-folder",
+  "functionalBlock": "Engineering.DAB.AppDAB",
+  "dependencies": [],
+  "states": [
+    {
+      "id": "home.Engineering_DAB_AppDAB_OEEModule_OEEScreen",
+      "title": "OEEScreen",
+      "securable": true,
+      "roles": []
+    }
+  ],
+  "manifestVersion": "01.00.00"
+}

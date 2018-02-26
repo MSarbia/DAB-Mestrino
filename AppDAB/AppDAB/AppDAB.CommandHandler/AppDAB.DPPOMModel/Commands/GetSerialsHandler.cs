@@ -43,15 +43,16 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             foreach (var id in workOrderOperationIds)
             {
                 var wo = woDictionary[id];
-                var serials = Platform.ProjectionQuery<ToBeProducedMaterial>().Include(pm => pm.MaterialItem).Where(pm =>pm.WorkOrderOperation_Id == id).Select(pm => pm.MaterialItem).Where(m => m.Status == "").ToList();
-
-                if(!Platform.ProjectionQuery<WorkOOperationDependency>().Any(dep=>dep.From_Id == id))
+                var serials = Platform.ProjectionQuery<ToBeProducedMaterial>().Include(pm => pm.MaterialItem).Where(pm =>pm.WorkOrderOperation_Id == id).Select(pm => pm.MaterialItem.SerialNumberCode).ToList();
+                var pausedSerials = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pm => pm.MaterialItem).Where(pm => pm.WorkOrderOperation_Id == id).Where(pm=>pm.PausedQuantity==1).Select(pm => pm.MaterialItem.SerialNumberCode).ToList();
+                List<string> activeSerials = new List<string>();
+                if (!Platform.ProjectionQuery<WorkOOperationDependency>().Any(dep=>dep.From_Id == id))
                 {
                     //is last operation
-                    serials.AddRange(Platform.ProjectionQuery<ActualProducedMaterial>().Include(pm => pm.MaterialItem).Where(pm => pm.WorkOrderOperation_Id == id).Select(pm => pm.MaterialItem).Where(m => m.Status == "").ToList());
+                    activeSerials.AddRange(Platform.ProjectionQuery<ActualProducedMaterial>().Include(pm => pm.MaterialItem).Where(pm => pm.WorkOrderOperation_Id == id).Where(pm=>pm.PartialWorkedQuantity==1).Select(pm => pm.MaterialItem.SerialNumberCode).ToList());
                 }
                 
-                if (!serials.Any())
+                if (!serials.Any() && !pausedSerials.Any() && !activeSerials.Any())
                     continue;
 
                 var orderInfo = response.Orders.FirstOrDefault(o => o.Order == orders[wo.WorkOrder_Id.Value].NId);
@@ -66,7 +67,13 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     response.Orders.Add(orderInfo);
                 }
                 orderInfo.Operation = wo.NId;
-                orderInfo.Serials.AddRange(serials.Select(s => new SerialInfo { SerialNumber = s.SerialNumberCode, Status = s.Status }));
+                foreach(var serial in serials)
+                {
+                    string status = pausedSerials.Contains(serial)?"Pausa":"Disponibile";
+                    orderInfo.Serials.Add(new SerialInfo { SerialNumber = serial, Status = status });
+                }
+                orderInfo.Serials.AddRange(activeSerials.Select(s => new SerialInfo { SerialNumber = s, Status = "InLavorazione" }));
+                orderInfo.Serials = orderInfo.Serials.OrderBy(s => s.SerialNumber).ToList();
             }
             return response;
 

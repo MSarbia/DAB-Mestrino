@@ -367,20 +367,29 @@
     <Content Include="common\widgets\validator\validator.js" />
     <Content Include="common\widgets\viewBar\view-bar.html" />
     <Content Include="common\widgets\viewBar\viewBar.js" />
-    <Content Include="Engineering.DAB.AppDAB\modules\NewModule\module.js" />
-    <Content Include="Engineering.DAB.AppDAB\modules\NewModule\UIModuleScreen1-add-ctrl.js" />
-    <Content Include="Engineering.DAB.AppDAB\modules\NewModule\UIModuleScreen1-add.html" />
-    <Content Include="Engineering.DAB.AppDAB\modules\NewModule\UIModuleScreen1-edit-ctrl.js" />
-    <Content Include="Engineering.DAB.AppDAB\modules\NewModule\UIModuleScreen1-edit.html" />
-    <Content Include="Engineering.DAB.AppDAB\modules\NewModule\UIModuleScreen1-list-ctrl.js" />
-    <Content Include="Engineering.DAB.AppDAB\modules\NewModule\UIModuleScreen1-list.html" />
-    <Content Include="Engineering.DAB.AppDAB\modules\NewModule\UIModuleScreen1-select-ctrl.js" />
-    <Content Include="Engineering.DAB.AppDAB\modules\NewModule\UIModuleScreen1-select.html" />
-    <Content Include="Engineering.DAB.AppDAB\modules\NewModule\UIModuleScreen1-srv.js" />
+    <Content Include="Engineering.DAB.AppDAB\modules\OEEModule\module.js" />
+    <Content Include="Engineering.DAB.AppDAB\modules\OEEModule\OEEScreen-add-ctrl.js" />
+    <Content Include="Engineering.DAB.AppDAB\modules\OEEModule\OEEScreen-add.html" />
+    <Content Include="Engineering.DAB.AppDAB\modules\OEEModule\OEEScreen-edit-ctrl.js" />
+    <Content Include="Engineering.DAB.AppDAB\modules\OEEModule\OEEScreen-edit.html" />
+    <Content Include="Engineering.DAB.AppDAB\modules\OEEModule\OEEScreen-list-ctrl.js" />
+    <Content Include="Engineering.DAB.AppDAB\modules\OEEModule\OEEScreen-list.html" />
+    <Content Include="Engineering.DAB.AppDAB\modules\OEEModule\OEEScreen-select-ctrl.js" />
+    <Content Include="Engineering.DAB.AppDAB\modules\OEEModule\OEEScreen-select.html" />
+    <Content Include="Engineering.DAB.AppDAB\modules\OEEModule\OEEScreen-srv.js" />
+    <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\module.js" />
+    <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-add-ctrl.js" />
+    <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-add.html" />
+    <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-edit-ctrl.js" />
+    <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-edit.html" />
+    <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-list-ctrl.js" />
+    <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-list.html" />
+    <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-select-ctrl.js" />
+    <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-select.html" />
+    <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-srv.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Engineering.DAB.AppDAB\modules\Engineering.DAB.AppDAB.NewModule.json" />
     <Content Include="common\common.min.js.map" />
     <Content Include="common\fonts\fontawesome-webfont.eot" />
     <Content Include="common\fonts\fontawesome-webfont.woff" />
@@ -397,6 +406,8 @@
     <Content Include="common\resources\entityPicker.en-US.json" />
     <Content Include="common\scripts\i18n\locales.json" />
     <Content Include="common\scripts\version.json" />
+    <Content Include="Engineering.DAB.AppDAB\modules\Engineering.DAB.AppDAB.OEEModule.json" />
+    <Content Include="Engineering.DAB.AppDAB\modules\Engineering.DAB.AppDAB.SynopticModule.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';
-    angular.module('Engineering.DAB.AppDAB.NewModule')
-        .constant('Engineering.DAB.AppDAB.NewModule.UIModuleScreen1.constants', ScreenServiceConstants())
-        .service('Engineering.DAB.AppDAB.NewModule.UIModuleScreen1.service', ScreenService)
+    angular.module('Engineering.DAB.AppDAB.OEEModule')
+        .constant('Engineering.DAB.AppDAB.OEEModule.OEEScreen.constants', ScreenServiceConstants())
+        .service('Engineering.DAB.AppDAB.OEEModule.OEEScreen.service', ScreenService)
         .run(ScreenServiceRun);
 
     function ScreenServiceConstants() {
@@ -20,14 +20,14 @@
         };
     }
 
-    ScreenService.$inject = ['$q', '$state', 'common.base', 'Engineering.DAB.AppDAB.NewModule.UIModuleScreen1.constants', 'common.services.logger.service'];
+    ScreenService.$inject = ['$q', '$state', 'common.base', 'Engineering.DAB.AppDAB.OEEModule.OEEScreen.constants', 'common.services.logger.service'];
     function ScreenService($q, $state, base, context, loggerService) {
         var self = this;
         var logger, backendService;
 
         activate();
         function activate() {
-            logger = loggerService.getModuleLogger('Engineering.DAB.AppDAB.NewModule.UIModuleScreen1.service');
+            logger = loggerService.getModuleLogger('Engineering.DAB.AppDAB.OEEModule.OEEScreen.service');
             backendService = base.services.runtime.backendService;
             exposeApi();
         }
@@ -85,7 +85,7 @@
         }
     }
 
-    ScreenServiceRun.$inject = ['Engineering.DAB.AppDAB.NewModule.UIModuleScreen1.constants', 'common.base'];
+    ScreenServiceRun.$inject = ['Engineering.DAB.AppDAB.OEEModule.OEEScreen.constants', 'common.base'];
     function ScreenServiceRun(context, common) {
         if (!context.data.entityName) {
             common.services.logger.service.logWarning('Configure the entityName');

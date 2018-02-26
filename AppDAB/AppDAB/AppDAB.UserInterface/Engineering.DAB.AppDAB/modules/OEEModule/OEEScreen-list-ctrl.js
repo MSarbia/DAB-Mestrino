@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';
-    angular.module('Engineering.DAB.AppDAB.NewModule').config(ListScreenRouteConfig);
+    angular.module('Engineering.DAB.AppDAB.OEEModule').config(ListScreenRouteConfig);
 
-    ListScreenController.$inject = ['Engineering.DAB.AppDAB.NewModule.UIModuleScreen1.service', '$state', '$stateParams', '$rootScope', '$scope', 'common.base', 'common.services.logger.service'];
+    ListScreenController.$inject = ['Engineering.DAB.AppDAB.OEEModule.OEEScreen.service', '$state', '$stateParams', '$rootScope', '$scope', 'common.base', 'common.services.logger.service'];
     function ListScreenController(dataService, $state, $stateParams, $rootScope, $scope, base, loggerService) {
         var self = this;
         var logger, rootstate, messageservice, backendService;
@@ -11,7 +11,7 @@
 
         // Initialization function
         function activate() {
-            logger = loggerService.getModuleLogger('Engineering.DAB.AppDAB.NewModule.UIModuleScreen1');
+            logger = loggerService.getModuleLogger('Engineering.DAB.AppDAB.OEEModule.OEEScreen');
 
             init();
             initGridOptions();
@@ -21,7 +21,7 @@
         function init() {
             logger.logDebug('Initializing controller.......');
 
-            rootstate = 'home.Engineering_DAB_AppDAB_NewModule_UIModuleScreen1';
+            rootstate = 'home.Engineering_DAB_AppDAB_OEEModule_OEEScreen';
             messageservice = base.widgets.messageOverlay.service;
             backendService = base.services.runtime.backendService;
             
@@ -118,22 +118,22 @@
 
     ListScreenRouteConfig.$inject = ['$stateProvider'];
     function ListScreenRouteConfig($stateProvider) {
-        var moduleStateName = 'home.Engineering_DAB_AppDAB_NewModule';
-        var moduleStateUrl = 'Engineering.DAB_AppDAB_NewModule';
-        var moduleFolder = 'Engineering.DAB.AppDAB/modules/NewModule';
+        var moduleStateName = 'home.Engineering_DAB_AppDAB_OEEModule';
+        var moduleStateUrl = 'Engineering.DAB_AppDAB_OEEModule';
+        var moduleFolder = 'Engineering.DAB.AppDAB/modules/OEEModule';
 
         var state = {
-            name: moduleStateName + '_UIModuleScreen1',
-            url: '/' + moduleStateUrl + '_UIModuleScreen1',
+            name: moduleStateName + '_OEEScreen',
+            url: '/' + moduleStateUrl + '_OEEScreen',
             views: {
                 'Canvas@': {
-                    templateUrl: moduleFolder + '/UIModuleScreen1-list.html',
+                    templateUrl: moduleFolder + '/OEEScreen-list.html',
                     controller: ListScreenController,
                     controllerAs: 'vm'
                 }
             },
             data: {
-                title: 'UIModuleScreen1'
+                title: 'OEEScreen'
             }
         };
         $stateProvider.state(state);

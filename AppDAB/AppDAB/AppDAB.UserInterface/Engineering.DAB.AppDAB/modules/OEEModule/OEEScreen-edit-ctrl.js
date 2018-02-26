@@ -1,17 +1,18 @@
 ﻿(function () {
     'use strict';
-    angular.module('Engineering.DAB.AppDAB.NewModule').config(ViewScreenStateConfig);
+    angular.module('Engineering.DAB.AppDAB.OEEModule').config(EditScreenStateConfig);
 
-    ViewScreenController.$inject = ['Engineering.DAB.AppDAB.NewModule.UIModuleScreen1.service', '$state', '$stateParams', 'common.base', '$filter', '$scope'];
-    function ViewScreenController(dataService, $state, $stateParams, common, $filter, $scope) {
+    EditScreenController.$inject = ['Engineering.DAB.AppDAB.OEEModule.OEEScreen.service', '$state', '$stateParams', 'common.base', '$filter', '$scope'];
+    function EditScreenController(dataService, $state, $stateParams, common, $filter, $scope) {
         var self = this;
         var sidePanelManager, backendService, propertyGridHandler;
 
         activate();
         function activate() {
             init();
+            registerEvents();
 
-            sidePanelManager.setTitle('Select');
+            sidePanelManager.setTitle('Edit');
             sidePanelManager.open('e');
         }
 
@@ -20,12 +21,17 @@
             backendService = common.services.runtime.backendService;
 
             //Initialize Model Data
-
             // TODO: Put here the properties of the entity managed by the service
-            self.currentItem = $stateParams.selectedItem;
+            self.currentItem = angular.copy($stateParams.selectedItem);
+            self.validInputs = false;
 
             //Expose Model Methods
+            self.save = save;
             self.cancel = cancel;
+        }
+
+        function registerEvents() {
+            $scope.$on('sit-property-grid.validity-changed', onPropertyGridValidityChange);
         }
 
         function save() {
@@ -47,23 +53,23 @@
         }
     }
 
-    ViewScreenStateConfig.$inject = ['$stateProvider'];
-    function ViewScreenStateConfig($stateProvider) {
-        var screenStateName = 'home.Engineering_DAB_AppDAB_NewModule_UIModuleScreen1';
-        var moduleFolder = 'Engineering.DAB.AppDAB/modules/NewModule';
+    EditScreenStateConfig.$inject = ['$stateProvider'];
+    function EditScreenStateConfig($stateProvider) {
+        var screenStateName = 'home.Engineering_DAB_AppDAB_OEEModule_OEEScreen';
+        var moduleFolder = 'Engineering.DAB.AppDAB/modules/OEEModule';
 
         var state = {
-            name: screenStateName + '.select',
-            url: '/select/:id',
+            name: screenStateName + '.edit',
+            url: '/edit/:id',
             views: {
                 'property-area-container@': {
-                    templateUrl: moduleFolder + '/UIModuleScreen1-select.html',
-                    controller: ViewScreenController,
+                    templateUrl: moduleFolder + '/OEEScreen-edit.html',
+                    controller: EditScreenController,
                     controllerAs: 'vm'
                 }
             },
             data: {
-                title: 'Select'
+                title: 'Edit'
             },
             params: {
                 selectedItem: null,

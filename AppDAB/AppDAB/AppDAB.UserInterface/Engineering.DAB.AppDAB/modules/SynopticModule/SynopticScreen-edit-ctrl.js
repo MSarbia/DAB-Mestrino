@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';
-    angular.module('Engineering.DAB.AppDAB.NewModule').config(EditScreenStateConfig);
+    angular.module('Engineering.DAB.AppDAB.SynopticModule').config(EditScreenStateConfig);
 
-    EditScreenController.$inject = ['Engineering.DAB.AppDAB.NewModule.UIModuleScreen1.service', '$state', '$stateParams', 'common.base', '$filter', '$scope'];
+    EditScreenController.$inject = ['Engineering.DAB.AppDAB.SynopticModule.SynopticScreen.service', '$state', '$stateParams', 'common.base', '$filter', '$scope'];
     function EditScreenController(dataService, $state, $stateParams, common, $filter, $scope) {
         var self = this;
         var sidePanelManager, backendService, propertyGridHandler;
@@ -55,15 +55,15 @@
 
     EditScreenStateConfig.$inject = ['$stateProvider'];
     function EditScreenStateConfig($stateProvider) {
-        var screenStateName = 'home.Engineering_DAB_AppDAB_NewModule_UIModuleScreen1';
-        var moduleFolder = 'Engineering.DAB.AppDAB/modules/NewModule';
+        var screenStateName = 'home.Engineering_DAB_AppDAB_SynopticModule_SynopticScreen';
+        var moduleFolder = 'Engineering.DAB.AppDAB/modules/SynopticModule';
 
         var state = {
             name: screenStateName + '.edit',
             url: '/edit/:id',
             views: {
                 'property-area-container@': {
-                    templateUrl: moduleFolder + '/UIModuleScreen1-edit.html',
+                    templateUrl: moduleFolder + '/SynopticScreen-edit.html',
                     controller: EditScreenController,
                     controllerAs: 'vm'
                 }

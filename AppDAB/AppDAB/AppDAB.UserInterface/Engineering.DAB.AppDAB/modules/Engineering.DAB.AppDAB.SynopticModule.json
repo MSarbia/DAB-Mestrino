@@ -1,14 +1,14 @@
 {
-  "name": "Engineering.DAB.AppDAB.NewModule",
+  "name": "Engineering.DAB.AppDAB.SynopticModule",
   "type": "standard",
-  "title": "NewModule",
+  "title": "SynopticModule",
   "icon": "fa-folder",
   "functionalBlock": "Engineering.DAB.AppDAB",
   "dependencies": [],
   "states": [
     {
-      "id": "home.Engineering_DAB_AppDAB_NewModule_UIModuleScreen1",
-      "title": "UIModuleScreen1",
+      "id": "home.Engineering_DAB_AppDAB_SynopticModule_SynopticScreen",
+      "title": "SynopticScreen",
       "securable": true,
       "roles": []
     }
