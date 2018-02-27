@@ -1,0 +1,1316 @@
+﻿<?xml version="1.0" encoding="utf-8"?><projectmanifest>
+  <header>
+    <manifestversion>1.5</manifestversion>
+    <platformversion>1.5</platformversion>
+    <type>Library</type>
+    <name>Siemens.SimaticIT.U4DM.FB_MS_EXT</name>
+    <shortname>FB_MS_EXT</shortname>
+    <description>External DataSource MasterData</description>
+    <version>03.00.00</version>
+    <companyname>Siemens.SimaticIT.U4DM</companyname>
+    <author>Siemens.SimaticIT.U4DM</author>
+    <hash>c2aWe2HpFo4oxTpzQ5oBY9Pw8tWf0eNGkKknNGEDHi0=</hash>
+  </header>
+  <reference>
+    <functionalblocks>
+      <functionalblock>
+        <name>Siemens.SimaticIT.U4DM.FB_RD_SERV</name>
+        <version>03.00.00</version>
+        <type>Library</type>
+      </functionalblock>
+    </functionalblocks>
+  </reference>
+  <artifacts>
+    <commands><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DbInitialize</name>
+                        <shortname>DbInitialize</shortname>
+                        <description> Initializes the SIMATIC IT Components Database on the basis of a dedicated XML file provided in input.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Initializes the SIMATIC IT Components Database on the basis of a dedicated XML file provided in input.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DbInitializeHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateMaterialDefinition</name>
+                        <shortname>CreateMaterialDefinition</shortname>
+                        <description> Creates a Material Definition record in the SIMATIC IT Components Database.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a Material Definition record in the SIMATIC IT Components Database.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateMaterialDefinitionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteMaterialDefinitions</name>
+                        <shortname>DeleteMaterialDefinitions</shortname>
+                        <description> Deletes the specified Material Definition Versions. Deletion is not permitted if the specified versions are in use.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes the specified Material Definition Versions. Deletion is not permitted if the specified versions are in use.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteMaterialDefinitionsHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateToolDefinition</name>
+                        <shortname>CreateToolDefinition</shortname>
+                        <description> Creates a Tool Definition record in the SIMATIC IT Components Database.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a Tool Definition record in the SIMATIC IT Components Database.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateToolDefinitionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteToolDefinitions</name>
+                        <shortname>DeleteToolDefinitions</shortname>
+                        <description> Deletes the specified Tool Definition Versions. Deletion is not permitted if the specified versions are in use.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes the specified Tool Definition Versions. Deletion is not permitted if the specified versions are in use.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteToolDefinitionsHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UADMUpdateMaterialDefinition</name>
+                        <shortname>UADMUpdateMaterialDefinition</shortname>
+                        <description> Updates the specified Material Definition record in the SIMATIC IT Components Database.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Updates the specified Material Definition record in the SIMATIC IT Components Database.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UADMUpdateMaterialDefinitionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UADMCreateMaterialDefinition</name>
+                        <shortname>UADMCreateMaterialDefinition</shortname>
+                        <description> Creates a Material Definition record in the SIMATIC IT Components Database (in the MMDefinitions table).</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a Material Definition record in the SIMATIC IT Components Database (in the MMDefinitions table).</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UADMCreateMaterialDefinitionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateMaterialClass</name>
+                        <shortname>CreateMaterialClass</shortname>
+                        <description> Creates a Material Class record in the SIMATIC IT Components Database.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a Material Class record in the SIMATIC IT Components Database.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateMaterialClassHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateEquipment</name>
+                        <shortname>CreateEquipment</shortname>
+                        <description> Creates a record for either an Equipment in a Plant or the Plant itself in the SIMATIC IT Components database.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a record for either an Equipment in a Plant or the Plant itself in the SIMATIC IT Components database.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateEquipmentHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteEquipment</name>
+                        <shortname>DeleteEquipment</shortname>
+                        <description> Deletes the specified Equipment. Deletion is not permitted if the specified entity is currently in use.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes the specified Equipment. Deletion is not permitted if the specified entity is currently in use.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteEquipmentHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateWorkOperationType</name>
+                        <shortname>CreateWorkOperationType</shortname>
+                        <description> Creates a Work Operation Type record in the SIMATIC IT Components Database.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a Work Operation Type record in the SIMATIC IT Components Database.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateWorkOperationTypeHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UpdateWorkOperationType</name>
+                        <shortname>UpdateWorkOperationType</shortname>
+                        <description> Updates the specified Work Operation Type in the SIMATIC IT Components Database.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Updates the specified Work Operation Type in the SIMATIC IT Components Database.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UpdateWorkOperationTypeHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteWorkOperationTypeList</name>
+                        <shortname>DeleteWorkOperationTypeList</shortname>
+                        <description> Deletes the specified Work Operation Types. Deletion is not permitted if the specified entities are in use.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes the specified Work Operation Types. Deletion is not permitted if the specified entities are in use.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteWorkOperationTypeListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateNewMaterialDefinitionRevision</name>
+                        <shortname>CreateNewMaterialDefinitionRevision</shortname>
+                        <description> Creates a new Revision (version) of the specified Material Definition.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a new Revision (version) of the specified Material Definition.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateNewMaterialDefinitionRevisionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateMachineDefinition</name>
+                        <shortname>CreateMachineDefinition</shortname>
+                        <description> Creates a record for a Machine Definition in the SIMATIC IT Components database.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a record for a Machine Definition in the SIMATIC IT Components database.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateMachineDefinitionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateDCDList</name>
+                        <shortname>CreateDCDList</shortname>
+                        <description> Creates a list of Data Collections.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a list of Data Collections.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateDCDListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.ChangeWorkInstructionStatus</name>
+                        <shortname>ChangeWorkInstructionStatus</shortname>
+                        <description> Changes the status of a Work Instruction.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Changes the status of a Work Instruction.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.ChangeWorkInstructionStatusHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UADMCreateToolDefinition</name>
+                        <shortname>UADMCreateToolDefinition</shortname>
+                        <description> Creates a Tool Definition record in the SIMATIC IT Components Database.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a Tool Definition record in the SIMATIC IT Components Database.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UADMCreateToolDefinitionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UpdateToolDefinition</name>
+                        <shortname>UpdateToolDefinition</shortname>
+                        <description> Updates a Tool Definition record in the SIMATIC IT Components Database.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Updates a Tool Definition record in the SIMATIC IT Components Database.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UpdateToolDefinitionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UADMCreateNewToolDefinitionRevision</name>
+                        <shortname>UADMCreateNewToolDefinitionRevision</shortname>
+                        <description> Creates a new Revision (version) of the specified Tool Definition.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a new Revision (version) of the specified Tool Definition.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UADMCreateNewToolDefinitionRevisionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateReworkCodeList</name>
+                        <shortname>CreateReworkCodeList</shortname>
+                        <description> Creates a list of Rework Codes.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a list of Rework Codes.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateReworkCodeListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteReworkCodeList</name>
+                        <shortname>DeleteReworkCodeList</shortname>
+                        <description> Deletes a list of Rework Codes.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes a list of Rework Codes.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteReworkCodeListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateDefectGroup</name>
+                        <shortname>CreateDefectGroup</shortname>
+                        <description> Creates a Defect Group and the related relationships.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a Defect Group and the related relationships.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateDefectGroupHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteDefectGroupList</name>
+                        <shortname>DeleteDefectGroupList</shortname>
+                        <description> Deletes a list of Defect Group and the related relationships.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes a list of Defect Group and the related relationships.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteDefectGroupListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UpdateDefectGroup</name>
+                        <shortname>UpdateDefectGroup</shortname>
+                        <description> Updates a Defect Group and the related relationships.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Updates a Defect Group and the related relationships.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UpdateDefectGroupHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteDefectTypeList</name>
+                        <shortname>DeleteDefectTypeList</shortname>
+                        <description> Deletes a list of Defect Type and the related relationships.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes a list of Defect Type and the related relationships.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteDefectTypeListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UpdateDefectType</name>
+                        <shortname>UpdateDefectType</shortname>
+                        <description> Updates a Defect Type and the related relationships.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Updates a Defect Type and the related relationships.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UpdateDefectTypeHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateDefectType</name>
+                        <shortname>CreateDefectType</shortname>
+                        <description> Creates a Defect Type and the related relationship.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a Defect Type and the related relationship.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateDefectTypeHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateNonConformanceTransition</name>
+                        <shortname>CreateNonConformanceTransition</shortname>
+                        <description> Createa a new Transition for the Non-Conformance lifecycle.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Createa a new Transition for the Non-Conformance lifecycle.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateNonConformanceTransitionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateNonConformanceStatus</name>
+                        <shortname>CreateNonConformanceStatus</shortname>
+                        <description> Creates a new Status for the Non-Conformance.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a new Status for the Non-Conformance.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateNonConformanceStatusHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateNonConformanceLifecycle</name>
+                        <shortname>CreateNonConformanceLifecycle</shortname>
+                        <description> Creates a new Lifecycle for the Non-Conformance.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a new Lifecycle for the Non-Conformance.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateNonConformanceLifecycleHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.EnableLocationMachineForCompleteByDifferentUser</name>
+                        <shortname>EnableLocationMachineForCompleteByDifferentUser</shortname>
+                        <description> Permits the completion of a Work Order Operation by another user (regardless of whether he/she started it or not) on that Location or Machine.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Permits the completion of a Work Order Operation by another user (regardless of whether he/she started it or not) on that Location or Machine.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.EnableLocationMachineForCompleteByDifferentUserHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.EditEquipment</name>
+                        <shortname>EditEquipment</shortname>
+                        <description> Edits an existing Equipment.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Edits an existing Equipment.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.EditEquipmentHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateDefectTypeContextualization</name>
+                        <shortname>CreateDefectTypeContextualization</shortname>
+                        <description> Creates the association between a Defect Type and Material Definitions, Equipment and/or Machine Definitions.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates the association between a Defect Type and Material Definitions, Equipment and/or Machine Definitions.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateDefectTypeContextualizationHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateDefectGroupContextualization</name>
+                        <shortname>CreateDefectGroupContextualization</shortname>
+                        <description> Creates the association between a Defect Group and Material Definitions, Equipment and/or Machine Definitions.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates the association between a Defect Group and Material Definitions, Equipment and/or Machine Definitions.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CreateDefectGroupContextualizationHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.AssignNonConformanceTransitionRoleList</name>
+                        <shortname>AssignNonConformanceTransitionRoleList</shortname>
+                        <description> Creates an xml file with the list of SIMATIC IT UAF Roles that are allowed to perform a specific Non-Conformance Transition (of a specific Non-Conformance Lifecycle).</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates an xml file with the list of SIMATIC IT UAF Roles that are allowed to perform a specific Non-Conformance Transition (of a specific Non-Conformance Lifecycle).</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.AssignNonConformanceTransitionRoleListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.RemoveNonConformanceTransitionRoleList</name>
+                        <shortname>RemoveNonConformanceTransitionRoleList</shortname>
+                        <description> Removes the SIMATIC IT UAF Roles assigned to a specific Non-Conformance Transition (of a specific Non-Conformance Lifecycle).</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Removes the SIMATIC IT UAF Roles assigned to a specific Non-Conformance Transition (of a specific Non-Conformance Lifecycle).</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.RemoveNonConformanceTransitionRoleListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.RemoveDefectTypeContextualization</name>
+                        <shortname>RemoveDefectTypeContextualization</shortname>
+                        <description> Removes the association between a Defect Type and Material Definitions, Equipment and/or Machine Definitions.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Removes the association between a Defect Type and Material Definitions, Equipment and/or Machine Definitions.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.RemoveDefectTypeContextualizationHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.RemoveDefectGroupContextualization</name>
+                        <shortname>RemoveDefectGroupContextualization</shortname>
+                        <description> Removes the association between a Defect Group and Material Definitions, Equipment and/or Machine Definitions.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Removes the association between a Defect Group and Material Definitions, Equipment and/or Machine Definitions.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.RemoveDefectGroupContextualizationHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.AssignNonConformanceTransitionMailAddressList</name>
+                        <shortname>AssignNonConformanceTransitionMailAddressList</shortname>
+                        <description> Creates an xml file with the list of e-mail addresses, associated to SIMATIC IT UAF Roles, enabled to receive a message when a specific Non-Conformance Transition (of a specific Non-Conformance Lifecycle) occurs.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates an xml file with the list of e-mail addresses, associated to SIMATIC IT UAF Roles, enabled to receive a message when a specific Non-Conformance Transition (of a specific Non-Conformance Lifecycle) occurs.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.AssignNonConformanceTransitionMailAddressListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.RemoveNonConformanceTransitionMailAddressList</name>
+                        <shortname>RemoveNonConformanceTransitionMailAddressList</shortname>
+                        <description> Removes the e-mail addresses of the SIMATIC IT UAF Roles assigned to a specific Non-Conformance Transition (of a specific Non-Conformance Lifecycle).</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Removes the e-mail addresses of the SIMATIC IT UAF Roles assigned to a specific Non-Conformance Transition (of a specific Non-Conformance Lifecycle).</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.RemoveNonConformanceTransitionMailAddressListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.GetNonConformanceTransitionRoleMailList</name>
+                        <shortname>GetNonConformanceTransitionRoleMailList</shortname>
+                        <description> Returns the list of Authorized Roles and E-Mail Addresses configured for a specific Non-Conformance Transition.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Returns the list of Authorized Roles and E-Mail Addresses configured for a specific Non-Conformance Transition.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.GetNonConformanceTransitionRoleMailListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.LinkSubstrateDefinitionToMachine</name>
+                        <shortname>LinkSubstrateDefinitionToMachine</shortname>
+                        <description> Saves the list of Machine/Machine Definition where the Substrate Definition can be used.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Saves the list of Machine/Machine Definition where the Substrate Definition can be used.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.LinkSubstrateDefinitionToMachineHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UnlinkSubstrateDefinitionToMachine</name>
+                        <shortname>UnlinkSubstrateDefinitionToMachine</shortname>
+                        <description> Removes the association of the Substrate Definition from the list of Machine/Machine Definition.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Removes the association of the Substrate Definition from the list of Machine/Machine Definition.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UnlinkSubstrateDefinitionToMachineHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UpdateNonConformanceStatus</name>
+                        <shortname>UpdateNonConformanceStatus</shortname>
+                        <description> Updates an existing status in the Non-Conformance Lifecycle.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Updates an existing status in the Non-Conformance Lifecycle.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UpdateNonConformanceStatusHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteNonConformanceStatusList</name>
+                        <shortname>DeleteNonConformanceStatusList</shortname>
+                        <description> Deletes a list of Non-Conformance statuses.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes a list of Non-Conformance statuses.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteNonConformanceStatusListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteNonConformanceTransitionList</name>
+                        <shortname>DeleteNonConformanceTransitionList</shortname>
+                        <description> Deletes a list of Non-Conformance Transitions.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes a list of Non-Conformance Transitions.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteNonConformanceTransitionListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteNonConformanceLifecycleList</name>
+                        <shortname>DeleteNonConformanceLifecycleList</shortname>
+                        <description> Deletes a list of Non-Conformance Lifecycles.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes a list of Non-Conformance Lifecycles.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.DeleteNonConformanceLifecycleListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UpdateNonConformanceLifecycle</name>
+                        <shortname>UpdateNonConformanceLifecycle</shortname>
+                        <description> Updates an existing Non-Conformance Lifecycle.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Updates an existing Non-Conformance Lifecycle.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UpdateNonConformanceLifecycleHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.SaveAsWorkInstruction</name>
+                        <shortname>SaveAsWorkInstruction</shortname>
+                        <description> Copies or creates a new version of a SIMATIC IT ALT Work Instruction.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Copies or creates a new version of a SIMATIC IT ALT Work Instruction.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.SaveAsWorkInstructionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.TCMCreateWorkInstructionList</name>
+                        <shortname>TCMCreateWorkInstructionList</shortname>
+                        <description> Creates a list of Work Instructions. Used in Teamcenter Manufacturing integration. </description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a list of Work Instructions. Used in Teamcenter Manufacturing integration. </dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.TCMCreateWorkInstructionListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.LinkUserToEquipmentList</name>
+                        <shortname>LinkUserToEquipmentList</shortname>
+                        <description> Defines associations among Users and Equipment.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Defines associations among Users and Equipment.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.LinkUserToEquipmentListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UnlinkUserToEquipmentList</name>
+                        <shortname>UnlinkUserToEquipmentList</shortname>
+                        <description> Deletes associations among Users and Equipment.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes associations among Users and Equipment.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UnlinkUserToEquipmentListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.TraceUserRoleEquipmentAssociationHistory</name>
+                        <shortname>TraceUserRoleEquipmentAssociationHistory</shortname>
+                        <description> Traces adding/removing of associations among Users/Roles and Equipment.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Traces adding/removing of associations among Users/Roles and Equipment.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.TraceUserRoleEquipmentAssociationHistoryHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.LinkRoleToEquipmentList</name>
+                        <shortname>LinkRoleToEquipmentList</shortname>
+                        <description> Command to define association among roles and Equipment.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Command to define association among roles and Equipment.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.LinkRoleToEquipmentListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UnlinkRoleToEquipmentList</name>
+                        <shortname>UnlinkRoleToEquipmentList</shortname>
+                        <description> Command to delete association among role and equipment.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Command to delete association among role and equipment.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UnlinkRoleToEquipmentListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CallOnMaterialDefinitionImportedEvent</name>
+                        <shortname>CallOnMaterialDefinitionImportedEvent</shortname>
+                        <description> Fires the event OnMaterialDefinitionImported.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Fires the event OnMaterialDefinitionImported.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CallOnMaterialDefinitionImportedEventHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CallOnToolDefinitionImportedEvent</name>
+                        <shortname>CallOnToolDefinitionImportedEvent</shortname>
+                        <description> Fires the event OnToolDefinitionImported.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Fires the event OnToolDefinitionImported.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.CallOnToolDefinitionImportedEventHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UnlockEquipment</name>
+                        <shortname>UnlockEquipment</shortname>
+                        <description> Unlocks an existing Equipment.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Unlocks an existing Equipment.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Commands.UnlockEquipmentHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_EXT.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command></commands>
+    <events><event>
+                <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Events.OnToolDefinitionsImported</name>
+                <shortname>OnToolDefinitionsImported</shortname>
+                <description> Event fired when the Tools Definition are imported. Used in Teamcenter Manufacturing integration.</description>
+                <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Events, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                <dotneteventtype></dotneteventtype>
+                <eventtype>Application</eventtype>
+                <domain>MsExt</domain>
+                <taglist>
+                </taglist>
+                <securable>false</securable>
+        </event><event>
+                <name>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Events.OnMaterialDefinitionsImported</name>
+                <shortname>OnMaterialDefinitionsImported</shortname>
+                <description> Event fired when the Materials Definition are imported. Used in Teamcenter Manufacturing integration.</description>
+                <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Events, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                <dotneteventtype></dotneteventtype>
+                <eventtype>Application</eventtype>
+                <domain>MsExt</domain>
+                <taglist>
+                </taglist>
+                <securable>false</securable>
+        </event></events>
+    <event_handlers></event_handlers>
+    <signals></signals>
+    <readingFunctions></readingFunctions>
+    <entities></entities>
+    <datamodels><datamodel>
+      <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Types, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+      <mode>WR</mode>
+      <domain>MsExt</domain>
+    </datamodel><datamodel>
+      <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.Types.ReadingModel, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+      <mode>RD</mode>
+      <domain>MsExt</domain>
+    </datamodel></datamodels>
+    <externaldatamodels><externaldatamodel>
+      <assembly>Siemens.SimaticIT.U4DM.MsExt.FB_MS_EXT.MEModel.ReadingModel, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+      <domain>MsExt</domain>
+      <dataprovidertype>MSSQL</dataprovidertype>
+    </externaldatamodel></externaldatamodels>
+    <appdatamodels></appdatamodels>
+    <uimodules></uimodules>
+    <uicomponents></uicomponents>
+  </artifacts>
+  <security>
+    <roles></roles>
+  </security>
+  <runtime>
+    <event_subscriptions></event_subscriptions>
+    <handlergroups></handlergroups>
+  </runtime>
+</projectmanifest>

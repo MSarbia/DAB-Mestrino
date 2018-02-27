@@ -25,13 +25,10 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         private CreateToBeConsumedMaterialExt.Response CreateToBeConsumedMaterialExtHandler(CreateToBeConsumedMaterialExt command)
         {
             var response = new CreateToBeConsumedMaterialExt.Response();
-
-            var tbcme = Platform.Create<IToBeConsumedMaterialExt>();
-
-            tbcme.WorkOrderOperationId = command.WorkOrderOperationId;
-
             foreach (var tbcm in command.ToBeConsumedMaterials)
             {
+                var tbcme = Platform.Create<IToBeConsumedMaterialExt>();
+                tbcme.WorkOrderOperationId = command.WorkOrderOperationId;
                 tbcme.ToBeConsumedMaterialId = tbcm.ToBeConsumedMaterialId;
                 tbcme.Sequence = tbcm.Sequence;
                 tbcme.DeclaredQuanity = 0;

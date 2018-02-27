@@ -26,7 +26,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         {
             var response = new ReportOperationProgress.Response();
 
-            OperatorOperation reportOperationProgress = new OperatorOperation(command.ErpOrder, command.OperationSequence, command.ProducedQuantity);
+            OperatorOperation reportOperationProgress = new OperatorOperation(command.ErpOrder, command.OperationSequence, command.ProducedQuantity,command.Plant, command.IsComplete);
 
             var result = InforConnector.ReportOperationProgress(reportOperationProgress);
 
@@ -34,7 +34,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             {
                 response.SetError(-1001, result.Error);
             }
-            else if (result.Error != null)
+            else if (!string.IsNullOrEmpty(result.Error))
             {
                 response.SetError(-1002, result.Error);
             }

@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?><projectmanifest>
+  <header>
+    <manifestversion>1.5</manifestversion>
+    <platformversion>1.5</platformversion>
+    <type>Library</type>
+    <name>Siemens.SimaticIT.U4DM.FB_MS_AMMS</name>
+    <shortname>FB_MS_AMMS</shortname>
+    <description>FB_MS_AMMS</description>
+    <version>03.00.00</version>
+    <companyname>Siemens.SimaticIT.U4DM</companyname>
+    <author>Siemens.SimaticIT.U4DM</author>
+    <hash>+g+9LxACbZz4GFUYcgQ98SmyLRg/5BuZ1xz9J/gLCxQ=</hash>
+  </header>
+  <reference>
+    <functionalblocks>
+      <functionalblock>
+        <name>Siemens.SimaticIT.U4DM.RD.FB.ConfigKey</name>
+        <version>03.00.00</version>
+        <type>Library</type>
+      </functionalblock>
+      <functionalblock>
+        <name>Siemens.SimaticIT.U4DM.FB_RD_SERV</name>
+        <version>03.00.00</version>
+        <type>Library</type>
+      </functionalblock>
+      <functionalblock>
+        <name>Siemens.SimaticIT.U4DM.FB_MS_EXT</name>
+        <version>03.00.00</version>
+        <type>Library</type>
+      </functionalblock>
+      <functionalblock>
+        <name>Siemens.SimaticIT.U4DM.FB_MS_BOP</name>
+        <version>03.00.00</version>
+        <type>Library</type>
+      </functionalblock>
+    </functionalblocks>
+  </reference>
+  <artifacts>
+    <commands><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.CreatePrintJobFile</name>
+                        <shortname>CreatePrintJobFile</shortname>
+                        <description> This command creates a new Print Job File.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command creates a new Print Job File.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.CreatePrintJobFileHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.LinkPJFToMaterialDefinition</name>
+                        <shortname>LinkPJFToMaterialDefinition</shortname>
+                        <description> This command associates a Print Job File to a Material Definition.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command associates a Print Job File to a Material Definition.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.LinkPJFToMaterialDefinitionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.UnlinkPJFToMaterialDefinition</name>
+                        <shortname>UnlinkPJFToMaterialDefinition</shortname>
+                        <description> This command removes the association between the Print Job File and the Material Definition.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command removes the association between the Print Job File and the Material Definition.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.UnlinkPJFToMaterialDefinitionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.LinkPJFToEquipmentSpecification</name>
+                        <shortname>LinkPJFToEquipmentSpecification</shortname>
+                        <description> This command associates a Print Job File to an Equipment Specification.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command associates a Print Job File to an Equipment Specification.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.LinkPJFToEquipmentSpecificationHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.EditPrintJobFile</name>
+                        <shortname>EditPrintJobFile</shortname>
+                        <description> This command edits a Print Job File.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command edits a Print Job File.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.EditPrintJobFileHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.UnLinkPJFToEquipmentSpecification</name>
+                        <shortname>UnLinkPJFToEquipmentSpecification</shortname>
+                        <description> This command removes the association between a Print Job File and an Equipment Specification.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command removes the association between a Print Job File and an Equipment Specification.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.UnLinkPJFToEquipmentSpecificationHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.LinkAMMachineToMES</name>
+                        <shortname>LinkAMMachineToMES</shortname>
+                        <description> This command associates a 3D Printer of an external system to a SIMATIC IT MES Machine.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command associates a 3D Printer of an external system to a SIMATIC IT MES Machine.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.LinkAMMachineToMESHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.UnlinkAMMachineToMES</name>
+                        <shortname>UnlinkAMMachineToMES</shortname>
+                        <description> This command removes the association between a 3D Printer of an external system and a SIMATIC IT MES Machine.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command removes the association between a 3D Printer of an external system and a SIMATIC IT MES Machine.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.UnlinkAMMachineToMESHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.LinkPrintJobFileToMachine</name>
+                        <shortname>LinkPrintJobFileToMachine</shortname>
+                        <description> This command associates a Print Job File to a SIMATIC IT MES Machine. </description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command associates a Print Job File to a SIMATIC IT MES Machine. </dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.LinkPrintJobFileToMachineHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.UnlinkPrintJobFileToMachine</name>
+                        <shortname>UnlinkPrintJobFileToMachine</shortname>
+                        <description> This command removes the association between a Print Job File and a SIMATIC IT MES Machine. </description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command removes the association between a Print Job File and a SIMATIC IT MES Machine. </dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.UnlinkPrintJobFileToMachineHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.Link3DPrinterTypeToMES</name>
+                        <shortname>Link3DPrinterTypeToMES</shortname>
+                        <description> This command tracks the associated 3D Printers relative to the Print Job File.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command tracks the associated 3D Printers relative to the Print Job File.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.Link3DPrinterTypeToMESHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.CreateEquipmentSpecificationWithPrintJobFile</name>
+                        <shortname>CreateEquipmentSpecificationWithPrintJobFile</shortname>
+                        <description> This command creates an Equipment Specification and associates it to a Print Job File.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command creates an Equipment Specification and associates it to a Print Job File.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.CreateEquipmentSpecificationWithPrintJobFileHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.DeletePrintJobFileList</name>
+                        <shortname>DeletePrintJobFileList</shortname>
+                        <description> This command deletes a list of Print Job Files.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command deletes a list of Print Job Files.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.DeletePrintJobFileListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.LinkTransferPluginTo3DPrinter</name>
+                        <shortname>LinkTransferPluginTo3DPrinter</shortname>
+                        <description> This command sets a new transfer plugin for a 3D Printer.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command sets a new transfer plugin for a 3D Printer.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.LinkTransferPluginTo3DPrinterHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.LinkPrintJobFileToMachineDefinition</name>
+                        <shortname>LinkPrintJobFileToMachineDefinition</shortname>
+                        <description> This command associates a Print Job File to a Machine Definition representing a SIMATIC IT MES Machine. .</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command associates a Print Job File to a Machine Definition representing a SIMATIC IT MES Machine. .</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MasterData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Commands.LinkPrintJobFileToMachineDefinitionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_MS_AMMS.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command></commands>
+    <events></events>
+    <event_handlers></event_handlers>
+    <signals></signals>
+    <readingFunctions></readingFunctions>
+    <entities></entities>
+    <datamodels><datamodel>
+      <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+      <mode>WR</mode>
+      <domain>MasterData</domain>
+    </datamodel><datamodel>
+      <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.ReadingModel, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+      <mode>RD</mode>
+      <domain>MasterData</domain>
+    </datamodel><datamodel>
+      <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Types, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+      <mode>WR</mode>
+      <domain>MasterData</domain>
+    </datamodel><datamodel>
+      <assembly>Siemens.SimaticIT.U4DM.MasterData.FB_MS_AMMS.MSModel.Types.ReadingModel, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+      <mode>RD</mode>
+      <domain>MasterData</domain>
+    </datamodel></datamodels>
+    <externaldatamodels></externaldatamodels>
+    <appdatamodels></appdatamodels>
+    <uimodules></uimodules>
+    <uicomponents></uicomponents>
+  </artifacts>
+  <security>
+    <roles></roles>
+  </security>
+  <runtime>
+    <event_subscriptions></event_subscriptions>
+    <handlergroups></handlergroups>
+  </runtime>
+</projectmanifest>

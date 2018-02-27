@@ -31,8 +31,9 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             woe.Operators = command.Operators;
             woe.SetupTime = command.SetupTime;
             woe.CicleTime = command.CycleTime;
-            woe.WorkOrderId = command.WorkOrderId;            
-
+            woe.WorkOrderId = command.WorkOrderId;
+            woe.NextOrder = command.NextOrder;
+            woe.Sequence = command.Sequence;
             Platform.Submit(woe);
 
             return response;

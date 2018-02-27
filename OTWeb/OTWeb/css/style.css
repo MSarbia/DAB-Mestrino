@@ -337,6 +337,10 @@ body {
     background-color: darkseagreen;
 }
 
+.serialsList li.pausedSerial {
+    background-color: coral ;
+}
+
     .overlay {
         background-color:rgba(128,128,128,0.7);
         color: #666666;

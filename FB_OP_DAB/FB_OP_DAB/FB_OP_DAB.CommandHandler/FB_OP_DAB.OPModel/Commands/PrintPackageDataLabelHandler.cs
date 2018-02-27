@@ -27,17 +27,27 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             var response = new PrintPackageDataLabel.Response();
 
             var error1 = LabelPrinter.PrintDataLabel(command.SerialNumbers, command.ProductCode, command.WorkArea);
+            if (!error1.connectionsucceeded)
+            {
+                response.SetError(-1000, "Impossibile connettersi al servizio di stampa: " + error1.error);
+                return response;
+            }
+            else if(!string.IsNullOrEmpty(error1.error))
+            {
+                response.SetError(-1000, "Errore di stampa etichetta dati:" + error1.error);
+                return response;
+            }
             var error2 = LabelPrinter.PrintPackageLabel(command.SerialNumbers, command.ProductCode, command.WorkArea);
 
-            if (error1.connectionsucceeded && error2.connectionsucceeded)
+            if (!error2.connectionsucceeded)
             {
-                string error = " |DataLabel:" + error1.error + " |PackageLabel:" + error2.error;
-                if (!(string.IsNullOrEmpty(error1.error) && string.IsNullOrEmpty(error2.error))) response.SetError(-1000, error);
-
+                response.SetError(-1000, "Impossibile connettersi al servizio di stampa: " + error2.error);
+                return response;
             }
-            else
+            else if (!string.IsNullOrEmpty(error2.error))
             {
-                response.SetError(-1000, "Impossibile connettersi a NiceLabel");
+                response.SetError(-1000, "Errore di stampa etichetta imballo" + error2.error);
+                return response;
             }
 
             return response;

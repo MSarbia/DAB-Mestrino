@@ -30,19 +30,19 @@ namespace InforConnectorLibrary
         public InvTransfer(string orderNumber,
                            string refNum,
                            string storageUnit,
-                           decimal storageQuantity)
+                           decimal storageQuantity, string company, string item, bool customized)
         {
             OrderNumber = orderNumber;
 
-            Item = string.Empty;
+            Item = item;
             ToWarehouse = string.Empty;
             FromWarehouse = "D100";
-            FromWarehouse = "PREL100";
-            Company = "100";
-            Customized = false;
+            FromLocation = "PREL100";
+            Company = string.IsNullOrEmpty(company) ? "100" : company;
+            Customized = customized;
             if (string.IsNullOrEmpty(refNum) == false)
             {
-                var splitted = refNum.Split(';');
+                var splitted = refNum.Split('-');
 
                 if (splitted.Count() == 2)
                 {

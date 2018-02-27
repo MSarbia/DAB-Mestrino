@@ -49,7 +49,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
                 newAss.FattoreDiPotenza = ass.FattoreDiPotenza;
                 newAss.Nome = ass.Nome;
                 newAss.Portata = ass.Portata;
-                newAss.PotenzaASecco = ass.PotenzaASecco;
+                newAss.Watt = ass.Watt;
                 newAss.Pressione = ass.Pressione;
                 newAss.SquilibrioCorrenti = ass.SquilibrioCorrenti;
                 newAss.TensioneProva = ass.TensioneProva;

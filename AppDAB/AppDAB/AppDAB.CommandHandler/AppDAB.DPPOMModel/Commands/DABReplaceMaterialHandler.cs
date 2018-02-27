@@ -6,7 +6,6 @@ using Siemens.SimaticIT.Unified.Common.Information;
 using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.Published;
 using Siemens.SimaticIT.Handler;
 using Siemens.SimaticIT.Unified;
-using Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands;
 using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.ReadingModel;
 
 namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
@@ -15,7 +14,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
     /// Partial class init
     /// </summary>
     [Handler(HandlerCategory.BasicMethod)]
-    public partial class DABReplaceMaterialHandlerShell 
+    public partial class DABReplaceMaterialHandlerShell
     {
         /// <summary>
         /// This is the handler the MES engineer should write
@@ -28,27 +27,30 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         private DABReplaceMaterial.Response DABReplaceMaterialHandler(DABReplaceMaterial command)
         {
             var response = new DABReplaceMaterial.Response();
-            /*
-             * Qui dovrete invocare il TransferMaterial definite dentro FB_OP_DAB
-             *  e se va a buon fine il comando UADMAcceptChangeAddToBeConsumedMaterial definito dentro
-             *  al functional block FB_OP_EXT. Per poterlo chiamare dovete importarlo 
-             *  dal Public Object Model Configurator (dominio Ms_Ext).
-             *   Anche di questo buttate tanto giù lo scheletro poi vediamo meglio domani.
-             */
+            ToBeConsumedMaterial toBeConsumedMaterial = Platform.ProjectionQuery<ToBeConsumedMaterial>().FirstOrDefault(tcm => tcm.Id == command.OldToBeConsumedMaterialId);
+            int workOrderOperationId = toBeConsumedMaterial.WorkOrderOperation_Id.GetValueOrDefault();
+            int sequence = (Platform.ProjectionQuery<ToBeConsumedMaterialExt>().Where(tce => tce.WorkOrderOperationId == workOrderOperationId).Max(tce => tce.Sequence) + 10);
+            command.NewToBeConsumedMaterial.LogicalPosition = sequence.ToString();
+            Platform.CallCommand<AcceptChangeAddToBeConsumedMaterial, AcceptChangeAddToBeConsumedMaterial.Response>(new AcceptChangeAddToBeConsumedMaterial
+            {
+                ChangePartId = command.ChangePartId,
+                Notes = command.Notes,
+                RefNumber = command.RefNumber,
+                ToBeConsumedMaterial = command.NewToBeConsumedMaterial,
+                WorkOrderOperationId = workOrderOperationId
+            });
+            int newToBeConsumedMaterialId = Platform.ProjectionQuery<ToBeConsumedMaterial>().Where(tcm => tcm.WorkOrderOperation_Id == workOrderOperationId && tcm.LogicalPosition == command.NewToBeConsumedMaterial.LogicalPosition).Select(tcm => tcm.Id).FirstOrDefault();
+            var order = Platform.ProjectionQuery<WorkOrderOperation>().Include(woo => woo.WorkOrder).Where(woo => woo.Id == toBeConsumedMaterial.WorkOrderOperation_Id).Select(woo => woo.WorkOrder).FirstOrDefault();
+            var matDef = Platform.ProjectionQuery<MaterialDefinition>().Where(m => m.Id == command.NewToBeConsumedMaterial.MaterialDefinitionId).FirstOrDefault();
 
-            /*
-             *            int? workOrderId = Platform.ProjectionQuery<ProducedMaterialItem>().Include(pmi => pmi.WorkOrder).Include(pmi => pmi.MaterialItem)
-                .Where(pmi => pmi.MaterialItem.SerialNumberCode == command.SerialNumber).Select(pmi => pmi.WorkOrder_Id).FirstOrDefault();
-             */
-             
-         
-
-          //  var input = Platform.ProjectionQuery<??????>().Where(rmn => rmn.RefNum == command.RefNumber).Select(rmn => rmn.OrderNumber);
-
-            var reportInput = new ReportMaterialNonConformance(command.RefNumber,"ordernumber","storageunit",0/*storage quantity*/,"TransIdToDelete"); //PRXXX Cancellare TransId dal model App
+            var reportInput = new ReportMaterialNonConformance(command.RefNumber, order.ERPOrder, matDef.UOM, command.NewToBeConsumedMaterial.Quantity, matDef.NId, matDef.Id, order.Plant, workOrderOperationId, sequence, newToBeConsumedMaterialId); //PRXXX Cancellare TransId dal model App
 
             var result = Platform.CallCommand<ReportMaterialNonConformance, ReportMaterialNonConformance.Response>(reportInput);
-            
+            if(!result.Succeeded)
+            {
+                response.SetError(result.Error.ErrorCode, result.Error.ErrorMessage);
+                return response;
+            }
             return response;
         }
     }

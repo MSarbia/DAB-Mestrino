@@ -33,14 +33,14 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             };
             var machine = Platform.ProjectionQuery<Equipment>().Where(e => e.NId == command.Equipment).Select(e => e.Id).FirstOrDefault();
 
-            var workOrderOperationIds = Platform.ProjectionQuery<ToBeUsedMachine>().Where(m => m.Machine == machine).Select(m=>m.WorkOrderOperation_Id.Value).ToList();
+            var workOrderOperationIds = Platform.ProjectionQuery<ToBeUsedMachine>().Where(m => m.Machine == machine).Select(m=>m.WorkOrderOperation_Id.Value).Distinct().ToList();
             var wos = Platform.ProjectionQuery<WorkOrderOperation>().Where(w => workOrderOperationIds.Contains(w.Id)).Where(w => w.IsReady).ToList();
             var orderIds = wos.Select(w => w.WorkOrder_Id).Distinct().ToList();
             var woDictionary = wos.ToDictionary(wo=>wo.Id,wo=>wo);
             Dictionary<int, WorkOrder> orders = Platform.ProjectionQuery<WorkOrder>().Where(o => orderIds.Contains(o.Id)).ToDictionary(o => o.Id, o => o);
             List<int> matDefIds = orders.Select(o => o.Value.FinalMaterial.Value).Distinct().ToList();
             Dictionary<int, MaterialDefinition> matDefs = Platform.ProjectionQuery<MaterialDefinition>().Where(m => matDefIds.Contains(m.Id)).ToDictionary(m => m.Id, m =>m);
-            foreach (var id in workOrderOperationIds)
+            foreach (var id in woDictionary.Keys)
             {
                 var wo = woDictionary[id];
                 var serials = Platform.ProjectionQuery<ToBeProducedMaterial>().Include(pm => pm.MaterialItem).Where(pm =>pm.WorkOrderOperation_Id == id).Select(pm => pm.MaterialItem.SerialNumberCode).ToList();
@@ -62,19 +62,22 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     {
                         Description = matDefs[orders[wo.WorkOrder_Id.Value].Id].Description,
                         Order = orders[wo.WorkOrder_Id.Value].NId,
-                        ProductCode = matDefs[orders[wo.WorkOrder_Id.Value].Id].NId
+                        ProductCode = matDefs[orders[wo.WorkOrder_Id.Value].Id].NId,
+                        EstimatedStartDate = orders[wo.WorkOrder_Id.Value].EstimatedStartTime.HasValue ? orders[wo.WorkOrder_Id.Value].EstimatedStartTime.Value: DateTimeOffset.UtcNow,
+                        Operation = wo.NId
                     };
                     response.Orders.Add(orderInfo);
                 }
                 orderInfo.Operation = wo.NId;
                 foreach(var serial in serials)
                 {
-                    string status = pausedSerials.Contains(serial)?"Pausa":"Disponibile";
+                    string status = pausedSerials.Contains(serial)?"Paused":"Available";
                     orderInfo.Serials.Add(new SerialInfo { SerialNumber = serial, Status = status });
                 }
-                orderInfo.Serials.AddRange(activeSerials.Select(s => new SerialInfo { SerialNumber = s, Status = "InLavorazione" }));
+                orderInfo.Serials.AddRange(activeSerials.Select(s => new SerialInfo { SerialNumber = s, Status = "Active" }));
                 orderInfo.Serials = orderInfo.Serials.OrderBy(s => s.SerialNumber).ToList();
             }
+            response.Orders = response.Orders.OrderBy(o => o.EstimatedStartDate).ToList();
             return response;
 
         }

@@ -115,7 +115,7 @@ WITH
     [@Guid(164d38cf-8585-4e08-9cc4-e1ed3ff4bb05)]
     SquilibrioCorrenti AS decimal
     [@Guid(5a8aec13-6334-42c8-b669-2101fe16c378)]
-    PotenzaASecco AS decimal
+    Watt AS decimal
 
 [@Guid(17b6fd20-dfb2-42dd-a7d7-de6d0769686a)]
 [@GuidId(0f660e8c-af1e-4b90-9d23-84f46b4cedab)]
@@ -203,6 +203,10 @@ WITH
     Operators AS int
     [@Guid(a9e0186c-81f5-4bff-97d0-3c799eb712dc)]
     ActualOperators AS int
+    [@Guid(fdff5f76-b179-46f0-b5db-9bf02f1f99a0)]
+    NextOrder AS int
+    [@Guid(ac8e8732-74b8-48b2-87c8-209b59acf857)]
+    Sequence AS int
 
 [@Guid(dd054901-cac3-434f-81db-c7cff56d31ec)]
 [@GuidId(5148c287-1c27-4741-931a-e6a97aa71824)]

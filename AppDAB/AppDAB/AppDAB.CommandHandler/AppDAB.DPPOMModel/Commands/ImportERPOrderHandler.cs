@@ -87,11 +87,11 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 var createWOExtResponse = Platform.CallCommand<CreateWorkOrderExt, CreateWorkOrderExt.Response>(new CreateWorkOrderExt()
                 {
                     WorkOrderId = createResponse.Id,
-                    // MSXXX perche' long per secondi?
                     CycleTime =  command.ERPOrderInfo.CycleTime,
                     SetupTime = command.ERPOrderInfo.SetupTime,
-                    Operators = command.ERPOrderInfo.Operators
-                    ///TODO: add logic
+                    Operators = command.ERPOrderInfo.Operators,
+                    NextOrder = phase.NextOrder,
+                    Sequence = phase.Sequence
                 });
 
                 // Manca Sequence, EstimatedDuration, Operators, SetupTime
@@ -172,7 +172,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     var toBeConsMatInput = new CreateToBeConsumedMaterialExt
                     {
                         WorkOrderOperationId = firstOperation.Id,
-                        ToBeConsumedMaterials = toBeConsumedIds.Select(m=>new ToBeConsumedMaterialExtParameter { ToBeConsumedMaterialId = m.Key, Sequence = Int32.Parse(m.Value)}).ToList()
+                        ToBeConsumedMaterials = toBeConsumedIds.Select(m=>new ToBeConsumedMaterialExtParameter { ToBeConsumedMaterialId = m.Key, Sequence = int.Parse(m.Value)}).ToList()
                     };
 
                     var createTBCMExtResponse = Platform.CallCommand<CreateToBeConsumedMaterialExt, CreateToBeConsumedMaterialExt.Response>(toBeConsMatInput);

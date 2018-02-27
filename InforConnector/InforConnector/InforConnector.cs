@@ -132,11 +132,7 @@ namespace InforConnectorLibrary
                     try
                     {
                         InforResult webResponseResult = ParseWebResponse(webResponse, reportRequest);
-
-                        if (webResponseResult.InforCallSucceeded == false)
-                        {
-                            return webResponseResult;
-                        }
+                        return webResponseResult;
                     }
                     catch (Exception ex)
                     {
@@ -167,7 +163,7 @@ namespace InforConnectorLibrary
                 return new InforResult(false, "EndGetResponse: " + exMessage);
             }
 
-            return new InforResult(true, "Chiamata eseguita con successo!");
+            //return new InforResult(true, "Chiamata eseguita con successo!");
         }
 
         // Metodo per creare WebRequest, la action non viene utilizzata
@@ -523,8 +519,6 @@ namespace InforConnectorLibrary
                 {
                     return new InforResult(false, "Campo OutData non ha stringa iniziale 1,99 per l'ordine: " + (reportRequest as ReportProduction).ProductionOrder.Trim());
                 }
-
-                resultMessage = " chiamata IWMStdReportProduction per l'ordine: " + productionOrder;
             }
             else if (document.ToString().Contains("IWMStdUnplannedMatlIssue"))
             {
@@ -538,8 +532,6 @@ namespace InforConnectorLibrary
                 {
                     return new InforResult(false, "Campo OutData non ha stringa iniziale 1,99 per l'ordine:  " + (reportRequest as UnplannedMat).ProdOrder.Trim());
                 }
-
-                resultMessage = " chiamata IWMStdUnplannedMatlIssue per l'ordine: " + productionOrder;
             }
             else if (document.ToString().Contains("IWMStdInvTransfer"))
             {
@@ -559,15 +551,13 @@ namespace InforConnectorLibrary
                 {
                     return new InforResult(false, "Risposta errata per l'ordine " + (reportRequest as OperatorOperation).ProdOrder.Trim() + "  la quantità completata è minore della quantità inviata");
                 }
-
-                resultMessage = " chiamata SFCOperatorOperation per l'ordine: " + productionOrder;
             }
             else
             {
                 return new InforResult(false, "Risposta non contiene stringa metodo chiamante");
             }
 
-            return new InforResult(true, "Risposta corretta per la" + resultMessage);
+            return new InforResult(true, string.Empty);
         }
 
         public static InforResult ReportProducedQuantity(ReportProduction reportProd)

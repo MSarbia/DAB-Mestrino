@@ -13,7 +13,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
     /// Partial class init
     /// </summary>
     [Handler(HandlerCategory.BasicMethod)]
-    public partial class PrintPalletLabelHandlerShell 
+    public partial class PrintPalletLabelHandlerShell
     {
         /// <summary>
         /// This is the handler the MES engineer should write
@@ -25,14 +25,14 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         private PrintPalletLabel.Response PrintPalletLabelHandler(PrintPalletLabel command)
         {
             var response = new PrintPalletLabel.Response();
-            var error = LabelPrinter.PrintPalletLabel(command.SerialNumbers, command.ProductCode, command.WorkArea,command.Quantity);
+            var error = LabelPrinter.PrintPalletLabel(command.SerialNumbers, command.ProductCode, command.WorkArea, command.Quantity);
             if (error.connectionsucceeded)
             {
-                if (!string.IsNullOrEmpty(error.error)) response.SetError(-1000, error.error);
+                if (!string.IsNullOrEmpty(error.error)) response.SetError(-1000, "Errore di stampa etichetta pallet: " + error.error);
             }
             else
             {
-                response.SetError(-1000, "Impossibile connettersi a NiceLabel");
+                response.SetError(-1000, "Impossibile connettersi al servizio di stampa: "+ error.error);
             }
 
             return response;

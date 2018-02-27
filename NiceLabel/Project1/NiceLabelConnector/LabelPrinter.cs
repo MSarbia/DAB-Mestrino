@@ -34,13 +34,13 @@ namespace NiceLabelConnector
 
         static string startXml()
         {
-            string header= "<NICELABEL_JOB>" + Environment.NewLine + "<MES_LABEL_DATA>" + Environment.NewLine;
+            string header= "<NICELABEL_JOB><MES_LABEL_DATA>";
 
             return header;
         }
         static string endXml()
         {
-            string footer = Environment.NewLine + "</MES_LABEL_DATA>" + Environment.NewLine + "</NICELABEL_JOB>";
+            string footer = "</MES_LABEL_DATA></NICELABEL_JOB>";
 
             return footer;
         }
@@ -58,13 +58,13 @@ namespace NiceLabelConnector
 
             foreach (string serialNumber in serialNumbers)
             {              
-                text = text + "<item>" + Environment.NewLine;
-                text = text + string.Format("<Codice_prodotto>{0}</Codice_prodotto>", productCode) + Environment.NewLine;
-                text = text + string.Format("<Numero_seriale>{0}</Numero_seriale>", serialNumber) + Environment.NewLine;
-                text = text + string.Format("<Tipologia_etichetta>{0}</Tipologia_etichetta>", labelType) + Environment.NewLine;
-                text = text + string.Format("<Linea>{0}</Linea>", workArea) + Environment.NewLine;
-                text = text + string.Format("<Quantita_copie>{0}</Quantita_copie>", quantity) + Environment.NewLine;
-                text = text + "</item>" + Environment.NewLine;
+                text = text + "<item>";
+                text = text + string.Format("<Codice_prodotto>{0}</Codice_prodotto>", productCode);
+                text = text + string.Format("<Numero_seriale>{0}</Numero_seriale>", serialNumber);
+                text = text + string.Format("<Tipologia_etichetta>{0}</Tipologia_etichetta>", labelType);
+                text = text + string.Format("<Linea>{0}</Linea>", workArea);
+                text = text + string.Format("<Quantita_copie>{0}</Quantita_copie>", quantity);
+                text = text + "</item>";
             }
 
             text = text + endXml();

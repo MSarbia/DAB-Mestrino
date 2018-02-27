@@ -14,7 +14,7 @@ namespace TestInforConsole
     {
         static void Main(string[] args)
         {
-            var request = new OperatorOperation("",0,1);
+            var request = new OperatorOperation("",0,1,"100",false);
             InforResult r;
             XmlDocument soapEnvelopeXml = InforConnector.CreateSoapEnvelope(request, out r);
 
@@ -56,10 +56,10 @@ namespace TestInforConsole
             while (true)
             {
                 int choice = Int32.Parse(Console.ReadLine());
-                ReportProduction reportProd = new ReportProduction("D02220137", 1, false);
-                UnplannedMat unplannedMat = new UnplannedMat("D02220137", 1, "002612155", 1, Convert.ToDecimal(1.0));
-                OperatorOperation operationProg = new OperatorOperation("D02220137", 1, 1);
-                InvTransfer materialNonConf = new InvTransfer("TestOrderNumber", "TransIdTest;ToWarehouseTest", "StorageUnitTest", Convert.ToDecimal(1.2));
+                ReportProduction reportProd = new ReportProduction("D02220137", false,"100");
+                UnplannedMat unplannedMat = new UnplannedMat("D02220137", 1, "002612155",true, 1, Convert.ToDecimal(1.0),"100");
+                OperatorOperation operationProg = new OperatorOperation("D02220137", 1, 1,"100");
+                InvTransfer materialNonConf = new InvTransfer("TestOrderNumber", "TransIdTest;ToWarehouseTest", "StorageUnitTest", Convert.ToDecimal(1.2),"100", "002612155", true);
 
                 if ((choice > 0) && (choice < 5))
                 {
