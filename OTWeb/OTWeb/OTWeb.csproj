@@ -145,6 +145,47 @@
     <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-regular-400.svg" />
     <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-solid-900.svg" />
     <Content Include="css\style.css" />
+    <Content Include="ExternalDependencies\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.dll" />
+    <Content Include="ExternalDependencies\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.PublicModel.dll" />
+    <Content Include="ExternalDependencies\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.dll" />
+    <Content Include="ExternalDependencies\Siemens.SimaticIT.ConfigurationData.System.dll" />
+    <Content Include="ExternalDependencies\Siemens.SimaticIT.ConfigurationData.System.ProjectionModel.dll" />
+    <Content Include="ExternalDependencies\Siemens.SimaticIT.ConfigurationData.System.ReadingModel.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Administration.Commands.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Administration.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Administration.Handlers.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Administration.Types.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.DataModel.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.DSL.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Engineering.Commands.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Engineering.Types.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Governance.AliasDictionary.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Governance.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Governance.Data.XML.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Governance.DataModel.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Governance.Registry.XML.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Handler.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Information.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Integration.Communication.Core.Lean.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Integration.Communication.Lean.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Integration.Communication.RabbitMQAdapter.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Integration.Diagnostics.Core.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Integration.Diagnostics.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.P2PCommunication.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Platform.Commands.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Platform.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Platform.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Platform.Packages.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Runtime.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.SDK.Diagnostics.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Security.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Security.Lean.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.ServiceEvent.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Unified.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Unified.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Unified.Lean.dll" />
+    <Content Include="ExternalDependencies\UAFServerConnectorLibrary.dll" />
+    <Content Include="ExternalDependencies\UAFServerConnectorLibrary.pdb" />
     <Content Include="Images\logo-mobile.svg" />
     <Content Include="OTOperatorDashboard.html" />
     <Content Include="OTTeamLeaderDashboard.html" />
@@ -212,7 +253,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="css\scripts\" />
-    <Folder Include="ExternalDependencies\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OTWeb.Base\OTWeb.Base.csproj">

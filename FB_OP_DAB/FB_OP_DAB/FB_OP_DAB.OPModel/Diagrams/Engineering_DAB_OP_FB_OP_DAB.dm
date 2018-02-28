@@ -20,6 +20,30 @@
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
+      <ArtifactSuo>
+        <X>233.79999999999996</X>
+        <Y>221.00000000000006</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.TestCardParameter</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>577.80000000000018</X>
+        <Y>137</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.TestResultParameter</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.PrintSNLabel</FullName>
+        <IsExpandedA>false</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
     </Artifacts>
   </ProjectSuo>
 </ArrayOfProjectSuo>
