@@ -118,14 +118,8 @@ RESPONSE
 [@Guid(678b1fc7-5f46-47fb-a709-fd0ae4bd5d16)]
 COMMAND DABStartSerial
 WITH
-    [Length = 255]
-    WorkOrderOperationNId AS string
-    [Length = 255]
-    SerialNumber AS string
-    [Length = 255]
-    MaterialDefinitionNId AS string
-    [Length = 255]
-    EquipmentNId AS string
+    [@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 5efd2233-fc0a-4dc6-b7c2-5ab58bd02db9)]
+    StartWOOperationSerializedParameterTypeList AS list of Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types.StartSerializedParameterType
 
 [Composite]
 [Protected]
@@ -133,14 +127,8 @@ WITH
 [@Guid(471b552d-4381-454e-9927-bd712b7a24bc)]
 COMMAND DABCompleteSerial
 WITH
-    [Length = 255]
-    WorkOrderOperationNId AS string
-    [Length = 255]
-    SerialNumber AS string
-    [Length = 255]
-    MaterialDefinitionNId AS string
-    [Length = 255]
-    EquipmentNId AS string
+    [@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, bc039f35-fbfe-4773-b2c4-bf17ed1e8371)]
+    CompleteSerializedWoOpParameterList AS list of Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types.CompleteSerializedParameterType
 
 [Composite]
 [Protected]

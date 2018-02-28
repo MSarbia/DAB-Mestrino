@@ -21,8 +21,8 @@
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>325.00000000000011</X>
-        <Y>299.40000000000003</Y>
+        <X>294.00000000000011</X>
+        <Y>267.40000000000003</Y>
         <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportMaterialNonConformance</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>true</IsExpandedB>
@@ -34,6 +34,30 @@
         <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABReplaceMaterial</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>true</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>233</X>
+        <Y>15</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABStartSerial</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>true</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABAcceptTeamLeaderCall</FullName>
+        <IsExpandedA>false</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>100</X>
+        <Y>204</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABCompleteSerial</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
     </Artifacts>

@@ -85,9 +85,11 @@ WITH
     [@Guid(3e7efbc5-d446-4790-bc3a-dc066ed60cf3)]
     [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, d6e48595-af13-417e-80c1-9dc9348ad3e8)]
     Assorbimenti AS list of Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.AbsorptionResultParameter
+    [Optional]
     [Length = 255]
     [@Guid(e243c676-7b36-4cae-af1c-51e8eecfdc10)]
     Esito AS string
+    [Optional]
     [@Guid(cc3ffd03-5697-47ea-b894-513072abd738)]
     TensioneRigidita AS decimal
 

@@ -35,17 +35,21 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
              dentro al functional block FB_OP_EXT. Per poterlo chimare dovete importarlo dal 
              Public Object Model Configurator (dominio Ms_Ext).
              */
-
-            var workOrderOperation = Platform.ProjectionQuery<WorkOrderOperation>().Include(wo => wo.Predecessors).Include(wo => wo.Successors).FirstOrDefault(wo => wo.NId == command.WorkOrderOperationNId);
-            if (!SerialIsCompletedOnAllPreviousOperations(workOrderOperation, command))
+            var commandInfo = command.CompleteSerializedWoOpParameterList.First();
+            var actualProducedMaterial = commandInfo.ActualProducedMaterials.First();
+            string serialNumber = actualProducedMaterial.SerialNumber;
+            string workOrderOperationNId = commandInfo.NId;
+            string materialDefinitionNId = actualProducedMaterial.MaterialDefinitionNId;
+            var workOrderOperation = Platform.ProjectionQuery<WorkOrderOperation>().Include(wo => wo.ToBeUsedMachines).Include(wo => wo.Predecessors).Include(wo => wo.Successors).FirstOrDefault(wo => wo.NId == workOrderOperationNId);
+            if (!SerialIsCompletedOnAllPreviousOperations(workOrderOperation, serialNumber))
             {
-                response.SetError(-1001, $"Il seriale {command.SerialNumber} è ancora attivo sulle operazioni precedenti. Impossibile completare l'operazione");
+                response.SetError(-1001, $"Il seriale {serialNumber} è ancora attivo sulle operazioni precedenti. Impossibile completare l'operazione");
                 return response;
             }
 
             int equipId = workOrderOperation.ToBeUsedMachines.First().Machine.GetValueOrDefault();
             Equipment equip = Platform.ProjectionQuery<Equipment>().FirstOrDefault(e => e.Id == equipId);
-            var mateialItem = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pmi => pmi.MaterialItem).Where(pmi => pmi.WorkOrderOperation_Id == workOrderOperation.Id).Where(pmi => pmi.MaterialItem.SerialNumberCode == command.SerialNumber).ToDictionary(pmi => pmi.MaterialItem.NId, pmi => pmi.MaterialItem.MaterialDefinition).FirstOrDefault();
+            var mateialItem = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pmi => pmi.MaterialItem).Where(pmi => pmi.WorkOrderOperation_Id == workOrderOperation.Id).Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber).ToDictionary(pmi => pmi.MaterialItem.NId, pmi => pmi.MaterialItem.MaterialDefinition).FirstOrDefault();
             var materialItemNId = mateialItem.Key;
             var matDefId = mateialItem.Value;
             var matDefNId = Platform.ProjectionQuery<MaterialDefinition>().Where(m => m.Id == matDefId).Select(m => m.NId).FirstOrDefault();
@@ -64,7 +68,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                                 EquipmentNId = equip.NId,
                                 MaterialDefinitionNId = matDefNId,
                                 NId = materialItemNId,
-                                SerialNumber = command.SerialNumber
+                                SerialNumber = serialNumber
                             }
                         }
                 }
@@ -113,7 +117,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 }
                 var printPackageAndDataLabels = new PrintPackageDataLabel
                 {
-                    ProductCode = command.MaterialDefinitionNId,
+                    ProductCode = materialDefinitionNId,
                     WorkArea = equip.Parent,
                     SerialNumbers = new List<string>()
                 };
@@ -134,7 +138,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 {
                     var printPalletLabel = new PrintPalletLabel
                     {
-                        ProductCode = command.MaterialDefinitionNId,
+                        ProductCode = materialDefinitionNId,
                         WorkArea = equip.Parent,
                         SerialNumbers = new List<string>(),
                         Quantity = 1
@@ -179,10 +183,10 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             return workOrderExt.NextOrder == 0 && IsLastSerial(workOrderOperation);
         }
 
-        private bool SerialIsCompletedOnAllPreviousOperations(WorkOrderOperation workOrderOpration, DABCompleteSerial command)
+        private bool SerialIsCompletedOnAllPreviousOperations(WorkOrderOperation workOrderOpration, string serialNumber)
         {
             var predecessorIds = workOrderOpration.Predecessors.Select(wo => wo.From_Id).ToList();
-            return !Platform.ProjectionQuery<ToBeProducedMaterial>().Include(tpm => tpm.MaterialItem).Where(tpm => predecessorIds.Contains(tpm.WorkOrderOperation_Id)).Any(tpm => tpm.MaterialItem.SerialNumberCode == command.SerialNumber);
+            return !Platform.ProjectionQuery<ToBeProducedMaterial>().Include(tpm => tpm.MaterialItem).Where(tpm => predecessorIds.Contains(tpm.WorkOrderOperation_Id)).Any(tpm => tpm.MaterialItem.SerialNumberCode == serialNumber);
         }
     }
 }
