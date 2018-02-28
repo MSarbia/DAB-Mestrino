@@ -60,11 +60,12 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 {
                     orderInfo = new OrderInfo
                     {
-                        Description = matDefs[orders[wo.WorkOrder_Id.Value].Id].Description,
+                        Description = matDefs[orders[wo.WorkOrder_Id.Value].FinalMaterial.GetValueOrDefault()].Description,
                         Order = orders[wo.WorkOrder_Id.Value].NId,
-                        ProductCode = matDefs[orders[wo.WorkOrder_Id.Value].Id].NId,
-                        EstimatedStartDate = orders[wo.WorkOrder_Id.Value].EstimatedStartTime.HasValue ? orders[wo.WorkOrder_Id.Value].EstimatedStartTime.Value: DateTimeOffset.UtcNow,
-                        Operation = wo.NId
+                        ProductCode = matDefs[orders[wo.WorkOrder_Id.Value].FinalMaterial.GetValueOrDefault()].NId,
+                        EstimatedStartDate = orders[wo.WorkOrder_Id.Value].EstimatedStartTime.HasValue ? orders[wo.WorkOrder_Id.Value].EstimatedStartTime.Value : DateTimeOffset.UtcNow,
+                        Operation = wo.NId,
+                        Serials = new List<SerialInfo>()
                     };
                     response.Orders.Add(orderInfo);
                 }

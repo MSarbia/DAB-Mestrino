@@ -11,7 +11,7 @@
             'description': 'A Test UI Application...',
             'logLevel': 'LOG_VERBOSE',
             'theme': 'Light',
-            'home': 'home',
+            'home': 'Engineering.DAB.AppDAB.OEEModule',
             'logo': 'common/images/SiemensLogo.png',
 
 /* 'applicationServiceUrls': { "AppDAB": "http://localhost:80/sit-svc/Application/AppDAB/odata"}, */

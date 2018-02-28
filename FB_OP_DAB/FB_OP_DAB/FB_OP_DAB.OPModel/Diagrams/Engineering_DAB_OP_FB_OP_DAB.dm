@@ -5,8 +5,8 @@
     <FileName>FB_OP_DAB.OPModel</FileName>
     <Artifacts>
       <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
+        <X>59</X>
+        <Y>50</Y>
         <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.AbsorptionParameter</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>

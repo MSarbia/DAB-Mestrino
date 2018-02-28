@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SoftTypes>
+  <SoftType value="wt.doc.WTDocument">
+    <ContentRoleType docType="WorkInstruction">PRIMARY</ContentRoleType>
+    <!--<ContentRoleType>pdf</ContentRoleType>-->
+  </SoftType>
+  <!--<SoftType value="SchedaMontaggio2">
+    <ContentRoleType>primary</ContentRoleType>
+    <ContentRoleType>pdf</ContentRoleType>
+  </SoftType>-->
+</SoftTypes>

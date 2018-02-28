@@ -14,8 +14,8 @@
             logger = loggerService.getModuleLogger('Engineering.DAB.AppDAB.OEEModule.OEEScreen');
 
             init();
-            initGridOptions();
-            initGridData();
+            //initGridOptions();
+            //initGridData();
         }
 
         function init() {
