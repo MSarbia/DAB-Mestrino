@@ -1,0 +1,1525 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimaticIT.Governance.AliasDictionary</name>
+    </assembly>
+    <members>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.AliasDictionary.ConvertPlatformVersion(System.Version)">
+            <summary>
+            
+            </summary>
+            <param name="version"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.AliasDictionary.AliasDictionaryFactory">
+            <summary>
+            A collection of functions which return a path to a specific location on the file system
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.AliasDictionaryFactory.AliasDictionary">
+            <summary>
+            Gets the alias dictionary.
+            </summary>
+            <value>
+            The alias dictionary.
+            </value>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.AliasDictionaryFactory.Init">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.AliasDictionaryFactory.Init(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.AliasDictionaryFactory.GetAliasDictionary">
+            <summary>
+            returns the default implementation of the IAliasDictionary interface
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.AliasDictionaryFactory.SetAliasDictionary(Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary)">
+            <summary>
+            returns the default implementation of the IAliasDictionary interface
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary">
+            <summary>
+            A collection of functions which return a path to a specific location on the file system
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetSystemRoot">
+            <summary>
+             Provides the machine local path to the Unified system root directory (specified by the user at installation).
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetSystemBinPath">
+            <summary>
+             Provides the machine local path to the Unified system bin directory.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDSLPluginPath">
+            <summary>
+             Provides the machine local path to the Unified system bin directory.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetSystemDocumentationPath">
+            <summary>
+             Provides the machine local path to the Unified system documentation directory.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetEngineeringSPAPath">
+            <summary>
+             Provides the machine local path to the Unified Engineering SPA (Single Page Application).
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree for deployed artifacts (= artifacts which have been put into production).
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetTemporaryPath">
+            <summary>
+             Provides the machine local path to the root path where project is deployed.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedFBRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where information regarding the currently deployed Functional Blocks (which are part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedFBPath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding a specic currently deployed Functional Block (which is part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedFBCommandsPath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding the commands of a currently deployed Functional Block (which is part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedFBDataModelPath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding the data model of a currently deployed Functional Block (which is part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedFBEventsPath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding the events of a deployed Functional Block (which is part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedFBCommandHandlersPath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding the events of a deployed Functional Block (which is part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedFBEventHandlersPath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding the event handlers of a deployed Functional Block (which is part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedProjectRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where information regarding the currently deployed projects is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedProjectPath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the specified currently deployed project is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedProjectCommandsPath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the commands of a specified currently deployed project is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedProjectDataModelPath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the data model of a specified currently deployed project is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedProjectEventsPath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the events of a specified currently deployed project is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedProjectCommandHandlersPath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the command handlers of a specified currently deployed project is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedProjectEventHandlersPath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the event handlers of a specified currently deployed project is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedUIAppsRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where the deployed User Interface (UI) Applications reside.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDeployedUIAppsPath(System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the endpoints of a specified currently deployed UI application is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetEngineeringRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where engineering information is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetGovernanceRepositoryDataSource">
+            <summary>
+             Provides the data source of the Governance Repository is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetGovernanceRegistryPath">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where the Governance Registry of the currently deployed project is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetPackageRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where the packages are stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetProjectPackageRoot">
+            <summary>
+             Provides the machine local path to the subdirectory tree where a specific project package is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetProjectPackagePath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory tree where a specific project package is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetSolutionPackageRoot">
+            <summary>
+             Provides the machine local path to the subdirectory tree where a specific solution package is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDSLSourceModelPath_VS">
+            <summary>
+             Provides the machine local path to the subdirectory where the sources of the Unified Model is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDSLCompiledModelPath_VS">
+            <summary>
+             Provides the machine local path to the subdirectory where the compiled artifacts of the Unified Model is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDSLServiceModelPath_VS">
+            <summary>
+             Provides the machine local path to the subdirectory where the compiled artifacts of the Unified Model is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetFBPackageRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where information regarding the Functional Block packages is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetDataModelExtensionPath">
+            <summary>
+             Provides the machine local path to the subdirectory where data model extensions are stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetFBPackagePath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where information regarding a specific Functional Block package is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetSolutionRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where information regarding the solutions is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetSolutionPath(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding a specific solution is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetSolutionUIModulesRoot(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where information regarding the user interface modules of a specific solution is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetSolutionUIModulesPath(System.String,System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding a specific user interface module of a specific solution is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetSolutionUIAppsRoot(System.String,System.String)">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where information regarding the UI Applications of a specific solution is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetSolutionUIAppsPath(System.String,System.String,System.String)">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding a specific UI App of a specific solution is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetUIFrameworkPath">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding UI Framework is stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetMetadataRoot">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding Metadata are stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetMigrationsRoot">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding Migrations are stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetSignalsRoot">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding Signals are stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetSignalDiagramsPath">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding Signal Diagrams are stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetSignalDescriptorsPath">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding Signal Descriptors are stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetRulesRoot">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding Rules are stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetRuleDiagramsPath">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding Rule Diagrams are stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetAutomationSystemRoot">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the automation subsystem reside.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetAutomationRuntimeRoot">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the automation configuration reside.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetAutomationEngineeringRoot">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the automation artifacts reside.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetAutomationEngineeringProjectPath">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the automation project artifacts are stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetLogResourcePath">
+            <summary>
+             Provides the machine local path to the subdirectory where culture language resources are stored.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetLogResourceFileName">
+            <summary>
+             Provides the machine file base-name of resources on which culture file name 
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetPlatformVersion">
+            <summary>
+             Provides the current version of SimaticIT UAF Platform 
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetPlatformVersion1_2">
+            <summary>
+             Provides the version 1.2 of SimaticIT UAF Platform 
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetPlatformVersion1_4">
+            <summary>
+             Provides the version 1.4 of SimaticIT UAF Platform 
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.ConvertPlatformVersion(System.Version)">
+            <summary>
+             Convert the current version of SimaticIT UAF Platform 
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetManifestVersion">
+            <summary>
+             Provides the current version of SimaticIT UAF package manifests 
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetProductName">
+            <summary>
+             Provides the public name of SimaticIT UAF product
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary.GetPublicVersion">
+            <summary>
+             Provides the public version of SimaticIT UAF product 
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.AliasDictionary.NamingConvention">
+            <summary>
+            Contains rules about well formatted names
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.NamingConvention.VerifyProjectNameValidity(System.String)">
+            <summary>
+            Checks whether the passed string is a valid name of a Unified project.
+            </summary>
+            <exception cref="T:System.ArgumentException" />
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.NamingConvention.VerifySolutionNameValidity(System.String)">
+            <summary>
+            Checks whether the passed string is a valid name of a Unified solution.
+            </summary>
+            <exception cref="T:System.ArgumentException" />
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.NamingConvention.VerifyFbNameValidity(System.String)">
+            <summary>
+            Checks whether the passed string is a valid name of a Unified Function Block.
+            </summary>
+            <exception cref="T:System.ArgumentException" />
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.NamingConvention.VerifySpaNameValidity(System.String)">
+            <summary>
+            Checks whether the passed string is a valid name of a Unified SPA (Single Page Application).
+            </summary>
+            <exception cref="T:System.ArgumentException" />
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.NamingConvention.VerifySolutionUIModuleNameValidity(System.String)">
+            <summary>
+            Checks whether the passed string is a valid name of a Unified UI Solution Module.
+            </summary>
+            <exception cref="T:System.ArgumentException" />
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.NamingConvention.VerifyVersionValidity(System.String)">
+            <summary>
+            Checks whether the passed string is a valid version of a Unified Project / Solution / Function Block.
+            </summary>
+            <exception cref="T:System.ArgumentException" />
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.NamingConvention.VerifyNameValidity(System.String)">
+            <summary>
+            Checks whether the passed string is a valid name.
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.AliasDictionary.IAliases">
+            <summary>
+            A collection of definition of path to a specific location on the file system
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.SystemRoot">
+            <summary>
+            Provides the machine local path to the system root path
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.SystemDocumentationPath">
+            <summary>
+             Provides the machine local path to the Unified system documentation directory.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.EngineeringSPAPath">
+            <summary>
+             Provides the machine local path to the Unified Engineering SPA (Single Page Application).
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.SystemBinPath">
+            <summary>
+            Provides the machine local path to the system bin path
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DSLPluginPath">
+            <summary>
+             Provides the machine local path to the Unified system bin directory.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.GovernanceRepositoryDataSource">
+            <summary>
+             Provides the data source of the Governance Repository is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.EngineeringRoot">
+            <summary>
+            Provides the machine local path to the engineering root path
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DSLSourceModelVSPath">
+            <summary>
+             Provides the machine local path to the subdirectory where the sources of the Unified Model is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DSLCompiledModelVSPath">
+            <summary>
+             Provides the machine local path to the subdirectory where the compiled artifacts of the Unified Model is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DSLServiceModelVSPath">
+            <summary>
+             Provides the machine local path to the subdirectory where the compiled artifacts of the Unified Model is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.PackageRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where the packages are stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.FunctionalBlockPackageRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where information regarding the currently deployed Functional Blocks (which are part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.FunctionalBlockPackagePath">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding a specic currently deployed Functional Block (which is part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.ProjectPackageRoot">
+            <summary>
+             Provides the machine local path to the subdirectory tree where a specific project package is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.ProjectPackagePath">
+            <summary>
+             Provides the machine local path to the subdirectory tree where a specific project package is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.SolutionPackageRoot">
+            <summary>
+             Provides the machine local path to the subdirectory tree where a specific solution package is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DataModelExtensionPath">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding the events of a deployed Functional Block (which is part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.SolutionRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where information regarding the solutions is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.SolutionPath">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding a specific solution is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.SolutionUIAppsRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where information regarding the UI Applications of a specific solution is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.SolutionUIAppsPath">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding a specific UI App of a specific solution is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.SolutionUIModulesRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where information regarding the user interface modules of a specific solution is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.SolutionUIModulesPath">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding a specific user interface module of a specific solution is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.SignalsRoot">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.MetadataRoot">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.MigrationsRoot">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.SignalDiagramsPath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.SignalDescriptorsPath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.RulesRoot">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.RuleDiagramsPath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.UIFrameworkPath">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding UI Framework is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployRoot">
+            <summary>
+            Provides the machine local path to the root path where project is deployed.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.TemporaryRoot">
+            <summary>
+            Provides the machine local path to the temporary unified path.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.GovernanceRegistryPath">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding a specific solution is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedProjectRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where information regarding the currently deployed projects is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedProjectPath">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the specified currently deployed project is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedProjectCommandsPath">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the commands of a specified currently deployed project is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedProjectCommandHandlersPath">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the command handlers of a specified currently deployed project is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedProjectEventsPath">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the events of a specified currently deployed project is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedProjectEventHandlersPath">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the event handlers of a specified currently deployed project is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedProjectDataModelPath">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the data model of a specified currently deployed project is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedFBRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where information regarding the currently deployed Functional Blocks (which are part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedFBPath">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding a specic currently deployed Functional Block (which is part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedFBCommandsPath">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding the commands of a currently deployed Functional Block (which is part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedFBCommandHandlerPath">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding the events of a deployed Functional Block (which is part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedFBEventsPath">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding the events of a deployed Functional Block (which is part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedFBEventHandlersPath">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding the event handlers of a deployed Functional Block (which is part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedFBDataModelPath">
+            <summary>
+             Provides the machine local path to the subdirectory where information regarding the data model of a currently deployed Functional Block (which is part of the currently deployed project) is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedUIAppsRoot">
+            <summary>
+             Provides the machine local path to the root of the subdirectory tree where the deployed User Interface (UI) Applications reside.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.DeployedUIAppsPath">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the endpoints of a specified currently deployed UI application is stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.AutomationSystemRoot">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the automation system reside.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.AutomationRuntimeRoot">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the automation system configuration reside.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.AutomationEngineeringRoot">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the automation artifacts reside.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.AutomationEngineeringProjectPath">
+            <summary>
+             Provides the machine local path to the subdirectory tree where information regarding the automation project artifacts are stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.LogResourcePath">
+            <summary>
+            Provides the machine local path to the subdirectory where culture language resources are stored.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.LogResourceFileName">
+            <summary>
+            Provides the machine local file name of the base resource file (ie the invarian culture resource file).
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.AliasDictionary.IAliases.ProductName">
+            <summary>
+            Provides the name of the product (i.e. Unified Architecture Foundation).
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.AliasDictionary.AliasDictionaryBuilder">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.AliasDictionaryBuilder.CreateDefault">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.AliasDictionaryBuilder.Alias(System.Linq.Expressions.Expression{System.Func{Siemens.SimaticIT.Governance.AliasDictionary.IAliases,System.String}})">
+            <summary>
+            
+            </summary>
+            <param name="propertyExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.AliasDictionaryBuilder.ToAliasDictionary">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.AliasDictionary.AliasConfiguration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.AliasConfiguration.BasedOn(System.Linq.Expressions.Expression{System.Func{Siemens.SimaticIT.Governance.AliasDictionary.IAliases,System.String}})">
+            <summary>
+            
+            </summary>
+            <param name="propertyExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.AliasConfiguration.Path(System.String,System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="path1"></param>
+            <param name="paths"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.AliasConfiguration.Value(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.AliasDictionary.AliasConfiguration.EnvVar(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.Core.PlatformVersions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Core.PlatformVersions.PlatformBinaryVersion">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Core.PlatformVersions.RegistryFormatVersion">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Core.PlatformVersions.RepositoryFormatVersion">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Core.PlatformVersions.ManifestFormatVersion">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Core.PlatformVersions.ProductPublicVersion">
+            <summary>
+            
+            </summary> 
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Core.PlatformVersions.PlatformBinaryVersion1_2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Core.PlatformVersions.RegistryFormatVersion1_2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Core.PlatformVersions.RepositoryFormatVersion1_2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Core.PlatformVersions.PlatformBinaryVersion1_4">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.Core.AssemblyResolver">
+            <summary>
+            Provides functionality to resolve and load assembly outside .NET standar behavours
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Core.AssemblyResolver.SetTracer(System.Action{System.String,System.Object[]},System.Action{System.String,System.Object[]},System.Action{System.String,System.Object[]},System.Action{System.String,System.Object[]})">
+            <summary>
+            Set custom logger
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Core.AssemblyResolver.Init">
+            <summary>
+            Initialize Assembly Resolution Logic with default path resolver
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Core.AssemblyResolver.Init(System.String[])">
+            <summary>
+            Initialize Assembly Resolution Logic with default path resolver and local path
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Core.AssemblyResolver.Init(Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary)">
+            <summary>
+            Initialize Assembly Resolution Logic with custom path resolver
+            </summary>
+            <param name="aliasDictionary"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Core.AssemblyResolver.Init(Siemens.SimaticIT.Governance.AliasDictionary.IAliasDictionary,System.String[])">
+            <summary>
+            Initialize Assembly Resolution Logic with custom path resolver and localPath. 
+            </summary>
+            <param name="aliasDictionary"></param>
+            <param name="localPaths"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.Core.IAssemblyManager">
+            <summary>
+            IAssemblyManager interface
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Core.IAssemblyManager.LoadFrom(System.String,System.Reflection.Assembly)">
+            <summary>
+            loads from assembly path
+            </summary>
+            <param name="assemblyPath"></param>
+            <param name="requestingAssembly"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Core.IAssemblyManager.ReflectionOnlyLoadFrom(System.String,System.Reflection.Assembly)">
+            <summary>
+            loads from assembly path into the reflection-only context
+            </summary>
+            <param name="assemblyPath"></param>
+            <param name="requestingAssembly"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Core.IAssemblyManager.TryGetAssemblyName(System.String)">
+            <summary>
+            gets assembly name
+            </summary>
+            <param name="assemblyPath"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.Core.IAssemblyNameResolver">
+            <summary>
+            IAssemblyNameResolver interface
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Core.IAssemblyNameResolver.ResolveAssemblyPath(System.String,System.Reflection.Assembly)">
+            <summary>
+            a method which resolves assembly path
+            </summary>
+            <param name="assemblyName"></param>
+            <param name="requestingAssembly"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.Core.IAssemblyResolver">
+            <summary>
+            IAssemblyResolver interface
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Core.IAssemblyResolver.ResolveAssembly(System.String,System.Reflection.Assembly)">
+            <summary>
+            a method which resolves assembly
+            </summary>
+            <param name="assemblyName"></param>
+            <param name="requestingAssembly"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Core.IAssemblyResolver.ResolveReflectionOnlyAssembly(System.String,System.Reflection.Assembly)">
+            <summary>
+            a method which resolves assembly into the reflection-only context
+            </summary>
+            <param name="assemblyName"></param>
+            <param name="requestingAssembly"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Core.IAssemblyResolver.ResolveResource(System.String,System.Reflection.Assembly)">
+            <summary>
+            a method which resolves resource
+            </summary>
+            <param name="resourceName"></param>
+            <param name="requestingAssembly"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Core.IAssemblyResolver.ResolveType(System.String,System.Reflection.Assembly)">
+            <summary>
+            a method which resolves type
+            </summary>
+            <param name="typeName"></param>
+            <param name="requestingAssembly"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.Storage.DirectoryStorage">
+            <summary>
+            A Filesystem-based storage
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.#ctor(System.IO.DirectoryInfo,Siemens.SimaticIT.Governance.Storage.StorageMode)">
+            <summary>
+            
+            </summary>
+            <param name="directory"></param>
+            <param name="mode"></param>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.Mode">
+            <summary>
+            Storage access mode.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.Containers">
+            <summary>
+            Lists containers into the storage.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.Exists">
+            <summary>
+            Checks if the storage exists.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.Entries">
+            <summary>
+            Enumerates all the entries of the storage
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.TopDirectoryEntries">
+            <summary>
+            Enumerates the entries of the storage in the top directory only
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.Open(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.OpenRead(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.AddNew(System.String)">
+            <summary>
+            Adds a new entry to the storage.
+            </summary>
+            <param name="entryName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.GetAndClearEntry(System.String)">
+            <summary>
+            Adds a new entry to the storage.
+            </summary>
+            <param name="entryName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.AddNew(System.String,System.String)">
+            <summary>
+            Adds a new entry in a sub-container of the storage.
+            </summary>
+            <param name="entryName"></param>
+            <param name="containerName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.AddContainer(System.String)">
+            <summary>
+            Adds a new container to the storage.
+            </summary>
+            <param name="containerName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.Find(System.String)">
+            <summary>
+            Finds an entry into the storage.
+            </summary>
+            <param name="entryName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.Delete">
+            <summary>
+            Delete the storage.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>1</filterpriority>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.Copy(System.String,System.String,System.Boolean)">
+            <summary>
+            Copies an entry into the storage.
+            </summary>
+            <param name="sourceEntryName"></param>
+            <param name="destEntryName"></param>
+            <param name="overwrite"></param>
+            <exception cref="T:System.ArgumentException">
+            Invalid entry name
+            or
+            Invalid entry name
+            </exception>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.DirectoryStorage.Init(Siemens.SimaticIT.SDK.Diagnostics.Tracing.ITracer)">
+            <summary>
+            </summary>
+            <param name="tracer"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.Storage.IDirectoryStorage">
+            <summary>
+            Represent an abstraction of a directory storage system.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.IDirectoryStorage.TopDirectoryEntries">
+            <summary>
+            Enumerates all the entries of the storage
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.Storage.IStorage">
+            <summary>
+            Represent an abstraction of a storage system.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.IStorage.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.IStorage.Mode">
+            <summary>
+            Storage access mode.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.IStorage.Entries">
+            <summary>
+            Enumerates all the entries of the storage
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.IStorage.Containers">
+            <summary>
+            Lists containers into the storage.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.IStorage.Exists">
+            <summary>
+            Checks if the storage exists.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.IStorage.AddNew(System.String)">
+            <summary>
+            Adds a new entry to the storage.
+            </summary>
+            <param name="entryName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.IStorage.GetAndClearEntry(System.String)">
+            <summary>
+            Adds a new entry to the storage.
+            </summary>
+            <param name="entryName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.IStorage.AddNew(System.String,System.String)">
+            <summary>
+            Adds a new entry in a sub-container of the storage.
+            </summary>
+            <param name="entryName"></param>
+            <param name="containerName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.IStorage.AddContainer(System.String)">
+            <summary>
+            Adds a new container to the storage.
+            </summary>
+            <param name="containerName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.IStorage.Find(System.String)">
+            <summary>
+            Finds an entry into the storage.
+            </summary>
+            <param name="entryName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.IStorage.Delete">
+            <summary>
+            Delete the storage.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.IStorage.Copy(System.String,System.String,System.Boolean)">
+            <summary>
+            Copies an entry into the storage.
+            </summary>
+            <param name="sourceEntryName"></param>
+            <param name="destEntryName"></param>
+            <param name="overwrite"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.IStorage.Init(Siemens.SimaticIT.SDK.Diagnostics.Tracing.ITracer)">
+            <summary>
+            
+            </summary>
+            <param name="tracer"></param>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.Storage.IStorageEntry">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.IStorageEntry.Storage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.IStorageEntry.FullName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.IStorageEntry.Length">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.IStorageEntry.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.IStorageEntry.Extension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.IStorageEntry.LastModifiedUtc">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.IStorageEntry.Delete">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.IStorageEntry.Open">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions.ReadAllText(Siemens.SimaticIT.Governance.Storage.IStorageEntry)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions.WriteAllText(Siemens.SimaticIT.Governance.Storage.IStorageEntry,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions.ReadAllText(Siemens.SimaticIT.Governance.Storage.IStorage,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions.OpenEntry(Siemens.SimaticIT.Governance.Storage.IStorage,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions.CreateEntry(Siemens.SimaticIT.Governance.Storage.IStorage,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions.CreateEntryText(Siemens.SimaticIT.Governance.Storage.IStorage,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="entryName"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions.CopyTo(Siemens.SimaticIT.Governance.Storage.IStorageEntry,Siemens.SimaticIT.Governance.Storage.IStorageEntry)">
+            <summary>
+            
+            </summary>
+            <param name="sourceEntry"></param>
+            <param name="destinationEntry"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions.CopyTo(Siemens.SimaticIT.Governance.Storage.IStorageEntry,Siemens.SimaticIT.Governance.Storage.IStorageEntry,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="sourceEntry"></param>
+            <param name="destinationEntry"></param>
+            <param name="containerName"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions.CopyAll(Siemens.SimaticIT.Governance.Storage.IStorage,Siemens.SimaticIT.Governance.Storage.IStorage)">
+            <summary>
+            
+            </summary>
+            <param name="sourceStorage"></param>
+            <param name="destinationStorage"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions.CopyAll(Siemens.SimaticIT.Governance.Storage.IStorage,Siemens.SimaticIT.Governance.Storage.IStorage,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="sourceStorage"></param>
+            <param name="destinationStorage"></param>
+            <param name="containerName"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions.AsStorage(Siemens.SimaticIT.Governance.Storage.IStorageEntry)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions.FindByExtension(Siemens.SimaticIT.Governance.Storage.IStorage,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="extension"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions.FindInSubPath(Siemens.SimaticIT.Governance.Storage.IStorage,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="pathPrefix"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.StorageEntry_Extensions.ExcludeSubPath(System.Collections.Generic.IEnumerable{Siemens.SimaticIT.Governance.Storage.IStorageEntry},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="pathPrefix"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.Storage.PathTools">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.PathTools.GetRelativePath(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="fromPath"></param>
+            <param name="toPath"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.PathTools.Normalize(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.PathTools.Equals(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="pathA"></param>
+            <param name="pathB"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.PathTools.IsSubPath(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="fromPath"></param>
+            <param name="toPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.PathTools.ReplacePathPrefix(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="path"></param>
+            <param name="oldPrefix"></param>
+            <param name="newPrefix"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.Storage.StorageMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Governance.Storage.StorageMode.Update">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Governance.Storage.StorageMode.Read">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Governance.Storage.ZipStorage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.#ctor(System.IO.Stream,System.IO.Compression.ZipArchiveMode,System.Boolean,System.Text.Encoding)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
+            <param name="mode"></param>
+            <param name="leaveOpen"></param>
+            <param name="entryNameEncoding"></param>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.#ctor(System.IO.Compression.ZipArchive)">
+            <summary>
+            
+            </summary>
+            <param name="zipArchive"></param>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.ZipStorage.Entries">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.ZipStorage.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.ZipStorage.Mode">
+            <summary>
+            Storage access mode.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.ZipStorage.Containers">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Governance.Storage.ZipStorage.Exists">
+            <summary>
+            Checks if the storage exists.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.Open(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="archiveFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.Open(System.IO.Stream)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.Create(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="archiveFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.Create(System.IO.Stream)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.OpenRead(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="archiveFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.OpenRead(System.IO.Stream)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.AddNew(System.String)">
+            <summary>
+            Adds a new entry to the storage.
+            </summary>
+            <param name="entryName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.GetAndClearEntry(System.String)">
+            <summary>
+            Adds a new entry to the storage.
+            </summary>
+            <param name="entryName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.AddNew(System.String,System.String)">
+            <summary>
+            Adds a new entry in a sub-container of the storage.
+            </summary>
+            <param name="entryName"></param>
+            <param name="containerName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.AddContainer(System.String)">
+            <summary>
+            Adds a new container to the storage.
+            </summary>
+            <param name="containerName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.Find(System.String)">
+            <summary>
+            Finds an entry into the storage.
+            </summary>
+            <param name="entryName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.Delete">
+            <summary>
+            Delete the storage.
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.Copy(System.String,System.String,System.Boolean)">
+            <summary>
+            Copies an entry into the storage.
+            </summary>
+            <param name="sourceEntryName"></param>
+            <param name="destEntryName"></param>
+            <param name="overwrite"></param>
+            <exception cref="T:System.ArgumentNullException">
+            sourceEntryName
+            or
+            destEntryName
+            </exception>
+            <exception cref="T:System.ArgumentException">Invalid entry name</exception>
+            <exception cref="T:System.IO.IOException"></exception>
+        </member>
+        <member name="M:Siemens.SimaticIT.Governance.Storage.ZipStorage.Init(Siemens.SimaticIT.SDK.Diagnostics.Tracing.ITracer)">
+            <summary>
+            </summary>
+            <param name="tracer"></param>
+        </member>
+    </members>
+</doc>

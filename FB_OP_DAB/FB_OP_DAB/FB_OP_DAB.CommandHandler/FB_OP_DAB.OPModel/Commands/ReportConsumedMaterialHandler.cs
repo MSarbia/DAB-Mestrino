@@ -26,20 +26,13 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         private ReportConsumedMaterial.Response ReportConsumedMaterialHandler(ReportConsumedMaterial command)
         {
             var response = new ReportConsumedMaterial.Response();
-            
+
             bool customized = Platform.Query<IMaterialDefinitionExt>().Where(cust => cust.MaterialDefinitionId == command.MaterialDefinitionId).Select(cust => cust.Customized).FirstOrDefault();
 
-            string nineSpaces = "         ";
 
-            string consumedMaterialDef = command.MaterialDefinitionNId;
-            if (customized == false)
-            {
-                consumedMaterialDef = nineSpaces + consumedMaterialDef;
-            }
+            IToBeConsumedMaterialExt consumedMaterialExt = Platform.Query<IToBeConsumedMaterialExt>().FirstOrDefault(cms => cms.ToBeConsumedMaterialId == command.ToBeConsumedMaterialId && cms.WorkOrderOperationId == command.WorkOrderOperationId);
 
-            int consumedMaterialSequence = Platform.Query<IToBeConsumedMaterialExt>().Where(cms => cms.ToBeConsumedMaterialId == command.ToBeConsumedMaterialId).Select(cms => cms.Sequence).FirstOrDefault();
-
-            UnplannedMat reportConsumedMaterial = new UnplannedMat(command.ERPOrder, command.OrderSequence, consumedMaterialDef, consumedMaterialSequence, command.ConsumedQuantity);
+            UnplannedMat reportConsumedMaterial = new UnplannedMat(command.ERPOrder, command.OrderSequence, command.MaterialDefinitionNId, customized, consumedMaterialExt.Sequence, command.ConsumedQuantity, command.Plant);
 
             var result = InforConnector.ReportConsumedMaterial(reportConsumedMaterial);
 
@@ -47,9 +40,16 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             {
                 response.SetError(-1001, result.Error);
             }
-            else if (result.Error != null)
+            else if (!string.IsNullOrEmpty(result.Error))
             {
                 response.SetError(-1002, result.Error);
+            }
+
+            if (response.Succeeded)
+            {
+                consumedMaterialExt.DeclaredQuanity = consumedMaterialExt.DeclaredQuanity + command.ConsumedQuantity;
+
+                Platform.Submit(consumedMaterialExt);
             }
 
             return response;

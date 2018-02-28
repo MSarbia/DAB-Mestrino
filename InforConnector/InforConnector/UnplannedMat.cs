@@ -9,7 +9,7 @@ namespace InforConnectorLibrary
     //Attenzione, il nome della classe è utilizzato nella ricerca del metodo da chiamare nel dictionary 
     public class UnplannedMat
     {
-        public int Company { get; set; }
+        public string Company { get; set; }
 
         public string ProcessingScope { get; set; }
 
@@ -36,10 +36,8 @@ namespace InforConnectorLibrary
         public string LoginCode { get; set; }
         public string Location { get; set; }
 
-        public UnplannedMat(string erpOrder, int operationSequence, string consumedMaterialDefinition,
-                                 int consumedMaterialSequence, decimal consumedQuantity, int company = 100,
-                                 string processingScope = "request", string warehouse = "D100",
-                                 string generateOutbound = "yes", string releaseOutbound = "yes")
+        public UnplannedMat(string erpOrder, int operationSequence, string consumedMaterialDefinition, bool customized,
+                                 int consumedMaterialSequence, decimal consumedQuantity, string company)
         {
             ProdOrder = erpOrder;
 
@@ -47,7 +45,7 @@ namespace InforConnectorLibrary
 
             Item = consumedMaterialDefinition;
 
-            Customized = false;
+            Customized = customized;
 
             Quantity = consumedQuantity;
 
@@ -55,15 +53,15 @@ namespace InforConnectorLibrary
 
             Company = company;
 
-            ProcessingScope = processingScope;
+            ProcessingScope = "request";
 
-            Warehouse = warehouse;
+            Warehouse = "D100";
 
             Location = "PREL100";
 
-            GenerateOutbound = generateOutbound;
+            GenerateOutbound = "yes";
 
-            ReleaseOutbound = releaseOutbound;
+            ReleaseOutbound = "yes";
         }
     }
 }

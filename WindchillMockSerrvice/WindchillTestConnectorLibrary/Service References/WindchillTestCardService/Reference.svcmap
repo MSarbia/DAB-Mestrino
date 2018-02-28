@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ca6ed07c-6d4b-4dc5-888c-0d3db38993cf" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\RMWebServices.wsdl" Protocol="file" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="swaref.xsd" MetadataType="Schema" ID="a01182b6-e148-4a4d-a794-894c59f338c7" SourceId="1" SourceUrl="http://ws-i.org/profiles/basic/1.1/swaref.xsd" />
+    <MetadataFile FileName="RMWebServicesImplService.wsdl" MetadataType="Wsdl" ID="585f204a-2d82-491a-9ea4-452f4f7daedc" SourceId="1" SourceUrl="file:///C:/GitRepositories/DAB-Mestrino/WindchillMockSerrvice/RMWebServices.wsdl" />
+    <MetadataFile FileName="xsd1.xsd" MetadataType="Schema" ID="f6e4b17e-aed5-4169-8e65-0b782b2b86cd" SourceId="1" SourceUrl="file:///C:/GitRepositories/DAB-Mestrino/WindchillMockSerrvice/xsd1.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

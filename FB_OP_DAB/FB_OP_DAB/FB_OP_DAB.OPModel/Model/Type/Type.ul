@@ -115,12 +115,15 @@ WITH
     [Optional]
     [@Guid(80bbe843-1b8f-40db-8475-8ff04865a490)]
     Portata AS decimal
+    [Optional]
     [@Guid(2cc50274-4198-430c-8111-75131a2f8b44)]
     FattoreDiPotenza AS decimal
+    [Optional]
     [@Guid(0ab5abac-43cf-4ad4-8f3b-0d50cf1c0fd6)]
     SquilibrioCorrenti AS decimal
+    [Optional]
     [@Guid(b7464b74-16bf-4474-b180-f91dc6771063)]
-    PotenzaASecco AS decimal
+    Watt AS decimal
 
 [@Guid(46601f0a-6c8a-4a75-b6d5-a38e770f72c0)]
 PARAMETERTYPE ToBeConsumedMaterialExtParameter

@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?><projectmanifest>
+  <header>
+    <manifestversion>1.5</manifestversion>
+    <platformversion>1.5</platformversion>
+    <type>Library</type>
+    <name>Siemens.SimaticIT.U4DM.QMSInt</name>
+    <shortname>QMSInt</shortname>
+    <description>FB for QMS Integration</description>
+    <version>01.00.00</version>
+    <companyname>Siemens.SimaticIT.U4DM</companyname>
+    <author>Siemens.SimaticIT.U4DM</author>
+    <hash>U7fz683DWUTGbbMw/zNy4zG4VS8nyS9RZWMXsZPuCQA=</hash>
+  </header>
+  <reference>
+    <functionalblocks>
+      <functionalblock>
+        <name>Siemens.SimaticIT.U4DM.RD.FB.ConfigKey</name>
+        <version>03.00.00</version>
+        <type>Library</type>
+      </functionalblock>
+    </functionalblocks>
+  </reference>
+  <artifacts>
+    <commands><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.GetMasterDefects</name>
+                        <shortname>GetMasterDefects</shortname>
+                        <description> This command retrieves the master Defects for a specified Defect.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command retrieves the master Defects for a specified Defect.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.GetMasterDefectsHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.QMSInt.CommandHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.GetDefectsForInspectionOrder</name>
+                        <shortname>GetDefectsForInspectionOrder</shortname>
+                        <description> This command retrieves the list of defects related to a specific Inspection Order.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command retrieves the list of defects related to a specific Inspection Order.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.GetDefectsForInspectionOrderHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.QMSInt.CommandHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.CreateIncident</name>
+                        <shortname>CreateIncident</shortname>
+                        <description> This command creates an Incident in the QMS Professional system. The Incident corresponds to a Non Conformance in SIMATIC IT UADM.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command creates an Incident in the QMS Professional system. The Incident corresponds to a Non Conformance in SIMATIC IT UADM.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.CreateIncidentHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.QMSInt.CommandHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.GetIncidents</name>
+                        <shortname>GetIncidents</shortname>
+                        <description> This command retrieves the list of all Incidents available in the QMS Professional system.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command retrieves the list of all Incidents available in the QMS Professional system.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.GetIncidentsHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.QMSInt.CommandHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.LoadInspectionData</name>
+                        <shortname>LoadInspectionData</shortname>
+                        <description> This commands retrieves for a given Inspection Order all the data related to the inspection, such as Characteristics, Samples and Complaints.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This commands retrieves for a given Inspection Order all the data related to the inspection, such as Characteristics, Samples and Complaints.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.LoadInspectionDataHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.QMSInt.CommandHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.IsInspectionRequired</name>
+                        <shortname>IsInspectionRequired</shortname>
+                        <description> This command checks whether an Inspection is required.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command checks whether an Inspection is required.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.IsInspectionRequiredHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.QMSInt.CommandHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.IsInspectionRequiredByPart</name>
+                        <shortname>IsInspectionRequiredByPart</shortname>
+                        <description> This command checks whether the Work Order Operation completed for a specific Material Item on a specific Plant and Machine requires a quality inspection.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command checks whether the Work Order Operation completed for a specific Material Item on a specific Plant and Machine requires a quality inspection.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.IsInspectionRequiredByPartHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.QMSInt.CommandHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.CreateInspectionOrder</name>
+                        <shortname>CreateInspectionOrder</shortname>
+                        <description> This command creates an Inspection Order in the QMS system.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command creates an Inspection Order in the QMS system.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.CreateInspectionOrderHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.QMSInt.CommandHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.GetInspectionPlanExist</name>
+                        <shortname>GetInspectionPlanExist</shortname>
+                        <description> This command checks whether an Inspection Plan is available in the QMS system.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command checks whether an Inspection Plan is available in the QMS system.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.GetInspectionPlanExistHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.QMSInt.CommandHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.IsInspectionRequiredByOperation</name>
+                        <shortname>IsInspectionRequiredByOperation</shortname>
+                        <description></description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype></dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.IsInspectionRequiredByOperationHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.QMSInt.CommandHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.IsFinalInspectionRequired</name>
+                        <shortname>IsFinalInspectionRequired</shortname>
+                        <description></description>
+                        <assembly>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype></dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>MsExt</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Commands.IsFinalInspectionRequiredHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.QMSInt.CommandHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command></commands>
+    <events></events>
+    <event_handlers></event_handlers>
+    <signals></signals>
+    <readingFunctions></readingFunctions>
+    <entities></entities>
+    <datamodels><datamodel>
+      <assembly>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Types, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+      <mode>WR</mode>
+      <domain>MsExt</domain>
+    </datamodel><datamodel>
+      <assembly>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Types.ReadingModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+      <mode>RD</mode>
+      <domain>MsExt</domain>
+    </datamodel></datamodels>
+    <externaldatamodels><externaldatamodel>
+      <assembly>Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.ReadingModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+      <domain>MsExt</domain>
+      <dataprovidertype>MSSQL</dataprovidertype>
+    </externaldatamodel></externaldatamodels>
+    <appdatamodels></appdatamodels>
+    <uimodules></uimodules>
+    <uicomponents></uicomponents>
+  </artifacts>
+  <security>
+    <roles></roles>
+  </security>
+  <runtime>
+    <event_subscriptions></event_subscriptions>
+    <handlergroups></handlergroups>
+  </runtime>
+</projectmanifest>

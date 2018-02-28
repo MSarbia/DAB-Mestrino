@@ -28,11 +28,11 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             var error = LabelPrinter.PrintSNLabel(command.SerialNumbers,command.ProductCode,command.WorkArea);
             if (error.connectionsucceeded)
             {
-                if (!string.IsNullOrEmpty(error.error))response.SetError(-1000,error.error);
+                if (!string.IsNullOrEmpty(error.error)) response.SetError(-1000, "Errore di stampa etichetta seriale: " + error.error);
             }
             else
             {
-                response.SetError(-1000, "Impossibile connettersi a NiceLabel");
+                response.SetError(-1000, "Impossibile connettersi al servizio di stampa: " + error.error);
             }
 
             return response;

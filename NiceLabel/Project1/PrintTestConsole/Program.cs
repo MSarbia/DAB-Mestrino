@@ -14,8 +14,8 @@ namespace PrintTestConsole
             while(true)
             {
                 Console.ReadLine();
-                var result = LabelPrinter.PrintSNLabel(new List<string>(),"BAU","Linea1");
-                Console.WriteLine(result);
+                var result = LabelPrinter.PrintSNLabel(new List<string>() { "AllWorkAndNoPlayMakesJackADullBoy"},"101110060", "100.DM1.D102");
+                Console.WriteLine($"Succeeded: {result.connectionsucceeded}, Error: {result.error}");
             }
         }
     }

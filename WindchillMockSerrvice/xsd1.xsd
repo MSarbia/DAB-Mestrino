@@ -1,0 +1,382 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1 (UNKNOWN_BRANCH-false; 2015-01-15T16:53:43+0100) JAXWS-RI/2.2.10 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><xs:schema xmlns:tns="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/" xmlns:swaRef="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/">
+
+<xs:import namespace="http://ws-i.org/profiles/basic/1.1/xsd" schemaLocation="http://ws-i.org/profiles/basic/1.1/swaref.xsd"/>
+<xs:element name="AddContentToObject" type="tns:AddContentToObject"/>
+
+<xs:element name="AddContentToObjectResponse" type="tns:AddContentToObjectResponse"/>
+
+<xs:element name="Create" type="tns:Create"/>
+
+<xs:element name="CreateRMObjects" type="tns:CreateRMObjects"/>
+
+<xs:element name="CreateRMObjectsResponse" type="tns:CreateRMObjectsResponse"/>
+
+<xs:element name="CreateResponse" type="tns:CreateResponse"/>
+
+<xs:element name="Exception" type="tns:Exception"/>
+
+<xs:element name="Filter" type="tns:Filter"/>
+
+<xs:element name="FilterResponse" type="tns:FilterResponse"/>
+
+<xs:element name="ListSubFolders" type="tns:ListSubFolders"/>
+
+<xs:element name="ListSubFoldersResponse" type="tns:ListSubFoldersResponse"/>
+
+<xs:element name="MoveObjectsToFolder" type="tns:MoveObjectsToFolder"/>
+
+<xs:element name="MoveObjectsToFolderResponse" type="tns:MoveObjectsToFolderResponse"/>
+
+<xs:element name="Query" type="tns:Query"/>
+
+<xs:element name="QueryLinks" type="tns:QueryLinks"/>
+
+<xs:element name="QueryLinksResponse" type="tns:QueryLinksResponse"/>
+
+<xs:element name="QueryResponse" type="tns:QueryResponse"/>
+
+<xs:element name="UpdateObject" type="tns:UpdateObject"/>
+
+<xs:element name="UpdateObjectResponse" type="tns:UpdateObjectResponse"/>
+
+<xs:element name="UpdateObjectState" type="tns:UpdateObjectState"/>
+
+<xs:element name="UpdateObjectStateResponse" type="tns:UpdateObjectStateResponse"/>
+
+<xs:element name="createDocumentStructure" type="tns:createDocumentStructure"/>
+
+<xs:element name="createDocumentStructureResponse" type="tns:createDocumentStructureResponse"/>
+
+<xs:element name="createStruturalLink" type="tns:createStruturalLink"/>
+
+<xs:element name="createStruturalLinkResponse" type="tns:createStruturalLinkResponse"/>
+
+<xs:element name="createTraceabilityLink" type="tns:createTraceabilityLink"/>
+
+<xs:element name="createTraceabilityLinkResponse" type="tns:createTraceabilityLinkResponse"/>
+
+<xs:element name="deleteContentItem" type="tns:deleteContentItem"/>
+
+<xs:element name="deleteContentItemResponse" type="tns:deleteContentItemResponse"/>
+
+<xs:element name="deleteStruturalLink" type="tns:deleteStruturalLink"/>
+
+<xs:element name="deleteStruturalLinkResponse" type="tns:deleteStruturalLinkResponse"/>
+
+<xs:element name="deleteTraceabilityLink" type="tns:deleteTraceabilityLink"/>
+
+<xs:element name="deleteTraceabilityLinkResponse" type="tns:deleteTraceabilityLinkResponse"/>
+
+<xs:element name="downloadContentItem" type="tns:downloadContentItem"/>
+
+<xs:element name="downloadContentItemResponse" type="tns:downloadContentItemResponse"/>
+
+<xs:element name="getWindchillVersion" type="tns:getWindchillVersion"/>
+
+<xs:element name="getWindchillVersionResponse" type="tns:getWindchillVersionResponse"/>
+
+<xs:element name="queryContentItems" type="tns:queryContentItems"/>
+
+<xs:element name="queryContentItemsResponse" type="tns:queryContentItemsResponse"/>
+
+<xs:element name="reorderStructuralLink" type="tns:reorderStructuralLink"/>
+
+<xs:element name="reorderStructuralLinkResponse" type="tns:reorderStructuralLinkResponse"/>
+
+<xs:complexType name="Filter">
+<xs:sequence>
+<xs:element name="input_objs" type="tns:genericBusinessObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="filterCriteria" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="genericBusinessObject">
+<xs:sequence>
+<xs:element name="properties" type="tns:property" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="typeIdentifier" type="xs:string" minOccurs="0"/>
+<xs:element name="ufid" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="property">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="value" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="FilterResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:genericBusinessObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getWindchillVersion">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getWindchillVersionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createStruturalLink">
+<xs:sequence>
+<xs:element name="parentUfid" type="xs:string" minOccurs="0"/>
+<xs:element name="childUfid" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createStruturalLinkResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:genericBusinessObject" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="MoveObjectsToFolder">
+<xs:sequence>
+<xs:element name="folderPath" type="xs:string" minOccurs="0"/>
+<xs:element name="containerUfid" type="xs:string" minOccurs="0"/>
+<xs:element name="folder_ref" type="xs:string" minOccurs="0"/>
+<xs:element name="obj_ref" type="xs:string" minOccurs="0"/>
+<xs:element name="objects" type="tns:genericBusinessObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="MoveObjectsToFolderResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:genericBusinessObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Create">
+<xs:sequence>
+<xs:element name="type" type="xs:string" minOccurs="0"/>
+<xs:element name="con_ref" type="xs:string" minOccurs="0"/>
+<xs:element name="attributes" type="xs:string" minOccurs="0"/>
+<xs:element name="delimiter" type="xs:unsignedShort"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CreateResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:genericBusinessObject" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddContentToObject">
+<xs:sequence>
+<xs:element name="contentHolderUfid" type="xs:string" minOccurs="0"/>
+<xs:element name="urlContent" type="xs:string" minOccurs="0"/>
+<xs:element name="urlContentFileName" type="xs:string" minOccurs="0"/>
+<xs:element name="urlAttachment" type="xs:string" minOccurs="0"/>
+<xs:element name="urlDisplayName" type="xs:string" minOccurs="0"/>
+<xs:element name="role" type="xs:string" minOccurs="0"/>
+<xs:element name="field" type="xs:string" minOccurs="0"/>
+<xs:element name="delimiter" type="xs:unsignedShort"/>
+<xs:element name="fileName" type="xs:string" minOccurs="0"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="file" type="swaRef:swaRef" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddContentToObjectResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="reorderStructuralLink">
+<xs:sequence>
+<xs:element name="childUfid" type="xs:string" minOccurs="0"/>
+<xs:element name="insertAt" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="reorderStructuralLinkResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="queryContentItems">
+<xs:sequence>
+<xs:element name="objectUFID" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="queryContentItemsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:genericBusinessObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteTraceabilityLink">
+<xs:sequence>
+<xs:element name="linkUfid" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteTraceabilityLinkResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteContentItem">
+<xs:sequence>
+<xs:element name="contentHolderUfid" type="xs:string" minOccurs="0"/>
+<xs:element name="fileName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteContentItemResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CreateRMObjects">
+<xs:sequence>
+<xs:element name="objects" type="tns:genericBusinessObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CreateRMObjectsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:genericBusinessObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="UpdateObject">
+<xs:sequence>
+<xs:element name="object_ref" type="xs:string" minOccurs="0"/>
+<xs:element name="attributes" type="xs:string" minOccurs="0"/>
+<xs:element name="delimiter" type="xs:unsignedShort"/>
+<xs:element name="objects" type="tns:genericBusinessObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="UpdateObjectResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:genericBusinessObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="UpdateObjectState">
+<xs:sequence>
+<xs:element name="object_ref" type="xs:string" minOccurs="0"/>
+<xs:element name="state" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="UpdateObjectStateResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createDocumentStructure">
+<xs:sequence>
+<xs:element name="relationMap" type="xs:string" minOccurs="0"/>
+<xs:element name="deleteExistingLinks" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createDocumentStructureResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:genericBusinessObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Query">
+<xs:sequence>
+<xs:element name="objectUfid" type="xs:string" minOccurs="0"/>
+<xs:element name="typeIdentifier" type="xs:string" minOccurs="0"/>
+<xs:element name="criteria" type="xs:string" minOccurs="0"/>
+<xs:element name="containerUfid" type="xs:string" minOccurs="0"/>
+<xs:element name="propertyNames" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="QueryResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:genericBusinessObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createTraceabilityLink">
+<xs:sequence>
+<xs:element name="parentUfid" type="xs:string" minOccurs="0"/>
+<xs:element name="linkType" type="xs:string" minOccurs="0"/>
+<xs:element name="childUfid" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createTraceabilityLinkResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:genericBusinessObject" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteStruturalLink">
+<xs:sequence>
+<xs:element name="childUfids" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteStruturalLinkResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="QueryLinks">
+<xs:sequence>
+<xs:element name="object_ref" type="xs:string" minOccurs="0"/>
+<xs:element name="TYPE" type="xs:string" minOccurs="0"/>
+<xs:element name="direction" type="xs:string" minOccurs="0"/>
+<xs:element name="output_type" type="xs:string" minOccurs="0"/>
+<xs:element name="content_type" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="QueryLinksResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:genericBusinessObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ListSubFolders">
+<xs:sequence>
+<xs:element name="folderPath" type="xs:string" minOccurs="0"/>
+<xs:element name="containerUfid" type="xs:string" minOccurs="0"/>
+<xs:element name="folderUfid" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ListSubFoldersResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:genericBusinessObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="downloadContentItem">
+<xs:sequence>
+<xs:element name="item" type="tns:genericBusinessObject" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="downloadContentItemResponse">
+<xs:sequence>
+<xs:element name="return" type="swaRef:swaRef" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

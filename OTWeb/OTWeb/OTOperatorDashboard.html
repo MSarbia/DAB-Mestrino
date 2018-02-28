@@ -58,7 +58,8 @@
             orderData.forEach(function (o) {
                 if (o.Order == order) {
                     var operation = order.Operation;
-                    StartSerial(order, serial, operation, getSerialSuccess);
+                    var productCode = order.ProductCode;
+                    StartSerial(order, serial, operation, productCode,  getSerialSuccess);
                     return;
                 }
             });
@@ -135,6 +136,10 @@
                     if (serial.Status == 'Active') {
                         stato = 'In Lavorazione'
                         itemClass += " activeSerial";
+                    }
+                    if (serial.Status == 'Paused') {
+                        stato = 'In Pausa'
+                        itemClass += " pausedSerial";
                     }
                     selectable.innerHTML = selectable.innerHTML + "<li class='" + itemClass + "'data-order='"+order.Order+"'  id='" + serial.SerialNumber + "'><span style='font-weight:bold'>" + serial.SerialNumber + "</span ></br></br><span>Stato: </span ><span>" + stato + "</span ></li>";
                 })

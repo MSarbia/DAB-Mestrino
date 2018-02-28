@@ -9,7 +9,7 @@ namespace InforConnectorLibrary
     //Attenzione, il nome della classe è utilizzato nella ricerca del metodo da chiamare nel dictionary 
     public class OperatorOperation  // Classe per gestire Operation Progress
     {
-        public int Company { get; set; }
+        public string Company { get; set; }
 
         public string ProdOrder { get; set; }
 
@@ -24,8 +24,8 @@ namespace InforConnectorLibrary
         public string OperationStatus { get; set; }
 
         public OperatorOperation(string erpOrder, int operationSequence, int producedQuantity,
-                                  int company = 100,string processingScope="request",
-                                  bool operationStaus= false)
+                                  string company,
+                                  bool completed = false)
         {
             ProdOrder = erpOrder;
 
@@ -33,13 +33,13 @@ namespace InforConnectorLibrary
 
             Quantity = producedQuantity;
 
-            Company = company;
+            Company = string.IsNullOrEmpty(company) ? "100" : company;
 
-            ProcessingScope = processingScope;
+            ProcessingScope = "request";
 
             UoM = "NR";
 
-            OperationStatus = operationStaus == false ? "" : "Completed";
+            OperationStatus = completed? "Completed" : string.Empty;
         }
     }
 }

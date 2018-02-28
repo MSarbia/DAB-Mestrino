@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="RMWebServicesImplService" targetNamespace="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="xsd1.xsd" namespace="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/" />
+    </xsd:schema>
+  </types>
+  <message name="Create">
+    <part name="parameters" element="tns:Create" />
+  </message>
+  <message name="CreateResponse">
+    <part name="parameters" element="tns:CreateResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="Filter">
+    <part name="parameters" element="tns:Filter" />
+  </message>
+  <message name="FilterResponse">
+    <part name="parameters" element="tns:FilterResponse" />
+  </message>
+  <message name="Query">
+    <part name="parameters" element="tns:Query" />
+  </message>
+  <message name="QueryResponse">
+    <part name="parameters" element="tns:QueryResponse" />
+  </message>
+  <message name="getWindchillVersion">
+    <part name="parameters" element="tns:getWindchillVersion" />
+  </message>
+  <message name="getWindchillVersionResponse">
+    <part name="parameters" element="tns:getWindchillVersionResponse" />
+  </message>
+  <message name="ListSubFolders">
+    <part name="parameters" element="tns:ListSubFolders" />
+  </message>
+  <message name="ListSubFoldersResponse">
+    <part name="parameters" element="tns:ListSubFoldersResponse" />
+  </message>
+  <message name="QueryLinks">
+    <part name="parameters" element="tns:QueryLinks" />
+  </message>
+  <message name="QueryLinksResponse">
+    <part name="parameters" element="tns:QueryLinksResponse" />
+  </message>
+  <message name="CreateRMObjects">
+    <part name="parameters" element="tns:CreateRMObjects" />
+  </message>
+  <message name="CreateRMObjectsResponse">
+    <part name="parameters" element="tns:CreateRMObjectsResponse" />
+  </message>
+  <message name="UpdateObject">
+    <part name="parameters" element="tns:UpdateObject" />
+  </message>
+  <message name="UpdateObjectResponse">
+    <part name="parameters" element="tns:UpdateObjectResponse" />
+  </message>
+  <message name="AddContentToObject">
+    <part name="parameters" element="tns:AddContentToObject" />
+  </message>
+  <message name="AddContentToObjectResponse">
+    <part name="parameters" element="tns:AddContentToObjectResponse" />
+  </message>
+  <message name="createDocumentStructure">
+    <part name="parameters" element="tns:createDocumentStructure" />
+  </message>
+  <message name="createDocumentStructureResponse">
+    <part name="parameters" element="tns:createDocumentStructureResponse" />
+  </message>
+  <message name="downloadContentItem">
+    <part name="parameters" element="tns:downloadContentItem" />
+  </message>
+  <message name="downloadContentItemResponse">
+    <part name="parameters" element="tns:downloadContentItemResponse" />
+  </message>
+  <message name="createStruturalLink">
+    <part name="parameters" element="tns:createStruturalLink" />
+  </message>
+  <message name="createStruturalLinkResponse">
+    <part name="parameters" element="tns:createStruturalLinkResponse" />
+  </message>
+  <message name="deleteTraceabilityLink">
+    <part name="parameters" element="tns:deleteTraceabilityLink" />
+  </message>
+  <message name="deleteTraceabilityLinkResponse">
+    <part name="parameters" element="tns:deleteTraceabilityLinkResponse" />
+  </message>
+  <message name="MoveObjectsToFolder">
+    <part name="parameters" element="tns:MoveObjectsToFolder" />
+  </message>
+  <message name="MoveObjectsToFolderResponse">
+    <part name="parameters" element="tns:MoveObjectsToFolderResponse" />
+  </message>
+  <message name="queryContentItems">
+    <part name="parameters" element="tns:queryContentItems" />
+  </message>
+  <message name="queryContentItemsResponse">
+    <part name="parameters" element="tns:queryContentItemsResponse" />
+  </message>
+  <message name="deleteStruturalLink">
+    <part name="parameters" element="tns:deleteStruturalLink" />
+  </message>
+  <message name="deleteStruturalLinkResponse">
+    <part name="parameters" element="tns:deleteStruturalLinkResponse" />
+  </message>
+  <message name="reorderStructuralLink">
+    <part name="parameters" element="tns:reorderStructuralLink" />
+  </message>
+  <message name="reorderStructuralLinkResponse">
+    <part name="parameters" element="tns:reorderStructuralLinkResponse" />
+  </message>
+  <message name="UpdateObjectState">
+    <part name="parameters" element="tns:UpdateObjectState" />
+  </message>
+  <message name="UpdateObjectStateResponse">
+    <part name="parameters" element="tns:UpdateObjectStateResponse" />
+  </message>
+  <message name="deleteContentItem">
+    <part name="parameters" element="tns:deleteContentItem" />
+  </message>
+  <message name="deleteContentItemResponse">
+    <part name="parameters" element="tns:deleteContentItemResponse" />
+  </message>
+  <message name="createTraceabilityLink">
+    <part name="parameters" element="tns:createTraceabilityLink" />
+  </message>
+  <message name="createTraceabilityLinkResponse">
+    <part name="parameters" element="tns:createTraceabilityLinkResponse" />
+  </message>
+  <portType name="RMWebServicesImpl">
+    <operation name="Create">
+      <input wsam:Action="Create" message="tns:Create" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/CreateResponse" message="tns:CreateResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/Create/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="Filter">
+      <input wsam:Action="Filter" message="tns:Filter" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/FilterResponse" message="tns:FilterResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/Filter/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="Query">
+      <input wsam:Action="Query" message="tns:Query" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/QueryResponse" message="tns:QueryResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/Query/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getWindchillVersion">
+      <input wsam:Action="getWindchillVersion" message="tns:getWindchillVersion" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/getWindchillVersionResponse" message="tns:getWindchillVersionResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/getWindchillVersion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="ListSubFolders">
+      <input wsam:Action="ListSubFolders" message="tns:ListSubFolders" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/ListSubFoldersResponse" message="tns:ListSubFoldersResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/ListSubFolders/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="QueryLinks">
+      <input wsam:Action="QueryLinks" message="tns:QueryLinks" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/QueryLinksResponse" message="tns:QueryLinksResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/QueryLinks/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="CreateRMObjects">
+      <input wsam:Action="CreateRMObjects" message="tns:CreateRMObjects" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/CreateRMObjectsResponse" message="tns:CreateRMObjectsResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/CreateRMObjects/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="UpdateObject">
+      <input wsam:Action="UpdateObject" message="tns:UpdateObject" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/UpdateObjectResponse" message="tns:UpdateObjectResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/UpdateObject/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="AddContentToObject">
+      <input wsam:Action="AddContentToObject" message="tns:AddContentToObject" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/AddContentToObjectResponse" message="tns:AddContentToObjectResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/AddContentToObject/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="createDocumentStructure">
+      <input wsam:Action="createDocumentStructure" message="tns:createDocumentStructure" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/createDocumentStructureResponse" message="tns:createDocumentStructureResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/createDocumentStructure/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="downloadContentItem">
+      <input wsam:Action="downloadContentItem" message="tns:downloadContentItem" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/downloadContentItemResponse" message="tns:downloadContentItemResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/downloadContentItem/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="createStruturalLink">
+      <input wsam:Action="createStruturalLink" message="tns:createStruturalLink" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/createStruturalLinkResponse" message="tns:createStruturalLinkResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/createStruturalLink/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="deleteTraceabilityLink">
+      <input wsam:Action="deleteTraceabilityLink" message="tns:deleteTraceabilityLink" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/deleteTraceabilityLinkResponse" message="tns:deleteTraceabilityLinkResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/deleteTraceabilityLink/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="MoveObjectsToFolder">
+      <input wsam:Action="MoveObjectsToFolder" message="tns:MoveObjectsToFolder" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/MoveObjectsToFolderResponse" message="tns:MoveObjectsToFolderResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/MoveObjectsToFolder/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="queryContentItems">
+      <input wsam:Action="queryContentItems" message="tns:queryContentItems" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/queryContentItemsResponse" message="tns:queryContentItemsResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/queryContentItems/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="deleteStruturalLink">
+      <input wsam:Action="deleteStruturalLink" message="tns:deleteStruturalLink" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/deleteStruturalLinkResponse" message="tns:deleteStruturalLinkResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/deleteStruturalLink/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="reorderStructuralLink">
+      <input wsam:Action="reorderStructuralLink" message="tns:reorderStructuralLink" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/reorderStructuralLinkResponse" message="tns:reorderStructuralLinkResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/reorderStructuralLink/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="UpdateObjectState">
+      <input wsam:Action="UpdateObjectState" message="tns:UpdateObjectState" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/UpdateObjectStateResponse" message="tns:UpdateObjectStateResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/UpdateObjectState/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="deleteContentItem">
+      <input wsam:Action="deleteContentItem" message="tns:deleteContentItem" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/deleteContentItemResponse" message="tns:deleteContentItemResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/deleteContentItem/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="createTraceabilityLink">
+      <input wsam:Action="createTraceabilityLink" message="tns:createTraceabilityLink" />
+      <output wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/createTraceabilityLinkResponse" message="tns:createTraceabilityLinkResponse" />
+      <fault wsam:Action="http://ws.requirement.enterprise.windchill.ptc.com.service.jws.ptc.com/RMWebServicesImpl/createTraceabilityLink/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="RMWebServicesImplPortBinding" type="tns:RMWebServicesImpl">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Create">
+      <soap:operation soapAction="Create" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Filter">
+      <soap:operation soapAction="Filter" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Query">
+      <soap:operation soapAction="Query" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getWindchillVersion">
+      <soap:operation soapAction="getWindchillVersion" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="ListSubFolders">
+      <soap:operation soapAction="ListSubFolders" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="QueryLinks">
+      <soap:operation soapAction="QueryLinks" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CreateRMObjects">
+      <soap:operation soapAction="CreateRMObjects" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="UpdateObject">
+      <soap:operation soapAction="UpdateObject" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="AddContentToObject">
+      <soap:operation soapAction="AddContentToObject" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="createDocumentStructure">
+      <soap:operation soapAction="createDocumentStructure" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="downloadContentItem">
+      <soap:operation soapAction="downloadContentItem" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="createStruturalLink">
+      <soap:operation soapAction="createStruturalLink" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteTraceabilityLink">
+      <soap:operation soapAction="deleteTraceabilityLink" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="MoveObjectsToFolder">
+      <soap:operation soapAction="MoveObjectsToFolder" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="queryContentItems">
+      <soap:operation soapAction="queryContentItems" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteStruturalLink">
+      <soap:operation soapAction="deleteStruturalLink" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="reorderStructuralLink">
+      <soap:operation soapAction="reorderStructuralLink" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="UpdateObjectState">
+      <soap:operation soapAction="UpdateObjectState" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteContentItem">
+      <soap:operation soapAction="deleteContentItem" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="createTraceabilityLink">
+      <soap:operation soapAction="createTraceabilityLink" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="RMWebServicesImplService">
+    <port name="RMWebServicesImplPort" binding="tns:RMWebServicesImplPortBinding">
+      <soap:address location="http://srvitgwch01.adw.intra:80/Windchill/servlet/RMWebServices" />
+    </port>
+  </service>
+</definitions>

@@ -9,7 +9,7 @@ namespace InforConnectorLibrary
     //Attenzione, il nome della classe è utilizzato nella ricerca del metodo da chiamare nel dictionary 
     public class ReportProduction
     {
-        public int Company { get; set; }
+        public string Company { get; set; }
 
         public string ProcessingScope { get; set; }
 
@@ -29,28 +29,26 @@ namespace InforConnectorLibrary
 
         public string ReportMore { get; set; }    
 
-        public ReportProduction(string erpOrder, int producedQuantity, bool closeOrder, int company = 100, 
-                                string processingScope = "request", string reportPrevious = "yes",
-                                string backFlush = "yes", string directReceipt = "yes", string reportMore = "no")
+        public ReportProduction(string erpOrder, bool closeOrder, string company)
         {
             FromWarehouse = "D100";
             ProductionOrder = erpOrder;
 
-            QtyDeliver = producedQuantity;
+            QtyDeliver = 0;
 
             Complete = closeOrder == true ? "yes" : "no";
 
-            Company = company;
+            Company = string.IsNullOrEmpty(company)?"100":company;
 
-            ProcessingScope = processingScope;
+            ProcessingScope = "request";
 
-            ReportPrevious = reportPrevious;
+            ReportPrevious = "yes";
 
-            BackFlush = backFlush;
+            BackFlush = "yes";
 
-            DirectReceipt = directReceipt;
+            DirectReceipt = "yes";
 
-            ReportMore = reportMore;
+            ReportMore = "no";
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         {
             var response = new ReportProducedQuantity.Response();
 
-            ReportProduction reportProduction = new ReportProduction(command.ErpOrder, command.ProducedQuantity, command.CloseOrder);
+            ReportProduction reportProduction = new ReportProduction(command.ErpOrder, command.CloseOrder, command.Plant);
 
             var result=InforConnector.ReportProducedQuantity(reportProduction);
 
@@ -34,7 +34,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             { 
                 response.SetError(-1001, result.Error);
             }
-            else if(result.Error != null)
+            else if(!string.IsNullOrEmpty(result.Error))
             {
                 response.SetError(-1002, result.Error);
             }

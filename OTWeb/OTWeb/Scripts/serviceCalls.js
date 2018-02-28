@@ -131,9 +131,9 @@ function GetSerials(getSerialsSuccess) {
     });
 }
 
-function StartSerial(order, serialNumber, operation, getSerialsSuccess) {
+function StartSerial(order, serialNumber, operation, productCode, getSerialsSuccess) {
     var userData = GetSession('userData');
-
+    
     var startSerialRequest = {
         User: userData.User,
         Password: userData.Password,

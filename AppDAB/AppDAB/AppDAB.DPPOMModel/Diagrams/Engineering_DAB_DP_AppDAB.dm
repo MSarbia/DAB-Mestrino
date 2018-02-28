@@ -5,49 +5,33 @@
     <FileName>AppDAB.DPPOMModel</FileName>
     <Artifacts>
       <ArtifactSuo>
-        <X>115.20000000000005</X>
-        <Y>164.00000000000003</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.MaterialDefinition</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
-        <IsExpandedC>true</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
         <X>5</X>
         <Y>5</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABGetTestCard</FullName>
-        <IsExpandedA>false</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABSendTestResult</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>448.99999999999994</X>
-        <Y>25</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.Document</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.Commands.CreateDocument</FullName>
+        <FullName>Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.AcceptChangeAddToBeConsumedMaterial</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>true</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.OperationDependency</FullName>
+        <X>375.40000000000009</X>
+        <Y>35.400000000000006</Y>
+        <FullName>Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.AcceptChangeReplaceToBeConsumedMaterial</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>true</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>325.00000000000011</X>
+        <Y>299.40000000000003</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportMaterialNonConformance</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>true</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>685</X>
+        <Y>238.60000000000002</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABReplaceMaterial</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>true</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>

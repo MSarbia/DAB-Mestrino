@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimaticIT.Unified.Lean</name>
+    </assembly>
+    <members>
+        <member name="T:Siemens.SimaticIT.Unified.Lean.AckModel">
+            <summary>
+            Specifies the modes for managing the acknowledge messages that arrive from the communication infrastructure.
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Unified.Lean.AckModel.Immediate">
+            <summary>
+            AckModel immediate: Ack on the event instance is given as soon as the event is received by the communication infrastructure, this value represents the default behaviour
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Unified.Lean.AckModel.Deferred">
+            <summary>
+            AckModel deferred:  Ack on the event instance is given when the user callback has exited or when all the user callbacks for the same event type have exited
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Unified.Lean.IEventDescriptor">
+            <summary>
+            Adds information regarding acknowledged events: the EventId which has been fired, DateTimeOffset related to the fired event
+            the internal endpoint that has sent the event and a reference to a contextualized tracer for this event.
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Unified.Lean.IEventDescriptor.EventId">
+            <summary>
+            Gets the event identifier.
+            </summary>
+            <value>
+            The event identifier.
+            </value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Unified.Lean.IEventDescriptor.FireTime">
+            <summary>
+            Gets the fire time in UTC mode.
+            </summary>
+            <value>
+            The time when the event was fired.
+            </value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Unified.Lean.IEventDescriptor.From">
+            <summary>
+            Gets the internal endpoint that has sent the event.
+            </summary>
+            <value>
+            The URL of the internal endpoint.
+            </value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Unified.Lean.IEventDescriptor.Tracer">
+            <summary>
+            Gets the contextualized tracer.
+            </summary>
+            <value>
+            The contextualized tracer for this event.
+            </value>
+        </member>
+        <member name="T:Siemens.SimaticIT.Unified.Lean.IUnifiedSdkEventSubscribing">
+            <summary>
+            Provides methods to subscribe to Unified Events.
+            <note type="noteType">
+            The interface hierarchy and subdivision of methods in interfaces may be subject to change in the future. Only refer to entry point interfaces (IUnifiedSdk, IUnifiedSdkLean and IUnifiedSdkEvent).
+            </note> 
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Unified.Lean.IUnifiedSdkEventSubscribing.SubscribeEvent(System.Type,System.String,Siemens.SimaticIT.Unified.Common.EventEnvelope,System.Action{Siemens.SimaticIT.Unified.Common.IEvent,Siemens.SimaticIT.Unified.Common.EventEnvelope,System.Guid,System.Object},System.Object,System.String)">
+            <summary>
+            Subscribes to a Unified Event and specifies an action based on a set of subscription parameters.
+            </summary>
+            <param name="eventType"> Concrete <see cref="T:System.Type"/> of the event about to be received from this subscription, which is derived from <see cref="T:Siemens.SimaticIT.Unified.Common.IEvent"/>.</param>
+            <param name="eventName"> The complete name of the event you are subscribing to.</param>
+            <param name="subscriptionFilters"> The envelope containing the fields which the subscription will be created from. All the fields you specify make up the matching criteria in an inclusive way (AND condition). If this parameter is null the subscription is on the event name.</param>
+            <param name="callback"> The User <see cref="T:System.Action"/> that will be triggered every time an event has been received. The parameters of the action are: event, event envelope, subscription id, user data. Note the received event is a generic IEvent class. If used, the object must be assigned to the concrete eventType class or, alternatively, use the generics SubscribeEvent variant.</param>
+            <param name="userData">(Optional) The User data object to be received on event callbacks.</param>
+            <param name="queueName">(Optional) The name of the queue to be used for receiving events. If a name is provided (i.e. non null), the queue will persist in the system after the process has closed or crashed. If the queueName is null, the queue will only exist as long as the process is alive. </param>
+            <returns> The subscription ID that must be used in the unsubscribe method. In case of failure an exception is thrown.</returns>
+            <remarks>
+            Multiple subscribers on the same queue will share this channel with a competing pattern. This is useful in a distributed environment where it may be necessary to balance the load between multiple instances of the same application.
+            If no queue is specified, a unique event queue is created internally and a copy of each event is delivered to its callback.
+            User callbacks are scheduled within their own threads, so that the events are processed concurrently. Synchronization issues may occur on user code that shares global resources inside the callbacks if not correctly protected with proper synchronization directives.
+            <note type="noteType">         
+            Exceptions generated by user callbacks are caught in the caller infrastructure so that the process will not terminate.
+            In order to monitor unexpected exceptions raised by the callback code, check the trace channel "Siemens-SimaticIT-Trace-Runtime".
+            </note>
+            Filtering:
+            If the required subscription is on a specific event type only, the user can avoid specifying a subscription filter, using null as the subscriptionFilters parameter.
+            Note: carefully evaluate the network impact on highly generic events, as the Subscribe will receive every instance of the event in the listening process.
+            In order to receive an event of a particular type with a certain property specified, for example with a specific "category", an <see cref="T:Siemens.SimaticIT.Unified.Common.EventEnvelope"/> object with the "Category" field may be specified. In this way, only the events with the proper matching category within the event type will be received. All envelope fields not initialized will be ignored in the matching criteria.
+            More restrictive filters on the subscription can be achieved using multiple fields in <see cref="T:Siemens.SimaticIT.Unified.Common.EventEnvelope"/>, in this case the event will be received only when all the specified fields match the incoming event envelope fields (logical AND).
+            The user can subscribe to the same event multiple times with different subscription envelopes to achieve a logical OR condition.
+            Threading model:
+            If you have multiple subscriptions either for a single event or for different events, the execution of the subscribed handlers will be scheduled by calling the user callbacks on different threads.
+            </remarks>
+        </member>
+        <member name="M:Siemens.SimaticIT.Unified.Lean.IUnifiedSdkEventSubscribing.SubscribeEvent``1(System.String,Siemens.SimaticIT.Unified.Common.EventEnvelope,System.Action{``0,Siemens.SimaticIT.Unified.Common.EventEnvelope,System.Guid,System.Object},System.Object,System.String)">
+            <summary>
+            Subscribes to a Unified Event and specifies an action based on a set of subscription parameters.
+            </summary>
+            <typeparam name="T">The command that will be associated to this subscription.</typeparam>
+            <param name="eventName"> The complete name of the event you are subscribing to.</param>
+            <param name="subscriptionFilters"> The envelope containing the fields which the subscription will be created from. All the fields you specify make up the matching criteria in an inclusive way (AND condition). If this parameter is null the subscription is on the event name.</param>
+            <param name="callback"> The User <see cref="T:System.Action"/> that will be triggered every time an event has been received. The parameters of the action are: event, event envelope, subscription id, user data. </param>
+            <param name="userData">(Optional) The User data object to be received on event callbacks.</param>
+            <param name="queueName">(Optional) The name of the queue to be used for receiving events. If a name is provided (i.e. non null), the queue will persist in the system after the process has closed or crashed. If the queueName is null, the queue will only exist as long as the process is alive.</param>
+            <returns> The subscription ID that must be used in the unsubscribe method. In case of failure an exception is thrown.</returns>
+            <remarks>
+            Multiple subscribers on the same queue will share this channel with a competing pattern. This is useful in a distributed environment where it may be necessary to balance the load between multiple instances of the same application.
+            If no queue is specified a unique event queue is created internally and a copy of each event is delivered to its callback.
+            User callbacks are scheduled within their own threads so that the events are processed concurrently. Synchronization issues may occur on user code that shares global resources inside the callbacks if not correctly protected with proper synchronization directives.
+            <note type="noteType">         
+            Exceptions generated by user callbacks are caught in the caller infrastructure so that the process will not terminate.
+            In order to monitor unexpected exceptions raised by the callback code, check the trace channel "Siemens-SimaticIT-Trace-Runtime".
+            </note>
+            Filtering:
+            If the required subscription is on a specific event type only, the user can avoid specifying a subscription filter, using null as the subscriptionFilters parameter.
+            Note: carefully evaluate the network impact on highly generic events, as the Subscribe will receive every instance of the event in the listening process.
+            In order to receive an event of a particular type with a certain property specified, for example with a specific "category", an <see cref="T:Siemens.SimaticIT.Unified.Common.EventEnvelope"/> object with the "Category" field may be specified. In this way, only the events with the proper matching category within the event type will be received. All envelope fields not initialized will be ignored in the matching criteria.
+            More restrictive filters on the subscription can be achieved using multiple fields in <see cref="T:Siemens.SimaticIT.Unified.Common.EventEnvelope"/>, in this case the event will be received only when all the specified fields  match the incoming event envelope fields (logical AND).
+            The user can subscribe to the same event multiple times with different subscription envelopes to achieve a logical OR condition.
+            Threading model:
+            Multiple subscriptions on a single event instance will be scheduled calling the user callbacks in the same thread.
+            Different subscriptions on different event instances will be scheduled calling the user callbacks in different threads.
+            </remarks>
+            <example>
+            The following class handler demonstrates the SubscribeEvent call on a simple event trigger.
+            <code source="Unified.Lean\Examples\SubscribeExample.cs" region="SimpleSubscribe" language="cs" title="C#" />
+            The following class handler demonstrates the SubscribeEvent call, specifying the *subscriptionFilters* so that only some events of the same type will be received.
+            <code source="Unified.Lean\Examples\SubscribeExample.cs" region="SubscriptionFilterSubscribe" language="cs" title="C#" />
+            </example>
+        </member>
+        <member name="M:Siemens.SimaticIT.Unified.Lean.IUnifiedSdkEventSubscribing.SubscribeEvent(System.Type,System.String,Siemens.SimaticIT.Unified.Common.EventEnvelope,System.Action{Siemens.SimaticIT.Unified.Common.IEvent,Siemens.SimaticIT.Unified.Common.EventEnvelope,Siemens.SimaticIT.Unified.Lean.IEventDescriptor,System.Guid,System.Object},System.Object,System.String,Siemens.SimaticIT.Unified.Lean.ListenerOptions)">
+            <summary>
+            Subscribes to a Unified Event and specifies an action based on a set of subscription parameters.
+            </summary>
+            <param name="eventType"> Concrete <see cref="T:System.Type"/> of the event about to be received from this subscription, which is derived from <see cref="T:Siemens.SimaticIT.Unified.Common.IEvent"/>.</param>
+            <param name="eventName"> The complete name of the event you are subscribing to.</param>
+            <param name="subscriptionFilters"> The envelope containing the fields which the subscription will be created from. All the fields you specify make up the matching criteria in an inclusive way (AND condition). If this parameter is null the subscription is on the event name.</param>
+            <param name="callback"> The User <see cref="T:System.Action"/> that will be triggered every time an event has been received. The parameters of the action are: event, event envelope, event descriptor, subscription id, user data. Note the received event is a generic IEvent class. If used, the object must be assigned to the concrete eventType class or, alternatively, use the generic SubscribeEvent variant.</param>
+            <param name="userData">(Optional) The User data object to be received on event callbacks.</param>
+            <param name="queueName">(Optional) The name of the queue to be used for receiving events. If a name is provided (i.e. non null), the queue will persist in the system after the process has closed or crashed. If the queueName is null, the queue will only exist as long as the process is alive.</param>
+            <param name="options">(Optional) Options regarding the acknowledge mode that can be specified while listening to events in the communication infrastructure.
+            Note: If you specify the 'deferred' acknowledge option, but you do not assign a name to the queue (i.e. the queue will not persist), the acknowledge message is deleted together with the queue. 
+            If you assign a name to the queue instead, and you need to remove the queue, the system will not delete the queue unless you remove it manually.
+            Consequently, only if you use the 'deferred' acknowledge option together with a specified queue name, are you sure to receive an acknowledge message once all Handlers have effectively been executed.</param>
+            <returns> The subscription ID that must be used in the unsubscribe method. In case of failure an exception is thrown.</returns>
+            <remarks>
+            Multiple subscribers on the same queue will share this channel with a competing pattern. This is useful in a distributed environment where it may be necessary to balance the load between multiple instances of the same application.
+            If no queue is specified a unique event queue is created internally and a copy of each event is delivered to its callback.
+            User callbacks are scheduled within their own threads, so that the events are processed concurrently. Synchronization issues may occur on user code that shares global resources inside the callbacks if not correctly protected with proper synchronization directives.
+            <note type="noteType">         
+            Exceptions generated by user callbacks are caught in the caller infrastructure so that the process will not terminate.
+            In order to monitor unexpected exceptions raised by the callback code, check the trace channel "Siemens-SimaticIT-Trace-Runtime".
+            If the user callback returns errors, the handler associated to the event is considered complete, although it contains errors, and the event is removed from the communication infrastructure queue, without performing retry operations.
+            If, on the other hand, the machine or worker crashes whilst the handler is in execution, the acknowledge will not be returned, and when the machine or worker restarts the handlers will be executed again. 
+            This may imply the duplication of some handlers. The *EventDescriptor.EventID* parameter of the callback can help you determine whether an event has already been managed by business logic or not. 
+            In order to monitor unexpected exceptions raised by the callback code, check the trace channel "Siemens-SimaticIT-Trace-Runtime".
+            </note>
+            Filtering:
+            If the required subscription is on a specific event type only, the user can avoid specifying a subscription filter, using null as the subscriptionFilters parameter.
+            Note: carefully evaluate the network impact on highly generic events, as the Subscribe will receive every instance of the event in the listening process.
+            In order to receive an event of a particular type with a certain property specified, for example with a specific "category", an <see cref="T:Siemens.SimaticIT.Unified.Common.EventEnvelope"/> object with the "Category" field may be specified. In this way, only the events with the proper matching category within the event type will be received. All envelope fields not initialized will be ignored in the matching criteria.
+            More restrictive filters on the subscription can be achieved using multiple fields in <see cref="T:Siemens.SimaticIT.Unified.Common.EventEnvelope"/>, in this case the event will be received only when all the specified fields match the incoming event envelope fields (logical AND).
+            The user can subscribe the same event multiple times with different subscription envelopes to achieve a logical OR condition.
+            Threading model:
+            If you have multiple subscriptions either for a single event or for different events, the execution of the subscribed handlers will be scheduled by calling the user callbacks on different threads.
+            </remarks>
+        </member>
+        <member name="M:Siemens.SimaticIT.Unified.Lean.IUnifiedSdkEventSubscribing.SubscribeEvent``1(System.String,Siemens.SimaticIT.Unified.Common.EventEnvelope,System.Action{``0,Siemens.SimaticIT.Unified.Common.EventEnvelope,Siemens.SimaticIT.Unified.Lean.IEventDescriptor,System.Guid,System.Object},System.Object,System.String,Siemens.SimaticIT.Unified.Lean.ListenerOptions)">
+            <summary>
+            Subscribes to a Unified Event and specifies an action based on a set of subscription parameters.
+            </summary>
+            <typeparam name="T">The command that will be associated to this subscription.</typeparam>
+            <param name="eventName"> The complete name of the event you are subscribing to.</param>
+            <param name="subscriptionFilters"> The envelope containing the fields which the subscription will be created from. All the fields you specify make up the matching criteria in an inclusive way (AND condition). If this parameter is null the subscription is on the event name.</param>
+            <param name="callback"> The User <see cref="T:System.Action"/> that will be triggered every time an event has been received. The parameters of the action are: event, event envelope, event descriptor, subscription id, user data. Note the received event is a generic IEvent class. If used, the object must be assigned to the concrete eventType class or, alternatively, use the generic SubscribeEvent variant.</param>
+            <param name="userData">(Optional) The User data object to be received on event callbacks.</param>
+            <param name="queueName">(Optional) The name of the queue to be used for receiving events. If a name is provided (i.e. non null), the queue will persist in the system after the process has closed or crashed. If the queueName is null, the queue will only exist as long as the process is alive.</param>
+            <param name="options">(Optional) Options regarding the acknowledge mode that can be specified while listening to events in the communication infrastructure.
+            Note: If you specify the 'deferred' acknowledge option, but you do not assign a name to the queue (i.e. the queue will not persist), the acknowledge message is deleted together with the queue. 
+            If you assign a name to the queue instead, and you need to remove the queue, the system will not delete the queue unless you remove it manually.
+            Consequently, only if you use the 'deferred' acknowledge option together with a specified queue name, are you sure to receive an acknowledge message once all Handlers have effectively been executed.</param>
+            <returns> The subscription ID that must be used in the unsubscribe method. In case of failure an exception is thrown.</returns>
+            <remarks>
+            Multiple subscribers on the same queue will share this channel with a competing pattern. This is useful in a distributed environment where it may be necessary to balance the load between multiple instances of the same application.
+            If no queue is specified a unique event queue is created internally and a copy of each event is delivered to its callback.
+            User callbacks are scheduled within their own threads so that the events are processed concurrently. Synchronization issues may occur on user code that shares global resources inside the callbacks if not correctly protected with proper synchronization directives.
+            <note type="noteType">         
+            Exceptions generated by user callbacks are caught in the caller infrastructure so that the process will not terminate.
+            In order to monitor unexpected exceptions raised by the callback code, check the trace channel "Siemens-SimaticIT-Trace-Runtime".
+            If the user callback returns errors, the handler associated to the event is considered complete, although it contains errors, and the event is removed from the communication infrastructure queue, without performing retry operations.
+            If, on the other hand, the machine or worker crashes whilst the handler is in execution, the acknowledge will not be returned, and when the machine or worker restarts the handlers will be executed again. 
+            This may imply the duplication of some handlers. The *EventDescriptor.EventID* parameter of the callback can help you determine whether an event has already been managed by business logic or not. 
+            </note>
+            Filtering:
+            If the required subscription is on a specific event type only, the user can avoid specifying a subscription filter, using null as the subscriptionFilters parameter.
+            Note: carefully evaluate the network impact on highly generic events, as the Subscribe will receive every instance of the event in the listening process.
+            In order to receive an event of a particular type with a certain property specified, for example with a specific "category", an <see cref="T:Siemens.SimaticIT.Unified.Common.EventEnvelope"/> object with the "Category" field may be specified. In this way, only the events with the proper matching category within the event type will be received. All envelope fields not initialized will be ignored in the matching criteria.
+            More restrictive filters on the subscription can be achieved using multiple fields in <see cref="T:Siemens.SimaticIT.Unified.Common.EventEnvelope"/>, in this case the event will be received only when all the specified fields match the incoming event envelope fields (logical AND).
+            The user can subscribe to the same event multiple times with different subscription envelopes to achieve a logical OR condition.
+            Threading model:
+            Multiple subscriptions on a single event instance will be scheduled calling user callbacks in the same thread.
+            Different subscriptions on different event instances will be scheduled calling user callbacks in different threads.
+            </remarks>
+            <example>
+            The following class handler demonstrates the SubscribeEvent call on a simple event trigger.
+            <code source="Unified.Lean\Examples\SubscribeExample.cs" region="SimpleSubscribe" language="cs" title="C#" />
+            The following class handler demonstrates the SubscribeEvent call, specifying the *subscriptionFilters* so that only some events of the same type will be received.
+            <code source="Unified.Lean\Examples\SubscribeExample.cs" region="SubscriptionFilterSubscribe" language="cs" title="C#" />
+            </example>
+        </member>
+        <member name="M:Siemens.SimaticIT.Unified.Lean.IUnifiedSdkEventSubscribing.Unsubscribe(System.Guid)">
+            <summary>
+            Unsubscribes a previously subscribed event.
+            </summary>
+            <param name="token">The ID of the subscription to be removed.</param>
+            <returns>Returns <c>true</c> if the operation is successful, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="T:Siemens.SimaticIT.Unified.Lean.IUnifiedSdkLean">
+            <summary>
+            Provides an interface to access Unified services.
+            <note type="noteType">
+            The interface hierarchy and subdivision of methods in interfaces may be subject to change in the future. Only refer to entry point interfaces (IUnifiedSdk, IUnifiedSdkLean and IUnifiedSdkEvent).
+            </note> 
+            </summary>
+        </member>
+        <member name="T:Siemens.SimaticIT.Unified.Lean.IUnifiedSdkQoSLean">
+            <summary>
+            Provides an interface between UnifiedSdk and QoS authentication services.
+            <note type="noteType">
+            The interface hierarchy and subdivision of methods in interfaces may be subject to change in the future. Only refer to entry point interfaces (IUnifiedSdk, IUnifiedSdkLean and IUnifiedSdkEvent).
+            </note> 
+            </summary>
+        </member>
+        <member name="M:Siemens.SimaticIT.Unified.Lean.IUnifiedSdkQoSLean.SetAuthenticationToken(System.String)">
+            <summary>
+            Sets the Unified authentication token for Unified SDK.
+            </summary>
+            <param name="token">The authentication token.</param>
+            <exception cref="T:System.ArgumentNullException">The token is null.</exception>
+            <exception cref="T:Siemens.SimaticIT.Unified.Common.UnifiedAuthenticationException">Authentication failed.</exception>
+        </member>
+        <member name="M:Siemens.SimaticIT.Unified.Lean.IUnifiedSdkQoSLean.SetWindowsAuthentication">
+            <summary>
+            Sets the current Windows Authentication credentials for Unified SDK.
+            </summary>
+            <exception cref="T:Siemens.SimaticIT.Unified.Common.UnifiedAuthenticationException">Authentication failed.</exception>
+        </member>
+        <member name="T:Siemens.SimaticIT.Unified.Lean.ListenerOptions">
+            <summary>
+            Specifies any additional behavior that will be applied while processing the information that returns from the communication infrastructure as result of the subscription.
+            </summary>
+        </member>
+        <member name="F:Siemens.SimaticIT.Unified.Lean.ListenerOptions._defaultOptions">
+            <summary>
+            The default value for ListenerOptions
+            </summary>
+        </member>
+        <member name="P:Siemens.SimaticIT.Unified.Lean.ListenerOptions.DefaultOptions">
+            <summary>
+            Gets the default options.
+            </summary>
+            <value>
+            The default options.
+            </value>
+        </member>
+        <member name="P:Siemens.SimaticIT.Unified.Lean.ListenerOptions.AcknowledgeModel">
+            <summary>
+            Gets or sets the acknowledge model.
+            </summary>
+            <value>
+            The acknowledge model <see cref="T:Siemens.SimaticIT.Unified.Lean.AckModel"/>.
+            </value>
+        </member>
+    </members>
+</doc>

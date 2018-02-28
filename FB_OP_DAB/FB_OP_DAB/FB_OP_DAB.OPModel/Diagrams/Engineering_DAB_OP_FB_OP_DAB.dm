@@ -7,105 +7,17 @@
       <ArtifactSuo>
         <X>5</X>
         <Y>5</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.MaterialDefinitionExt</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>212.20000000000005</X>
-        <Y>14.599999999999994</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateOrUpdateMaterialDefinitionExt</FullName>
-        <IsExpandedA>false</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportConsumedMaterial</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateToBeConsumedMaterialExt</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ToBeConsumedMaterialExtParameter</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
         <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.AbsorptionParameter</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.TestCardParameter</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>16.999999999999886</X>
-        <Y>70.6</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.TestResultParameter</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>358.6</X>
-        <Y>11.400000000000006</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.AbsorptionResult</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>16.799999999999955</X>
-        <Y>125.80000000000007</Y>
+        <X>335.40000000000009</X>
+        <Y>41.800000000000011</Y>
         <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.AbsorptionResultParameter</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>298.6</X>
-        <Y>66.599999999999966</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestResult</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.TestCard</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
-        <IsExpandedC>true</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>624.2</X>
-        <Y>125.00000000000003</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.SendTestResult</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
     </Artifacts>

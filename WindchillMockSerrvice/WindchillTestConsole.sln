@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindchillDocConnectorLibrar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindchillDocImportTask", "WindchillDocImportTask\WindchillDocImportTask.csproj", "{55E81426-16F0-4CDB-BA5A-C94BB1013966}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindchillTestConnectorLibrary", "WindchillTestConnectorLibrary\WindchillTestConnectorLibrary.csproj", "{29BEE0DC-2F4F-4394-B9E5-1017DB20B320}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{55E81426-16F0-4CDB-BA5A-C94BB1013966}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55E81426-16F0-4CDB-BA5A-C94BB1013966}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55E81426-16F0-4CDB-BA5A-C94BB1013966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29BEE0DC-2F4F-4394-B9E5-1017DB20B320}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29BEE0DC-2F4F-4394-B9E5-1017DB20B320}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29BEE0DC-2F4F-4394-B9E5-1017DB20B320}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29BEE0DC-2F4F-4394-B9E5-1017DB20B320}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,578 @@
+﻿<?xml version="1.0" encoding="utf-8"?><projectmanifest>
+  <header>
+    <manifestversion>1.5</manifestversion>
+    <platformversion>1.5</platformversion>
+    <type>Library</type>
+    <name>Siemens.SimaticIT.U4DM.FB_RD_SERV</name>
+    <shortname>FB_RD_SERV</shortname>
+    <description>Service</description>
+    <version>03.00.00</version>
+    <companyname>Siemens.SimaticIT.U4DM</companyname>
+    <author>Siemens.SimaticIT.U4DM</author>
+    <hash>xOvYL9dMRUBkTgJRbM7j7KvBg0K+ByYvSR3JFK9OpQM=</hash>
+  </header>
+  <reference>
+    <functionalblocks></functionalblocks>
+  </reference>
+  <artifacts>
+    <commands><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateDiscreteLifeCycle</name>
+                        <shortname>CreateDiscreteLifeCycle</shortname>
+                        <description> Creates a Discrete Lifecycle.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a Discrete Lifecycle.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateDiscreteLifeCycleHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteDiscreteLifeCycle</name>
+                        <shortname>DeleteDiscreteLifeCycle</shortname>
+                        <description> Deletes a DiscreteLifeCycle entity.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes a DiscreteLifeCycle entity.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteDiscreteLifeCycleHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.UpdateDiscreteLifeCycle</name>
+                        <shortname>UpdateDiscreteLifeCycle</shortname>
+                        <description> Modifies the name and/or description of a DiscreteLifeCycle entity. </description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Modifies the name and/or description of a DiscreteLifeCycle entity. </dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.UpdateDiscreteLifeCycleHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateDiscreteStatus</name>
+                        <shortname>CreateDiscreteStatus</shortname>
+                        <description> Creates a Discrete Status.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a Discrete Status.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateDiscreteStatusHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteDiscreteStatus</name>
+                        <shortname>DeleteDiscreteStatus</shortname>
+                        <description> Deletes a DiscreteStatus entity.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes a DiscreteStatus entity.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteDiscreteStatusHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.UpdateDiscreteStatus</name>
+                        <shortname>UpdateDiscreteStatus</shortname>
+                        <description> Modifies the name and/or description of a DiscreteStatus entity.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Modifies the name and/or description of a DiscreteStatus entity.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.UpdateDiscreteStatusHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateDiscreteStatusAction</name>
+                        <shortname>CreateDiscreteStatusAction</shortname>
+                        <description> Creates a Discrete Status Action.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a Discrete Status Action.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateDiscreteStatusActionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteDiscreteStatusAction</name>
+                        <shortname>DeleteDiscreteStatusAction</shortname>
+                        <description> Deletes a DiscreteStatusAction entity.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes a DiscreteStatusAction entity.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteDiscreteStatusActionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.UpdateDiscreteStatusAction</name>
+                        <shortname>UpdateDiscreteStatusAction</shortname>
+                        <description> Modifies the name and/or description of a DiscreteStatusAction entity.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Modifies the name and/or description of a DiscreteStatusAction entity.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.UpdateDiscreteStatusActionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateDiscreteStatusAlias</name>
+                        <shortname>CreateDiscreteStatusAlias</shortname>
+                        <description> Creates a Discrete Status Alias.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a Discrete Status Alias.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateDiscreteStatusAliasHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteDiscreteStatusAlias</name>
+                        <shortname>DeleteDiscreteStatusAlias</shortname>
+                        <description> Deletes a DiscreteStatusAlias entity.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes a DiscreteStatusAlias entity.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteDiscreteStatusAliasHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.UpdateDiscreteStatusAlias</name>
+                        <shortname>UpdateDiscreteStatusAlias</shortname>
+                        <description> Modifies the name and/or description of a DiscreteStatusAlias entity.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Modifies the name and/or description of a DiscreteStatusAlias entity.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.UpdateDiscreteStatusAliasHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.SetDiscreteActionListToDiscreteStatus</name>
+                        <shortname>SetDiscreteActionListToDiscreteStatus</shortname>
+                        <description> Associates a  list of  DiscreteStatusAction entities (for example,CanBeApproved) to a DiscreteStatus entity (for example, InEditing).</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Associates a  list of  DiscreteStatusAction entities (for example,CanBeApproved) to a DiscreteStatus entity (for example, InEditing).</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.SetDiscreteActionListToDiscreteStatusHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.UnsetDiscreteActionListFromDiscreteStatus</name>
+                        <shortname>UnsetDiscreteActionListFromDiscreteStatus</shortname>
+                        <description> Removes the association between a list of DiscreteStatusAction entities (for example, CanBeApproved) and a DiscreteStatus entity (for example, InEditing). </description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Removes the association between a list of DiscreteStatusAction entities (for example, CanBeApproved) and a DiscreteStatus entity (for example, InEditing). </dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.UnsetDiscreteActionListFromDiscreteStatusHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateDiscreteStatusTransition</name>
+                        <shortname>CreateDiscreteStatusTransition</shortname>
+                        <description> Creates a DiscreteStatusTransition entity, whereby certain changes in status are permitted within a specific Lifecycle.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a DiscreteStatusTransition entity, whereby certain changes in status are permitted within a specific Lifecycle.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateDiscreteStatusTransitionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteDiscreteStatusTransition</name>
+                        <shortname>DeleteDiscreteStatusTransition</shortname>
+                        <description> Deletes a DiscreteStatusTransition entity.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes a DiscreteStatusTransition entity.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteDiscreteStatusTransitionHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateNonConformanceNotification</name>
+                        <shortname>CreateNonConformanceNotification</shortname>
+                        <description> Creates a notification for a Non-Conformance.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a notification for a Non-Conformance.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateNonConformanceNotificationHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteNonConformanceNotification</name>
+                        <shortname>DeleteNonConformanceNotification</shortname>
+                        <description> This command deletes a Non-Conformance Notification.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command deletes a Non-Conformance Notification.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteNonConformanceNotificationHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateUoM</name>
+                        <shortname>CreateUoM</shortname>
+                        <description> This command creates a new Unit of Measure.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> This command creates a new Unit of Measure.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateUoMHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.GetCurrentUserRoles</name>
+                        <shortname>GetCurrentUserRoles</shortname>
+                        <description> Returns a list of roles assigned to the current user.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Returns a list of roles assigned to the current user.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.GetCurrentUserRolesHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.TCMCreateUoMList</name>
+                        <shortname>TCMCreateUoMList</shortname>
+                        <description> Used in Teamcenter integration. Creates a list of Units of Measure. </description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Used in Teamcenter integration. Creates a list of Units of Measure. </dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.TCMCreateUoMListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateWorkOrderNotification</name>
+                        <shortname>CreateWorkOrderNotification</shortname>
+                        <description> Creates a Notification regarding a Work Order.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Creates a Notification regarding a Work Order.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>false</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateWorkOrderNotificationHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteWorkOrderNotificationList</name>
+                        <shortname>DeleteWorkOrderNotificationList</shortname>
+                        <description> Deletes a set of Work Order Notifications.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Deletes a set of Work Order Notifications.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteWorkOrderNotificationListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateProcessNotification</name>
+                        <shortname>CreateProcessNotification</shortname>
+                        <description> Generates a notification that a new revision of a Process has been created.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Generates a notification that a new revision of a Process has been created.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.CreateProcessNotificationHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteProcessNotificationList</name>
+                        <shortname>DeleteProcessNotificationList</shortname>
+                        <description> Removes a list of notifications related to one or more Processes a new revision of which has been created.</description>
+                        <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype> Removes a list of notifications related to one or more Processes a new revision of which has been created.</dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>ReferenceData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>true</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteProcessNotificationListHandlerShell</name>
+                                        <assembly>Siemens.SimaticIT.U4DM.FB_RD_SERV.CommandHandler, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command></commands>
+    <events></events>
+    <event_handlers></event_handlers>
+    <signals></signals>
+    <readingFunctions></readingFunctions>
+    <entities></entities>
+    <datamodels><datamodel>
+      <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+      <mode>WR</mode>
+      <domain>ReferenceData</domain>
+    </datamodel><datamodel>
+      <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.ReadingModel, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+      <mode>RD</mode>
+      <domain>ReferenceData</domain>
+    </datamodel><datamodel>
+      <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Types, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+      <mode>WR</mode>
+      <domain>ReferenceData</domain>
+    </datamodel><datamodel>
+      <assembly>Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Types.ReadingModel, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+      <mode>RD</mode>
+      <domain>ReferenceData</domain>
+    </datamodel></datamodels>
+    <externaldatamodels></externaldatamodels>
+    <appdatamodels></appdatamodels>
+    <uimodules></uimodules>
+    <uicomponents></uicomponents>
+  </artifacts>
+  <security>
+    <roles></roles>
+  </security>
+  <runtime>
+    <event_subscriptions></event_subscriptions>
+    <handlergroups></handlergroups>
+  </runtime>
+</projectmanifest>

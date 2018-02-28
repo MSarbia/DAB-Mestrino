@@ -41,7 +41,9 @@
       <HintPath>ExternalDependencies\SimaticIT.Unified.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,12 +57,20 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestCard.cs" />
+    <Compile Include="WindchilltestCardConnector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ExternalDependencies\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WindchillTestConnectorLibrary\WindchillTestConnectorLibrary.csproj">
+      <Project>{29BEE0DC-2F4F-4394-B9E5-1017DB20B320}</Project>
+      <Name>WindchillTestConnectorLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
