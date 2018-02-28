@@ -8,6 +8,7 @@ using System.Xml.Linq;
 using UAFServerConnectorLibrary;
 using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands;
 using RM = Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.ReadingModel;
+using Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types;
 
 namespace OTWeb
 {
@@ -165,7 +166,7 @@ namespace OTWeb
                 Operation = o.Operation,
                 Order = o.Order,
                 ProductCode = o.ProductCode,
-                Serials = o.Serials.Select(s => new SerialItem { SerialNumber = s.SerialNumber,Status= s.Status}).OrderBy(s=>s.SerialNumber).ToList()
+                Serials = o.Serials.Select(s => new SerialItem { SerialNumber = s.SerialNumber, Status = s.Status }).OrderBy(s => s.SerialNumber).ToList()
             }));
             response.Orders = response.Orders.OrderBy(o => o.Order).ToList();
             return response;
@@ -202,8 +203,8 @@ namespace OTWeb
                 Order = mc.WorkOrder,
                 ProductCode = mc.MaterialDefinition,
                 //SerialNumber = mc.SerialNumber,
-                Status = mc.Accepted ? "Accepted":"Pending"
-            }).OrderBy(mc=>mc.CallDate));
+                Status = mc.Accepted ? "Accepted" : "Pending"
+            }).OrderBy(mc => mc.CallDate));
             return response;
         }
 
@@ -328,10 +329,29 @@ namespace OTWeb
             {
                 var uafResponse = uafConnector.CallCommand<DABCompleteSerial, DABCompleteSerial.Response>(new DABCompleteSerial
                 {
-                    EquipmentNId = startSerialRequest.Equipment,
-                    MaterialDefinitionNId = startSerialRequest.ProductCode,
-                    SerialNumber = startSerialRequest.SerialNumber,
-                    WorkOrderOperationNId = startSerialRequest.Operation
+                    //EquipmentNId = startSerialRequest.Equipment,
+                    //MaterialDefinitionNId = startSerialRequest.ProductCode,
+                    //SerialNumber = startSerialRequest.SerialNumber,
+                    //WorkOrderOperationNId = startSerialRequest.Operation
+                    CompleteSerializedWoOpParameterList = new List<CompleteSerializedParameterType>
+                    {
+                        new CompleteSerializedParameterType
+                        {
+                            EquipmentNId = startSerialRequest.Equipment,
+                            NId = startSerialRequest.Operation,
+                            //Id = ???,
+                            ActualProducedMaterials = new List<MaterialItemParameterType>
+                            {
+                                new MaterialItemParameterType
+                                {
+                                    EquipmentNId = startSerialRequest.Equipment,
+                                    MaterialDefinitionNId = startSerialRequest.ProductCode,
+                                    SerialNumber = startSerialRequest.SerialNumber,
+                                    NId = startSerialRequest.SerialNumber
+                                }
+                            }
+                        }
+                    }
                 });
                 if (!uafResponse.Succeeded)
                 {
@@ -344,11 +364,31 @@ namespace OTWeb
             {
                 var uafResponse = uafConnector.CallCommand<DABStartSerial, DABStartSerial.Response>(new DABStartSerial
                 {
-                    EquipmentNId = startSerialRequest.Equipment,
-                    MaterialDefinitionNId = startSerialRequest.ProductCode,
-                    SerialNumber = startSerialRequest.SerialNumber,
-                    WorkOrderOperationNId = startSerialRequest.Operation
-                });
+                    //EquipmentNId = startSerialRequest.Equipment,
+                    //MaterialDefinitionNId = startSerialRequest.ProductCode,
+                    //SerialNumber = startSerialRequest.SerialNumber,
+                    //WorkOrderOperationNId = startSerialRequest.Operation
+                    StartWOOperationSerializedParameterTypeList = new List<StartSerializedParameterType>
+                    {
+                        new StartSerializedParameterType
+                        {
+                            EquipmentNId = startSerialRequest.Equipment,
+                            NId = startSerialRequest.Operation,
+                            //Id = ???,
+                            //EquipmentName = startSerialRequest.Equipment,
+                            ToBeProducedMaterials = new List<MaterialItemParameterType>
+                            {
+                                new MaterialItemParameterType
+                                {
+                                    EquipmentNId = startSerialRequest.Equipment,
+                                    MaterialDefinitionNId = startSerialRequest.ProductCode,
+                                    SerialNumber = startSerialRequest.SerialNumber,
+                                    NId = startSerialRequest.SerialNumber
+                                }
+                            }
+                        }
+                    }
+                 });
                 if (!uafResponse.Succeeded)
                 {
                     response.Succeeded = false;
