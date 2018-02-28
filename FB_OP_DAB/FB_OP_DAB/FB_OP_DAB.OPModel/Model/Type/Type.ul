@@ -54,7 +54,7 @@ WITH
     Portata AS decimal
     [Optional]
     [@Guid(2840670e-43c6-4d5e-9b47-2ed7b32d5cc9)]
-    WatPercent AS decimal
+    WattPercent AS decimal
 
 [@Guid(dc325dc2-22c8-4c4b-8297-0269c6d7107e)]
 PARAMETERTYPE TestResultParameter

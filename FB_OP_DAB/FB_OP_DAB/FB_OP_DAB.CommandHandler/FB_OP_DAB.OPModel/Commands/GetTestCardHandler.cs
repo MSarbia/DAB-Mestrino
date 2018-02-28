@@ -62,7 +62,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
                     Pressione = a.Pressione,
                     PressionePercent = a.PressionePercent,
                     Watt = a.Watt,
-                    WatPercent = a.WatPercent
+                    WattPercent = a.WattPercent
                 });
             }
 

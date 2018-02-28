@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Text.RegularExpressions;
 using WindchillDocConnectorLibrary;
+using WindchillTestConnectorLibrary;
 
 namespace WindchillTestConsole
 {
@@ -11,6 +14,12 @@ namespace WindchillTestConsole
             {
                 try
                 {
+                    TestCardParameter testCard = null;
+                    using (var testCardConnector = new WindchillTestCardConnector())
+                    {
+                        testCard = testCardConnector.GetTestCard(Console.ReadLine());
+                    }
+                    Console.WriteLine(JsonConvert.SerializeObject(testCard));
                     Console.WriteLine("ProductCode: ");
                     string productCode = Console.ReadLine();
                     Console.WriteLine("101110060");

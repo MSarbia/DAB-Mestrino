@@ -70,6 +70,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     response.Orders.Add(orderInfo);
                 }
                 orderInfo.Operation = wo.NId;
+                orderInfo.OperationId = wo.Id;
                 foreach(var serial in serials)
                 {
                     string status = pausedSerials.Contains(serial)?"Paused":"Available";
