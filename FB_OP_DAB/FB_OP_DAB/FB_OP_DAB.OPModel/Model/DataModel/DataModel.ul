@@ -136,13 +136,11 @@ WITH
     [Length = 255]
     [@Guid(c356749f-0447-4c97-b21f-26cbf5668549)]
     MaterialDefinition AS string
-    [Mandatory]
     [Length = 255]
     [@Guid(d52beba1-a096-4686-89a6-d7e5e42dd319)]
     WorkOrder AS string
     [@Guid(81d6bdbc-e3dc-4a19-b0d4-b129dedfc4b6)]
     Quantity AS decimal
-    [Mandatory]
     [Length = 255]
     [@Guid(9f1c6d19-6a13-48e7-b625-7c91cdaaf08f)]
     Operation AS string

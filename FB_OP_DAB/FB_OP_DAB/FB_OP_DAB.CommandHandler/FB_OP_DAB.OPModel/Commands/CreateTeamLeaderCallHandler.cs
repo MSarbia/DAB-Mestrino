@@ -32,7 +32,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             teamLeaderCall.Operatore = command.Operatore;
             teamLeaderCall.Equipment = command.Equipment;
             teamLeaderCall.WorkArea = command.WorkArea;
-          
+            teamLeaderCall.Accepted = false;
             Platform.Submit(teamLeaderCall);
 
             response.Id = teamLeaderCall.Id;

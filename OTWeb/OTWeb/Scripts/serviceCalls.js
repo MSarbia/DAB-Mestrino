@@ -94,7 +94,8 @@ function CallTeamLeader() {
     var teamLeaderCallRequest = {
         User: userData.User,
         Password: userData.Password,
-        Equipment: userData.Equipment
+        Equipment: userData.Equipment,
+        WorkArea: userData.WorkArea
     };
 
     callService("SendTeamLeaderCall", teamLeaderCallRequest, function (result) {
@@ -108,7 +109,9 @@ function CallMaterials() {
     var materialCallRequest = {
         User: userData.User,
         Password: userData.Password,
-        Equipment: userData.Equipment
+        Equipment: userData.Equipment,
+        WorkArea: userData.WorkArea,
+        SerialNumber: ''
     };
 
     callService("SendMaterialCall", materialCallRequest, function (result) {
