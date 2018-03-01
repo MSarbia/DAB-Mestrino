@@ -17,6 +17,8 @@ namespace OTWeb.DataContracts
         [DataMember]
         public string Operation { get; set; }
         [DataMember]
+        public int OperationId { get; set; }
+        [DataMember]
         public string Equipment { get; set; }
     }
 }

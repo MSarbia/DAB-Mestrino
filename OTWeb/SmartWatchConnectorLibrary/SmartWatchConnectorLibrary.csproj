@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SmartWatchConnectorLibrary</RootNamespace>
     <AssemblyName>SmartWatchConnectorLibrary</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -88,33 +89,6 @@
     </None>
     <None Include="Connected Services\OTService\OTService2.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.AcceptMaterialCallResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.AcceptTeamLeaderCallResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.GetMaterialCallsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.GetSerialsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.GetTeamLeaderCallsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.LoginResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.SendMaterialCallResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.SendTeamLeaderCallResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.StartSerialResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

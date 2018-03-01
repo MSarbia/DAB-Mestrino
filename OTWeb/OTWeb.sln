@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTWeb", "OTWeb\OTWeb.csproj", "{8AD93301-AE6A-4B8E-95E2-2202A2892C50}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTWeb.Base", "OTWeb.Base\OTWeb.Base.csproj", "{20480F99-E17F-4374-A6B7-187589759667}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartWatchConnectorLibrary", "SmartWatchConnectorLibrary\SmartWatchConnectorLibrary.csproj", "{7E7AC2F9-C588-4533-BF90-2BFF6051B110}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DABOTWeb", "DABOTWeb\DABOTWeb.csproj", "{96A545E8-54EC-4792-AE49-2B316E9DA4B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{7E7AC2F9-C588-4533-BF90-2BFF6051B110}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E7AC2F9-C588-4533-BF90-2BFF6051B110}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E7AC2F9-C588-4533-BF90-2BFF6051B110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96A545E8-54EC-4792-AE49-2B316E9DA4B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96A545E8-54EC-4792-AE49-2B316E9DA4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96A545E8-54EC-4792-AE49-2B316E9DA4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96A545E8-54EC-4792-AE49-2B316E9DA4B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
