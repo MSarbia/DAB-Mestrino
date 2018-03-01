@@ -35,6 +35,7 @@ namespace OTWeb
                 Succeeded = true,
                 Error = string.Empty
             };
+            return response;
             UAFConnector uafConnector = null;
             try
             {
