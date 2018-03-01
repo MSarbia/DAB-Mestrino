@@ -7,3 +7,10 @@ WITH
     [Length = 255]
     WokArea AS string
 
+[NotSecurable]
+[@Guid(4d6fff25-9afe-4273-ab9e-4a60509cb64f)]
+EVENT UpdateAndon
+WITH
+    [Length = 255]
+    WorkArea AS string
+

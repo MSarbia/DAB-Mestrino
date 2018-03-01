@@ -9,7 +9,7 @@
     <version>01.00.00</version>
     <companyname>Engineering.DAB</companyname>
     <author>Engineering.DAB</author>
-    <hash>tfLbQsGgro5pos1EXfpZ2Ejbg2D1iKDA1NzfEUNj8lY=</hash>
+    <hash>JsfwbrjXJV2U79svfdPMTozT/intr1Jscad+Fl5eWxI=</hash>
   </header>
   <reference>
     <functionalblocks></functionalblocks>
@@ -397,6 +397,17 @@
     <events><event>
                 <name>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events.AndonRefresh</name>
                 <shortname>AndonRefresh</shortname>
+                <description></description>
+                <assembly>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                <dotneteventtype></dotneteventtype>
+                <eventtype>Application</eventtype>
+                <domain>OperationalData</domain>
+                <taglist>
+                </taglist>
+                <securable>false</securable>
+        </event><event>
+                <name>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events.UpdateAndon</name>
+                <shortname>UpdateAndon</shortname>
                 <description></description>
                 <assembly>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
                 <dotneteventtype></dotneteventtype>

@@ -5,74 +5,10 @@
     <FileName>AppDAB.DPPOMModel</FileName>
     <Artifacts>
       <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.AcceptChangeAddToBeConsumedMaterial</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>375.40000000000009</X>
-        <Y>35.400000000000006</Y>
-        <FullName>Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.AcceptChangeReplaceToBeConsumedMaterial</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>294.00000000000011</X>
-        <Y>267.40000000000003</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportMaterialNonConformance</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>685</X>
-        <Y>238.60000000000002</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABReplaceMaterial</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>233</X>
-        <Y>15</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABStartSerial</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>true</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABAcceptTeamLeaderCall</FullName>
+        <X>228.20000000000005</X>
+        <Y>32.19999999999996</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events.UpdateAndon</FullName>
         <IsExpandedA>false</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>100</X>
-        <Y>204</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABCompleteSerial</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>205</X>
-        <Y>165.00000000000003</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.OrderInfo</FullName>
-        <IsExpandedA>true</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
-        <X>5</X>
-        <Y>5</Y>
-        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABCreateMaterialCall</FullName>
-        <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
