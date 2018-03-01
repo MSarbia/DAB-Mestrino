@@ -134,11 +134,11 @@
                     var itemClass = "ui-state-default";
                     var stato = 'Disponibile';
                     if (serial.Status == 'Active') {
-                        stato = 'In Lavorazione'
+                        stato = 'In Lavorazione';
                         itemClass += " activeSerial";
                     }
                     if (serial.Status == 'Paused') {
-                        stato = 'In Pausa'
+                        stato = 'Pausa';
                         itemClass += " pausedSerial";
                     }
                     selectable.innerHTML = selectable.innerHTML + "<li class='" + itemClass + "'data-order='"+order.Order+"'  id='" + serial.SerialNumber + "'><span style='font-weight:bold'>" + serial.SerialNumber + "</span ></br></br><span>Stato: </span ><span>" + stato + "</span ></li>";

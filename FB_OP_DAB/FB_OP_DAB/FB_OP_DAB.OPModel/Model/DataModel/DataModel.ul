@@ -41,7 +41,7 @@ WITH
     [@Guid(c8a819f9-9e85-44f4-9aea-d8a593c717ba)]
     Ampere AS decimal
     [@Guid(b226db73-9367-4f32-b1d9-910daa5962a7)]
-    WatPercent AS decimal
+    WattPercent AS decimal
     [@Guid(15cc28e9-058f-40ed-a2c8-2c4ac27ba490)]
     Watt AS decimal
     [@Guid(d3ffa58d-34d0-4dbc-8815-026b49998a76)]

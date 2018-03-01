@@ -22,3 +22,9 @@ C:\Users\a.gastaldi\Desktop\progetti\DAB-Mestrino\WindchillMockSerrvice\Windchil
 C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillDocService_Config.xml
 C:\Users\admin\Documents\GitHub\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConsole.exe.config
 C:\Users\admin\Documents\GitHub\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\obj\Debug\WindchillTestConsole.csprojResolveAssemblyReference.cache
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillDocConnectorLibrary.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillDocConnectorLibrary.pdb
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConnectorLibrary.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConnectorLibrary.pdb
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\Newtonsoft.Json.dll
+C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\Newtonsoft.Json.xml

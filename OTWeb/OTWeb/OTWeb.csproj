@@ -191,6 +191,7 @@
     <Content Include="ExternalDependencies\SimaticIT.Unified.Lean.dll" />
     <Content Include="ExternalDependencies\UAFServerConnectorLibrary.dll" />
     <Content Include="ExternalDependencies\UAFServerConnectorLibrary.pdb" />
+    <Content Include="Images\eng-logo--pos.svg" />
     <Content Include="Images\logo-mobile.svg" />
     <Content Include="OTOperatorDashboard.html" />
     <Content Include="OTTeamLeaderDashboard.html" />

@@ -60,6 +60,14 @@
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
+      <ArtifactSuo>
+        <X>205</X>
+        <Y>165.00000000000003</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.OrderInfo</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
     </Artifacts>
   </ProjectSuo>
 </ArrayOfProjectSuo>
