@@ -45,11 +45,12 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 var wo = woDictionary[id];
                 var serials = Platform.ProjectionQuery<ToBeProducedMaterial>().Include(pm => pm.MaterialItem).Where(pm =>pm.WorkOrderOperation_Id == id).Select(pm => pm.MaterialItem.SerialNumberCode).ToList();
                 var pausedSerials = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pm => pm.MaterialItem).Where(pm => pm.WorkOrderOperation_Id == id).Where(pm=>pm.PausedQuantity==1).Select(pm => pm.MaterialItem.SerialNumberCode).ToList();
-                List<string> activeSerials = new List<string>();
-                if (!Platform.ProjectionQuery<WorkOOperationDependency>().Any(dep=>dep.From_Id == id))
+                List<string> activeSerials = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pm => pm.MaterialItem).Where(pm => pm.WorkOrderOperation_Id == id).Where(pm => pm.PartialWorkedQuantity == 1).Select(pm => pm.MaterialItem.SerialNumberCode).ToList();
+                serials = serials.Except(activeSerials).ToList();
+                if (Platform.ProjectionQuery<WorkOOperationDependency>().Any(dep=>dep.From_Id == id))
                 {
-                    //is last operation
-                    activeSerials.AddRange(Platform.ProjectionQuery<ActualProducedMaterial>().Include(pm => pm.MaterialItem).Where(pm => pm.WorkOrderOperation_Id == id).Where(pm=>pm.PartialWorkedQuantity==1).Select(pm => pm.MaterialItem.SerialNumberCode).ToList());
+                    //is not last operation
+                    activeSerials.Clear();
                 }
                 
                 if (!serials.Any() && !pausedSerials.Any() && !activeSerials.Any())
