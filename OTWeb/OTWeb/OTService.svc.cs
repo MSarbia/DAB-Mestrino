@@ -164,6 +164,7 @@ namespace OTWeb
             {
                 Description = o.Description,
                 Operation = o.Operation,
+                OperationId = o.OperationId,
                 Order = o.Order,
                 ProductCode = o.ProductCode,
                 Serials = o.Serials.Select(s => new SerialItem { SerialNumber = s.SerialNumber, Status = s.Status }).OrderBy(s => s.SerialNumber).ToList()
@@ -339,7 +340,7 @@ namespace OTWeb
                         {
                             EquipmentNId = startSerialRequest.Equipment,
                             NId = startSerialRequest.Operation,
-                            //Id = ???,
+                            Id = startSerialRequest.OperationId,
                             ActualProducedMaterials = new List<MaterialItemParameterType>
                             {
                                 new MaterialItemParameterType
@@ -374,7 +375,7 @@ namespace OTWeb
                         {
                             EquipmentNId = startSerialRequest.Equipment,
                             NId = startSerialRequest.Operation,
-                            //Id = ???,
+                            Id = startSerialRequest.OperationId,
                             //EquipmentName = startSerialRequest.Equipment,
                             ToBeProducedMaterials = new List<MaterialItemParameterType>
                             {
