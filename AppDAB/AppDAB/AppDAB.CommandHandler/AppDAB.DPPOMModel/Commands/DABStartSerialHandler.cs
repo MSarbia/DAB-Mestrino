@@ -58,37 +58,40 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 }
 
                 decimal operationQuantity = workOrderOperation.PartialWorkedQuantity + workOrderOperation.ProducedQuantity + 1;
-
-                foreach (var toBeConsumedMat in workOrderOperation.ToBeConsumedMaterials)
+                var inforIntConf = Platform.ProjectionQuery<ConfigurationKey>().Where(c => c.NId == "InforIntegration").Select(c => c.Val).FirstOrDefault();
+                if (!string.IsNullOrEmpty(inforIntConf) && inforIntConf == "true")
                 {
-                    if (toBeConsumedMat != null)
+                    foreach (var toBeConsumedMat in workOrderOperation.ToBeConsumedMaterials)
                     {
-                        var declaredQuantity = Platform.ProjectionQuery<ToBeConsumedMaterialExt>().Where(dq => dq.ToBeConsumedMaterialId == toBeConsumedMat.Id && dq.WorkOrderOperationId == workOrderOperation.Id).Select(dq => dq.DeclaredQuanity).FirstOrDefault();
-
-                        decimal quantityToDeclare = 0;
-                        if (operationQuantity == workOrderOperation.TargetQuantity)
+                        if (toBeConsumedMat != null)
                         {
-                            quantityToDeclare = toBeConsumedMat.Quantity.Value - declaredQuantity;
-                        }
-                        else
-                        {
-                            decimal neededMatQuantity = toBeConsumedMat.Quantity.GetValueOrDefault() / workOrderOperation.TargetQuantity * operationQuantity;
+                            var declaredQuantity = Platform.ProjectionQuery<ToBeConsumedMaterialExt>().Where(dq => dq.ToBeConsumedMaterialId == toBeConsumedMat.Id && dq.WorkOrderOperationId == workOrderOperation.Id).Select(dq => dq.DeclaredQuanity).FirstOrDefault();
 
-                            quantityToDeclare = neededMatQuantity - declaredQuantity;
-                        }
-
-                        if (quantityToDeclare > 0)
-                        {
-                            var MatDefNId = Platform.ProjectionQuery<MaterialDefinition>().Where(mdnid => mdnid.Id == toBeConsumedMat.MaterialDefinition).Select(mdnid => mdnid.NId).FirstOrDefault();
-
-                            var reportInput = new ReportConsumedMaterial(workOrderOperation.WorkOrder.ERPOrder, workOrderSequence, toBeConsumedMat.Id, quantityToDeclare, MatDefNId, toBeConsumedMat.MaterialDefinition, workOrderOperation.Id, workOrderOperation.WorkOrder.Plant);
-
-                            var result = Platform.CallCommand<ReportConsumedMaterial, ReportConsumedMaterial.Response>(reportInput);
-
-                            if (result.Succeeded == false)
+                            decimal quantityToDeclare = 0;
+                            if (operationQuantity == workOrderOperation.TargetQuantity)
                             {
-                                response.SetError(-1000, $"Impossibile produrre il seriale {serialNumber} per mancanza di disponibilità del componente { MatDefNId}");  //PRXXX verificare input corretto
-                                break;
+                                quantityToDeclare = toBeConsumedMat.Quantity.Value - declaredQuantity;
+                            }
+                            else
+                            {
+                                decimal neededMatQuantity = toBeConsumedMat.Quantity.GetValueOrDefault() / workOrderOperation.TargetQuantity * operationQuantity;
+
+                                quantityToDeclare = neededMatQuantity - declaredQuantity;
+                            }
+
+                            if (quantityToDeclare > 0)
+                            {
+                                var MatDefNId = Platform.ProjectionQuery<MaterialDefinition>().Where(mdnid => mdnid.Id == toBeConsumedMat.MaterialDefinition).Select(mdnid => mdnid.NId).FirstOrDefault();
+
+                                var reportInput = new ReportConsumedMaterial(workOrderOperation.WorkOrder.ERPOrder, workOrderSequence, toBeConsumedMat.Id, quantityToDeclare, MatDefNId, toBeConsumedMat.MaterialDefinition, workOrderOperation.Id, workOrderOperation.WorkOrder.Plant);
+
+                                var result = Platform.CallCommand<ReportConsumedMaterial, ReportConsumedMaterial.Response>(reportInput);
+
+                                if (result.Succeeded == false)
+                                {
+                                    response.SetError(-1000, $"Impossibile produrre il seriale {serialNumber} per mancanza di disponibilità del componente { MatDefNId}");  //PRXXX verificare input corretto
+                                    break;
+                                }
                             }
                         }
                     }

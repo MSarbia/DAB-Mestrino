@@ -180,3 +180,8 @@ ENTITYLINK OperationDependency TO Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MS
 [@GuidRef(43505cfd-dbd3-4fc5-87ae-cda08d8af79c, 3b281008-bd6d-4984-95d3-03f27d22e508)]
 ENTITYLINK DependencyType TO Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.DependencyType
 
+///This entity represents a Configuration Key.
+[@Guid(ae836527-38f8-467f-a30f-c04ed6f1fc44)]
+[@GuidRef(ff4b4830-cb7d-4b93-91f8-f657456a54b3, daecc121-20d8-47bb-a4d0-67b618a12542)]
+ENTITYLINK ConfigurationKey TO Siemens.SimaticIT.U4DM.RD.FB.ReferenceData.ConfigKey.RFModel.DataModel.ConfigurationKey
+

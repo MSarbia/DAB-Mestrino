@@ -85,34 +85,40 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             {
                 WorkOrder order = Platform.ProjectionQuery<WorkOrder>().FirstOrDefault(wo => wo.Id == workOrderOperation.WorkOrder_Id);
                 WorkOrderExt workOrderExt = Platform.ProjectionQuery<WorkOrderExt>().FirstOrDefault(woe => woe.WorkOrderId == workOrderOperation.WorkOrder_Id);
-                var reportOperationProg = new ReportOperationProgress
+                var inforIntConf = Platform.ProjectionQuery<ConfigurationKey>().Where(c => c.NId == "InforIntegration").Select(c => c.Val).FirstOrDefault();
+                if(!string.IsNullOrEmpty(inforIntConf) && inforIntConf == "true")
                 {
-                    ErpOrder = order.ERPOrder,
-                    OperationSequence = workOrderExt.Sequence.GetValueOrDefault(),
-                    ProducedQuantity = producedQuantity,
-                    IsComplete = producedQuantity == workOrderOperation.TargetQuantity,
-                    Plant = order.Plant
-                };
-                var reportOperationResponse = Platform.CallCommand<ReportOperationProgress, ReportOperationProgress.Response>(reportOperationProg);
-                if (!reportOperationResponse.Succeeded)
-                {
-                    response.SetError(reportOperationResponse.Error.ErrorCode, reportOperationResponse.Error.ErrorMessage);
-                    return response;
-                }
-
-                if (IsLastSerialOfLastOperationOfERPOrder(workOrderOperation, workOrderExt))
-                {
-                    var reportQuantity = new ReportProducedQuantity
+                    var reportOperationProg = new ReportOperationProgress
                     {
                         ErpOrder = order.ERPOrder,
-                        CloseOrder = true,
+                        OperationSequence = workOrderExt.Sequence.GetValueOrDefault(),
+                        ProducedQuantity = producedQuantity,
+                        IsComplete = producedQuantity == workOrderOperation.TargetQuantity,
                         Plant = order.Plant
                     };
-                    var reportQuantityResponse = Platform.CallCommand<ReportProducedQuantity, ReportProducedQuantity.Response>(reportQuantity);
-                    if (!reportQuantityResponse.Succeeded)
+                    var reportOperationResponse = Platform.CallCommand<ReportOperationProgress, ReportOperationProgress.Response>(reportOperationProg);
+                    if (!reportOperationResponse.Succeeded)
                     {
-                        response.SetError(reportQuantityResponse.Error.ErrorCode, reportQuantityResponse.Error.ErrorMessage);
+                        response.SetError(reportOperationResponse.Error.ErrorCode, reportOperationResponse.Error.ErrorMessage);
                         return response;
+                    }
+                }
+                if (IsLastSerialOfLastOperationOfERPOrder(workOrderOperation, workOrderExt))
+                {
+                    if (!string.IsNullOrEmpty(inforIntConf) && inforIntConf == "true")
+                    {
+                        var reportQuantity = new ReportProducedQuantity
+                        {
+                            ErpOrder = order.ERPOrder,
+                            CloseOrder = true,
+                            Plant = order.Plant
+                        };
+                        var reportQuantityResponse = Platform.CallCommand<ReportProducedQuantity, ReportProducedQuantity.Response>(reportQuantity);
+                        if (!reportQuantityResponse.Succeeded)
+                        {
+                            response.SetError(reportQuantityResponse.Error.ErrorCode, reportQuantityResponse.Error.ErrorMessage);
+                            return response;
+                        }
                     }
                 }
                 var printPackageAndDataLabels = new PrintPackageDataLabel
