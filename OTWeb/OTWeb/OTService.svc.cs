@@ -35,7 +35,6 @@ namespace OTWeb
                 Succeeded = true,
                 Error = string.Empty
             };
-            return response;
             UAFConnector uafConnector = null;
             try
             {
@@ -118,7 +117,10 @@ namespace OTWeb
             {
                 Equipment = materialCall.Equipment,
                 WorkArea = materialCall.WorkArea,
-                Operatore = materialCall.User
+                Operatore = materialCall.User,
+                MaterialDefinition = string.Empty,
+                Operation = " ",
+                WorkOrder = " "
             });
             if (!uafResponse.Succeeded)
             {

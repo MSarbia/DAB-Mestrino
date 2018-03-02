@@ -46,8 +46,10 @@ WITH
     MaterialDefinition AS string
     [Optional]
     Quantity AS decimal
+    [Optional]
     [Length = 255]
     WorkOrder AS string
+    [Optional]
     [Length = 255]
     Operation AS string
     [Length = 255]

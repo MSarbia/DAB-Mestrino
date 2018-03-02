@@ -33,14 +33,14 @@
             SaveSession('selectedOrderToStart', uiSelected[0].attributes['data-order'].nodeValue);
             SaveSession('selectedSerialToStart', uiSelected[0].id);
             var orders = GetSession('OrderData').Orders;
-            var order;
+            //var order;
             
             var prod = document.getElementById("spanProduct");
             var ordr = document.getElementById("spanOrder");
             var oper = document.getElementById("spanOperation");
             var desc = document.getElementById("spanDescription");
             orders.forEach(function (o) {
-                if (o.Order == uiSelected[0].data - order) {
+                if (o.Order == uiSelected[0].attributes['data-order'].nodeValue) {
                     prod.innerHTML = o.ProductCode;
                     ordr.innerHTML = o.Order;
                     oper.innerHTML = o.Operation;
@@ -90,11 +90,33 @@
                         SaveSession('selectedOrderToStart', ui.selected.attributes['data-order'].nodeValue);
                         SaveSession('selectedSerialToStart', ui.selected.id);
                         $(ui.selected).siblings().removeClass('ui-selected').children().removeClass('ui-selected');
+                        var prod = document.getElementById("spanProduct");
+                        var ordr = document.getElementById("spanOrder");
+                        var oper = document.getElementById("spanOperation");
+                        var desc = document.getElementById("spanDescription");
+                        var orders = GetSession('OrderData').Orders;
+                        orders.forEach(function (o) {
+                            if (o.Order == ui.selected.attributes['data-order'].nodeValue) {
+                                prod.innerHTML = o.ProductCode;
+                                ordr.innerHTML = o.Order;
+                                oper.innerHTML = o.Operation;
+                                desc.innerHTML = o.Description;
+                            }
+                        });
                         enableStart();
                     }
                     else {
                         $('#startButton').removeClass('btn-selected').addClass('btn');
                         $('#startButton')[0].setAttribute('onclick', '');
+                        var prod = document.getElementById("spanProduct");
+                        var ordr = document.getElementById("spanOrder");
+                        var oper = document.getElementById("spanOperation");
+                        var desc = document.getElementById("spanDescription");
+                        prod.innerHTML = '';
+                        ordr.innerHTML ='';
+                        oper.innerHTML = '';
+                        desc.innerHTML = '';
+
                         disableStart();
                     }
                 },
