@@ -41,11 +41,15 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             {
                 if (IsFirstOperation(workOrderOperation))
                 {
-                    var printResponse = Platform.CallCommand<PrintSNLabel, PrintSNLabel.Response>(new PrintSNLabel { ProductCode = materialDefinitionNId, WorkArea = equip.Parent, SerialNumbers = new List<string> { serialNumber } });
-                    if (!printResponse.Succeeded)
+                    var niceLabelIntegration = Platform.ProjectionQuery<ConfigurationKey>().Where(c => c.NId == "NiceLabelIntegration").Select(c => c.Val).FirstOrDefault();
+                    if (!string.IsNullOrEmpty(niceLabelIntegration) && niceLabelIntegration == "true")
                     {
-                        response.SetError(printResponse.Error.ErrorCode, printResponse.Error.ErrorMessage);
-                        return response;
+                        var printResponse = Platform.CallCommand<PrintSNLabel, PrintSNLabel.Response>(new PrintSNLabel { ProductCode = materialDefinitionNId, WorkArea = equip.Parent, SerialNumbers = new List<string> { serialNumber } });
+                        if (!printResponse.Succeeded)
+                        {
+                            response.SetError(printResponse.Error.ErrorCode, printResponse.Error.ErrorMessage);
+                            return response;
+                        }
                     }
                 }
                 else
@@ -147,12 +151,14 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 
             foreach (var predecessorId in predecessorsIds)
             {
-                var predecesor = Platform.ProjectionQuery<WorkOrderOperation>().Include(wo => wo.ActualProducedMaterials).Include(wo => wo.ToBeUsedMachines).First(wo => wo.Id == predecessorId);
+                var predecesor = Platform.ProjectionQuery<WorkOrderOperation>().Include(wo => wo.ToBeUsedMachines).First(wo => wo.Id == predecessorId);
                 int equipId = predecesor.ToBeUsedMachines.First().Machine.GetValueOrDefault();
                 string equipNid = Platform.ProjectionQuery<Equipment>().Where(e => e.Id == equipId).Select(e => e.NId).FirstOrDefault();
-                var mateialItem = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pmi => pmi.MaterialItem).Where(pmi => pmi.WorkOrderOperation_Id == predecesor.Id).Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber).ToDictionary(pmi => pmi.MaterialItem.NId, pmi => pmi.MaterialItem.MaterialDefinition).FirstOrDefault();
-                var materialItemNId = mateialItem.Key;
-                var matDefId = mateialItem.Value;
+                var mateialItem = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pmi => pmi.MaterialItem).Where(pmi => pmi.WorkOrderOperation_Id == predecesor.Id).Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber && pmi.PartialWorkedQuantity==1).Select(pmi=>pmi.MaterialItem).FirstOrDefault();
+                if (mateialItem == null)
+                    continue;
+                var materialItemNId = mateialItem.NId;
+                var matDefId = mateialItem.MaterialDefinition;
                 var matDefNId = Platform.ProjectionQuery<MaterialDefinition>().Where(m => m.Id == matDefId).Select(m => m.NId).FirstOrDefault();
 
                 var completeInput = new CompleteWOOperationSerialized
