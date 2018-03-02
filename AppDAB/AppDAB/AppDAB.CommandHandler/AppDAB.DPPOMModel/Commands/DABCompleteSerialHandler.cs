@@ -49,7 +49,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 
             int equipId = workOrderOperation.ToBeUsedMachines.First().Machine.GetValueOrDefault();
             Equipment equip = Platform.ProjectionQuery<Equipment>().FirstOrDefault(e => e.Id == equipId);
-            var mateialItem = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pmi => pmi.MaterialItem).Where(pmi => pmi.WorkOrderOperation_Id == workOrderOperation.Id).Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber).ToDictionary(pmi => pmi.MaterialItem.NId, pmi => pmi.MaterialItem.MaterialDefinition).FirstOrDefault();
+            var mateialItem = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pmi => pmi.MaterialItem).Where(pmi => pmi.WorkOrderOperation_Id == workOrderOperation.Id).Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber).Select(pmi => pmi.MaterialItem).Distinct().ToDictionary(mi => mi.NId, mi => mi.MaterialDefinition).FirstOrDefault();
             var materialItemNId = mateialItem.Key;
             var matDefId = mateialItem.Value;
             var matDefNId = Platform.ProjectionQuery<MaterialDefinition>().Where(m => m.Id == matDefId).Select(m => m.NId).FirstOrDefault();
@@ -121,17 +121,21 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                         }
                     }
                 }
-                var printPackageAndDataLabels = new PrintPackageDataLabel
+                var niceLabelIntegration = Platform.ProjectionQuery<ConfigurationKey>().Where(c => c.NId == "NiceLabelIntegration").Select(c => c.Val).FirstOrDefault();
+                if (!string.IsNullOrEmpty(niceLabelIntegration) && niceLabelIntegration == "true")
                 {
-                    ProductCode = materialDefinitionNId,
-                    WorkArea = equip.Parent,
-                    SerialNumbers = new List<string>()
-                };
-                var printPackageAndDataResponse = Platform.CallCommand<PrintPackageDataLabel, PrintPackageDataLabel.Response>(printPackageAndDataLabels);
-                if (!printPackageAndDataResponse.Succeeded)
-                {
-                    response.SetError(printPackageAndDataResponse.Error.ErrorCode, printPackageAndDataResponse.Error.ErrorMessage);
-                    return response;
+                    var printPackageAndDataLabels = new PrintPackageDataLabel
+                    {
+                        ProductCode = materialDefinitionNId,
+                        WorkArea = equip.Parent,
+                        SerialNumbers = new List<string>()
+                    };
+                    var printPackageAndDataResponse = Platform.CallCommand<PrintPackageDataLabel, PrintPackageDataLabel.Response>(printPackageAndDataLabels);
+                    if (!printPackageAndDataResponse.Succeeded)
+                    {
+                        response.SetError(printPackageAndDataResponse.Error.ErrorCode, printPackageAndDataResponse.Error.ErrorMessage);
+                        return response;
+                    }
                 }
                 //print package & data label
                 var processQuantity = Platform.ProjectionQuery<Process>().Where(p => p.Id == order.Process).Select(p => p.Quantity.Val).FirstOrDefault().GetValueOrDefault();
@@ -140,20 +144,23 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     response.SetError(-1005, $"Impossiblie avanzare la produzione dell'ordine {order.NId}. Dimensione Pallet non impostata.");
                     return response;
                 }
-                if (IsLastPieceOfPallet(workOrderOperation, processQuantity))
+                if (!string.IsNullOrEmpty(niceLabelIntegration) && niceLabelIntegration == "true")
                 {
-                    var printPalletLabel = new PrintPalletLabel
+                    if (IsLastPieceOfPallet(workOrderOperation, processQuantity))
                     {
-                        ProductCode = materialDefinitionNId,
-                        WorkArea = equip.Parent,
-                        SerialNumbers = new List<string>(),
-                        Quantity = 1
-                    };
-                    var printPalletResponse = Platform.CallCommand<PrintPalletLabel, PrintPalletLabel.Response>(printPalletLabel);
-                    if (!printPalletResponse.Succeeded)
-                    {
-                        response.SetError(printPalletResponse.Error.ErrorCode, printPalletResponse.Error.ErrorMessage);
-                        return response;
+                        var printPalletLabel = new PrintPalletLabel
+                        {
+                            ProductCode = materialDefinitionNId,
+                            WorkArea = equip.Parent,
+                            SerialNumbers = new List<string>(),
+                            Quantity = 1
+                        };
+                        var printPalletResponse = Platform.CallCommand<PrintPalletLabel, PrintPalletLabel.Response>(printPalletLabel);
+                        if (!printPalletResponse.Succeeded)
+                        {
+                            response.SetError(printPalletResponse.Error.ErrorCode, printPalletResponse.Error.ErrorMessage);
+                            return response;
+                        }
                     }
                 }
             }
