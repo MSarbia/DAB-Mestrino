@@ -13,9 +13,43 @@ namespace PrintTestConsole
         {
             while(true)
             {
-                Console.ReadLine();
-                var result = LabelPrinter.PrintSNLabel(new List<string>() { "AllWorkAndNoPlayMakesJackADullBoy"},"101110060", "100.DM1.D102");
-                Console.WriteLine($"Succeeded: {result.connectionsucceeded}, Error: {result.error}");
+                Console.WriteLine("1 - Serial");
+                Console.WriteLine("2 - Data");
+                Console.WriteLine("3 - Package");
+                Console.WriteLine("4 - Pallet");
+                string option = Console.ReadLine();
+                switch (option)
+                {
+                    case "1":
+                        {
+                            Console.WriteLine("Insert Serial:");
+                            var result = LabelPrinter.PrintSNLabel(new List<string>() {Console.ReadLine() }, "101110060", "100.DM1.D102");
+                            Console.WriteLine($"Succeeded: {result.connectionsucceeded}, Error: {result.error}");
+                            break;
+                        }
+                    case "2":
+                        {
+                            var result = LabelPrinter.PrintDataLabel(new List<string>() { }, "101110060", "100.DM1.D102");
+                            Console.WriteLine($"Succeeded: {result.connectionsucceeded}, Error: {result.error}");
+                            break;
+                        }
+                    case "3":
+                        {
+                            var result = LabelPrinter.PrintPackageLabel(new List<string>() { }, "101110060", "100.DM1.D102");
+                            Console.WriteLine($"Succeeded: {result.connectionsucceeded}, Error: {result.error}");
+                            break;
+                        }
+                    case "4":
+                        {
+                            var result = LabelPrinter.PrintPalletLabel(new List<string>() { }, "101110060", "100.DM1.D102");
+                            Console.WriteLine($"Succeeded: {result.connectionsucceeded}, Error: {result.error}");
+                            break;
+                        }
+                }
+               
+
+
+                
             }
         }
     }

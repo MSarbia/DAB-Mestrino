@@ -56,7 +56,7 @@ function SubscribeToOperatorCalls(chat, getSerialsSuccess) {
 
     chat.client.getNewSerial = function (message) {
         GetSerials(getSerialsSuccess);
-    };     
+    };
 }
 
 function GetMaterialCalls(materialCallsSuccess) {
@@ -134,15 +134,17 @@ function GetSerials(getSerialsSuccess) {
     });
 }
 
-function StartSerial(order, serialNumber, operation, operationId, productCode, getSerialsSuccess) {
+function StartSerial(order, serialNumber, status, operation, operationId, productCode, getSerialsSuccess) {
     var userData = GetSession('userData');
-    
+
     var startSerialRequest = {
         User: userData.User,
         Password: userData.Password,
         Equipment: userData.Equipment,
+        ProductCode: productCode,
         Order: order,
         SerialNumber: serialNumber,
+        Status: status,
         Operation: operation,
         OperationId: operationId
     };
@@ -156,7 +158,9 @@ function StartSerial(order, serialNumber, operation, operationId, productCode, g
 
         callService("GetSerials", getSerialsRequest, function (result) {
             getSerialsSuccess(result);
-            var serialNumbers = result.Serials.map(function (s) { return s.SerialNumber; });
+            var serialNumbers = [];
+            result.Orders.forEach(function (o) { o.Serials.forEach(function (s) { serialNumbers.push(s.SerialNumber); }); });
+            
             if (serialNumbers.indexOf(serialNumber) > -1) {
                 showInfo('Seriale avviato con successo');
             }
@@ -268,7 +272,7 @@ function centralTitle() {
     var userD = GetSession('userData');
     var texttitle = "<span style='color:#CAD4D4'>Utente: </span><span style='display:inline-block; padding-right:30px;'>" + userD.User + "</span>"
     texttitle += "<span style='color:#CAD4D4'>Linea: </span><span style='display:inline-block; padding-right:30px;'>" + userD.WorkArea + "</span>";
-    if (userD.Equipment!= null && userD.Equipment != '')
+    if (userD.Equipment != null && userD.Equipment != '')
         texttitle += "<span style='color:#CAD4D4'>Postazione: </span><span>" + userD.Equipment + "</span>";
 
     var idtitle = document.getElementById("centralTitle");
@@ -281,7 +285,7 @@ function toggleFullscreen(elem) {
 
     if (!document.fullscreenElement && !document.mozFullScreenElement &&
 
-      !document.webkitFullscreenElement && !document.msFullscreenElement) {
+        !document.webkitFullscreenElement && !document.msFullscreenElement) {
 
         if (elem.requestFullscreen) {
 
