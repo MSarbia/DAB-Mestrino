@@ -6,6 +6,7 @@ using Siemens.SimaticIT.Unified.Common.Information;
 using Siemens.SimaticIT.Handler;
 using Siemens.SimaticIT.Unified;
 using Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel;
+using Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events;
 
 namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
 {
@@ -37,6 +38,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
                 materialCall.AcceptDate = DateTime.UtcNow;
                
                 Platform.Submit(materialCall);
+                Platform.FireEvent(new UpdateAndon { WorkArea = materialCall.WorkArea });
             }
             else response.SetError(104, "MaterialCall non trovata!");
 

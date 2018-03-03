@@ -139,14 +139,13 @@ WITH
 COMMAND DABReplaceMaterial
 WITH
     ChangePartId AS bigint
-    OldToBeConsumedMaterialId AS int
-    [@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 417aa334-360f-44ce-9b03-472e08f07d6a)]
-    NewToBeConsumedMaterial AS Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types.ToBeConsumedMaterialParameter
+    ToBeConsumedMaterialId AS int
     [Optional]
     [Length = 255]
     Notes AS string
     [Length = 255]
     RefNumber AS string
+    NewQuantity AS decimal
 RESPONSE
     [Optional]
     [Length = 255]

@@ -6,6 +6,7 @@ using Siemens.SimaticIT.Unified.Common.Information;
 using Siemens.SimaticIT.Handler;
 using Siemens.SimaticIT.Unified;
 using Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel;
+using Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events;
 
 namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
 {
@@ -36,6 +37,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
                 teamLeaderCall.AcceptDate = DateTime.UtcNow;
 
                 Platform.Submit(teamLeaderCall);
+                Platform.FireEvent(new UpdateAndon { WorkArea = teamLeaderCall.WorkArea });
             }
             else response.SetError(104,"TeamLeaderCall non trovata!");
 

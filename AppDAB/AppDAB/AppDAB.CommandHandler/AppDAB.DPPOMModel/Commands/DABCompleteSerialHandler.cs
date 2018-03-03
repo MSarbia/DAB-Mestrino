@@ -28,13 +28,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         private DABCompleteSerial.Response DABCompleteSerialHandler(DABCompleteSerial command)
         {
             var response = new DABCompleteSerial.Response();
-            /*
-             Qua bisognerà invocare i due comandi di avanzamento fase e avanzamento produzione 
-             che avete definito dentro FB_OP_DAB a seconda di alcune logiche che vedremo meglio domani.
-             A seguito di questi dovrete invocare il comando UADMCompleteWOOperationSerializedList definito
-             dentro al functional block FB_OP_EXT. Per poterlo chimare dovete importarlo dal 
-             Public Object Model Configurator (dominio Ms_Ext).
-             */
+
             var commandInfo = command.CompleteSerializedWoOpParameterList.First();
             var actualProducedMaterial = commandInfo.ActualProducedMaterials.First();
             string serialNumber = actualProducedMaterial.SerialNumber;
@@ -74,7 +68,6 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 }
             };
             var completeResponse = Platform.CallCommand<CompleteWOOperationSerialized, CompleteWOOperationSerialized.Response>(completeInput);
-
 
             if (!completeResponse.Succeeded)
             {
@@ -164,6 +157,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     }
                 }
             }
+            Platform.CallCommand<FireUpdateAndonEvent, FireUpdateAndonEvent.Response>(new FireUpdateAndonEvent(equip.Parent));
             return response;
         }
 

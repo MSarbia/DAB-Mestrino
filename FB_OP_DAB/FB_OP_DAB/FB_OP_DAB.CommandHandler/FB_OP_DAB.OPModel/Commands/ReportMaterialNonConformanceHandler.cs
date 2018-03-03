@@ -7,6 +7,7 @@ using Siemens.SimaticIT.Handler;
 using Siemens.SimaticIT.Unified;
 using InforConnectorLibrary;
 using Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel;
+using Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events;
 
 namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
 {
@@ -28,21 +29,24 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             var response = new ReportMaterialNonConformance.Response();
             bool customized = Platform.Query<IMaterialDefinitionExt>().Where(cust => cust.MaterialDefinitionId == command.MaterialDefinitionId).Select(cust => cust.Customized).FirstOrDefault();
 
-
-            InvTransfer reportMaterialNonConformance = new InvTransfer(command.OrderNumber, command.RefNum,command.StorageUnit, command.StorageQuantity, command.Plant,command.MaterialDefinitionNId, customized);
-
-            var result = InforConnector.ReportMaterialNonConformance(reportMaterialNonConformance);
-
-            if (result.InforCallSucceeded == false)
+            if(command.InforIntegration)
             {
-                response.SetError(-1001, result.Error);
-                return response;
+                InvTransfer reportMaterialNonConformance = new InvTransfer(command.OrderNumber, command.RefNum, command.StorageUnit, command.StorageQuantity, command.Plant, command.MaterialDefinitionNId, customized);
+
+                var result = InforConnector.ReportMaterialNonConformance(reportMaterialNonConformance);
+
+                if (result.InforCallSucceeded == false)
+                {
+                    response.SetError(-1001, result.Error);
+                    return response;
+                }
+                else if (!string.IsNullOrEmpty(result.Error))
+                {
+                    response.SetError(-1002, result.Error);
+                    return response;
+                }
             }
-            else if (!string.IsNullOrEmpty(result.Error))
-            {
-                response.SetError(-1002, result.Error);
-                return response;
-            }
+            
 
             var createTBEResponse =  Platform.CallCommand<CreateToBeConsumedMaterialExt, CreateToBeConsumedMaterialExt.Response>(new CreateToBeConsumedMaterialExt
             {
@@ -62,7 +66,6 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
                 DeclaredQuantity = command.StorageQuantity,
                 WorkOrderOperationId = command.WorkOrderOperationid
             });
-
 
             return response;
 

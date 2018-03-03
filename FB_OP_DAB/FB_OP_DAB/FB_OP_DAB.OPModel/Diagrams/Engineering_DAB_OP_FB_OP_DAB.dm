@@ -12,6 +12,30 @@
         <IsExpandedB>false</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportMaterialNonConformance</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.FireUpdateAndonEvent</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.GetTestCard</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
     </Artifacts>
   </ProjectSuo>
 </ArrayOfProjectSuo>

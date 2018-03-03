@@ -2,14 +2,18 @@
 
 namespace Engineering.DAB.Andon.Types
 {
-    class AndonData
+    public class AndonData
     {
-        public string ProductionLineId { get; set; }
-        public ProductionCounters ProductionCounters { get; set; }
-        public ProductionOrder CurrentOrder { get; set; }
-        public ProductionOrder NextOrder { get; set; }
-        public List<EquipmentStatus> ProductionLineStatus { get; set; }
-        public VisualAlerts VisualAlerts { get; set; }
-        public Defects Defects { get; set; }
+        public AndonData()
+        {
+            ListProductionInfo = new List<ProductionInfo>();
+            ListKPI = new List<KPI>();
+            ListVisualAlerts = new List<VisualAlerts>();
+
+        }
+        public List<ProductionInfo> ListProductionInfo { get; set; }
+
+        public List<KPI> ListKPI { get; set; }
+        public List<VisualAlerts> ListVisualAlerts { get; set; }
     }
 }

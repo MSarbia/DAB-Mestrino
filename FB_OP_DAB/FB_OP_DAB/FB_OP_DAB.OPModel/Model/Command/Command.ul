@@ -6,6 +6,9 @@ VERSION '01.12'
 COMMAND GetTestCard
 WITH
     WorkOrderId AS int
+    [Length = 255]
+    ProductCode AS string
+    WindchillIntegration AS bool
 RESPONSE
     [Optional]
     [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 0d3eaac7-6753-4b1c-8769-e1b7663659e5)]
@@ -160,6 +163,7 @@ WITH
     WorkOrderOperationid AS int
     Sequence AS int
     ToBeConsumedMaterialId AS int
+    InforIntegration AS bool
 
 [Protected]
 [NotSecurable]
@@ -221,4 +225,12 @@ COMMAND CreateOrUpdateMaterialDefinitionExt
 WITH
     MaterialDefinitionId AS int
     Customized AS bool
+
+[Protected]
+[NotSecurable]
+[@Guid(9c14e117-3dc7-4946-9350-24694bbfd474)]
+COMMAND FireUpdateAndonEvent
+WITH
+    [Length = 255]
+    WorkArea AS string
 

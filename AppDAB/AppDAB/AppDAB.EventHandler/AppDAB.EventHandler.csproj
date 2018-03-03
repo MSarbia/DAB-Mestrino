@@ -58,6 +58,9 @@
       <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_OP_EXT_03.00.00\model\bin\CO_SitMesPom_RTTypes.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Engineering.DAB.Andon">
+      <HintPath>..\AppDAB.Installer\ExternalDependencies\Engineering.DAB.Andon.dll</HintPath>
+    </Reference>
     <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands">
       <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.dll</HintPath>
     </Reference>
