@@ -14,7 +14,7 @@
     <RootNamespace>Engineering.DAB.AppDAB.UserInterface</RootNamespace>
     <AssemblyName>Engineering.DAB.AppDAB.UserInterface</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -68,11 +68,9 @@
     <Folder Include="Engineering.DAB.AppDAB\components\" />
     <Folder Include="Engineering.DAB.AppDAB\config\" />
     <Folder Include="Engineering.DAB.AppDAB\fonts\" />
-    <Folder Include="Engineering.DAB.AppDAB\images\" />
     <Folder Include="Engineering.DAB.AppDAB\resources\" />
     <Folder Include="Engineering.DAB.AppDAB\scripts\" />
     <Folder Include="Engineering.DAB.AppDAB\services\" />
-    <Folder Include="Engineering.DAB.AppDAB\styles\" />
     <Folder Include="Engineering.DAB.AppDAB\swac\" />
     <Folder Include="Engineering.DAB.AppDAB\widgets\" />
   </ItemGroup>
@@ -367,6 +365,8 @@
     <Content Include="common\widgets\validator\validator.js" />
     <Content Include="common\widgets\viewBar\view-bar.html" />
     <Content Include="common\widgets\viewBar\viewBar.js" />
+    <Content Include="Engineering.DAB.AppDAB\images\cd-icon-close.svg" />
+    <Content Include="Engineering.DAB.AppDAB\images\sinottico_2_6_1.png" />
     <Content Include="Engineering.DAB.AppDAB\modules\OEEModule\module.js" />
     <Content Include="Engineering.DAB.AppDAB\modules\OEEModule\OEEScreen-add-ctrl.js" />
     <Content Include="Engineering.DAB.AppDAB\modules\OEEModule\OEEScreen-add.html" />
@@ -387,6 +387,7 @@
     <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-select-ctrl.js" />
     <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-select.html" />
     <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-srv.js" />
+    <Content Include="Engineering.DAB.AppDAB\styles\style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

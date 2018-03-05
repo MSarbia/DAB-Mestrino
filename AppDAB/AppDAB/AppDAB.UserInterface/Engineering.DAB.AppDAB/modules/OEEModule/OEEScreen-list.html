@@ -1,5 +1,9 @@
-﻿<div id="itemlist" class="content-area content-area-relative" style="height: calc(100% - 30px) !important">
-    <sit-command-bar sit-type="action">
+﻿<link rel="stylesheet" href="Engineering.DAB.AppDAB/styles/style.css"> <!-- Resource style -->
+<script src="Engineering.DAB.AppDAB/scripts/Chart.bundle.js"></script>
+<script src="Engineering.DAB.AppDAB/scripts/chartjs-plugin-annotation.min.js"></script>
+
+<div id="itemlist" class="content-area content-area-relative" style="height: calc(100% - 30px) !important">
+    <sit-command-bar sit-type="action" style="display: none;">
         <sit-command sit-icon="fa-edit"
                      sit-name="com.siemens.customcommand.edit"
                      sit-tooltip="Edit"
@@ -25,5 +29,370 @@
                      sit-label="Add"
                      sit-type="main"></sit-command>
     </sit-command-bar>
-    <sit-item-collection-viewer sit-data="vm.viewerData" sit-options="vm.viewerOptions"></sit-item-collection-viewer>
+    <sit-item-collection-viewer sit-data="vm.viewerData" sit-options="vm.viewerOptions" style="display: none;">
+    </sit-item-collection-viewer>
+
+    <div class="tab" style="position: relative; top: 0; left: 0;">
+        <button class="tablinks" onclick="openChart(event, 'Production')">Produzione</button>
+        <button class="tablinks" onclick="openChart(event, 'OEE')">Efficienza</button>
+    </div>
+
+    <!-- Tab content -->
+    <div id="Production" class="tabcontent">
+        <div style="border:solid; border-width:thin">
+            <fieldset>
+                <legend style="color:black;font-weight:bold;">Linea JET</legend>
+                <div class="containerPRODJET">
+                </div>
+            </fieldset>
+        </div>
+        <br />
+        <div style="border:solid; border-width:thin">
+            <fieldset>
+                <legend style="color:black;font-weight:bold;">Linea M100</legend>
+                <div class="containerPRODM100">
+                </div>
+            </fieldset>
+        </div>
+        <br />
+        <div style="border:solid; border-width:thin">
+            <fieldset>
+                <legend style="color:black;font-weight:bold;">Linea M80</legend>
+                <div class="containerPRODM80">
+                </div>
+            </fieldset>
+        </div>
+        <script>
+            function createConfig(details) {
+                return {
+                    type: 'bar',
+                    data: {
+                        labels: ['01-05', '01-06', '01-07', '01-08', '01-09', '01-10', '01-11', '01-12', '01-13', '01-14'],
+                        datasets: [{
+                            label: details.label,
+                            steppedLine: details.steppedLine,
+                            data: details.data,
+                            backgroundColor: details.backgroundColor,
+                            borderColor: details.borderColor,
+                            fill: false,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            xAxes: [{
+                                display: true,
+
+                                //scaleLabel: {
+                                //    display: true,
+                                //    labelString: 'Day'
+                                //}
+                            }],
+                            yAxes: [{
+                                display: true,
+                                //scaleLabel: {
+                                //    display: true,
+                                //    labelString: 'Value'
+                                //}
+                            }]
+                        }
+                    }
+                };
+            }
+            function loadProd(labelProd, dataProd) {
+                //var xhttp = new XMLHttpRequest();
+                var container = document.querySelector('.tabcontent');
+                var containerJET = document.querySelector('.containerPRODJET');
+                var containerM100 = document.querySelector('.containerPRODM100');
+                var containerM80 = document.querySelector('.containerPRODM80');
+
+                var steppedLineSettingsJET = [
+                    {
+                        steppedLine: false,
+                        label: 'Pezzi Prodotti',           //'Produced pieces'
+                        //color: window.chartColors.yellow,
+                        data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                        backgroundColor: window.chartColors.orange,
+                        borderColor: window.chartColors.orange
+                    }, {
+                        steppedLine: false,
+                        label: 'Ordini Completati',          //'Completed Orders'
+                        //color: window.chartColors.blue,
+                        data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                        backgroundColor: window.chartColors.red,
+                        borderColor: window.chartColors.red
+                    }];
+
+                var steppedLineSettingsM100 = [
+                    {
+                        steppedLine: false,
+                        label: 'Pezzi Prodotti',           //'Produced pieces'
+                        color: window.chartColors.yellow,
+                        //data: dataProd,
+                        data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                        backgroundColor: window.chartColors.blue,
+                        borderColor: window.chartColors.blue
+                    }, {
+                        steppedLine: false,
+                        label: 'Ordini Completati',          //'Completed Orders'
+                        color: window.chartColors.blue,
+                        data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                        backgroundColor: window.chartColors.grey,
+                        borderColor: window.chartColors.grey
+                    }];
+
+                var steppedLineSettingsM80 = [
+                {
+                    steppedLine: false,
+                    label: 'Pezzi Prodotti',           //'Produced pieces'
+                    color: window.chartColors.yellow,
+                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                    backgroundColor: window.chartColors.yellow,
+                    borderColor: window.chartColors.yellow
+                }, {
+                    steppedLine: false,
+                    label: 'Ordini Completati',          //'Completed Orders'
+                    color: window.chartColors.blue,
+                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                    backgroundColor: window.chartColors.purple,
+                    borderColor: window.chartColors.purple
+                }];
+
+                steppedLineSettingsJET.forEach(function (details) {
+                    var div = document.createElement('div');
+                    div.classList.add('chart-containerPRODJET');
+
+                    var canvas = document.createElement('canvas');
+                    div.appendChild(canvas);
+                    containerJET.appendChild(div);
+
+                    var ctx = canvas.getContext('2d');
+                    var config = createConfig(details);
+                    new Chart(ctx, config);
+                });
+                steppedLineSettingsM100.forEach(function (details) {
+                    var div = document.createElement('div');
+                    div.classList.add('chart-containerPRODM100');
+
+                    var canvas = document.createElement('canvas');
+                    div.appendChild(canvas);
+                    containerM100.appendChild(div);
+
+                    var ctx = canvas.getContext('2d');
+                    var config = createConfig(details);
+                    new Chart(ctx, config);
+                });
+                steppedLineSettingsM80.forEach(function (details) {
+                    var div = document.createElement('div');
+                    div.classList.add('chart-containerPRODM80');
+
+                    var canvas = document.createElement('canvas');
+                    div.appendChild(canvas);
+                    containerM80.appendChild(div);
+
+                    var ctx = canvas.getContext('2d');
+                    var config = createConfig(details);
+                    new Chart(ctx, config);
+                });
+            };
+        </script>
+    </div>
+    <div id="OEE" class="tabcontent">
+        <div style="border:solid; border-width:thin">
+            <fieldset>
+                <legend style="color:black;font-weight:bold;">Linea JET</legend>
+                <div class="containerOEEJET">
+                </div>
+            </fieldset>
+        </div>
+        <br />
+        <div style="border:solid; border-width:thin">
+            <fieldset>
+                <legend style="color:black;font-weight:bold;">Linea M100</legend>
+                <div class="containerOEEM100">
+                </div>
+            </fieldset>
+        </div>
+        <br />
+        <div style="border:solid; border-width:thin">
+            <fieldset>
+                <legend style="color:black;font-weight:bold;">Linea M80</legend>
+                <div class="containerOEEM80">
+                </div>
+            </fieldset>
+        </div>
+        <br />
+        <script>
+            function createConfigOEE(details) {
+                //create labels from yesterday 10 working day back
+                //var labelDays = lastTenCompletedWorkingDay();
+                return {
+                    type: 'line',
+                    data: {
+                        labels: ['01-05', '01-06', '01-07', '01-08', '01-09', '01-10', '01-11', '01-12', '01-13', '01-14'],
+                        datasets: [{
+                            label: details.label,
+                            steppedLine: details.steppedLine,
+                            data: details.data,
+                            backgroundColor: details.backgroundColor,
+                            borderColor: details.borderColor,
+                            fill: false,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                            }],
+                            yAxes: [{
+                                display: true,
+                                ticks: {
+                                    min: 0,
+                                    max: 100,
+                                    //stepSize: 10,
+                                }
+                            }]
+                        },
+                        annotation: {
+                            annotations: [{
+                                type: 'line',
+                                drawTime: 'afterDatasetsDraw',
+                                id: 'strip-line-1',
+                                mode: 'horizontal',
+                                scaleID: 'y-axis-0',
+                                value: 85,
+                                borderColor: 'red',
+                                borderWidth: 3
+                            }]
+                        }
+                    }
+                };
+            }
+
+            function loadOEE(label, data) {
+                var container = document.querySelector('.containerOEE');
+                var containerJET = document.querySelector('.containerOEEJET');
+                var containerM100 = document.querySelector('.containerOEEM100');
+                var containerM80 = document.querySelector('.containerOEEM80');
+
+                var steppedLineSettingsJET = [{
+                    steppedLine: false,
+                    label: 'OEE',
+                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                    backgroundColor: window.chartColors.orange,
+                    borderColor: window.chartColors.orange
+                }, {
+                    steppedLine: false,
+                    label: 'LE',
+                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                    backgroundColor: window.chartColors.red,
+                    borderColor: window.chartColors.red
+                }];
+                var steppedLineSettingsM100 = [{
+                    steppedLine: false,
+                    label: 'OEE',
+                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                    backgroundColor: window.chartColors.blue,
+                    borderColor: window.chartColors.blue
+                }, {
+                    steppedLine: false,
+                    label: 'LE',
+                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                    backgroundColor: window.chartColors.grey,
+                    borderColor: window.chartColors.grey
+                }];
+                var steppedLineSettingsM80 = [{
+                    steppedLine: false,
+                    label: 'OEE',
+                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                    backgroundColor: window.chartColors.yellow,
+                    borderColor: window.chartColors.yellow
+                }, {
+                    steppedLine: false,
+                    label: 'LE',
+                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                    backgroundColor: window.chartColors.purple,
+                    borderColor: window.chartColors.purple
+                }];
+
+                steppedLineSettingsJET.forEach(function (details) {
+                    var div = document.createElement('div');
+                    div.classList.add('chart-containerOEEJET');
+
+                    var canvas = document.createElement('canvas');
+                    div.appendChild(canvas);
+                    containerJET.appendChild(div);
+
+                    var ctx = canvas.getContext('2d');
+                    var config = createConfigOEE(details);
+                    new Chart(ctx, config);
+                });
+                steppedLineSettingsM100.forEach(function (details) {
+                    var div = document.createElement('div');
+                    div.classList.add('chart-containerOEEM100');
+
+                    var canvas = document.createElement('canvas');
+                    div.appendChild(canvas);
+                    containerM100.appendChild(div);
+
+                    var ctx = canvas.getContext('2d');
+                    var config = createConfigOEE(details);
+                    new Chart(ctx, config);
+                });
+                steppedLineSettingsM80.forEach(function (details) {
+                    var div = document.createElement('div');
+                    div.classList.add('chart-containerOEEM80');
+
+                    var canvas = document.createElement('canvas');
+                    div.appendChild(canvas);
+                    containerM80.appendChild(div);
+
+                    var ctx = canvas.getContext('2d');
+                    var config = createConfigOEE(details);
+                    new Chart(ctx, config);
+                });
+
+                tablinks = document.getElementsByClassName("active");
+            };
+        </script>
+    </div>
+    <!--<div id="gigietto" style="position:fixed; top:0px; z-index:100000; font-size:30px;">pippo</div>-->
 </div>
+
+<script>
+
+    function myRefresh()
+    {
+        drawLineChart(null, function () { setTimeout("myRefresh()", 1000) } );
+
+    }
+
+    $(document).ready(function () {
+
+        myRefresh();
+    });
+
+    function openChart(evt, chartType) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(chartType).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
