@@ -65,6 +65,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.dll</HintPath>
     </Reference>
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events">
+      <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events.dll</HintPath>
+    </Reference>
     <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.PublicModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.PublicModel.dll</HintPath>
@@ -285,6 +288,10 @@
     <Compile Include="AppDAB.DPPOMModel\Commands\DABSendTestResultHandlerExecution.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\DABStartSerialHandler.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\DABStartSerialHandlerExecution.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\GetKPIsHandler.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\GetKPIsHandlerExecution.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\GetProductionInfoHandler.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\GetProductionInfoHandlerExecution.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\GetSerialsHandler.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\GetSerialsHandlerExecution.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\ImportERPOrderHandler.cs" />

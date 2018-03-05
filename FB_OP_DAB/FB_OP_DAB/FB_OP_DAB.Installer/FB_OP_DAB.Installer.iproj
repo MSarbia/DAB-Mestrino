@@ -50,6 +50,12 @@
     <Content Include="ExternalDependencies\NiceLabelConnector.dll.config">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="ExternalDependencies\WindchillTestConnectorLibrary.dll">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ExternalDependencies\WindchillTestConnectorLibrary.dll.config">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\Engineering.DAB.FB_OP_DAB.References.xml">

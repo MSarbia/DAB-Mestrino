@@ -161,7 +161,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     response.SetError(startResponse.Error.ErrorCode, startResponse.Error.ErrorMessage);
                 }
             }
-
+            Platform.CallCommand<FireUpdateAndonEvent, FireUpdateAndonEvent.Response>(new FireUpdateAndonEvent(equip.Parent));
             return response;
         }
 

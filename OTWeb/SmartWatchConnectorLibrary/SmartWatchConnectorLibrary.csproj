@@ -90,6 +90,7 @@
     <None Include="Connected Services\OTService\OTService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ExternalReferences\HMIHubConnectorLib\HMIHubConnector.dll.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +113,10 @@
       <Project>{20480f99-e17f-4374-a6b7-187589759667}</Project>
       <Name>OTWeb.Base</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExternalReferences\HMIHubConnectorLib\HMIHubConnector.dll" />
+    <Content Include="ExternalReferences\HMIHubConnectorLib\HMIHubModel.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

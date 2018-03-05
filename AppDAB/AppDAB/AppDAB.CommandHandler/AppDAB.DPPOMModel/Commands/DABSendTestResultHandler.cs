@@ -7,6 +7,7 @@ using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.Published;
 using Siemens.SimaticIT.Handler;
 using Siemens.SimaticIT.Unified;
 using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.ReadingModel;
+using Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types;
 
 namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 {
@@ -27,16 +28,57 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         private DABSendTestResult.Response DABSendTestResultHandler(DABSendTestResult command)
         {
             var response = new DABSendTestResult.Response();
-            var workOrderId = Platform.ProjectionQuery<ProducedMaterialItem>().Include(pmi => pmi.MaterialItem).Where(pmi => pmi.MaterialItem.SerialNumberCode == command.Result.SerialNumber).Select(pmi => pmi.WorkOrder_Id).FirstOrDefault();
-            if (!workOrderId.HasValue || workOrderId == 0)
+
+            ActualProducedMaterial actualProdMat = Platform.ProjectionQuery<ActualProducedMaterial>().Include("WorkOrderOperation.ToBeUsedMachines").Include(apm => apm.MaterialItem).Where(apm=>apm.PartialWorkedQuantity == 1).Where(apm => apm.MaterialItem.SerialNumberCode == command.Result.SerialNumber).FirstOrDefault();
+            if (actualProdMat == null)
             {
-                response.SetError(-1001, $"Impossibile trovare un Ordine associato al seriale {command.Result.SerialNumber}");
+                response.SetError(-1000, $"Nessun Ordine attivo trovato per il seriale {command.Result.SerialNumber}");
                 return response;
             }
+            int? workOrderId = actualProdMat.WorkOrderOperation.WorkOrder_Id;
+            var matDef = Platform.ProjectionQuery<MaterialDefinition>().Where(md => md.Id == actualProdMat.MaterialItem.MaterialDefinition).Select(md => md.NId).FirstOrDefault();
+
+            if (!workOrderId.HasValue || workOrderId == 0)
+            {
+                response.SetError(-1001, $"Nessun Ordine attivo trovato per il seriale {command.Result.SerialNumber}");
+                return response;
+            }
+            var toBeUsedMachine = actualProdMat.WorkOrderOperation.ToBeUsedMachines.Where(tum => tum.Machine.HasValue).FirstOrDefault().Machine.Value;
+            var equip = Platform.ProjectionQuery<Equipment>().Where(e => e.Id == toBeUsedMachine).FirstOrDefault();
+
+            var completeResponse = Platform.CallCommand<DABCompleteSerial, DABCompleteSerial.Response>(new DABCompleteSerial
+            {
+                CompleteSerializedWoOpParameterList = new List<CompleteSerializedParameterType>
+                {
+                    new CompleteSerializedParameterType
+                    {
+                        EquipmentNId = equip.NId,
+                        Id = actualProdMat.WorkOrderOperation.Id,
+                        NId = actualProdMat.WorkOrderOperation.NId,
+                        ActualProducedMaterials = new List<MaterialItemParameterType>
+                        {
+                            new MaterialItemParameterType
+                            {
+                                NId = actualProdMat.MaterialItem.NId,
+                                EquipmentNId = equip.NId,
+                                MaterialDefinitionNId = matDef,
+                                SerialNumber = command.Result.SerialNumber
+                            }
+                        }
+                    }
+                }
+            });
+            if(!completeResponse.Succeeded)
+            {
+                response.SetError(completeResponse.Error.ErrorCode, completeResponse.Error.ErrorMessage);
+                return response;
+            }
+
             var resultResponse = Platform.CallCommand<SendTestResult, SendTestResult.Response>(new SendTestResult { Result = command.Result, WorkOrderId = workOrderId.Value });
             if (!resultResponse.Succeeded)
             {
                 response.SetError(resultResponse.Error.ErrorCode, resultResponse.Error.ErrorMessage);
+                return response;
             }
             return response;
         }

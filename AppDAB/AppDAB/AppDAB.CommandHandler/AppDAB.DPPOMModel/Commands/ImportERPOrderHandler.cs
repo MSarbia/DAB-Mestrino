@@ -181,7 +181,17 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                         response.SetError(createTBCMExtResponse.Error.ErrorCode, createTBCMExtResponse.Error.ErrorMessage);
                     }
                 }
+                Platform.CallCommand<CreateWorkOrderNotification, CreateWorkOrderNotification.Response>(new CreateWorkOrderNotification
+                {
+                    WorkOrderEstimatedStartTime = workOrder.EstimatedStartTime,
+                    WorkOrderFinalMaterial = command.ERPOrderInfo.FinalMaterialCode,
+                    WorkOrderId = workOrder.Id,
+                    WorkOrderNId = workOrder.NId,
+                    WorkOrderStatus = workOrder.Status
+                });
             }
+
+            
 
             return response;
         }

@@ -21,7 +21,7 @@ PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.Repor
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportProducedQuantity AS ReportProducedQuantity
 PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.StartWOOperationSerialized AS StartWOOperationSerialized
 PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.CompleteWOOperationSerialized AS CompleteWOOperationSerialized
-PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.AcceptChangeAddToBeConsumedMaterial AS AcceptChangeAddToBeConsumedMaterial
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.Commands.DeleteNonConformanceNotification AS DeleteNonConformanceNotification
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateToBeConsumedMaterialExt AS CreateToBeConsumedMaterialExt
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateWorkOrderExt AS CreateWorkOrderExt
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.DeclareQuantity AS DeclareQuantity
@@ -34,4 +34,5 @@ PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.GetTe
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.CreateOrUpdateMaterialDefinitionExt AS CreateOrUpdateMaterialDefinitionExt
 PUBLISH COMMAND Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.Commands.CreateDocument AS CreateDocument
 PUBLISH COMMAND Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.Commands.LinkDocumentListToOperation AS LinkDocumentListToOperation
-PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.AcceptChangeReplaceToBeConsumedMaterial AS AcceptChangeReplaceToBeConsumedMaterial
+PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.AcceptChangeAddToBeConsumedMaterial AS AcceptChangeAddToBeConsumedMaterial
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.FireUpdateAndonEvent AS FireUpdateAndonEvent

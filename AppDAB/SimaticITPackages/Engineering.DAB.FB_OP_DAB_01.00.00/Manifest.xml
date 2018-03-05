@@ -9,7 +9,7 @@
     <version>01.00.00</version>
     <companyname>Engineering.DAB</companyname>
     <author>Engineering.DAB</author>
-    <hash>Drt2+uSefO1A3DxygAqmxFxL4tFZOCE0B6zgQOOnSOs=</hash>
+    <hash>6gyxmIhtcczgjHybmHZkq2i2RFzSLOPhLrMfhbHvVE4=</hash>
   </header>
   <reference>
     <functionalblocks></functionalblocks>
@@ -393,19 +393,29 @@
                                         <dependencies></dependencies>
                                 </handler>
                         </handlers>
+                </command><command>
+                        <name>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.FireUpdateAndonEvent</name>
+                        <shortname>FireUpdateAndonEvent</shortname>
+                        <description></description>
+                        <assembly>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype></dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>OperationalData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>false</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.FireUpdateAndonEventHandlerShell</name>
+                                        <assembly>Engineering.DAB.FB_OP_DAB.CommandHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
                 </command></commands>
     <events><event>
-                <name>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events.AndonRefresh</name>
-                <shortname>AndonRefresh</shortname>
-                <description></description>
-                <assembly>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
-                <dotneteventtype></dotneteventtype>
-                <eventtype>Application</eventtype>
-                <domain>OperationalData</domain>
-                <taglist>
-                </taglist>
-                <securable>false</securable>
-        </event><event>
                 <name>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events.UpdateAndon</name>
                 <shortname>UpdateAndon</shortname>
                 <description></description>

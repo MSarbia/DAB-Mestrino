@@ -31,6 +31,7 @@
             var scrollContainer = $('#serialScrollContainer');
             scrollContainer.scrollTop(uiSelected.position().top);
             SaveSession('selectedOrderToStart', uiSelected[0].attributes['data-order'].nodeValue);
+            SaveSession('selectedSerialStatusToStart', uiSelected[0].attributes['data-status'].nodeValue);
             SaveSession('selectedSerialToStart', uiSelected[0].id);
             var orders = GetSession('OrderData').Orders;
             //var order;
@@ -54,13 +55,14 @@
         function startSelectedSerial() {
             var serial = GetSession('selectedSerialToStart');
             var order = GetSession('selectedOrderToStart');
+            var status = GetSession('selectedSerialStatusToStart');
             var orderData = GetSession('OrderData').Orders;
             orderData.forEach(function (o) {
                 if (o.Order == order) {
-                    var operation = order.Operation;
-                    var operationId = order.OperationId;
-                    var productCode = order.ProductCode;
-                    StartSerial(order, serial, operation, operationId, productCode,  getSerialSuccess);
+                    var operation = o.Operation;
+                    var operationId = o.OperationId;
+                    var productCode = o.ProductCode;
+                    StartSerial(order, serial, status, operation, operationId, productCode,  getSerialSuccess);
                     return;
                 }
             });
@@ -88,6 +90,7 @@
                             ui.selected = $(ui.selected).parent()[0];
                         }
                         SaveSession('selectedOrderToStart', ui.selected.attributes['data-order'].nodeValue);
+                        SaveSession('selectedSerialStatusToStart', ui.selected.attributes['data-status'].nodeValue);
                         SaveSession('selectedSerialToStart', ui.selected.id);
                         $(ui.selected).siblings().removeClass('ui-selected').children().removeClass('ui-selected');
                         var prod = document.getElementById("spanProduct");
@@ -164,7 +167,7 @@
                         stato = 'Pausa';
                         itemClass += " pausedSerial";
                     }
-                    selectable.innerHTML = selectable.innerHTML + "<li class='" + itemClass + "'data-order='"+order.Order+"'  id='" + serial.SerialNumber + "'><span style='font-weight:bold'>" + serial.SerialNumber + "</span ></br></br><span>Stato: </span ><span>" + stato + "</span ></li>";
+                    selectable.innerHTML = selectable.innerHTML + "<li class='" + itemClass + "' data-order='" + order.Order + "' data-status='" + serial.Status +"'  id='" + serial.SerialNumber + "'><span style='font-weight:bold'>" + serial.SerialNumber + "</span ></br></br><span>Stato: </span ><span>" + stato + "</span ></li>";
                 })
             });
             disableStart();

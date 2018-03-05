@@ -5,11 +5,67 @@
     <FileName>AppDAB.DPPOMModel</FileName>
     <Artifacts>
       <ArtifactSuo>
-        <X>228.20000000000005</X>
-        <Y>32.19999999999996</Y>
+        <X>393.79999999999995</X>
+        <Y>54.599999999999966</Y>
         <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events.UpdateAndon</FullName>
         <IsExpandedA>false</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>50.599999999999909</X>
+        <Y>30.599999999999966</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABReplaceMaterial</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>true</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.ImportERPOrder</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>127</X>
+        <Y>232</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.WorkOrder</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.ActualProducedMaterial</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>409</X>
+        <Y>185</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.ProducedMaterialItem</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>true</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>302</X>
+        <Y>11</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.GetKPIs</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>true</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.GetProductionInfo</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>true</IsExpandedB>
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
     </Artifacts>
