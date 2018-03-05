@@ -28,13 +28,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         private DABCompleteSerial.Response DABCompleteSerialHandler(DABCompleteSerial command)
         {
             var response = new DABCompleteSerial.Response();
-            /*
-             Qua bisognerà invocare i due comandi di avanzamento fase e avanzamento produzione 
-             che avete definito dentro FB_OP_DAB a seconda di alcune logiche che vedremo meglio domani.
-             A seguito di questi dovrete invocare il comando UADMCompleteWOOperationSerializedList definito
-             dentro al functional block FB_OP_EXT. Per poterlo chimare dovete importarlo dal 
-             Public Object Model Configurator (dominio Ms_Ext).
-             */
+
             var commandInfo = command.CompleteSerializedWoOpParameterList.First();
             var actualProducedMaterial = commandInfo.ActualProducedMaterials.First();
             string serialNumber = actualProducedMaterial.SerialNumber;
@@ -49,7 +43,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 
             int equipId = workOrderOperation.ToBeUsedMachines.First().Machine.GetValueOrDefault();
             Equipment equip = Platform.ProjectionQuery<Equipment>().FirstOrDefault(e => e.Id == equipId);
-            var mateialItem = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pmi => pmi.MaterialItem).Where(pmi => pmi.WorkOrderOperation_Id == workOrderOperation.Id).Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber).ToDictionary(pmi => pmi.MaterialItem.NId, pmi => pmi.MaterialItem.MaterialDefinition).FirstOrDefault();
+            var mateialItem = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pmi => pmi.MaterialItem).Where(pmi => pmi.WorkOrderOperation_Id == workOrderOperation.Id).Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber).Select(pmi => pmi.MaterialItem).Distinct().ToDictionary(mi => mi.NId, mi => mi.MaterialDefinition).FirstOrDefault();
             var materialItemNId = mateialItem.Key;
             var matDefId = mateialItem.Value;
             var matDefNId = Platform.ProjectionQuery<MaterialDefinition>().Where(m => m.Id == matDefId).Select(m => m.NId).FirstOrDefault();
@@ -75,7 +69,6 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             };
             var completeResponse = Platform.CallCommand<CompleteWOOperationSerialized, CompleteWOOperationSerialized.Response>(completeInput);
 
-
             if (!completeResponse.Succeeded)
             {
                 response.SetError(completeResponse.Error.ErrorCode, completeResponse.Error.ErrorMessage);
@@ -85,47 +78,57 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             {
                 WorkOrder order = Platform.ProjectionQuery<WorkOrder>().FirstOrDefault(wo => wo.Id == workOrderOperation.WorkOrder_Id);
                 WorkOrderExt workOrderExt = Platform.ProjectionQuery<WorkOrderExt>().FirstOrDefault(woe => woe.WorkOrderId == workOrderOperation.WorkOrder_Id);
-                var reportOperationProg = new ReportOperationProgress
+                var inforIntConf = Platform.ProjectionQuery<ConfigurationKey>().Where(c => c.NId == "InforIntegration").Select(c => c.Val).FirstOrDefault();
+                if(!string.IsNullOrEmpty(inforIntConf) && inforIntConf == "true")
                 {
-                    ErpOrder = order.ERPOrder,
-                    OperationSequence = workOrderExt.Sequence.GetValueOrDefault(),
-                    ProducedQuantity = producedQuantity,
-                    IsComplete = producedQuantity == workOrderOperation.TargetQuantity,
-                    Plant = order.Plant
-                };
-                var reportOperationResponse = Platform.CallCommand<ReportOperationProgress, ReportOperationProgress.Response>(reportOperationProg);
-                if (!reportOperationResponse.Succeeded)
-                {
-                    response.SetError(reportOperationResponse.Error.ErrorCode, reportOperationResponse.Error.ErrorMessage);
-                    return response;
-                }
-
-                if (IsLastSerialOfLastOperationOfERPOrder(workOrderOperation, workOrderExt))
-                {
-                    var reportQuantity = new ReportProducedQuantity
+                    var reportOperationProg = new ReportOperationProgress
                     {
                         ErpOrder = order.ERPOrder,
-                        CloseOrder = true,
+                        OperationSequence = workOrderExt.Sequence.GetValueOrDefault(),
+                        ProducedQuantity = producedQuantity,
+                        IsComplete = producedQuantity == workOrderOperation.TargetQuantity,
                         Plant = order.Plant
                     };
-                    var reportQuantityResponse = Platform.CallCommand<ReportProducedQuantity, ReportProducedQuantity.Response>(reportQuantity);
-                    if (!reportQuantityResponse.Succeeded)
+                    var reportOperationResponse = Platform.CallCommand<ReportOperationProgress, ReportOperationProgress.Response>(reportOperationProg);
+                    if (!reportOperationResponse.Succeeded)
                     {
-                        response.SetError(reportQuantityResponse.Error.ErrorCode, reportQuantityResponse.Error.ErrorMessage);
+                        response.SetError(reportOperationResponse.Error.ErrorCode, reportOperationResponse.Error.ErrorMessage);
                         return response;
                     }
                 }
-                var printPackageAndDataLabels = new PrintPackageDataLabel
+                if (IsLastSerialOfLastOperationOfERPOrder(workOrderOperation, workOrderExt))
                 {
-                    ProductCode = materialDefinitionNId,
-                    WorkArea = equip.Parent,
-                    SerialNumbers = new List<string>()
-                };
-                var printPackageAndDataResponse = Platform.CallCommand<PrintPackageDataLabel, PrintPackageDataLabel.Response>(printPackageAndDataLabels);
-                if (!printPackageAndDataResponse.Succeeded)
+                    if (!string.IsNullOrEmpty(inforIntConf) && inforIntConf == "true")
+                    {
+                        var reportQuantity = new ReportProducedQuantity
+                        {
+                            ErpOrder = order.ERPOrder,
+                            CloseOrder = true,
+                            Plant = order.Plant
+                        };
+                        var reportQuantityResponse = Platform.CallCommand<ReportProducedQuantity, ReportProducedQuantity.Response>(reportQuantity);
+                        if (!reportQuantityResponse.Succeeded)
+                        {
+                            response.SetError(reportQuantityResponse.Error.ErrorCode, reportQuantityResponse.Error.ErrorMessage);
+                            return response;
+                        }
+                    }
+                }
+                var niceLabelIntegration = Platform.ProjectionQuery<ConfigurationKey>().Where(c => c.NId == "NiceLabelIntegration").Select(c => c.Val).FirstOrDefault();
+                if (!string.IsNullOrEmpty(niceLabelIntegration) && niceLabelIntegration == "true")
                 {
-                    response.SetError(printPackageAndDataResponse.Error.ErrorCode, printPackageAndDataResponse.Error.ErrorMessage);
-                    return response;
+                    var printPackageAndDataLabels = new PrintPackageDataLabel
+                    {
+                        ProductCode = materialDefinitionNId,
+                        WorkArea = equip.Parent,
+                        SerialNumbers = new List<string>()
+                    };
+                    var printPackageAndDataResponse = Platform.CallCommand<PrintPackageDataLabel, PrintPackageDataLabel.Response>(printPackageAndDataLabels);
+                    if (!printPackageAndDataResponse.Succeeded)
+                    {
+                        response.SetError(printPackageAndDataResponse.Error.ErrorCode, printPackageAndDataResponse.Error.ErrorMessage);
+                        return response;
+                    }
                 }
                 //print package & data label
                 var processQuantity = Platform.ProjectionQuery<Process>().Where(p => p.Id == order.Process).Select(p => p.Quantity.Val).FirstOrDefault().GetValueOrDefault();
@@ -134,23 +137,27 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     response.SetError(-1005, $"Impossiblie avanzare la produzione dell'ordine {order.NId}. Dimensione Pallet non impostata.");
                     return response;
                 }
-                if (IsLastPieceOfPallet(workOrderOperation, processQuantity))
+                if (!string.IsNullOrEmpty(niceLabelIntegration) && niceLabelIntegration == "true")
                 {
-                    var printPalletLabel = new PrintPalletLabel
+                    if (IsLastPieceOfPallet(workOrderOperation, processQuantity))
                     {
-                        ProductCode = materialDefinitionNId,
-                        WorkArea = equip.Parent,
-                        SerialNumbers = new List<string>(),
-                        Quantity = 1
-                    };
-                    var printPalletResponse = Platform.CallCommand<PrintPalletLabel, PrintPalletLabel.Response>(printPalletLabel);
-                    if (!printPalletResponse.Succeeded)
-                    {
-                        response.SetError(printPalletResponse.Error.ErrorCode, printPalletResponse.Error.ErrorMessage);
-                        return response;
+                        var printPalletLabel = new PrintPalletLabel
+                        {
+                            ProductCode = materialDefinitionNId,
+                            WorkArea = equip.Parent,
+                            SerialNumbers = new List<string>(),
+                            Quantity = 1
+                        };
+                        var printPalletResponse = Platform.CallCommand<PrintPalletLabel, PrintPalletLabel.Response>(printPalletLabel);
+                        if (!printPalletResponse.Succeeded)
+                        {
+                            response.SetError(printPalletResponse.Error.ErrorCode, printPalletResponse.Error.ErrorMessage);
+                            return response;
+                        }
                     }
                 }
             }
+            Platform.CallCommand<FireUpdateAndonEvent, FireUpdateAndonEvent.Response>(new FireUpdateAndonEvent(equip.Parent));
             return response;
         }
 

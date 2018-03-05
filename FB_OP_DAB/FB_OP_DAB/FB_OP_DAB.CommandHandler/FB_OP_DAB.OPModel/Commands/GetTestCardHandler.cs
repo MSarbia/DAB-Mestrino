@@ -7,6 +7,7 @@ using Siemens.SimaticIT.Handler;
 using Siemens.SimaticIT.Unified;
 using Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel;
 using Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types;
+using WindchillTestConnectorLibrary;
 
 namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
 {
@@ -27,18 +28,44 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         {
             var response = new GetTestCard.Response();
             var testCard = Platform.Query<ITestCard>().Include(t => t.Absorptions).FirstOrDefault(t => t.WorkOrderId == command.WorkOrderId);
-            if (testCard == null)
+            if (testCard == null && command.WindchillIntegration)
             {
-                testCard = Platform.Create<ITestCard>();
-                testCard.WorkOrderId = command.WorkOrderId;
-                testCard.CodiceProdotto = "FinalMatDef1";
-                //foreach(valore ritornato dal soap service)
-                //{ 
-                var absorption = Platform.Create<IAbsorption>();
-                absorption.Nome = "Ass1";
-                testCard.Absorptions.Add(absorption);
-                //}
-                Platform.Submit(testCard);
+                WindchillTestConnectorLibrary.TestCardParameter wTestCard = null;
+                using(var connector = new WindchillTestCardConnector())
+                {
+                    wTestCard = connector.GetTestCard(command.ProductCode);
+                }
+                if(wTestCard != null)
+                {
+                    testCard = Platform.Create<ITestCard>();
+                    testCard.WorkOrderId = command.WorkOrderId;
+                    testCard.CodiceProdotto = command.ProductCode;
+                    testCard.CorrenteASecco = wTestCard.CorrenteASecco;
+                    testCard.CorrenteASeccoPercent = wTestCard.CorrenteASeccoPercent;
+                    testCard.PotenzaASecco = wTestCard.PotenzaASecco;
+                    testCard.PotenzaASeccoPercent = wTestCard.PotenzaASeccoPercent;
+                    
+                    foreach(var a in wTestCard.Assorbimenti)
+                    {
+                        var absorption = Platform.Create<IAbsorption>();
+                        absorption.Ampere = a.Ampere;
+                        absorption.AmperePercent = a.AmperePercent;
+                        absorption.Nome = a.Nome;
+                        absorption.Portata = a.Portata;
+                        absorption.PortataPercent = a.PortataPercent;
+                        absorption.Pressione = a.Pressione;
+                        absorption.PressionePercent = a.PressionePercent;
+                        absorption.Watt = a.Watt;
+                        absorption.WattPercent = a.WattPercent;
+                        testCard.Absorptions.Add(absorption);
+                    }
+                    Platform.Submit(testCard);
+                }
+            }
+            if(testCard == null)
+            {
+                response.SetError(-1005, $"Nessuna scheda di collaudo trovata per il codice prodotto: {command.ProductCode}");
+                return response;
             }
 
             response.TestCard = new Types.TestCardParameter
@@ -48,7 +75,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
                 CorrenteASeccoPercent = testCard.CorrenteASeccoPercent,
                 PotenzaASecco = testCard.PotenzaASecco,
                 PotenzaASeccoPercent= testCard.PotenzaASeccoPercent,
-                Assorbimenti = new List<AbsorptionParameter>()
+                Assorbimenti = new List<Types.AbsorptionParameter>()
             };
             foreach (var a in testCard.Absorptions)
             {
@@ -62,7 +89,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
                     Pressione = a.Pressione,
                     PressionePercent = a.PressionePercent,
                     Watt = a.Watt,
-                    WatPercent = a.WatPercent
+                    WattPercent = a.WattPercent
                 });
             }
 

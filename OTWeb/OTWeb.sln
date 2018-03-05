@@ -1,17 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTWeb", "OTWeb\OTWeb.csproj", "{8AD93301-AE6A-4B8E-95E2-2202A2892C50}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole", "TestConsole\TestConsole.csproj", "{D5E36635-9C16-469F-8C5C-8A2BCFA3DA53}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "OTWebInstaller", "OTWebInstaller\OTWebInstaller.vdproj", "{682F42CE-A7E7-45B5-B664-E80ACB91F897}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTWeb.Base", "OTWeb.Base\OTWeb.Base.csproj", "{20480F99-E17F-4374-A6B7-187589759667}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartWatchConnectorLibrary", "SmartWatchConnectorLibrary\SmartWatchConnectorLibrary.csproj", "{7E7AC2F9-C588-4533-BF90-2BFF6051B110}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DABOTWeb", "DABOTWeb\DABOTWeb.csproj", "{96A545E8-54EC-4792-AE49-2B316E9DA4B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{88A3188A-BE7B-4E26-8813-EE7661A8AE28}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "OTWebPortal", "OTWebPortal\OTWebPortal.vdproj", "{964BFDEA-22C4-48E3-BA19-CB40E7AE8EFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,8 +31,6 @@ Global
 		{D5E36635-9C16-469F-8C5C-8A2BCFA3DA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5E36635-9C16-469F-8C5C-8A2BCFA3DA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5E36635-9C16-469F-8C5C-8A2BCFA3DA53}.Release|Any CPU.Build.0 = Release|Any CPU
-		{682F42CE-A7E7-45B5-B664-E80ACB91F897}.Debug|Any CPU.ActiveCfg = Debug
-		{682F42CE-A7E7-45B5-B664-E80ACB91F897}.Release|Any CPU.ActiveCfg = Release
 		{20480F99-E17F-4374-A6B7-187589759667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{20480F99-E17F-4374-A6B7-187589759667}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20480F99-E17F-4374-A6B7-187589759667}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,6 +39,16 @@ Global
 		{7E7AC2F9-C588-4533-BF90-2BFF6051B110}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E7AC2F9-C588-4533-BF90-2BFF6051B110}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E7AC2F9-C588-4533-BF90-2BFF6051B110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96A545E8-54EC-4792-AE49-2B316E9DA4B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96A545E8-54EC-4792-AE49-2B316E9DA4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96A545E8-54EC-4792-AE49-2B316E9DA4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96A545E8-54EC-4792-AE49-2B316E9DA4B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88A3188A-BE7B-4E26-8813-EE7661A8AE28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88A3188A-BE7B-4E26-8813-EE7661A8AE28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88A3188A-BE7B-4E26-8813-EE7661A8AE28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88A3188A-BE7B-4E26-8813-EE7661A8AE28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{964BFDEA-22C4-48E3-BA19-CB40E7AE8EFF}.Debug|Any CPU.ActiveCfg = Debug
+		{964BFDEA-22C4-48E3-BA19-CB40E7AE8EFF}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

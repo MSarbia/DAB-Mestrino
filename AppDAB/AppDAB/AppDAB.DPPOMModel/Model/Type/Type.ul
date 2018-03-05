@@ -90,6 +90,8 @@ WITH
     Serials AS list of Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.SerialInfo
     [@Guid(ffc08877-6d48-46c1-89f3-56a46bfdc835)]
     EstimatedStartDate AS DateTime
+    [@Guid(dda60d39-7ec8-490f-adbc-1b7c7a1f0fa4)]
+    OperationId AS int
 
 [@Guid(0e9774f4-0bf7-4bdf-813a-c887edaf6e35)]
 PARAMETERTYPE SerialInfo

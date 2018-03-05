@@ -180,3 +180,38 @@ ENTITYLINK OperationDependency TO Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MS
 [@GuidRef(43505cfd-dbd3-4fc5-87ae-cda08d8af79c, 3b281008-bd6d-4984-95d3-03f27d22e508)]
 ENTITYLINK DependencyType TO Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.DependencyType
 
+///This entity represents a Configuration Key.
+[@Guid(ae836527-38f8-467f-a30f-c04ed6f1fc44)]
+[@GuidRef(ff4b4830-cb7d-4b93-91f8-f657456a54b3, daecc121-20d8-47bb-a4d0-67b618a12542)]
+ENTITYLINK ConfigurationKey TO Siemens.SimaticIT.U4DM.RD.FB.ReferenceData.ConfigKey.RFModel.DataModel.ConfigurationKey
+
+///This entity models changes made to a Work Order Operation regarding materials to be consumed. It is modeled as a Non-Conformance of type Change, with this view providing additional information.
+[@Guid(d7e62150-353b-48cf-babf-8ecce120471b)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 071c4d32-08e2-46f3-b6c1-8143e45489ce)]
+ENTITYLINK ChangePart TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.ChangePart
+
+///This entity represents all types of changes permitted on Work Order Operations. The predefined values are the following:  
+///* **ADD OPERATION**
+///* **REPEAT OPERATION**
+///* **ADD PART**
+///* **REMOVE PART**
+///* **REPLACE PART**
+///* **CHANGE PART QTY**
+///* **ADD DATA COLLECTION**
+///* **CHANGE ROUTING**
+///* **DELETE DEPENDENCY**
+///* **ADD PRODUCT OPERATION**
+///* **REMOVE OPERATIONS**
+[@Guid(01c46677-fb10-4511-903a-42e50ba9c358)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 81277985-26f4-4ecb-b90e-2759409e3aa0)]
+ENTITYLINK ChangeType TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.ChangeType
+
+///This entity represents a runtime Non-Conformance.
+[@Guid(590f0826-686f-466d-bf58-c0dedcb954d5)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, cb2acb60-65f7-4ea5-8879-24dcd712abff)]
+ENTITYLINK NonConformance TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.NonConformance
+
+[@Guid(7b3d264e-e08b-4001-b395-7c8acb65edcb)]
+[@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, f9b5d6ed-5a3f-4d16-94fb-aeb2aa37981b)]
+ENTITYLINK MaterialDefinitionExt TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.MaterialDefinitionExt
+

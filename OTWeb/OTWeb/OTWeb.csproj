@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -68,14 +68,17 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -86,6 +89,10 @@
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternalDependencies\Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types.dll</HintPath>
     </Reference>
     <Reference Include="SimaticIT.DataModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -145,6 +152,49 @@
     <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-regular-400.svg" />
     <Content Include="css\fontawesome-free-5.0.4\web-fonts-with-css\webfonts\fa-solid-900.svg" />
     <Content Include="css\style.css" />
+    <Content Include="ExternalDependencies\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.dll" />
+    <Content Include="ExternalDependencies\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.PublicModel.dll" />
+    <Content Include="ExternalDependencies\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.dll" />
+    <Content Include="ExternalDependencies\Siemens.SimaticIT.ConfigurationData.System.dll" />
+    <Content Include="ExternalDependencies\Siemens.SimaticIT.ConfigurationData.System.ProjectionModel.dll" />
+    <Content Include="ExternalDependencies\Siemens.SimaticIT.ConfigurationData.System.ReadingModel.dll" />
+    <Content Include="ExternalDependencies\Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Administration.Commands.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Administration.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Administration.Handlers.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Administration.Types.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.DataModel.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.DSL.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Engineering.Commands.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Engineering.Types.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Governance.AliasDictionary.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Governance.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Governance.Data.XML.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Governance.DataModel.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Governance.Registry.XML.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Handler.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Information.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Integration.Communication.Core.Lean.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Integration.Communication.Lean.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Integration.Communication.RabbitMQAdapter.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Integration.Diagnostics.Core.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Integration.Diagnostics.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.P2PCommunication.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Platform.Commands.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Platform.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Platform.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Platform.Packages.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Runtime.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.SDK.Diagnostics.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Security.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Security.Lean.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.ServiceEvent.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Unified.Common.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Unified.dll" />
+    <Content Include="ExternalDependencies\SimaticIT.Unified.Lean.dll" />
+    <Content Include="ExternalDependencies\UAFServerConnectorLibrary.dll" />
+    <Content Include="ExternalDependencies\UAFServerConnectorLibrary.pdb" />
+    <Content Include="Images\eng-logo--pos.svg" />
     <Content Include="Images\logo-mobile.svg" />
     <Content Include="OTOperatorDashboard.html" />
     <Content Include="OTTeamLeaderDashboard.html" />
@@ -192,7 +242,9 @@
     </Content>
     <Content Include="Sounds\call1.mp3" />
     <Content Include="Sounds\call2.mp3" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CallHubStartup.cs" />
@@ -212,7 +264,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="css\scripts\" />
-    <Folder Include="ExternalDependencies\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OTWeb.Base\OTWeb.Base.csproj">
@@ -254,8 +305,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -46,8 +46,10 @@ WITH
     MaterialDefinition AS string
     [Optional]
     Quantity AS decimal
+    [Optional]
     [Length = 255]
     WorkOrder AS string
+    [Optional]
     [Length = 255]
     Operation AS string
     [Length = 255]
@@ -137,14 +139,13 @@ WITH
 COMMAND DABReplaceMaterial
 WITH
     ChangePartId AS bigint
-    OldToBeConsumedMaterialId AS int
-    [@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 417aa334-360f-44ce-9b03-472e08f07d6a)]
-    NewToBeConsumedMaterial AS Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types.ToBeConsumedMaterialParameter
+    ToBeConsumedMaterialId AS int
     [Optional]
     [Length = 255]
     Notes AS string
     [Length = 255]
     RefNumber AS string
+    NewQuantity AS decimal
 RESPONSE
     [Optional]
     [Length = 255]
@@ -195,4 +196,37 @@ COMMAND DABSendTestResult
 WITH
     [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, dc325dc2-22c8-4c4b-8297-0269c6d7107e)]
     Result AS Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.TestResultParameter
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(a4472265-cb86-4ba8-8397-1b48a0a863c6)]
+COMMAND GetKPIs
+WITH
+    [Length = 255]
+    WorkArea AS string
+    FromDate AS DateTime
+    [Optional]
+    ToDate AS DateTime
+RESPONSE
+    Defects AS int
+    Rework AS int
+    OEE AS decimal
+    LE AS decimal
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(2bbe25eb-e13f-499b-a949-98e05757492c)]
+COMMAND GetProductionInfo
+WITH
+    [Length = 255]
+    WorkArea AS string
+    FromDate AS DateTime
+    [Optional]
+    ToDate AS DateTime
+RESPONSE
+    ActualProducedQuantity AS decimal
+    TotalProducedQuantity AS decimal
+    DelayProducedQuantity AS decimal
 

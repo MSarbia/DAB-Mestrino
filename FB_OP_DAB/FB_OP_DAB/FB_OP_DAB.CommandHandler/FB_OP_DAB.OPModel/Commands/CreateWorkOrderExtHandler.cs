@@ -29,6 +29,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             var woe = Platform.Create<IWorkOrderExt>();
 
             woe.Operators = command.Operators;
+            woe.ActualOperators = command.Operators;
             woe.SetupTime = command.SetupTime;
             woe.CicleTime = command.CycleTime;
             woe.WorkOrderId = command.WorkOrderId;

@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,14 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Andon.cs" />
+    <Compile Include="Data\SqlBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\AndonData.cs" />
     <Compile Include="Types\Defects.cs" />
     <Compile Include="Types\EquipmentStatus.cs" />
+    <Compile Include="Types\KPI.cs" />
     <Compile Include="Types\ProductionCounters.cs" />
+    <Compile Include="Types\ProductionInfo.cs" />
     <Compile Include="Types\ProductionOrder.cs" />
     <Compile Include="Types\VisualAlerts.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

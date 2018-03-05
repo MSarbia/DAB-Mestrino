@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SmartWatchConnectorLibrary</RootNamespace>
     <AssemblyName>SmartWatchConnectorLibrary</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -89,33 +90,7 @@
     <None Include="Connected Services\OTService\OTService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.AcceptMaterialCallResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.AcceptTeamLeaderCallResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.GetMaterialCallsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.GetSerialsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.GetTeamLeaderCallsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.LoginResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.SendMaterialCallResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.SendTeamLeaderCallResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\OTService\SmartWatchConnectorLibrary.OTService.StartSerialResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
+    <None Include="ExternalReferences\HMIHubConnectorLib\HMIHubConnector.dll.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +113,10 @@
       <Project>{20480f99-e17f-4374-a6b7-187589759667}</Project>
       <Name>OTWeb.Base</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExternalReferences\HMIHubConnectorLib\HMIHubConnector.dll" />
+    <Content Include="ExternalReferences\HMIHubConnectorLib\HMIHubModel.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

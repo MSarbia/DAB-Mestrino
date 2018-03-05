@@ -32,13 +32,13 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             {
                 if(e.LevelName == "Area")
                 {
-                    response.WorkAreas.Add(e.Name);
+                    response.WorkAreas.Add(e.NId);
                     response.Role = "TeamLeader";
                     break;
                 }
-                else if(e.LevelName == "Unit")
+                else if(e.LevelName == "Machine")
                 {
-                    response.Equipment = e.LevelName;
+                    response.Equipment = e.NId;
                     if(!response.WorkAreas.Contains(e.Parent))
                     {
                         response.WorkAreas.Add(e.Parent);

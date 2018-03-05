@@ -41,7 +41,7 @@ WITH
     [@Guid(c8a819f9-9e85-44f4-9aea-d8a593c717ba)]
     Ampere AS decimal
     [@Guid(b226db73-9367-4f32-b1d9-910daa5962a7)]
-    WatPercent AS decimal
+    WattPercent AS decimal
     [@Guid(15cc28e9-058f-40ed-a2c8-2c4ac27ba490)]
     Watt AS decimal
     [@Guid(d3ffa58d-34d0-4dbc-8815-026b49998a76)]
@@ -136,13 +136,11 @@ WITH
     [Length = 255]
     [@Guid(c356749f-0447-4c97-b21f-26cbf5668549)]
     MaterialDefinition AS string
-    [Mandatory]
     [Length = 255]
     [@Guid(d52beba1-a096-4686-89a6-d7e5e42dd319)]
     WorkOrder AS string
     [@Guid(81d6bdbc-e3dc-4a19-b0d4-b129dedfc4b6)]
     Quantity AS decimal
-    [Mandatory]
     [Length = 255]
     [@Guid(9f1c6d19-6a13-48e7-b625-7c91cdaaf08f)]
     Operation AS string

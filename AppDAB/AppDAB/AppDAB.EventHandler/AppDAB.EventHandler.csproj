@@ -58,6 +58,27 @@
       <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.FB_OP_EXT_03.00.00\model\bin\CO_SitMesPom_RTTypes.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Engineering.DAB.Andon">
+      <HintPath>..\AppDAB.Installer\ExternalDependencies\Engineering.DAB.Andon.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands">
+      <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events">
+      <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.PublicModel">
+      <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.PublicModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types">
+      <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ProjectionModel">
+      <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ProjectionModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ReadingModel">
+      <HintPath>..\AppDAB.DPPOMModel\bin\Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ReadingModel.dll</HintPath>
+    </Reference>
     <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands">
       <HintPath>..\..\SimaticITPackages\Engineering.DAB.FB_OP_DAB_01.00.00\model\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.dll</HintPath>
       <Private>False</Private>
@@ -263,6 +284,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="AppDAB.DPPOMModel\Events\UpdateAndon\UpdateAndon_Handler.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Events\UpdateAndon\UpdateAndon_HandlerExecution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

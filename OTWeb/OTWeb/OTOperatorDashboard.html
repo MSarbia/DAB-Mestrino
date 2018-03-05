@@ -31,16 +31,17 @@
             var scrollContainer = $('#serialScrollContainer');
             scrollContainer.scrollTop(uiSelected.position().top);
             SaveSession('selectedOrderToStart', uiSelected[0].attributes['data-order'].nodeValue);
+            SaveSession('selectedSerialStatusToStart', uiSelected[0].attributes['data-status'].nodeValue);
             SaveSession('selectedSerialToStart', uiSelected[0].id);
             var orders = GetSession('OrderData').Orders;
-            var order;
+            //var order;
             
             var prod = document.getElementById("spanProduct");
             var ordr = document.getElementById("spanOrder");
             var oper = document.getElementById("spanOperation");
             var desc = document.getElementById("spanDescription");
             orders.forEach(function (o) {
-                if (o.Order == uiSelected[0].data - order) {
+                if (o.Order == uiSelected[0].attributes['data-order'].nodeValue) {
                     prod.innerHTML = o.ProductCode;
                     ordr.innerHTML = o.Order;
                     oper.innerHTML = o.Operation;
@@ -54,12 +55,14 @@
         function startSelectedSerial() {
             var serial = GetSession('selectedSerialToStart');
             var order = GetSession('selectedOrderToStart');
+            var status = GetSession('selectedSerialStatusToStart');
             var orderData = GetSession('OrderData').Orders;
             orderData.forEach(function (o) {
                 if (o.Order == order) {
-                    var operation = order.Operation;
-                    var productCode = order.ProductCode;
-                    StartSerial(order, serial, operation, productCode,  getSerialSuccess);
+                    var operation = o.Operation;
+                    var operationId = o.OperationId;
+                    var productCode = o.ProductCode;
+                    StartSerial(order, serial, status, operation, operationId, productCode,  getSerialSuccess);
                     return;
                 }
             });
@@ -87,13 +90,36 @@
                             ui.selected = $(ui.selected).parent()[0];
                         }
                         SaveSession('selectedOrderToStart', ui.selected.attributes['data-order'].nodeValue);
+                        SaveSession('selectedSerialStatusToStart', ui.selected.attributes['data-status'].nodeValue);
                         SaveSession('selectedSerialToStart', ui.selected.id);
                         $(ui.selected).siblings().removeClass('ui-selected').children().removeClass('ui-selected');
+                        var prod = document.getElementById("spanProduct");
+                        var ordr = document.getElementById("spanOrder");
+                        var oper = document.getElementById("spanOperation");
+                        var desc = document.getElementById("spanDescription");
+                        var orders = GetSession('OrderData').Orders;
+                        orders.forEach(function (o) {
+                            if (o.Order == ui.selected.attributes['data-order'].nodeValue) {
+                                prod.innerHTML = o.ProductCode;
+                                ordr.innerHTML = o.Order;
+                                oper.innerHTML = o.Operation;
+                                desc.innerHTML = o.Description;
+                            }
+                        });
                         enableStart();
                     }
                     else {
                         $('#startButton').removeClass('btn-selected').addClass('btn');
                         $('#startButton')[0].setAttribute('onclick', '');
+                        var prod = document.getElementById("spanProduct");
+                        var ordr = document.getElementById("spanOrder");
+                        var oper = document.getElementById("spanOperation");
+                        var desc = document.getElementById("spanDescription");
+                        prod.innerHTML = '';
+                        ordr.innerHTML ='';
+                        oper.innerHTML = '';
+                        desc.innerHTML = '';
+
                         disableStart();
                     }
                 },
@@ -134,14 +160,14 @@
                     var itemClass = "ui-state-default";
                     var stato = 'Disponibile';
                     if (serial.Status == 'Active') {
-                        stato = 'In Lavorazione'
+                        stato = 'In Lavorazione';
                         itemClass += " activeSerial";
                     }
                     if (serial.Status == 'Paused') {
-                        stato = 'In Pausa'
+                        stato = 'Pausa';
                         itemClass += " pausedSerial";
                     }
-                    selectable.innerHTML = selectable.innerHTML + "<li class='" + itemClass + "'data-order='"+order.Order+"'  id='" + serial.SerialNumber + "'><span style='font-weight:bold'>" + serial.SerialNumber + "</span ></br></br><span>Stato: </span ><span>" + stato + "</span ></li>";
+                    selectable.innerHTML = selectable.innerHTML + "<li class='" + itemClass + "' data-order='" + order.Order + "' data-status='" + serial.Status +"'  id='" + serial.SerialNumber + "'><span style='font-weight:bold'>" + serial.SerialNumber + "</span ></br></br><span>Stato: </span ><span>" + stato + "</span ></li>";
                 })
             });
             disableStart();
@@ -173,10 +199,11 @@
                             <div class="btn" onclick="CallMaterials()"><span class="fa fa-wrench fa-2x buttonIcon"></span></div>
                        
                             <br /><br /><br />
-                            <div class="btn">
+                            <div class="btn" style="vertical-align:bottom">
                                 <div class="ButtonRow">
                                     <div class="ButtonCell">
                                         <div id="startButton" class="btn" onClick=""><span class="fa fa-play fa-2x buttonIcon"></span></div>
+                                        <img src="Images/eng-logo--pos.svg" alt="Engineering" style="position:fixed; bottom:20px; left:10px; width:150px;" />
                                     </div>
                                 </div>
 
@@ -231,8 +258,9 @@
 
 
 
-<div class="ButtonRow">
+<!--<div class="ButtonRow">
     <div class="ButtonCell">
-        <div id="startButton" class="btn" onClick=""><span class="fa fa-play fa-2x buttonIcon"></span></div>
+        <div id="startButton" class="btn" onClick=""><span class="fa fa-play fa-2x buttonIcon"></span><img src="Images/eng-logo--pos.svg" alt="Engineering" style="width:150px; float:right; padding:20px" /></div>
     </div>
-</div>
+
+</div>-->
