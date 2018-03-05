@@ -29,15 +29,24 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         {
             var response = new DABStartSerial.Response();
             var commandInfo = command.StartWOOperationSerializedParameterTypeList.First();
-            var toBeProducedMaterial = commandInfo.ToBeProducedMaterials.First();
-            string serialNumber = toBeProducedMaterial.SerialNumber;
+
+
+            var toBeProducedMaterial = commandInfo.ToBeProducedMaterials.FirstOrDefault();
+            string serialNumber = toBeProducedMaterial?.SerialNumber; //if null -> resume Woop?
+
+            if (toBeProducedMaterial != null)
+            {
+                serialNumber = toBeProducedMaterial.SerialNumber;
+            }
+
             string workOrderOperationNId = commandInfo.NId;
             string materialDefinitionNId = toBeProducedMaterial.MaterialDefinitionNId;
             var workOrderOperation = Platform.ProjectionQuery<WorkOrderOperation>().Include(w => w.WorkOrder).Include(w => w.ToBeConsumedMaterials).Include(w => w.ToBeUsedMachines).Include(wo => wo.Predecessors).FirstOrDefault(w => w.NId == workOrderOperationNId);
             int equipId = workOrderOperation.ToBeUsedMachines.First().Machine.Value;
             var equip = Platform.ProjectionQuery<Equipment>().FirstOrDefault(e => e.Id == equipId);
             int workOrderSequence = Platform.ProjectionQuery<WorkOrderExt>().Where(woe => woe.WorkOrderId == workOrderOperation.WorkOrder_Id).Select(woe => woe.Sequence).FirstOrDefault().GetValueOrDefault();
-            if (!AlreadyStarted(serialNumber, workOrderOperation.Id))
+
+            if (serialNumber != null && !AlreadyStarted(serialNumber, workOrderOperation.Id))
             {
                 if (IsFirstOperation(workOrderOperation))
                 {
@@ -103,16 +112,23 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             }
             if (response.Succeeded)
             {
-                string mateialItemNId = Platform.ProjectionQuery<ToBeProducedMaterial>().Include(pmi => pmi.MaterialItem).Where(pmi => pmi.WorkOrderOperation_Id == workOrderOperation.Id).Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber).Select(pmi => pmi.MaterialItem.NId).FirstOrDefault();
-                var startInput = new StartWOOperationSerialized
+                StartWOOperationSerialized startInput = null;
+
+                if (serialNumber != null)
                 {
-                    StartSerializedParameter = new StartSerializedParameterType
+                    string mateialItemNId = Platform.ProjectionQuery<ToBeProducedMaterial>().Include(pmi => pmi.MaterialItem)
+                        .Where(pmi => pmi.WorkOrderOperation_Id == workOrderOperation.Id)
+                        .Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber).Select(pmi => pmi.MaterialItem.NId).FirstOrDefault();
+
+                    startInput = new StartWOOperationSerialized
                     {
-                        Id = workOrderOperation.Id,
-                        NId = workOrderOperation.NId,
-                        EquipmentName = equip.Name,
-                        EquipmentNId = equip.NId,
-                        ToBeProducedMaterials = new List<MaterialItemParameterType>
+                        StartSerializedParameter = new StartSerializedParameterType
+                        {
+                            Id = workOrderOperation.Id,
+                            NId = workOrderOperation.NId,
+                            EquipmentName = equip.Name,
+                            EquipmentNId = equip.NId,
+                            ToBeProducedMaterials = new List<MaterialItemParameterType>
                        {
                            new MaterialItemParameterType
                            {
@@ -122,8 +138,23 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                                NId =mateialItemNId
                            }
                        }
-                    }
-                };
+                        }
+                    };
+                }
+                else
+                {
+                    startInput = new StartWOOperationSerialized
+                    {
+                        StartSerializedParameter = new StartSerializedParameterType
+                        {
+                            Id = workOrderOperation.Id,
+                            NId = workOrderOperation.NId,
+                            EquipmentName = equip.Name,
+                            EquipmentNId = equip.NId,
+                            ToBeProducedMaterials = new List<MaterialItemParameterType>()
+                        }
+                    };
+                }
                 var startResponse = Platform.CallCommand<StartWOOperationSerialized, StartWOOperationSerialized.Response>(startInput);
                 if (!startResponse.Succeeded)
                 {
