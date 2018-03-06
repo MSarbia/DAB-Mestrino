@@ -104,7 +104,9 @@
         function execute(name, params) {
             var commandModel = {};
             commandModel.appName = u4dmConstants.appName;
-			if (name == 'DABStartSerial' || name == 'DABCompleteSerial')
+			//DABCUSTOM
+			//call the custom command on the AppDAB
+			if (name == 'DABStartSerial' || name == 'DABCompleteSerial' || name == 'DABReplaceMaterial')
 			{
 				commandModel.appName = 'AppDAB';
 			}
