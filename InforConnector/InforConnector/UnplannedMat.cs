@@ -37,13 +37,15 @@ namespace InforConnectorLibrary
         public string Location { get; set; }
 
         public UnplannedMat(string erpOrder, int operationSequence, string consumedMaterialDefinition, bool customized,
-                                 int consumedMaterialSequence, decimal consumedQuantity, string company)
+                                 int consumedMaterialSequence, decimal consumedQuantity, string unit, string company)
         {
             ProdOrder = erpOrder;
 
             Operation = operationSequence;
 
             Item = consumedMaterialDefinition;
+
+            Unit = unit;
 
             Customized = customized;
 
