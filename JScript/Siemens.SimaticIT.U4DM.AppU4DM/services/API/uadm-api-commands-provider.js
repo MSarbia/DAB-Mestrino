@@ -809,8 +809,10 @@
 
 		Commands['UADMAcceptChangeChangeDependency'] = 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands.UADMAcceptChangeChangeDependency';
 
-		Commands['UADMAcceptChangeChangeToBeConsumedMaterialQuantity'] = 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands.UADMAcceptChangeChangeToBeConsumedMaterialQuantity';
-
+		//DABCUSTOM
+		//Commands['UADMAcceptChangeChangeToBeConsumedMaterialQuantity'] = 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands.UADMAcceptChangeChangeToBeConsumedMaterialQuantity';
+		Commands['UADMAcceptChangeChangeToBeConsumedMaterialQuantity'] = 'Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABReplaceMaterial';
+		
 		Commands['UADMAcceptChangeChangeToBeUsedMachine'] = 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands.UADMAcceptChangeChangeToBeUsedMachine';
 
 		Commands['UADMAcceptChangeRemoveDependency'] = 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands.UADMAcceptChangeRemoveDependency';
@@ -841,6 +843,7 @@
 
 		Commands['UADMCompleteWOOperationFullQtyMultiMachineList'] = 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands.UADMCompleteWOOperationFullQtyMultiMachineList';
 
+		//DABCUSTOM
 		//Commands['UADMCompleteWOOperationSerializedList'] = 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands.UADMCompleteWOOperationSerializedList';
 		Commands['UADMCompleteWOOperationSerializedList'] = 'Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABCompleteSerial';
 
@@ -988,6 +991,7 @@
 
 		Commands['UADMStartOperation'] = 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands.UADMStartOperation';
 
+		//DABCUSTOM
 		//Commands['UADMStartWOOperationSerializedList'] = 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands.UADMStartWOOperationSerializedList';
 		Commands['UADMStartWOOperationSerializedList'] = 'Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABStartSerial';
 		
