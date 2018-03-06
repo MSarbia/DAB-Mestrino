@@ -32,7 +32,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
 
             IToBeConsumedMaterialExt consumedMaterialExt = Platform.Query<IToBeConsumedMaterialExt>().FirstOrDefault(cms => cms.ToBeConsumedMaterialId == command.ToBeConsumedMaterialId && cms.WorkOrderOperationId == command.WorkOrderOperationId);
 
-            UnplannedMat reportConsumedMaterial = new UnplannedMat(command.ERPOrder, command.OrderSequence, command.MaterialDefinitionNId, customized, consumedMaterialExt.Sequence, command.ConsumedQuantity, command.Plant);
+            UnplannedMat reportConsumedMaterial = new UnplannedMat(command.ERPOrder, command.OrderSequence, command.MaterialDefinitionNId, customized, consumedMaterialExt.Sequence, command.ConsumedQuantity,command.MatrialDefinitionUoM, command.Plant);
 
             var result = InforConnector.ReportConsumedMaterial(reportConsumedMaterial);
 

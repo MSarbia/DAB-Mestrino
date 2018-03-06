@@ -30,47 +30,57 @@ namespace TestInforConsole
 
 
                 InvTransfer materialNonConf = new InvTransfer("TestOrderNumber", "TransIdTest;ToWarehouseTest", "StorageUnitTest", Convert.ToDecimal(1.2), "100", "002612155", true);
-
-                if ((choice > 0) && (choice < 5))
+                try
                 {
-                    if (choice == 1)
+                    if ((choice > 0) && (choice < 5))
                     {
-                        ReportProduction reportProd = new ReportProduction(erpOrder, true, "100");
-                        result = InforConnector.ReportProducedQuantity(reportProd);
-                    }
-                    else if (choice == 2)
-                    {
-                        Console.Write("\nDammi il consumedMaterialSequence (int): ");
-                        int consumedMaterialSequence = Int32.Parse(Console.ReadLine());
-                        Console.Write("Dammi il consumedMaterialDef (string): ");
-                        string consumedMaterialDef = (Console.ReadLine());
-                        Console.Write("Dammi la UoM (string): ");
-                        string unit = (Console.ReadLine());
-                        Console.Write("Dammi il customized (0/1): ");
-                        bool customized = Console.ReadLine() == "0"? false : true;
-                        Console.Write("Dammi la quantity (decimal): ");
-                        decimal qty = decimal.Parse(Console.ReadLine());
-                        UnplannedMat unplannedMat = new UnplannedMat(erpOrder, sequence, consumedMaterialDef, customized, consumedMaterialSequence, Convert.ToDecimal(qty), unit, "100");
+                        if (choice == 1)
+                        {
+                            ReportProduction reportProd = new ReportProduction(erpOrder, true, "100");
 
-                        result = InforConnector.ReportConsumedMaterial(unplannedMat);
-                    }
-                    else if (choice == 3)
-                    {
-                        result = InforConnector.ReportMaterialNonConformance(materialNonConf);
-                    }
-                    else if (choice == 4)
-                    {
-                        Console.Write("\nDammi il closeOrder (0/1): ");
-                        bool closeOrder = Console.ReadLine() == "0" ? false : true;
-                        OperatorOperation operationProg = new OperatorOperation(erpOrder, sequence, 1, "100", closeOrder);
-                        result = InforConnector.ReportOperationProgress(operationProg);
-                    }
+                            result = InforConnector.ReportProducedQuantity(reportProd);
+                        }
+                        else if (choice == 2)
+                        {
+                            Console.Write("\nDammi il consumedMaterialSequence (int): ");
+                            int consumedMaterialSequence = Int32.Parse(Console.ReadLine());
+                            Console.Write("Dammi il consumedMaterialDef (string): ");
+                            string consumedMaterialDef = (Console.ReadLine());
+                            Console.Write("Dammi la UoM (string): ");
+                            string unit = (Console.ReadLine());
+                            Console.Write("Dammi il customized (0/1): ");
+                            bool customized = Console.ReadLine() == "0" ? false : true;
+                            Console.Write("Dammi la quantity (decimal): ");
+                            decimal qty = decimal.Parse(Console.ReadLine());
 
-                    Console.WriteLine("Test passed: " + result.InforCallSucceeded.ToString() + " with message: " + result.Error);
+                            UnplannedMat unplannedMat = new UnplannedMat(erpOrder, sequence, consumedMaterialDef, customized, consumedMaterialSequence, Convert.ToDecimal(qty), unit, "100");
+
+                            result = InforConnector.ReportConsumedMaterial(unplannedMat);
+                        }
+                        else if (choice == 3)
+                        {
+                            result = InforConnector.ReportMaterialNonConformance(materialNonConf);
+                        }
+                        else if (choice == 4)
+                        {
+                            Console.Write("\nDammi il closeOrder (0/1): ");
+                            bool closeOrder = Console.ReadLine() == "0" ? false : true;
+
+                            OperatorOperation operationProg = new OperatorOperation(erpOrder, sequence, 1, "100", closeOrder);
+
+                            result = InforConnector.ReportOperationProgress(operationProg);
+                        }
+
+                        Console.WriteLine("Test passed: " + result.InforCallSucceeded.ToString() + " with message: " + result.Error);
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nScelta errata");
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    Console.WriteLine("\nScelta errata");
+                    Console.WriteLine(e.ToString());
                 }
             }
         }

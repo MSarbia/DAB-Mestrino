@@ -39,7 +39,7 @@ namespace InforConnectorLibrary
 
             UoM = "NR";
 
-            OperationStatus = completed? "Completed" : string.Empty;
+            OperationStatus = completed ? "Completed" : string.Empty;
         }
     }
 }

@@ -95,15 +95,26 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 
                             if (quantityToDeclare > 0)
                             {
-                                var MatDefNId = Platform.ProjectionQuery<MaterialDefinition>().Where(mdnid => mdnid.Id == toBeConsumedMat.MaterialDefinition).Select(mdnid => mdnid.NId).FirstOrDefault();
+                                var matDef = Platform.ProjectionQuery<MaterialDefinition>().Where(mdnid => mdnid.Id == toBeConsumedMat.MaterialDefinition).FirstOrDefault();
 
-                                var reportInput = new ReportConsumedMaterial(workOrderOperation.WorkOrder.ERPOrder, workOrderSequence, toBeConsumedMat.Id, quantityToDeclare, MatDefNId, toBeConsumedMat.MaterialDefinition, workOrderOperation.Id, workOrderOperation.WorkOrder.Plant);
+                                var reportInput = new ReportConsumedMaterial
+                                {
+                                    ERPOrder = workOrderOperation.WorkOrder.ERPOrder,
+                                    ConsumedQuantity = quantityToDeclare,
+                                    MaterialDefinitionId = toBeConsumedMat.MaterialDefinition,
+                                    MaterialDefinitionNId = matDef.NId,
+                                    MatrialDefinitionUoM = matDef.UOM,
+                                    OrderSequence = workOrderSequence,
+                                    Plant = workOrderOperation.WorkOrder.Plant,
+                                    ToBeConsumedMaterialId = toBeConsumedMat.Id,
+                                    WorkOrderOperationId = workOrderOperation.Id
+                                };
 
                                 var result = Platform.CallCommand<ReportConsumedMaterial, ReportConsumedMaterial.Response>(reportInput);
 
                                 if (result.Succeeded == false)
                                 {
-                                    response.SetError(-1000, $"Impossibile produrre il seriale {serialNumber} per mancanza di disponibilità del componente { MatDefNId}");  //PRXXX verificare input corretto
+                                    response.SetError(-1000, $"Impossibile produrre il seriale {serialNumber} per mancanza di disponibilità del componente { matDef.NId}");  //PRXXX verificare input corretto
                                     break;
                                 }
                             }

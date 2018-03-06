@@ -142,6 +142,8 @@ WITH
     WorkOrderOperationId AS int
     [Length = 255]
     Plant AS string
+    [Length = 255]
+    MatrialDefinitionUoM AS string
 
 [Protected]
 [NotSecurable]
