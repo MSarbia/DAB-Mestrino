@@ -158,11 +158,11 @@
     </Reference>
   </ItemGroup>
   <Import Project="$(SITUnifiedVSToolingPlatformBin)\Siemens.SimaticIt.DSL.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+  <Import Project="$(SITUnifiedVSToolingPlatformBin)\Siemens.SimaticIt.ReferenceManager.targets" />
+  <Target Name="RestorePKG" AfterTargets="BeforeBuild" DependsOnTargets="BeforeBuild">
+    <Message Text="Cleaning SimaticITPackages folder" />
+    <Exec Command="call $(SolutionDir)..\Build\EmptyTFFolder.bat $(SolutionDir)" />
+    <Message Text="Resolving refs for $(MSBuildProjectName)" />
+    <CallTarget Targets="RestoreSimaticITUAFPackage" />
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

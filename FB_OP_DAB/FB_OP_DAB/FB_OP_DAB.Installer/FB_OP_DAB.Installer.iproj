@@ -18,6 +18,7 @@
     <FunctionalBlockDescription>
     </FunctionalBlockDescription>
     <SitPlatformVersion>1.5</SitPlatformVersion>
+	<LocalRepoDir Condition="'$(LocalRepoDir)' == '' ">$(SITUnifiedVSToolingModelBin)\..\..\Packages\FunctionalBlocks</LocalRepoDir>
     <AutoDeployPackage>False</AutoDeployPackage>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU'  ">
@@ -80,11 +81,10 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(SITUnifiedVSToolingPlatformBin)\Siemens.SimaticIt.Build.Installer.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+  <Target Name="CopyZIP" AfterTargets="AfterBuild">
+    <CreateItem Include="$(OutDir)Engineering.DAB.FB_OP_DABV*.zip">
+      <Output TaskParameter="Include" ItemName="ZipFile" />
+    </CreateItem>
+    <Copy SourceFiles="@(ZipFile)" DestinationFolder="$(LocalRepoDir)" />
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

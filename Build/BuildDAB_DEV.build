@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+  <Import Project="$(SITUnifiedVSToolingPlatformBin)\Siemens.SimaticIt.ReferenceManager.targets" />
+  <Import Project="$(SITUnifiedVSToolingPlatformBin)\Siemens.SimaticIt.DSL.targets" /> 
+  <Target Name="CleanUp">
+    <ItemGroup>
+      <CleanBeforeBuild Include="$(SITUnifiedVSToolingModelBin)\Siemens.SimaticIT.D.*.dll" />
+      <CleanBeforeBuild Include="$(SITUnifiedVSToolingModelBin)\Siemens.SimaticIT.D.*.pdb" />
+      <CleanBeforeBuild Include="$(SITUnifiedVSToolingModelSource)\Siemens_SimaticIT_D_*.um" />
+      <CleanBeforeBuild Include="$(SITUnifiedVSToolingModelSource)\Siemens_SimaticIT_D_*.umd" />
+    </ItemGroup>
+    <Delete Files="@(CleanBeforeBuild)" />
+  </Target>
+  
+  <PropertyGroup>
+    <SourcePath Condition=" '$(SourcePathDev)'=='' ">%~dp0</SourcePath>
+    <Configuration>Debug</Configuration>
+    <Platform>Any CPU</Platform>
+    <LocalRepoDir></LocalRepoDir>
+    <SolutionProperties>
+      Configuration=$(Configuration);
+      Platform=$(Platform);
+      ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch=None
+    </SolutionProperties>
+  </PropertyGroup>
+  <ItemGroup>
+
+	<Compile Include="..\FB_OP_DAB\FB_OP_DAB.sln">
+    <Properties>$(SolutionProperties)</Properties></Compile>
+    
+    <Compile Include="..\AppDAB\AppDAB.sln">
+    <Properties>$(SolutionProperties)</Properties></Compile>
+	
+  </ItemGroup>
+  
+  <Target Name="Build"  DependsOnTargets="CleanUp">
+    <MSBuild Targets="build" Projects="@(Compile)"  StopOnFirstFailure="true" RebaseOutputs="true"/>
+  </Target>
+
+</Project>
