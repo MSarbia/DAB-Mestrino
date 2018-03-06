@@ -5037,8 +5037,9 @@
             });
 		}
 
+		//DABCUSTOM
 		Types['UADMAcceptChangeChangeToBeConsumedMaterialQuantity'] = function() {
-			return new ComplexType('UADMAcceptChangeChangeToBeConsumedMaterialQuantity',
+			return new ComplexType('DABReplaceMaterial',
 			{
 				ChangePartId: new Property('ChangePartId', new BaseType(Types.BaseTypes.Int64), false),
             	Notes: new Property('Notes', new BaseType(Types.BaseTypes.String), true),
@@ -5186,6 +5187,7 @@
             });
 		}
 
+		//DABCUSTOM
 		Types['UADMCompleteWOOperationSerializedList'] = function() {
 			return new ComplexType('DABCompleteSerial',
 			{
@@ -5853,6 +5855,7 @@
             });
 		}
 
+		//DABCUSTOM
 		Types['UADMStartWOOperationSerializedList'] = function() {
 			return new ComplexType('DABStartSerial',
 			{

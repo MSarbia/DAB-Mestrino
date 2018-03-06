@@ -884,7 +884,9 @@
 
 		Commands['UADMAcceptChangeChangeDependency'] = new CommandDef('UADMAcceptChangeChangeDependency', 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands', new Types.UADMAcceptChangeChangeDependency());
 
-		Commands['UADMAcceptChangeChangeToBeConsumedMaterialQuantity'] = new CommandDef('UADMAcceptChangeChangeToBeConsumedMaterialQuantity', 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands', new Types.UADMAcceptChangeChangeToBeConsumedMaterialQuantity());
+		//DABCUSTOM Replace standard UADMAcceptChangeChangeToBeConsumedMaterialQuantity with DABReplaceMaterial
+		//Commands['UADMAcceptChangeChangeToBeConsumedMaterialQuantity'] = new CommandDef('UADMAcceptChangeChangeToBeConsumedMaterialQuantity', 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands', new Types.UADMAcceptChangeChangeToBeConsumedMaterialQuantity());
+		Commands['UADMAcceptChangeChangeToBeConsumedMaterialQuantity'] = new CommandDef('DABReplaceMaterial', 'Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands', new Types.UADMAcceptChangeChangeToBeConsumedMaterialQuantity());
 
 		Commands['UADMAcceptChangeChangeToBeUsedMachine'] = new CommandDef('UADMAcceptChangeChangeToBeUsedMachine', 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands', new Types.UADMAcceptChangeChangeToBeUsedMachine());
 
@@ -916,6 +918,7 @@
 
 		Commands['UADMCompleteWOOperationFullQtyMultiMachineList'] = new CommandDef('UADMCompleteWOOperationFullQtyMultiMachineList', 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands', new Types.UADMCompleteWOOperationFullQtyMultiMachineList());
 
+		//DABCUSTOM Replace standard UADMCompleteWOOperationSerializedList with DABCompleteSerial
 		//Commands['UADMCompleteWOOperationSerializedList'] = new CommandDef('UADMCompleteWOOperationSerializedList', 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands', new Types.UADMCompleteWOOperationSerializedList());
 		Commands['UADMCompleteWOOperationSerializedList'] = new CommandDef('DABCompleteSerial', 'Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands', new Types.UADMCompleteWOOperationSerializedList());
 
@@ -1063,6 +1066,7 @@
 
 		Commands['UADMStartOperation'] = new CommandDef('UADMStartOperation', 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands', new Types.UADMStartOperation());
 
+		//DABCUSTOM Replace standard UADMStartWOOperationSerializedList with DABStartSerial
 		//Commands['UADMStartWOOperationSerializedList'] = new CommandDef('UADMStartWOOperationSerializedList', 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands', new Types.UADMStartWOOperationSerializedList());
 		Commands['UADMStartWOOperationSerializedList'] = new CommandDef('DABStartSerial', 'Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands', new Types.UADMStartWOOperationSerializedList());
 
