@@ -297,7 +297,7 @@ namespace InforConnectorLibrary
                 else if (reportRequestEnvelope is OperatorOperation)
                 {
                     var operatorOperation = reportRequestEnvelope as OperatorOperation;
-                    string operationStatus = operatorOperation.OperationStatus.Equals("Complete") ? "<OperationStatus>Complete</OperationStatus>" : string.Empty;
+                    string operationStatus = operatorOperation.OperationStatus.Equals("Completed") ? "<OperationStatus>Completed</OperationStatus>" : string.Empty;
                     soapEnvelopeDocument.LoadXml(
                         $@"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:sfc=""http://www.infor.com/businessinterface/SFCOperatorOperation"">
 	                        <soapenv:Header>
@@ -510,12 +510,14 @@ namespace InforConnectorLibrary
             if (document.ToString().Contains("IWMStdReportProduction"))
             {
                 productionOrder = (reportRequest as ReportProduction).ProductionOrder;
-                if (string.IsNullOrEmpty(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "ReceiptNumber").Value))
+                // MSXXX per ora non riceviamo il ReceiptNumber (devono controllare se sia corretto cosi'
+                /* if (string.IsNullOrEmpty(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "ReceiptNumber").Value))
                 {
                     return new InforResult(true, "ReceiptNumber non presente per l'ordine: " + (reportRequest as ReportProduction).ProductionOrder.Trim());
                 }
                 // per ora InforCallSucceded = false da verificare PRXXX
-                else if (document.Descendants().FirstOrDefault(p => p.Name.LocalName == "OutData").Value.StartsWith("1,99") == false)
+                else */
+                if (document.Descendants().FirstOrDefault(p => p.Name.LocalName == "OutData").Value.StartsWith("1,99") == false)
                 {
                     return new InforResult(false, "Campo OutData non ha stringa iniziale 1,99 per l'ordine: " + (reportRequest as ReportProduction).ProductionOrder.Trim());
                 }

@@ -22,6 +22,15 @@
       <Property name="IsMultiValue" kind="Plain" value="false" />
     </Entity>
 	
+	<Entity type="Siemens.SimaticIT.U4DM.RD.FB.ReferenceData.ConfigKey.RFModel.DataModel.ConfigurationKey">
+      <Property name="NId" kind="Plain" value="WindchillIntegration" />
+      <Property name="Type" kind="Plain" value="System.Boolean" />
+      <Property name="Val" kind="Plain" value="false" />
+      <Property name="IsProtected" kind="Plain" value="false" />
+      <Property name="Category" kind="Plain" value="integrations" />
+      <Property name="IsMultiValue" kind="Plain" value="false" />
+    </Entity>
+	
     <!-- ENGINEERING -->
     
     <Entity type="Siemens.SimaticIT.U4DM.RD.FB.ReferenceData.ConfigKey.RFModel.DataModel.ConfigurationKey">

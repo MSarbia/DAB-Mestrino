@@ -31,7 +31,8 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             var changePart = Platform.ProjectionQuery<ChangePart>().Include(cp=>cp.NonConformance).First(cp => cp.Id == command.ChangePartId);
             int workOrderOperationId = changePart.WorkOrderOperation_Id ?? toBeConsumedMaterial.WorkOrderOperation_Id.GetValueOrDefault();
 
-            int sequence = (Platform.ProjectionQuery<ToBeConsumedMaterialExt>().Where(tce => tce.WorkOrderOperationId == workOrderOperationId).Max(tce => tce.Sequence) + 10);
+            int sequence = (Platform.ProjectionQuery<ToBeConsumedMaterialExt>()
+                .Where(tce => tce.WorkOrderOperationId == toBeConsumedMaterial.WorkOrderOperation_Id.Value).Max(tce => tce.Sequence) + 10);
             string logicalPosition = sequence.ToString();
             var acceptResponse = Platform.CallCommand<AcceptChangeAddToBeConsumedMaterial, AcceptChangeAddToBeConsumedMaterial.Response>(new AcceptChangeAddToBeConsumedMaterial
             {
