@@ -69,7 +69,6 @@
     <Folder Include="Engineering.DAB.AppDAB\config\" />
     <Folder Include="Engineering.DAB.AppDAB\fonts\" />
     <Folder Include="Engineering.DAB.AppDAB\resources\" />
-    <Folder Include="Engineering.DAB.AppDAB\scripts\" />
     <Folder Include="Engineering.DAB.AppDAB\services\" />
     <Folder Include="Engineering.DAB.AppDAB\swac\" />
     <Folder Include="Engineering.DAB.AppDAB\widgets\" />
@@ -387,6 +386,8 @@
     <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-select-ctrl.js" />
     <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-select.html" />
     <Content Include="Engineering.DAB.AppDAB\modules\SynopticModule\SynopticScreen-srv.js" />
+    <Content Include="Engineering.DAB.AppDAB\scripts\Chart.bundle.js" />
+    <Content Include="Engineering.DAB.AppDAB\scripts\chartjs-plugin-annotation.min.js" />
     <Content Include="Engineering.DAB.AppDAB\styles\style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
