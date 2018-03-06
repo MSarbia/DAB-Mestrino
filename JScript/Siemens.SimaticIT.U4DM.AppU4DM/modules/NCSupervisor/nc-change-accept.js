@@ -486,16 +486,17 @@
 
             // Add part
             var addMaterial = propMapper[u4dmConstants.changeTypesIds.ADD_PART] = {};
-            addMaterial.propConfig = function () {
+            //DABCUSTOM set properties to show data as a CHANGE QTY
+			addMaterial.propConfig = function () {
                 return [
-                    propGridFields.operation,
-                  propGridFields.material,
-                  propGridFields.materialSpec,
+                  propGridFields.operation,
+                  propGridFields.materialTBC,
                   propGridFields.quantity,
                   propGridFields.notes,
                   propGridFields.refNumber
                 ];
             };
+			
             addMaterial.dataConfig = function () {
                 return [
                     loadOperationsInStatus([u4dmConstants.workOrderOperationStatuses.OPEN,
@@ -503,9 +504,10 @@
                                             null),
                     loadMaterialSpecificationTypes()];
             };
+			//DABCUSTOM set properties to call Accept command as CHANGE QTY
             addMaterial.accept = function () {
                 getPropertyGridValues();
-                ncsupervisorsvc.acceptAddMaterial(currentItem).then(function (result) {
+                ncsupervisorsvc.acceptChangeMaterialQty(currentItem).then(function (result) {
                     sendAccepted();
                 });
             };

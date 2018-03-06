@@ -2224,7 +2224,7 @@
         function getChangeType() {
 			
 			//DABCUSTOM Get Change of type NId=CHANGE PART QTY
-			var options = "$filter=NId eq 'CHANGE PART QTY'";
+			var options = "$filter=NId eq 'ADD PART'";
 			
             return customize('getChangeType', function () {
                 return u4dmSvc.data.getAll('ChangeType', options);
