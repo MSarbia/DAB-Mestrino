@@ -32,12 +32,12 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
                 response.SetError(-1000, "Impossibile connettersi al servizio di stampa: " + error1.error);
                 return response;
             }
-            else if(!string.IsNullOrEmpty(error1.error))
+            else if (!string.IsNullOrEmpty(error1.error))
             {
                 response.SetError(-1000, "Errore di stampa etichetta dati:" + error1.error);
                 return response;
             }
-            var error2 = LabelPrinter.PrintPackageLabel(command.SerialNumbers, command.ProductCode, command.WorkArea);
+            var error2 = LabelPrinter.PrintPackageLabel(command.SerialNumbers, command.ProductCode, command.WorkArea, 2);
 
             if (!error2.connectionsucceeded)
             {

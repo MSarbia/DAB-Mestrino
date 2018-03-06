@@ -20,12 +20,12 @@ namespace TestInforConsole
             int sequence = Int32.Parse(Console.ReadLine());
 
 
-            Console.WriteLine("Selezionare richiesta:\n\n 1) Report Production\n 2) Unplanned Material\n 3) Material Non Conformance \n 4) Operation Progress\n");
-
-            InforResult result = new InforResult();
+                        InforResult result = new InforResult();
 
             while (true)
             {
+                Console.WriteLine("Selezionare richiesta:\n\n 1) Report Production\n 2) Unplanned Material\n 3) Material Non Conformance \n 4) Operation Progress\n");
+
                 int choice = Int32.Parse(Console.ReadLine());
 
 
