@@ -19,8 +19,8 @@ namespace TestInforConsole
             Console.Write("Inserire Sequence (int): ");
             int sequence = Int32.Parse(Console.ReadLine());
 
-            
-            InforResult result = new InforResult();
+
+                        InforResult result = new InforResult();
 
             while (true)
             {
