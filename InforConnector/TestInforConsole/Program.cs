@@ -14,9 +14,9 @@ namespace TestInforConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Inserire ERPOrder: ");
+            Console.Write("Inserire ERPOrder (string): ");
             string erpOrder = Console.ReadLine();
-            Console.WriteLine("Inserire ERPOrder: ");
+            Console.Write("Inserire Sequence (int): ");
             int sequence = Int32.Parse(Console.ReadLine());
 
 
@@ -40,11 +40,16 @@ namespace TestInforConsole
                     }
                     else if (choice == 2)
                     {
-                        int consumedMaterialSequence = 0;
-                        string consumedMaterialDef = string.Empty;
-                        string unit = string.Empty;
-                        bool customized = false;
-                        decimal qty = 0;
+                        Console.Write("\nDammi il consumedMaterialSequence (int): ");
+                        int consumedMaterialSequence = Int32.Parse(Console.ReadLine());
+                        Console.Write("Dammi il consumedMaterialDef (string): ");
+                        string consumedMaterialDef = (Console.ReadLine());
+                        Console.Write("Dammi la UoM (string): ");
+                        string unit = (Console.ReadLine());
+                        Console.Write("Dammi il customized (0/1): ");
+                        bool customized = Console.ReadLine() == "0"? false : true;
+                        Console.Write("Dammi la quantity (decimal): ");
+                        decimal qty = decimal.Parse(Console.ReadLine());
                         UnplannedMat unplannedMat = new UnplannedMat(erpOrder, sequence, consumedMaterialDef, customized, consumedMaterialSequence, Convert.ToDecimal(qty), unit, "100");
 
                         result = InforConnector.ReportConsumedMaterial(unplannedMat);
@@ -55,12 +60,13 @@ namespace TestInforConsole
                     }
                     else if (choice == 4)
                     {
-                        bool closeOrder = false;
+                        Console.Write("\nDammi il closeOrder (0/1): ");
+                        bool closeOrder = Console.ReadLine() == "0" ? false : true;
                         OperatorOperation operationProg = new OperatorOperation(erpOrder, sequence, 1, "100", closeOrder);
                         result = InforConnector.ReportOperationProgress(operationProg);
                     }
 
-                    Console.WriteLine("Test passed : " + result.InforCallSucceeded.ToString() + " with message: " + result.Error);
+                    Console.WriteLine("Test passed: " + result.InforCallSucceeded.ToString() + " with message: " + result.Error);
                 }
                 else
                 {
