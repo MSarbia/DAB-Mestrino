@@ -230,3 +230,21 @@ RESPONSE
     TotalProducedQuantity AS decimal
     DelayProducedQuantity AS decimal
 
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(a7f0308e-b1b4-4c40-a231-8b1134eecd6c)]
+COMMAND DABReleaseOrder
+WITH
+    WorkOrderId AS int
+    ActualOperators AS int
+    [Length = 255]
+    WorkOrderNId AS string
+    SerialNumberCodes AS list of string
+RESPONSE
+    [Optional]
+    Id AS int
+    [Optional]
+    [Length = 255]
+    WarningMessage AS string
+
