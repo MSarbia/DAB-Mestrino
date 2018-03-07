@@ -31,7 +31,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
                 tbcme.WorkOrderOperationId = command.WorkOrderOperationId;
                 tbcme.ToBeConsumedMaterialId = tbcm.ToBeConsumedMaterialId;
                 tbcme.Sequence = tbcm.Sequence;
-                tbcme.DeclaredQuanity = 0;
+                tbcme.DeclaredQuantity = 0;
                 Platform.Submit(tbcme);
             }
             return response;

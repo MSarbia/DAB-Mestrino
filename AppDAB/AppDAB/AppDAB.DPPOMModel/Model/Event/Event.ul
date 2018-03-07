@@ -1,5 +1,1 @@
 VERSION '01.12'
-
-[@Guid(9165da87-4e93-4f60-8ef7-ce321090ed0b)]
-EVENTHANDLER UpdateAndon_Handler LINKED TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events.UpdateAndon
-

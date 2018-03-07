@@ -41,28 +41,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel">
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands">
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events">
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ProjectionModel">
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ProjectionModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ProjectionModel.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ReadingModel">
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ReadingModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.ReadingModel.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types">
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ProjectionModel">
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ProjectionModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ProjectionModel.dll</HintPath>
     </Reference>
-    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ReadingModel">
+    <Reference Include="Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ReadingModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FB_OP_DAB.OPModel\bin\Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ReadingModel.dll</HintPath>
     </Reference>
     <Reference Include="InforConnectorLibrary">
@@ -136,6 +144,8 @@
     <Compile Include="FB_OP_DAB.OPModel\Commands\PrintSNLabelHandlerExecution.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\ReportConsumedMaterialHandler.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\ReportConsumedMaterialHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportConsumedMaterialsHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\ReportConsumedMaterialsHandlerExecution.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\ReportMaterialNonConformanceHandler.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\ReportMaterialNonConformanceHandlerExecution.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\ReportOperationProgressHandler.cs" />

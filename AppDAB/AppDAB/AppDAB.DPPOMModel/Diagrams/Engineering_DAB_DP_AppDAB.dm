@@ -5,14 +5,6 @@
     <FileName>AppDAB.DPPOMModel</FileName>
     <Artifacts>
       <ArtifactSuo>
-        <X>393.79999999999995</X>
-        <Y>54.599999999999966</Y>
-        <FullName>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Events.UpdateAndon</FullName>
-        <IsExpandedA>false</IsExpandedA>
-        <IsExpandedB>false</IsExpandedB>
-        <IsExpandedC>false</IsExpandedC>
-      </ArtifactSuo>
-      <ArtifactSuo>
         <X>50.599999999999909</X>
         <Y>30.599999999999966</Y>
         <FullName>Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.DABReplaceMaterial</FullName>

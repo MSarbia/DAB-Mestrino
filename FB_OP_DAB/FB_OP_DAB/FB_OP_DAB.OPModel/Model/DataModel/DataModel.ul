@@ -215,7 +215,7 @@ WITH
     WorkOrderOperationId AS int
     [Mandatory]
     [@Guid(4e7e984f-491c-42e0-81fb-e9a58f86c7d8)]
-    DeclaredQuanity AS decimal
+    DeclaredQuantity AS decimal(18,4)
     [Mandatory]
     [@Guid(49635be2-00be-4e16-8812-61a83248f0e9)]
     ToBeConsumedMaterialId AS int

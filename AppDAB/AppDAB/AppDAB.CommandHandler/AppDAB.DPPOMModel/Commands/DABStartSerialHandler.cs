@@ -79,7 +79,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     {
                         if (toBeConsumedMat != null)
                         {
-                            var declaredQuantity = Platform.ProjectionQuery<ToBeConsumedMaterialExt>().Where(dq => dq.ToBeConsumedMaterialId == toBeConsumedMat.Id && dq.WorkOrderOperationId == workOrderOperation.Id).Select(dq => dq.DeclaredQuanity).FirstOrDefault();
+                            var declaredQuantity = Platform.ProjectionQuery<ToBeConsumedMaterialExt>().Where(dq => dq.ToBeConsumedMaterialId == toBeConsumedMat.Id && dq.WorkOrderOperationId == workOrderOperation.Id).Select(dq => dq.DeclaredQuantity).FirstOrDefault();
 
                             decimal quantityToDeclare = 0;
                             if (operationQuantity == workOrderOperation.TargetQuantity)
@@ -89,7 +89,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                             else
                             {
                                 decimal neededMatQuantity = toBeConsumedMat.Quantity.GetValueOrDefault() / workOrderOperation.TargetQuantity * operationQuantity;
-
+                                neededMatQuantity = decimal.Truncate(neededMatQuantity * 10000) / 10000;
                                 quantityToDeclare = neededMatQuantity - declaredQuantity;
                             }
 
@@ -103,9 +103,9 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                                     ConsumedQuantity = quantityToDeclare,
                                     MaterialDefinitionId = toBeConsumedMat.MaterialDefinition,
                                     MaterialDefinitionNId = matDef.NId,
-                                    MatrialDefinitionUoM = matDef.UOM,
+                                    MaterialDefinitionUoM = matDef.UOM.ToUpperInvariant(),
                                     OrderSequence = workOrderSequence,
-                                    Plant = workOrderOperation.WorkOrder.Plant,
+                                    Plant = workOrderOperation.WorkOrder.Enterprise.Substring(0, workOrderOperation.WorkOrder.Enterprise.Length - 4),
                                     ToBeConsumedMaterialId = toBeConsumedMat.Id,
                                     WorkOrderOperationId = workOrderOperation.Id
                                 };
@@ -184,7 +184,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 var predecesor = Platform.ProjectionQuery<WorkOrderOperation>().Include(wo => wo.ToBeUsedMachines).First(wo => wo.Id == predecessorId);
                 int equipId = predecesor.ToBeUsedMachines.First().Machine.GetValueOrDefault();
                 string equipNid = Platform.ProjectionQuery<Equipment>().Where(e => e.Id == equipId).Select(e => e.NId).FirstOrDefault();
-                var mateialItem = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pmi => pmi.MaterialItem).Where(pmi => pmi.WorkOrderOperation_Id == predecesor.Id).Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber && pmi.PartialWorkedQuantity==1).Select(pmi=>pmi.MaterialItem).FirstOrDefault();
+                var mateialItem = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pmi => pmi.MaterialItem).Where(pmi => pmi.WorkOrderOperation_Id == predecesor.Id).Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber && pmi.PartialWorkedQuantity == 1).Select(pmi => pmi.MaterialItem).FirstOrDefault();
                 if (mateialItem == null)
                     continue;
                 var materialItemNId = mateialItem.NId;

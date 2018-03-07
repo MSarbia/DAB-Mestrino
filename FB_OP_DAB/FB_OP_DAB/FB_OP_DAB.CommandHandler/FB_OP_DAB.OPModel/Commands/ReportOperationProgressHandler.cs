@@ -33,10 +33,12 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             if (result.InforCallSucceeded == false)
             {
                 response.SetError(-1001, result.Error);
+                Platform.Tracer.Write("Siemens-SimaticIT-Trace-UADMRuntime", result.Error);
             }
             else if (!string.IsNullOrEmpty(result.Error))
             {
                 response.SetError(-1002, result.Error);
+                Platform.Tracer.Write("Siemens-SimaticIT-Trace-UADMRuntime", result.Error);
             }
 
             return response;

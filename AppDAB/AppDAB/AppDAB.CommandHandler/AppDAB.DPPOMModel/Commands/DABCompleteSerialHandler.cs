@@ -87,7 +87,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                         OperationSequence = workOrderExt.Sequence.GetValueOrDefault(),
                         ProducedQuantity = producedQuantity,
                         IsComplete = producedQuantity == workOrderOperation.TargetQuantity,
-                        Plant = order.Plant
+                        Plant = order.Enterprise.Substring(0, order.Enterprise.Length - 4)
                     };
                     var reportOperationResponse = Platform.CallCommand<ReportOperationProgress, ReportOperationProgress.Response>(reportOperationProg);
                     if (!reportOperationResponse.Succeeded)
@@ -104,7 +104,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                         {
                             ErpOrder = order.ERPOrder,
                             CloseOrder = true,
-                            Plant = order.Plant
+                            Plant = order.Enterprise.Substring(0, order.Enterprise.Length - 4)
                         };
                         var reportQuantityResponse = Platform.CallCommand<ReportProducedQuantity, ReportProducedQuantity.Response>(reportQuantity);
                         if (!reportQuantityResponse.Succeeded)

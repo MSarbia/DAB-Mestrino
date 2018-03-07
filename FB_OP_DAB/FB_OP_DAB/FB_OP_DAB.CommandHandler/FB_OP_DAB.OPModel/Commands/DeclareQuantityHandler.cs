@@ -30,7 +30,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
 
             if (toBeConsumedMat != null)
             {
-                toBeConsumedMat.DeclaredQuanity = toBeConsumedMat.DeclaredQuanity + command.DeclaredQuantity;
+                toBeConsumedMat.DeclaredQuantity = toBeConsumedMat.DeclaredQuantity + command.DeclaredQuantity;
 
                 Platform.Submit(toBeConsumedMat);
             }

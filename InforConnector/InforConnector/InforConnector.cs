@@ -39,7 +39,16 @@ namespace InforConnectorLibrary
 
             try
             {
-                var methodToCall = addressList.FirstOrDefault(x => x.Key.Contains(reportRequest.GetType().Name));
+                KeyValuePair<string, string> methodToCall;
+                if (reportRequest is List<UnplannedMat>)
+                {
+                    methodToCall = addressList.FirstOrDefault(x => x.Key.Contains("UnplannedMat"));
+                }
+                else
+                {
+                    methodToCall = addressList.FirstOrDefault(x => x.Key.Contains(reportRequest.GetType().Name));
+                }
+                    
                 if ((methodToCall.Key != null) && (methodToCall.Value != null))
                 {
                     _url = methodToCall.Value;
@@ -259,6 +268,48 @@ namespace InforConnectorLibrary
                                 </iwm:IssueMaterial>
                             </soapenv:Body>
                     </soapenv:Envelope>");
+                }
+                else if(reportRequestEnvelope is List<UnplannedMat>)
+                {
+                    var unplannedMats = reportRequestEnvelope as List<UnplannedMat>;
+                    string pre = $@"
+                        <soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:iwm=""http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue"">
+                            <soapenv:Header>
+                                <iwm:Activation>
+                                    <company>{unplannedMats.First().Company}</company>
+                                </iwm:Activation>
+                                </soapenv:Header>
+                            <soapenv:Body>
+                                <iwm:IssueMaterial>
+                                    <IssueMaterialRequest>
+                                        <ControlArea>
+                                            <processingScope>request</processingScope>
+                                        </ControlArea>
+                                        <DataArea>";
+                    string post = $@"</DataArea>
+                                    </IssueMaterialRequest>
+                                </iwm:IssueMaterial>
+                            </soapenv:Body>
+                    </soapenv:Envelope>";
+                    string issues = "";
+                    foreach(var materialIssue in unplannedMats)
+                    {
+                        string item = materialIssue.Customized ? materialIssue.Item : $"         {materialIssue.Item}";
+                        issues += $@"<IWMStdUnplannedMatlIssue>
+                                                <ProdOrder>{materialIssue.ProdOrder}</ProdOrder>
+                                                <Operation>{materialIssue.Operation}</Operation>
+                                                <Unit>{materialIssue.Unit}</Unit>
+                                                <Item>{item}</Item>
+                                                <Warehouse>{materialIssue.Warehouse}</Warehouse>
+                                                <Location>{materialIssue.Location}</Location>
+                                                <Quantity>{materialIssue.Quantity}</Quantity>
+                                                <Position>{materialIssue.Position}</Position>
+                                                <GenerateOutbound>{materialIssue.GenerateOutbound}</GenerateOutbound>
+                                                <ReleaseOutbound>{materialIssue.ReleaseOutbound}</ReleaseOutbound>
+                                            </IWMStdUnplannedMatlIssue>";
+                    }
+                    string doc = pre + issues + post;
+                    soapEnvelopeDocument.LoadXml(doc);
                 }
                 else if (reportRequestEnvelope is InvTransfer)
                 {
@@ -524,10 +575,18 @@ namespace InforConnectorLibrary
             }
             else if (document.ToString().Contains("IWMStdUnplannedMatlIssue"))
             {
-                productionOrder = (reportRequest as UnplannedMat).ProdOrder;
-                if (string.IsNullOrEmpty(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "ReceiptNumber").Value))
+                if(reportRequest is UnplannedMat)
                 {
-                    return new InforResult(true, "ReceiptNumber non presente per l'ordine " + (reportRequest as UnplannedMat).ProdOrder.Trim());
+                    productionOrder = (reportRequest as UnplannedMat).ProdOrder;
+                }
+                else
+                {
+                    productionOrder = (reportRequest as List<UnplannedMat>).First().ProdOrder;
+                }
+                
+                if (string.IsNullOrEmpty(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "RunNumber").Value))
+                {
+                    return new InforResult(true, "RunNumber non presente per l'ordine " + (reportRequest as UnplannedMat).ProdOrder.Trim());
                 }
                 // per ora InforCallSucceded = false da verificare PRXXX
                 else if (document.Descendants().FirstOrDefault(p => p.Name.LocalName == "OutData").Value.StartsWith("1,99") == false)
@@ -587,6 +646,24 @@ namespace InforConnectorLibrary
             try
             {
                 result = InforConnector.CallWebService(unplannedMat);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result = new InforResult(false, ex.Message);
+
+                return result;
+            }
+        }
+
+        public static InforResult ReportConsumedMaterials(List<UnplannedMat> unplannedMats)
+        {
+            var result = new InforResult();
+
+            try
+            {
+                result = InforConnector.CallWebService(unplannedMats);
 
                 return result;
             }

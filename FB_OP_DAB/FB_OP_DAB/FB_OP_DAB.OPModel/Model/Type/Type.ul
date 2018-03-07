@@ -135,3 +135,29 @@ WITH
     [@Guid(c637e0c9-43fc-4f64-81ca-2ae47354cebb)]
     Sequence AS int
 
+[@Guid(d98cd9ad-a7e9-4725-83bc-0215fc74d06f)]
+PARAMETERTYPE ConsumedMaterialParameter
+WITH
+    [Length = 255]
+    [@Guid(a869db4d-6a8e-4186-bd8e-f200410b631e)]
+    ERPOrder AS string
+    [@Guid(50a0fd80-064d-4eec-9d08-072ab2000a04)]
+    OrderSequence AS int
+    [@Guid(61f9909f-bd39-4b6e-aa93-bb05c8147909)]
+    ToBeConsumedMaterialId AS int
+    [@Guid(06562d9c-cf89-499e-b2b5-cd670440f494)]
+    ConsumedQuantity AS decimal
+    [Length = 255]
+    [@Guid(130cc5ed-0472-4da9-81a0-3536aa058d76)]
+    MaterialDefinitionNId AS string
+    [@Guid(e2554b1e-13e7-40e1-bad7-486e11e5160b)]
+    MaterialDefinitionId AS int
+    [@Guid(2247f5ec-eca7-4bac-a0d3-7686a1a4cb84)]
+    WorkOrderOperationId AS int
+    [Length = 255]
+    [@Guid(e27c4b51-8add-4b33-a335-6a495290548c)]
+    Plant AS string
+    [Length = 255]
+    [@Guid(4b7d105b-bd78-48cb-8ace-786ab03e2324)]
+    MaterialDefinitionUoM AS string
+

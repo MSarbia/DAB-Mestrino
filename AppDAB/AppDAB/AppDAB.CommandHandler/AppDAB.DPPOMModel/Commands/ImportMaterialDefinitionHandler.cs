@@ -28,8 +28,38 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         {
             int myId=0;
             var response = new ImportMaterialDefinition.Response();
+            if (!Platform.ProjectionQuery<UoM>().Any(u => u.NId == command.UoM))
+            {
+                var createUoMResponse = Platform.CallCommand<CreateUoM, CreateUoM.Response>(new CreateUoM
+                {
+                    IsActive = true,
+                    NId = command.UoM,
+                    Name = command.UoM
+                });
+
+                if (!createUoMResponse.Succeeded)
+                {
+                    response.SetError(createUoMResponse.Error.ErrorCode, createUoMResponse.Error.ErrorMessage);
+                    return response;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(command.MaterialFamily) && !Platform.ProjectionQuery<MaterialClass>().Any(mc => mc.NId == command.MaterialFamily))
+            {
+                var createMaterialClassResponse = Platform.CallCommand<CreateMaterialClass, CreateMaterialClass.Response>(new CreateMaterialClass
+                {
+                    NId = command.MaterialFamily,
+                    Name = command.MaterialFamily
+                });
+
+                if (!createMaterialClassResponse.Succeeded)
+                {
+                    response.SetError(createMaterialClassResponse.Error.ErrorCode, createMaterialClassResponse.Error.ErrorMessage);
+                    return response;
+                }
+            }
             var matDef = Platform.ProjectionQuery<MaterialDefinition>().FirstOrDefault(m => m.NId == command.MaterialCode && m.Revision == command.MaterialRevision);
-            if(matDef!=null)
+            if (matDef!=null)
             {
                 var matUpdateResponse = Platform.CallCommand<UADMUpdateMaterialDefinition, UADMUpdateMaterialDefinition.Response>(new UADMUpdateMaterialDefinition
                 {
@@ -54,35 +84,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             }
             else
             {
-                if(!Platform.ProjectionQuery<UoM>().Any(u=>u.NId == command.UoM))
-                {
-                    var createUoMResponse = Platform.CallCommand<CreateUoM, CreateUoM.Response>(new CreateUoM {
-                         IsActive = true,
-                         NId = command.UoM,
-                         Name = command.UoM
-                    });
-
-                    if(!createUoMResponse.Succeeded)
-                    {
-                        response.SetError(createUoMResponse.Error.ErrorCode, createUoMResponse.Error.ErrorMessage);
-                        return response;
-                    }
-                }
-
-                if(!string.IsNullOrEmpty(command.MaterialFamily) && !Platform.ProjectionQuery<MaterialClass>().Any(mc => mc.NId == command.MaterialFamily))
-                {
-                    var createMaterialClassResponse = Platform.CallCommand<CreateMaterialClass, CreateMaterialClass.Response>(new CreateMaterialClass
-                    {
-                        NId = command.MaterialFamily,
-                        Name = command.MaterialFamily
-                    });
-
-                    if (!createMaterialClassResponse.Succeeded)
-                    {
-                        response.SetError(createMaterialClassResponse.Error.ErrorCode, createMaterialClassResponse.Error.ErrorMessage);
-                        return response;
-                    }
-                }
+                
 
                 var createResponse = Platform.CallCommand<UADMCreateMaterialDefinition, UADMCreateMaterialDefinition.Response>(new UADMCreateMaterialDefinition
                 {

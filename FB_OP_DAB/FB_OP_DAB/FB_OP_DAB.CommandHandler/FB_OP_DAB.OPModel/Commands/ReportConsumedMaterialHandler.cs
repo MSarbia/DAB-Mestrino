@@ -32,22 +32,24 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
 
             IToBeConsumedMaterialExt consumedMaterialExt = Platform.Query<IToBeConsumedMaterialExt>().FirstOrDefault(cms => cms.ToBeConsumedMaterialId == command.ToBeConsumedMaterialId && cms.WorkOrderOperationId == command.WorkOrderOperationId);
 
-            UnplannedMat reportConsumedMaterial = new UnplannedMat(command.ERPOrder, command.OrderSequence, command.MaterialDefinitionNId, customized, consumedMaterialExt.Sequence, command.ConsumedQuantity,command.MatrialDefinitionUoM, command.Plant);
+            UnplannedMat reportConsumedMaterial = new UnplannedMat(command.ERPOrder, command.OrderSequence, command.MaterialDefinitionNId, customized, consumedMaterialExt.Sequence, command.ConsumedQuantity,command.MaterialDefinitionUoM, command.Plant);
 
             var result = InforConnector.ReportConsumedMaterial(reportConsumedMaterial);
 
             if (result.InforCallSucceeded == false)
             {
                 response.SetError(-1001, result.Error);
+                Platform.Tracer.Write("Siemens-SimaticIT-Trace-UADMRuntime", result.Error);
             }
             else if (!string.IsNullOrEmpty(result.Error))
             {
                 response.SetError(-1002, result.Error);
+                Platform.Tracer.Write("Siemens-SimaticIT-Trace-UADMRuntime", result.Error);
             }
 
             if (response.Succeeded)
             {
-                consumedMaterialExt.DeclaredQuanity = consumedMaterialExt.DeclaredQuanity + command.ConsumedQuantity;
+                consumedMaterialExt.DeclaredQuantity = consumedMaterialExt.DeclaredQuantity + command.ConsumedQuantity;
 
                 Platform.Submit(consumedMaterialExt);
             }

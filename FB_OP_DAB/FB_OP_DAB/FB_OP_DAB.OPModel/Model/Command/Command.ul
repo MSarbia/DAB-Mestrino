@@ -143,7 +143,7 @@ WITH
     [Length = 255]
     Plant AS string
     [Length = 255]
-    MatrialDefinitionUoM AS string
+    MaterialDefinitionUoM AS string
 
 [Protected]
 [NotSecurable]
@@ -235,4 +235,11 @@ COMMAND FireUpdateAndonEvent
 WITH
     [Length = 255]
     WorkArea AS string
+
+[Protected]
+[@Guid(a286294b-0247-4548-89ef-e9a546b83ff3)]
+COMMAND ReportConsumedMaterials
+WITH
+    [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, d98cd9ad-a7e9-4725-83bc-0215fc74d06f)]
+    ConsumedMaterials AS list of Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ConsumedMaterialParameter
 
