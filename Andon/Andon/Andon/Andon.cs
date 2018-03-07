@@ -96,8 +96,8 @@ namespace Engineering.DAB.Andon
                         ia.SetAttribute("order", alertitem.order.ToString());
                         ia.SetAttribute("line", alertitem.line);
                         ia.SetAttribute("unit", alertitem.unit);
-                        ia.SetAttribute("type", ((alerttype)alertitem.type).ToString());
-                        ia.SetAttribute("status", ((alertstatus)alertitem.status).ToString());
+                        ia.SetAttribute("type", ((int)alertitem.type).ToString());
+                        ia.SetAttribute("status", ((int)alertitem.status).ToString());
 
                         child.AppendChild(ia);
                     }
