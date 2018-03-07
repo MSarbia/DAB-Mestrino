@@ -56,7 +56,8 @@ namespace Engineering.DAB.Andon
                     child.SetAttribute("order_product", item.order_product);
                     child.SetAttribute("order_product_description", item.order_product_description);
                     child.SetAttribute("order_total", item.order_total.ToString());
-                    child.SetAttribute("order_actual", item.order_actual.ToString());
+                    if (item.order_actual >= 0)
+                        child.SetAttribute("order_actual", item.order_actual.ToString());
                     child.SetAttribute("order_customer", item.order_customer);
                     root.AppendChild(child);
                 }
@@ -95,8 +96,8 @@ namespace Engineering.DAB.Andon
                         ia.SetAttribute("order", alertitem.order.ToString());
                         ia.SetAttribute("line", alertitem.line);
                         ia.SetAttribute("unit", alertitem.unit);
-                        ia.SetAttribute("type", ((alerttype)alertitem.type).ToString());
-                        ia.SetAttribute("status", ((alertstatus)alertitem.status).ToString());
+                        ia.SetAttribute("type", ((int)alertitem.type).ToString());
+                        ia.SetAttribute("status", ((int)alertitem.status).ToString());
 
                         child.AppendChild(ia);
                     }

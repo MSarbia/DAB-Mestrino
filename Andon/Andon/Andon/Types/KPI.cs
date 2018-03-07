@@ -16,10 +16,10 @@ namespace Engineering.DAB.Andon.Types
         public int rework_per_shift { get; set; }
         public int rework_min_shift { get; set; }
         public int rework_max_shift { get; set; }
-        public int OEE_per_shift { get; set; }
+        public double OEE_per_shift { get; set; }
         public int OEE_min_shift { get; set; }
         public int OEE_max_shift { get; set; }
-        public int LE_per_shift { get; set; }
+        public double LE_per_shift { get; set; }
         public int LE_min_shift { get; set; }
         public int LE_max_shift { get; set; }
     }
