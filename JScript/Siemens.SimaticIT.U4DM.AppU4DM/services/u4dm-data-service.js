@@ -106,7 +106,10 @@
             commandModel.appName = u4dmConstants.appName;
 			//DABCUSTOM
 			//call the custom command on the AppDAB
-			if (name == 'DABStartSerial' || name == 'DABCompleteSerial' || name == 'DABReplaceMaterial')
+            if (name == 'DABStartSerial' || 
+            name == 'DABCompleteSerial' || 
+            name == 'DABReplaceMaterial' ||
+            name == 'DABReleaseOrder')
 			{
 				commandModel.appName = 'AppDAB';
 			}
