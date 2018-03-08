@@ -485,8 +485,11 @@
             cmdBarButtons.split.visibility = cmdBarButtons.split.visibility && (selectedItems[0].Status == u4dmConstants.workOrderStatuses.New || selectedItems[0].Status == u4dmConstants.workOrderStatuses.Queue || selectedItems[0].Status == u4dmConstants.workOrderStatuses.Pause);
             cmdBarButtons.split.visibility = cmdBarButtons.split.visibility && (selectedItems[0].Status != u4dmConstants.workOrderStatuses.Pause || (selectedItems[0].Status == u4dmConstants.workOrderStatuses.Pause && (selectedItems[0].ProductionType.NId != u4dmConstants.productionTypes.transferBatch && selectedItems[0].ProductionType.NId != u4dmConstants.productionTypes.serialized)));
 
+            cmdBarButtons.release.visibility = false;
+            /*
             cmdBarButtons.release.visibility = selectedItems !== null && selectedItems.length == 1 && 
                 (selectedItems[0].Status == u4dmConstants.workOrderStatuses.Edit || selectedItems[0].Status == u4dmConstants.workOrderStatuses.ReadyForScheduling);
+            */
 
 			cmdBarButtons.dabrelease.visibility = selectedItems !== null && selectedItems.length == 1 && 
                 (selectedItems[0].Status == u4dmConstants.workOrderStatuses.Edit || selectedItems[0].Status == u4dmConstants.workOrderStatuses.ReadyForScheduling);	

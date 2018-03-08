@@ -56,7 +56,9 @@
                 configurePropertyGrid();
             });
 
-
+            u4dmSvc.messaging.subscribe($scope, 'DABReleaseOrder', function () {
+                setCurrentWorkOrder(true);
+            });
 
             u4dmSvc.messaging.subscribe($scope, u4dmConstants.events.FUTURE_HOLD_SELECTED, function (event, data) {
 
@@ -291,7 +293,7 @@
             var editable = vm.currentWorkOrder.Status == u4dmConstants.workOrderStatuses.Edit || vm.currentWorkOrder.Status == u4dmConstants.workOrderStatuses.ReadyForScheduling;
 
             cmdBarButtons.delete.visibility = !vm.editMode;
-            cmdBarButtons.release.visibility = !vm.editMode && editable;
+            cmdBarButtons.release.visibility = false;
             cmdBarButtons.dabrelease.visibility = !vm.editMode && editable;
             cmdBarButtons.edit.visibility = !vm.editMode && vm.currentWorkOrder.Status != u4dmConstants.workOrderStatuses.Aborted;
             cmdBarButtons.schedule.visibility = !vm.editMode && vm.currentWorkOrder.Status == u4dmConstants.workOrderStatuses.Edit;
