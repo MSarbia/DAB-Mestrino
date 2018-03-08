@@ -205,6 +205,9 @@ WITH
     NextOrder AS int
     [@Guid(ac8e8732-74b8-48b2-87c8-209b59acf857)]
     Sequence AS int
+    [Length = 255]
+    [@Guid(2a2f4114-65cd-493d-b0af-8ffdce7e54a1)]
+    Warehouse AS string
 
 [@Guid(dd054901-cac3-434f-81db-c7cff56d31ec)]
 [@GuidId(5148c287-1c27-4741-931a-e6a97aa71824)]

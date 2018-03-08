@@ -27,18 +27,18 @@ namespace InforConnectorLibrary
 
         public string Complete { get; set; }
 
-        public string ReportMore { get; set; }    
+        public string ReportMore { get; set; }
 
-        public ReportProduction(string erpOrder, bool closeOrder, string company)
+        public ReportProduction(string erpOrder, bool closeOrder, string company, string warehouse)
         {
-            FromWarehouse = "D100";
+            FromWarehouse = string.IsNullOrEmpty(warehouse) ? "D100" : warehouse;
             ProductionOrder = erpOrder;
 
             QtyDeliver = 0;
 
             Complete = closeOrder == true ? "yes" : "no";
 
-            Company = string.IsNullOrEmpty(company)?"100":company;
+            Company = string.IsNullOrEmpty(company) ? "100" : company;
 
             ProcessingScope = "request";
 

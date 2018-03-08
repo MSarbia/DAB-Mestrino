@@ -104,7 +104,8 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                         {
                             ErpOrder = order.ERPOrder,
                             CloseOrder = true,
-                            Plant = order.Enterprise.Substring(0, order.Enterprise.Length - 4)
+                            Plant = order.Enterprise.Substring(0, order.Enterprise.Length - 4),
+                            Warehouse = workOrderExt.Warehouse
                         };
                         var reportQuantityResponse = Platform.CallCommand<ReportProducedQuantity, ReportProducedQuantity.Response>(reportQuantity);
                         if (!reportQuantityResponse.Succeeded)

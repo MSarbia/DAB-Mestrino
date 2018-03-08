@@ -25,8 +25,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         private ReportProducedQuantity.Response ReportProducedQuantityHandler(ReportProducedQuantity command)
         {
             var response = new ReportProducedQuantity.Response();
-
-            ReportProduction reportProduction = new ReportProduction(command.ErpOrder, command.CloseOrder, command.Plant);
+            ReportProduction reportProduction = new ReportProduction(command.ErpOrder, command.CloseOrder, command.Plant, command.Warehouse);
 
             var result=InforConnector.ReportProducedQuantity(reportProduction);
 
