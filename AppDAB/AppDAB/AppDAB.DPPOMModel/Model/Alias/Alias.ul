@@ -37,3 +37,4 @@ PUBLISH COMMAND Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.Commands.Lin
 PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.AcceptChangeAddToBeConsumedMaterial AS AcceptChangeAddToBeConsumedMaterial
 PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.FireUpdateAndonEvent AS FireUpdateAndonEvent
 PUBLISH COMMAND Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.ReleaseOrder AS ReleaseOrder
+PUBLISH COMMAND Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportConsumedMaterials AS ReportConsumedMaterials

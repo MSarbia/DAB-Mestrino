@@ -18,7 +18,7 @@
     <FunctionalBlockDescription>
     </FunctionalBlockDescription>
     <SitPlatformVersion>1.5</SitPlatformVersion>
-	<LocalRepoDir Condition="'$(LocalRepoDir)' == '' ">$(SITUnifiedVSToolingModelBin)\..\..\Packages\Projects</LocalRepoDir>
+    <LocalRepoDir Condition="'$(LocalRepoDir)' == '' ">$(SITUnifiedVSToolingModelBin)\..\..\Packages\Projects</LocalRepoDir>
     <AutoDeployPackage>False</AutoDeployPackage>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU'  ">
@@ -38,6 +38,9 @@
   <ItemGroup>
     <Content Include="Config\Engineering.DAB.AppDAB.Dbinit.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExternalDependencies\Engineering.DAB.Andon.dll">
+      <SubType>Content</SubType>
     </Content>
     <Content Include="ExternalDependencies\WindchillDocConnectorLibrary.dll">
       <SubType>Content</SubType>

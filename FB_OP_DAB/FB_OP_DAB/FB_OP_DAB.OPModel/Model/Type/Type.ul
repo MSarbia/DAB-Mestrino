@@ -134,6 +134,8 @@ WITH
     ToBeConsumedMaterialId AS int
     [@Guid(c637e0c9-43fc-4f64-81ca-2ae47354cebb)]
     Sequence AS int
+    [@Guid(acc992e3-3406-4bcf-a666-e1dd9912d112)]
+    ToBeConsumedQuantity AS decimal
 
 [@Guid(d98cd9ad-a7e9-4725-83bc-0215fc74d06f)]
 PARAMETERTYPE ConsumedMaterialParameter

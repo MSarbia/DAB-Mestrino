@@ -222,6 +222,9 @@ WITH
     [Mandatory]
     [@Guid(5711604f-5b35-4d53-b1dd-524cbe0c6014)]
     Sequence AS int
+    [Mandatory]
+    [@Guid(4585988b-103c-4e0c-a112-b2a6e0bc6197)]
+    ToBeConsumedQuantity AS decimal(18,4)
 
 [@Guid(f9b5d6ed-5a3f-4d16-94fb-aeb2aa37981b)]
 [@GuidId(53f0b579-0946-49f7-b784-33df0080afd3)]

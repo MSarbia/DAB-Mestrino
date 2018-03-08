@@ -29,8 +29,8 @@ namespace SmartWatchConnectorLibrary
             {
                 try
                 {
-                //http://161.27.206.191/HMIHub/api/SubscriptionHub/ServerConnect
-                    _deviceConnector = new DeviceConnector("OTWeb", "161.27.206.191/HMIHub/api/");
+                    //http://161.27.206.191/HMIHub/api/SubscriptionHub/ServerConnect
+                    _deviceConnector = new DeviceConnector("OTWeb", "192.168.1.191/HMIHub/api/");
                     _deviceConnector.OnClientConnectedMethod += OnSmartWatchConnected;
                     _deviceConnector.OnMessageReceivedMethod += OnSmartWatchAcknowledge;
                     _deviceConnector.RestoreActions = RestoreType.OnReconnect_BeforeDelegate;
@@ -97,7 +97,32 @@ namespace SmartWatchConnectorLibrary
                 case OTMessageType.Warning:
                     { break; }
                 default:
-                    { return; }
+                    { break; }
+            }
+            DeleteMessage(message);
+        }
+
+        private static void DeleteAllMessages(string clientId)
+        {
+            lock (_deviceConnectorLock)
+            {
+                _deviceConnector.ClearDevice(clientId);
+            }
+        }
+
+        private static void DeleteMessage(PushMessage message)
+        {
+            lock (_clientMessagesLock)
+            {
+                if (clients.ContainsKey(message.ClientUniqueID))
+                {
+                    var client = clients[message.ClientUniqueID];
+                    client.Messages.Remove(message.MessageId);
+                }
+            }
+            lock (_deviceConnectorLock)
+            {
+                _deviceConnector.DeleteMessage(message.ClientUniqueID, message.MessageId);
             }
         }
 
@@ -174,7 +199,7 @@ namespace SmartWatchConnectorLibrary
                 var serialsResponse = service.GetSerials(new GetSerialsRequest { Equipment = equipment, User = c.Value.Item1, Password = c.Value.Item2 });
                 if (serialsResponse.Succeeded)
                 {
-                    foreach(var o in serialsResponse.Orders)
+                    foreach (var o in serialsResponse.Orders)
                     {
                         serials.Add(c.Key, o.Serials.Select(s => new SerialInfo
                         {
@@ -286,13 +311,10 @@ namespace SmartWatchConnectorLibrary
             IOTService service = GetOTService();
             try
             {
-                var loginResponse = service.Login(new LoginRequest
+                var smartWatchInfo = service.GetSmartWatchUser(device.ClientUniqueID);
+                if (smartWatchInfo.Succeeded)
                 {
-                    User = device.Username,
-                    Password = device.Password
-                });
-                if (loginResponse.Succeeded)
-                {
+                    DeleteAllMessages(device.ClientUniqueID);
                     lock (_clientMessagesLock)
                     {
                         if (!clients.ContainsKey(device.ClientUniqueID))
@@ -301,9 +323,9 @@ namespace SmartWatchConnectorLibrary
                             {
                                 UserName = device.Username,
                                 Password = device.Password,
-                                Equipment = loginResponse.Equipment,
-                                WorkArea = loginResponse.WorkArea,
-                                Role = loginResponse.Role
+                                Equipment = smartWatchInfo.Equipment,
+                                WorkArea = smartWatchInfo.WorkArea,
+                                Role = smartWatchInfo.Role
                             });
                         }
                     }
@@ -365,7 +387,7 @@ namespace SmartWatchConnectorLibrary
             {
                 ClientUniqueID = clientId,
                 MessagePriority = MessagePriority.Normal, //GetPriority(messageType),
-                ACKType = ACKType.Single,
+                ACKType = ACKType.Boolean,
                 UsingACK = true,
                 MessageOptions = mo,
                 Type = MessageType.SingleMessageServerToClient,

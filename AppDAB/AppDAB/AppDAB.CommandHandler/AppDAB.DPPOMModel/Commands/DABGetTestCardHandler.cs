@@ -53,36 +53,36 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 response.SetError(getResponse.Error.ErrorCode, getResponse.Error.ErrorMessage);
                 return response;
             }
-            var toBeUsedMachine = toBeProdMat.WorkOrderOperation.ToBeUsedMachines.Where(tum => tum.Machine.HasValue).FirstOrDefault().Machine.Value;
-            var equip = Platform.ProjectionQuery<Equipment>().Where(e => e.Id == toBeUsedMachine).FirstOrDefault();
-            var startResponse = Platform.CallCommand<DABStartSerial, DABStartSerial.Response>(new DABStartSerial
-            {
-                StartWOOperationSerializedParameterTypeList = new List<StartSerializedParameterType>
-                {
-                    new StartSerializedParameterType
-                    {
-                        Id = toBeProdMat.WorkOrderOperation.Id,
-                        NId = toBeProdMat.WorkOrderOperation.NId,
-                        EquipmentName = equip.Name,
-                        EquipmentNId = equip.NId,
-                        ToBeProducedMaterials = new List<MaterialItemParameterType>
-                        {
-                            new MaterialItemParameterType
-                            {
-                                NId = toBeProdMat.MaterialItem.NId,
-                                EquipmentNId = equip.NId,
-                                MaterialDefinitionNId = matDef,
-                                SerialNumber = command.SerialNumber
-                            }
-                        }
-                    }
-                }
-            });
-            if(!startResponse.Succeeded)
-            {
-                response.SetError(startResponse.Error.ErrorCode, startResponse.Error.ErrorMessage);
-                return response;
-            }
+            //var toBeUsedMachine = toBeProdMat.WorkOrderOperation.ToBeUsedMachines.Where(tum => tum.Machine.HasValue).FirstOrDefault().Machine.Value;
+            //var equip = Platform.ProjectionQuery<Equipment>().Where(e => e.Id == toBeUsedMachine).FirstOrDefault();
+            //var startResponse = Platform.CallCommand<DABStartSerial, DABStartSerial.Response>(new DABStartSerial
+            //{
+            //    StartWOOperationSerializedParameterTypeList = new List<StartSerializedParameterType>
+            //    {
+            //        new StartSerializedParameterType
+            //        {
+            //            Id = toBeProdMat.WorkOrderOperation.Id,
+            //            NId = toBeProdMat.WorkOrderOperation.NId,
+            //            EquipmentName = equip.Name,
+            //            EquipmentNId = equip.NId,
+            //            ToBeProducedMaterials = new List<MaterialItemParameterType>
+            //            {
+            //                new MaterialItemParameterType
+            //                {
+            //                    NId = toBeProdMat.MaterialItem.NId,
+            //                    EquipmentNId = equip.NId,
+            //                    MaterialDefinitionNId = matDef,
+            //                    SerialNumber = command.SerialNumber
+            //                }
+            //            }
+            //        }
+            //    }
+            //});
+            //if(!startResponse.Succeeded)
+            //{
+            //    response.SetError(startResponse.Error.ErrorCode, startResponse.Error.ErrorMessage);
+            //    return response;
+            //}
             response.TestCard = getResponse.TestCard;
             return response;
 

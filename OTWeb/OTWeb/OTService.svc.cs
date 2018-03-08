@@ -25,7 +25,7 @@ namespace OTWeb
         static OTService()
         {
             //InitSerials();
-            // SmartWatchConnector.Init<OTService>();            
+            SmartWatchConnector.Init<OTService>();            
         }
 
         public LoginResponse Login(LoginRequest loginRequest)
@@ -90,7 +90,7 @@ namespace OTWeb
                 response.Error = $"Errore {uafResponse.Error.ErrorCode}: {uafResponse.Error.ErrorMessage}";
                 return response;
             }
-            //SmartWatchConnector.SendTeamLeaderlCall(teamLeaderCall.WorkArea, teamLeaderCall.Equipment);
+            SmartWatchConnector.SendTeamLeaderlCall(teamLeaderCall.WorkArea, teamLeaderCall.Equipment);
             CallHub.Static_SendTeamLeaderCall(teamLeaderCall.WorkArea, teamLeaderCall.Equipment);
             return response;
         }
@@ -128,7 +128,7 @@ namespace OTWeb
                 response.Error = $"Errore {uafResponse.Error.ErrorCode}: {uafResponse.Error.ErrorMessage}";
                 return response;
             }
-            //SmartWatchConnector.SendMaterialCall(loginResponse.WorkArea, materialCall.Equipment, materialCall.SerialNumber);
+            SmartWatchConnector.SendMaterialCall(materialCall.WorkArea, materialCall.Equipment, materialCall.SerialNumber);
             CallHub.Static_SendMaterialCall(materialCall.WorkArea, materialCall.Equipment);
             return response;
         }
@@ -437,7 +437,7 @@ namespace OTWeb
             };
         }
 
-        private SmartwatchInfo GetSmartWatchUser(string macAddress)
+        public SmartwatchInfo GetSmartWatchUser(string macAddress)
         {
             var smartwatchInfo = new SmartwatchInfo
             {
@@ -452,6 +452,7 @@ namespace OTWeb
                 smartwatchInfo.Password = user.Element("Password").Value;
                 smartwatchInfo.Equipment = user.Element("Equipment").Value;
                 smartwatchInfo.WorkArea = user.Element("WorkArea").Value;
+                smartwatchInfo.Succeeded = true;
             }
             return smartwatchInfo;
         }

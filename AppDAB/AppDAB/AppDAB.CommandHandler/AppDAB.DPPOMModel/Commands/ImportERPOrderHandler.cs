@@ -168,11 +168,12 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     {
                         response.SetError(createToBeConsumedMaterialsResponse.Error.ErrorCode,createToBeConsumedMaterialsResponse.Error.ErrorMessage);
                     }
+                    Dictionary<int, decimal> toBeConsumedQuantities = createToBeConsumedMaterialsInput.ToBeConsumedMaterials.ToDictionary(m => m.Sequence.Value, m => m.Quantity);
                     Dictionary<int,string> toBeConsumedIds = Platform.ProjectionQuery<ToBeConsumedMaterial>().Where(m => m.WorkOrderOperation_Id == firstOperation.Id).ToDictionary(m=>m.Id,m=>m.LogicalPosition);
                     var toBeConsMatInput = new CreateToBeConsumedMaterialExt
                     {
                         WorkOrderOperationId = firstOperation.Id,
-                        ToBeConsumedMaterials = toBeConsumedIds.Select(m=>new ToBeConsumedMaterialExtParameter { ToBeConsumedMaterialId = m.Key, Sequence = int.Parse(m.Value)}).ToList()
+                        ToBeConsumedMaterials = toBeConsumedIds.Select(m=>new ToBeConsumedMaterialExtParameter { ToBeConsumedMaterialId = m.Key, Sequence = int.Parse(m.Value), ToBeConsumedQuantity = toBeConsumedQuantities[int.Parse(m.Value)] }).ToList()
                     };
 
                     var createTBCMExtResponse = Platform.CallCommand<CreateToBeConsumedMaterialExt, CreateToBeConsumedMaterialExt.Response>(toBeConsMatInput);

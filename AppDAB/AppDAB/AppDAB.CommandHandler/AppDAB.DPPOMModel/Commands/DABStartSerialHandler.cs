@@ -8,6 +8,7 @@ using Siemens.SimaticIT.Handler;
 using Siemens.SimaticIT.Unified;
 using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.ReadingModel;
 using Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types;
+using Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types;
 
 namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 {
@@ -75,20 +76,22 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 var inforIntConf = Platform.ProjectionQuery<ConfigurationKey>().Where(c => c.NId == "InforIntegration").Select(c => c.Val).FirstOrDefault();
                 if (!string.IsNullOrEmpty(inforIntConf) && inforIntConf == "true")
                 {
+                    var reportMaterialsInput = new List<ConsumedMaterialParameter>();
                     foreach (var toBeConsumedMat in workOrderOperation.ToBeConsumedMaterials)
                     {
                         if (toBeConsumedMat != null)
                         {
-                            var declaredQuantity = Platform.ProjectionQuery<ToBeConsumedMaterialExt>().Where(dq => dq.ToBeConsumedMaterialId == toBeConsumedMat.Id && dq.WorkOrderOperationId == workOrderOperation.Id).Select(dq => dq.DeclaredQuantity).FirstOrDefault();
-
+                            var toBeConsumedMaterialExt = Platform.ProjectionQuery<ToBeConsumedMaterialExt>().Where(dq => dq.ToBeConsumedMaterialId == toBeConsumedMat.Id && dq.WorkOrderOperationId == workOrderOperation.Id).FirstOrDefault();
+                            var declaredQuantity = toBeConsumedMaterialExt.DeclaredQuantity;
                             decimal quantityToDeclare = 0;
+                            decimal toBeConsumedMatQuantity = toBeConsumedMaterialExt.ToBeConsumedQuantity;
                             if (operationQuantity == workOrderOperation.TargetQuantity)
                             {
-                                quantityToDeclare = toBeConsumedMat.Quantity.Value - declaredQuantity;
+                                quantityToDeclare = toBeConsumedMatQuantity - declaredQuantity;
                             }
                             else
                             {
-                                decimal neededMatQuantity = toBeConsumedMat.Quantity.GetValueOrDefault() / workOrderOperation.TargetQuantity * operationQuantity;
+                                decimal neededMatQuantity = toBeConsumedMatQuantity / workOrderOperation.TargetQuantity * operationQuantity;
                                 neededMatQuantity = decimal.Truncate(neededMatQuantity * 10000) / 10000;
                                 quantityToDeclare = neededMatQuantity - declaredQuantity;
                             }
@@ -97,7 +100,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                             {
                                 var matDef = Platform.ProjectionQuery<MaterialDefinition>().Where(mdnid => mdnid.Id == toBeConsumedMat.MaterialDefinition).FirstOrDefault();
 
-                                var reportInput = new ReportConsumedMaterial
+                                reportMaterialsInput.Add(new ConsumedMaterialParameter
                                 {
                                     ERPOrder = workOrderOperation.WorkOrder.ERPOrder,
                                     ConsumedQuantity = quantityToDeclare,
@@ -108,15 +111,28 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                                     Plant = workOrderOperation.WorkOrder.Enterprise.Substring(0, workOrderOperation.WorkOrder.Enterprise.Length - 4),
                                     ToBeConsumedMaterialId = toBeConsumedMat.Id,
                                     WorkOrderOperationId = workOrderOperation.Id
-                                };
+                                });
+                            };
 
-                                var result = Platform.CallCommand<ReportConsumedMaterial, ReportConsumedMaterial.Response>(reportInput);
-
+                            //var result = Platform.CallCommand<ReportConsumedMaterial, ReportConsumedMaterial.Response>(reportInput);
+                            if (reportMaterialsInput.Any())
+                            {
+                                var result = Platform.CallCommand<ReportConsumedMaterials, ReportConsumedMaterials.Response>(new ReportConsumedMaterials { ConsumedMaterials = reportMaterialsInput });
                                 if (result.Succeeded == false)
                                 {
-                                    response.SetError(-1000, $"Impossibile produrre il seriale {serialNumber} per mancanza di disponibilità del componente { matDef.NId}");  //PRXXX verificare input corretto
-                                    break;
+                                    foreach (var materialInput in reportMaterialsInput)
+                                    {
+
+                                        var singleResult = Platform.CallCommand<ReportConsumedMaterial, ReportConsumedMaterial.Response>(new ReportConsumedMaterial { ConsumedMaterial = materialInput });
+                                        if (singleResult.Succeeded == false)
+                                        {
+                                            response.SetError(-1000, $"Impossibile produrre il seriale {serialNumber} per mancanza di disponibilità del componente { materialInput.MaterialDefinitionNId}"); 
+                                            break;
+                                        }
+                                    }
                                 }
+
+
                             }
                         }
                     }

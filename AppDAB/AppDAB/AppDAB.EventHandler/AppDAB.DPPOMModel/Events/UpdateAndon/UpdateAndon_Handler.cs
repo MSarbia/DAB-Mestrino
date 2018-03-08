@@ -39,44 +39,51 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events
             //1)	Tempo Ciclo deve arrivare da INFOR;
             //2)	Relativamente al SOLO contesto del Pilota, per OPR e LE, si è concordato di fissare staticamente ad 8 ore, l’intervallo di tempo.Questa logica dovrà essere modifica per le future evoluzioni della soluzione.
 
-            string kpiVar = $"{evt.WorkArea}_KPI";
-            string piVar = $"{evt.WorkArea}_PI";
-            string vaVar = $"{evt.WorkArea}_VA";
-            string lineDesc = evt.WorkArea.Split('.').FirstOrDefault();
-            DateTime today = DateTime.Today;
-
-            var equipIds = Platform.ProjectionQuery<Equipment>().Where(e => e.Parent == evt.WorkArea).Select(e => e.Id).ToList();
-
-            var operationDitonary = Platform.ProjectionQuery<ToBeUsedMachine>().Include(tum => tum.WorkOrderOperation).Where(tum => tum.Machine.HasValue).Where(tum => equipIds.Contains(tum.Machine.Value)).Where(tum => tum.WorkOrderOperation.ActualStartTime >= today).Select(tum => tum.WorkOrderOperation).Distinct().ToDictionary(woo => woo.Id, woo => woo.WorkOrder_Id.Value);
-            var operationIds = operationDitonary.Keys.ToList();
-            var orderIds = operationDitonary.Values.Distinct().ToList();
-            
-            var localNow = DateTime.Now;
-            var currentOrder = Platform.ProjectionQuery<WorkOrder>().Where(wo => orderIds.Contains(wo.Id)).OrderBy(wo => wo.ActualStartTime).FirstOrDefault();
-            string product = string.Empty;
-            string productDesc = string.Empty;
-            decimal orderTotal = 0;
-            decimal orderActual = 0;
-            int team = 0;
-            if (currentOrder != null)
+            //_______________________________________
+            //La formula deve essere: LE = (pezzi prodotti in gg* labour cycle time)/ (worked hours* n°operatori)
+            //Dove:
+            //•        Labour cycle time = cycle time* n° teorico di operatori(man occupation)
+            Platform.Tracer.Write("Siemens-SimaticIT-Trace-UADMRuntime", $"UpdateAndon Event {evt.WorkArea} START");
+            try
             {
-                orderTotal = currentOrder.InitialQuantity;
-                orderActual = currentOrder.ProducedQuantity;
-                MaterialDefinition matDef = Platform.ProjectionQuery<MaterialDefinition>().FirstOrDefault(m => m.Id == currentOrder.FinalMaterial);
-                if (matDef != null)
+                string kpiVar = $"{evt.WorkArea}_KPI";
+                string piVar = $"{evt.WorkArea}_PI";
+                string vaVar = $"{evt.WorkArea}_VA";
+                string lineDesc = evt.WorkArea.Split('.').LastOrDefault();
+                DateTime today = DateTime.Today;
+
+                var equipIds = Platform.ProjectionQuery<Equipment>().Where(e => e.Parent == evt.WorkArea).Select(e => e.Id).ToList();
+
+                var operationDitonary = Platform.ProjectionQuery<ToBeUsedMachine>().Include(tum => tum.WorkOrderOperation).Where(tum => tum.Machine.HasValue).Where(tum => equipIds.Contains(tum.Machine.Value)).Where(tum => tum.WorkOrderOperation.ActualStartTime >= today).Select(tum => tum.WorkOrderOperation).Distinct().ToDictionary(woo => woo.Id, woo => woo.WorkOrder_Id.Value);
+                var operationIds = operationDitonary.Keys.ToList();
+                var orderIds = operationDitonary.Values.Distinct().ToList();
+
+                var localNow = DateTime.Now;
+                var currentOrder = Platform.ProjectionQuery<WorkOrder>().Where(wo => orderIds.Contains(wo.Id)).OrderBy(wo => wo.ActualStartTime).FirstOrDefault();
+                string product = string.Empty;
+                string productDesc = string.Empty;
+                decimal orderTotal = 0;
+                decimal orderActual = 0;
+                int team = 0;
+                if (currentOrder != null)
                 {
-                    product = matDef.NId;
-                    productDesc = matDef.Description;
+                    orderTotal = currentOrder.InitialQuantity;
+                    orderActual = currentOrder.ProducedQuantity;
+                    MaterialDefinition matDef = Platform.ProjectionQuery<MaterialDefinition>().FirstOrDefault(m => m.Id == currentOrder.FinalMaterial);
+                    if (matDef != null)
+                    {
+                        product = matDef.NId;
+                        productDesc = matDef.Description;
+                    }
+                    team = Platform.ProjectionQuery<WorkOrderExt>().Where(woe => woe.WorkOrderId == currentOrder.Id).Select(woe => woe.ActualOperators).FirstOrDefault().GetValueOrDefault();
                 }
-                team = Platform.ProjectionQuery<WorkOrderExt>().Where(woe => woe.WorkOrderId == currentOrder.Id).Select(woe => woe.ActualOperators).FirstOrDefault().GetValueOrDefault();
-            }
 
 
-            var kpiResponse = Platform.CallCommand<GetKPIs, GetKPIs.Response>(new GetKPIs { FromDate = today, WorkArea = evt.WorkArea });
-            var piResponse = Platform.CallCommand<GetProductionInfo, GetProductionInfo.Response>(new GetProductionInfo { FromDate = today, ToDate = new DateTime(localNow.Year, localNow.Month, localNow.Day, 18, 0, 0), WorkArea = evt.WorkArea });
-            var andonData = new Andon.Types.AndonData
-            {
-                ListKPI = new List<Andon.Types.KPI>
+                var kpiResponse = Platform.CallCommand<GetKPIs, GetKPIs.Response>(new GetKPIs { FromDate = today, WorkArea = evt.WorkArea });
+                var piResponse = Platform.CallCommand<GetProductionInfo, GetProductionInfo.Response>(new GetProductionInfo { FromDate = today, ToDate = new DateTime(localNow.Year, localNow.Month, localNow.Day, 18, 0, 0), WorkArea = evt.WorkArea });
+                var andonData = new Andon.Types.AndonData
+                {
+                    ListKPI = new List<Andon.Types.KPI>
                 {
                     new Andon.Types.KPI
                     {
@@ -88,7 +95,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events
                         rework_per_shift = kpiResponse.Rework
                     }
                 },
-                ListProductionInfo = new List<Andon.Types.ProductionInfo>
+                    ListProductionInfo = new List<Andon.Types.ProductionInfo>
                 {
                     new Andon.Types.ProductionInfo
                     {
@@ -105,56 +112,66 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events
                         var_name = piVar
                     }
                 },
-                ListVisualAlerts = new List<Andon.Types.VisualAlerts>
-                {
+                    ListVisualAlerts = new List<Andon.Types.VisualAlerts>
+                    {
 
-                }
-            };
+                    }
+                };
 
-            //Visual Alerts
-            var operatorCalls = Platform.ProjectionQuery<TeamLeaderCall>().Where(tlc => tlc.Accepted == false && tlc.Date >= today).ToList();
-            var materialCalls = Platform.ProjectionQuery<MaterialCall>().Where(mc => mc.Accepted == false && mc.Date >= today).ToList();
-            if (materialCalls.Any() || operatorCalls.Any())
-            {
+                //Visual Alerts
+                var operatorCalls = Platform.ProjectionQuery<TeamLeaderCall>().Where(tlc => tlc.Accepted == false && tlc.Date >= today).ToList();
+                var materialCalls = Platform.ProjectionQuery<MaterialCall>().Where(mc => mc.Accepted == false && mc.Date >= today).ToList();
                 andonData.ListVisualAlerts.Add(new Andon.Types.VisualAlerts
                 {
                     alerts = new List<Andon.Types.eachAlert>(),
                     var_name = vaVar
                 });
-                int operatorCallsNum = 0;
-                int materialCallsNum = 0;
-                foreach (var oc in operatorCalls)
+                if (materialCalls.Any() || operatorCalls.Any())
                 {
-                    andonData.ListVisualAlerts.First().alerts.Add(
-                        new Andon.Types.eachAlert
-                        {
-                            line = evt.WorkArea,
-                            order = operatorCallsNum,
-                            status = Andon.Types.alertstatus.OperatorTeamSpeackerAlertActive,
-                            timestamp = oc.Date.ToString(),
-                            type = Andon.Types.alerttype.Operator,
-                            unit = oc.Equipment
-                        });
-                    operatorCallsNum++;
+                    int operatorCallsNum = 0;
+                    int materialCallsNum = 0;
+                    foreach (var oc in operatorCalls.OrderBy(o => o.Date))
+                    {
+                        string unitDesc = oc.Equipment.Split('.').LastOrDefault();
+                        andonData.ListVisualAlerts.First().alerts.Add(
+                            new Andon.Types.eachAlert
+                            {
+                                line = evt.WorkArea,
+                                order = operatorCallsNum,
+                                status = Andon.Types.alertstatus.OperatorTeamSpeackerAlertActive,
+                                timestamp = oc.Date.ToLocalTime().ToString("yyyy-MM-dd HH':'mm':'ss"), //  07/03/2018 09:00  AAAA-MM-gg HH:MM:ss
+                                type = Andon.Types.alerttype.Operator,
+                                unit = unitDesc
+                            });
+                        operatorCallsNum++;
+                    }
+                    foreach (var mc in materialCalls.OrderBy(m => m.Date))
+                    {
+                        string unitDesc = mc.Equipment.Split('.').LastOrDefault();
+                        andonData.ListVisualAlerts.First().alerts.Add(
+                            new Andon.Types.eachAlert
+                            {
+                                line = evt.WorkArea,
+                                order = operatorCallsNum + materialCallsNum,
+                                status = Andon.Types.alertstatus.MaintenanceOperatorWorking,
+                                timestamp = mc.Date.ToLocalTime().ToString("yyyy-MM-dd HH':'mm':'ss"), //  07/03/2018 09:00  AAAA-MM-gg HH:MM:ss
+                                type = Andon.Types.alerttype.Screwdriver,
+                                unit = unitDesc
+                            });
+                        materialCallsNum++;
+                    }
                 }
-                foreach (var mc in materialCalls)
-                {
-                    andonData.ListVisualAlerts.First().alerts.Add(
-                        new Andon.Types.eachAlert
-                        {
-                            line = evt.WorkArea,
-                            order = operatorCallsNum + materialCallsNum,
-                            status = Andon.Types.alertstatus.MaintenanceAlertActive,
-                            timestamp = mc.Date.ToString(),
-                            type = Andon.Types.alerttype.Screwdriver,
-                            unit = mc.Equipment
-                        });
-                    materialCallsNum++;
-                }
+
+                var andon = new Andon.Andon();
+                andon.SetData("AppDAB", andonData);
+            }
+            catch (Exception e)
+            {
+                Platform.Tracer.Write("Siemens-SimaticIT-Trace-UADMRuntime", $"UpdateAndon Event {evt.WorkArea} END");
             }
 
-            var andon = new Andon.Andon();
-            andon.SetData("AppDAB", andonData);
+
+            Platform.Tracer.Write("Siemens-SimaticIT-Trace-UADMRuntime", $"UpdateAndon Event {evt.WorkArea} START");
         }
     }
 }

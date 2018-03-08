@@ -55,7 +55,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 var pezziRimanenti = totaleOrdine - prodottiOrdine;
                 produzioneShift += prodottiOrdine;
                 produzionePrevistaShift += totaleOrdine;
-                pezziRitardoShift += Math.Max(0, pezziRimanenti - pezziProducibili);
+                pezziRitardoShift += pezziProducibili - pezziRimanenti;
             }
 
             return new GetProductionInfo.Response
