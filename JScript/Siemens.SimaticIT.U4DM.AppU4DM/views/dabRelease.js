@@ -54,11 +54,11 @@
 			
             getPropertyGridValues();
            
-		    var a = currentItem.actualNumberOperator;
+            var actualNumberOperator_tmp = currentItem.actualNumberOperator;
 
 			var selectedWorkOrder = u4dmSvc.data.cache.getSelectedWorkOrder();
 			
-			workOrderStatusSvc.dabReleaseWorkOrder(selectedWorkOrder, actualNumberOperator).
+			workOrderStatusSvc.dabReleaseWorkOrder(selectedWorkOrder, actualNumberOperator_tmp).
                                       then(function (result) {
                                           
 										  u4dmSvc.ui.notify.showInfo('sit.u4dm.workOrderStatus.messages.workorder-released', 'common.success');

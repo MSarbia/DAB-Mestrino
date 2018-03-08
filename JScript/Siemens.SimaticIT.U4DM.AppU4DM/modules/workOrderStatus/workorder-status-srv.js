@@ -971,7 +971,7 @@
         
         //DABCUSTOM new Release command
 		svc.dabReleaseWorkOrder = function (item, actualNumberOperator) {
-            var payload = createPayloadDABReleaseWorkOrder(data);
+            var payload = createPayloadDABReleaseWorkOrder(workOrder, actualNumberOperator);
             return u4dmSvc.api.workOrder.dabrelease(payload);
         }
 
@@ -979,9 +979,9 @@
         {
             var payload = {};
 
-            payload.Id = workOrder.Id;
-            payload.NId = workOrder.NId;
-            payload.actualNumberOperator = actualNumberOperator;
+            payload.WorkOrderId = workOrder.Id;
+            payload.WorkOrderNId = workOrder.NId;
+            payload.ActualOperators = actualNumberOperator;
 
             return payload;
         }
