@@ -762,6 +762,9 @@
 
 		Commands['ReleaseOrder'] = new CommandDef('ReleaseOrder', 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands.Published', new Types.ReleaseOrder());
 
+		//DABCUSTOM new release command
+		Commands['DABReleaseOrder'] = new CommandDef('DABReleaseOrder', 'Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.Published', new Types.DABReleaseOrder());
+
 		Commands['RemoveCertificationToLocationList'] = new CommandDef('RemoveCertificationToLocationList', 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands.Published', new Types.RemoveCertificationToLocationList());
 
 		Commands['RemoveCertificationToMaterialList'] = new CommandDef('RemoveCertificationToMaterialList', 'Siemens.SimaticIT.U4DM.AppU4DM.AppU4DM.DMPOMModel.Commands.Published', new Types.RemoveCertificationToMaterialList());

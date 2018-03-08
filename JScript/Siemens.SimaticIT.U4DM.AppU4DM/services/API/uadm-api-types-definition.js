@@ -4277,6 +4277,17 @@
             });
 		}
 
+		//DABCUSTOM new release command
+		Types['DABReleaseOrder'] = function() {
+			return new ComplexType('DABReleaseOrder',
+			{
+				WorkOrderId: new Property('WorkOrderId', new BaseType(Types.BaseTypes.Int32), false),
+            	WorkOrderNId: new Property('WorkOrderNId', new BaseType(Types.BaseTypes.String), false),
+			SerialNumberCodes: new Property('SerialNumberCodes', new Collection( new BaseType(Types.BaseTypes.String) ), true),
+			ActualOperators: new Property('ActualOperators', new BaseType(Types.BaseTypes.Int32), false)
+            });
+		}
+
 		Types['RemoveCertificationToLocationList'] = function() {
 			return new ComplexType('RemoveCertificationToLocationList',
 			{

@@ -35,16 +35,9 @@
         function init() {
             // expose functions to markup
             vm.save = save;
+            
             vm.cancel = cancel;
-            // initialize the side panel
 
-			/*
-            if(vMisFutureHold && vMisFutureHold == true)
-                u4dmSvc.ui.sidePanel.setTitle('sit.u4dm.holdMgt.view-title.futureHold');
-            else
-                u4dmSvc.ui.sidePanel.setTitle('sit.u4dm.holdMgt.view-title.hold-mgt');
-			*/
-			
 			u4dmSvc.ui.sidePanel.setTitle('sit.u4dm.release');
 
             u4dmSvc.ui.sidePanel.open('e');
