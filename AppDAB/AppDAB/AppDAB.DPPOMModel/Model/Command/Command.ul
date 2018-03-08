@@ -240,6 +240,7 @@ WITH
     ActualOperators AS int
     [Length = 255]
     WorkOrderNId AS string
+    [Optional]
     SerialNumberCodes AS list of string
 RESPONSE
     [Optional]
