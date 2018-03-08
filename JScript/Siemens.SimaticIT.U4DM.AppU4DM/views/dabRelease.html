@@ -1,0 +1,21 @@
+﻿<div class="content" data-internal-id="dabrelease-root">
+    <div>
+        <div class="view-header-row row" data-internal-id="dabrelease-header">
+            <button ng-click="vm.cancel()" class="btn side-panel-button" translate="common.cancel"
+                    data-internal-id="dabrelease-cancel-button"></button>
+            <button ng-click="vm.save()" class="btn side-panel-button" ng-show="vm.validInputs" translate="sit.u4dm.save"
+                    data-internal-id="dabrelease-save-button"></button>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    
+    <div class="content-area-relative" data-internal-id="dabrelease-property-grid">
+        <sit-property-grid sit-id="dabRelease"
+                           sit-data="vm.propertyGrid.data"
+                           sit-layout="{{vm.propertyGrid.layout}}"
+                           sit-type="{{vm.propertyGrid.type}}"
+                           sit-mode="{{vm.propertyGrid.mode}}"
+                           sit-columns="vm.propertyGrid.columns">
+        </sit-property-grid>
+    </div>
+</div>
