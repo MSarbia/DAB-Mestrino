@@ -373,10 +373,10 @@ namespace SmartWatchConnectorLibrary
             {
                 Vibration = isCall || messageType.Equals(OTMessageType.Warning)
             };
-            //if (!string.IsNullOrEmpty(image64))
-            //{
-            //    mo.Image64 = image64;
-            //}
+            if (!string.IsNullOrEmpty(image64))
+            {
+                mo.Image64 = image64;
+            }
             PushMessage pm = new PushMessage()
             {
                 ClientUniqueID = clientId,
@@ -460,11 +460,12 @@ namespace SmartWatchConnectorLibrary
             byte[] hand = convertImageToByte(Properties.Resources.hands);
             byte[] helmet = convertImageToByte(Properties.Resources.helmet);
             byte[] tool = convertImageToByte(Properties.Resources.tools);
+            string prefix="Data:Image/GIF;base64,";       ;
 
-            if (SendMessage(device.ClientUniqueID, OTMessageType.DPIBoots, "Scarpe", Convert.ToBase64String(shoes))
-                && SendMessage(device.ClientUniqueID, OTMessageType.DPIGloves, "Guanti", Convert.ToBase64String(hand))
-                    && SendMessage(device.ClientUniqueID, OTMessageType.DPIHelmet, "Caschetto", Convert.ToBase64String(helmet))
-                        && SendMessage(device.ClientUniqueID, OTMessageType.DPITools, "Strumenti di lavoro", Convert.ToBase64String(tool)))
+            if (SendMessage(device.ClientUniqueID, OTMessageType.DPIBoots, "Scarpe", prefix + Convert.ToBase64String(shoes))
+                && SendMessage(device.ClientUniqueID, OTMessageType.DPIGloves, "Guanti", prefix + Convert.ToBase64String(hand))
+                    && SendMessage(device.ClientUniqueID, OTMessageType.DPIHelmet, "Caschetto", prefix + Convert.ToBase64String(helmet))
+                        && SendMessage(device.ClientUniqueID, OTMessageType.DPITools, "Strumenti di lavoro", prefix + Convert.ToBase64String(tool)))
             {
                 return;
             }
