@@ -102,7 +102,8 @@ namespace WindchillDocConnectorLibrary
         private List<wsRevisionControlled> GetDocuments(string productCode, string productRevision)
         {
             List<wsRevisionControlled> docList = new List<wsRevisionControlled>();
-            string viewType = "MANUFACTURING";
+            //string viewType = "MANUFACTURING";
+            string viewType = "Engineering";
             try
             {
                 var files = _docClient.getRelatedDocuments(productCode, productRevision, viewType);

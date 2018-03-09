@@ -52,6 +52,11 @@
   <ItemGroup>
     <Compile Include="AbsorptionParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\WindchillDocService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\WindchillTestCardService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -62,6 +67,76 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Service References\WindchillDocService\extcdm.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WindchillDocService\ExtService.wsdl" />
+    <None Include="Service References\WindchillDocService\swaref.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.createLinkResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.downloadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.getChildrenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.getLinksResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.getParentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.getRelatedDocumentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.getRevisionControlledResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.queryPartsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.queryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.reviseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.setStatePredecessorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.setStateSuccessorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.testResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.transactionCommitResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.transactionRollbackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.transactionStartResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.uploadDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.wsDocument.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.wsFile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.wsLink.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WindchillDocService\WindchillTestConnectorLibrary.WindchillDocService.wsRevisionControlled.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\WindchillTestCardService\RMWebServicesImplService.wsdl" />
     <None Include="Service References\WindchillTestCardService\swaref.xsd">
       <SubType>Designer</SubType>
@@ -137,6 +212,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WindchillDocService\" />
     <WCFMetadataStorage Include="Service References\WindchillTestCardService\" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +223,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WindchillTestCardService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WindchillDocService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WindchillDocService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WindchillDocService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

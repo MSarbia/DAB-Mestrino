@@ -28,3 +28,16 @@ C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\D
 C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConnectorLibrary.pdb
 C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\Newtonsoft.Json.dll
 C:\GitRepositories\DAB-Mestrino\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\Newtonsoft.Json.xml
+C:\Users\extmes\Desktop\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConsole.exe.config
+C:\Users\extmes\Desktop\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillDocService_Config.xml
+C:\Users\extmes\Desktop\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConsole.exe
+C:\Users\extmes\Desktop\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConsole.pdb
+C:\Users\extmes\Desktop\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\Newtonsoft.Json.dll
+C:\Users\extmes\Desktop\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillDocConnectorLibrary.dll
+C:\Users\extmes\Desktop\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConnectorLibrary.dll
+C:\Users\extmes\Desktop\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillDocConnectorLibrary.pdb
+C:\Users\extmes\Desktop\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\WindchillTestConnectorLibrary.pdb
+C:\Users\extmes\Desktop\WindchillMockSerrvice\WindchillTestConsole\bin\Debug\Newtonsoft.Json.xml
+C:\Users\extmes\Desktop\WindchillMockSerrvice\WindchillTestConsole\obj\Debug\WindchillTestConsole.csprojResolveAssemblyReference.cache
+C:\Users\extmes\Desktop\WindchillMockSerrvice\WindchillTestConsole\obj\Debug\WindchillTestConsole.exe
+C:\Users\extmes\Desktop\WindchillMockSerrvice\WindchillTestConsole\obj\Debug\WindchillTestConsole.pdb
