@@ -11,7 +11,7 @@ namespace PrintTestConsole
     {
         static void Main(string[] args)
         {
-            while(true)
+            while (true)
             {
                 Console.WriteLine("1 - Serial");
                 Console.WriteLine("2 - Data");
@@ -23,33 +23,35 @@ namespace PrintTestConsole
                     case "1":
                         {
                             Console.WriteLine("Insert Serial:");
-                            var result = LabelPrinter.PrintSNLabel(new List<string>() {Console.ReadLine() }, "101110060", "100.DM1.D102");
+                            var result = LabelPrinter.PrintSNLabel(new List<string>() { Console.ReadLine() }, "101110060", "100.DM1.D103", 3);
                             Console.WriteLine($"Succeeded: {result.connectionsucceeded}, Error: {result.error}");
                             break;
                         }
                     case "2":
                         {
-                            var result = LabelPrinter.PrintDataLabel(new List<string>() { }, "101110060", "100.DM1.D102");
+                            Console.WriteLine("Insert Serial:");
+                            var result = LabelPrinter.PrintDataLabel(new List<string>() { Console.ReadLine() }, "101110060", "100.DM1.D103");
                             Console.WriteLine($"Succeeded: {result.connectionsucceeded}, Error: {result.error}");
                             break;
                         }
                     case "3":
                         {
-                            var result = LabelPrinter.PrintPackageLabel(new List<string>() { }, "101110060", "100.DM1.D102");
+                            Console.WriteLine("Insert Serial:");
+                            var result = LabelPrinter.PrintPackageLabel(new List<string>() { Console.ReadLine() }, "101110060", "100.DM1.D103", 1);
                             Console.WriteLine($"Succeeded: {result.connectionsucceeded}, Error: {result.error}");
                             break;
                         }
                     case "4":
                         {
-                            var result = LabelPrinter.PrintPalletLabel(new List<string>() { }, "101110060", "100.DM1.D102");
+                            var result = LabelPrinter.PrintPalletLabel(new List<string>() { }, "101110060", "100.DM1.D103");
                             Console.WriteLine($"Succeeded: {result.connectionsucceeded}, Error: {result.error}");
                             break;
                         }
                 }
-               
 
 
-                
+
+
             }
         }
     }

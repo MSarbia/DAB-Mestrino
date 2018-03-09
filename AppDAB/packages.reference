@@ -46,5 +46,10 @@
       <version>01.00.00</version>
       <type>Library</type>
     </functionalblock>
+    <functionalblock>
+      <name>Siemens.SimaticIT.U4DM.IdGenerate</name>
+      <version>03.00.00</version>
+      <type>Library</type>
+    </functionalblock>
   </functionalblocks>
 </referenceManager>

@@ -35,6 +35,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             woe.WorkOrderId = command.WorkOrderId;
             woe.NextOrder = command.NextOrder;
             woe.Sequence = command.Sequence;
+            woe.Warehouse = command.Warehouse;
             Platform.Submit(woe);
 
             return response;

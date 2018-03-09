@@ -125,6 +125,9 @@ WITH
     [Length = 255]
     ErpOrder AS string
     CloseOrder AS bool
+    [Optional]
+    [Length = 255]
+    Warehouse AS string
 
 [Protected]
 [NotSecurable]
@@ -208,6 +211,9 @@ WITH
     Operators AS int
     NextOrder AS int
     Sequence AS int
+    [Optional]
+    [Length = 255]
+    Warehouse AS string
 
 [Protected]
 [NotSecurable]
