@@ -93,6 +93,14 @@
       <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.QMSInt_01.00.00\model\bin\Siemens.SimaticIT.U4DM.MsExt.QMSInt.OEModel.Types.ReadingModel.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.OperationalData.IdGenerate.OPModel.Types.ProjectionModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.IdGenerate_03.00.00\model\bin\Siemens.SimaticIT.U4DM.OperationalData.IdGenerate.OPModel.Types.ProjectionModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Siemens.SimaticIT.U4DM.OperationalData.IdGenerate.OPModel.Types.ReadingModel">
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.IdGenerate_03.00.00\model\bin\Siemens.SimaticIT.U4DM.OperationalData.IdGenerate.OPModel.Types.ReadingModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Siemens.SimaticIT.U4DM.RD.FB.ReferenceData.ConfigKey.RFModel.Types.ProjectionModel">
       <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.RD.FB.ConfigKey_03.00.00\model\bin\Siemens.SimaticIT.U4DM.RD.FB.ReferenceData.ConfigKey.RFModel.Types.ProjectionModel.dll</HintPath>
       <Private>False</Private>

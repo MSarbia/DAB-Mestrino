@@ -215,3 +215,23 @@ ENTITYLINK NonConformance TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Data
 [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, f9b5d6ed-5a3f-4d16-94fb-aeb2aa37981b)]
 ENTITYLINK MaterialDefinitionExt TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.MaterialDefinitionExt
 
+///This entity represents the relationship between a Template, a Material Definition, and a Plant (Equipment).
+[@Guid(81c72732-af5e-417b-b18d-c10625dcfad6)]
+[@GuidRef(b96dac5b-c281-45fa-b02d-ede44038ed6b, cc6b1aea-b0f0-4e52-b186-a3484d7c467a)]
+ENTITYLINK TemplateToMaterialPlant TO Siemens.SimaticIT.U4DM.OperationalData.IdGenerate.OPModel.DataModel.TemplateToMaterialPlant
+
+///This entity represents the type of the template. The available types are: **WorkOrderNId**,**SerialNumber**, or **MaterialBatchId**. The template will be applied solely to the entity specified. 
+[@Guid(44331a11-1321-4ef0-84f0-3f622656e925)]
+[@GuidRef(b96dac5b-c281-45fa-b02d-ede44038ed6b, b03edf60-be8d-4021-b335-b92631110c36)]
+ENTITYLINK TemplateType TO Siemens.SimaticIT.U4DM.OperationalData.IdGenerate.OPModel.DataModel.TemplateType
+
+///This entity represents a building block of a Template. A set of Template Blocks placed in the correct sequence is the blueprint that will be used for generating the identifier at runtime.
+[@Guid(a7a0e0c5-2e34-4dd3-93ee-69045351a53b)]
+[@GuidRef(b96dac5b-c281-45fa-b02d-ede44038ed6b, c01d144a-98a0-486b-adf1-c851b747733f)]
+ENTITYLINK TemplateBlock TO Siemens.SimaticIT.U4DM.OperationalData.IdGenerate.OPModel.DataModel.TemplateBlock
+
+///This entity represents a template for generating an identifier at runtime. Its Type identifies the Entity that will use the template. A Template consists of a series of Template Blocks, which together make up the actual Template.
+[@Guid(24eae478-4753-49cb-afda-6d20bd09037e)]
+[@GuidRef(b96dac5b-c281-45fa-b02d-ede44038ed6b, efae0d4c-a020-473c-ac71-a57d8c6b4680)]
+ENTITYLINK Template TO Siemens.SimaticIT.U4DM.OperationalData.IdGenerate.OPModel.DataModel.Template
+
