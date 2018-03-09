@@ -144,6 +144,12 @@
       <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.QMSInt_01.00.00\model\manufacturingModel\Siemens_SimaticIT_U4DM_OE_QMSInt.um</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Siemens_SimaticIT_U4DM_OP_IdGenerate.um">
+      <Name>Siemens_SimaticIT_U4DM_OP_IdGenerate.um</Name>
+      <FileModelName>Siemens_SimaticIT_U4DM_OP_IdGenerate.um</FileModelName>
+      <HintPath>..\..\SimaticITPackages\Siemens.SimaticIT.U4DM.IdGenerate_03.00.00\model\manufacturingModel\Siemens_SimaticIT_U4DM_OP_IdGenerate.um</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Siemens_SimaticIT_U4DM_RD_FB_RF_ConfigKey.um">
       <Name>Siemens_SimaticIT_U4DM_RD_FB_RF_ConfigKey.um</Name>
       <FileModelName>Siemens_SimaticIT_U4DM_RD_FB_RF_ConfigKey.um</FileModelName>

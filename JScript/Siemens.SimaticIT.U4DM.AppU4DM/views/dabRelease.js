@@ -62,6 +62,9 @@
                                       then(function (result) {
                                           
 										  u4dmSvc.ui.notify.showInfo('sit.u4dm.workOrderStatus.messages.workorder-released', 'common.success');
+                                          
+                                          u4dmSvc.messaging.post('DABReleaseOrder', { });
+
                                           $state.go('^');
 										  
                                       }, u4dmSvc.ui.overlay.showBackendError);
@@ -78,7 +81,7 @@
 
 			pgFields.actualNumberOperator = propGridMgr.createNumericProperty({
                     id: 'actualNumberOperator',
-                    labelKey: 'sit.u4dm.quantity',
+                    labelKey: 'Numero di Operatori',
                     value: currentItem.actualNumberOperator,
                     required: true
             });

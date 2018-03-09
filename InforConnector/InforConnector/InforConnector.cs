@@ -451,7 +451,6 @@ namespace InforConnectorLibrary
         private static InforResult InsertSoapEnvelopeIntoWebRequest(XmlDocument soapEnvelopeXml, HttpWebRequest webRequest)
         {
             var result = new InforResult();
-
             try
             {
                 using (Stream stream = webRequest.GetRequestStream())
@@ -576,6 +575,16 @@ namespace InforConnectorLibrary
             }
             //MSXXX
 
+            //MSXXX
+            string date = DateTime.Now.ToString("yyyy_MM_dd_hhmmss");
+            string path = @"c:\temp\" + date + "_RESPONSE.txt";
+
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                sw.WriteLine(document);
+            }
+            //MSXXX
+            
             if (document.ToString().Contains("IWMStdReportProduction"))
             {
                 productionOrder = (reportRequest as ReportProduction).ProductionOrder;
