@@ -49,8 +49,8 @@ namespace SmartWatchConnectorLibrary
             }
             foreach (var device in devices)
             {
-                device.Username = "Op20";
-                device.Password = "asdasdasdeee";
+                //device.Username = "Op20";
+                //device.Password = "asdasdasdeee";
                 OnSmartWatchConnected(device);
             }
         }

@@ -72,25 +72,32 @@
     </sit-command-bar>
     <sit-item-collection-viewer sit-data="vm.viewerData" sit-options="vm.viewerOptions" style="display: none;">
     </sit-item-collection-viewer>
+    <script type="text/javascript">
+        function showModal(modalName)
+        {
+			$('#' + modalName).css('visibility', 'visible');
+            $('#' + modalName).show();
+        }
 
+    </script>
     <div id="mainContent" name="mainContent" style="position: relative; top: 0; left: 0; width: 100%; height:100%; border:solid">
         <svg id="svgSynoptic" viewBox="0 0 940 430" preserveAspectRatio="xMidYMid" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <image id="bgSynoptic" xlink:href="Engineering.DAB.AppDAB/images/sinottico_2_6_1.png" preserveAspectRatio="xMidYMid" width="940" height="430"></image>
             <g id="svg_1">
                 <foreignObject class="node" height="90" width="100" y="340" x="320">
-                    <a href="#0" class="buttonStyle" id="btnJET" data-type="cd-modal-trigger">Linea JET</a>
+                    <div onclick="showModal('jetModal');" class="buttonStyle" id="btnJET" data-type="cd-modal-trigger">Linea JET</div>
                 </foreignObject>
                 <foreignObject class="node" height="90" width="100" y="220" x="565">
-                    <a href="#0" class="buttonStyle" id="btnM80" data-type="cd-modal-trigger">Linea JET</a>
+                    <div onclick="showModal('M80Modal');" class="buttonStyle" id="btnM80" data-type="cd-modal-trigger">Linea JET</div>
                 </foreignObject>
                 <foreignObject class="node" height="90" width="100" y="220" x="790">
-                    <a href="#0" class="buttonStyle" id="btnM100" data-type="cd-modal-trigger">Linea JET</a>
+                    <div onclick="showModal('M100Modal');" class="buttonStyle" id="btnM100" data-type="cd-modal-trigger">Linea JET</div>
                 </foreignObject>
             </g>
         </svg>
     </div>
 
-    <div class="cd-modal" data-modal="btnJET">
+    <div id="jetModal" class="cd-modal" data-modal="btnJET">
         <div class="cd-modal-content">
             <svg viewBox="0 0 940 500">
                 <g>
@@ -109,7 +116,7 @@
             </svg>
         </div>
     </div> <!-- cd-modal -->
-    <div class="cd-modal" data-modal="btnM80">
+    <div id="M80Modal" class="cd-modal" data-modal="btnM80">
         <div class="cd-modal-content">
             <svg viewBox="0 0 940 500">
                 <g>
@@ -126,7 +133,7 @@
             </svg>
         </div>
     </div> <!-- cd-modal -->
-    <div class="cd-modal" data-modal="btnM100">
+    <div id="M100Modal" class="cd-modal" data-modal="btnM100">
         <div class="cd-modal-content">
             <svg viewBox="0 0 940 500">
                 <g>

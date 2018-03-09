@@ -441,10 +441,9 @@ namespace InforConnectorLibrary
 
             using (StreamWriter sw = File.CreateText(path))
             {
-                sw.WriteLine(soapEnvelopeDocument.ToString());                
+                sw.WriteLine(soapEnvelopeDocument.ToString());
             }
             //MSXXX
-
             return soapEnvelopeDocument;
         }
 
@@ -565,6 +564,16 @@ namespace InforConnectorLibrary
             {
                 return new InforResult(false, "XDocument.Parse error: " + ex.Message);
             }
+
+            //MSXXX
+            string date = DateTime.Now.ToString("yyyy_MM_dd_hhmmss");
+            string path = @"c:\temp\" + date + "_RESPONSE.txt";
+
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                sw.WriteLine(document);
+            }
+            //MSXXX
 
             //MSXXX
             string date = DateTime.Now.ToString("yyyy_MM_dd_hhmmss");

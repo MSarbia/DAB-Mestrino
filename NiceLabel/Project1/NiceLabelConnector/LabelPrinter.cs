@@ -68,7 +68,7 @@ namespace NiceLabelConnector
             }
 
             text = text + endXml();
-
+                Console.WriteLine(quantity);
             CData = doc.CreateCDataSection(text);
             string error;
             using (var client = new WebSrviTrgClient(NiceLabelWebSrviTrgConfig))
