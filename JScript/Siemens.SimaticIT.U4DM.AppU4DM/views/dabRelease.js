@@ -35,16 +35,9 @@
         function init() {
             // expose functions to markup
             vm.save = save;
+            
             vm.cancel = cancel;
-            // initialize the side panel
 
-			/*
-            if(vMisFutureHold && vMisFutureHold == true)
-                u4dmSvc.ui.sidePanel.setTitle('sit.u4dm.holdMgt.view-title.futureHold');
-            else
-                u4dmSvc.ui.sidePanel.setTitle('sit.u4dm.holdMgt.view-title.hold-mgt');
-			*/
-			
 			u4dmSvc.ui.sidePanel.setTitle('sit.u4dm.release');
 
             u4dmSvc.ui.sidePanel.open('e');
@@ -61,11 +54,11 @@
 			
             getPropertyGridValues();
            
-		    var a = currentItem.actualNumberOperator;
+            var actualNumberOperator_tmp = currentItem.actualNumberOperator;
 
 			var selectedWorkOrder = u4dmSvc.data.cache.getSelectedWorkOrder();
 			
-			workOrderStatusSvc.dabReleaseWorkOrder(selectedWorkOrder, actualNumberOperator).
+			workOrderStatusSvc.dabReleaseWorkOrder(selectedWorkOrder, actualNumberOperator_tmp).
                                       then(function (result) {
                                           
 										  u4dmSvc.ui.notify.showInfo('sit.u4dm.workOrderStatus.messages.workorder-released', 'common.success');

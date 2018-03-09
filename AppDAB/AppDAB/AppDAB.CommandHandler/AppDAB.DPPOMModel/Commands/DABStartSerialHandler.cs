@@ -98,7 +98,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                                     neededMatQuantity = decimal.Truncate(neededMatQuantity * 10000) / 10000;
                                     quantityToDeclare = neededMatQuantity - declaredQuantity;
                                 }
-
+                                Platform.Tracer.Write("Siemens-SimaticIT-Trace-UADMRuntime", $"Quantità di {toBeConsumedMaterialExt.Sequence}: {quantityToDeclare}");
                                 if (quantityToDeclare > 0)
                                 {
                                     var matDef = Platform.ProjectionQuery<MaterialDefinition>().Where(mdnid => mdnid.Id == toBeConsumedMat.MaterialDefinition).FirstOrDefault();
@@ -115,27 +115,26 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                                         ToBeConsumedMaterialId = toBeConsumedMat.Id,
                                         WorkOrderOperationId = workOrderOperation.Id
                                     });
-                                };
-
+                                }
                                 //var result = Platform.CallCommand<ReportConsumedMaterial, ReportConsumedMaterial.Response>(reportInput);
-                                if (reportMaterialsInput.Any())
-                                {
-                                    var result = Platform.CallCommand<ReportConsumedMaterials, ReportConsumedMaterials.Response>(new ReportConsumedMaterials { ConsumedMaterials = reportMaterialsInput });
-                                    if (result.Succeeded == false)
-                                    {
-                                        foreach (var materialInput in reportMaterialsInput)
-                                        {
+                            }
+                        }
+                        if (reportMaterialsInput.Any())
+                        {
+                            //var result = Platform.CallCommand<ReportConsumedMaterials, ReportConsumedMaterials.Response>(new ReportConsumedMaterials { ConsumedMaterials = reportMaterialsInput });
+                            //if (result.Succeeded == false)
+                            //{
+                            foreach (var materialInput in reportMaterialsInput)
+                            {
 
-                                            var singleResult = Platform.CallCommand<ReportConsumedMaterial, ReportConsumedMaterial.Response>(new ReportConsumedMaterial { ConsumedMaterial = materialInput });
-                                            if (singleResult.Succeeded == false)
-                                            {
-                                                response.SetError(-1000, $"Impossibile produrre il seriale {serialNumber} per mancanza di disponibilità del componente { materialInput.MaterialDefinitionNId}");
-                                                break;
-                                            }
-                                        }
-                                    }
+                                var singleResult = Platform.CallCommand<ReportConsumedMaterial, ReportConsumedMaterial.Response>(new ReportConsumedMaterial { ConsumedMaterial = materialInput });
+                                if (singleResult.Succeeded == false)
+                                {
+                                    response.SetError(-1000, $"Impossibile produrre il seriale {serialNumber} per mancanza di disponibilità del componente { materialInput.MaterialDefinitionNId}");
+                                    break;
                                 }
                             }
+                            //}
                         }
                     }
 
@@ -159,7 +158,8 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 {
                     string mateialItemNId = Platform.ProjectionQuery<ToBeProducedMaterial>().Include(pmi => pmi.MaterialItem)
                         .Where(pmi => pmi.WorkOrderOperation_Id == workOrderOperation.Id)
-                        .Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber).Select(pmi => pmi.MaterialItem.NId).FirstOrDefault();
+                        .Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber)
+                        .Select(pmi => pmi.MaterialItem.NId).FirstOrDefault();
 
                     startInput.StartSerializedParameter.ToBeProducedMaterials.Add(
                         new MaterialItemParameterType

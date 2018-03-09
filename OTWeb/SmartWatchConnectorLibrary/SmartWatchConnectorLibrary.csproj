@@ -48,6 +48,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
@@ -71,6 +72,11 @@
     </Compile>
     <Compile Include="MessageInfo.cs" />
     <Compile Include="OTMessageType.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SerialInfo.cs" />
     <Compile Include="SmartWatchConnector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,6 +123,14 @@
   <ItemGroup>
     <Content Include="ExternalReferences\HMIHubConnectorLib\HMIHubConnector.dll" />
     <Content Include="ExternalReferences\HMIHubConnectorLib\HMIHubModel.dll" />
+    <EmbeddedResource Include="images\IMG_7817.gif" />
+    <EmbeddedResource Include="images\IMG_7818.gif" />
+    <EmbeddedResource Include="images\IMG_7819.gif" />
+    <EmbeddedResource Include="images\IMG_7820.gif" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

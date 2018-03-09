@@ -9,6 +9,8 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using static HMIHubConnector.DeviceConnector;
+using System.Resources;
+using System.Drawing;
 
 namespace SmartWatchConnectorLibrary
 {
@@ -47,8 +49,8 @@ namespace SmartWatchConnectorLibrary
             }
             foreach (var device in devices)
             {
-                device.Username = "Op20";
-                device.Password = "asdasdasdeee";
+                //device.Username = "Op20";
+                //device.Password = "asdasdasdeee";
                 OnSmartWatchConnected(device);
             }
         }
@@ -112,14 +114,6 @@ namespace SmartWatchConnectorLibrary
 
         private static void DeleteMessage(PushMessage message)
         {
-            lock (_clientMessagesLock)
-            {
-                if (clients.ContainsKey(message.ClientUniqueID))
-                {
-                    var client = clients[message.ClientUniqueID];
-                    client.Messages.Remove(message.MessageId);
-                }
-            }
             lock (_deviceConnectorLock)
             {
                 _deviceConnector.DeleteMessage(message.ClientUniqueID, message.MessageId);
@@ -379,10 +373,10 @@ namespace SmartWatchConnectorLibrary
             {
                 Vibration = isCall || messageType.Equals(OTMessageType.Warning)
             };
-            //if (!string.IsNullOrEmpty(image64))
-            //{
-            //    mo.Image64 = image64;
-            //}
+            if (!string.IsNullOrEmpty(image64))
+            {
+                mo.Image64 = image64;
+            }
             PushMessage pm = new PushMessage()
             {
                 ClientUniqueID = clientId,
@@ -453,13 +447,25 @@ namespace SmartWatchConnectorLibrary
         {
             return ((MessageInfo<TData>)mi).Data;
         }
+        private static byte[] convertImageToByte(Image x)
+        {
+            ImageConverter _imageConverter = new ImageConverter();
+            byte[] xByte = (byte[])_imageConverter.ConvertTo(x, typeof(byte[]));
+            return xByte;
+        }
 
         private static void SendDPICheck(Device device)
         {
-            if (SendMessage(device.ClientUniqueID, OTMessageType.DPIBoots, "Scarpe", null)
-                && SendMessage(device.ClientUniqueID, OTMessageType.DPIGloves, "Guanti", null)
-                    && SendMessage(device.ClientUniqueID, OTMessageType.DPIHelmet, "Caschetto", null)
-                        && SendMessage(device.ClientUniqueID, OTMessageType.DPITools, "Strumenti di lavoro", null))
+            byte[] shoes = convertImageToByte(Properties.Resources.shoes);
+            byte[] hand = convertImageToByte(Properties.Resources.hands);
+            byte[] helmet = convertImageToByte(Properties.Resources.helmet);
+            byte[] tool = convertImageToByte(Properties.Resources.tools);
+            string prefix="Data:Image/GIF;base64,";       ;
+
+            if (SendMessage(device.ClientUniqueID, OTMessageType.DPIBoots, "Scarpe", prefix + Convert.ToBase64String(shoes))
+                && SendMessage(device.ClientUniqueID, OTMessageType.DPIGloves, "Guanti", prefix + Convert.ToBase64String(hand))
+                    && SendMessage(device.ClientUniqueID, OTMessageType.DPIHelmet, "Caschetto", prefix + Convert.ToBase64String(helmet))
+                        && SendMessage(device.ClientUniqueID, OTMessageType.DPITools, "Strumenti di lavoro", prefix + Convert.ToBase64String(tool)))
             {
                 return;
             }

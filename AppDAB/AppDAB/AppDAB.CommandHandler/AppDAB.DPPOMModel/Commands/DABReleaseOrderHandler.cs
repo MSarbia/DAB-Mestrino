@@ -41,9 +41,15 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 
             if (workOrder.Status == "Edit")
             {
+                var releaseOrderInput = new ReleaseOrder
+                {
+                    WorkOrderId = command.WorkOrderId,
+                    WorkOrderNId = command.WorkOrderNId,
+                    SerialNumberCodes = command.SerialNumberCodes
+                };
+
                 var releaeOrderResponse =
-                    this.Platform.CallCommand<ReleaseOrder, ReleaseOrder.Response>(
-                        new ReleaseOrder(command.WorkOrderId, command.WorkOrderNId));
+                    this.Platform.CallCommand<ReleaseOrder, ReleaseOrder.Response>(releaseOrderInput);
 
                 releaeOrderResponseSucceeded = releaeOrderResponse.Succeeded;
 
