@@ -71,4 +71,8 @@
         };
         $stateProvider.state(state);
     }
+
+
+    
+
 }());

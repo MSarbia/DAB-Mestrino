@@ -208,6 +208,8 @@ WITH
     FromDate AS DateTime
     [Optional]
     ToDate AS DateTime
+    [Optional]
+    Realtime AS bool
 RESPONSE
     Defects AS int
     Rework AS int
@@ -225,10 +227,13 @@ WITH
     FromDate AS DateTime
     [Optional]
     ToDate AS DateTime
+    [Optional]
+    Realtime AS bool
 RESPONSE
     ActualProducedQuantity AS decimal
     TotalProducedQuantity AS decimal
     DelayProducedQuantity AS decimal
+    ProducedOrders AS int
 
 [Composite]
 [Protected]
@@ -248,4 +253,32 @@ RESPONSE
     [Optional]
     [Length = 255]
     WarningMessage AS string
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(d6850046-b269-4fc7-bb3e-c1bdd9ddb527)]
+COMMAND GetOEEEfficiency
+WITH
+    [Length = 255]
+    WorkArea AS string
+RESPONSE
+    [@GuidRef(79917911-d071-44ca-8502-17ab85617b05, a7fe5247-e9aa-4c90-bcf6-330bb92bf245)]
+    OEE AS list of Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.GraphPoint
+    [@GuidRef(79917911-d071-44ca-8502-17ab85617b05, a7fe5247-e9aa-4c90-bcf6-330bb92bf245)]
+    LE AS list of Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.GraphPoint
+
+[Composite]
+[Protected]
+[NotSecurable]
+[@Guid(0da6ee68-738f-4ebb-a047-3b92903158a9)]
+COMMAND GetProductionData
+WITH
+    [Length = 255]
+    WorkArea AS string
+RESPONSE
+    [@GuidRef(79917911-d071-44ca-8502-17ab85617b05, a7fe5247-e9aa-4c90-bcf6-330bb92bf245)]
+    ProducedPieces AS list of Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.GraphPoint
+    [@GuidRef(79917911-d071-44ca-8502-17ab85617b05, a7fe5247-e9aa-4c90-bcf6-330bb92bf245)]
+    ProducedOrders AS list of Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.GraphPoint
 

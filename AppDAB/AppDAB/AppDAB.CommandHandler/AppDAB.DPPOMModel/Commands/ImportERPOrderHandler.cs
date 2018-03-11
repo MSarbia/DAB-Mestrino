@@ -91,7 +91,8 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     SetupTime = command.ERPOrderInfo.SetupTime,
                     Operators = command.ERPOrderInfo.Operators,
                     NextOrder = phase.NextOrder,
-                    Sequence = phase.Sequence
+                    Sequence = phase.Sequence,
+                    Warehouse = command.ERPOrderInfo.Warehouse
                 });
 
                 // Manca Sequence, EstimatedDuration, Operators, SetupTime
@@ -161,7 +162,6 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                                 LogicalPosition = mat.Sequence.ToString(),
                                 MaterialSpecificationType = "Reference"
                             });
-                        
                     }
                     var createToBeConsumedMaterialsResponse = Platform.CallCommand<CreateToBeConsumedMaterials, CreateToBeConsumedMaterials.Response>(createToBeConsumedMaterialsInput);
                     if (!createToBeConsumedMaterialsResponse.Succeeded)

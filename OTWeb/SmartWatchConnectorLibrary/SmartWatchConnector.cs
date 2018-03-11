@@ -114,9 +114,15 @@ namespace SmartWatchConnectorLibrary
 
         private static void DeleteMessage(PushMessage message)
         {
+            PushMessage outM=null;
             lock (_deviceConnectorLock)
             {
                 _deviceConnector.DeleteMessage(message.ClientUniqueID, message.MessageId);
+                _deviceConnector.GetMessage(message.MessageId, out outM);
+            }
+            if (outM.Type == MessageType.SingleMessageDelete)
+            {
+                bool delivered = outM.ClientDelivered;
             }
         }
 

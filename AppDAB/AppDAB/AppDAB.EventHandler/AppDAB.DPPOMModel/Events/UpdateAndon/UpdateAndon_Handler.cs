@@ -29,20 +29,6 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events
         [HandlerEntryPoint]
         private void UpdateAndon_Handler(UpdateAndon evt, EventEnvelope envelope)
         {
-            //1)	Produced Pieces: sono i pezzi confermati alla stazione di pallettizzazione per ogni singola giornata;
-            //2)	Completed Orders: sono gli ordini COMPLETAMEMTE prodotti nella gg(qty ordine = qty prod).Non importa se l’ordine è partito nei giorni precedenti;
-            //3)	OEE: pezzi prodotti in gg* Tempo Ciclo / 365(gg) * 24(ore) * 60(min).Il rapporto viene espresso in %;
-            //4)	OPR: pezzi prodotti in gg* Tempo Ciclo / 8(ore) * 60(min).Il rapporto viene espresso in %;
-            //5)	LE: pezzi prodotti in gg* Tempo Ciclo / 8(ore) * 60(min).Il rapporto viene espresso in %.
-
-            //Note: 
-            //1)	Tempo Ciclo deve arrivare da INFOR;
-            //2)	Relativamente al SOLO contesto del Pilota, per OPR e LE, si è concordato di fissare staticamente ad 8 ore, l’intervallo di tempo.Questa logica dovrà essere modifica per le future evoluzioni della soluzione.
-
-            //_______________________________________
-            //La formula deve essere: LE = (pezzi prodotti in gg* labour cycle time)/ (worked hours* n°operatori)
-            //Dove:
-            //•        Labour cycle time = cycle time* n° teorico di operatori(man occupation)
             Platform.Tracer.Write("Siemens-SimaticIT-Trace-UADMRuntime", $"UpdateAndon Event {evt.WorkArea} START");
             try
             {
@@ -60,6 +46,8 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events
 
                 var localNow = DateTime.Now;
                 var currentOrder = Platform.ProjectionQuery<WorkOrder>().Where(wo => orderIds.Contains(wo.Id)).OrderBy(wo => wo.ActualStartTime).FirstOrDefault();
+
+
                 string product = string.Empty;
                 string productDesc = string.Empty;
                 decimal orderTotal = 0;

@@ -317,6 +317,10 @@
     <Compile Include="AppDAB.DPPOMModel\Commands\DABStartSerialHandlerExecution.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\GetKPIsHandler.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\GetKPIsHandlerExecution.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\GetOEEEfficiencyHandler.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\GetOEEEfficiencyHandlerExecution.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\GetProductionDataHandler.cs" />
+    <Compile Include="AppDAB.DPPOMModel\Commands\GetProductionDataHandlerExecution.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\GetProductionInfoHandler.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\GetProductionInfoHandlerExecution.cs" />
     <Compile Include="AppDAB.DPPOMModel\Commands\GetSerialsHandler.cs" />
