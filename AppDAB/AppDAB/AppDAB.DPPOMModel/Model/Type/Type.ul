@@ -116,6 +116,3 @@ WITH
     [@Guid(0539cd39-f6de-42d5-bca1-6f7e2b110de9)]
     Val AS decimal
 
-[@Guid(8c60e7ec-a08a-41b6-a5e5-bfe2a829cbcb)]
-PARAMETERTYPE Warehouse
-
