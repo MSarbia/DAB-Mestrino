@@ -29,11 +29,13 @@
             return entities.ProductionType.getAll(serviceName, options);
         };
 
-
-
         function getAllProducedMaterialItem(options) {
             return entities.ProducedMaterialItem.getAll(serviceName, options);
         };
+
+        function getAllWorkOrderExt(options) {
+            return entities.WorkOrderExt.getAll(serviceName, options);
+        }
 
         function deleteWorkOrder(data) {
             return commands.DeleteWorkOrder.call(serviceName, data);
@@ -132,6 +134,7 @@
             getAll: getAll,
             getAllProductionType: getAllProductionType,
             getAllProducedMaterialItem: getAllProducedMaterialItem,
+            getAllWorkOrderExt : getAllWorkOrderExt,
             deleteWorkOrder: deleteWorkOrder,
             release: release,
             dabrelease: dabrelease,

@@ -92,6 +92,10 @@
 
         function getAll(entityName, options) {
             var q = { appName: u4dmConstants.appName, entityName: entityName, options: options };
+            if (q.entityName == 'WorkOrderExt')
+            {
+                q.appName = 'AppDAB';
+            }
             return commonBase.services.runtime.backendService.findAll(q);
         }
 

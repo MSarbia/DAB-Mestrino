@@ -136,6 +136,10 @@
             })(orderId);
         }
 
+        svc.getAllWorkOrderExt = function (options) {
+             return u4dmSvc.api.workOrder.getAllWorkOrderExt(options);
+        }
+
         //OPERATIONS OPERATIONS OPERATIONS OPERATIONS OPERATIONS OPERATIONS OPERATIONS OPERATIONS OPERATIONS OPERATIONS
 
         svc.LinkOperationToPJF = function (pjfId, machineId) {

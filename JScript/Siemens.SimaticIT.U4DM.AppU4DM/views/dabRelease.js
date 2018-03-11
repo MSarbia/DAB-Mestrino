@@ -24,7 +24,9 @@
 			
         var vm = this;
         var pgFields = {};
-		var currentItem       = {};
+        var currentItem  = {};
+        var selectedWorkOrder = {};
+        vm.workOrderExt = {};
 		currentItem.actualNumberOperator = 0;
         
         var icon = u4dmSvc.icons.icon;
@@ -37,6 +39,12 @@
             vm.save = save;
             
             vm.cancel = cancel;
+
+            selectedWorkOrder = u4dmSvc.data.cache.getSelectedWorkOrder();
+            
+            loadWorkOrderExt();
+
+            currentItem.actualNumberOperator = vm.workOrderExt.ActualOperators;
 
 			u4dmSvc.ui.sidePanel.setTitle('sit.u4dm.release');
 
@@ -56,8 +64,6 @@
            
             var actualNumberOperator_tmp = currentItem.actualNumberOperator;
 
-			var selectedWorkOrder = u4dmSvc.data.cache.getSelectedWorkOrder();
-			
 			workOrderStatusSvc.dabReleaseWorkOrder(selectedWorkOrder, actualNumberOperator_tmp).
                                       then(function (result) {
                                           
@@ -70,6 +76,23 @@
                                       }, u4dmSvc.ui.overlay.showBackendError);
 				
 		    
+        }
+
+        function loadWorkOrderExt() {
+
+            var workOrderId = selectedWorkOrder.Id;
+
+            var options = "$filter=WorkOrderId eq " + workOrderId;
+
+            workOrderStatusSvc.getAllWorkOrderExt(options).then(function (data) {
+                
+                vm.workOrderExt = data.value[0];
+				
+				currentItem.actualNumberOperator = vm.workOrderExt.ActualOperators;
+				
+				configurePropertyGrid();
+
+            }, u4dmSvc.ui.overlay.showBackendError);
         }
 
         function cancel() {

@@ -219,6 +219,11 @@
                 vm.icvConfig.dataUpdated();
                 hideButtons();
             });
+            u4dmSvc.messaging.subscribe($scope, 'DABReleaseOrder', function () {
+                vm.icvConfig.selectAll(false);
+                vm.icvConfig.dataUpdated();
+                hideButtons();
+            });
             
             u4dmSvc.messaging.subscribe($scope, u4dmConstants.events.FUTURE_HOLD_SELECTED, function (event, data) {
 
