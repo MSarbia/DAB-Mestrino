@@ -13,5 +13,6 @@ namespace SmartWatchConnectorLibrary
         public string Order { get; set; }
         public string Operation { get; set; }
         public string ProductCode { get; set; }
+        public int OperationId { get; set; }
     }
 }

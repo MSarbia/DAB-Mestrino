@@ -169,6 +169,9 @@ public class ERPOrderRequest
     [System.Xml.Serialization.XmlElementAttribute(typeof(int), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
     public int Priority { get; set; }
 
+    [System.Xml.Serialization.XmlElementAttribute(typeof(string), Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public string Warehouse { get; set; }
+
     //[System.Xml.Serialization.XmlElementAttribute(typeof(List<Operation>), Namespace = "", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
     //[System.Xml.Serialization.XmlArrayAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
     //[System.Xml.Serialization.XmlArrayItemAttribute("IOP_EXTService", Form = System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable = false)]

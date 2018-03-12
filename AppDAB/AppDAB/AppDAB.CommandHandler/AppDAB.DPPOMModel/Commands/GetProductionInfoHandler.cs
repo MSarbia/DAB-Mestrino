@@ -14,7 +14,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
     /// Partial class init
     /// </summary>
     [Handler(HandlerCategory.BasicMethod)]
-    public partial class GetProductionInfoHandlerShell 
+    public partial class GetProductionInfoHandlerShell
     {
         /// <summary>
         /// This is the handler the MES engineer should write
@@ -27,7 +27,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         private GetProductionInfo.Response GetProductionInfoHandler(GetProductionInfo command)
         {
             DateTimeOffset toDate = command.ToDate ?? DateTimeOffset.UtcNow;
-
+            bool realTime = command.Realtime.GetValueOrDefault();
             decimal produzioneShift = 0;
             decimal produzionePrevistaShift = 0;
             decimal pezziRitardoShift = 0;
@@ -36,33 +36,66 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 
             var equipIds = Platform.ProjectionQuery<Equipment>().Where(e => e.Parent == command.WorkArea).Select(e => e.Id).ToList();
 
-            var operationDitonary = Platform.ProjectionQuery<ToBeUsedMachine>().Include(tum => tum.WorkOrderOperation).Where(tum => tum.Machine.HasValue).Where(tum => equipIds.Contains(tum.Machine.Value)).Where(tum => tum.WorkOrderOperation.ActualStartTime >= command.FromDate).Select(tum => tum.WorkOrderOperation).Distinct().ToDictionary(woo => woo.Id, woo => woo.WorkOrder_Id.Value);
-            var operationIds = operationDitonary.Keys.ToList();
-            var orderIds = operationDitonary.Values.Distinct().ToList();
-
-
-            var pezziProdottiInGiornata = Platform.ProjectionQuery<WorkOrder>().Where(wo => orderIds.Contains(wo.Id)).ToDictionary(wo => wo.Id, wo => wo.ProducedQuantity);
-            var produzionePrevista = Platform.ProjectionQuery<WorkOrder>().Where(wo => orderIds.Contains(wo.Id)).ToDictionary(wo => wo.Id, wo => wo.InitialQuantity);
-            var cycleTymes = Platform.ProjectionQuery<WorkOrderExt>().Where(woe => orderIds.Contains(woe.WorkOrderId)).ToDictionary(woe => woe.WorkOrderId, woe => woe.CicleTime);
-
-
-            var remainingMinutes = (endShift - now).TotalMinutes;
-            foreach (var orderId in orderIds)
+            Dictionary<int, int> operationDictionary;
+            Dictionary<int, WorkOrder> completedOrders;
+            if (realTime)
             {
-                var pezziProducibili = (decimal)(remainingMinutes / cycleTymes[orderId].Value.TotalMinutes);
-                var prodottiOrdine = pezziProdottiInGiornata[orderId];
-                var totaleOrdine = produzionePrevista[orderId];
+                //bool overlap = woo.start < b.end && b.start < woo.end;
+                operationDictionary = Platform.ProjectionQuery<ToBeUsedMachine>()
+                    .Include("WorkOrderOperation.WorkOrder")
+                    .Where(tum => tum.WorkOrderOperation.WorkOrder.EstimatedStartTime < toDate)
+                    .Where(tum => tum.WorkOrderOperation.WorkOrder.EstimatedEndTime > command.FromDate)
+                    .Where(tum => tum.Machine.HasValue)
+                    .Where(tum => equipIds.Contains(tum.Machine.Value))
+                    .Select(tum => tum.WorkOrderOperation).Distinct().ToDictionary(woo => woo.Id, woo => woo.WorkOrder_Id.Value);
+
+                var orderIds = operationDictionary.Values.ToList();
+                completedOrders = Platform.ProjectionQuery<WorkOrder>().Where(wo => orderIds.Contains(wo.Id)).ToDictionary(wo => wo.Id, wo => wo);
+            }
+            else
+            {
+                operationDictionary = Platform.ProjectionQuery<ToBeUsedMachine>()
+                    .Include(tum => tum.WorkOrderOperation)
+                    .Where(tum => tum.WorkOrderOperation.ActualEndTime > command.FromDate)
+                    .Where(tum => tum.WorkOrderOperation.ActualEndTime < toDate)
+                    .Where(tum => tum.Machine.HasValue)
+                    .Where(tum => equipIds.Contains(tum.Machine.Value))
+                    .Select(tum => tum.WorkOrderOperation).Distinct().ToDictionary(woo => woo.Id, woo => woo.WorkOrder_Id.Value);
+
+                var orderIds = operationDictionary.Values.ToList();
+                completedOrders = Platform.ProjectionQuery<WorkOrder>().Where(wo => orderIds.Contains(wo.Id)).Where(wo => wo.Status == "Complete").Where(wo => wo.ActualEndTime < command.ToDate).Where(wo => wo.ActualEndTime > command.FromDate).ToDictionary(wo => wo.Id, wo => wo);
+            }
+
+            var completedOrderIds = completedOrders.Keys.ToList();
+            var cycleTymes = Platform.ProjectionQuery<WorkOrderExt>().Where(woe => completedOrderIds.Contains(woe.WorkOrderId)).ToDictionary(woe => woe.WorkOrderId, woe => woe.CicleTime);
+
+            foreach (var orderId in completedOrderIds)
+            {
+                var remainingMinutes = (completedOrders[orderId].EstimatedEndTime - now).GetValueOrDefault(new TimeSpan(0)).TotalMinutes;
+                decimal pezziProducibili = 0;
+                if (remainingMinutes > 0)
+                {
+                    pezziProducibili = Math.Min(0, (decimal)(remainingMinutes / cycleTymes[orderId].Value.TotalMinutes));
+                }
+                var prodottiOrdine = completedOrders[orderId].ProducedQuantity;
+                var totaleOrdine = completedOrders[orderId].InitialQuantity;
                 var pezziRimanenti = totaleOrdine - prodottiOrdine;
                 produzioneShift += prodottiOrdine;
                 produzionePrevistaShift += totaleOrdine;
-                pezziRitardoShift += pezziProducibili - pezziRimanenti;
+                pezziRitardoShift += decimal.ToInt32(pezziProducibili - pezziRimanenti);
+            }
+            int producedOrders = completedOrderIds.Count;
+            if (realTime)
+            {
+                producedOrders= Platform.ProjectionQuery<WorkOrder>().Where(wo => completedOrderIds.Contains(wo.Id)).Where(wo => wo.Status == "Complete").Count();
             }
 
             return new GetProductionInfo.Response
             {
                 ActualProducedQuantity = produzioneShift,
                 TotalProducedQuantity = produzionePrevistaShift,
-                DelayProducedQuantity = pezziRitardoShift
+                DelayProducedQuantity = pezziRitardoShift,
+                ProducedOrders = producedOrders
             };
         }
     }

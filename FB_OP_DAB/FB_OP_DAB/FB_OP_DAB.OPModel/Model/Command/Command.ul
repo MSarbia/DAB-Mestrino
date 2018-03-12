@@ -9,6 +9,8 @@ WITH
     [Length = 255]
     ProductCode AS string
     WindchillIntegration AS bool
+    [Length = 255]
+    ProductRevision AS string
 RESPONSE
     [Optional]
     [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 0d3eaac7-6753-4b1c-8769-e1b7663659e5)]
@@ -237,4 +239,16 @@ COMMAND ReportConsumedMaterials
 WITH
     [@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, d98cd9ad-a7e9-4725-83bc-0215fc74d06f)]
     ConsumedMaterials AS list of Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Types.ConsumedMaterialParameter
+
+[Protected]
+[NotSecurable]
+[@Guid(541ac38d-9a85-4097-9e91-5f84ffd050f2)]
+COMMAND SetProducedPieces
+WITH
+    Year AS int
+    Month AS int
+    Day AS int
+    WorkOrderId AS int
+    [Length = 255]
+    WorkArea AS string
 

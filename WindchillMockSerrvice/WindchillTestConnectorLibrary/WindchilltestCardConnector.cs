@@ -98,10 +98,10 @@ namespace WindchillTestConnectorLibrary
                 Assorbimenti = new List<AbsorptionParameter>()
             };
             string documentnumber = GetDocNumber(productCode, productRevision);
-            if (String.IsNullOrEmpty(documentnumber)) return testCard;
+            if (String.IsNullOrEmpty(documentnumber)) return null;
             var genericBusinessObject = _testClient.Query(string.Empty, "intra.adw.industrialization_data", $"number='{documentnumber}'", string.Empty, new string[] { "*" });
             if (genericBusinessObject == null || genericBusinessObject.Length == 0 || !genericBusinessObject[0].properties.Any())
-                return testCard;
+                return null;
 
             decimal? potenzaASecco = null;
             decimal? potenzaPercent = null;

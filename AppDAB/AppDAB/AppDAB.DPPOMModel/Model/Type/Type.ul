@@ -31,6 +31,10 @@ WITH
     [@Guid(e87883fb-fce3-419a-9924-c949377ba54a)]
     [@GuidRef(79917911-d071-44ca-8502-17ab85617b05, 3d863293-f479-4280-a013-1acfeab1d8b1)]
     Orders AS list of Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ERPOrderPhase
+    [Optional]
+    [Length = 255]
+    [@Guid(373d1fc1-d0f5-48fa-8904-c86ccc653a7f)]
+    Warehouse AS string
 
 [@Guid(3d863293-f479-4280-a013-1acfeab1d8b1)]
 PARAMETERTYPE ERPOrderPhase
@@ -102,4 +106,13 @@ WITH
     [Length = 255]
     [@Guid(5959011e-dd53-49e3-91a4-5be0a2ac5f4c)]
     Status AS string
+
+[@Guid(a7fe5247-e9aa-4c90-bcf6-330bb92bf245)]
+PARAMETERTYPE GraphPoint
+WITH
+    [Length = 255]
+    [@Guid(1d2f0ca2-7616-4b98-89df-7c7b81cce5b3)]
+    Label AS string
+    [@Guid(0539cd39-f6de-42d5-bca1-6f7e2b110de9)]
+    Val AS decimal
 

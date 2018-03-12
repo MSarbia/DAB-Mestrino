@@ -36,6 +36,7 @@ namespace WindchillTestConsole
                         foreach (var doc in docs)
                         {
                             Console.WriteLine(doc.Number + " " + doc.Revision + " " + doc.SoftType);
+                            doc.SoftType = "wt.doc.WTDocument";
                             docConnector.DownloadDoc(doc);
                         }
                     }

@@ -31,7 +31,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             testResult.TestCard_Id = testCardId;
             testResult.CorrenteDiTerra = command.Result.CorrenteDiTerra;
             testResult.CorrenteRigidita = command.Result.CorrenteRigidita;
-            testResult.Data = DateTime.UtcNow;
+            testResult.Data = DateTimeOffset.UtcNow;
             testResult.DescrizioneEsito = command.Result.DescrizioneEsito;
             testResult.Esito = command.Result.Esito;
             testResult.ResistenzaDiTerra = command.Result.ResistenzaDiTerra;

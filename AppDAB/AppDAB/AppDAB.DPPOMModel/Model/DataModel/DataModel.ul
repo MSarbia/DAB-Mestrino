@@ -235,3 +235,22 @@ ENTITYLINK TemplateBlock TO Siemens.SimaticIT.U4DM.OperationalData.IdGenerate.OP
 [@GuidRef(b96dac5b-c281-45fa-b02d-ede44038ed6b, efae0d4c-a020-473c-ac71-a57d8c6b4680)]
 ENTITYLINK Template TO Siemens.SimaticIT.U4DM.OperationalData.IdGenerate.OPModel.DataModel.Template
 
+///Represents the History of the Work Order.
+[@Guid(0d8a5675-a2ba-49a9-8d53-7f059e9e2631)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 70a23ba0-aef2-4424-bd85-245153e28907)]
+ENTITYLINK WorkOrderHistory TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.WorkOrderHistory
+
+///This entity contains all Actions that, when performed, are written to the Work Order History log.
+[@Guid(f7e7f46a-2712-4eb9-984b-5797fdb980c2)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, 5d7c70ba-c771-4ca2-941e-1f24d3d20a41)]
+ENTITYLINK WorkOrderHistoryAction TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.WorkOrderHistoryAction
+
+///Contains the list of Material Items involved in a specific Work Order History Action.
+[@Guid(bcf58275-6f8a-49e6-9d68-c4be748fccd6)]
+[@GuidRef(8449f78d-5e46-4816-b338-36c2ec08895f, e72f6917-0e52-4f3e-9c5c-3822fb4fb796)]
+ENTITYLINK WorkOrderHistoryMaterialItem TO Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.DataModel.WorkOrderHistoryMaterialItem
+
+[@Guid(7f862251-61b4-4162-ad34-f612a4b09350)]
+[@GuidRef(3eed0a14-69cf-4b66-b87a-2b23582fc663, 27485aca-b946-43e8-ba9c-eb01622d166a)]
+ENTITYLINK DailyProduction TO Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.DataModel.DailyProduction
+

@@ -31,9 +31,10 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
             if (testCard == null && command.WindchillIntegration)
             {
                 WindchillTestConnectorLibrary.TestCardParameter wTestCard = null;
-                using(var connector = new WindchillTestCardConnector())
+                string revision = command.ProductRevision == "n/a" ? string.Empty : command.ProductRevision;
+                using (var connector = new WindchillTestCardConnector())
                 {
-                    wTestCard = connector.GetTestCard(command.ProductCode);
+                    wTestCard = connector.GetTestCard(command.ProductCode, revision);
                 }
                 if(wTestCard != null)
                 {

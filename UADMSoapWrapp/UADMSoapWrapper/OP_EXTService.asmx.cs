@@ -60,29 +60,23 @@ namespace UADMSoapWrapper
         [return: System.Xml.Serialization.XmlElementAttribute("ERPOrderResponse")]
         public override ERPOrderResponse ImportERPOrder(ERPOrderRequest ERPOrderInfo)
         {
-
-            var principal = ClaimsPrincipal.Current;
+            
             var uafConnector = new UAFConnector();
 
             ImportERPOrder input = new ImportERPOrder(new Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Types.ERPOrderRequest()
             {
                 ERPId = ERPOrderInfo.ERPId,
-                
-                
                 FinalMaterialCode = ERPOrderInfo.FinalMaterialCode,
                 FinalMaterialRevision = ERPOrderInfo.FinalMaterialRevision,
-                
                 Orders = new List<ERPOrderPhase> { },
                 Priority = ERPOrderInfo.Priority,
                 Quantity = ERPOrderInfo.Quantity,
-                
+                Warehouse = ERPOrderInfo.Warehouse
             });
 
 
             foreach (var order in ERPOrderInfo.Orders)
             {
-                DateTime estimatedStart = order.EstimatedStartTime.Year > 1900 ? order.EstimatedStartTime : DateTime.UtcNow;
-                DateTime estimatedEnd = order.EstimatedEndTime.Year > 1900 ? order.EstimatedEndTime : DateTime.UtcNow.AddHours(8);
                 if (!string.IsNullOrEmpty(order.CycleTime))
                 {
                     input.ERPOrderInfo.CycleTime = XmlConvert.ToTimeSpan(order.CycleTime);
@@ -91,6 +85,10 @@ namespace UADMSoapWrapper
                 {
                     input.ERPOrderInfo.SetupTime = XmlConvert.ToTimeSpan(order.SetupTime);
                 }
+                DateTime estimatedStart = order.EstimatedStartTime.Year > 1900 ? order.EstimatedStartTime : DateTime.UtcNow.AddMinutes(3);
+                DateTime estimatedEnd = order.EstimatedEndTime.Year > 1900 ? order.EstimatedEndTime : order.EstimatedStartTime.AddMinutes(input.ERPOrderInfo.CycleTime.TotalMinutes * input.ERPOrderInfo.Quantity);
+
+
                 input.ERPOrderInfo.EstimatedEndTime = estimatedEnd;
                 input.ERPOrderInfo.EstimatedStartTime = estimatedStart;
                 input.ERPOrderInfo.Operators = order.Operators;

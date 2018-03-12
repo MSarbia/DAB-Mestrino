@@ -9,7 +9,7 @@
     <version>01.00.00</version>
     <companyname>Engineering.DAB</companyname>
     <author>Engineering.DAB</author>
-    <hash>LVxWbFHZhwZEWu9euo0gl8U0N1U/e4cEZci3cf0zqU0=</hash>
+    <hash>cKG1ouqJX8sgVOOt6JSwg3hU3t++bjep6AwwwCQmGHA=</hash>
   </header>
   <reference>
     <functionalblocks></functionalblocks>
@@ -430,6 +430,27 @@
                         <handlers>
                                 <handler>
                                         <name>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.ReportConsumedMaterialsHandlerShell</name>
+                                        <assembly>Engineering.DAB.FB_OP_DAB.CommandHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                                        <target_cpu>x86</target_cpu>
+                                        <dependencies></dependencies>
+                                </handler>
+                        </handlers>
+                </command><command>
+                        <name>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.SetProducedPieces</name>
+                        <shortname>SetProducedPieces</shortname>
+                        <description></description>
+                        <assembly>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+                        <dotnetcommandtype></dotnetcommandtype>
+                        <commandtype>Undefined</commandtype>
+                        <domain>OperationalData</domain>
+                        <visibility>Protected</visibility>
+                        <composite>false</composite>
+                        <taglist>
+                        </taglist>
+                        <securable>false</securable>
+                        <handlers>
+                                <handler>
+                                        <name>Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands.SetProducedPiecesHandlerShell</name>
                                         <assembly>Engineering.DAB.FB_OP_DAB.CommandHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
                                         <target_cpu>x86</target_cpu>
                                         <dependencies></dependencies>

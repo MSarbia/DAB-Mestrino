@@ -35,49 +35,18 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             string workOrderOperationNId = commandInfo.NId;
             string materialDefinitionNId = actualProducedMaterial.MaterialDefinitionNId;
             var workOrderOperation = Platform.ProjectionQuery<WorkOrderOperation>().Include(wo => wo.ToBeUsedMachines).Include(wo => wo.Predecessors).Include(wo => wo.Successors).FirstOrDefault(wo => wo.NId == workOrderOperationNId);
+            int equipId = workOrderOperation.ToBeUsedMachines.First().Machine.GetValueOrDefault();
+            Equipment equip = Platform.ProjectionQuery<Equipment>().FirstOrDefault(e => e.Id == equipId);
             if (!SerialIsCompletedOnAllPreviousOperations(workOrderOperation, serialNumber))
             {
                 response.SetError(-1001, $"Il seriale {serialNumber} è ancora attivo sulle operazioni precedenti. Impossibile completare l'operazione");
                 return response;
             }
-
-            int equipId = workOrderOperation.ToBeUsedMachines.First().Machine.GetValueOrDefault();
-            Equipment equip = Platform.ProjectionQuery<Equipment>().FirstOrDefault(e => e.Id == equipId);
-            var mateialItem = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pmi => pmi.MaterialItem).Where(pmi => pmi.WorkOrderOperation_Id == workOrderOperation.Id).Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber).Select(pmi => pmi.MaterialItem).Distinct().ToDictionary(mi => mi.NId, mi => mi.MaterialDefinition).FirstOrDefault();
-            var materialItemNId = mateialItem.Key;
-            var matDefId = mateialItem.Value;
-            var matDefNId = Platform.ProjectionQuery<MaterialDefinition>().Where(m => m.Id == matDefId).Select(m => m.NId).FirstOrDefault();
-
-            var completeInput = new CompleteWOOperationSerialized
-            {
-                CompleteSerializedWoOpParameter = new CompleteSerializedParameterType
-                {
-                    Id = workOrderOperation.Id,
-                    NId = workOrderOperation.NId,
-                    EquipmentNId = equip.NId,
-                    ActualProducedMaterials = new List<MaterialItemParameterType>
-                        {
-                            new MaterialItemParameterType
-                            {
-                                EquipmentNId = equip.NId,
-                                MaterialDefinitionNId = matDefNId,
-                                NId = materialItemNId,
-                                SerialNumber = serialNumber
-                            }
-                        }
-                }
-            };
-            var completeResponse = Platform.CallCommand<CompleteWOOperationSerialized, CompleteWOOperationSerialized.Response>(completeInput);
-
-            if (!completeResponse.Succeeded)
-            {
-                response.SetError(completeResponse.Error.ErrorCode, completeResponse.Error.ErrorMessage);
-            }
-            int producedQuantity = decimal.ToInt32(workOrderOperation.ProducedQuantity) + 1;
+            WorkOrderExt workOrderExt = Platform.ProjectionQuery<WorkOrderExt>().FirstOrDefault(woe => woe.WorkOrderId == workOrderOperation.WorkOrder_Id);
             if (IsLastOperationOfOrder(workOrderOperation))
             {
                 WorkOrder order = Platform.ProjectionQuery<WorkOrder>().FirstOrDefault(wo => wo.Id == workOrderOperation.WorkOrder_Id);
-                WorkOrderExt workOrderExt = Platform.ProjectionQuery<WorkOrderExt>().FirstOrDefault(woe => woe.WorkOrderId == workOrderOperation.WorkOrder_Id);
+                
                 var processQuantity = Platform.ProjectionQuery<Process>().Where(p => p.Id == order.Process).Select(p => p.Quantity.Val).FirstOrDefault().GetValueOrDefault();
                 if (processQuantity == 0)
                 {
@@ -86,9 +55,10 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 }
 
                 var inforIntConf = Platform.ProjectionQuery<ConfigurationKey>().Where(c => c.NId == "InforIntegration").Select(c => c.Val).FirstOrDefault();
-                if(!string.IsNullOrEmpty(inforIntConf) && inforIntConf == "true")
+                if (!string.IsNullOrEmpty(inforIntConf) && inforIntConf == "true")
                 {
-                    if(IsLastPieceOfPallet(workOrderOperation, processQuantity))
+                    int producedQuantity = decimal.ToInt32(workOrderOperation.ProducedQuantity) + 1;
+                    if (IsLastPieceOfPallet(workOrderOperation, processQuantity))
                     {
                         var reportOperationProg = new ReportOperationProgress
                         {
@@ -120,7 +90,42 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                         }
                     }
                 }
-                
+            }
+            
+            
+            var mateialItem = Platform.ProjectionQuery<ActualProducedMaterial>().Include(pmi => pmi.MaterialItem).Where(pmi => pmi.WorkOrderOperation_Id == workOrderOperation.Id).Where(pmi => pmi.MaterialItem.SerialNumberCode == serialNumber).Select(pmi => pmi.MaterialItem).Distinct().ToDictionary(mi => mi.NId, mi => mi.MaterialDefinition).FirstOrDefault();
+            var materialItemNId = mateialItem.Key;
+            var matDefId = mateialItem.Value;
+            var matDefNId = Platform.ProjectionQuery<MaterialDefinition>().Where(m => m.Id == matDefId).Select(m => m.NId).FirstOrDefault();
+
+            var completeInput = new CompleteWOOperationSerialized
+            {
+                CompleteSerializedWoOpParameter = new CompleteSerializedParameterType
+                {
+                    Id = workOrderOperation.Id,
+                    NId = workOrderOperation.NId,
+                    EquipmentNId = equip.NId,
+                    ActualProducedMaterials = new List<MaterialItemParameterType>
+                        {
+                            new MaterialItemParameterType
+                            {
+                                EquipmentNId = equip.NId,
+                                MaterialDefinitionNId = matDefNId,
+                                NId = materialItemNId,
+                                SerialNumber = serialNumber
+                            }
+                        }
+                }
+            };
+            var completeResponse = Platform.CallCommand<CompleteWOOperationSerialized, CompleteWOOperationSerialized.Response>(completeInput);
+
+            if (!completeResponse.Succeeded)
+            {
+                response.SetError(completeResponse.Error.ErrorCode, completeResponse.Error.ErrorMessage);
+            }
+            
+            if (IsLastOperationOfOrder(workOrderOperation))
+            {
                 var niceLabelIntegration = Platform.ProjectionQuery<ConfigurationKey>().Where(c => c.NId == "NiceLabelIntegration").Select(c => c.Val).FirstOrDefault();
                 if (!string.IsNullOrEmpty(niceLabelIntegration) && niceLabelIntegration == "true")
                 {
@@ -136,6 +141,19 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                         response.SetError(printPackageAndDataResponse.Error.ErrorCode, printPackageAndDataResponse.Error.ErrorMessage);
                         return response;
                     }
+                }
+
+                if(IsLastSerialOfLastOperationOfERPOrder(workOrderOperation,workOrderExt))
+                {
+                    var today = DateTime.UtcNow;
+                    Platform.CallCommand<SetProducedPieces, SetProducedPieces.Response>(new SetProducedPieces
+                    {
+                        Year =today.Year,
+                        Month = today.Month,
+                        Day = today.Day,
+                        WorkOrderId = workOrderExt.WorkOrderId,
+                        WorkArea = equip.Parent
+                    });
                 }
                 //print package & data label
                 
