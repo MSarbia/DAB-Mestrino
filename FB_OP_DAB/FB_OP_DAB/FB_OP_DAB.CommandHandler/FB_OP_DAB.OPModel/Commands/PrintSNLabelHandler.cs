@@ -25,7 +25,7 @@ namespace Engineering.DAB.OperationalData.FB_OP_DAB.OPModel.Commands
         private PrintSNLabel.Response PrintSNLabelHandler(PrintSNLabel command)
         {
             var response = new PrintSNLabel.Response();
-            var error = LabelPrinter.PrintSNLabel(command.SerialNumbers,command.ProductCode,command.WorkArea,3);
+            var error = LabelPrinter.PrintSNLabel(command.SerialNumbers,command.ProductCode,command.WorkArea);
             if (error.connectionsucceeded)
             {
                 if (!string.IsNullOrEmpty(error.error)) response.SetError(-1000, "Errore di stampa etichetta seriale: " + error.error);

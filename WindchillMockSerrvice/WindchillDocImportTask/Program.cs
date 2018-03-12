@@ -20,6 +20,7 @@ namespace WindchillDocImportTask
             catch(Exception e)
             {
                 Console.WriteLine(e.ToString());
+                Console.ReadLine();
             }
             Environment.Exit(0);
         }
