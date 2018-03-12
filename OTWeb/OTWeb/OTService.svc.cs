@@ -400,6 +400,10 @@ namespace OTWeb
                     return response;
                 }
             }
+            if (response.Succeeded == true)
+            {                
+                CallHub.Static_SendOperatorCall(startSerialRequest.WorkArea, startSerialRequest.SerialNumber);
+            }
             return response;
         }
 
