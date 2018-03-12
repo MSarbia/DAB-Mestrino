@@ -33,8 +33,10 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             };
             var machine = Platform.ProjectionQuery<Equipment>().Where(e => e.NId == command.Equipment).Select(e => e.Id).FirstOrDefault();
 
-            var workOrderOperationIds = Platform.ProjectionQuery<ToBeUsedMachine>().Where(m => m.Machine == machine).Select(m=>m.WorkOrderOperation_Id.Value).Distinct().ToList();
-            var wos = Platform.ProjectionQuery<WorkOrderOperation>().Where(w => workOrderOperationIds.Contains(w.Id)).Where(w => w.IsReady).ToList();
+            var workOrderOperationIds = Platform.ProjectionQuery<ToBeUsedMachine>().Include(m=>m.WorkOrderOperation)
+                .Where(m => m.Machine == machine)
+                .Where(m=>m.WorkOrderOperation.AvailableQuantity > 0 || m.WorkOrderOperation.PartialWorkedQuantity>0).Where(m => m.WorkOrderOperation.IsReady).Select(m=>m.WorkOrderOperation_Id.Value).Distinct().ToList();
+            var wos = Platform.ProjectionQuery<WorkOrderOperation>().Where(w => workOrderOperationIds.Contains(w.Id)).ToList();
             var orderIds = wos.Select(w => w.WorkOrder_Id).Distinct().ToList();
             var woDictionary = wos.ToDictionary(wo=>wo.Id,wo=>wo);
             Dictionary<int, WorkOrder> orders = Platform.ProjectionQuery<WorkOrder>().Where(o => orderIds.Contains(o.Id)).ToDictionary(o => o.Id, o => o);

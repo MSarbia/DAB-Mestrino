@@ -48,8 +48,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 matDocDictionary.Add(finalMat.Id, new List<Guid>());
                 foreach (var docInfo in docInfoList)
                 {
-                    
-                    string docNId = $"{docInfo.SoftType}_{docInfo.ContentRole}_{docInfo.Revision}_{docInfo.Number}";
+                    string docNId = $"{docInfo.Revision}_{docInfo.Number}";
                     if (Platform.ProjectionQuery<Document>().Any(doc => doc.FileName == docInfo.Number && doc.Type == docInfo.DocType && doc.NId == doc.NId))
                     {
                         continue;

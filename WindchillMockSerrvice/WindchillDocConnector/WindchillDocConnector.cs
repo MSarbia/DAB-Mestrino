@@ -103,6 +103,7 @@ namespace WindchillDocConnectorLibrary
         {
             List<wsRevisionControlled> docList = new List<wsRevisionControlled>();
             string viewType = "MANUFACTURING";
+            //string viewType = "Engineering";
             try
             {
                 var files = _docClient.getRelatedDocuments(productCode, productRevision, viewType);
@@ -175,8 +176,13 @@ namespace WindchillDocConnectorLibrary
             request.ContentType = "text/xml; charset=utf-8";
             request.Headers.Add("SOAPAction", "\"http://ws.cdm.ext/Ext/downloadRequest\"");
             request.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip, deflate");
+
+            ///WorkAround
+            docInfo.SoftType = "wt.doc.WTDocument";
+            ///
+
             string revision = string.IsNullOrEmpty(docInfo.Revision) ? string.Empty: $@"<revision xmlns="""">{ docInfo.Revision}</revision>";
-                 string dataString = $@"<s:Envelope xmlns:s=""http://schemas.xmlsoap.org/soap/envelope/""><s:Body xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema""><download xmlns=""http://ws.cdm.ext/""><fullClassName xmlns="""">{docInfo.SoftType}</fullClassName><number xmlns="""">{docInfo.Number}</number>{revision}<ContentRoleType xmlns="""">{docInfo.ContentRole}</ContentRoleType></download></s:Body></s:Envelope>";
+            string dataString = $@"<s:Envelope xmlns:s=""http://schemas.xmlsoap.org/soap/envelope/""><s:Body xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema""><download xmlns=""http://ws.cdm.ext/""><fullClassName xmlns="""">{docInfo.SoftType}</fullClassName><number xmlns="""">{docInfo.Number}</number>{revision}<ContentRoleType xmlns="""">{docInfo.ContentRole}</ContentRoleType></download></s:Body></s:Envelope>";
             var data = Encoding.ASCII.GetBytes(dataString);
             request.ContentLength = data.Length;
             using (var stream = request.GetRequestStream())

@@ -123,6 +123,8 @@
   <ItemGroup>
     <Content Include="ExternalReferences\HMIHubConnectorLib\HMIHubConnector.dll" />
     <Content Include="ExternalReferences\HMIHubConnectorLib\HMIHubModel.dll" />
+    <Content Include="images\user.gif" />
+    <Content Include="images\wrench.gif" />
     <EmbeddedResource Include="images\IMG_7817.gif" />
     <EmbeddedResource Include="images\IMG_7818.gif" />
     <EmbeddedResource Include="images\IMG_7819.gif" />

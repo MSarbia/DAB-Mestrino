@@ -32,7 +32,8 @@ namespace SmartWatchConnectorLibrary
                 try
                 {
                     //http://161.27.206.191/HMIHub/api/SubscriptionHub/ServerConnect
-                    _deviceConnector = new DeviceConnector("OTWeb", "192.168.1.191/HMIHub/api/");
+                    string ipHub = ConfigurationManager.AppSettings["HubIp"];
+                    _deviceConnector = new DeviceConnector("OTWeb", $"{ipHub}/HMIHub/api/");
                     _deviceConnector.OnClientConnectedMethod += OnSmartWatchConnected;
                     _deviceConnector.OnMessageReceivedMethod += OnSmartWatchAcknowledge;
                     _deviceConnector.RestoreActions = RestoreType.OnReconnect_BeforeDelegate;
@@ -65,6 +66,7 @@ namespace SmartWatchConnectorLibrary
         {
             RemoveFromClientRepository(message);
             var messageType = GetMessageType(message.ServerMessageId);
+            bool succeeded = true;
             switch (messageType)
             {
                 case OTMessageType.DPIBoots:
@@ -93,7 +95,8 @@ namespace SmartWatchConnectorLibrary
                     { break; }
                 case OTMessageType.Serial:
                     {
-                        StartSerial(message);
+                        var startSerialResponse = StartSerial(message);
+                        succeeded = startSerialResponse.Succeeded;
                         break;
                     }
                 case OTMessageType.Warning:
@@ -101,7 +104,10 @@ namespace SmartWatchConnectorLibrary
                 default:
                     { break; }
             }
-            DeleteMessage(message);
+            if(succeeded)
+            {
+                DeleteMessage(message);
+            }
         }
 
         private static void DeleteAllMessages(string clientId)
@@ -126,11 +132,12 @@ namespace SmartWatchConnectorLibrary
             }
         }
 
-        private static void StartSerial(PushMessage message)
+        private static StartSerialResponse StartSerial(PushMessage message)
         {
             SerialInfo serialInfo = null;
             string user = null;
             string password = null;
+            string equipment = null;
             lock (_clientMessagesLock)
             {
                 if (clients.ContainsKey(message.ClientUniqueID))
@@ -138,6 +145,7 @@ namespace SmartWatchConnectorLibrary
                     var client = clients[message.ClientUniqueID];
                     user = client.UserName;
                     password = client.Password;
+                    equipment = client.Equipment;
                     if (client.Messages.ContainsKey(message.ServerMessageId))
                     {
                         serialInfo = GetMessageData<SerialInfo>(client.Messages[message.ServerMessageId]);
@@ -145,22 +153,26 @@ namespace SmartWatchConnectorLibrary
                 }
             }
             if (user == null || password == null || serialInfo == null)
-                return;
-            StartSerial(serialInfo, user, password);
+                return new StartSerialResponse { Succeeded = false,Error= "Unknown Client or Serial"};
+            return StartSerial(serialInfo, user, password, equipment);
         }
 
-        private static void StartSerial(SerialInfo serial, string user, string passsword)
+        private static StartSerialResponse StartSerial(SerialInfo serial, string user, string passsword, string equipment)
         {
             IOTService service = GetOTService();
             var request = new StartSerialRequest
             {
-                Equipment = serial.SerialNumber,
+                Equipment = equipment,
                 Operation = serial.Operation,
                 SerialNumber = serial.SerialNumber,
                 Password = passsword,
+                OperationId = serial.OperationId,
+                Order = serial.Order,
+                ProductCode = serial.ProductCode,
+                Status = serial.Status,
                 User = user
             };
-            service.StartSerial(request);
+            return service.StartSerial(request);
         }
 
         private static void RefreshSerials(string user, string password, string equipment)
@@ -196,18 +208,20 @@ namespace SmartWatchConnectorLibrary
             IOTService service = GetOTService();
             foreach (var c in credentials)
             {
+                serials.Add(c.Key, new List<SerialInfo>());
                 var serialsResponse = service.GetSerials(new GetSerialsRequest { Equipment = equipment, User = c.Value.Item1, Password = c.Value.Item2 });
                 if (serialsResponse.Succeeded)
                 {
                     foreach (var o in serialsResponse.Orders)
                     {
-                        serials.Add(c.Key, o.Serials.Select(s => new SerialInfo
+                        serials[c.Key].AddRange(o.Serials.Select(s => new SerialInfo
                         {
                             Operation = o.Operation,
                             Order = o.Order,
                             ProductCode = o.ProductCode,
                             Status = s.Status,
-                            SerialNumber = s.SerialNumber
+                            SerialNumber = s.SerialNumber,
+                            OperationId = o.OperationId
                         }).ToList());
                     }
                 }
@@ -224,7 +238,7 @@ namespace SmartWatchConnectorLibrary
                     List<SerialInfo> clientSerials = new List<SerialInfo>();
                     foreach (var s in equipClient.Value)
                     {
-                        if (clients[equipClient.Key].Messages.Select(m => m.Value as MessageInfo<SerialInfo>).Any(m => m != null && m.Data.SerialNumber == s.SerialNumber && m.Data.Operation == s.Operation && m.Data.Order == s.Order && m.Data.ProductCode == s.ProductCode))
+                        if (!clients[equipClient.Key].Messages.Select(m => m.Value as MessageInfo<SerialInfo>).Any(m => m != null && m.Data.SerialNumber == s.SerialNumber && m.Data.Operation == s.Operation && m.Data.Order == s.Order && m.Data.ProductCode == s.ProductCode))
                         {
                             clientSerials.Add(new SerialInfo
                             {
@@ -232,7 +246,8 @@ namespace SmartWatchConnectorLibrary
                                 Order = s.Order,
                                 ProductCode = s.ProductCode,
                                 SerialNumber = s.SerialNumber,
-                                Status = s.Status
+                                Status = s.Status,
+                                OperationId = s.OperationId
                             });
                         }
                     }
@@ -258,9 +273,12 @@ namespace SmartWatchConnectorLibrary
             {
                 clientIds = clients.Where(kvp => kvp.Value.WorkArea == workArea).Select(kvp => kvp.Key);
             }
+            byte[] wrench = convertImageToByte(Properties.Resources.wrench);
+            string prefix = "Data:Image/GIF;base64,";
             foreach (var clientId in clientIds)
             {
-                SendMessage(clientId, OTMessageType.MaterialCall, equipment, string.Empty);
+                string equipName = equipment.Split('.').LastOrDefault()?? equipment;
+                SendMessage(clientId, OTMessageType.MaterialCall, equipName, prefix + Convert.ToBase64String(wrench));
             }
             return clientIds.Any();
         }
@@ -272,9 +290,12 @@ namespace SmartWatchConnectorLibrary
             {
                 clientIds = clients.Where(kvp => kvp.Value.WorkArea == workArea).Select(kvp => kvp.Key);
             }
+            byte[] user = convertImageToByte(Properties.Resources.user);
+            string prefix = "Data:Image/GIF;base64,";
             foreach (var clientId in clientIds)
             {
-                SendMessage(clientId, OTMessageType.TeamLeaderCal, equipment, string.Empty);
+                string equipName = equipment.Split('.').LastOrDefault() ?? equipment;
+                SendMessage(clientId, OTMessageType.TeamLeaderCal, equipName, prefix + Convert.ToBase64String(user));
             }
             return clientIds.Any();
         }
@@ -387,7 +408,7 @@ namespace SmartWatchConnectorLibrary
             {
                 ClientUniqueID = clientId,
                 MessagePriority = MessagePriority.Normal, //GetPriority(messageType),
-                ACKType = ACKType.Boolean,
+                ACKType = ACKType.Single,
                 UsingACK = true,
                 MessageOptions = mo,
                 Type = MessageType.SingleMessageServerToClient,

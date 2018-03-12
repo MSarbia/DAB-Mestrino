@@ -240,3 +240,28 @@ WITH
     [@Guid(dae91359-03ba-423e-bc3f-37fc7169b687)]
     Customized AS bool
 
+[NotRestricted]
+[@Guid(27485aca-b946-43e8-ba9c-eb01622d166a)]
+[@GuidId(1aa153ee-3fa6-4fa8-9610-ff503a9e16d9)]
+ENTITY DailyProduction
+WITH
+    [Mandatory]
+    [@Guid(e81a4d4a-6e0b-44e3-a6e2-09014a742b4c)]
+    Year AS int
+    [Mandatory]
+    [@Guid(31f4052c-270e-40ba-aef5-e53aa737ed56)]
+    Month AS int
+    [Mandatory]
+    [@Guid(7e4f96ac-39f8-4350-afa7-e704818ac6b3)]
+    Day AS int
+    [Mandatory]
+    [@Guid(ee4faaf9-28dc-4554-82e2-2867f2bfecaa)]
+    Pieces AS decimal
+    [Mandatory]
+    [@Guid(f8fe8668-486e-4f2e-80fe-eb6ef7e85d7c)]
+    WorkOrderId AS int
+    [Mandatory]
+    [Length = 255]
+    [@Guid(5ceb4f82-d92a-4f8b-9194-6f54e8328839)]
+    WorkArea AS string
+

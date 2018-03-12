@@ -156,6 +156,8 @@
     <Compile Include="FB_OP_DAB.OPModel\Commands\SendTestResultHandlerExecution.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\SetActualOperatorsHandler.cs" />
     <Compile Include="FB_OP_DAB.OPModel\Commands\SetActualOperatorsHandlerExecution.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\SetProducedPiecesHandler.cs" />
+    <Compile Include="FB_OP_DAB.OPModel\Commands\SetProducedPiecesHandlerExecution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

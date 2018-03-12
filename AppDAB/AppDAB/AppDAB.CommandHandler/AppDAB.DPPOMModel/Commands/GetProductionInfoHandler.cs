@@ -41,14 +41,28 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             if (realTime)
             {
                 //bool overlap = woo.start < b.end && b.start < woo.end;
-                operationDictionary = Platform.ProjectionQuery<ToBeUsedMachine>().Include("WorkOrderOperation.WorkOrder").Where(tum => tum.WorkOrderOperation.WorkOrder.EstimatedStartTime < toDate).Where(tum => tum.WorkOrderOperation.WorkOrder.EstimatedEndTime > command.FromDate).Where(tum => tum.Machine.HasValue).Where(tum => equipIds.Contains(tum.Machine.Value)).Select(tum => tum.WorkOrderOperation).Distinct().ToDictionary(woo => woo.Id, woo => woo.WorkOrder_Id.Value);
-                var orderIds = operationDictionary.Keys.ToList();
+                operationDictionary = Platform.ProjectionQuery<ToBeUsedMachine>()
+                    .Include("WorkOrderOperation.WorkOrder")
+                    .Where(tum => tum.WorkOrderOperation.WorkOrder.EstimatedStartTime < toDate)
+                    .Where(tum => tum.WorkOrderOperation.WorkOrder.EstimatedEndTime > command.FromDate)
+                    .Where(tum => tum.Machine.HasValue)
+                    .Where(tum => equipIds.Contains(tum.Machine.Value))
+                    .Select(tum => tum.WorkOrderOperation).Distinct().ToDictionary(woo => woo.Id, woo => woo.WorkOrder_Id.Value);
+
+                var orderIds = operationDictionary.Values.ToList();
                 completedOrders = Platform.ProjectionQuery<WorkOrder>().Where(wo => orderIds.Contains(wo.Id)).ToDictionary(wo => wo.Id, wo => wo);
             }
             else
             {
-                operationDictionary = Platform.ProjectionQuery<ToBeUsedMachine>().Include(tum => tum.WorkOrderOperation).Where(tum => tum.WorkOrderOperation.ActualEndTime < toDate).Where(tum => tum.Machine.HasValue).Where(tum => equipIds.Contains(tum.Machine.Value)).Select(tum => tum.WorkOrderOperation).Distinct().ToDictionary(woo => woo.Id, woo => woo.WorkOrder_Id.Value);
-                var orderIds = operationDictionary.Keys.ToList();
+                operationDictionary = Platform.ProjectionQuery<ToBeUsedMachine>()
+                    .Include(tum => tum.WorkOrderOperation)
+                    .Where(tum => tum.WorkOrderOperation.ActualEndTime > command.FromDate)
+                    .Where(tum => tum.WorkOrderOperation.ActualEndTime < toDate)
+                    .Where(tum => tum.Machine.HasValue)
+                    .Where(tum => equipIds.Contains(tum.Machine.Value))
+                    .Select(tum => tum.WorkOrderOperation).Distinct().ToDictionary(woo => woo.Id, woo => woo.WorkOrder_Id.Value);
+
+                var orderIds = operationDictionary.Values.ToList();
                 completedOrders = Platform.ProjectionQuery<WorkOrder>().Where(wo => orderIds.Contains(wo.Id)).Where(wo => wo.Status == "Complete").Where(wo => wo.ActualEndTime < command.ToDate).Where(wo => wo.ActualEndTime > command.FromDate).ToDictionary(wo => wo.Id, wo => wo);
             }
 

@@ -29,50 +29,13 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         {
             var response = new DABSendTestResult.Response();
 
-            ActualProducedMaterial actualProdMat = Platform.ProjectionQuery<ActualProducedMaterial>().Include("WorkOrderOperation.ToBeUsedMachines").Include(apm => apm.MaterialItem).Where(apm=>apm.PartialWorkedQuantity == 1).Where(apm => apm.MaterialItem.SerialNumberCode == command.Result.SerialNumber).FirstOrDefault();
+            ActualProducedMaterial actualProdMat = Platform.ProjectionQuery<ActualProducedMaterial>().Include("WorkOrderOperation.ToBeUsedMachines").Include(apm => apm.MaterialItem).Where(apm => apm.PartialWorkedQuantity == 1).Where(apm => apm.MaterialItem.SerialNumberCode == command.Result.SerialNumber).FirstOrDefault();
             if (actualProdMat == null)
             {
                 response.SetError(-1000, $"Nessun Ordine attivo trovato per il seriale {command.Result.SerialNumber}");
                 return response;
             }
             int? workOrderId = actualProdMat.WorkOrderOperation.WorkOrder_Id;
-            var matDef = Platform.ProjectionQuery<MaterialDefinition>().Where(md => md.Id == actualProdMat.MaterialItem.MaterialDefinition).Select(md => md.NId).FirstOrDefault();
-
-            if (!workOrderId.HasValue || workOrderId == 0)
-            {
-                response.SetError(-1001, $"Nessun Ordine attivo trovato per il seriale {command.Result.SerialNumber}");
-                return response;
-            }
-            //var toBeUsedMachine = actualProdMat.WorkOrderOperation.ToBeUsedMachines.Where(tum => tum.Machine.HasValue).FirstOrDefault().Machine.Value;
-            //var equip = Platform.ProjectionQuery<Equipment>().Where(e => e.Id == toBeUsedMachine).FirstOrDefault();
-
-            //var completeResponse = Platform.CallCommand<DABCompleteSerial, DABCompleteSerial.Response>(new DABCompleteSerial
-            //{
-            //    CompleteSerializedWoOpParameterList = new List<CompleteSerializedParameterType>
-            //    {
-            //        new CompleteSerializedParameterType
-            //        {
-            //            EquipmentNId = equip.NId,
-            //            Id = actualProdMat.WorkOrderOperation.Id,
-            //            NId = actualProdMat.WorkOrderOperation.NId,
-            //            ActualProducedMaterials = new List<MaterialItemParameterType>
-            //            {
-            //                new MaterialItemParameterType
-            //                {
-            //                    NId = actualProdMat.MaterialItem.NId,
-            //                    EquipmentNId = equip.NId,
-            //                    MaterialDefinitionNId = matDef,
-            //                    SerialNumber = command.Result.SerialNumber
-            //                }
-            //            }
-            //        }
-            //    }
-            //});
-            //if(!completeResponse.Succeeded)
-            //{
-            //    response.SetError(completeResponse.Error.ErrorCode, completeResponse.Error.ErrorMessage);
-            //    return response;
-            //}
 
             var resultResponse = Platform.CallCommand<SendTestResult, SendTestResult.Response>(new SendTestResult { Result = command.Result, WorkOrderId = workOrderId.Value });
             if (!resultResponse.Succeeded)
@@ -80,6 +43,52 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 response.SetError(resultResponse.Error.ErrorCode, resultResponse.Error.ErrorMessage);
                 return response;
             }
+
+            if(command.Result.Esito!="PASS")
+            {
+                response.SetError(-1268, $"Collaudo fallito: {command.Result.DescrizioneEsito}");
+                return response;
+            }
+
+            var matDef = Platform.ProjectionQuery<MaterialDefinition>().Where(md => md.Id == actualProdMat.MaterialItem.MaterialDefinition).Select(md => md.NId).FirstOrDefault();
+
+            if (!workOrderId.HasValue || workOrderId == 0)
+            {
+                response.SetError(-1001, $"Nessun Ordine attivo trovato per il seriale {command.Result.SerialNumber}");
+                return response;
+            }
+            var toBeUsedMachine = actualProdMat.WorkOrderOperation.ToBeUsedMachines.Where(tum => tum.Machine.HasValue).FirstOrDefault().Machine.Value;
+            var equip = Platform.ProjectionQuery<Equipment>().Where(e => e.Id == toBeUsedMachine).FirstOrDefault();
+
+            var completeResponse = Platform.CallCommand<DABCompleteSerial, DABCompleteSerial.Response>(new DABCompleteSerial
+            {
+                CompleteSerializedWoOpParameterList = new List<CompleteSerializedParameterType>
+                {
+                    new CompleteSerializedParameterType
+                    {
+                        EquipmentNId = equip.NId,
+                        Id = actualProdMat.WorkOrderOperation.Id,
+                        NId = actualProdMat.WorkOrderOperation.NId,
+                        ActualProducedMaterials = new List<MaterialItemParameterType>
+                        {
+                            new MaterialItemParameterType
+                            {
+                                NId = actualProdMat.MaterialItem.NId,
+                                EquipmentNId = equip.NId,
+                                MaterialDefinitionNId = matDef,
+                                SerialNumber = command.Result.SerialNumber
+                            }
+                        }
+                    }
+                }
+            });
+            if (!completeResponse.Succeeded)
+            {
+                response.SetError(completeResponse.Error.ErrorCode, completeResponse.Error.ErrorMessage);
+                return response;
+            }
+
+            
             return response;
         }
     }

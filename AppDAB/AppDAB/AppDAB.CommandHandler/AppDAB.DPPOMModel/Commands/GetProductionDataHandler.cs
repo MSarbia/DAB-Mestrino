@@ -6,6 +6,7 @@ using Siemens.SimaticIT.Unified.Common.Information;
 using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands.Published;
 using Siemens.SimaticIT.Handler;
 using Siemens.SimaticIT.Unified;
+using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.ReadingModel;
 
 namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 {
@@ -32,10 +33,11 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 var toDate = today.AddDays(-d);
                 var fromDate = toDate.AddDays(-1);
                 var pis = Platform.CallCommand<GetProductionInfo, GetProductionInfo.Response>(new GetProductionInfo { WorkArea = command.WorkArea, FromDate = fromDate, ToDate = toDate });
+                var producedPieces = Platform.ProjectionQuery<DailyProduction>().Where(p => p.WorkArea == command.WorkArea && p.Year == toDate.Year && p.Month == toDate.Month && p.Day == toDate.Day).Sum(p => p.Pieces);
                 if (pis.Succeeded)
                 {
                     response.ProducedOrders.Add(new Types.GraphPoint($"{toDate.Month}-{toDate.Day}", pis.ProducedOrders));
-                    response.ProducedPieces.Add(new Types.GraphPoint($"{toDate.Month}-{toDate.Day}", pis.ActualProducedQuantity));
+                    response.ProducedPieces.Add(new Types.GraphPoint($"{toDate.Month}-{toDate.Day}", producedPieces));
                 }
             }
             return response;

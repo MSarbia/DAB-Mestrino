@@ -5,13 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using WindchillTestConnectorLibrary.WindchillDocService;
 using WindchillTestConnectorLibrary.WindchillTestCardService;
 
 namespace WindchillTestConnectorLibrary
 {
-    public class WindchillTestCardConnector:IDisposable
+    public class WindchillTestCardConnector : IDisposable
     {
         private RMWebServicesImplClient _testClient;
+        private ExtClient _docClient;
 
         private string _userName = "wcadmin";
         private string _password = "DWTadmin";
@@ -19,6 +21,9 @@ namespace WindchillTestConnectorLibrary
         public WindchillTestCardConnector()
         {
             _testClient = new RMWebServicesImplClient("RMWebServicesImplPort");
+
+            _docClient = new ExtClient("ExtPort");
+
             ExeConfigurationFileMap map = new ExeConfigurationFileMap();
             map.ExeConfigFilename = "WindchillTestConnectorLibrary.dll.config";
 
@@ -28,6 +33,16 @@ namespace WindchillTestConnectorLibrary
 
             _userName = section.Settings["WindchillUser"].Value;
             _password = section.Settings["WindchillPassword"].Value;
+
+
+            if (_docClient.ClientCredentials == null)
+            {
+                System.Diagnostics.Debug.WriteLine("Null ClientCredentials");
+                return;
+            }
+            //_testClient.ClientCredentials.UseIdentityConfiguration = true;
+            _docClient.ClientCredentials.UserName.UserName = _userName;
+            _docClient.ClientCredentials.UserName.Password = _password;
 
 
             if (_testClient.ClientCredentials == null)
@@ -40,14 +55,51 @@ namespace WindchillTestConnectorLibrary
             _testClient.ClientCredentials.UserName.Password = _password;
         }
 
-        public TestCardParameter GetTestCard(string productCode)
+        private string GetDocNumber(List<wsRevisionControlled> docList)
+        {
+            wsRevisionControlled docListFiltered = null;
+            string softtype = "intra.adw.industrialization_data";
+
+            foreach (wsRevisionControlled doc in docList)
+            {
+                if (doc.softType == softtype)
+                {
+                    docListFiltered = doc;
+                    break;
+                }
+            }
+            return docListFiltered?.number ?? "";
+        }
+
+        private string GetDocNumber(string productCode, string productRevision)
+        {
+            List<wsRevisionControlled> docList = new List<wsRevisionControlled>();
+            string viewType = "Engineering";
+            try
+            {
+                var files = _docClient.getRelatedDocuments(productCode, productRevision, viewType);
+                foreach (var file in files)
+                {
+                    docList.Add(file);
+                }
+            }
+            catch (System.Exception)
+            {
+                return "";
+            }
+            return GetDocNumber(docList);
+        }
+
+        public TestCardParameter GetTestCard(string productCode, string productRevision)
         {
             var testCard = new TestCardParameter
             {
                 CodiceProdotto = productCode,
                 Assorbimenti = new List<AbsorptionParameter>()
             };
-           var genericBusinessObject = _testClient.Query(string.Empty, "intra.adw.industrialization_data", $"name='{productCode}'", string.Empty, new string[] { "*" });
+            string documentnumber = GetDocNumber(productCode, productRevision);
+            if (String.IsNullOrEmpty(documentnumber)) return testCard;
+            var genericBusinessObject = _testClient.Query(string.Empty, "intra.adw.industrialization_data", $"number='{documentnumber}'", string.Empty, new string[] { "*" });
             if (genericBusinessObject == null || genericBusinessObject.Length == 0 || !genericBusinessObject[0].properties.Any())
                 return testCard;
 
@@ -104,7 +156,7 @@ namespace WindchillTestConnectorLibrary
                 else if (name.StartsWith("power") && name.EndsWith("a"))
                 {
                     string absorptionName = GetAbsorptionName(name);
-                    if(!absorptionDictionary.ContainsKey(absorptionName))
+                    if (!absorptionDictionary.ContainsKey(absorptionName))
                     {
                         absorptionDictionary.Add(absorptionName, new AbsorptionParameter());
                         absorptionDictionary[absorptionName].Nome = absorptionName;
@@ -148,7 +200,7 @@ namespace WindchillTestConnectorLibrary
             }
             testCard.CorrenteASecco = correnteASecco;
             testCard.PotenzaASecco = potenzaASecco;
-            if(testCard.CorrenteASecco.HasValue)
+            if (testCard.CorrenteASecco.HasValue)
             {
                 testCard.CorrenteASeccoPercent = amperePercent;
             }
@@ -156,9 +208,9 @@ namespace WindchillTestConnectorLibrary
             {
                 testCard.PotenzaASeccoPercent = potenzaPercent;
             }
-            foreach(var abs in absorptionDictionary.Values)
+            foreach (var abs in absorptionDictionary.Values)
             {
-                if(abs.Ampere.HasValue)
+                if (abs.Ampere.HasValue)
                 {
                     abs.AmperePercent = amperePercent;
                 }
