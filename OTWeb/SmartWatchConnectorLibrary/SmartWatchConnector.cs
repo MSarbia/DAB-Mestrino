@@ -104,7 +104,7 @@ namespace SmartWatchConnectorLibrary
                 default:
                     { break; }
             }
-            if(succeeded)
+            if (succeeded)
             {
                 DeleteMessage(message);
             }
@@ -120,7 +120,7 @@ namespace SmartWatchConnectorLibrary
 
         private static void DeleteMessage(PushMessage message)
         {
-            PushMessage outM=null;
+            PushMessage outM = null;
             lock (_deviceConnectorLock)
             {
                 _deviceConnector.DeleteMessage(message.ClientUniqueID, message.MessageId);
@@ -138,6 +138,7 @@ namespace SmartWatchConnectorLibrary
             string user = null;
             string password = null;
             string equipment = null;
+            string workarea = null;
             lock (_clientMessagesLock)
             {
                 if (clients.ContainsKey(message.ClientUniqueID))
@@ -146,18 +147,19 @@ namespace SmartWatchConnectorLibrary
                     user = client.UserName;
                     password = client.Password;
                     equipment = client.Equipment;
+                    workarea = client.WorkArea;
                     if (client.Messages.ContainsKey(message.ServerMessageId))
                     {
                         serialInfo = GetMessageData<SerialInfo>(client.Messages[message.ServerMessageId]);
                     }
                 }
             }
-            if (user == null || password == null || serialInfo == null)
-                return new StartSerialResponse { Succeeded = false,Error= "Unknown Client or Serial"};
-            return StartSerial(serialInfo, user, password, equipment);
+            if (user == null || password == null || serialInfo == null || workarea == null)
+                return new StartSerialResponse { Succeeded = false, Error = "Unknown Client or Serial" };
+            return StartSerial(serialInfo, user, password, equipment, workarea);
         }
 
-        private static StartSerialResponse StartSerial(SerialInfo serial, string user, string passsword, string equipment)
+        private static StartSerialResponse StartSerial(SerialInfo serial, string user, string passsword, string equipment, string workarea)
         {
             IOTService service = GetOTService();
             var request = new StartSerialRequest
@@ -177,31 +179,45 @@ namespace SmartWatchConnectorLibrary
 
         private static void RefreshSerials(string user, string password, string equipment)
         {
-            Dictionary<string, Tuple<string, string>> credentials = new Dictionary<string, Tuple<string, string>>();
+            Dictionary<string, Credentials> credentials = new Dictionary<string, Credentials>();
 
             lock (_clientMessagesLock)
             {
                 var client = clients.First(c => c.Value.UserName == user && c.Value.Password == password && c.Value.Equipment == equipment);
-                credentials.Add(client.Key, new Tuple<string, string>(client.Value.UserName, client.Value.Password));
+                credentials.Add(client.Key, new Credentials(client.Value.UserName, client.Value.Password, client.Value.WorkArea));
             }
-            RefreshSerials(credentials, equipment);
+            RefreshSerials(credentials);
         }
 
-        public static void RefreshSerials(string equipment)
+        public static void RefreshSerials(string workarea)
         {
-            Dictionary<string, Tuple<string, string>> credentials = new Dictionary<string, Tuple<string, string>>();
+            Dictionary<string, Credentials> credentials = new Dictionary<string, Credentials>();
 
             lock (_clientMessagesLock)
             {
-                foreach (var client in clients.Where(c => c.Value.Equipment == equipment))
+                foreach (var client in clients.Where(c => c.Value.WorkArea == workarea))
                 {
-                    credentials.Add(client.Key, new Tuple<string, string>(client.Value.UserName, client.Value.Password));
+                    credentials.Add(client.Key, new Credentials(client.Value.UserName, client.Value.Password, client.Value.Equipment));
                 }
             }
-            RefreshSerials(credentials, equipment);
+            RefreshSerials(credentials);
         }
 
-        private static void RefreshSerials(Dictionary<string, Tuple<string, string>> credentials, string equipment)
+        private class Credentials
+        {
+            public string UserName { get; set; }
+            public string Password { get; set; }
+            public string Equipment { get; set; }
+            public Credentials(string userName, string password, string equipment)
+            {
+                UserName = userName;
+                Password = password;
+                Equipment = equipment;
+            }
+        }
+
+
+        private static void RefreshSerials(Dictionary<string, Credentials> credentials)
         {
             Dictionary<string, List<SerialInfo>> serials = new Dictionary<string, List<SerialInfo>>();
             Dictionary<string, List<SerialInfo>> newSerials = new Dictionary<string, List<SerialInfo>>();
@@ -209,7 +225,7 @@ namespace SmartWatchConnectorLibrary
             foreach (var c in credentials)
             {
                 serials.Add(c.Key, new List<SerialInfo>());
-                var serialsResponse = service.GetSerials(new GetSerialsRequest { Equipment = equipment, User = c.Value.Item1, Password = c.Value.Item2 });
+                var serialsResponse = service.GetSerials(new GetSerialsRequest { Equipment = c.Value.Equipment, User = c.Value.UserName, Password = c.Value.Password });
                 if (serialsResponse.Succeeded)
                 {
                     foreach (var o in serialsResponse.Orders)
@@ -277,7 +293,7 @@ namespace SmartWatchConnectorLibrary
             string prefix = "Data:Image/GIF;base64,";
             foreach (var clientId in clientIds)
             {
-                string equipName = equipment.Split('.').LastOrDefault()?? equipment;
+                string equipName = equipment.Split('.').LastOrDefault() ?? equipment;
                 SendMessage(clientId, OTMessageType.MaterialCall, equipName, prefix + Convert.ToBase64String(wrench));
             }
             return clientIds.Any();
@@ -487,7 +503,7 @@ namespace SmartWatchConnectorLibrary
             byte[] hand = convertImageToByte(Properties.Resources.hands);
             byte[] helmet = convertImageToByte(Properties.Resources.helmet);
             byte[] tool = convertImageToByte(Properties.Resources.tools);
-            string prefix="Data:Image/GIF;base64,";       ;
+            string prefix = "Data:Image/GIF;base64,"; ;
 
             if (SendMessage(device.ClientUniqueID, OTMessageType.DPIBoots, "Scarpe", prefix + Convert.ToBase64String(shoes))
                 && SendMessage(device.ClientUniqueID, OTMessageType.DPIGloves, "Guanti", prefix + Convert.ToBase64String(hand))

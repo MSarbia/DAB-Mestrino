@@ -26,10 +26,11 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         private GetOEEEfficiency.Response GetOEEEfficiencyHandler(GetOEEEfficiency command)
         {
             DateTime today = DateTime.UtcNow;
+            var todayFilter = new DateTime(today.Year, today.Month, today.Day, 23, 59, 59);
             var response = new GetOEEEfficiency.Response(new List<Types.GraphPoint>(), new List<Types.GraphPoint>());
             for (int d = 0; d < 15; d++)
             {
-                var toDate = today.AddDays(-d);
+                var toDate = todayFilter.AddDays(-d);
                 var fromDate = toDate.AddDays(-1);
                 var kpis = Platform.CallCommand<GetKPIs, GetKPIs.Response>(new GetKPIs { WorkArea = command.WorkArea, FromDate = fromDate, ToDate = toDate });
                 if (kpis.Succeeded)

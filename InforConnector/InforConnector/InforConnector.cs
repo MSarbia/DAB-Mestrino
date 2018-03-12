@@ -18,7 +18,7 @@ namespace InforConnectorLibrary
 
     public static class InforConnector
     {
-        //Metodo per gestire la chiamata al Webservice, prende in input una istanza di classe(fra quelle del modello) e restituisce un oggetto di tipo InforResult
+        // Metodo per gestire la chiamata al Webservice, prende in input una istanza di classe(fra quelle del modello) e restituisce un oggetto di tipo InforResult
         public static InforResult CallWebService<T>(T reportRequest)
         {
             //var _url = "http://192.168.1.31:8312/c4ws/services/IWMStdReportProduction/lntestclone";
@@ -48,7 +48,7 @@ namespace InforConnectorLibrary
                 {
                     methodToCall = addressList.FirstOrDefault(x => x.Key.Contains(reportRequest.GetType().Name));
                 }
-                    
+
                 if ((methodToCall.Key != null) && (methodToCall.Value != null))
                 {
                     _url = methodToCall.Value;
@@ -198,15 +198,23 @@ namespace InforConnectorLibrary
             }
         }
 
-        //Metodo per comporre Envelop xlm con i dati passati in input 
+        // Metodo per comporre Envelop xlm con i dati passati in input 
         public static XmlDocument CreateSoapEnvelope<T>(T reportRequestEnvelope, out InforResult result)
         {
             XmlDocument soapEnvelopeDocument = new XmlDocument();
+            // MSXXX
+            string ProductionOrder = string.Empty;
+            // MSXXX
+
             try
             {
                 if (reportRequestEnvelope is ReportProduction)
                 {
                     var reportProduction = reportRequestEnvelope as ReportProduction;
+                    // MSXXX
+                    ProductionOrder = reportProduction.ProductionOrder;
+                    // MSXXX
+
                     soapEnvelopeDocument.LoadXml(
                         $@"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:iwm=""http://www.infor.com/businessinterface/IWMStdReportProduction"">
                             <soapenv:Header>
@@ -237,6 +245,10 @@ namespace InforConnectorLibrary
                 {
                     var unplannedMat = reportRequestEnvelope as UnplannedMat;
                     string item = unplannedMat.Customized ? unplannedMat.Item : $"         {unplannedMat.Item}";
+                    //MSXXX
+                    ProductionOrder = unplannedMat.ProdOrder;
+                    //MSXXX
+
                     soapEnvelopeDocument.LoadXml($@"
                         <soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:iwm=""http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue"">
                             <soapenv:Header>
@@ -269,9 +281,10 @@ namespace InforConnectorLibrary
                             </soapenv:Body>
                     </soapenv:Envelope>");
                 }
-                else if(reportRequestEnvelope is List<UnplannedMat>)
+                else if (reportRequestEnvelope is List<UnplannedMat>)
                 {
                     var unplannedMats = reportRequestEnvelope as List<UnplannedMat>;
+
                     string pre = $@"
                         <soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:iwm=""http://www.infor.com/businessinterface/IWMStdUnplannedMatlIssue"">
                             <soapenv:Header>
@@ -292,9 +305,13 @@ namespace InforConnectorLibrary
                             </soapenv:Body>
                     </soapenv:Envelope>";
                     string issues = "";
-                    foreach(var materialIssue in unplannedMats)
+                    foreach (var materialIssue in unplannedMats)
                     {
                         string item = materialIssue.Customized ? materialIssue.Item : $"         {materialIssue.Item}";
+                        // MSXXX
+                        ProductionOrder = materialIssue.ProdOrder;
+                        // MSXXX
+
                         issues += $@"<IWMStdUnplannedMatlIssue>
                                                 <ProdOrder>{materialIssue.ProdOrder}</ProdOrder>
                                                 <Operation>{materialIssue.Operation}</Operation>
@@ -308,6 +325,7 @@ namespace InforConnectorLibrary
                                                 <ReleaseOutbound>{materialIssue.ReleaseOutbound}</ReleaseOutbound>
                                             </IWMStdUnplannedMatlIssue>";
                     }
+
                     string doc = pre + issues + post;
                     soapEnvelopeDocument.LoadXml(doc);
                 }
@@ -349,6 +367,10 @@ namespace InforConnectorLibrary
                 {
                     var operatorOperation = reportRequestEnvelope as OperatorOperation;
                     string operationStatus = operatorOperation.OperationStatus.Equals("Completed") ? "<OperationStatus>Completed</OperationStatus>" : string.Empty;
+                    // MSXXX
+                    ProductionOrder = operatorOperation.ProdOrder;
+                    // MSXXX
+
                     soapEnvelopeDocument.LoadXml(
                         $@"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:sfc=""http://www.infor.com/businessinterface/SFCOperatorOperation"">
 	                        <soapenv:Header>
@@ -436,21 +458,22 @@ namespace InforConnectorLibrary
             // </ IWMStdUnplannedMatlIssue >
 
             //MSXXX
-            string date = DateTime.Now.ToString("yyyy_MM_dd_hhmmss");
-            string path = @"c:\temp\" + date + "_REQUEST.txt";
+            string date = DateTime.Now.ToString("MM_dd_hhmmss");
+            string path = @"c:\temp\" + date + ProductionOrder + "_REQUEST.txt";
 
             using (StreamWriter sw = File.CreateText(path))
             {
-                sw.WriteLine(soapEnvelopeDocument.ToString());
+                sw.WriteLine(soapEnvelopeDocument.InnerXml);
             }
             //MSXXX
             return soapEnvelopeDocument;
         }
 
-        //Metodo per inserire la Envelop creata nella WebRequest
+        // Metodo per inserire la Envelop creata nella WebRequest
         private static InforResult InsertSoapEnvelopeIntoWebRequest(XmlDocument soapEnvelopeXml, HttpWebRequest webRequest)
         {
             var result = new InforResult();
+
             try
             {
                 using (Stream stream = webRequest.GetRequestStream())
@@ -475,7 +498,7 @@ namespace InforConnectorLibrary
             return result;
         }
 
-        //Metodo che legge file di configurazione corrente ed inserisce in un Dictionary la coppia( Nome Metodo, Url del metodo)
+        // Metodo che legge file di configurazione corrente ed inserisce in un Dictionary la coppia( Nome Metodo, Url del metodo)
         private static InforResult ReadConfigFile(out Dictionary<string, string> addressList)
         {
             try
@@ -520,7 +543,7 @@ namespace InforConnectorLibrary
             }
         }
 
-        //Metodo per parsare WebResponse, viene fatto un controllo sui valori di alcuni tag
+        // Metodo per parsare WebResponse, viene fatto un controllo sui valori di alcuni tag
         public static InforResult ParseWebResponse<T>(WebResponse webResponse, T reportRequest)
         {
             XDocument document = null;
@@ -566,7 +589,7 @@ namespace InforConnectorLibrary
             }
 
             //MSXXX
-            string date = DateTime.Now.ToString("yyyy_MM_dd_hhmmss");
+            string date = DateTime.Now.ToString("MM_dd_hhmmss");
             string path = @"c:\temp\" + date + "_RESPONSE.txt";
 
             using (StreamWriter sw = File.CreateText(path))
@@ -575,20 +598,10 @@ namespace InforConnectorLibrary
             }
             //MSXXX
 
-            //MSXXX
-            string date = DateTime.Now.ToString("yyyy_MM_dd_hhmmss");
-            string path = @"c:\temp\" + date + "_RESPONSE.txt";
-
-            using (StreamWriter sw = File.CreateText(path))
-            {
-                sw.WriteLine(document);
-            }
-            //MSXXX
-            
             if (document.ToString().Contains("IWMStdReportProduction"))
             {
                 productionOrder = (reportRequest as ReportProduction).ProductionOrder;
-                // MSXXX per ora non riceviamo il ReceiptNumber (devono controllare se sia corretto cosi'
+                //MSXXX per ora non riceviamo il ReceiptNumber (devono controllare se sia corretto cosi')
                 /* if (string.IsNullOrEmpty(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "ReceiptNumber").Value))
                 {
                     return new InforResult(true, "ReceiptNumber non presente per l'ordine: " + (reportRequest as ReportProduction).ProductionOrder.Trim());
@@ -602,7 +615,7 @@ namespace InforConnectorLibrary
             }
             else if (document.ToString().Contains("IWMStdUnplannedMatlIssue"))
             {
-                if(reportRequest is UnplannedMat)
+                if (reportRequest is UnplannedMat)
                 {
                     productionOrder = (reportRequest as UnplannedMat).ProdOrder;
                 }
@@ -610,7 +623,7 @@ namespace InforConnectorLibrary
                 {
                     productionOrder = (reportRequest as List<UnplannedMat>).First().ProdOrder;
                 }
-                
+
                 if (string.IsNullOrEmpty(document.Descendants().FirstOrDefault(p => p.Name.LocalName == "RunNumber").Value))
                 {
                     return new InforResult(true, "RunNumber non presente per l'ordine " + (reportRequest as UnplannedMat).ProdOrder.Trim());

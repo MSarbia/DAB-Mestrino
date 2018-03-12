@@ -146,7 +146,8 @@ function StartSerial(order, serialNumber, status, operation, operationId, produc
         SerialNumber: serialNumber,
         Status: status,
         Operation: operation,
-        OperationId: operationId
+        OperationId: operationId,
+        WorkArea: userData.WorkArea
     };
 
     callService("StartSerial", startSerialRequest, function (result) {

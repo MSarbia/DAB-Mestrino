@@ -32,6 +32,7 @@ namespace InforConnectorLibrary
         public ReportProduction(string erpOrder, bool closeOrder, string company, string warehouse)
         {
             FromWarehouse = string.IsNullOrEmpty(warehouse) ? "D110" : warehouse;
+
             ProductionOrder = erpOrder;
 
             QtyDeliver = 0;
