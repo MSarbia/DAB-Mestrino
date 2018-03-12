@@ -424,7 +424,7 @@
                     containerJET.appendChild(div);
 
                     var ctx = canvas.getContext('2d');
-                    var config = createConfigOEE(details);
+                    var config = createConfigOEE(details, labels);
                     new Chart(ctx, config);
                 });
                 steppedLineSettingsM100.forEach(function (details) {
@@ -436,7 +436,7 @@
                     containerM100.appendChild(div);
 
                     var ctx = canvas.getContext('2d');
-                    var config = createConfigOEE(details);
+                    var config = createConfigOEE(details, labels);
                     new Chart(ctx, config);
                 });
                 steppedLineSettingsM80.forEach(function (details) {
@@ -448,7 +448,7 @@
                     containerM80.appendChild(div);
 
                     var ctx = canvas.getContext('2d');
-                    var config = createConfigOEE(details);
+                    var config = createConfigOEE(details, labels);
                     new Chart(ctx, config);
                 });
 
