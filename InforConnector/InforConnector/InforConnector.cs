@@ -459,7 +459,7 @@ namespace InforConnectorLibrary
 
             //MSXXX
             string date = DateTime.Now.ToString("MM_dd_hhmmss");
-            string path = @"c:\temp\" + ProductionOrder + date + "_REQUEST.txt";
+            string path = @"c:\temp\" + date + ProductionOrder + "_REQUEST.txt";
 
             using (StreamWriter sw = File.CreateText(path))
             {
