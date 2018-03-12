@@ -39,6 +39,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             var matDocDictionary = new Dictionary<int, List<Guid>>();
             foreach (var finalMat in finalMaterials)
             {
+                Platform.Tracer.Write("Siemens-SimaticIT-Trace-UADMRuntime", $"Retrieving documents for FinalMaterial {finalMat.NId} {finalMat.Revision}");
                 string revision = finalMat.Revision == "n/a" ? string.Empty : finalMat.Revision;
                 var docInfoList = docConnector.GetDocumentList(finalMat.NId, revision);
                 if (!docInfoList.Any())
@@ -53,7 +54,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     {
                         continue;
                     }
-
+                    Platform.Tracer.Write("Siemens-SimaticIT-Trace-UADMRuntime", $"Importing document {docNId} for FinalMaterial {finalMat.NId} {finalMat.Revision}");
                     var docFile = docConnector.DownloadDoc(docInfo);
                     if(docFile==null)
                     {
