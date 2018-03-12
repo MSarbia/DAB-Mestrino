@@ -43,7 +43,11 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     .Select(tum => tum.WorkOrderOperation).Distinct().ToDictionary(woo => woo.Id, woo => woo.WorkOrder_Id.Value);
 
                 var orderIds = operationDictionary.Values.ToList();
-                completedOrders = Platform.ProjectionQuery<WorkOrder>().Where(wo => orderIds.Contains(wo.Id)).ToDictionary(wo => wo.Id, wo => wo);
+                completedOrders = Platform.ProjectionQuery<WorkOrder>()
+                    .Where(wo => orderIds.Contains(wo.Id))
+                    .Where(wo => wo.Status != "Edit")
+                    .Where(wo => wo.Status != "Aborted")
+                    .ToDictionary(wo => wo.Id, wo => wo);
             }
             else
             {
