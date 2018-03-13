@@ -55,7 +55,35 @@ function SubscribeToLeaderCalls(chat, materialCallsSuccess, teamLeaderCallsSucce
 function SubscribeToOperatorCalls(chat, getSerialsSuccess) {
 
     chat.client.getNewSerial = function (message) {
-        GetSerials(getSerialsSuccess);
+        var startedSerial = GetOrAddSession("startedSerial","");
+        if (message !== startedSerial) {
+            GetSerials(getSerialsSuccess);
+        }
+        else
+        {
+            SaveSession("startedSerial","");
+        }
+    };
+}
+
+function SubscribeToLeaderResponses(chat) {
+
+    chat.client.materialAnswered = function (message) {
+        var materialCallId = GetOrAddSession("materialCallId", "");
+        if (message === materialCallId) {
+            SaveSession("materialCallId", "");
+            enableMaterialCall();
+            showInfo('Il TeamLeader sta arrivando');
+        }
+    };
+
+    chat.client.leaderAnswered = function (message) {
+        var leaderCallId = GetOrAddSession("leaderCallId", "");
+        if (message === leaderCallId) {
+            SaveSession("leaderCallId", "");
+            enableLeaderCall();
+            showInfo('Il TeamLeader sta arrivando');
+        }
     };
 }
 
@@ -99,6 +127,8 @@ function CallTeamLeader() {
     };
 
     callService("SendTeamLeaderCall", teamLeaderCallRequest, function (result) {
+        SaveSession("leaderCallId", result.Id);
+        disableLeaderCall();
         showInfo('Chiamata a TeamLeader eseguita con successo');
     });
 }
@@ -115,10 +145,11 @@ function CallMaterials() {
     };
 
     callService("SendMaterialCall", materialCallRequest, function (result) {
+        SaveSession("materialCallId", result.Id);
+        disableMaterialCall();
         showInfo('Chiamata Materiali eseguita con successo');
     });
 }
-
 
 function GetSerials(getSerialsSuccess) {
     var userData = GetSession('userData');
@@ -149,19 +180,19 @@ function StartSerial(order, serialNumber, status, operation, operationId, produc
         OperationId: operationId,
         WorkArea: userData.WorkArea
     };
-
+    SaveSession("startedSerial", serialNumber);
     callService("StartSerial", startSerialRequest, function (result) {
         var getSerialsRequest = {
             User: userData.User,
             Password: userData.Password,
             Equipment: userData.Equipment
         };
-
+        
         callService("GetSerials", getSerialsRequest, function (result) {
             getSerialsSuccess(result);
             var serialNumbers = [];
             result.Orders.forEach(function (o) { o.Serials.forEach(function (s) { serialNumbers.push(s.SerialNumber); }); });
-            
+
             if (serialNumbers.indexOf(serialNumber) > -1) {
                 showInfo('Seriale avviato con successo');
             }
@@ -172,13 +203,14 @@ function StartSerial(order, serialNumber, status, operation, operationId, produc
     });
 }
 
-function AcceptTeamLeaderCall(callId, teamLeaderCallsSuccess) {
+function AcceptTeamLeaderCall(equipment, callId, teamLeaderCallsSuccess) {
     var userData = GetSession('userData');
 
     var teamLeaderCallRequest = {
         User: userData.User,
         Password: userData.Password,
-        CallId: callId
+        CallId: callId,
+        Equipment: equipment
     };
 
     callService("AcceptTeamLeaderCall", teamLeaderCallRequest, function (result) {
@@ -187,13 +219,14 @@ function AcceptTeamLeaderCall(callId, teamLeaderCallsSuccess) {
     });
 }
 
-function AcceptMaterialCall(callId, materialCallsSuccess) {
+function AcceptMaterialCall(equipment, callId, materialCallsSuccess) {
     var userData = GetSession('userData');
 
     var materialCallRequest = {
         User: userData.User,
         Password: userData.Password,
-        CallId: callId
+        CallId: callId,
+        Equipment: equipment
     };
 
     callService("AcceptMaterialCall", materialCallRequest, function (result) {

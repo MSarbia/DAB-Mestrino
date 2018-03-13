@@ -57,6 +57,10 @@ namespace OTWeb
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         StartSerialResponse StartSerial(StartSerialRequest acceptTeamLeaderCall);
 
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        void RefreshSerials(string workArea);
+
         SmartwatchInfo GetSmartWatchUser(string macAddress);
     }
 }

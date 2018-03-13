@@ -77,6 +77,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="CallInfo.cs" />
     <Compile Include="SerialInfo.cs" />
     <Compile Include="SmartWatchConnector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -90,13 +90,18 @@ namespace SmartWatchConnectorLibrary
                         break;
                     }
                 case OTMessageType.MaterialCall:
-                    { break; }
-                case OTMessageType.TeamLeaderCal:
-                    { break; }
+                    {
+                        succeeded = AnswerMaterialCall(message).Succeeded;
+                        break;
+                    }
+                case OTMessageType.TeamLeaderCall:
+                    {
+                        succeeded = AnswerTeamLeaderCall(message).Succeeded;
+                        break;
+                    }
                 case OTMessageType.Serial:
                     {
-                        var startSerialResponse = StartSerial(message);
-                        succeeded = startSerialResponse.Succeeded;
+                        succeeded = StartSerial(message).Succeeded;
                         break;
                     }
                 case OTMessageType.Warning:
@@ -130,6 +135,76 @@ namespace SmartWatchConnectorLibrary
             {
                 bool delivered = outM.ClientDelivered;
             }
+        }
+
+        private static AcceptTeamLeaderCallResponse AnswerTeamLeaderCall(PushMessage message)
+        {
+            CallInfo callInfo = null;
+            string user = null;
+            string password = null;
+            lock (_clientMessagesLock)
+            {
+                if (clients.ContainsKey(message.ClientUniqueID))
+                {
+                    var client = clients[message.ClientUniqueID];
+                    user = client.UserName;
+                    password = client.Password;
+                    if (client.Messages.ContainsKey(message.ServerMessageId))
+                    {
+                        callInfo = GetMessageData<CallInfo>(client.Messages[message.ServerMessageId]);
+                    }
+                }
+            }
+            if (user == null || password == null || callInfo == null)
+                return new AcceptTeamLeaderCallResponse { Succeeded = false, Error = "Unknown Client or CallId" };
+            return AnswerTeamLeaderCall(callInfo, user, password);
+        }
+
+        private static AcceptTeamLeaderCallResponse AnswerTeamLeaderCall(CallInfo call, string user, string passsword)
+        {
+            IOTService service = GetOTService();
+            var request = new AcceptTeamLeaderCallRequest
+            {
+                User = user,
+                Password = passsword,
+                CallId = call.Id
+            };
+            return service.AcceptTeamLeaderCall(request);
+        }
+
+        private static AcceptMaterialCallResponse AnswerMaterialCall(PushMessage message)
+        {
+            CallInfo callInfo = null;
+            string user = null;
+            string password = null;
+            lock (_clientMessagesLock)
+            {
+                if (clients.ContainsKey(message.ClientUniqueID))
+                {
+                    var client = clients[message.ClientUniqueID];
+                    user = client.UserName;
+                    password = client.Password;
+                    if (client.Messages.ContainsKey(message.ServerMessageId))
+                    {
+                        callInfo = GetMessageData<CallInfo>(client.Messages[message.ServerMessageId]);
+                    }
+                }
+            }
+            if (user == null || password == null || callInfo == null)
+                return new AcceptMaterialCallResponse { Succeeded = false, Error = "Unknown Client or CallId" };
+            return AnswerMaterialCall(callInfo, user, password);
+        }
+
+        private static AcceptMaterialCallResponse AnswerMaterialCall(CallInfo call, string user, string passsword)
+        {
+            IOTService service = GetOTService();
+            var request = new AcceptMaterialCallRequest
+            {
+                User = user,
+                Password = passsword,
+                CallId = call.Id
+            };
+            return service.AcceptMaterialCall(request);
         }
 
         private static StartSerialResponse StartSerial(PushMessage message)
@@ -282,36 +357,65 @@ namespace SmartWatchConnectorLibrary
             }
         }
 
-        public static bool SendMaterialCall(string workArea, string equipment, string serialNumber)
+        public static void TeamLeaderComing(string equipment)
+        {
+            List<string> clientIds = new List<string>();
+            lock (_clientMessagesLock)
+            {
+                foreach (var client in clients.Where(c => c.Value.Equipment == equipment))
+                {
+                    clientIds.Add(client.Key);
+                }
+            }
+            foreach(var clientId in clientIds)
+            {
+                SendMessage(clientId, OTMessageType.AcceptedCall, "TeamLeader coming", string.Empty);
+            }
+        }
+
+        public static bool SendMaterialCall(string workArea, string equipment, string serialNumber, Guid calId)
         {
             IEnumerable<string> clientIds;
             lock (_clientMessagesLock)
             {
                 clientIds = clients.Where(kvp => kvp.Value.WorkArea == workArea).Select(kvp => kvp.Key);
             }
+            var callInfo = new CallInfo
+            {
+                Equipment = equipment,
+                WorkArea = workArea,
+                Id = calId
+            };
             byte[] wrench = convertImageToByte(Properties.Resources.wrench);
             string prefix = "Data:Image/GIF;base64,";
+            
             foreach (var clientId in clientIds)
             {
                 string equipName = equipment.Split('.').LastOrDefault() ?? equipment;
-                SendMessage(clientId, OTMessageType.MaterialCall, equipName, prefix + Convert.ToBase64String(wrench));
+                SendMessage(clientId, OTMessageType.MaterialCall, equipName, prefix + Convert.ToBase64String(wrench), callInfo);
             }
             return clientIds.Any();
         }
 
-        public static bool SendTeamLeaderlCall(string workArea, string equipment)
+        public static bool SendTeamLeaderlCall(string workArea, string equipment, Guid calId)
         {
             IEnumerable<string> clientIds;
             lock (_clientMessagesLock)
             {
                 clientIds = clients.Where(kvp => kvp.Value.WorkArea == workArea).Select(kvp => kvp.Key);
             }
+            var callInfo = new CallInfo
+            {
+                Equipment = equipment,
+                WorkArea = workArea,
+                Id = calId
+            };
             byte[] user = convertImageToByte(Properties.Resources.user);
             string prefix = "Data:Image/GIF;base64,";
             foreach (var clientId in clientIds)
             {
                 string equipName = equipment.Split('.').LastOrDefault() ?? equipment;
-                SendMessage(clientId, OTMessageType.TeamLeaderCal, equipName, prefix + Convert.ToBase64String(user));
+                SendMessage(clientId, OTMessageType.TeamLeaderCall, equipName, prefix + Convert.ToBase64String(user), callInfo);
             }
             return clientIds.Any();
         }
@@ -394,12 +498,14 @@ namespace SmartWatchConnectorLibrary
                     return MessagePriority.Informational;
                 case OTMessageType.MaterialCall:
                     return MessagePriority.Hight;
-                case OTMessageType.TeamLeaderCal:
+                case OTMessageType.TeamLeaderCall:
                     return MessagePriority.Hight;
                 case OTMessageType.Serial:
                     return MessagePriority.Normal;
                 case OTMessageType.Warning:
                     return MessagePriority.Warning;
+                case OTMessageType.AcceptedCall:
+                    return MessagePriority.Informational;
                 default:
                     return MessagePriority.Normal;
             }
@@ -411,7 +517,7 @@ namespace SmartWatchConnectorLibrary
 
         private static bool SendMessage<TData>(string clientId, OTMessageType messageType, string text, string image64, TData messageData)
         {
-            bool isCall = messageType.Equals(OTMessageType.TeamLeaderCal) || messageType.Equals(OTMessageType.MaterialCall);
+            bool isCall = messageType.Equals(OTMessageType.TeamLeaderCall) || messageType.Equals(OTMessageType.MaterialCall);
             MessageOptions mo = new MessageOptions
             {
                 Vibration = isCall || messageType.Equals(OTMessageType.Warning)
@@ -423,7 +529,7 @@ namespace SmartWatchConnectorLibrary
             PushMessage pm = new PushMessage()
             {
                 ClientUniqueID = clientId,
-                MessagePriority = MessagePriority.Normal, //GetPriority(messageType),
+                MessagePriority = GetPriority(messageType),
                 ACKType = ACKType.Single,
                 UsingACK = true,
                 MessageOptions = mo,
@@ -435,7 +541,7 @@ namespace SmartWatchConnectorLibrary
             bool succeeded = false;
             lock (_deviceConnectorLock)
             {
-                var x = JsonConvert.DeserializeObject<List<PushMessage>>(File.ReadAllText(StaticRepository.CheckRepository(ConfigurationManager.AppSettings["DataPath"], ConfigurationManager.AppSettings["DataFileName"])));
+                //var x = JsonConvert.DeserializeObject<List<PushMessage>>(File.ReadAllText(StaticRepository.CheckRepository(ConfigurationManager.AppSettings["DataPath"], ConfigurationManager.AppSettings["DataFileName"])));
 
                 succeeded = _deviceConnector.SendMessage(pm, out messageId);
             }

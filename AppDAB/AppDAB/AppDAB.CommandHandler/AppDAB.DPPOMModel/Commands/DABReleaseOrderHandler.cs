@@ -9,6 +9,9 @@ using Siemens.SimaticIT.Unified;
 using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.ReadingModel;
 using Siemens.SimaticIT.U4DM.OperationalData.IdGenerate.OPModel.Commands;
 using Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands;
+using System.Net;
+using System.IO;
+using System.Configuration;
 
 namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 {
@@ -16,7 +19,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
     /// Partial class init
     /// </summary>
     [Handler(HandlerCategory.BasicMethod)]
-    public partial class DABReleaseOrderHandlerShell 
+    public partial class DABReleaseOrderHandlerShell
     {
         private DABReleaseOrder.Response response = new DABReleaseOrder.Response();
 
@@ -42,7 +45,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             {
                 return this.response;
             }
-            
+
             if (!this.CreateAndAssignProducedMaterialItems())
             {
                 return this.response;
@@ -53,8 +56,12 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 this.SetActualOperators();
             }
 
+            RefreshOTWebSerials(command.WorkOrderId);
+
             return response;
         }
+
+
 
         /// <summary>
         /// Release the provided WorkOrder
@@ -75,9 +82,9 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 };
 
                 var releaeOrderResponse =
-                    this.Platform.CallCommand<Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.ReleaseOrder, 
+                    this.Platform.CallCommand<Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.ReleaseOrder,
                     Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Commands.ReleaseOrder.Response>(releaseOrderInput);
-                
+
                 if (!releaeOrderResponse.Succeeded)
                 {
                     response.SetError(releaeOrderResponse.Error.ErrorCode, releaeOrderResponse.Error.ErrorMessage);
@@ -138,7 +145,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     SerialNumberTemplateGenerated = anyTemplate
                 };
 
-                var responseCreateAndAssignProducedMaterialItems = 
+                var responseCreateAndAssignProducedMaterialItems =
                     Platform.CallCommand<CreateAndAssignProducedMaterialItems, CreateAndAssignProducedMaterialItems.Response>(commandCreateAndAssignProducedMaterialItems);
 
                 if (!responseCreateAndAssignProducedMaterialItems.Succeeded)
@@ -164,7 +171,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         {
             var serialNumberList = new List<string>();
             anyTemplate = true;
-            
+
             var producedMaterialItems = Platform.ProjectionQuery<ProducedMaterialItem>()
                 .Where(pm => pm.WorkOrder_Id == this.workOrder.Id).ToList();
 
@@ -281,6 +288,29 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             }
 
             return result;
+        }
+
+        private void RefreshOTWebSerials(int workOrderId)
+        {
+            int equipId = Platform.ProjectionQuery<WorkOrderOperation>().Include(wo => wo.ToBeUsedMachines).Where(wo => wo.WorkOrder_Id == workOrderId).SelectMany(wo => wo.ToBeUsedMachines).Where(m => m.Machine != null).Select(m => m.Machine.Value).FirstOrDefault();
+            string workArea = Platform.ProjectionQuery<Equipment>().Where(e => e.Id == equipId).Select(e => e.Parent).FirstOrDefault();
+            if (string.IsNullOrEmpty(workArea))
+                return;
+            //OTServiceUri
+            string otServiceUri = ConfigurationManager.AppSettings["OTServiceUri"];
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create($"{otServiceUri}/RefreshSerials");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+            httpWebRequest.Accept = "application/json";
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = $"\"{workArea}\"";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+            var httpResponse = httpWebRequest.GetResponse();
         }
     }
 }
