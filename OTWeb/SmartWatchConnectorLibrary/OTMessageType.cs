@@ -7,8 +7,9 @@
         DPIHelmet,
         DPITools,
         Serial,
-        TeamLeaderCal,
+        TeamLeaderCall,
         MaterialCall,
-        Warning
+        Warning,
+        AcceptedCall
     }
 }

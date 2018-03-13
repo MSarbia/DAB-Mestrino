@@ -8,5 +8,7 @@ namespace OTWeb.DataContracts
     {
         [DataMember]
         public Guid CallId { get; set; }
+        [DataMember]
+        public string Equipment { get; set; }
     }
 }

@@ -3,7 +3,7 @@ function showError(error) {
     $(".ui-notification-container").notification("create", {
         title: "Errore",
         content: error
-    }, { sticky: false, notificationClass: "errorNotify" });
+    }, { sticky: false, duration: 5000, notificationClass: "errorNotify" });
 }
 
 function showInfo(info) {
@@ -11,7 +11,7 @@ function showInfo(info) {
     $(".ui-notification-container").notification("create", {
         title: "Info",
         content: info
-    }, { sticky: false, notificationClass: "successNotify" });
+    }, { sticky: false, duration: 3000, notificationClass: "successNotify" });
 }
 
 
@@ -27,7 +27,7 @@ function showInfo(info) {
         options: {
             notificationClass: "ui-widget-content",
             offset: 10,
-            duration: 2000,
+            duration: 3000,
             show: {
                 effect: 'fade',
                 options: {},

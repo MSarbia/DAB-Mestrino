@@ -19,7 +19,8 @@
 
         function acceptSelectedTeamLeaderCall() {
             var callId = GetSession('selectedTeamLeaderCallToAccept');
-            AcceptTeamLeaderCall(callId, teamLeaderCallsSuccess);
+            var equipment = GetSession('selectedTeamLeaderEquipmentToAccept');
+            AcceptTeamLeaderCall(equipment, callId, teamLeaderCallsSuccess);
         }
 
         function enableAcceptTeamLeaderCall() {
@@ -34,7 +35,8 @@
 
         function acceptSelectedMaterialCall() {
             var callId = GetSession('selectedMaterialCallToAccept');
-            AcceptMaterialCall(callId, materialCallsSuccess);
+            var equipment = GetSession('selectedMaterialEquipmentToAccept');
+            AcceptMaterialCall(equipment, callId, materialCallsSuccess);
         }
 
         function enableAcceptMaterialCall() {
@@ -57,6 +59,7 @@
                             ui.selected = $(ui.selected).parent()[0];
                         }
                         SaveSession('selectedTeamLeaderCallToAccept', ui.selected.id);
+                        SaveSession('selectedTeamLeaderEquipmentToAccept', ui.selected.attributes['data-equipment'].nodeValue);
                         $(ui.selected).siblings().removeClass('ui-selected').children().removeClass('ui-selected');
                         enableAcceptTeamLeaderCall();
                     }
@@ -80,6 +83,7 @@
                             ui.selected = $(ui.selected).parent()[0];
                         }
                         SaveSession('selectedMaterialCallToAccept', ui.selected.id);
+                        SaveSession('selectedMaterialEquipmentToAccept', ui.selected.attributes['data-equipment'].nodeValue);
                         $(ui.selected).siblings().removeClass('ui-selected').children().removeClass('ui-selected');
                         enableAcceptMaterialCall();
                     }
@@ -130,7 +134,7 @@
             result.TeamLeaderCalls.forEach(function (call) {
                 var date = new Date(call.CallDate);
                 var dateString = addZero(date.getHours()) + ':' + addZero(date.getMinutes()) + ':' + addZero(date.getSeconds());
-                var listItem = "<li class='ui-state-default' id='" + call.CallId + "'><span style='font-weight:bold'>" + call.Equipment + "</span></br></br><span>" + dateString + "</span></li>";
+                var listItem = "<li class='ui-state-default' id='" + call.CallId + "' data-equipment='" + call.Equipment + "'><span style='font-weight:bold'>" + call.Equipment + "</span></br></br><span>" + dateString + "</span></li>";
                 $('#teamLeaderCalls').append(listItem);
             });
             disableAcceptTeamLeaderCall();
@@ -144,7 +148,7 @@
             result.MaterialCalls.forEach(function (call) {
                 var date = new Date(call.CallDate);
                 var dateString = addZero(date.getHours()) + ':' + addZero(date.getMinutes()) + ':' + addZero(date.getSeconds());
-                var listItem = "<li class='ui-state-default' id='" + call.CallId + "'><span style='font-weight:bold'>" + call.Equipment + "</span></br></br><span>" + dateString + "</span></li>";
+                var listItem = "<li class='ui-state-default' id='" + call.CallId + "' data-equipment='" + call.Equipment + "'><span style='font-weight:bold'>" + call.Equipment + "</span></br></br><span>" + dateString + "</span></li>";
                 $('#materialCalls').append(listItem);
             });
             disableAcceptMaterialCall();

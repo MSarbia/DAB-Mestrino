@@ -25,12 +25,21 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         private DABGetTestCard.Response DABGetTestCardHandler(DABGetTestCard command)
         {
             DABGetTestCard.Response response = new DABGetTestCard.Response();
-            ToBeProducedMaterial toBeProdMat = Platform.ProjectionQuery<ToBeProducedMaterial>().Include("WorkOrderOperation.ToBeUsedMachines").Include(tpm => tpm.MaterialItem).Where(pmi => pmi.MaterialItem.SerialNumberCode == command.SerialNumber).FirstOrDefault();
-            if (toBeProdMat == null)
+            List<ToBeProducedMaterial> toBeProdMats = Platform.ProjectionQuery<ToBeProducedMaterial>().Include("WorkOrderOperation.ToBeUsedMachines").Include(tpm => tpm.MaterialItem).Where(pmi => pmi.MaterialItem.SerialNumberCode == command.SerialNumber).ToList();
+            if (!toBeProdMats.Any())
             {
                 response.SetError(-1000, $"Nessun Ordine trovato per il seriale {command.SerialNumber}");
                 return response;
             }
+            List<int> equipIds = toBeProdMats.SelectMany(m => m.WorkOrderOperation.ToBeUsedMachines).Where(e => e.Machine != null).Select(e => e.Machine.Value).ToList();
+            var testingIds = Platform.ProjectionQuery<Equipment>().Where(e => equipIds.Contains(e.Id)).Where(e => e.MachineDefinitionNId == "Testing").Select(e => e.Id).ToList();
+            if (!testingIds.Any())
+            {
+                response.SetError(-1000, $"Nessun Ordine trovato per il seriale {command.SerialNumber}");
+                return response;
+            }
+            ToBeProducedMaterial toBeProdMat = toBeProdMats.FirstOrDefault(mat=>mat.WorkOrderOperation.ToBeUsedMachines.Any(m => testingIds.Contains(m.Id)));
+            
             int? workOrderId = toBeProdMat.WorkOrderOperation.WorkOrder_Id;
             var matDef = Platform.ProjectionQuery<MaterialDefinition>().Where(md => md.Id == toBeProdMat.MaterialItem.MaterialDefinition).FirstOrDefault();
             if (workOrderId == null)

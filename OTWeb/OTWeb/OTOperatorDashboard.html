@@ -79,6 +79,26 @@
             $('#startButton')[0].setAttribute('onclick', '');
         }
 
+        function enableMaterialCall() {
+            $('#callMaterialButton').removeClass('btn').addClass('btn-selected');
+            $('#callMaterialButton')[0].setAttribute('onclick', 'CallMaterials()');
+        }
+
+        function disableMaterialCall() {
+            $('#callMaterialButton').removeClass('btn-selected').addClass('btn');
+            $('#callMaterialButton')[0].setAttribute('onclick', '');
+        }
+
+        function enableLeaderCall() {
+            $('#callLeaderButton').removeClass('btn').addClass('btn-selected');
+            $('#callLeaderButton')[0].setAttribute('onclick', 'CallTeamLeader()');
+        }
+
+        function disableLeaderCall() {
+            $('#callLeaderButton').removeClass('btn-selected').addClass('btn');
+            $('#callLeaderButton')[0].setAttribute('onclick', '');
+        }
+
 
         $(function () {
             $("#serialsList").bind("mousedown", function (e) {
@@ -142,6 +162,7 @@
             GetSerials(getSerialSuccess);
             var chat = $.connection.callHub;
             SubscribeToOperatorCalls(chat, getSerialSuccess);
+            SubscribeToLeaderResponses(chat);
             $.connection.hub.start().done(function () {
                 chat.server.joinWorkArea(GetSession('userData').WorkArea);
                 chat.server.joinWorkArea(GetSession('userData').Equipment);
@@ -172,8 +193,6 @@
             });
             disableStart();
         }
-
-
     </script>
     <div class="Table">
         <div class="TableHeaderRow">
@@ -194,9 +213,9 @@
                 <div style="display:table; height:100%; width:100%;">
                     <div style="display:table-row; height:100%;">
                         <div class="CellSx">
-                            <div class="btn" onclick="CallTeamLeader()"><span class="fa fa-user fa-2x buttonIcon"></span></div>
+                            <div id="callLeaderButton" class="btn-selected" onclick="CallTeamLeader()"><span class="fa fa-user fa-2x buttonIcon"></span></div>
                             <br />
-                            <div class="btn" onclick="CallMaterials()"><span class="fa fa-wrench fa-2x buttonIcon"></span></div>
+                            <div id="callMaterialButton" class="btn-selected" onclick="CallMaterials()"><span class="fa fa-wrench fa-2x buttonIcon"></span></div>
                        
                             <br /><br /><br />
                             <div class="btn" style="vertical-align:bottom">

@@ -29,12 +29,23 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         {
             var response = new DABSendTestResult.Response();
 
-            ActualProducedMaterial actualProdMat = Platform.ProjectionQuery<ActualProducedMaterial>().Include("WorkOrderOperation.ToBeUsedMachines").Include(apm => apm.MaterialItem).Where(apm => apm.PartialWorkedQuantity == 1).Where(apm => apm.MaterialItem.SerialNumberCode == command.Result.SerialNumber).FirstOrDefault();
-            if (actualProdMat == null)
+            List<ActualProducedMaterial> actualProdMats = Platform.ProjectionQuery<ActualProducedMaterial>().Include("WorkOrderOperation.ToBeUsedMachines").Include(apm => apm.MaterialItem).Where(apm => apm.PartialWorkedQuantity == 1).Where(apm => apm.MaterialItem.SerialNumberCode == command.Result.SerialNumber).ToList();
+
+            if (!actualProdMats.Any())
             {
                 response.SetError(-1000, $"Nessun Ordine attivo trovato per il seriale {command.Result.SerialNumber}");
                 return response;
             }
+            List<int> equipIds = actualProdMats.SelectMany(m => m.WorkOrderOperation.ToBeUsedMachines).Where(e => e.Machine != null).Select(e => e.Machine.Value).ToList();
+            var testingIds = Platform.ProjectionQuery<Equipment>().Where(e => equipIds.Contains(e.Id)).Where(e => e.MachineDefinitionNId == "Testing").Select(e => e.Id).ToList();
+            if (!testingIds.Any())
+            {
+                response.SetError(-1000, $"Nessun Ordine attivo trovato per il seriale {command.Result.SerialNumber}");
+                return response;
+            }
+            ActualProducedMaterial actualProdMat = actualProdMats.FirstOrDefault(mat => mat.WorkOrderOperation.ToBeUsedMachines.Any(m => testingIds.Contains(m.Id)));
+
+
             int? workOrderId = actualProdMat.WorkOrderOperation.WorkOrder_Id;
 
             var resultResponse = Platform.CallCommand<SendTestResult, SendTestResult.Response>(new SendTestResult { Result = command.Result, WorkOrderId = workOrderId.Value });
