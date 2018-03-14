@@ -40,14 +40,16 @@
             var ordr = document.getElementById("spanOrder");
             var oper = document.getElementById("spanOperation");
             var desc = document.getElementById("spanDescription");
-            orders.forEach(function (o) {
-                if (o.Order == uiSelected[0].attributes['data-order'].nodeValue) {
-                    prod.innerHTML = o.ProductCode;
-                    ordr.innerHTML = o.Order;
-                    oper.innerHTML = o.Operation;
-                    desc.innerHTML = o.Description;
+
+            for (var o = 0; o < orders.length; o++) {
+                if (orders[o].Order == uiSelected[0].attributes['data-order'].nodeValue) {
+                    prod.innerHTML = orders[o].ProductCode;
+                    ordr.innerHTML = orders[o].Order;
+                    oper.innerHTML = orders[o].Operation;
+                    desc.innerHTML = orders[o].Description;
+                    break;
                 }
-            });
+            }
             enableStart();
         }
 
@@ -56,17 +58,17 @@
             var serial = GetSession('selectedSerialToStart');
             var order = GetSession('selectedOrderToStart');
             var status = GetSession('selectedSerialStatusToStart');
-            var orderData = GetSession('OrderData').Orders;
-            orderData.forEach(function (o) {
-                if (o.Order == order) {
-                    var operation = o.Operation;
-                    var operationId = o.OperationId;
-                    var productCode = o.ProductCode;
-                    StartSerial(order, serial, status, operation, operationId, productCode,  getSerialSuccess);
-                    return;
+            var orders = GetSession('OrderData').Orders;
+            for (var o = 0; o < orders.length; o++)
+            {
+                if (orders[o].Order == order) {
+                    var operation = orders[o].Operation;
+                    var operationId = orders[o].OperationId;
+                    var productCode = orders[o].ProductCode;
+                    StartSerial(order, serial, status, operation, operationId, productCode, getSerialSuccess);
+                    break;
                 }
-            });
-            
+            }
         }
 
         function enableStart() {
@@ -118,14 +120,16 @@
                         var oper = document.getElementById("spanOperation");
                         var desc = document.getElementById("spanDescription");
                         var orders = GetSession('OrderData').Orders;
-                        orders.forEach(function (o) {
-                            if (o.Order == ui.selected.attributes['data-order'].nodeValue) {
-                                prod.innerHTML = o.ProductCode;
-                                ordr.innerHTML = o.Order;
-                                oper.innerHTML = o.Operation;
-                                desc.innerHTML = o.Description;
+                        for (var o = 0; o < orders.length; o++)
+                        {
+                            if (orders[o].Order == ui.selected.attributes['data-order'].nodeValue) {
+                                prod.innerHTML = orders[o].ProductCode;
+                                ordr.innerHTML = orders[o].Order;
+                                oper.innerHTML = orders[o].Operation;
+                                desc.innerHTML = orders[o].Description;
+                                break;
                             }
-                        });
+                        }
                         enableStart();
                     }
                     else {
@@ -173,11 +177,17 @@
 
         function getSerialSuccess(result) {
             var orders = result.Orders;
-            SaveSession('OrderData', result);
+            //SaveSession('OrderData', result);
             var selectable = document.getElementById("serialsList");
             selectable.innerHTML = '';
             orders.forEach(function (order) {
                 order.Serials.forEach(function (serial) {
+                    //order.OperationId;
+                    //order.ProductCode;
+                    //order.Operation;
+                    //order.Description;
+
+
                     var itemClass = "ui-state-default";
                     var stato = 'Disponibile';
                     if (serial.Status == 'Active') {

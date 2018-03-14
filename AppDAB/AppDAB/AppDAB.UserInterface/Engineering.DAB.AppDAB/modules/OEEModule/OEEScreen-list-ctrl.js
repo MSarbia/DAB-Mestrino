@@ -377,7 +377,7 @@
             self.getOEE(function (labels, oee, le) {
                 var steppedLineSettingsJET = [{
                     steppedLine: false,
-                    label: 'OEE',
+                    label: 'OPR',
                     data: oee,
                     backgroundColor: window.chartColors.orange,
                     borderColor: window.chartColors.orange
@@ -390,7 +390,7 @@
                 }];
                 var steppedLineSettingsM100 = [{
                     steppedLine: false,
-                    label: 'OEE',
+                    label: 'OPR',
                     data: [],
                     backgroundColor: window.chartColors.blue,
                     borderColor: window.chartColors.blue
@@ -403,7 +403,7 @@
                 }];
                 var steppedLineSettingsM80 = [{
                     steppedLine: false,
-                    label: 'OEE',
+                    label: 'OPR',
                     data: [],
                     backgroundColor: window.chartColors.yellow,
                     borderColor: window.chartColors.yellow
@@ -478,7 +478,7 @@
                 }
             },
             data: {
-                title: 'OEEScreen'
+                title: 'KPI Screen'
             }
         };
         $stateProvider.state(state);

@@ -55,14 +55,14 @@ function SubscribeToLeaderCalls(chat, materialCallsSuccess, teamLeaderCallsSucce
 function SubscribeToOperatorCalls(chat, getSerialsSuccess) {
 
     chat.client.getNewSerial = function (message) {
-        var startedSerial = GetOrAddSession("startedSerial","");
-        if (message !== startedSerial) {
+        //var startedSerial = GetOrAddSession("startedSerial","");
+        //if (message !== startedSerial) {
             GetSerials(getSerialsSuccess);
-        }
-        else
-        {
-            SaveSession("startedSerial","");
-        }
+        //}
+        //else
+        //{
+        //    SaveSession("startedSerial","");
+        //}
     };
 }
 

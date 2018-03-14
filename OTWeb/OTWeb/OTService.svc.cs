@@ -25,7 +25,7 @@ namespace OTWeb
         static OTService()
         {
             //InitSerials();
-            SmartWatchConnector.Init<OTService>();            
+            //SmartWatchConnector.Init<OTService>();            
         }
 
         public LoginResponse Login(LoginRequest loginRequest)
@@ -91,7 +91,7 @@ namespace OTWeb
                 return response;
             }
             response.Id = uafResponse.Id.Value;
-            SmartWatchConnector.SendTeamLeaderlCall(teamLeaderCall.WorkArea, teamLeaderCall.Equipment, uafResponse.Id.Value);
+            //SmartWatchConnector.SendTeamLeaderlCall(teamLeaderCall.WorkArea, teamLeaderCall.Equipment, uafResponse.Id.Value);
             CallHub.Static_SendTeamLeaderCall(teamLeaderCall.WorkArea, teamLeaderCall.Equipment);
             return response;
         }
@@ -130,7 +130,7 @@ namespace OTWeb
                 return response;
             }
             response.Id = uafResponse.Id.Value;
-            SmartWatchConnector.SendMaterialCall(materialCall.WorkArea, materialCall.Equipment, materialCall.SerialNumber, uafResponse.Id.Value);
+            //SmartWatchConnector.SendMaterialCall(materialCall.WorkArea, materialCall.Equipment, materialCall.SerialNumber, uafResponse.Id.Value);
             CallHub.Static_SendMaterialCall(materialCall.WorkArea, materialCall.Equipment);
             return response;
         }
@@ -278,7 +278,7 @@ namespace OTWeb
                 return response;
             }
             CallHub.Static_MaterialCallAccepted(acceptMaterialCall.Equipment, acceptMaterialCall.CallId.ToString());
-            SmartWatchConnector.TeamLeaderComing(acceptMaterialCall.Equipment);
+            //SmartWatchConnector.TeamLeaderComing(acceptMaterialCall.Equipment);
             return response;
         }
 
@@ -312,7 +312,7 @@ namespace OTWeb
                 return response;
             }
             CallHub.Static_TeamLeaderCallAccepted(acceptTeamLeaderCall.Equipment, acceptTeamLeaderCall.CallId.ToString());
-            SmartWatchConnector.TeamLeaderComing(acceptTeamLeaderCall.Equipment);
+            //SmartWatchConnector.TeamLeaderComing(acceptTeamLeaderCall.Equipment);
             return response;
         }
 
@@ -409,7 +409,7 @@ namespace OTWeb
             if (response.Succeeded == true)
             {                
                 CallHub.Static_SendOperatorCall(startSerialRequest.WorkArea, startSerialRequest.SerialNumber);
-                SmartWatchConnector.RefreshSerials(startSerialRequest.WorkArea);
+                //SmartWatchConnector.RefreshSerials(startSerialRequest.WorkArea);
             }
             return response;
         }
@@ -471,7 +471,7 @@ namespace OTWeb
         public void RefreshSerials(string workArea)
         {
             CallHub.Static_SendOperatorCall(workArea, workArea);
-            SmartWatchConnector.RefreshSerials(workArea);
+            //SmartWatchConnector.RefreshSerials(workArea);
         }
     }
 }

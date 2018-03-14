@@ -34,6 +34,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events
             {
                 string kpiVar = $"{evt.WorkArea}_KPI";
                 string piVar = $"{evt.WorkArea}_PI";
+                string pi2Var = $"{evt.WorkArea}_PI2";
                 string vaVar = $"{evt.WorkArea}_VA";
                 string lineDesc = evt.WorkArea.Split('.').LastOrDefault();
                 DateTime today = DateTime.Today;
@@ -54,7 +55,8 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events
                 if (currentOrder != null)
                 {
                     orderTotal = currentOrder.InitialQuantity;
-                    orderActual = currentOrder.ProducedQuantity;
+                    orderActual = Platform.ProjectionQuery<WorkOrderOperation>().Where(wo => wo.WorkOrder_Id == currentOrder.Id).Where(wo => !wo.Successors.Any()).Select(wo => wo.ProducedQuantity).FirstOrDefault();
+                    //orderActual = currentOrder.ProducedQuantity;
                     MaterialDefinition matDef = Platform.ProjectionQuery<MaterialDefinition>().FirstOrDefault(m => m.Id == currentOrder.FinalMaterial);
                     if (matDef != null)
                     {
@@ -75,7 +77,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events
                     }
                 }
 
-                var kpiResponse = Platform.CallCommand<GetKPIs, GetKPIs.Response>(new GetKPIs { FromDate = today, WorkArea = evt.WorkArea, Realtime = true });
+                var kpiResponse = Platform.CallCommand<GetKPIs, GetKPIs.Response>(new GetKPIs { FromDate = today, ToDate = today.AddDays(1), WorkArea = evt.WorkArea, Realtime = true });
                 var piResponse = Platform.CallCommand<GetProductionInfo, GetProductionInfo.Response>(new GetProductionInfo { FromDate = today, ToDate = today.AddDays(1), WorkArea = evt.WorkArea, Realtime = true });
                 var andonData = new Andon.Types.AndonData
                 {
@@ -86,13 +88,60 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events
                             var_name = kpiVar,
                             defect_per_shift = kpiResponse.Defects,
                             description = "KPI",
-                            LE_per_shift = decimal.ToInt32(kpiResponse.LE),
-                            OEE_per_shift = decimal.ToInt32(kpiResponse.OEE),
+                            LE_per_shift = Math.Round(decimal.ToDouble(kpiResponse.LE),1),
+                            OEE_per_shift = Math.Round(decimal.ToDouble(kpiResponse.OEE),1),
                             rework_per_shift = kpiResponse.Rework
                         }
                     },
                     ListProductionInfo = new List<Andon.Types.ProductionInfo>
                     {
+
+                    },
+                    ListVisualAlerts = new List<Andon.Types.VisualAlerts>
+                    {
+
+                    }
+                };
+
+                if (nextOrder != null)
+                {
+                    andonData.ListProductionInfo.Add(new Andon.Types.ProductionInfo
+                    {
+                        line_description = lineDesc,
+                        order_actual = -1,
+                        order_customer = string.Empty,
+                        order_product = nextProduct,
+                        order_product_description = nextProductDesc,
+                        order_total = decimal.ToInt32(nextOrderTotal),
+                        shift_actual_production = decimal.ToInt32(piResponse.ActualProducedQuantity),
+                        shift_delay_production = kpiResponse.Delay,
+                        shift_total_production = 306,//decimal.ToInt32(piResponse.TotalProducedQuantity),
+                        team = team,
+                        var_name = pi2Var
+                    });
+                }
+                else if (currentOrder != null)
+                {
+                    andonData.ListProductionInfo.Add(
+                        new Andon.Types.ProductionInfo
+                        {
+                            line_description = lineDesc,
+                            order_actual = -1,
+                            order_customer = string.Empty,
+                            order_product = product,
+                            order_product_description = productDesc,
+                            order_total = decimal.ToInt32(orderTotal),
+                            shift_actual_production = decimal.ToInt32(piResponse.ActualProducedQuantity),
+                            shift_delay_production = kpiResponse.Delay,
+                            shift_total_production = 306,//decimal.ToInt32(piResponse.TotalProducedQuantity),
+                            team = team,
+                            var_name = pi2Var
+                        }
+                        );
+                }
+                if (currentOrder != null)
+                {
+                    andonData.ListProductionInfo.Add(
                         new Andon.Types.ProductionInfo
                         {
                             line_description = lineDesc,
@@ -102,31 +151,13 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events
                             order_product_description = productDesc,
                             order_total = decimal.ToInt32(orderTotal),
                             shift_actual_production = decimal.ToInt32(piResponse.ActualProducedQuantity),
-                            shift_delay_production = decimal.ToInt32(piResponse.DelayProducedQuantity),
-                            shift_total_production = decimal.ToInt32(piResponse.TotalProducedQuantity),
-                            team = team,
-                            var_name = piVar
-                        },
-                        new Andon.Types.ProductionInfo
-                        {
-                            line_description = lineDesc,
-                            order_actual = -1,
-                            order_customer = string.Empty,
-                            order_product = nextProduct,
-                            order_product_description = nextProductDesc,
-                            order_total = decimal.ToInt32(nextOrderTotal),
-                            shift_actual_production = decimal.ToInt32(piResponse.ActualProducedQuantity),
-                            shift_delay_production = decimal.ToInt32(piResponse.DelayProducedQuantity),
-                            shift_total_production = decimal.ToInt32(piResponse.TotalProducedQuantity),
+                            shift_delay_production = kpiResponse.Delay,
+                            shift_total_production = 306,//decimal.ToInt32(piResponse.TotalProducedQuantity),
                             team = team,
                             var_name = piVar
                         }
-                    },
-                    ListVisualAlerts = new List<Andon.Types.VisualAlerts>
-                    {
-
-                    }
-                };
+                        );
+                }
 
                 //Visual Alerts
                 var operatorCalls = Platform.ProjectionQuery<TeamLeaderCall>().Where(tlc => tlc.Accepted == false && tlc.Date >= today).ToList();
@@ -190,7 +221,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Events
                     .Where(m => equipIds.Contains(m.Machine.Value))
                     .Where(m => m.WorkOrderOperation.AvailableQuantity > 0 || m.WorkOrderOperation.PartialWorkedQuantity > 0).Where(m => m.WorkOrderOperation.IsReady).Select(m => m.WorkOrderOperation.WorkOrder_Id).Distinct().ToList();
 
-            currentOrder = Platform.ProjectionQuery<WorkOrder>().Where(wo => woIds.Contains(wo.Id)).OrderBy(wo => wo.ActualStartTime).FirstOrDefault();
+            currentOrder = Platform.ProjectionQuery<WorkOrderOperation>().Include(woo => woo.WorkOrder).Where(woo => woIds.Contains(woo.WorkOrder_Id)).Where(woo => woo.PartialWorkedQuantity > 0).Where(woo => woo.WorkOrder.Status == "Active").OrderBy(woo => woo.ActualStartTime).Select(woo => woo.WorkOrder).FirstOrDefault();
             nextOrder = Platform.ProjectionQuery<WorkOrder>().Where(wo => woIds.Contains(wo.Id)).Where(wo => wo.Status == "New").OrderBy(wo => wo.EstimatedStartTime).FirstOrDefault();
         }
     }

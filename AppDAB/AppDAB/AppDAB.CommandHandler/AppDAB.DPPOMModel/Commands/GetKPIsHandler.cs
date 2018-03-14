@@ -26,6 +26,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         [HandlerEntryPoint]
         private GetKPIs.Response GetKPIsHandler(GetKPIs command)
         {
+
             bool realTime = command.Realtime.GetValueOrDefault();
             DateTimeOffset toDate = command.ToDate ?? DateTimeOffset.UtcNow;
             var equipIds = Platform.ProjectionQuery<Equipment>().Where(e => e.Parent == command.WorkArea).Select(e => e.Id).ToList();
@@ -68,24 +69,47 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             TimeSpan totaleOre = new TimeSpan(0);
             decimal totalePezziXCycleTime = 0;
             decimal leSum = 0;
+            decimal oprSum = 0;
+            decimal pezziRitardoSum = 0;
             foreach (var orderId in completedOrdersIds)
             {
                 decimal qtyProdotta = completedOrders[orderId].ProducedQuantity;
-                decimal cycleTimeOrdine = (decimal)orderExts[orderId].CicleTime.GetValueOrDefault(new TimeSpan(0)).TotalMinutes;
+                decimal cycleTimeOrdine = Convert.ToDecimal(orderExts[orderId].CicleTime.GetValueOrDefault(new TimeSpan(0)).TotalMinutes);
                 totalePezziXCycleTime += (qtyProdotta * cycleTimeOrdine);
                 int operatoriTeoriciOrdine = orderExts[orderId].Operators;
                 int operatoriRealiOrdine = orderExts[orderId].ActualOperators ?? orderExts[orderId].Operators;
                 DateTimeOffset actualEndTime = completedOrders[orderId].ActualEndTime ?? DateTimeOffset.UtcNow;
                 TimeSpan oreOrdine = (actualEndTime - completedOrders[orderId].ActualStartTime).GetValueOrDefault(new TimeSpan(0));
+                var durataInMinuti = Convert.ToDecimal(oreOrdine.TotalMinutes);
+                decimal minutiStimati = Convert.ToDecimal((completedOrders[orderId].EstimatedEndTime - completedOrders[orderId].EstimatedStartTime).GetValueOrDefault(new TimeSpan(0, 1, 0)).TotalMinutes);
+                decimal qtyTotale = completedOrders[orderId].InitialQuantity;
+                //decimal estimatedCycleTime = minutiStimati / qtyTotale;
+
+                decimal pezziRitardo = 0;
+                decimal actualCycleTime = qtyProdotta / durataInMinuti;
+                if (actualCycleTime > 0)
+                {
+                    decimal pezziStimati = minutiStimati / actualCycleTime;
+                    //decimal minutiVerosimili = actualCycleTime * qtyTotale;
+                    //decimal minutiRitardo = minutiVerosimili - minutiStimati;
+                    //pezziRitardo = Math.Min((minutiRitardo / actualCycleTime), (qtyTotale - qtyProdotta));
+                    pezziRitardo = Math.Min((qtyTotale - pezziStimati), (qtyTotale - qtyProdotta));
+                    decimal pezziRitardoPerOre = pezziRitardo * Convert.ToDecimal(oreOrdine.TotalHours);
+                    pezziRitardoSum += pezziRitardoPerOre;
+                }
                 totaleOre += oreOrdine;
 
-                var oreUomo = (Convert.ToDecimal(oreOrdine.TotalMinutes) * operatoriRealiOrdine);
-                if (oreUomo > 0)
-                    leSum += Convert.ToDecimal(oreOrdine.TotalHours) * ((qtyProdotta * cycleTimeOrdine * operatoriTeoriciOrdine) / oreUomo);
+                var durataPerRisorse = durataInMinuti * operatoriRealiOrdine;
+                if (durataPerRisorse > 0)
+                    leSum += Convert.ToDecimal(oreOrdine.TotalHours) * ((qtyProdotta * cycleTimeOrdine * operatoriTeoriciOrdine) / durataPerRisorse);
+                if (durataInMinuti > 0)
+                    oprSum += Convert.ToDecimal(oreOrdine.TotalHours) * ((qtyProdotta * cycleTimeOrdine) / durataInMinuti);
             }
 
-            decimal leAVGPercent = totaleOre.TotalHours == 0?0: Math.Min(100, (leSum / Convert.ToDecimal(totaleOre.TotalHours)) * 100);
-            decimal oprPercent = Math.Min(100, (totalePezziXCycleTime / 480) * 100); //pezzi prodotti in gg* Tempo Ciclo / 8(ore) * 60(min).
+            decimal leAVGPercent = totaleOre.TotalHours == 0 ? 0 : Math.Min(100, (leSum / Convert.ToDecimal(totaleOre.TotalHours)) * 100);
+            decimal oprPercent = totaleOre.TotalHours == 0 ? 0 : Math.Min(100, (oprSum / Convert.ToDecimal(totaleOre.TotalHours)) * 100);//pezzi prodotti in gg* Tempo Ciclo / 8(ore) * 60(min).
+            decimal pezziRitardoAVG = totaleOre.TotalHours == 0 ? 0 : pezziRitardoSum / Convert.ToDecimal(totaleOre.TotalHours);
+
             //___________________________________
             var operationIds = operationDictionary.Keys.ToList();
 
@@ -97,8 +121,10 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 Defects = defects,
                 LE = leAVGPercent,
                 OEE = oprPercent,
+                Delay = decimal.ToInt32(pezziRitardoAVG),
                 Rework = 0
             };
+
         }
     }
 }

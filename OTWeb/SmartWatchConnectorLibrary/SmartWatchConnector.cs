@@ -35,8 +35,9 @@ namespace SmartWatchConnectorLibrary
                     string ipHub = ConfigurationManager.AppSettings["HubIp"];
                     _deviceConnector = new DeviceConnector("OTWeb", $"{ipHub}/HMIHub/api/");
                     _deviceConnector.OnClientConnectedMethod += OnSmartWatchConnected;
+                    _deviceConnector.OnClientReConnectedMethod += OnSmartWatchConnected;
                     _deviceConnector.OnMessageReceivedMethod += OnSmartWatchAcknowledge;
-                    _deviceConnector.RestoreActions = RestoreType.OnReconnect_BeforeDelegate;
+
                     _deviceConnector.Connect();
                     devices.AddRange(_deviceConnector.GetAllDevices().Where(kvp => kvp.Value.Connected).Select(kvp => kvp.Value));
                     StaticRepository.CheckRepository(ConfigurationManager.AppSettings["DataPath"], ConfigurationManager.AppSettings["DataFileName"]);
@@ -117,24 +118,45 @@ namespace SmartWatchConnectorLibrary
 
         private static void DeleteAllMessages(string clientId)
         {
+            List<PushMessage> messages = null;
             lock (_deviceConnectorLock)
             {
-                _deviceConnector.ClearDevice(clientId);
+                _deviceConnector.GetAllMessages(out messages);
+            }
+            if(messages!=null)
+            {
+                List<PushMessage> clientMessages = messages.Where(m => m.ClientUniqueID == clientId).ToList();
+                if(clientMessages!=null && clientMessages.Any())
+                {
+                    foreach(var message in clientMessages)
+                    {
+                        DeleteMessage(message);
+                    }
+                }
             }
         }
 
         private static void DeleteMessage(PushMessage message)
         {
-            PushMessage outM = null;
+            //PushMessage outM = null;
             lock (_deviceConnectorLock)
             {
-                _deviceConnector.DeleteMessage(message.ClientUniqueID, message.MessageId);
-                _deviceConnector.GetMessage(message.MessageId, out outM);
+                message.Type = MessageType.SingleMessageDelete;
+                string msgId;
+                _deviceConnector.SendMessage(message, out msgId);
+                //_deviceConnector.GetMessage(message.MessageId, out outM);
             }
-            if (outM.Type == MessageType.SingleMessageDelete)
+            lock(_clientMessagesLock)
             {
-                bool delivered = outM.ClientDelivered;
+                if(clients.ContainsKey(message.ClientUniqueID))
+                {
+                    clients[message.ClientUniqueID].Messages.Remove(message.ServerMessageId);
+                }
             }
+            //if (outM.Type == MessageType.SingleMessageDelete)
+            //{
+            //    bool delivered = outM.ClientDelivered;
+            //}
         }
 
         private static AcceptTeamLeaderCallResponse AnswerTeamLeaderCall(PushMessage message)
@@ -484,6 +506,43 @@ namespace SmartWatchConnectorLibrary
 
         }
 
+        //private static void OnSmartWatchConnected(Device device)
+        //{
+        //    IOTService service = GetOTService();
+        //    try
+        //    {
+        //        var smartWatchInfo = service.GetSmartWatchUser(device.ClientUniqueID);
+        //        if (smartWatchInfo.Succeeded)
+        //        {
+        //            DeleteAllMessages(device.ClientUniqueID);
+        //            lock (_clientMessagesLock)
+        //            {
+        //                if (!clients.ContainsKey(device.ClientUniqueID))
+        //                {
+        //                    clients.Add(device.ClientUniqueID, new ClientRepository
+        //                    {
+        //                        UserName = device.Username,
+        //                        Password = device.Password,
+        //                        Equipment = smartWatchInfo.Equipment,
+        //                        WorkArea = smartWatchInfo.WorkArea,
+        //                        Role = smartWatchInfo.Role
+        //                    });
+        //                }
+        //            }
+        //            SendDPICheck(device);
+        //        }
+        //        else
+        //        {
+        //            SendMessage(device.ClientUniqueID, OTMessageType.Warning, "Username o Password errati", string.Empty);
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        var x = e.Message;
+        //    }
+
+        //}
+
         private static MessagePriority GetPriority(OTMessageType messageType)
         {
             switch (messageType)
@@ -530,7 +589,7 @@ namespace SmartWatchConnectorLibrary
             {
                 ClientUniqueID = clientId,
                 MessagePriority = GetPriority(messageType),
-                ACKType = ACKType.Single,
+                ACKType = ACKType.Boolean,
                 UsingACK = true,
                 MessageOptions = mo,
                 Type = MessageType.SingleMessageServerToClient,

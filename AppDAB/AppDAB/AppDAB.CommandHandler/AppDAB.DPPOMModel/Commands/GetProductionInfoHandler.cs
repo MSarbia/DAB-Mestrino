@@ -28,7 +28,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
         {
             DateTimeOffset toDate = command.ToDate ?? DateTimeOffset.UtcNow;
             bool realTime = command.Realtime.GetValueOrDefault();
-            decimal produzioneShift = 0;
+            //decimal produzioneShift = 0;
             decimal produzionePrevistaShift = 0;
             decimal pezziRitardoShift = 0;
             var now = DateTime.Now;
@@ -81,24 +81,23 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 {
                     pezziProducibili = Math.Min(0, (decimal)(remainingMinutes / cycleTymes[orderId].Value.TotalMinutes));
                 }
-                var prodottiOrdine = completedOrders[orderId].ProducedQuantity;
+
+                var prodottiOrdine = Platform.ProjectionQuery<WorkOrderOperation>().Where(wo => wo.WorkOrder_Id == orderId).Where(wo => !wo.Successors.Any()).Select(wo => wo.ProducedQuantity).FirstOrDefault();
+                 //completedOrders[orderId].ProducedQuantity;
                 var totaleOrdine = completedOrders[orderId].InitialQuantity;
-                var pezziRimanenti = totaleOrdine - prodottiOrdine;
-                produzioneShift += prodottiOrdine;
+                //produzioneShift += prodottiOrdine;
                 produzionePrevistaShift += totaleOrdine;
-                pezziRitardoShift += decimal.ToInt32(pezziProducibili - pezziRimanenti);
             }
             int producedOrders = completedOrderIds.Count;
             if (realTime)
             {
                 producedOrders= Platform.ProjectionQuery<WorkOrder>().Where(wo => completedOrderIds.Contains(wo.Id)).Where(wo => wo.Status == "Complete").Count();
             }
-
+            var producedPieces = Platform.ProjectionQuery<DailyProduction>().Where(p => p.WorkArea == command.WorkArea && p.Year == command.FromDate.Year && p.Month == command.FromDate.Month && p.Day == command.FromDate.Day).Select(p => p.Pieces).DefaultIfEmpty(0).Sum();
             return new GetProductionInfo.Response
             {
-                ActualProducedQuantity = produzioneShift,
+                ActualProducedQuantity = producedPieces,
                 TotalProducedQuantity = produzionePrevistaShift,
-                DelayProducedQuantity = pezziRitardoShift,
                 ProducedOrders = producedOrders
             };
         }
