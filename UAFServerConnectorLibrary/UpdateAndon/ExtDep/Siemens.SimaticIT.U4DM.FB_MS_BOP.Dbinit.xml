@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sections>
+  <Section engineeringLevel="LibraryFunctionalBlock" implementationName="FB_MS_BOP" domainName="MasterData">
+    <Entity type="Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.DependencyType">                  
+      <Property name="NId" kind="Plain" value="AfterEnd" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.DependencyType">
+      <Property name="NId" kind="Plain" value="AfterStart" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.MaterialSpecificationType">
+      <Property name="NId" kind="Plain" value="NormalPart" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.MaterialSpecificationType">
+      <Property name="NId" kind="Plain" value="Disassemble" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.MaterialSpecificationType">
+      <Property name="NId" kind="Plain" value="Alternative" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.MaterialSpecificationType">
+      <Property name="NId" kind="Plain" value="SelectedFit" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.MaterialSpecificationType">
+      <Property name="NId" kind="Plain" value="RangeParts" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.MaterialSpecificationType">
+      <Property name="NId" kind="Plain" value="Reference" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.MaterialSpecificationType">
+      <Property name="NId" kind="Plain" value="AsRequired" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.MasterData.FB_MS_BOP.MSModel.DataModel.MaterialSpecificationType">
+      <Property name="NId" kind="Plain" value="Additive" />
+    </Entity>
+  </Section>
+</Sections>

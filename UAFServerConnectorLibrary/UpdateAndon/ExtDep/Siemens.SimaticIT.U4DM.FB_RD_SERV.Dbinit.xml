@@ -1,0 +1,1249 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Sections>
+  <Section engineeringLevel="LibraryFunctionalBlock" implementationName="FB_RD_SERV" domainName="ReferenceData">
+    <!-- ***************** UOM ***************** -->
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="n/a" />
+      <Property name="Name" kind="Plain" value="n/a" />
+      <Property name="Description" kind="Plain" value="n/a" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Unit" />
+      <Property name="Name" kind="Plain" value="Unit" />
+      <Property name="Description" kind="Plain" value="The unit can be used to indicate a quantitity without a specific Unit of Measure (like Pieces)" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="m" />
+      <Property name="Name" kind="Plain" value="Meter" />
+      <Property name="Description" kind="Plain" value="The metre is the basic unit of length. It is the distance light travels, in a vacuum, in 1/299792458th of a second." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="kg" />
+      <Property name="Name" kind="Plain" value="Kilogram" />
+      <Property name="Description" kind="Plain" value="The kilogram is the basic unit of mass. It is the mass of an international prototype in the form of a platinum-iridium cylinder kept at Sevres in France." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="s" />
+      <Property name="Name" kind="Plain" value="Second" />
+      <Property name="Description" kind="Plain" value="The second is the basic unit of time. It is the length of time taken for 9192631770 periods of vibration of the caesium-133 atom to occur." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="A" />
+      <Property name="Name" kind="Plain" value="Ampere" />
+      <Property name="Description" kind="Plain" value="The ampere is the basic unit of electric current. It is that current which produces a specified force between two parallel wires which are 1 metre apart in a vacuum." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="K" />
+      <Property name="Name" kind="Plain" value="Kelvin" />
+      <Property name="Description" kind="Plain" value="The kelvin is the basic unit of temperature. It is 1/273.16th of the thermodynamic temperature of the triple point of water." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="mol" />
+      <Property name="Name" kind="Plain" value="Mole" />
+      <Property name="Description" kind="Plain" value="The mole is the basic unit of substance. It is the amount of substance that contains as many elementary units as there are atoms in 0.012 kg of carbon-12." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="cd" />
+      <Property name="Name" kind="Plain" value="Candela" />
+      <Property name="Description" kind="Plain" value="The candela is the basic unit of luminous intensity. It is the intensity of a source of light of a specified frequency, which gives a specified amount of power in a given direction." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Hz" />
+      <Property name="Name" kind="Plain" value="Hertz" />
+      <Property name="Description" kind="Plain" value="The hertz is the SI unit of the frequency of a periodic phenomenon. One hertz indicates that 1 cycle of the phenomenon occurs every second. For most work much higher frequencies are needed such as the kilohertz [kHz] and megahertz [MHz]." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="N" />
+      <Property name="Name" kind="Plain" value="Newton" />
+      <Property name="Description" kind="Plain" value="The newton is the SI unit of force. One newton is the force required to give a mass of 1 kilogram an acceleration of 1 metre per second per second." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="C" />
+      <Property name="Name" kind="Plain" value="Coulomb" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="lm" />
+      <Property name="Name" kind="Plain" value="Lumen" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Bq" />
+      <Property name="Name" kind="Plain" value="Becquerel" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="kat" />
+      <Property name="Name" kind="Plain" value="Katal" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="rad" />
+      <Property name="Name" kind="Plain" value="Radian" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="sr" />
+      <Property name="Name" kind="Plain" value="Steradian" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Wb" />
+      <Property name="Name" kind="Plain" value="Weber" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Sms" />
+      <Property name="Name" kind="Plain" value="Siemens" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="J" />
+      <Property name="Name" kind="Plain" value="Joule" />
+      <Property name="Description" kind="Plain" value="The joule is the SI unit of work or energy. One joule is the amount of work done when an applied force of 1 newton moves through a distance of 1 metre in the direction of the force." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="W" />
+      <Property name="Name" kind="Plain" value="Watt" />
+      <Property name="Description" kind="Plain" value="The watt is used to measure power or the rate of doing work. One watt is a power of 1 joule per second." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="V" />
+      <Property name="Name" kind="Plain" value="Volt" />
+      <Property name="Description" kind="Plain" value="The volt is the SI unit of electric potential. One volt is the difference of potential between two points of an electical conductor when a current of 1 ampere flowing between those points dissipates a power of 1 watt." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Pa" />
+      <Property name="Name" kind="Plain" value="Pascal" />
+      <Property name="Description" kind="Plain" value="The pascal is the SI unit of pressure. One pascal is the pressure generated by a force of 1 newton acting on an area of 1 square metre. It is a rather small unit as defined and is more often used as a kilopascal [kPa]." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="F" />
+      <Property name="Name" kind="Plain" value="Farad" />
+      <Property name="Description" kind="Plain" value="The farad is the SI unit of the capacitance of an electrical system, that is, its capacity to store electricity. It is a rather large unit as defined and is more often used as a microfarad." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Ohm" />
+      <Property name="Name" kind="Plain" value="Ohm" />
+      <Property name="Description" kind="Plain" value="The ohm is the SI unit of resistance of an electrical conductor. Its symbol, is the capital Greek letter omega." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="T" />
+      <Property name="Name" kind="Plain" value="Tesla" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="H" />
+      <Property name="Name" kind="Plain" value="Henry" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="lx" />
+      <Property name="Name" kind="Plain" value="Lux" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Gy" />
+      <Property name="Name" kind="Plain" value="Gray" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Sv" />
+      <Property name="Name" kind="Plain" value="Sievert" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="pH" />
+      <Property name="Name" kind="Plain" value="Potential of Hydrogen" />
+      <Property name="Description" kind="Plain" value="The pH of a solution is defined to be the negative logarithm of the concentration, measured in moles per liter. This unit is inverted in the sense that lower pH readings correspond to greater acidity, and therefore more hydrogen ions." />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="True" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="m²" />
+      <Property name="Name" kind="Plain" value="Square Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="m³" />
+      <Property name="Name" kind="Plain" value="Cubic Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="m/s" />
+      <Property name="Name" kind="Plain" value="Meter per Second" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="m/s²" />
+      <Property name="Name" kind="Plain" value="Meter per Second Squared" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="kg/m" />
+      <Property name="Name" kind="Plain" value="Kilogram per Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="kg/m²" />
+      <Property name="Name" kind="Plain" value="Kilogram per Square Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="kg/m³" />
+      <Property name="Name" kind="Plain" value="Kilogram per Cubic Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="m³/kg" />
+      <Property name="Name" kind="Plain" value="Cubic Meter per Kilogram" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="A/m²" />
+      <Property name="Name" kind="Plain" value="Ampere per Square Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="A/m" />
+      <Property name="Name" kind="Plain" value="Ampere per Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="mol/m³" />
+      <Property name="Name" kind="Plain" value="Mole per Cubic Meter" />
+      <Property name="Description" kind="Plain" value="Concentration of amount of substance" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="cd/m²" />
+      <Property name="Name" kind="Plain" value="Candela per Square Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Pa*s" />
+      <Property name="Name" kind="Plain" value="Pascal Second" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="N*m" />
+      <Property name="Name" kind="Plain" value="Newton Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="N/m" />
+      <Property name="Name" kind="Plain" value="Newton per Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="rad/s" />
+      <Property name="Name" kind="Plain" value="Radian per Second" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="rad/s²" />
+      <Property name="Name" kind="Plain" value="Radian per Second Squared" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="W/m²" />
+      <Property name="Name" kind="Plain" value="Watt per Square Meter" />
+      <Property name="Description" kind="Plain" value="Heat flux density, irradiance" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="J/K" />
+      <Property name="Name" kind="Plain" value="Joule per Kelvin" />
+      <Property name="Description" kind="Plain" value="Heat capacity, entropy" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="J/kgK" />
+      <Property name="Name" kind="Plain" value="Joule per Kilogram Kelvin" />
+      <Property name="Description" kind="Plain" value="Specific heat capacity, specific entropy" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="J/kg" />
+      <Property name="Name" kind="Plain" value="Joule per Kilogram" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="W/mK" />
+      <Property name="Name" kind="Plain" value="Watt per Meter Kelvin" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="J/m³" />
+      <Property name="Name" kind="Plain" value="Joule per Cubic Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="V/m" />
+      <Property name="Name" kind="Plain" value="Volt per Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="C/m³" />
+      <Property name="Name" kind="Plain" value="Coulomb per Cubic Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="C/m²" />
+      <Property name="Name" kind="Plain" value="Coulomb per Square Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="F/m" />
+      <Property name="Name" kind="Plain" value="Farad per Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="H/m" />
+      <Property name="Name" kind="Plain" value="Henry per Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="J/mol" />
+      <Property name="Name" kind="Plain" value="Joule per Mole" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="J/molK" />
+      <Property name="Name" kind="Plain" value="Joule per Mole Kelvin" />
+      <Property name="Description" kind="Plain" value="molar entropy, molar heat capacity" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="C/kg" />
+      <Property name="Name" kind="Plain" value="Coulomb per Kilogram" />
+      <Property name="Description" kind="Plain" value="Exposure (X and Gamma rays)" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Gy/s" />
+      <Property name="Name" kind="Plain" value="Gray per Second" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="W/m²sr" />
+      <Property name="Name" kind="Plain" value="Watt per Square Meter Steradian" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="kat/m³" />
+      <Property name="Name" kind="Plain" value="Katal per Cubic Meter" />
+      <Property name="Description" kind="Plain" value="Catalytic (activity) concentration" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="tera" />
+      <Property name="Name" kind="Plain" value="Tera" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Gm" />
+      <Property name="Name" kind="Plain" value="Gigameter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Megam" />
+      <Property name="Name" kind="Plain" value="Megameter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="km" />
+      <Property name="Name" kind="Plain" value="Kilometer" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Hm" />
+      <Property name="Name" kind="Plain" value="Hectometer" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Decigram" />
+      <Property name="Name" kind="Plain" value="Decigram" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="dm" />
+      <Property name="Name" kind="Plain" value="Decimeter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="cm" />
+      <Property name="Name" kind="Plain" value="Centimeter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="mm" />
+      <Property name="Name" kind="Plain" value="Millimeter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="µm" />
+      <Property name="Name" kind="Plain" value="Micro" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="nanom" />
+      <Property name="Name" kind="Plain" value="Nanometer" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="picom" />
+      <Property name="Name" kind="Plain" value="Picometer" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="mm²" />
+      <Property name="Name" kind="Plain" value="Square Millimeter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="cm²" />
+      <Property name="Name" kind="Plain" value="Square Centimeter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="dm²" />
+      <Property name="Name" kind="Plain" value="Square Decimeter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="are" />
+      <Property name="Name" kind="Plain" value="Are" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="hectare" />
+      <Property name="Name" kind="Plain" value="Hectare" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="km²" />
+      <Property name="Name" kind="Plain" value="Square Kilometer" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="mm³" />
+      <Property name="Name" kind="Plain" value="Cubic Millimeter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="cm³" />
+      <Property name="Name" kind="Plain" value="Cubic Centimeter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="dm³" />
+      <Property name="Name" kind="Plain" value="Cubic Decimeter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="km³" />
+      <Property name="Name" kind="Plain" value="Cubic Kilometer" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="ml" />
+      <Property name="Name" kind="Plain" value="Milliliter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="cl" />
+      <Property name="Name" kind="Plain" value="Centiliter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="dl" />
+      <Property name="Name" kind="Plain" value="Deciliter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="l" />
+      <Property name="Name" kind="Plain" value="Liter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="ton" />
+      <Property name="Name" kind="Plain" value="Metric Ton" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="qq" />
+      <Property name="Name" kind="Plain" value="Quintal" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="daKg" />
+      <Property name="Name" kind="Plain" value="DecaKg" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="g" />
+      <Property name="Name" kind="Plain" value="gram" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="mg" />
+      <Property name="Name" kind="Plain" value="Milligram" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="µg" />
+      <Property name="Name" kind="Plain" value="Microgram" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="ng" />
+      <Property name="Name" kind="Plain" value="Nanogram" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="ms" />
+      <Property name="Name" kind="Plain" value="Millisecond" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="μs" />
+      <Property name="Name" kind="Plain" value="Microsecond" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="ns" />
+      <Property name="Name" kind="Plain" value="Nanosecond" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="ps" />
+      <Property name="Name" kind="Plain" value="Picosecond" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="min" />
+      <Property name="Name" kind="Plain" value="Minute" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="hour" />
+      <Property name="Name" kind="Plain" value="Hour" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="day" />
+      <Property name="Name" kind="Plain" value="Day" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="C°" />
+      <Property name="Name" kind="Plain" value="Degree Celsius" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="F°" />
+      <Property name="Name" kind="Plain" value="Degree Fahrenheit" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="kW" />
+      <Property name="Name" kind="Plain" value="Kilowatt" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="MW" />
+      <Property name="Name" kind="Plain" value="Megawatt" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="HP" />
+      <Property name="Name" kind="Plain" value="Horsepower" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Btu" />
+      <Property name="Name" kind="Plain" value="British Thermal Unit" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="cal" />
+      <Property name="Name" kind="Plain" value="Calorie" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Kcal" />
+      <Property name="Name" kind="Plain" value="Kilocalorie" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="erg" />
+      <Property name="Name" kind="Plain" value="Erg" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="kWh" />
+      <Property name="Name" kind="Plain" value="Kilowatt hour" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="HPh" />
+      <Property name="Name" kind="Plain" value="Horsepower hour" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="bar" />
+      <Property name="Name" kind="Plain" value="Bar" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="mbar" />
+      <Property name="Name" kind="Plain" value="Millibar" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="atm" />
+      <Property name="Name" kind="Plain" value="Atmosphere" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="km/h" />
+      <Property name="Name" kind="Plain" value="Kilometer per Hour" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="Mach" />
+      <Property name="Name" kind="Plain" value="Mach Number" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="km/l" />
+      <Property name="Name" kind="Plain" value="Kilometer per Liter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="l/100km" />
+      <Property name="Name" kind="Plain" value="Liter per 100 Kilometer" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="A/mm²" />
+      <Property name="Name" kind="Plain" value="Ampere per Square Millimeter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="g/mm²" />
+      <Property name="Name" kind="Plain" value="Gram per Square Millimeter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="g/m²" />
+      <Property name="Name" kind="Plain" value="Gram per Square Meter" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="MESYear" />
+      <Property name="Name" kind="Plain" value="MESYear" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="MESMonth" />
+      <Property name="Name" kind="Plain" value="MESMonth" />
+      <Property name="Description" kind="Plain" value="" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.UoM">
+      <Property name="NId" kind="Plain" value="%" />
+      <Property name="Name" kind="Plain" value="%" />
+      <Property name="Description" kind="Plain" value="Percentage" />
+      <Property name="IsReadOnly" kind="Plain" value="True" />
+      <Property name="IsActive" kind="Plain" value="True" />
+      <Property name="IsBase" kind="Plain" value="False" />
+    </Entity>  
+
+    <!-- ***************** LIFE CYCLE ***************** --> 
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+      <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+      <Property name="Name" kind="Plain" value="Routing Lifecycle" />
+      <Property name="Description" kind="Plain" value="Internal Lifecycle for Routing" />
+    </Entity>
+
+    <!-- ***************** STATUS ACTION ***************** -->
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusAction">
+      <Property name="NId" kind="Plain" value="CanBeUpdated" />
+      <Property name="Name" kind="Plain" value="Can Be Updated" />
+      <Property name="Description" kind="Plain" value="NULL" />
+      <Property name="Statuses" kind="ManyToManyReference" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusAction">
+      <Property name="NId" kind="Plain" value="CanBeDeleted" />
+      <Property name="Name" kind="Plain" value="Can Be Deleted" />
+      <Property name="Description" kind="Plain" value="NULL" />
+      <Property name="Statuses" kind="ManyToManyReference" />
+    </Entity>
+    
+    <!-- ***************** STATUS ALIAS *****************  -->
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusAlias">
+      <Property name="NId" kind="Plain" value="IsActive" />
+      <Property name="Name" kind="Plain" value="IsActive" />
+      <Property name="Description" kind="Plain" value="NULL" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusAlias">
+      <Property name="NId" kind="Plain" value="IsHold" />
+      <Property name="Name" kind="Plain" value="IsHold" />
+      <Property name="Description" kind="Plain" value="NULL" />
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusAlias">
+      <Property name="NId" kind="Plain" value="IsObsolete" />
+      <Property name="Name" kind="Plain" value="IsObsolete" />
+      <Property name="Description" kind="Plain" value="NULL" />
+    </Entity>
+
+    <!-- ***************** STATUS ***************** -->
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatus">
+      <Property name="NId" kind="Plain" value="Active" />
+      <Property name="Name" kind="Plain" value="Active" />
+      <Property name="Description" kind="Plain" value="Routing is active" />
+      <Property name="LifeCycle" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+          <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+        </LogicalKey>
+      </Property>
+      <Property name="StatusAlias" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusAlias">
+          <Property name="NId" kind="Plain" value="IsActive" />
+        </LogicalKey>
+      </Property>
+      <Property name="StatusActions" kind="ManyToManyReference">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusAction">
+          <Property name="NId" kind="Plain" value="CanBeUpdated" />
+        </LogicalKey>
+      </Property>
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatus">
+      <Property name="NId" kind="Plain" value="Hold" />
+      <Property name="Name" kind="Plain" value="Hold" />
+      <Property name="Description" kind="Plain" value="Routing is hold" />
+      <Property name="LifeCycle" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+          <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+        </LogicalKey>
+      </Property>
+      <Property name="StatusAlias" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusAlias">
+          <Property name="NId" kind="Plain" value="IsHold" />
+        </LogicalKey>
+      </Property>
+      <Property name="StatusActions" kind="ManyToManyReference">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusAction">
+          <Property name="NId" kind="Plain" value="CanBeDeleted" />
+        </LogicalKey>
+      </Property>
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatus">
+      <Property name="NId" kind="Plain" value="Obsolete" />
+      <Property name="Name" kind="Plain" value="Obsolete" />
+      <Property name="Description" kind="Plain" value="Routing is obsolete" />
+      <Property name="LifeCycle" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+          <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+        </LogicalKey>
+      </Property>
+      <Property name="StatusAlias" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusAlias">
+          <Property name="NId" kind="Plain" value="IsObsolete" />
+        </LogicalKey>
+      </Property>
+      <Property name="StatusActions" kind="ManyToManyReference">
+      </Property>
+    </Entity>
+
+
+    <!-- ***************** TRANSITION ***************** -->
+    
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusTransition">
+      <Property name="CurrentStatus" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatus">
+          <Property name="NId" kind="Plain" value="Active" />
+          <!--<Property name="LifeCycle" kind="SingleReferenceToParent">
+            <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+              <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+            </LogicalKey>
+          </Property>-->
+        </LogicalKey>
+      </Property>
+      <Property name="NextStatus" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatus">
+          <Property name="NId" kind="Plain" value="Obsolete" />
+          <!--<Property name="LifeCycle" kind="SingleReferenceToParent">
+            <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+              <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+            </LogicalKey>
+          </Property>-->
+        </LogicalKey>
+      </Property>
+      <Property name="LifeCycle" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+          <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+        </LogicalKey>
+      </Property>
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusTransition">
+      <Property name="CurrentStatus" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatus">
+          <Property name="NId" kind="Plain" value="Active" />
+          <!--<Property name="LifeCycle" kind="SingleReferenceToParent">
+            <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+              <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+            </LogicalKey>
+          </Property>-->
+        </LogicalKey>
+      </Property>
+      <Property name="NextStatus" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatus">
+          <Property name="NId" kind="Plain" value="Hold" />
+          <!--<Property name="LifeCycle" kind="SingleReferenceToParent">
+            <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+              <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+            </LogicalKey>
+          </Property>-->
+        </LogicalKey>
+      </Property>
+      <Property name="LifeCycle" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+          <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+        </LogicalKey>
+      </Property>
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusTransition">
+      <Property name="CurrentStatus" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatus">
+          <Property name="NId" kind="Plain" value="Hold" />
+          <!--<Property name="LifeCycle" kind="SingleReferenceToParent">
+            <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+              <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+            </LogicalKey>
+          </Property>-->
+        </LogicalKey>
+      </Property>
+      <Property name="NextStatus" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatus">
+          <Property name="NId" kind="Plain" value="Active" />
+          <!--<Property name="LifeCycle" kind="SingleReferenceToParent">
+            <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+              <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+            </LogicalKey>
+          </Property>-->
+        </LogicalKey>
+      </Property>
+      <Property name="LifeCycle" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+          <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+        </LogicalKey>
+      </Property>
+    </Entity>
+    <Entity type="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatusTransition">
+      <Property name="CurrentStatus" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatus">
+          <Property name="NId" kind="Plain" value="Hold" />
+          <!--<Property name="LifeCycle" kind="SingleReferenceToParent">
+            <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+              <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+            </LogicalKey>
+          </Property>-->
+        </LogicalKey>
+      </Property>
+      <Property name="NextStatus" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteStatus">
+          <Property name="NId" kind="Plain" value="Obsolete" />
+          <!--<Property name="LifeCycle" kind="SingleReferenceToParent">
+            <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+              <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+            </LogicalKey>
+          </Property>-->
+        </LogicalKey>
+      </Property>
+      <Property name="LifeCycle" kind="SingleReferenceToParent">
+        <LogicalKey entityType="Siemens.SimaticIT.U4DM.ReferenceData.FB_RD_SERV.RFModel.DataModel.DiscreteLifeCycle">
+          <Property name="NId" kind="Plain" value="RoutingLifecycle" />
+        </LogicalKey>
+      </Property>
+    </Entity>
+
+  </Section>
+</Sections>

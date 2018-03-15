@@ -34,12 +34,12 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 var toDate = todayFilter.AddDays(-d);
                 var fromDate = toDate.AddDays(-1);
                 var pis = Platform.CallCommand<GetProductionInfo, GetProductionInfo.Response>(new GetProductionInfo { WorkArea = command.WorkArea, FromDate = fromDate, ToDate = toDate });
-                var producedPieces = Platform.ProjectionQuery<DailyProduction>().Where(p => p.WorkArea == command.WorkArea && p.Year == toDate.Year && p.Month == toDate.Month && p.Day == toDate.Day).Select(p => p.Pieces).DefaultIfEmpty(0).Sum();
+                
 
                 if (pis.Succeeded)
                 {
                     response.ProducedOrders.Add(new Types.GraphPoint($"{toDate.Month}-{toDate.Day}", pis.ProducedOrders));
-                    response.ProducedPieces.Add(new Types.GraphPoint($"{toDate.Month}-{toDate.Day}", producedPieces));
+                    response.ProducedPieces.Add(new Types.GraphPoint($"{toDate.Month}-{toDate.Day}", pis.ActualProducedQuantity));
                 }
             }
             return response;

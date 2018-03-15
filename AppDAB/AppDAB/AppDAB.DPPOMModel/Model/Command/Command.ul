@@ -215,6 +215,7 @@ RESPONSE
     Rework AS int
     OEE AS decimal
     LE AS decimal
+    Delay AS int
 
 [Composite]
 [Protected]
@@ -232,7 +233,6 @@ WITH
 RESPONSE
     ActualProducedQuantity AS decimal
     TotalProducedQuantity AS decimal
-    DelayProducedQuantity AS decimal
     ProducedOrders AS int
 
 [Composite]

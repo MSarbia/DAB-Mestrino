@@ -8,6 +8,9 @@ using Siemens.SimaticIT.Handler;
 using Siemens.SimaticIT.Unified;
 using Engineering.DAB.AppDAB.AppDAB.DPPOMModel.DataModel.ReadingModel;
 using Siemens.SimaticIT.U4DM.MsExt.FB_OP_EXT.OEModel.Types;
+using System.Configuration;
+using System.Net;
+using System.IO;
 
 namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
 {
@@ -43,8 +46,12 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 response.SetError(-1000, $"Nessun Ordine attivo trovato per il seriale {command.Result.SerialNumber}");
                 return response;
             }
-            ActualProducedMaterial actualProdMat = actualProdMats.FirstOrDefault(mat => mat.WorkOrderOperation.ToBeUsedMachines.Any(m => testingIds.Contains(m.Id)));
-
+            ActualProducedMaterial actualProdMat = actualProdMats.FirstOrDefault(mat => mat.WorkOrderOperation.ToBeUsedMachines.Any(m => testingIds.Contains(m.Machine.Value)));
+            if (actualProdMat == null)
+            {
+                response.SetError(-1000, $"Seriale {command.Result.SerialNumber} non ancora disponibile o già completato");
+                return response;
+            }
 
             int? workOrderId = actualProdMat.WorkOrderOperation.WorkOrder_Id;
 
@@ -98,9 +105,32 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                 response.SetError(completeResponse.Error.ErrorCode, completeResponse.Error.ErrorMessage);
                 return response;
             }
+            RefreshOTWebSerials(workOrderId.Value);
 
-            
             return response;
+        }
+
+        private void RefreshOTWebSerials(int workOrderId)
+        {
+            int equipId = Platform.ProjectionQuery<WorkOrderOperation>().Include(wo => wo.ToBeUsedMachines).Where(wo => wo.WorkOrder_Id == workOrderId).SelectMany(wo => wo.ToBeUsedMachines).Where(m => m.Machine != null).Select(m => m.Machine.Value).FirstOrDefault();
+            string workArea = Platform.ProjectionQuery<Equipment>().Where(e => e.Id == equipId).Select(e => e.Parent).FirstOrDefault();
+            if (string.IsNullOrEmpty(workArea))
+                return;
+            //OTServiceUri
+            string otServiceUri = ConfigurationManager.AppSettings["OTServiceUri"];
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create($"{otServiceUri}/RefreshSerials");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+            httpWebRequest.Accept = "application/json";
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = $"\"{workArea}\"";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+            var httpResponse = httpWebRequest.GetResponse();
         }
     }
 }
