@@ -73,7 +73,9 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
             decimal pezziRitardoSum = 0;
             foreach (var orderId in completedOrdersIds)
             {
-                decimal qtyProdotta = completedOrders[orderId].ProducedQuantity;
+                decimal qtyProdotta = Platform.ProjectionQuery<WorkOrderOperation>().Where(wo => wo.WorkOrder_Id == orderId).Where(wo => !wo.Successors.Any()).Select(wo => wo.ProducedQuantity).FirstOrDefault();
+
+                //completedOrders[orderId].ProducedQuantity;
                 decimal cycleTimeOrdine = Convert.ToDecimal(orderExts[orderId].CicleTime.GetValueOrDefault(new TimeSpan(0)).TotalMinutes);
                 totalePezziXCycleTime += (qtyProdotta * cycleTimeOrdine);
                 int operatoriTeoriciOrdine = orderExts[orderId].Operators;

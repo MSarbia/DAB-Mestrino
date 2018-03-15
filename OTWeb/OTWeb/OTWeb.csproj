@@ -197,6 +197,7 @@
     <Content Include="Images\eng-logo--pos.svg" />
     <Content Include="Images\logo-mobile.svg" />
     <Content Include="OTOperatorDashboard.html" />
+    <Content Include="OTFakeService.svc" />
     <Content Include="OTTeamLeaderDashboard.html" />
     <Content Include="Scripts\barcodeReader.js" />
     <Content Include="Scripts\jquery-ui-1.12.1\package.json" />
@@ -254,6 +255,9 @@
     <Compile Include="JsonFormatter\NewtonsoftJsonContentTypeMapper.cs" />
     <Compile Include="JsonFormatter\NewtonsoftJsonDispatchFormatter.cs" />
     <Compile Include="JsonFormatter\RawBodyWriter.cs" />
+    <Compile Include="OTFakeService.svc.cs">
+      <DependentUpon>OTFakeService.svc</DependentUpon>
+    </Compile>
     <Compile Include="OTService.svc.cs">
       <DependentUpon>OTService.svc</DependentUpon>
     </Compile>
@@ -287,16 +291,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50732</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50732/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

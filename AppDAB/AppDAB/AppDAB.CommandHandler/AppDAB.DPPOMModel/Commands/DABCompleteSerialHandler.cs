@@ -143,8 +143,8 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                     }
                 }
 
-                if(IsLastSerialOfLastOperationOfERPOrder(workOrderOperation,workOrderExt))
-                {
+                //if(IsLastSerialOfLastOperationOfERPOrder(workOrderOperation,workOrderExt))
+                //{
                     var today = DateTime.UtcNow;
                     Platform.CallCommand<SetProducedPieces, SetProducedPieces.Response>(new SetProducedPieces
                     {
@@ -154,7 +154,7 @@ namespace Engineering.DAB.AppDAB.AppDAB.DPPOMModel.Commands
                         WorkOrderId = workOrderExt.WorkOrderId,
                         WorkArea = equip.Parent
                     });
-                }
+                //}
                 //print package & data label
                 
                 //if (!string.IsNullOrEmpty(niceLabelIntegration) && niceLabelIntegration == "true")
